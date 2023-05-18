@@ -1,0 +1,424 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+
+\begin{document}
+\chapter{Bessel's Equation and Bessel's Function}
+\section{Bessel's Equation and Bessel's Function}
+The differential equation
+\[
+    x^2\ddxn{y}{2}+x\ddx{y}+\left( x^2-n^2 \right)y=0
+\]
+where $ n $ is a positive constant (not necessarily an integer) is known as the Bessel's equation.
+
+Since it is a linear differential equation of second order, it must have two linearly independent solutions.
+\begin{enumerate}[label={Case \arabic* :}]
+    \item \emph{$ n $ is not an integer}\\
+    The complete solution of the Bessel's equation can be expressed as 
+    \[ 
+        y=AJ_n(x)+BJ_{-n}(x) 
+    \]
+    Where $ J_n(x) $ is called the Bessel function of the first kind of order $ n $ and $ J_{-n}(x) $ is called the Bessel function of first kind of order $ -n $.
+    \[
+        J_n(x)=\sum_{r=0}^\infty \frac{(-1)^r\left( \frac{x}{2} \right)^{n+2r}}{r!\,(n+r)!}
+    \]
+    and,
+    \[
+        J_{-n}(x)=\sum_{r=0}^\infty \frac{(-1)^r\left( \frac{x}{2} \right)^{-n+2r}}{r!\,(-n+r)!}
+    \]
+    \item \emph{$ n $ is an integer}\\
+    The complete solution of the Bessel's equation can be expressed as 
+    \[
+        y=AJ_n(x)+BY_{n}(x) 
+    \]
+    Where $ Y_n(x) $ is called Bessel function of second kind of order $ n $,
+    \[Y_n(x)=J_n(x)\int \frac{\dx}{x\left( J_n(x) \right)^2}\]
+\end{enumerate}
+% \newpage
+\begin{prob}
+    Prove that $ J_{-n}(x)=(-1)^nJ_n(x) $
+\end{prob}
+\begin{proof}
+    We have,
+    \begin{equation}
+        J_{-n}(x)=\sum_{r=0}^\infty \frac{(-1)^r\left( \frac{x}{2} \right)^{-n+2r}}{r!\,(-n+r)!} \label{eq:prob2.2.1}
+    \end{equation}
+    Let,\\
+    \indent $ \begin{aligned}[t]
+        &r-n=s\\
+        \Rightarrow\, & r=n+s
+    \end{aligned} $\\
+    From \eqref{eq:prob2.2.1},
+    \begin{align*}
+        J_{-n}(x)&=\sum\frac{(-1)^{n+s}\left( \frac{x}{2} \right)^{-n+2(n+s)}}{(n+s)!\,(-n+n+s)!}\\
+        &=(-1)^n\sum\frac{(-1)^{s}\left( \frac{x}{2} \right)^{n+2s}}{s!\,(n+s)!}\\
+        &=(-1)^nJ_n(x)
+    \end{align*}
+\end{proof}
+\begin{prob}
+    Prove the following
+    \begin{enumerate}[label={(\roman*)}]
+        \item $ J_{\frac{1}{2} }(x)=\sqrt{\frac{2}{\pi x}} \sin x $
+        \item $ J_{-\frac{1}{2}}(x)=\sqrt{\frac{2}{\pi x}} \cos x $
+        \item $ J_{\frac{3}{2}}(x)=\sqrt{\frac{2}{\pi x}} \left( \frac{\sin x}{x} -\cos x\right) $
+        \item $ J_{-\frac{3}{2}}(x)=\sqrt{\frac{2}{\pi x}} \left( \frac{\cos x}{x} +\sin x\right) $
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    We have 
+    \[
+        J_n(x)=\sum_{r=0}^\infty\frac{(-1)^r\left( \frac{x}{2} \right)^{n+2r}}{r!\,(n+r)!}
+    \]
+    Putting $ r=0,1,2,\dots $
+    \begin{align}
+        J_n(x)&=\left( \frac{x}{2} \right)^n \left[ \frac{1}{n!}-\frac{\left( \frac{x}{2} \right)^2}{(n+1)!}+\frac{\left( \frac{x}{2} \right)^4}{2!\,(n+2)!}-\dots \right]\notag\\
+        &=\frac{\left( \frac{x}{2} \right)^n}{n!} \left[ 1-\frac{\left( \frac{x}{2} \right)^2}{n+1}+\frac{\left( \frac{x}{2} \right)^4}{2!\,(n+2)(n+1)}-\dots \right]\label{eq:prob2.3.1}
+    \end{align}
+    \begin{enumerate}[label={(\roman*)}]
+        \item Putting $ n=\frac{1}{2} $ in \eqref{eq:prob2.3.1} we get,
+        \blfootnote{$ \Gamma\left( n+1 \right)=n! $}
+        \blfootnote{$ \Gamma\left( \frac{1}{2} \right)=\sqrt{\pi} $}
+        \blfootnote{$ \left( \frac{1}{2}\right)!=\Gamma\left(\frac{3}{2} \right)=\frac{1}{2}\Gamma\left( \frac{1}{2} \right)=\frac{1}{2} \sqrt{\pi} $}
+        \begin{align*}
+            J_{\frac{1}{2}}(x )&=\frac{\left( \frac{x}{2} \right)^{\frac{1}{2}}}{\left( \frac{1}{2} \right)!} \left[ 1-\frac{\left( \frac{x}{2} \right)^2}{\frac{1}{2}+1}+\frac{\left( \frac{x}{2} \right)^4}{2!\,\left(\frac{1}{2}+2\right)\left({\frac{1}{2}}+1\right)}-\dots \right]\\
+            &=\frac{\left( \frac{x}{2} \right)^{\frac{1}{2}}}{\left( \frac{1}{2} \right)!} \left[ 1-\frac{x^2}{6}+\frac{x^4}{120}-\dots \right]\\
+            &=\sqrt{\frac{x}{2}}\cdot\frac{2}{\sqrt{\pi}} \left[ 1-\frac{x^2}{3!}+\frac{x^4}{5!}-\dots \right]\\
+            &=\sqrt{\frac{x}{2}}\cdot\frac{1}{\sqrt{\pi}}\cdot\frac{1}{x} \left[x-\frac{x^3}{3!}+\frac{x^5}{5!}-\dots \right]\\
+            &=\sqrt{\frac{2}{\pi x}}\sin x 
+        \end{align*}
+        \item Putting $ n=-\frac{1}{2} $ in \eqref{eq:prob2.3.1} we get,
+        \begin{align*}
+            J_{-\frac{1}{2}}(x )&=\frac{\left( \frac{x}{2} \right)^{-\frac{1}{2}}}{\left(- \frac{1}{2} \right)!} \left[ 1-\frac{\left( \frac{x}{2} \right)^2}{-\frac{1}{2}+1}+\frac{\left( \frac{x}{2} \right)^4}{2!\,\left(-\frac{1}{2}+2\right)\left({-\frac{1}{2}}+1\right)}-\dots \right]\\
+            &=\frac{\left( \frac{x}{2} \right)^{-\frac{1}{2}}}{\left( -\frac{1}{2} \right)!} \left[ 1-\frac{x^2}{2}+\frac{x^4}{24}-\dots \right]\\
+            &=\left(\frac{x}{2}\right)^{-\frac{1}{2}}\cdot\frac{1}{\Gamma\left( \frac{1}{2}   \right)} \left[ 1-\frac{x^2}{2!}+\frac{x^4}{4!}-\dots \right]\\
+            &=\sqrt{\frac{2}{\pi x}}\cos x 
+        \end{align*}
+        \item From the recurrence relation we have,
+        \[
+            \frac{2n}{x}J_n(x)=\left\{ J_{n+1}(x)+J_{n-1}(x)\right\}
+        \]
+        Putting $ n=\frac{1}{2} $ we get
+        \begin{align*}
+            & J_{\frac{1}{2}}(x)=x\left\{ J_{\frac{3}{2}}(x)+J_{-\frac{1}{2}}(x)\right\}\\
+            \Rightarrow\, & J_{\frac{3}{2}}(x)=\frac{1}{x} J_{\frac{1}{2}}(x)-J_{-\frac{1}{2}}(x)\\
+            \Rightarrow\, & J_{\frac{3}{2}}(x)=\sqrt{\frac{2}{\pi x}}\left( \frac{\sin x}{x}-\cos x \right)
+        \end{align*}
+        \item Again putting $ n=-\frac{1}{2} $ in the recurrence relation we get
+        \begin{align*}
+            & -J_{-\frac{1}{2}}(x)=x\left\{ J_{\frac{1}{2}}(x)+J_{-\frac{3}{2}}(x)\right\}\\
+            \Rightarrow\, & J_{-\frac{3}{2}}(x)=-\frac{1}{x} J_{-\frac{1}{2}}(x)-J_{\frac{1}{2}}(x)\\
+            \Rightarrow\, & J_{-\frac{3}{2}}(x)=-\sqrt{\frac{2}{\pi x}}\left( \frac{\cos x}{x}+\sin x \right)
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+\begin{prob}
+    Show that 
+    \[
+        J_n^{'}(x)J_{-n}(x)-J_{-n}^{'}(x)J_{n}(x)=\frac{2\sin n\pi }{\pi x}
+    \]
+\end{prob}
+\begin{soln}
+    The Bessel's differential equation is
+    \begin{align*}
+        &x^2\ddxn{y}{2}+x\ddx{y}+\left( x^2-n^2 \right)y=0\\
+        \Rightarrow\,& \ddxn{y}{2}+\frac{1}{x}\ddx{y}+\left( 1-\frac{n^2}{x^2} \right)y=0
+    \end{align*}
+    Since $ J_n(x) $ and $ J_{-n} (x)$ satisfies the Bessel's differential equation,
+    \begin{equation}
+        J_n^{''}(x)+\frac{1}{x}J_n^{'}(x)+\left( 1-\frac{n^2}{x^2} \right)J_n(x)=0\label{eq:prob2.4.1}
+    \end{equation}
+    And,
+    \begin{equation}
+        J_{-n}^{''}(x)+\frac{1}{x}J_{-n}^{'}(x)+\left( 1-\frac{n^2}{x^2} \right)J_{-n}(x)=0\label{eq:prob2.4.2}
+    \end{equation}
+    Now \eqref{eq:prob2.4.1}$ \times J_{-n}(x) - $\eqref{eq:prob2.4.2}$ \times J_n{x} $,
+    \begin{equation}
+        J_n^{''}(x)J_{-n}(x)-J_{-n}^{''}(x)J_{n}(x)+\left[ J_n^{'}(x)J_{-n}(x)-J_{-n}^{'}(x)J_{n}(x) \right]=0\label{eq:prob2.4.3}
+    \end{equation}
+    Put $ \begin{aligned}[t]
+        z&=J_{n}^{'}(x)J_{-n}^{}(x)-J_{-n}^{'}(x)J_{n}^{}(x)\\
+        \therefore\, z'&=J_{n}^{''}(x)J_{-n}^{}(x)+J_{n}^{'}(x)J_{-n}^{'}(x)-J_{-n}^{''}(x)J_{n}^{}(x)-J_{-n}^{'}(x)J_{n}^{'}(x)
+    \end{aligned} $\\
+    From \eqref{eq:prob2.4.3},
+    \begin{align}
+        & z'+\frac{1}{x}z=0\notag\\
+        \Rightarrow\,& \frac{z'}{z}+\frac{1}{x}=0\notag\\
+        \Rightarrow\, & \log z+\log x=\log c\notag\\
+        \Rightarrow\, & zx=c\notag\\
+        \Rightarrow\, & J_{n}^{'}(x)J_{-n}^{}(x)-J_{-n}^{'}(x)J_{n}^{}(x)=\frac{c}{x}\label{eq:prob2.4.4}
+    \end{align}
+    But 
+    \begin{align*}
+        J_n(x)&=\sum_{r=0}^\infty (-1)^r \frac{1}{r!\,(n+r)!}\left( \frac{x}{2} \right)^{n+2r}\qquad\text{ and,}\\
+        J_{-n}(x)&=\sum_{r=0}^\infty (-1)^r \frac{1}{r!\,(-n+r)!}\left( \frac{x}{2} \right)^{-n+2r}\\
+        \therefore\, J_n^{'}(x)&=\sum_{r=0}^\infty (-1)^r \frac{\left( n+2r \right)}{2\cdot r!\,(n+r)!}\left( \frac{x}{2} \right)^{n+2r-1}\\
+        \therefore\, J_{-n}^{'}(x)&=\sum_{r=0}^\infty (-1)^r \frac{\left( -n+2r \right)}{2\cdot r!\,(-n+r)!}\left( \frac{x}{2} \right)^{-n+2r-1}
+    \end{align*}
+    From \eqref{eq:prob2.4.4},
+    \begin{align*}
+        & \sum_{r=0}^\infty (-1)^r \frac{\left( n+2r \right)}{2\cdot r!\,(n+r)!}\left( \frac{x}{2} \right)^{n+2r-1}\cdot \sum_{r=0}^\infty (-1)^r \frac{1}{r!\,(-n+r)!}\left( \frac{x}{2} \right)^{-n+2r}\\
+        &-\sum_{r=0}^\infty (-1)^r \frac{\left( -n+2r \right)}{2\cdot r!\,(-n+r)!}\left( \frac{x}{2} \right)^{-n+2r-1}\cdot \sum_{r=0}^\infty (-1)^r \frac{1}{r!\,(n+r)!}\left( \frac{x}{2} \right)^{n+2r}=\frac{c}{x}\\
+        \Rightarrow\, & \sum_{r=0}^\infty (-1)^{2r}\frac{(n+2r)x^{4r-1}}{2^{4r}(r!)^2(n+r)!(-n+r)!}-\sum_{r=0}^\infty (-1)^{2r}\frac{(-n+2r)x^{4r-1}}{2^{4r}(r!)^2(n+r)!(-n+r)!}=\frac{c}{x}
+    \end{align*}
+    Equating the coefficient of $ \frac{1}{x} $ from both sides,
+    \begin{align*}
+        & \frac{1}{n!\,(-n)!}\left\{ n-(-n)\right\}=c\\
+        \Rightarrow\, & \frac{2n}{\Gamma(n+1)\,\Gamma(-n+1)}=c\\
+        \Rightarrow\, & c=\frac{2}{\Gamma(n)\,\Gamma(1-n)}\\
+        \Rightarrow\, & c=\frac{2\sin n\pi}{\pi}
+    \end{align*}
+    \[
+        \therefore\, J_{n}^{'}(x)J_{-n}^{}(x)-J_{-n}^{'}(x)J_{n}^{}(x)=\frac{2\sin n\pi}{\pi x}
+    \]
+\end{soln}
+% \newpage
+\section{Orthogonality of Bessel Functions}
+\begin{prob}
+    Show that 
+    \[
+        \int_0^1 xJ_n(\alpha x)J_n(\beta x)\dx=0
+    \]
+    where $ \alpha $ and $ \beta $ are different roots of $ J_n(x)=0 $.
+\end{prob}
+\begin{proof}
+    We have $ u=J_n(\alpha x) $ and $ v=J_n(\beta c) $ respectively be the solution of 
+    \begin{align}
+        x^2u''+xu'+\left( \alpha^2x^2-n^2 \right)u&=0 \label{eq:2.5.1}\\
+        x^2v''+xv'+\left( \alpha^2x^2-n^2 \right)v&=0 \label{eq:2.5.2}
+    \end{align}
+    Now $ \eqref{eq:2.5.1} \times \frac{v}{x}-\eqref{eq:2.5.2}\times \frac{u}{x}$,
+    \begin{align}
+        & x\left( u''v-uv'' \right)+\left( u'v-uv' \right)+\left( \alpha^2-\beta^2 \right)xuv=0\notag\\
+        \Rightarrow\,& \ddx{\left\{ x\left( u'v-uv' \right)\right\}}=\left( \beta^2 -\alpha^2 \right)xuv\notag\\
+        \Rightarrow\, &= \int_0^1 \left( \beta^2-\alpha^2 \right)xuv\dx =\left[ x\left( u'v-uv' \right) \right]_0^1\notag\\
+        \Rightarrow\, &= \int_0^1 \left( \beta^2-\alpha^2 \right)xuv\dx =\left[ \left( u'v-uv' \right) \right]_{x=1}\notag\\
+        \Rightarrow\, &= \int_0^1 \left( xuv \right)\dx =\frac{1}{\beta^2-\alpha^2}\left[ \left( u'v-uv' \right) \right]_{x=1}\label{eq:2.5.3}\\
+        \intertext{But $ u'=\alpha J_n^{'}(\alpha x),\,v'=\beta J_n^{'}(\beta x) $\newline From \eqref{eq:2.5.3}}
+        \Rightarrow\,& \int_0^1 (xuv)\dx =\frac{\alpha J_n^{'}(\alpha x) J_n(\beta)  -\beta J_n(\alpha) J_n^{'}(\beta x)}{\beta^2-\alpha^2}\label{eq:2.5.4}\\
+        \intertext{If $ \alpha $ and $ \beta  $ are distinct roots of $ J_n(x)=0 $ then $ J_n(\alpha)=J_n(\beta)=0 $\newline From \eqref{eq:2.5.4},}
+        \Rightarrow\, & \int_0^1 xJ_n(\alpha x)J_n(\beta x)\dx=0\notag
+    \end{align}
+    \begin{note}
+        The Bessel's equation is
+        \[
+            \left.
+            \begin{aligned}
+                &  x^2\ddxn{y}{2}+x\ddx{y}+\left( x^2-n^2 \right)y=0\\
+                &\text{Let $ x=\alpha r $, we get}\\
+                &  r^2\frac{\D^2 y}{\D r}+r\frac{\D y}{\D r}+\left( \alpha^2 r^2-n^2 \right)y=0\\
+                \Rightarrow\,& x^2\ddxn{y}{2}+x\ddx{y}+\left( \alpha^2 x^2-n^2 \right)y=0
+                &\\
+                &\\
+            \end{aligned}
+            \qquad\right\vert\qquad
+            \begin{aligned}
+                & x=\alpha r\\
+                \therefore\, & \ddx{y}=\frac{\D y}{\D r}\cdot\ddx{r}\\
+                \Rightarrow\, & \ddx{y}=\frac{1}{\alpha}\frac{\D y}{\D r}\\
+                \therefore\, & x\ddx{y}=\frac{\alpha r}{\alpha}\frac{\D y}{\D r}\\
+                \therefore\, & x\ddx{y}=r\frac{\D y}{\D r}
+            \end{aligned}
+        \]
+    \end{note}
+\end{proof}
+% \newpage
+\begin{prob}
+    Show that 
+    \[
+        \int_0^x x^nJ_{n-1}(x)\dx=x^nJ_n(x)
+    \]
+\end{prob}
+\begin{proof}
+    We have,
+    \[
+        x^nJ_n(x)=\sum_{r=0}^\infty (-1)^r\frac{1}{r!\, (n+r)!}(x)^{2n+2r}\frac{1}{2^{n+2r}}
+    \]
+    \begin{equation}
+        \therefore\, \ddx{}\left( x^n J_n(x) \right)=x^n J_{n-1}(x)\label{eq:prob2.6.1}
+    \end{equation}
+    Integrating \eqref{eq:prob2.6.1} with respect to $ x $ from $ 0 $ to $ x $ we get,
+    \begin{align*}
+        \int_0^x x^nJ_{n-1}(x)\dx &= \left[x^n J_{n}(x)\right]_{0}^x\\
+        &=x^n J_n(x)+\lim\limits_{x\rightarrow 0}x^nJ_n(x)\\
+        &=x^n J_n(x)+0\\
+        &=x^n J_n(x)
+    \end{align*}
+\end{proof}
+\begin{prob}
+    Show that 
+    \[
+        \int_0^x x^{-n}J_{n+1}(x)\dx=\frac{1}{2^n\,n!}-x^{-n}J_n(x)
+    \]
+\end{prob}
+\begin{proof}
+    We have,
+    \[
+        x^{-n}J_n(x)=\sum_{r=0}^\infty (-1)^r \frac{1}{r!\, (n+r)!}\frac{1}{2^{n+2r}}(x)^{2r}
+    \]
+    \begin{equation}
+        \therefore\, \ddx{}\left( x^{-n} J_n(x) \right)=-x^{-n} J_{n+1}(x)\label{eq:prob2.7.1}
+    \end{equation}
+    Integrating \eqref{eq:prob2.7.1} with respect to $ x $ from $ 0 $ to $ x $ we get,
+    \begin{align}
+        \int_0^x -x^{-n}J_{n+1}(x)\dx &= \left[-x^{-n} J_{n}(x)\right]_{0}^x\notag\\
+        &=-x^{-n} J_n(x)+\lim\limits_{x\rightarrow 0} x^{-n}J_n(x)\label{eq:prob2.7.2}
+    \end{align}
+    Now,
+    \begin{align*}
+        \lim\limits_{x\rightarrow 0}\left( x^{-n}J_n(x) \right)&=\lim\limits_{x\rightarrow 0} \frac{J_n(x)}{x^n}\\
+        &=\lim\limits_{x\rightarrow 0} \sum_{r=0}^\infty (-1)^r \frac{1}{r!\,(n+2r)!}\frac{1}{2^{n+2r}}x^{2n}\\
+        &= \lim\limits_{x\rightarrow 0} \left[ \frac{1}{2^n\,n!}-\frac{1}{2^{n+2}(n+2)!}x^2+\dots \right]\\
+        &=\frac{1}{2^n\,n!}
+    \end{align*}
+    From \eqref{eq:prob2.7.2}
+    \[
+        \int_0^x -x^{-n}J_{n+1}(x)\dx =\frac{1}{2^n n!}-x^{-n} J_n(x)
+    \]
+\end{proof}
+\section{Recurrence Relation}
+\begin{prob}
+    Prove the following recurrence formula for $ J_n(x) $
+    \begin{enumerate}[label={(\roman*)}]
+        \item $ \ddx{}\left[ x^nJ_n(x)\right]=x^n J_{n-1}x  $
+        \item $ \ddx{}\left[ x^{-n}J_n(x)\right]=-x^{-n} J_{n+1}x  $
+        \item $ J_n(x)=\frac{x}{2n}\left[ J_{n-1}(x)+J_{n+1}(x) \right] $
+        \item $ J_n^{'}(x)=\frac{1}{2}\left[ J_{n-1}(x)-J_{n+1}(x) \right] $
+        \item $ xJ_n^{'}(x)=nJ_n(x)-xJ_{n+1}(x) $
+    \end{enumerate}
+\end{prob}
+\begin{proof}
+    \hfill
+    \begin{enumerate}[label={(\roman*)}]
+        \item From the Bessel function of the first kind of order $ n $\\
+        We have,
+        \[
+            J_n(x)=\sum_{r=0}^\infty (-1)^r\frac{\left( \frac{x}{2} \right)^{n+2r}}{r!\,(n+r)!}
+        \]
+        \[
+            \therefore\, x^n J_n(x)=\sum_{r=0}^\infty (-1)^r\frac{\left( \frac{x}{2} \right)^{2n+2r}}{2^{n+2r}r!\,(n+r)!}
+        \]
+        \begin{align*}
+            \therefore\, \ddx{}\left[ x^nJ_n(x) \right]&=\sum_{r=0}^\infty (-1)^r\frac{1}{2^{n+2r}\,n!\,(n+r)!}\cdot2(n+r)x^{2(n+r)-1}\\
+            &=\sum (-1)^r\frac{1}{r!\,(n+r-1)!}\frac{x^n-x^{n+2r-1}}{2^{n+2r-1}}\\
+            &=x^n \sum (-1)^r \frac{1}{r!\,(n-1+r)!}\left(\frac{x}{2}\right)^{(n-1)+2r}\\
+            &=x^n J_{n-1}(x)
+        \end{align*}
+        \item \begin{align*}
+            \ddx{}\left[ x^{-n}J_n(x) \right]&=\ddx{}\left[ \sum (-1)^r \frac{x^{2r}}{r!\,(n+r)!\,2^{n+2r}} \right]\\
+            &=\sum (-1)^r\frac{2r\cdot x^{2r-1}}{2^{n+2r}\,n!\,(n+r)!}\\
+            &=\sum (-1)^r\frac{x^{2r-1}}{r!\,(n+r-1)!2^{n-1+2r}}\\
+            &=- \sum (-1)^{r-1} \frac{1}{(r-1)!\,(n+r)!}\frac{x^{n+2r-1}\cdot x^{-n}}{2^{n-1+2r}}\\
+            &=-x^{-n}\sum_{r=0}^{\infty}(-1)^{r-1} \frac{1}{(r-1)!\,(n+r)!}\cdot\frac{x^{n+1+2(r-1)}}{x^{n+1+2(r-1)}}
+        \end{align*}
+        When $ r=0\,(r-1)!=(-1)!=\infty $\\
+        i.e., $ \frac{1}{(r-1)!}=0 $\\
+        $ \therefore\, $ When $ r=0 $, the first term vanishes. So,
+        \[
+            \ddx{}\left[ x^{-n}J_n(x) \right]=-x^{-n}\sum_{r=1}^{\infty} (-1)^r \frac{1}{(r-1)!\,(n+1+r-1)!}\cdot\left( \frac{x}{2} \right)^{n+2r-1}
+        \]
+        Putting $ r-1 =k$ i.e., $ r=k+1 $
+        \[
+            \left.\begin{aligned}
+                \therefore\, \ddx{}\left[ x^{-n}J_n(x) \right]&=-x^{-n}\sum_{k=0}^\infty (-1)^r \frac{1}{k!\,(n+1+k)!}\cdot\frac{x}{2}^{n+1+2k}\\
+                &=-x^{-n}J_{n+1}(x)
+            \end{aligned}\qquad\right\vert\quad
+            \begin{aligned}
+                \text{When,}& \\
+                &\text{$ r=1,\,k=0 $}
+            \end{aligned}
+        \]
+        \item We have 
+        \begin{align}
+            & \ddx{}\left[ x^nJ_n(x) \right]=x^nJ_{n-1}(x)\notag\\
+            \Rightarrow\, & x^n J_n^{'}(x)+nx^{n-1}J_n(x)=x^nJ_{n-1}(x)\notag\\
+            \Rightarrow\, &J_n^{'}(x)+\frac{n}{x}J_n(x)=J_{n-1}(x)\label{eq:proof3.1}
+        \end{align}
+        Also,
+        \begin{align}
+            & \ddx{}\left[ x^{-n}J_n(x) \right]=-x^{-n}J_{n+1}(x)\notag\\
+            \Rightarrow\, & x^{-n} J_n^{'}(x)-nx^{-n-1}J_n(x)=-x^{-n}J_{n+1}(x)\notag\\
+            \Rightarrow\, &-J_n^{'}(x)+\frac{n}{x}J_n(x)=J_{n+1}(x)\label{eq:proof3.2}
+        \end{align}
+        Adding \eqref{eq:proof3.1} with \eqref{eq:proof3.2} with we get,
+        \begin{align*}
+            & \frac{2n}{x}J_n(x)=J_{n-1}(x)+J_{n+1}(x)\\
+            \therefore\, & J_n(x)=\frac{x}{2n}\left[ J_{n-1}(x)+J_{n+1}(x) \right]
+        \end{align*}
+        \item Subtracting \eqref{eq:proof3.2} from \eqref{eq:proof3.1} we get,
+        \begin{align*}
+            & 2 J_n^{'}(x)=J_{n-1}(x)-J_{n+1}(x)\\
+            \therefore\, & J_n^{'}(x)=\frac{1}{2}\left[ J_{n-1}(x)-J_{n+1}(x) \right]
+        \end{align*}
+        \item We have 
+        \begin{align}
+            &J_n(x)=\frac{x}{2n}\left[ J_{n-1}(x)+J_{n+1}(x) \right]\notag\\
+            \Rightarrow\, & \frac{2n}{x}J_n(x)=\left[ J_{n-1}(x)+J_{n+1}(x) \right]\label{eq:proof5.1}
+        \end{align}
+        Again
+        \begin{align}
+            & J_n^{'}(x)=\frac{1}{2}\left[ J_{n-1}(x)-J_{n+1}(x) \right]\notag\\
+            \Rightarrow\, & 2 J_n^{'}(x)=J_{n-1}(x)-J_{n+1}(x)\label{eq:proof5.2}
+        \end{align}
+        Subtracting \eqref{eq:proof5.2} from \eqref{eq:proof5.1} we get,
+        \begin{align*}
+            &\frac{2n}{x}J_n(x)-2J_n^{'}=2J_{n+1}(x)\\
+            \therefore\,\, & xJ_{n}^{'}(x)=nJ_n(x)-xJ_{n+1}(x)
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+\begin{prob}
+    Show that 
+    \[
+        xJ_n^{'}=-nJ_n+xJ_{n-1}
+    \]
+\end{prob}
+\begin{soln}
+    \begin{align*}
+        & J_n =\sum_{r=0}^{\infty} \frac{(-1)^r}{r!\,(n+r)!} \left( \frac{x}{2} \right)^{n+2r}\\
+        \therefore\, &J_n^{'}=\sum_{r=0}^{\infty} \frac{(-1)^r(n+2r)}{r!\,(n+r)!} \left( \frac{x}{2} \right)^{n+2r-1}\cdot\frac{1}{2}\\
+        \Rightarrow\, &xJ_n^{'}=\sum\frac{(-1)^r(2n+2r-n)}{r!\,(n+r)!} \left( \frac{x}{2} \right)^{n+2r}\cdot\frac{1}{2}\\
+        \Rightarrow\, &xJ_n^{'}=-n \sum\frac{(-1)^r}{r!\,(n+r)!} \left( \frac{x}{2} \right)^{n+2r}+\sum \frac{(-1)^r2(n+r)}{r!\,(n+r)!}\cdot\frac{x}{2}^{n+2r}\\
+        \Rightarrow\, &xJ_n^{'}=-n J_n+x\sum \frac{(-1)^r}{r!\,(n+r-1)!}\cdot\frac{x}{2}^{n+2r-1}\\
+        \Rightarrow\, &xJ_n^{'}=-n J_n+xJ_{n-1}
+    \end{align*}
+\end{soln}
+% \newpage
+\section{Generating Function of the Bessel Function $ J_n(x) $}
+\[
+    e^{\frac{1}{2}x\left( t-\frac{1}{t} \right)}=\sum_{n=-\infty}^\infty t^n J_n(x)
+\]
+\begin{proof}
+    From the exponential series, we have
+    \begin{equation}
+        e^z=1+\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+\frac{x^4}{4!}+\dots
+        \label{eq:gen}
+    \end{equation}
+    \begin{align*}
+        e^{\frac{1}{2}x\left( t-\frac{1}{t} \right)}&=e^{\frac{1}{2}tx}\cdot e^{\frac{-x}{2t}}\\
+        &=\left[ 1+\frac{tx}{2\cdot 1!}+\frac{t^2 x^2}{2^2\cdot2!}+\frac{t^3x^3}{2^3\cdot3!}+\dots+\frac{t^nx^n}{2^n\cdot n!}+\frac{t^{n+1}x^{n+1}}{2^{n+1}\cdot (n+1)!}+\dots \right] \times\\
+        &\quad\, \left[ 1-\frac{x}{2t\cdot 1!}+\frac{x^2}{2^2\cdot t^2\cdot2!}-\frac{x^3}{2^3\cdot t^3\cdot3!}+\dots+(-1)^n\frac{x^n}{2^n\cdot t^n \cdot n!}+(-1)^{n+1}\frac{x^{n+1}}{2^{n+1}\cdot t^{n+1}\cdot (n+1)!}+\dots \right]
+    \end{align*}
+    In this product the coefficient of $ t^n $ is 
+    \begin{align*}
+        & \frac{x^n}{2^n\cdot n!}-\frac{x^{n+1}}{2^{n+1}\cdot (n+1)!}\cdot\frac{x}{2}+\frac{x^{n+2}}{2^{n+2}\cdot (n+2)!}\cdot\frac{x^2}{2^2\cdot 2!}-\frac{x^{n+3}}{2^{n+3}\cdot (n+3)!}\cdot\frac{x^3}{2^3\,3!}+\dots\\
+        =& \frac{1}{n!}\left( \frac{x}{2} \right)^n-\frac{1}{1!\,(n+1)!}\left( \frac{x}{2} \right)^{n+2}+\frac{1}{2!\,(n+2)!}\left( \frac{x}{2} \right)^{n+4}-\frac{1}{3!\,(n+3)!}\left( \frac{x}{2} \right)^{n+6}+\dots\\
+        =& \sum_{m=0}^\infty (-1)^m \frac{1}{m!\,(n+m)!}\left( \frac{x}{2} \right)^{n+2m}\\
+        =& J_n(x)
+    \end{align*}
+    Also in the product, the coefficient of $ t^{-n} $ is
+    \begin{align*}
+        & (-1)^n \left[ 2^n \frac{x^n}{n!}-\frac{x^{n+1}}{2^{n+1}\cdot (n+1)!}\cdot\frac{x}{2}+\frac{x^{n+2}}{2^{n+2}\cdot (n+2)!}\cdot\frac{x^2}{2^2\cdot 2!}-\frac{x^{n+3}}{2^{n+3}\cdot (n+3)!}\cdot\frac{x^3}{2^3\,3!}+\dots\right]\\
+        =&(-1)^n \left[\frac{1}{n!}\left( \frac{x}{2} \right)^n-\frac{1}{1!\,(n+1)!}\left( \frac{x}{2} \right)^{n+2}+\frac{1}{2!\,(n+2)!}\left( \frac{x}{2} \right)^{n+4}-\frac{1}{3!\,(n+3)!}\left( \frac{x}{2} \right)^{n+6}+\dots\right]\\
+        =& (-1)^n J_n(x)\\
+        =& J_{-n}(x)
+    \end{align*}
+    Thus all the integral powers of $ t $ both positive and negative occur in the product.\\
+    Hence, we have 
+    \begin{align*}
+        e^{\frac{1}{2}x\left( t-\frac{1}{t} \right)} &=J_0(x)+tJ_1(x)+t^2J_2(x)+t^3 J_3(x)+\dots+t^{-1}J_{-1}(x)+t^{-2}J_{-2}(x)+t^{-3}J_{-3}(x)+\dots\\
+        &= \sum_{n=\infty}^\infty t^n J_n(x) 
+    \end{align*}
+    For this reason $ e^{\frac{1}{2}x\left( t-\frac{1}{t} \right)} $ is called the generating function of Bessel function.
+\end{proof}
+\end{document}

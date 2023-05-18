@@ -1,0 +1,8 @@
+\begin{tikzpicture}[decoration = {markings,
+    mark=at position 0.45 with {\arrow {latex}}  }]
+\draw[thick,-latex] (-5,0)--(5,0) node[below] {$x$};
+\draw[thick,-latex] (0,-5)--(0,5) node [left] {$y$};
+\node at (-.25,-.25) {$O$};
+\draw [postaction={decorate},thick,domain=-15.9:-30, variable=\t, samples=200] plot ({\t r}: {-0.005*\t*\t});
+\draw [postaction={decorate},thick,domain=-16:-30, variable=\t, samples=200] plot ({\t r}: {-0.004*\t*\t});
+\end{tikzpicture}

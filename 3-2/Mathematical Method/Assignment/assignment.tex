@@ -1,0 +1,680 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx,float,enumitem}
+\usepackage[cm]{fullpage}
+\usepackage{hyperref,lmodern}
+\usepackage[english]{babel}
+\usepackage{pdfpages}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+\theoremstyle{remark}
+\newtheorem* {rem}{Remark}
+\newtheorem* {note}{Note}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}[section]
+\newtheorem{defn}{Definition}
+\newtheorem{ex}{Example}[section]
+\newtheorem*{soln}{Solution}
+
+% add shorthand here
+\newcommand{\ddx}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,x}}
+\newcommand{\ddy}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,y}}
+\newcommand{\ddz}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,z}}
+\newcommand{\pardx}[1]{\,\frac{\partial\, #1}{\partial\, x}}
+\newcommand{\pardy}[1]{\,\frac{\partial\, #1}{\partial\, y}}
+\newcommand{\pardz}[1]{\,\frac{\partial\, #1}{\partial\, z}}
+\newcommand{\parx}{\,\partial\, x}
+\newcommand{\pary}{\,\partial\, y}
+\newcommand{\parz}{\,\partial\, z}
+\newcommand{\dx}{\,\mathrm{d}\, x}
+\newcommand{\dy}{\,\mathrm{d}\, y}
+\newcommand{\dz}{\,\mathrm{d}\, z}
+\newcommand{\D}{\,\mathrm{d}\,}
+\newcommand{\ddxn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\, x^{#2}}}
+\newcommand{\ddyn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\,y^{#2}}}
+\newcommand{\ddzn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\,z^{#2}}}
+\newcommand{\parxn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\, x^{#2}}}
+\newcommand{\paryn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\,y^{#2}}}
+\newcommand{\parzn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\,z^{#2}}}
+\begin{document}
+\begin{titlepage}
+    \includepdf{cover.pdf}
+\end{titlepage}
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\section{Preliminary Concepts}
+\emph{Boundary Value Problem:} A boundary value problem is a system of differential equations with solution and derivative values specified at more than one point. Most commonly, the solution and derivatives are specified at just two points (the boundaries) defining a two-point boundary value problem.
+\begin{equation}
+    \label{eq:preSample}
+    y''+p(x)y'+q(x)y=r(x),\quad y(x_1)=y_1,\,y(x_2)=y_2
+\end{equation}
+This is a boundary value problem with boundary conditions $ y(x_1)=y_1,\,y(x_2)=y_2 $.\\
+
+
+There are four kinds of boundary value problem.
+\begin{table}[H]
+    \renewcommand{\arraystretch}{1.5}
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        Dirichlet or First kind      & $ y(x_1)=y_1,\,y(x_2)=y_2 $                                                 \\\hline
+        Neumann or Second kind       & $ y'(x_1)=y_1,\,y'(x_2)=y_2 $                                               \\\hline
+        Robin or Third kind or mixed & $ \alpha_1y(x_1)+\alpha_2y'(x_1)=y_1,\,\beta_1y(x_2)+\beta_2y'(x_2)=y_2 $ \\\hline
+        Periodic                     & $ y(x_1)=y(x_2),\,y'(x_1)=y'(x_2)$                                          \\\hline
+    \end{tabular}
+\end{table}
+By comparing with the above table we can say that equation \eqref{eq:preSample} is boundary value problem of first kind or Dirichlet boundary value problem.\\
+Solution of differential equation can vary massively depending on boundary conditions. This is illustrated in the following example.
+\begin{ex}
+    Let us consider a differential equation
+    \begin{equation}
+        \label{eq:preex1}
+        y''+y=0
+    \end{equation}
+    This is a second-order linear differential equation. The general solution of this differential equation is $ A\sin (x)+B \cos (x) $.\\
+
+    Now, if the boundary conditions are $ y(0)=1\, y\left( \frac{\pi}{2} \right)=1 $ then equation \eqref{eq:preex1} has a unique solution. Both $ A $ and $ B $ is 1 so the particular solution becomes $ \sin(x)+\cos(x) $.\\
+
+    Now, if we change the boundary conditions to $ y(0)=1\, y( \pi)=1 $ then equation \eqref{eq:preex1} has no solutions. Because $ B $ takes the values $ 1 $ and $ -1 $ which is not possible.\\
+
+    Again, if we change the boundary conditions to $ y(0)=1\, y( 2\pi)=1 $ then equation \eqref{eq:preex1} has infinite numbers of solutions.
+\end{ex}
+From this example we can say that small changes to boundary condition can dramatically change boundary value problem.
+\begin{prob}
+    Solve this problem
+    \[y''+9y=0\]
+    with boundary conditions $ y(0)=2 $ and $ y(2\pi)=4 $.
+\end{prob}
+\begin{soln}
+    Given that,
+    \[y''+9y=0\]
+    Here,
+    \begin{align*}
+                      & r^2+9=0  \\
+        \Rightarrow\, & r^2=-9   \\
+        \therefore\,  & r=\pm 3i
+    \end{align*}
+    The roots are complex conjugate. So, the general solution to the differential equation is,
+    \[y(x)=A\cos(3x)+B\sin(3x)\]
+    Left boundary condition
+    \begin{align*}
+                      & y(0)=A\cos(0)+B\sin(0) \\
+        \Rightarrow\, & 2=A                    \\
+        \therefore\,  & A=2
+    \end{align*}
+    Right boundary condition
+    \begin{align*}
+                      & y(2\pi)=A\cos(6\pi)+B\sin(6\pi) \\
+        \Rightarrow\, & 4=A
+    \end{align*}
+    On one hand, $ A=2 $ and by the second equation $ A=4 $. This is impossible and this boundary value problem has no solution.
+\end{soln}
+% \newpage
+\section{Eigenvalue Problem}
+Consider the system
+\[
+    Ax=\lambda x
+\]
+where for certain values of $ \lambda $, called eigenvalues, there are non-zero solutions called eigenvectors.\\
+The values of $ \lambda $ where we get non-trivial solutions. The nontrivial solutions themselves are called \emph{eigenfunctions}. This type of differential equations are \emph{eigenvalue problem}.
+\begin{ex}
+    Let us consider a differential equation
+    \begin{equation}
+        \label{eq:eigen1}
+        y''+\lambda y=0,\quad y(0)=0,\,y(\pi)=0
+    \end{equation}
+
+
+    From equation \eqref{eq:eigen1} we can see there are three cases arises. So we need to consider them separately.
+    \begin{enumerate}[label={Case \arabic*:}]
+        \item \underline{$ \lambda $ is positive, i.e., $ \lambda >0 $}\\
+              Here $ \lambda $ is positive. So we assume $ \lambda=\mu^2 $ and rewriting equation \eqref{eq:eigen1} we get,
+
+              \[
+                  y''+\mu^2 y=0
+              \]
+              The characteristic equation is $ r^2+\mu^2=0 $.\\
+              So,
+              \begin{align*}
+                                & r^2+\mu^2=0     \\
+                  \Rightarrow\, & r=\sqrt{-\mu^2} \\
+                  \therefore \, & r=\pm i\mu
+              \end{align*}
+              Here the roots are complex conjugate. So, the general solution is,
+              \[
+                  y(x)=A\cos(\mu x)+B\sin(\mu x)
+              \]
+              Here $ \mu\neq0 $ because $ \lambda>0 $. From the first boundary condition we get $ A=0 $. From the second boundary condition we get, $ B\sin(\mu x)=0 $.\\
+              For non-trivial solution $ B $ must be not equal to zero. So,
+              \begin{align*}
+                               & \sin(\mu x)=0   \\
+                  \therefore\, & \mu=1,2,3,\dots
+              \end{align*}
+              So, for $ \mu=1,2,3,\dots $ we get eigenvalues $ \lambda=1,4,9,\dots,n^2 $. Here $ B $ is an arbitrary function and let $ B=1 $. Thus, the eigenfunctions are
+              \[
+                  y_1(x)=\sin(x),\,y_2(x)=\sin(2x),\dots,y_n(x)=\sin(nx)
+              \]
+        \item \underline{$ \lambda $ is negative, i.e., $ \lambda <0 $}\\
+              Here $ \lambda $ is negative. So we assume $ \lambda=-\mu^2 $ and rewriting equation \eqref{eq:eigen1} we get,
+              \[
+                  y''-\mu^2 y=0
+              \]
+              The characteristic equation is $ r^2-\mu^2=0 $.\\
+              So,
+              \begin{align*}
+                                & r^2-\mu^2=0    \\
+                  \Rightarrow\, & r=\sqrt{\mu^2} \\
+                  \therefore \, & r=\pm \mu
+              \end{align*}
+              Here the roots are real and distinct. So, the general solution in hyperbolic form is,
+              \[
+                  y(x)=A\cosh(\mu x)+B\sinh(\mu x)
+              \]
+              The first boundary condition gives $ A=0 $ because $ \cosh(0)=1$ and $\sinh(0)=0 $. And the second boundary condition gives
+              \[
+                  B\sinh(\mu x)=0
+              \]
+              Here $ \mu\neq0 $ so, $ \sinh(\mu x)\neq 0 $, therefore, $ B=0 $.\\
+              So for $ \lambda<0 $ only trivial solution is possible thus no eigenvalues.
+        \item \underline{$ \lambda $ is zero, i.e., $ \lambda =0 $}\\
+              Here $ \lambda $ is zero. So by rewriting equation \eqref{eq:eigen1} we get,
+              \[
+                  y''=0
+              \]
+              The general solution by integrating twice is,
+              \[
+                  y(x)=Ax+B
+              \]
+              Using boundary condition we get $ A=0 $ and $ B=0 $.\\
+              So for $ \lambda=0 $ only trivial solution is possible thus no eigenvalues.
+    \end{enumerate}
+    So, we only get real eigenvalues and eigenfunctions when $ \lambda>0 $. There may be complex eigenvalues.
+\end{ex}
+
+
+Consider a basic problem
+\[
+    y''+\lambda y=0,\qquad y(0)=0,\,y(L)=0
+\]
+Here the eigenvalues and eigenfunctions are
+\[
+    \lambda_n=\frac{n^2\pi^2}{L^2},\quad y_n(x)=\sin\left( \frac{n\pi x}{L}\quad \text{for } n=1,2,3\dots \right)
+\]
+This problem is known as the classical \emph{Euler Buckling} problem.\\
+\begin{note}
+    The purpose of the eigenvalue problems is to find out non-trivial solution.
+\end{note}
+\begin{prob}
+    Find the eigenvalues and the corresponding eigenfunctions of
+    \[y''+\lambda y=0,\qquad y(0)=0,\,y'(\pi)=0\]
+\end{prob}
+\begin{soln}
+    The cases $ \lambda=0 $, $ \lambda<0 $ and $ \lambda>0 $ will be considered separately.
+    \begin{enumerate}[label={Case \arabic*:}]
+        \item If $ \lambda=0 $, we have $ y''=0 $\\
+              Which has the solution
+              \begin{equation}
+                  y(x)=Ax+B
+                  \label{eq:eigenex2.1}
+              \end{equation}
+              Applying the boundary conditions we have
+              \begin{align*}
+                                & y(0)=A\times 0+B \\
+                  \Rightarrow\, & 0=B              \\
+                  \therefore\,  & B=0
+              \end{align*}
+              Differentiating both sides of equation \eqref{eq:eigenex2.1} with respect to $ x $ we get,
+              \begin{align*}
+                               & y'(x)=A   \\
+                  \intertext{So,}
+                               & y'(\pi)=A \\
+                  \therefore\, & A=0
+              \end{align*}
+              So we obtain $ A=0 $ and $ B=0 $. Hence, from equation \eqref{eq:eigenex2.1} we have $ y=0 $, which is not an eigenfunction.
+        \item If $ \lambda<0 $ (i.e., $ \lambda $ is negative), the equation $ y''+\lambda y=0 $ can be written as
+              \[y''-\left( \sqrt{-\lambda} \right)^2y=0\]
+              which has the solution
+              \begin{equation}
+                  \label{eq:eigenex2.2}
+                  y(x)=Ae^{\sqrt{-\lambda}\,x}+Be^{-\sqrt{-\lambda}\,x}
+              \end{equation}
+              where $ -\lambda $ and $ \sqrt{-\lambda} $ are positive.\\
+              Applying the boundary conditions we have
+              \begin{align}
+                               & y(0)=Ae^{0}+Be^{0}\notag   \\
+                  \therefore\, & A+B=0\label{eq:eigenex2.3}
+              \end{align}
+              Differentiating both sides of equation \eqref{eq:eigenex2.2}, with respect to $ x $ we get,
+              \begin{align}
+                               & y'(x)=A\sqrt{-\lambda}e^{\sqrt{-\lambda}\,x}-B\sqrt{-\lambda}e^{-\sqrt{-\lambda}\,x}\notag                \\
+                  \intertext{So,}
+                               & y'(\pi)=A\sqrt{-\lambda}e^{\sqrt{-\lambda}\,\pi}-B\sqrt{-\lambda}e^{-\sqrt{-\lambda}\,\pi}\notag          \\
+                  \therefore\, & A\sqrt{-\lambda}e^{\sqrt{-\lambda}\,\pi}-B\sqrt{-\lambda}e^{-\sqrt{-\lambda}\,\pi}=0\label{eq:eigenex2.4}
+              \end{align}
+              Solving equation \eqref{eq:eigenex2.3} and \eqref{eq:eigenex2.4} we get $ A=0 $ and $ B=0 $. Hence, from equation \eqref{eq:eigenex2.2} we have $ y=0 $. Which is not an eigenfunction.
+        \item If $ \lambda>0 $ (i.e., $ \lambda $ is positive),
+              then $ y''+\lambda y=0 $ can be written as
+              \[y''+\left( \sqrt{\lambda} \right)^2=0\]
+              Whose solution is
+              \begin{equation}
+                  y(x)=A\cos(\sqrt{\lambda} \,x)+B\sin(\sqrt{\lambda}\, x) \label{eq:eigenex2.5}
+              \end{equation}
+              Applying the given boundary conditions we have
+              \begin{align*}
+                                & y(0)=A\cos(0)+B\sin(0) \\
+                  \Rightarrow\, & 0=A+0                  \\
+                  \therefore\,  & A=0
+              \end{align*}
+              Differentiating both sides of equation \eqref{eq:eigenex2.5}, with respect to $ x $ we get,
+              \begin{align*}
+                                & y'(x)=-A\sqrt{\lambda}\sin(\sqrt{\lambda} \,x)+B\sqrt{\lambda}\cos(\sqrt{\lambda} \,x)       \\
+                  \intertext{So,}
+                                & y'(\pi)=-A\sqrt{\lambda}\sin(\sqrt{\lambda}\, \pi)+B\sqrt{\lambda}\cos(\sqrt{\lambda} \,\pi) \\
+                  \Rightarrow\, & 0=B\sqrt{\lambda}\cos(\sqrt{\lambda} \,\pi)                                                  \\
+                  \therefore\,  & B\sqrt{\lambda}\cos(\sqrt{\lambda}\, \pi)=0
+              \end{align*}
+              Now for $ \theta>0 $, $ \cos\theta=0 $ if and only if $ \theta $ is a positive odd multiple of $ \frac{\pi}{2} $.\\
+              That is for $\displaystyle \theta =\frac{(2n-1)\pi}{2}=\left( n-\frac{1}{2} \right)\pi $ where $ n=1,2,3,\dots $. Therefore, to satisfy the boundary conditions, we must have $A=0$ either $ B=0 $ or $ \cos \sqrt{\lambda}\pi=0 $.\\
+              This last equation is equivalent to
+              \begin{align*}
+                               & \sqrt{\lambda}\,\pi=\left( n-\frac{1}{2} \right)\pi \\
+                  \therefore\, & \sqrt{\lambda}=\left( n-\frac{1}{2} \right)
+              \end{align*}
+              The choice $ B=0 $ results in the trivial solution $ y=0 $ which is not an eigenfunction.\\
+              While, the choice $ \sqrt{\lambda}=\left( n-\frac{1}{2} \right) $ results in the nontrivial solution $ y_n=B_n\sin\left( n-\frac{1}{2} \right)x $.\\
+
+              Collecting all three cases, we conclude that the eigenvalues are $ \lambda_n=(n-\frac{1}{2})^2 $ and the corresponding eigenfunctions are
+              \[y_n=B_n\sin\left( n-\frac{1}{2} \right)x \qquad \text{where, } n=1,2,3,\dots\]
+    \end{enumerate}
+\end{soln}
+\subsection{Strum-Liouville Problems}
+In this section we consider eigenvalue problems of the form
+\begin{equation}
+    \label{eq:strumform}
+    P_0(x)y''+P_1(x)y'+P_2(x)y+\lambda R(x)y=0,\quad B_1(y)=0,\,B_2(y)=0
+\end{equation}
+where,
+\begin{align*}
+    B_1(y) & =\alpha y(a)+\beta y'(a) \quad \text{ and } \\
+    B_2(y) & =\rho y(b)+\delta y'(b)
+\end{align*}
+Here, $ \alpha,\,\beta,\,\rho $ and $ \delta $ are real numbers with
+\[
+    \alpha^2+\beta^2>0\quad\text{ and }\quad \rho^2+\delta^2
+\]
+$ P_0,\,P_1,\,P_2 $ and $ R $ are continuous and $ P_0 $ and $ R $ are positive on $ [a,b] $.\\
+We say that $ \lambda $ is an eigenvalue of equation \eqref{eq:strumform} if it has a non-trivial solution $ y $. In this case, $ y $ is an eigenfunction associated with $ \lambda $ or a $ \lambda- $eigenfunction.
+\begin{note}
+    Solving the eigenvalue problems means finding all eigenvalues and associated eigenfunctions of the equation \eqref{eq:strumform}.
+\end{note}
+% \newpage
+\begin{prob}
+    Solve the eigenvalue problem
+    \[
+        y''+3y'+2y+\lambda y=0,\qquad y(0)=0,y(1)=0
+    \]
+\end{prob}
+\begin{soln}
+    Given,
+    \begin{equation}
+        \label{eq:eigenprob1.1}
+        y''+3y'+2y+\lambda y=0
+    \end{equation}
+    The characteristic equation of equation \eqref{eq:eigenprob1.1} is,
+    \[
+        r^2+3r+2+\lambda =0
+    \]
+    Here the roots are
+    \[
+        r_1=\frac{-3+\sqrt{1-4\lambda}}{2}\qquad\text{ and }\qquad r_1=\frac{-3-\sqrt{1-4\lambda}}{2}
+    \]
+    If $ \lambda<\frac{1}{4}  $ then $ r_1 $ and $ r_2 $ are real and distinct roots. So, the general solution is
+    \[
+        y(x)=Ae^{r_1 x}+Be^{r_2 x}
+    \]
+    Using boundary condition we get
+    \begin{align*}
+        A+B                 & =0 \\
+        Ae^{r_1 }+Be^{r_2 } & =0
+    \end{align*}
+    Solving this system of equation we see that this system has only trivial solution. Therefore, there is no eigenvalue for $ \lambda<\frac{1}{4} $.\\
+
+    If $ \lambda=\frac{1}{4}  $ then $ r_1 $ and $ r_2 $ are real, and they are $ r_1=r_2=-\frac{3}{2} $. So, the general solution is
+    \[
+        y(x)=Ae^{\frac{-3x}{2}}+Bxe^{\frac{-3x}{2}}
+    \]
+    From the first boundary condition we get $ A=0 $. Using $ A=0 $ we get,
+    \[
+        y(x)=Bxe^{\frac{-3x}{2}}
+    \]
+    Now to satisfy second boundary condition $ B $ must be equal to zero. So, we see that this system has only trivial solution. Therefore, there is no eigenvalue for $ \lambda=\frac{1}{4} $.\\
+
+
+    If $ \lambda>\frac{1}{4}  $ then $ r_1 $ and $ r_2 $ are complex conjugate roots, and they are
+    \[
+        r_1=-\frac{3}{2}+i\omega\quad \text{and }r_2=-\frac{3}{2}+i\omega
+    \]
+    where
+    \begin{align*}
+        \omega  & =\frac{\sqrt{4\lambda-1}}{2} \\
+        \lambda & =\frac{1+4\omega^2}{4}
+    \end{align*}
+    So, the general solution is
+    \[
+        y(x)=Ae^{-\frac{3x}{2}}\cos(\omega x)+Be^{-\frac{3x}{2}}\sin(\omega x)
+    \]
+    From the first boundary condition we get $ A=0 $. Using $ A=0 $ we get,
+    \[
+        y(x)=Be^{-\frac{3x}{2}}\sin(\omega x)
+    \]
+    Now the second boundary condition holds if and only if $ \omega=n\pi $, where $ n $ is a positive integer. So, the eigenvalues are
+    \[
+        \lambda_n=\frac{1+4n^2 \pi^2}{4}
+    \]
+    and the associated eigenfunctions,
+    \[
+        y_n=e^{\frac{-3x}{2}}\sin(n\pi x),\qquad\text{where, } n=1,2,3,\dots
+    \]
+\end{soln}
+% \section{Strum-Liouville Problems}
+% Strum-Liouville problems are special cases of eigenvalue problem.\\
+% \begin{defn}
+%     If we consider a boundary value problem which consists of 
+%     \begin{enumerate}
+%         \item a second order homogeneous linear differential equation of the form
+%         \begin{equation}
+%             \label{eq:strumDefn}
+%             \ddx{}\left[ p(x)\ddx{y} \right]+\left[ q(x)+\lambda\,r(x) \right]y=0
+%         \end{equation}
+%         where $ p $, $ q $, and $ r $ are real functions such that $ p $ has a continuous derivative, $ q $ and $ r $ are continuous and $ p(x)>0 $ and $ r(x)>0 $ for all $ x $ on a real interval $ a\leq x\leq b $ and $ \lambda $ is a parameter independent of $ x $; and
+%         \item two supplementary conditions
+%         \begin{align}
+%             A_1 y(a)+A_2y'(a)&=0\notag\\
+%             B_1 y(b)+B_2y'(b)&=0\label{eq:strumCon}
+%         \end{align}
+%         where $ A_1,\,A_2,\,B_1 $ and $ B_2 $ are real constants such that $ A_1 $ and $ A_2 $ are not both zero and $ B_1 $ and $ B_2 $ are not both zero.
+%     \end{enumerate}
+%     This type of boundary value problem is called a Strum-Liouville problem.
+% \end{defn}
+% Two special case of supplementary conditions are either of the form 
+% \[
+%     y(a)=0,\qquad y(b)=0
+% \]
+% or of the form
+% \[
+%     y'(a)=0,\qquad y'(b)=0
+% \]
+
+
+% The differential equation \eqref{eq:eigen1} discussed in `Eigenvalue problem' section is a Strum-Liouville problem. Because we can rewrite the equation as
+% \[
+%     \ddx{}\left[ 1\ddx{y} \right]+\left[ 0+\lambda\cdot1 \right]y=0
+% \] 
+% and hence is of the form \eqref{eq:strumDefn} where $ p(x)=1,\,q(x)=0, $ and $ r(x)=1 $. The supplementary conditions are of special case.
+% \begin{ex}
+%     The boundary value problem 
+%     \[
+%         \ddx{}\left[ x\ddx{y} \right]+\left[ 2x^2+\lambda x^3 \right]y=0
+%     \]
+%     \begin{align*}
+%         3y(1)+4y'(1)&=0\\
+%         5y(2)-3y'(2)&=0
+%     \end{align*}
+%     is a Strum-Liouville problem. The differential equation is of the form \eqref{eq:strumDefn} where $ p(x)=x,\,q(x)=2x^2, $ and $ r(x)=x^3 $. The supplementary conditions are of form \eqref{eq:strumCon}, where $ a=1,$ $b=2,$ $A_1=3,$ $A_2=4,$ $B_1=5 $ and $ B_2=-3 $. 
+% \end{ex}
+
+\section{Green's Function}
+The general form of the second order differential equation,
+\begin{align*}
+    P_2(x)\ddxn{y}{2}+P_1(x)\ddx{y}+P_0(x)y              & =f(x) \\
+    \left[ P_2(x)\ddxn{}{2}+P_1(x)\ddx{}+P_0(x) \right]y & =f(x) \\
+    \therefore \,L[y]                                    & =f(x)
+\end{align*}
+$ \therefore $ The non-homogeneous differential equation is
+\[
+    L[y]=f(x),\qquad a\leq x\leq b
+\]
+where $ L $ is a differential operator and $ y(x) $ satisfies boundary conditions at $ x=a $ and $ x=b $.\\
+The solution is given by
+\[
+    y=L^{-1}[f]
+\]
+The inverse of a differential operator in an integral operator, which is in the form,
+\[
+    y(x)=\int_a^b G(x,\zeta)f(\zeta)\D \zeta
+\]
+The function $ G(x,\zeta) $ is referred to as the kernel of the integral operator and is called the \emph{Green's function.}\\
+
+The solution of the boundary value problem
+\[
+    \ddx{}\left( p(x)\ddx{y(x)} \right)+q(x)y(x)=f(x),\qquad a<x<b,\qquad y(a)=0,\,y(b=0)
+\]
+takes the form
+\[
+    y(x)=\int_a^b G(x,\zeta)f(\zeta)\D \zeta
+\]
+where the Green's function is the piece-wise defined function
+\[
+    G(x,\zeta)=\begin{cases}
+        \displaystyle \frac{y_1(\zeta)y_2(x)}{pW}, & \,a\leq \zeta\leq x \\
+        \displaystyle \frac{y_1(x)y_2(\zeta)}{pW}, & \,x\leq \zeta\leq b
+    \end{cases}
+\]
+where $ W $ is Wronskinan of the system, and $ y_1(x) $ and $ y_2(x) $ are solutions of the homogeneous problem satisfying $ y_1(a)=0 $, $ y_2(b)=0 $ and $ y_1(b)\neq 0 $, $ y_2(a)\neq 0 $.
+\begin{rem}
+    We use Green's function when the solution of differential equation is trivial.
+\end{rem}
+% \newpage
+\begin{prob}
+    Solve the boundary value problem
+    \[
+        y''=x^2,\qquad y(0)=0,\,y(1)=0
+    \]
+    using the boundary value Green's function.
+\end{prob}
+\begin{soln}
+    We first solve the homogeneous equation $ y''=0$.\\
+    After two integrations, we have,
+    \[
+        y(x)=Ax+B
+    \]
+    for $ A $ and $ B $ constants to be determined.\\
+    We need one solution satisfying $ y_1(0)=0 $. Thus,
+    \[
+        0=y_1(0)=B
+    \]
+    So, we can pick $ y_1(x)=x $, since $ A $ is arbitrary.\\
+    The other solution has to satisfy $ y_2(1)=0 $. So,
+    \begin{align*}
+                      & 0=y_2(1)=A+B \\
+        \Rightarrow\, & A+B=0        \\
+        \therefore\,  & B=-A
+    \end{align*}
+    Again, $ A $ is arbitrary, and we will choose $ A=-1 $. Thus,
+    \begin{align*}
+                      & y_2(x)=Ax+B      \\
+        \Rightarrow\, & y_2(x)=Ax-A      \\
+        \Rightarrow\, & y_2(x)=A(x-1)    \\
+        \Rightarrow\, & y_2(x)=(-1)(x-1) \\
+        \Rightarrow\, & y_2(x)=-x+1      \\
+        \therefore\,  & y_2(x)=1-x
+    \end{align*}
+    For this problem $ p(x)=1 $. Thus, for $ y_1(x)=x $ and $ y_2(x)=1-x $ we get,
+    \begin{align*}
+        W                    & =\begin{vmatrix}
+            y_1  & y_2  \\
+            y_1' & y_2'
+        \end{vmatrix} \\
+                             & =\begin{vmatrix}
+            x & 1-x \\
+            1 & -1
+        \end{vmatrix} \\
+                             & =(-x-1+x)                   \\
+                             & =-1                         \\
+        \therefore\,p(x)W(x) & =-1
+    \end{align*}
+    Here $ p(x)W(x) $ is constant, as it should be.\\
+    Now,
+    \[
+        G(x,\zeta)=\begin{cases}
+            -\zeta(1-x), & \,0\leq \zeta\leq x, \\
+            -x(1-\zeta), & \,x\leq \zeta\leq 1.
+        \end{cases}
+    \]
+    Finally,
+    \begin{align*}
+        y(x)             & =\int_0^1G(x,\zeta)f(\zeta)\D\zeta                                                                  \\
+                         & =\int_0^1G(x,\zeta)\zeta^2\D\zeta                                                                   \\
+                         & =-\int_0^x \zeta(1-x)\zeta^2\D\zeta-\int_x^1 x(1-\zeta)\zeta^2\D\zeta                               \\
+                         & =-(1-x)\int_0^x \zeta^3 \D\zeta-x\int_x^1 (\zeta^2-\zeta^3)\D\zeta                                  \\
+                         & =-(1-x)\left[ \frac{\zeta^4}{4} \right]_0^x-x\left[ \frac{\zeta^3}{3}-\frac{\zeta^4}{4} \right]_x^1 \\
+                         & =-\frac{1}{4}(1-x)x^4-\frac{1}{12}4x+\frac{1}{12}3x+\frac{1}{12}x\left( 4x^3-3x^4 \right)           \\
+                         & =-\frac{1}{4}x^4+\frac{1}{4}x^5-\frac{1}{3}x+\frac{1}{4}x+\frac{1}{3}x^4-\frac{1}{4}x^5             \\
+                         & =\frac{1}{12}x^4-\frac{1}{12}x                                                                      \\
+        \therefore\,y(x) & =\frac{1}{12}\left( x^4-x \right)
+    \end{align*}
+    Checking the answer, we can easily verify that $ y''=x^2, $ $ y(0)=0 $ and $ y(1)=0 $.
+\end{soln}
+\subsection{Properties of Green's Function}
+\begin{enumerate}
+    \item Differential equation:
+          \[\pardx{}\left( p(x)\pardx{G(x,\zeta)} \right)+q(x)G(x,\zeta)=0,\qquad x\neq \zeta\]
+    \item Boundary conditions: Whatever conditions $ y_1(x) $ and $ y_2(x) $ satisfy, $ G(x,\zeta) $ will satisfy.
+    \item Symmetry or Reciprocity:
+          \[G(x,\zeta)=G(\zeta,x)\]
+    \item Continuity of $ G $ at $ x =\zeta$:
+          \[G(\zeta^+,\zeta)=G(\zeta^-,\zeta)\]
+    \item Jump discontinuity of $ \pardx{G} $ at $ x=\zeta $:
+          \[\pardx{G(\zeta^+,\zeta)}-\pardx{G(\zeta^-,\zeta)}=\frac{1}{p(\zeta)}\]
+\end{enumerate}
+We can construct Green's function using these properties. Here is an example.
+\newpage
+\begin{prob}
+    Construct the Green's function for the problem
+    \[y''+\omega^2y=f(x),\qquad0<x<1,\qquad y(0)=0,\,y(1)=0\]
+    with $ \omega\neq 0 $.
+\end{prob}
+\begin{soln}
+    \begin{enumerate}
+        \item \underline{Finding solutions to the homogeneous equation}\\
+              Given that,
+              \begin{equation}
+                  y''+\omega^2y=0 \label{eq:green1.1}
+              \end{equation}
+              Here the characteristic equation is,
+              \begin{align*}
+                                & m^2+\omega^2=0 \\
+                  \Rightarrow\, & m^2=-\omega^2  \\
+                  \therefore\,  & m=-i\omega
+              \end{align*}
+              A general solution to the homogeneous equation is
+              \[y(x)=c_1\sin(\omega x)+c_2\cos(\omega x)\]
+              If we use boundary condition the solution is trivial. So we have to use Green's function.\\
+              Thus, for $ x\neq \zeta $,
+              \begin{equation}
+                  G(x,\zeta)=c_1(\zeta)\sin(\omega x)+c_2(\zeta)\cos(\omega x)\label{eq:green1.2}
+              \end{equation}
+        \item \underline{Boundary conditions:}\\
+              We have $ G(0,\zeta)=0 $ for $ 0\leq x\leq \zeta $. So,
+              \begin{align*}
+                  G(0,\zeta) & =c_1(\zeta)\sin(0)+c_2(\zeta)\cos(\omega x) \\
+                             & =c_2(\zeta)\cos(\omega x)                   \\
+                             & =0
+              \end{align*}
+              So,
+              \[G(x,\zeta)=c_1(\zeta)\sin{\omega x},\qquad0\leq x\leq \zeta\]
+              Again, we have $ G(1,\zeta)=0 $ for $ \zeta\leq x\leq 1 $. So,
+              \begin{align*}
+                                & G(1,\zeta)=c_1(\zeta)\sin(\omega)+c_2(\zeta)\cos(\omega) \\
+                  \therefore\,  & c_1(\zeta)\sin(\omega)+c_2(\zeta)\cos(\omega)=0          \\
+                  \Rightarrow\, & c_2(\zeta)\cos(\omega)=-c_1(\zeta)\sin(\omega)           \\
+                  \Rightarrow\, & c_2(\zeta)=-c_1(\zeta)\frac{\sin(\omega)}{\cos(\omega)}  \\
+                  \therefore\,  & c_2(\zeta)=-c_1(\zeta)\tan(\omega)
+              \end{align*}
+              Putting these value in equation \eqref{eq:green1.2}, we have,
+              \begin{align}
+                  G(x,\zeta)             & =c_1(\zeta)\sin(\omega x)+c_2(\zeta)\cos(\omega x)\notag                                                    \\
+                                         & =c_1(\zeta)\sin(\omega x)-c_1(\zeta)\tan(\omega)\cos(\omega x)\notag                                        \\
+                                         & =c_1(\zeta)\sin(\omega x)-c_1(\zeta)\frac{\sin(\omega)}{\cos(\omega)}\cos(\omega x)\notag                   \\
+                                         & =\frac{c_1(\zeta)\sin(\omega x)\cos(\omega)-c_1(\zeta)\sin(\omega)\cos(\omega x)}{\cos(\omega)}\notag       \\
+                                         & =\frac{c_1(\omega)}{\cos(\omega)}\left[ \sin(\omega x)\cos(\omega)-\sin(\omega)\cos(\omega x) \right]\notag \\
+                                         & =\frac{c_1(\omega)}{\cos(\omega)}\left[ \sin(\omega x-\omega)\right]\notag                                  \\
+                                         & =\frac{c_1(\omega)}{\cos(\omega)}\cdot \sin\omega(x -1)\notag                                               \\
+                                         & =\frac{-c_1(\omega)}{\cos(\omega)}\cdot \sin\omega(1 -x)\notag                                              \\
+                  \therefore\,G(x,\zeta) & =\frac{-c_1(\omega)}{\cos(\omega)}\cdot \sin\omega(1 -x) \label{eq:greenprob1.3}
+              \end{align}
+              Since the coefficient is arbitrary at this point, we can write the result as,
+              \[G(x,\zeta)=d_1{\zeta} \sin\omega(1 -x),\qquad \zeta\leq x\leq1\]
+              $ \therefore\,y_2(x)=\sin\omega(1-x) $ satisfies the second boundary condition.
+        \item \underline{Symmetry or Reciprocity:}\\
+              We now impose that $ G(x,\zeta)=G(\zeta,x) $. To this point we have that,
+              \[
+                  G(x,\zeta)=\begin{cases}
+                      c_1(\zeta)\sin\omega x,     & 0\leq x \leq \zeta \\
+                      d_1(\zeta)\sin\omega(1- x), & \zeta\leq x \leq 1
+                  \end{cases}
+              \]
+              We can make the branches symmetric by picking the right forms for $ c_1(\omega) $ and $ d_1(\omega) $. We choose $ c_1(\omega)=C\sin\omega(1-\zeta) $ and $ d_1(\omega)=C\sin\omega$.\\
+              Then,
+              \begin{equation}
+                  \label{eq:greenprob1.4}
+                  G(x,\zeta)=\begin{cases}
+                      C\sin\omega(1-\zeta)\sin\omega x, & 0\leq x \leq \zeta \\
+                      C\sin\omega(1-x)\sin \omega\zeta, & \zeta\leq x \leq 1
+                  \end{cases}
+              \end{equation}
+              Now the Green's function is symmetric and $ C $ is constant.
+        \item \underline{Continuity of $ G(x,\zeta) $:}\\
+              We already have continuity by virtue of the symmetric imposed in the last step.
+        \item \underline{Jump discontinuity in $ \pardx{}G(x,\zeta) $:}\\
+              Using the jump discontinuity in the derivative:
+              \[\pardx{G(\zeta^+,\zeta)}-\pardx{G(\zeta^-,\zeta)}=\frac{1}{p(\zeta)}\]
+              For this problem $ p(x)=1 $. Inserting the Green's function, we have,
+              \begin{align*}
+                  1                                  & =\pardx{G(\zeta^+,\zeta)}-\pardx{G(\zeta^-,\zeta)}                                                                                  \\
+                                                     & =\pardx{}\left[ C\sin\omega(1-x)\sin\omega\zeta \right]_{x=\zeta}-\pardx{}\left[ C\sin\omega(1-\zeta)\sin\omega x \right]_{x=\zeta} \\
+                                                     & =-\omega C\cos\omega(1-\zeta)\sin\omega\zeta-\omega C\sin\omega(1-\zeta)\cos\omega\zeta                                             \\
+                                                     & =-\omega C\left[ \cos\omega(1-\zeta)\sin\omega\zeta+\sin\omega(1-\zeta)\cos\omega\zeta \right]                                      \\
+                                                     & =-\omega C \sin\omega(\zeta+1-\zeta)                                                                                                \\
+                                                     & =-\omega C \sin\omega                                                                                                               \\
+                  \therefore \, -\omega C \sin\omega & =1                                                                                                                                  \\
+                  \therefore \, C                    & =\frac{-1}{\omega \sin\omega}
+              \end{align*}
+              Finally, we have the Green's function:\\
+              From the equation \eqref{eq:greenprob1.4}, we get,
+              \[
+                  G(x,\zeta)=\begin{cases}
+                      \displaystyle\frac{-1}{\omega \sin\omega} \cdot\sin\omega(1-\zeta)\sin\omega x, & 0\leq x \leq \zeta \\
+                      \displaystyle\frac{-1}{\omega \sin\omega}\cdot\sin\omega(1-x)\sin \omega\zeta,  & \zeta\leq x \leq 1
+                  \end{cases}
+              \]
+              \[
+                  \therefore\,G(x,\zeta)=\begin{cases}
+                      \displaystyle-\frac{\sin\omega(1-\zeta)\sin\omega x}{\omega\sin\omega}, & 0\leq x \leq \zeta \\
+                      \displaystyle-\frac{\sin\omega(1-x)\sin\omega \zeta}{\omega\sin\omega}, & \zeta\leq x \leq 1
+                  \end{cases}
+              \]
+    \end{enumerate}
+\end{soln}
+
+
+
+\newpage
+\section{References}
+\begin{enumerate}
+    \item Ian Gladwell: Boundary Value Problem. Scholarpedia 3(1): 2853 (2008)
+    \item Md. Abdur Rahman: College Mathematical Methods: Integral Transforms \& Boundary Value Problems (1997)
+    \item Russell L. Herman: Introduction to Partial Differential Equations (2015)
+    \item William F. Trench: Elementary Differential Equations With Boundary Value Problems (2013)
+\end{enumerate}
+\end{document}

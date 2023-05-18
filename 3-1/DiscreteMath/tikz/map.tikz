@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+    [place/.style={circle,draw}]
+    \node[place] (g)[right=of f]{};
+    \node[place] (h)[right=of g]{};
+    \node[place] (i)[above=of g]{};
+    \node[place] (j)[right=of i]{};
+    \path[-](g) edge node {} (i)
+                edge node {} (h)
+                edge node {} (j)
+            (i) edge node {} (j)
+                edge node {} (h)
+            (h) edge node {} (j);
+    \node[place,node distance=1.5cm] (gg)[right=of h]{};
+    \node[place] (hh)[right=of gg]{};
+    \node[place] (ii)[above=of gg]{};
+    \node[place] (jj)[right=of ii]{};
+    \path[-](gg) edge node {} (ii)
+                edge node {} (hh)
+                edge[in=120,out= 120,out looseness=3] node {} (jj)
+            (ii) edge node {} (jj)
+                edge node {} (hh)
+            (hh) edge node {} (jj);
+\end{tikzpicture}

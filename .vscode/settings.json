@@ -1,0 +1,14 @@
+{
+    "files.exclude": {
+        "**/*.aux": true,
+        "**/*.gz": true,
+        "**/*.log": true,
+        "**/*.lol": true,
+        "**/*.out": true,
+        "**/*.pre": true,
+        "**/*.toc": true
+    },
+    "cSpell.enableFiletypes": [
+        "!latex"
+    ]
+}

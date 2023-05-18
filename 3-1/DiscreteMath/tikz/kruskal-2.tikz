@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+    [node distance=2cm,a/.style={circle,draw}]
+    \node[a] (cc) {C};
+    \node[a] (aa)[above right =of cc] {A};
+    \node[a] (bb) [right =of aa] {B};
+    \node[a] (dd) [below right =of bb] {D};
+    \node[a] (ee) [below right =of cc] {E};
+    \node[a] (ff) [right =of ee] {F};
+    \node[node distance=.1cm](text1)[below right=of ee]{(c)};
+    \path[-](aa)edge node[above left,sloped] {4}(ee)
+                edge node[below,sloped] {7}(ff)
+            (bb) edge node[above,sloped] {3}(dd)
+            (cc)edge node[below,sloped] {6}(ee)
+            (dd)edge node[below,sloped] {4}(ff);
+\end{tikzpicture}

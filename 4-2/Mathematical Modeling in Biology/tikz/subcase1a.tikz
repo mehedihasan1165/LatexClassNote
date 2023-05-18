@@ -1,0 +1,18 @@
+\begin{tikzpicture}[scale=.75]
+    \begin{axis}[thick,axis lines*=middle,xmin=-2,xmax=2,ymin=-2,ymax=2,ticks=none]
+    \addplot[thick,samples=100,decoration = {markings,
+                mark=at position 0.47 with {\arrow {latex}},mark=at position 0.53 with {\arrowreversed {latex}}  },postaction={decorate}] (x,x^2);
+    \addplot[thick,samples=100,decoration = {markings,
+                mark=at position 0.485 with {\arrow {latex}},mark=at position 0.515 with {\arrowreversed {latex}}  },postaction={decorate}] (x,2*x^2);
+    \addplot[thick,samples=100,decoration = {markings,
+                mark=at position 0.47 with {\arrow {latex}},mark=at position 0.53 with {\arrowreversed {latex}}  },postaction={decorate}] (x,-x^2);
+    \addplot[thick,samples=100,decoration = {markings,
+                mark=at position 0.485 with {\arrow {latex}},mark=at position 0.515 with {\arrowreversed {latex}}  },postaction={decorate}] (x,-2*x^2);
+    \node at (-.2,-.25) {$O$};
+    \addplot[thick,black,-latex] coordinates {(1.2,0) (1,0)};
+    \addplot[thick,black,-latex] coordinates {(-1.2,0) (-1,0)};
+    \addplot[thick,black,-latex] coordinates {(0,1.2) (0,1)};
+    \addplot[thick,black,-latex] coordinates {(0,-1.2) (0,-1)};
+    \end{axis}
+    \node at (7,0.5) {$t\to+\infty$};
+    \end{tikzpicture}

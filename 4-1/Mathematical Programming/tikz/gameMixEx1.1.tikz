@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+    \matrix [matrix of math nodes,left delimiter={[},right delimiter={]},row sep=0.1cm,column sep=0.1cm] (n) {
+            2 & -1 \\
+            -1 & 0 \\
+        };
+    \node[above=.4 cm] at (n-1-1) {$H$};
+    \node[above=.4 cm] at (n-1-2) {$T$};
+    \node[above=1 cm] at (n-1-2.west) {Player $B$};
+
+    \node[left=.75 cm] at (n-1-1) {$H$};
+    \node[left=.75 cm] at (n-2-1) {$T$};
+    \node[left=1.5 cm] at (n-2-1.north) {Player $A$};
+\end{tikzpicture}

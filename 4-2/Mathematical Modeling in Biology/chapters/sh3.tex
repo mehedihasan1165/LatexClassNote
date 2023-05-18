@@ -1,0 +1,366 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\begin{prob}
+    Find the equilibrium population of
+    \[
+        \ddt{x}=x(10-y);\quad \ddt{y}=y(10-x)
+    \]
+    Discuss the stability of the model and sketch some trajectories.
+\end{prob}
+\begin{soln}
+    The equilibrium are the solution of
+    \begin{align*}
+        x(10-y)=0\qquad\Rightarrow\;&x=0,\quad 10-y=0\\
+        &x=0,\quad y=10\\
+        y(10-x)=0\qquad\Rightarrow\;&y=0,\quad 10-x=0\\
+        &y=0,\quad x=10
+    \end{align*}
+    The equilibrium points are \((0,0)\), \((10,10)\).\\
+    Here,
+    \begin{align*}
+        F(x,y)=x(10-y),\qquad &G(x,y)=y(10-x)\\
+        F_x=10-y,\,\,F_y=-x\qquad &G_x=-y,\,\,G_y=10-x
+    \end{align*}
+    The community matrix at the equilibrium \((x_\infty,y_\infty)\) is,
+    \[
+        A=\begin{bmatrix}
+        F_x & F_y\\
+        G_x & G_y
+    \end{bmatrix}=\begin{bmatrix}
+        10-y_\infty & -x_infty\\
+        -y_infty & 10-x_infty
+    \end{bmatrix}
+    \]
+    The community matrix at \((0,0)\) is,
+    \[A_1=\begin{bmatrix}
+        10 & 0\\
+        0 & 10
+    \end{bmatrix}\]
+    and the characteristic equation is,
+    \begin{align*}
+        &\lambda^2-(10+10)\lambda+100=0\\
+        \Rightarrow\;\;&\lambda^2-20\lambda+100=0\\
+        \Rightarrow\;\;&(\lambda-10)^2=0\\
+        \Rightarrow\;\;&\lambda=10,10
+    \end{align*}
+    Since, the roots are real, equal and has positive sign.
+
+    Hence, \((0,0)\) is an asymptotically unstable node.\\
+
+
+    The community matrix at \((10,10)\) is,
+    \[A_2=\begin{bmatrix}
+        0 & -10\\
+        -10 & 0
+    \end{bmatrix},\qquad \abs{A_2}=-100<0\]
+    and the characteristic equation is,
+    \begin{align*}
+        &\lambda^2-(0)\lambda+(0-100)=0\\
+        \Rightarrow\;\;&\lambda^2-100=0\\
+        \Rightarrow\;\;&\lambda=10,-10
+    \end{align*}
+    Since, the roots are real, unequal and has opposite sign.
+
+    Hence, \((10,10)\) is an unstable saddle point.\\
+    \emph{2nd part}\\
+    Hence,
+    \begin{equation}
+        \ddx{y}=\frac{y(10-x)}{x(10-y)}\label{eq:q10.1}
+    \end{equation}
+    The isoclines of \eqref{eq:q10.1} are,
+    \[\frac{y(10-x)}{x(10-y)}=c\]
+    If \(c=0\), then \(y(10-x)=0\) \(\Rightarrow\;y=0,\,x=10\), \(\theta=\tan^{-1}0=0\)\\
+    If \(c=\infty\), then \(x(10-y)=0\) \(\Rightarrow\;x=0,\,y=10\), \(\theta=\tan^{-1} \infty=90^{\circ}\)
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{q10.tikz}
+    \end{figure}
+\end{soln}
+\section{Epidemiology}
+\begin{prob}
+    Discuss the \(SI\) model with limiting behavior.
+\end{prob}
+\begin{soln}
+    Without removals, we have\
+    \begin{equation}
+        S(t)+I(t)=N(t)=\text{ Constant }
+        \label{eq:psi1}
+    \end{equation}
+    where, \(\begin{aligned}[t]
+        S(t)&=\text{ The number of susceptible}\\
+        I(t)&=\text{ The number of infective person in the population}\\
+        N(t)&=\text{ The total population size}
+    \end{aligned}\)\\
+    Let \(n\) be the initial number of susceptible in the population in which one infected person has been introduced, so that,
+    \begin{equation}
+        \begin{rcases}
+            S(t)+I(t)=n+1\\    
+            S(0)=S_0=n\\    
+            I(0)=I_0=1    
+        \end{rcases}
+        \label{eq:psi2}
+    \end{equation}
+    Due to infection, the number of susceptibles decreases and the number of infected persons increases.\\
+    The epidemic model is,
+    \begin{align}
+        \ddt{S}&=-\beta SI\label{eq:psi3}\\
+        \ddt{I}&=\beta SI\label{eq:psi4}
+    \end{align}
+    From \eqref{eq:psi4},
+    \begin{align}
+        & \ddt{S}=-\beta SI=-\beta S(n+1-S) \quad\text{ by \eqref{eq:psi2}}\notag\\
+        \Rightarrow\;\;& \frac{-1 \D S}{S(n+1-S)}=\beta \D t\notag\\
+        \Rightarrow\;\;& -\frac{1 }{n+1}\left( \frac{1}{S}+\frac{1}{n+1-S} \right)=\beta \D t\notag\\
+        \Rightarrow\;\;& -\int \frac{1 }{S}\D S-\int \frac{1}{n+1-S} \D S=\int(n+1)\beta \D t\notag\\
+        \Rightarrow\;\;& -\ln{S}+\ln({n+1-S})=(n+1)\beta t+\ln c\quad\text{ where \(c\) is a constant}\label{eq:psi5}
+    \end{align}
+    By using the initial conditions \eqref{eq:psi2}, we have
+    \begin{align}
+        & -\ln{S_0}+\ln({n+1-S_0})=(n+1)\beta\cdot0+\ln c\notag\\
+        \Rightarrow\;\;& -\ln n+\ln({n+1-n})=\ln c\notag\\
+        \Rightarrow\;\;& -\ln n=\ln c\notag\\
+        \intertext{Putting the value of \(ln c\) in \eqref{eq:psi5} we get,}
+        \Rightarrow\;\;& -\ln{S}+\ln({n+1-S})=(n+1)\beta t-\ln n\notag\\
+        \Rightarrow\;\;& \ln\frac{n(n+1-S)}{S}=(n+1)\beta t\notag\\
+        \Rightarrow\;\;& \frac{n(n+1-S)}{S}=e^{(n+1)\beta t}\notag\\
+        \Rightarrow\;\;& {n(n+1)-nS}=Se^{(n+1)\beta t}\notag\\
+        \Rightarrow\;\;& {n(n+1)}=nS+Se^{(n+1)\beta t}\notag\\
+        \Rightarrow\;\;& S=S(t)=\frac{n(n+1)}{n+e^{(n+1)\beta t}}\label{eq:psi6}
+    \end{align}
+    From \eqref{eq:psi4}, we have
+    \begin{align}
+        &\ddt{I}=\beta SI=\beta I(n+1-I)\quad \text{ [by \eqref{eq:psi2}]}\notag\\
+        \Rightarrow\;\;&\frac{\D I}{I(n+1-I)}=\beta \D t\notag\\
+        \Rightarrow\;\;&\int\frac{1}{n+1}\left( \frac{1}{I}+\frac{1}{n+1-I} \right)\D I=\int \beta \D t\notag\\
+        \Rightarrow\;\;&\int\left( \frac{1}{I}+\frac{1}{n+1-I} \right)\D I=\int(n+1) \beta \D t\notag\\
+        \Rightarrow\;\;&\ln {I}-\ln ({n+1-I}) =(n+1) \beta t+\ln A\label{eq:psi7}\quad\text{ where \(\ln A\) is a constant}
+    \end{align}
+    Initially, \(t=0\), \(I_0=1\), so we get,
+    \begin{align*}
+        &\ln {I_0}-\ln ({n+1-I_0}) =(n+1) \beta \cdot 0+\ln A\\
+        \Rightarrow\;\;&\ln 1-\ln ({n+1-1}) =0+\ln A\\
+        \Rightarrow\;\;&-\ln n =\ln A\\
+        \Rightarrow\;\;&\ln A =-\ln n
+    \end{align*}
+    Putting this value in \eqref{eq:psi7}, we get.
+    \begin{align}
+        &\ln {I}-\ln ({n+1-I}) =(n+1) \beta t-\ln n\notag\\
+        \Rightarrow\;\;&\ln \frac{nI}{n+1-I}=(n+1) \beta t\notag\\
+        \Rightarrow\;\;&\frac{nI}{n+1-I}=e^{(n+1) \beta t}\notag\\
+        \Rightarrow\;\;&{nI}=(n+1)e^{(n+1) \beta t}-Ie^{(n+1) \beta t}\notag\\
+        \Rightarrow\;\;&\left[ n+e^{(n+1) \beta t} \right]I=(n+1)e^{(n+1) \beta t}\notag\\
+        \Rightarrow\;\;&I=\frac{(n+1)e^{(n+1) \beta t}}{n+e^{(n+1) \beta t} }\label{eq:psi8}
+    \end{align}
+    From \eqref{eq:psi6} and \eqref{eq:psi8}, we have,
+    \[
+        \lim_{t\to \infty}S(t)=\frac{n(n+1)}{n+e^\infty}=\frac{n(n+1)}{\infty}=0
+    \]
+    and
+    \begin{align*}
+        \lim_{t\to \infty}I(t)&=\lim_{t\to \infty}\frac{(n+1)e^{(n+1) \beta t}}{n+e^{(n+1) \beta t} }\\
+        &=\lim_{t\to \infty}\frac{(n+1)}{ne^{-(n+1) \beta t} +1}\\
+        &=\frac{(n+1)}{ne^{-\infty} +1}\\
+        &=n+1
+    \end{align*}
+    Thus, ultimately all persons will be infected.
+\end{soln}
+\begin{prob}
+    Consider the epidemic model
+    \begin{align*}
+        S'&=-\alpha SI\\
+        I'&=\alpha SI-\gamma I\\
+        R'&=\gamma I
+    \end{align*}
+    Interpret the state variables \(S(t)\), \(I(t)\), \(R(t)\) and the model parameters.\\
+    Find the co-ordinate on which the infection (disease) will ultimately die out.
+\end{prob}
+\begin{soln}
+    Let,
+    \begin{align*}
+        S(t)&=\text{ The number of susceptibles who can catch the disease.}\\
+        I(t)&=\text{ The number of infected persons in the population.}\\
+        R(t)&=\text{ The number of those removed from the population by recovery, death or by any other means.}\\
+        N(t)&=\text{ The total number of population size.}
+    \end{align*}
+    The progress of individuals is schematically represented by \(S\to I\to R\). Such models are often called \(SIR\) models.\\
+    Here we assume that
+    \begin{enumerate}[label=(\roman*)]
+        \item The gain in the infective class is at a rate proportional to the number of infectives and susceptibles, that is \(\alpha SI\), where \(\alpha>0\) is a constant parameter.
+        \item The rate of removed of infectives to the removal class is proportional to the number of infectives, that is \(\gamma I\) where \(\gamma >0\) is a constant.
+        \item The incuration period is short enough to be negligible.
+    \end{enumerate}
+    The model based on the above assumption is,
+    \begin{align}
+        \ddt{S}&=-\alpha SI\label{eq:psir1}\\
+        \ddt{I}&=\alpha SI-\gamma I\label{eq:psir2}\\
+        \ddt{R}&=\gamma I\label{eq:psir3}
+    \end{align}
+    where, \(\alpha>0\) is the infection rate and \(\gamma>0\) is the removal rate of infectives.\\
+    The above model has initial conditions
+    \begin{equation}
+        S(0)=S_0>0,\qquad I(0)=I_0>0,\qquad R(0)=0\label{eq:psir4}
+    \end{equation}
+    From \eqref{eq:psir2}, we write,
+    \[
+        \left[ \ddt{I} \right]_{t=0}=I_0 (\alpha S_0-\gamma)\;\;\begin{cases}
+            >0& \text{ if } S_0>\frac{\gamma}{\alpha}\\
+            <0& \text{ if } S_0<\frac{\gamma}{\alpha}
+        \end{cases}
+    \]
+    where \(\frac{\gamma}{\alpha}\) is relative removal rate.\\
+    Since from \eqref{eq:psir1} we have, \(\ddt{S}\leq 0,\quad S\leq S_0\).\\
+    If \(S_0<\frac{\gamma}{\alpha}\), then
+    \begin{equation}
+        \ddt{I}=I(\alpha S-\gamma)\leq 0 \label{eq:psir5}
+    \end{equation}
+    for all \(t>0\) in which case \(I_0>I\to 0\) as \(t\to \infty\) and so the infection dies out that is no epidemic can occur.
+
+    On the other hand, if \(S_0>\frac{\gamma}{\alpha}\) then \(I(t)\) initially increases and we have an epidemic. The term epidemic means that, \(I(t)>I_0\) for some \(t>0\).\\
+    Again from \eqref{eq:psir1} and \eqref{eq:psir2}, we have
+    \begin{align}
+        &\frac{\D I}{\D S}=\frac{\alpha SI-\gamma I}{-\alpha SI}=-1+\frac{\gamma}{\alpha S}\notag\\
+        \Rightarrow\;\;&\int \D I=-\int \D S+ \rho\int\frac{1}{S}\D S,\quad\text{where }\rho=\frac{\gamma}{\alpha}\notag\\
+        \Rightarrow\;\;&\int \D I=-\int \D S+ \rho\int\frac{1}{S}\D S,\quad\text{where }\rho=\frac{\gamma}{\alpha}\notag\\
+        \Rightarrow\;\;&I=-S+ \rho\ln{S}+\text{ constant }\notag\\
+        \Rightarrow\;\;&I+S- \rho\ln{S}=\text{ constant }=I_0+S_0- \rho\ln{S_0}\label{eq:psir6}
+    \end{align}
+    Here \(R(0)=0\), so \(0\leq S+I< N\)\\
+    From \eqref{eq:psir5}, \(I\) will be maximized if 
+    \begin{align*}
+        &\ddt{I}=0\\
+        \Rightarrow\;\;&I(\alpha S-\gamma)=0\\
+        \Rightarrow\;\;&S=\frac{\gamma}{\alpha}=\rho \qquad \text{since, }I\neq0
+    \end{align*}
+    Putting, \(S=\rho\) in \eqref{eq:psir6} we get,
+    \begin{align}
+        &I_{\max} +\rho-\rho \ln \rho=I_0+S_0-\rho \ln S_0\notag\\
+        \Rightarrow\;\; &I_{\max} =\rho \ln \rho-\rho+I_0+S_0-\rho \ln S_0\notag\\
+        \Rightarrow\;\; &I_{\max} =(I_0-S_0)-\rho +\rho \ln \left( \frac{\rho}{S_0} \right)\label{eq:psir7}\\
+        \Rightarrow\;\; &I_{\max} =N-\rho +\rho \ln \left( \frac{\rho}{S_0} \right),\qquad N=I_0+S_0\notag
+    \end{align}
+    If \(I_0>0\), and \(S_0>\rho\), then the phase trajectory start with \(S>\rho\), also in this case \(I\) increases from \(I_0\) and hence an epidemic ensure.
+
+    If \(S_0<\rho\) then \(I\) decreases from \(I_0\) and as such no epidemic occurs.
+\end{soln}
+\begin{prob}
+    Describe the \(SIR\) model for an epidemic. Discuss the asymptotic behavior of \(S(t)\), \(I(t)\), \(R(t)\).\\
+    or,\\
+    Describe the deterministic epidemic model with removal. Find the condition on which the infection die out or spread throughout the population.\\
+    or,\\
+    Discuss the Kermack-Mckendric epidemic model. Analyze the asymptotic behavior of the solution of the model.
+\end{prob}
+\begin{soln}
+    The \(SIR\) model is given by,
+    \begin{align}
+        \ddt{S}&=S'=-\alpha SI\label{eq:psir2.1}\\
+        \ddt{I}&=I'=\alpha SI-\gamma I\label{eq:psir2.2}\\
+        \ddt{R}&=R'=\gamma I\label{eq:psir2.3}
+    \end{align}
+    Here,
+    \begin{align*}
+        S(t)&=\text{ The number of susceptibles who can catch the disease.}\\
+        I(t)&=\text{ The number of infected persons in the population.}\\
+        R(t)&=\text{ The number of those removed from the population by recovery, death or by any other means.}\\
+        \alpha&=\text{ The infection rate which is positive.}\\
+        \gamma&=\text{ The removal rate of infective which is positive.}\\
+        \rho=\frac{\gamma}{\alpha}&=\text{ It is a pure number which is the ratio of removal rate of infectives with infection rate.}
+    \end{align*}
+    The above model has initial conditions
+    \begin{equation}
+        S(0)=S_0>0,\qquad I(0)=I_0>0,\qquad R(0)=0\label{eq:psir2.4}
+    \end{equation}
+    From \eqref{eq:psir2}, we write,
+    \[
+        \left[ \ddt{I} \right]_{t=0}=I_0 (\alpha S_0-\gamma)\;\;\begin{cases}
+            >0& \text{ if } S_0>\rho=\frac{\gamma}{\alpha}\\
+            <0& \text{ if } S_0<\rho=\frac{\gamma}{\alpha}
+        \end{cases}
+    \]
+    Since from \eqref{eq:psir2.1} we have
+    \[
+        \ddt{s}\leq 0,\quad S\leq S_0
+    \]
+    If \(S_0<\frac{\gamma}{\alpha}\), then \(\ddt{I}=I(\alpha S-\gamma)\leq 0 \)
+    for all \(t>0\) in which case \(I_0>I(t)\to 0\) as \(t\to \infty\). So the infection (disease) ultimately die out.
+
+    From \eqref{eq:psir2.1}, \(S(t)\) is monotonic decreasing function of \(t\). So that \(S(t)\leq S_0\).
+
+    This shows that \(S(t)\) is bounded below \((S(t)\leq 0)\), we find that \(\lim_{t\to \infty}S(t)=S(\infty)\) exist.
+
+    From \eqref{eq:psir2.3}, we have \(R(t)\) is a monotonic increasing function of \(t\) and is bounded above \(R(t)\leq N\), we see that \(\lim_{t\to \infty}R(t)=R(\infty)\) exist.
+
+    Again, since \(S(t)+I(t)+R(t)=N\) for all \(t\).\\
+    We find that \(\lim_{t\to \infty}I(t)=I(\infty)\) also exist.
+\end{soln}
+\begin{prob}
+    Define and discuss the chemostat.
+\end{prob}
+\begin{soln}
+    A chemostat is a piece of laboratory apparatus used to cultivate bacteria. It consists of a reservoir containing a nutrient, a culture vessel in which the bacteria are cultivated and an output receptacle. Nutrient is pumped from the reservoir to the culture vessel at a constant rate and the bacteria are collected in the receptacle by pumping the contents of the culture vessel at same rate. This process is called a continuous culture of bacteria, in contrast with a batch --------- in which a fixed quantity of nutrient is supplied and bacteria are harvested after a growth period.
+
+    Let \(y\) represent the number of bacteria and \(c\) the concentration of nutrient in the chemostat, both are functions of \(t\).
+
+    Let \(v\) be the volume of the chemostat and \(Q\) be the rate of flow into the chemostat from the nutrient to reservoir and also the rate of flow out from the chemostat. The fixed concentration of nutrient of the reservoir is a constant \(C^{(0)}\).
+
+    We assume that the average per capita bacterial birth rate is a function \(r(c)\) of the nutrient concentration and that the rate of nutrient consumption of an individual bacterium is proportional to \(r(c)\) say \(\alpha r(c)\).
+
+    Then the rate of change of population size is the birth rate \(r(c)y\) of bacteria minus the outflow rate \(\frac{Qy}{v}\). It is convenient to let \(q=\frac{Q}{v}\), so that this outflow rate becomes \(qy\).\\
+    The rate of change of nutrient volume is the replenishment rate \(QC^{(0)}\) minus the outflow rate \(Q\) minus the consumption rate \(\alpha r(c)y\).
+
+    This gives the pair of differential equations
+    \begin{equation}
+        \begin{rcases}
+            \displaystyle\ddt{y}=r(c)y-qy\quad\\
+            \displaystyle\ddt{cv}=Q(c^{(0)}-c) -\alpha r(c)y\quad   
+        \end{rcases}
+        \label{eq:chem1}
+    \end{equation}
+    we divide the 2nd equation by the constant \(v\) and let \(\beta=\frac{\alpha}{v}\) to give the system 
+    \begin{equation}
+        \begin{rcases}
+            \displaystyle y'=r(c)y-qy\quad\\
+            \displaystyle c'=q(c^{(0)}-c) -\beta r(c)y\quad   
+        \end{rcases}
+        \label{eq:chem2}
+    \end{equation}
+    The system \eqref{eq:chem2} describes the chemostat. Assume that the function \(r(c)\) is zero if \(c=0\) and approaches a limit when \(c\) become large.
+    
+    The simplest function with these properties is,
+    \begin{equation}
+        r(c)=\frac{ac}{c+A}\label{eq:chem3}
+    \end{equation}
+    where \(a\) and \(A\) are constants and this was the choice originally made by Monod.\\
+    The explicit chemostat model is now,
+    \begin{equation}
+        \begin{rcases}
+            \displaystyle y'=\frac{acy}{c+A}-qy\quad\\
+            \displaystyle c'=q(c^{(0)}-c) -\frac{\beta acy}{c+A}\quad   
+        \end{rcases}
+        \label{eq:chem4}
+    \end{equation}
+    where \(a,\,A,\,q\) and \(\beta\) are constants.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \node[cylinder,draw=black,shape border rotate=90,aspect=2,minimum width = 4cm,minimum height=5cm] at (0,0){};
+            \node[cylinder,draw=black,shape border rotate=90,aspect=2,minimum width = 2cm,minimum height=3cm] at (5,-1){};
+            \node[cylinder,draw=black,shape border rotate=90,aspect=2,minimum width = 1.2cm,minimum height=3.25cm] at (-1,-.5){};
+            \node[cylinder,draw=black,shape border rotate=90,aspect=2,minimum width = .7cm,minimum height=3.25cm] at (1,-.5){};
+            \draw (2,1.8)--(5.4,1.8);
+            \node[rotate=90] at (-2.4,0.1) {Reservoir};
+            \node[] at (5,-2.7) {Receptacle};
+            \draw (2,1.2)--(4.6,1.2);
+            \draw[dashed] (2,1.5)--(4.5,1.5);
+            \draw[-latex] (4.5,1.5)--(4.9,1.5)--(4.9,0.4);
+            \draw (4.6,1.2)--(4.6,-0.2);
+            \draw (5.4,1.8)--(5.4,-0.2);
+            \draw (1,1) arc [start angle=0, end angle=180,x radius=1cm, y radius=1cm];
+            \draw[-latex] (-1,1)--(-1,0);
+            \draw (2,1.49) arc [start angle=60, end angle=150,x radius=2cm, y radius=1.2cm];
+            \end{tikzpicture}
+    \end{figure}
+\end{soln}
+\end{document}

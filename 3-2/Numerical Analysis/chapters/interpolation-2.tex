@@ -1,0 +1,274 @@
+\documentclass[12pt,class=book,crop=false]{standalone}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\usepackage{array}
+\begin{document}
+\chapter{Interpolation With Equal Intervals}
+\section{Newton's (Gregory) Forward Difference Formula}
+This is called `forward' interpolation formula because this formula contains values of the tabulated function from \(  f(a) \) onward to the right, used mainly for interpolating the values of \(  y=f(x) \) near the beginning of set of tabulated values and for extrapolating values of \(  f(x) \) a short distance to the left of \(  f(a) \).\\
+
+Let \(  y=f(x) \) takes values \(  f(a),f(a+h),f(a+2h),f(a+3h),\dots,f(a+nh) \).\\
+ie. \(  x_0=a, x_1=a+h,x_2=a+2h\dots,x_n=a+nh\) where \(  x_0,x_1,\dots,x_n \) are equivalent points.
+\[P_n(x)=A_0+A_1(x-a)+A_2(x-a)(x-a-h)+\dots+A_n(x-a)(x-a-h)\dots(x-a-(n-1)h)\]
+Where,\\
+\begin{align*}
+    P_n(a)              & =A_0=f(a)                                        \\
+                        &                                                  \\
+    P_n(a+h)            & =A_0+A_1h=f(a+h)                                 \\
+    \Rightarrow A_1     & =\frac{f(a+h)-f(a)}{h}=\frac{\Delta f(a)}{h}     \\
+                        &                                                  \\
+    P_n(a+2h)           & =A_0+A_1 \cdot 2h+A_2\cdot 2h\cdot h=f(a+2h)     \\
+    \Rightarrow f(a+2h) & =A_0+2A_1 h+2A_2h^2                              \\
+                        & =f(a)+2\{f(a+h)-f(a)\}+2A_2h^2                   \\
+    \Rightarrow A_2     & =\frac{f(a+2h)-f(a)-2\{f(a+h)-f(a)\}}{2h^2}      \\
+    \Rightarrow A_2     & =\frac{\{f(a+2h)-f(a+h)\}-\{f(a+h)-f(a)\}}{2h^2} \\
+    \Rightarrow A_2     & =\frac{1}{2!\, h^2}\Delta^2f(a)                  \\
+\end{align*}
+\newpage
+Similarly,\\
+\indent \( A_3 =\frac{1}{3!\, h^3}\Delta^3f(a) \)\\
+\indent \( A_4 =\frac{1}{4!\, h^4}\Delta^4f(a) \)\\
+\indent \( A_n =\frac{1}{n!\, h^n}\Delta^nf(a) \)\\
+Thus if \( u=\frac{x-a}{h} \) then
+\[
+    \begin{aligned}
+        P_n(x) & =P_n(a+hu)                                                                                                                                \\
+               & =f(a)+u\Delta f(a)+\frac{u(u-1)}{2!\,}\Delta^2f(a)+\frac{u(u-1)(u-2)}{3!\,}\Delta^3f(a)+\dots+\frac{u(u-1)\dots(u-n+1)}{n!\,}\Delta^nf(a)
+    \end{aligned}
+\]
+Where,\\
+\indent \( \Delta^i f(a)=i \)th difference\\
+\indent \( u=\frac{x-a}{h}\, x_0=a,\,h= \) interval\\
+\indent \( x=\) the point at which \( f(x) \) to be interpolated\\
+This known as N-G formula for forward interpolation.
+\begin{prob}
+    Given the following table; estimate the number of candidates who obtained marks between \( 40 \) and \( 45 \).
+    \begin{center}
+        \begin{tabular}{cc}
+            \toprule
+            Marks         & No. of students \\\midrule
+            \( 30 - 40 \) & \( 31 \)        \\
+            \( 40 - 50 \) & \( 42 \)        \\
+            \( 50 - 60 \) & \( 51 \)        \\
+            \( 60 - 70 \) & \( 35 \)        \\
+            \( 70 - 80 \) & \( 31 \)        \\\bottomrule
+        \end{tabular}
+    \end{center}
+\end{prob}
+\begin{soln}
+    \hfill
+    \\\emph{(i)} First prepare the cumulative frequency table
+    \begin{center}
+        \begin{tabular}{cc}
+            \toprule
+            Marks less than & No. of students \\
+            \( (x) \)       & \( f(x) \)      \\\midrule
+            \( 40 \)        & \( 31 \)        \\
+            \( 50 \)        & \( 73 \)        \\
+            \( 60 \)        & \( 124 \)       \\
+            \( 70 \)        & \( 159 \)       \\
+            \( 80 \)        & \( 190 \)       \\\bottomrule
+        \end{tabular}
+    \end{center}
+    \emph{(ii)} Prepare the difference table
+    \begin{center}
+        \begin{tabular}{ccccccc}
+            \toprule
+            \( x \) & \( f(x) \) & \( \Delta f(x) \)   & \( \Delta^2 f(x) \)  & \( \Delta^3 f(x) \)  & \( \Delta^4 f(x) \) & \( \Delta^5 f(x) \) \\ \midrule
+            40      & 31         &                     &                      &                      &                     &                     \\
+                    &            & \multirow{2}{*}{42} &                      &                      &                     &                     \\
+            50      & 73         &                     & \multirow{2}{*}{9}   &                      &                     &                     \\
+                    &            & \multirow{2}{*}{51} &                      & \multirow{2}{*}{-25} &                     &                     \\
+            60      & 124        &                     & \multirow{2}{*}{-16} &                      & 37                  &                     \\
+                    &            & \multirow{2}{*}{35} &                      & \multirow{2}{*}{12}  &                     &                     \\
+            70      & 159        &                     & \multirow{2}{*}{-4}  &                      &                     &                     \\
+                    &            & \multirow{2}{*}{31} &                      &                      &                     &                     \\
+            80      & 190        &                     &                      &                      &                     &                     \\ \bottomrule
+        \end{tabular}
+    \end{center}
+    Now,\[\left.\begin{aligned}
+            u            & =\frac{x-a}{h}    \\
+            \therefore u & =\frac{45-40}{10} \\
+                         & =\frac{5}{10}     \\
+                         & =5
+        \end{aligned}\qquad\right|\qquad\begin{aligned}
+            \text{Where, } x & =45 \\
+            a                & =40 \\
+            h                & =10 \\
+        \end{aligned}\]
+    So no. of students with mark less than \( 45  \) is
+    \begin{align*}
+        P_n(x)           & \approx f(45)                                                                                                                     \\
+        \therefore f(45) & =f(a)+u\Delta f(a)+\frac{u(u-1)}{2!\,}\Delta^2f(a)+\frac{u(u-1)(u-2)}{3!\,}\Delta^3f(a)+\frac{u(u-1)(u-2)(u-3)}{4!\,}\Delta^4f(a) \\
+                         & =31+(0.5)(42)+\frac{0.5(0.5-1)}{2!\,}(9)+\frac{0.5(0.5-1)(0.5-2)}{3!\,}(-25)+\frac{0.5(0.5-1)(0.5-2)(0.5-3)}{4!\,}(37)            \\
+                         & =47.867\,188
+    \end{align*}
+    i.e. no. of students with marks less than \( 45=48 \)\\
+    no. of students with marks less than \( 40=31 \)\\
+    So no. of students with marks between \( 40 \) and \( 45=48-31=17 \)
+\end{soln}
+\begin{prob}
+    The following table gives the population of a town. Estimate the increase in the population during the period from \( 1946 \) to \( 1948 \)
+    \begin{center}
+        \begin{tabular}{cc}
+            \toprule
+            Year       & Population (in thousands) \\\midrule
+            \( 1911 \) & \( 12 \)                  \\
+            \( 1921 \) & \( 15 \)                  \\
+            \( 1931 \) & \( 20 \)                  \\
+            \( 1941 \) & \( 27 \)                  \\
+            \( 1951 \) & \( 39 \)                  \\
+            \( 1961 \) & \( 52 \)                  \\\bottomrule
+        \end{tabular}
+    \end{center}
+    using the N-G formula for forward interpolation.
+\end{prob}
+\begin{soln}
+    The difference table for the given data is as follows
+    \begin{center}
+        \begin{tabular}{ccccccc}
+            \toprule
+            \( x \) & \( f(x) \) & \( \Delta f(x) \) & \( \Delta^2 f(x) \) & \( \Delta^3 f(x) \) & \( \Delta^4 f(x) \) & \( \Delta^5 f(x) \) \\ \midrule
+            1911    & 12         &                   &                     &                     &                     &                     \\
+                    &            & 3                 &                     &                     &                     &                     \\
+            1921    & 15         &                   & 2                   &                     &                     &                     \\
+                    &            & 5                 &                     & 0                   &                     &                     \\
+            1931    & 20         &                   & 2                   &                     & 3                   &                     \\
+                    &            & 7                 &                     & 3                   &                     & -10                 \\
+            1941    & 27         &                   & 5                   &                     & -7                  &                     \\
+                    &            & 12                &                     & -4                  &                     &                     \\
+            1951    & 39         &                   & 4                   &                     &                     &                     \\
+                    &            & 13                &                     &                     &                     &                     \\
+            1961    & 52         &                   &                     &                     &                     &                     \\ \bottomrule
+        \end{tabular}
+    \end{center}
+
+    \[\left.\begin{aligned}
+            \text{Since }u        & =\frac{x-a}{h}        \\
+            \text{For }f(1946), u & =\frac{1946-1911}{10} \\
+            % &=\frac{5}{10}\\
+                                  & =3.5
+        \end{aligned}\qquad\right|\qquad\begin{aligned}
+            \text{Where, } x & =1946 \\
+            a                & =1911 \\
+            h                & =10   \\
+        \end{aligned}\]
+    Now from Newton's formula for forward interpolation, we get
+    \begin{align*}
+        P_5(1946)           & \approx f(1946)             \\
+        \therefore f(1946)  & =\begin{aligned}[t]
+            f(a)+u\Delta f(a)+\frac{u(u-1)}{2!\,}\Delta^2f(a) & +\frac{u(u-1)(u-2)}{3!\,}\Delta^3f(a)+\frac{u(u-1)(u-2)(u-3)}{4!\,}\Delta^4f(a) \\
+                                                              & +\frac{u(u-1)(u-2)(u-3)(u-4)}{5!\,}\Delta^5f(a)
+        \end{aligned} \\
+                            & =\begin{aligned}[t]
+            12+(3.5)(3)+\frac{3.5(3.5-1)}{2!\,}(2) & +\frac{3.5(3.5-1)(3.5-2)}{3!\,}(0)+\frac{3.5(3.5-1)(3.5-2)(3.5-3)}{4!\,}(3) \\
+                                                   & +\frac{3.5(3.5-1)(3.5-2)(3.5-3)(3.5-4)}{5!\,}(-10)
+        \end{aligned} \\
+        \Rightarrow f(1946) & =32.343\,75
+    \end{align*}
+    Again, to find \(  f(1948),\,u=\frac{1948-1911}{10}=3.7  \)
+    \begin{align*}
+        P_5(1948)           & \approx f(1948)             \\
+        \therefore f(1948)  & =\begin{aligned}[t]
+            f(a)+u\Delta f(a)+\frac{u(u-1)}{2!\,}\Delta^2f(a) & +\frac{u(u-1)(u-2)}{3!\,}\Delta^3f(a)+\frac{u(u-1)(u-2)(u-3)}{4!\,}\Delta^4f(a) \\
+                                                              & +\frac{u(u-1)(u-2)(u-3)(u-4)}{5!\,}\Delta^5f(a)
+        \end{aligned} \\
+                            & =\begin{aligned}[t]
+            12+(3.7)(3)+\frac{3.7(3.7-1)}{2!\,}(2) & +\frac{3.7(3.7-1)(3.7-2)}{3!\,}(0)+\frac{3.7(3.7-1)(3.7-2)(3.7-3)}{4!\,}(3) \\
+                                                   & +\frac{3.7(3.7-1)(3.7-2)(3.7-3)(3.7-4)}{5!\,}(-10)
+        \end{aligned} \\
+        \Rightarrow f(1948) & =34.873\,215
+    \end{align*}
+    Therefore increase in the population during the period from \(  1946  \) to \(  1948  \)\\
+    \indent \(  =f(1948)-f(1946)=34.873\,215-32.343\,75  \)\\
+    \indent \(  =2.529\,465  \) thousand\\
+    \indent \(  =2.5295  \) thousand\\
+\end{soln}
+\begin{prob}
+    Use Newton's formula for interpolation to find the net premium at age \(  25 \) from the table given below
+    \begin{center}
+        \begin{tabular}{cS[table-format=1.5]}
+            \toprule
+            Age \(  (x) \) & \multicolumn{1}{c}{Premium \(  f(x) \)} \\\midrule
+            \(  20 \)      &   0.01427       \\
+            \(  24 \)      &   0.01581        \\
+            \(  28 \)      &   0.01772      \\
+            \(  32 \)      & 0.01996      \\\bottomrule
+        \end{tabular}
+    \end{center}
+\end{prob}
+\begin{soln}
+    The difference table for the given data is
+    \begin{center}
+        \begin{tabular}{cS[table-format=1.5]S[table-format=1.5]S[table-format=2.5]S[table-format=2.5]}
+            \toprule
+            Age \( x \) & \multicolumn{1}{c}{Premium \( f(x) \)} & \multicolumn{1}{c}{\( \Delta f(x) \)} & \multicolumn{1}{c}{\( \Delta^2 f(x) \)} & \multicolumn{1}{c}{ \( \Delta^3 f(x) \)}      \\ \midrule
+            20 & 0.01427 &         &         &          \\
+           &         & 0.00155 &         &          \\
+        24 & 0.01581 &         & 0.0037  &          \\
+           &         & 0.00191 &         & -0.00004 \\
+        28 & 0.01772 &         & 0.00033 &          \\
+           &         & 0.00224 &         &          \\
+        32 & 0.01996 &         &         &          \\ \bottomrule
+        \end{tabular}
+    \end{center}
+    Now we have to find \(  f(25) \)\\
+    Since
+    \[\left.\begin{aligned}
+            u            & =\frac{x-a}{h}   \\
+            \therefore u & =\frac{25-20}{4} \\
+            % &=\frac{5}{10}\\
+                         & =1.25
+        \end{aligned}\qquad\right|\qquad\begin{aligned}
+            \text{Where, } x & =15 \\
+            a                & =20 \\
+            h                & =4  \\
+        \end{aligned}\]
+    \begin{align*}
+        P_n(25)          & \approx f(25)                                                                                           \\
+        \therefore f(25) & =f(a)+u\Delta f(a)+\frac{u(u-1)}{2!\,}\Delta^2f(a)+\frac{u(u-1)(u-2)}{3!\,}\Delta^3f(a)                 \\
+                         & =0.014\,27+(1.25)(0.001\,45)+\frac{1.25(1.25-1)}{2!\,}(0.000\,37)+\frac{1.25(1.25-1)(1.25-2)}{3!\,}(-0.000\,04) \\
+                         & =0.016\,141\,8
+    \end{align*}
+\end{soln}
+\section{Newton-Gregory Backward Interpolation Formula For Equal Interval}
+To derive this formula we write
+\begin{equation}
+    \begin{aligned}
+        P_n(x) & =A_0+A_1\{x-(a+nh)\}+A_2\{x-(a+nh)\}\{x-(a+(n-1)h)\} \\
+               & +\dots+A_n\{x-(a+nh)\}\{x-(a+(n-1)h)\}\dots(x-h)
+    \end{aligned}
+    \label{eq:ngbackward}
+\end{equation}
+Where \(  A_0,A_1,\dots,A_n \) are constants which are to be determined.\\
+\indent Put \(  x=a+nh, a+(n-1)h,\dots,a \)\\
+\indent and \(  P_n(a+nh)=f(a+nh),\dots \)\\ etc in (\ref{eq:ngbackward})\\
+We get the co efficient \(  A_0,A_1,\dots,A_n  \) as:
+\begin{align*}
+    P_n(a+nh)       & =A_0=f(a+nh)                   \\
+    \Rightarrow A_0 & =f(a+nh)                       \\
+                    &                                \\
+    P_n(a+(n-1)h)   & =A_0+A_1(-h)=f(a+(n-1)h)       \\
+    \Rightarrow A_1 & =\frac{f(a+nh)-f(a+(n-1)h)}{h} \\
+    \Rightarrow A_1 & =\frac{1}{h}\nabla f(a+nh)     \\
+\end{align*}
+Similarly,
+\begin{align*}
+    A_2 & =\frac{1}{2!\,h^2}\nabla^2 f(a+nh) \\
+    A_n & =\frac{1}{n!\,h^n}\nabla^n f(a+nh) \\
+\end{align*}
+By substituting these in (\ref{eq:ngbackward})
+\begin{align*}
+    P_n(x) & =f(a+nh)+\frac{1}{h}\nabla f(a+nh)\{x-(a+nh)\}+\frac{1}{2!\,h^2}\nabla^2 f(a+nh)\{x-(a+nh)\}\{x-(a+(n-1)h)\} \\
+           & +\dots+\frac{1}{n!\,h^n}\nabla^n f(a+nh)\{x-(a+nh)\}\{x-(a+(n-1)h)\}\dots(x-h)\tag{1.2}\label{eq:ngfullback}
+\end{align*}
+This is known as Newton-Gregory backward interpolating formula.\\
+\emph{Working Formula}\\
+Put \(  u=\frac{x-(a+nh)}{h} \Rightarrow x=a+nh+hu \) in (\ref{eq:ngfullback})\\
+So (\ref{eq:ngfullback}) becomes,
+\begin{align*}
+    P_n(x) & = P_n(a+nh+hu)                                                                                     \\
+           & =f(a+nh)+u \nabla f(a+nh)+\frac{u(u+1)}{2!}\nabla^2 f(a+nh)+\frac{u(u+1)(u+2)}{3!}\nabla^3 f(a+nh) \\
+           & +\dots+\frac{u(u+1)\dots(u+n-1)}{n!}\nabla^n f(a+nh)
+\end{align*}
+\end{document}

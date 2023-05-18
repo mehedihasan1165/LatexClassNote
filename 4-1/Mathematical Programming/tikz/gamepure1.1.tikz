@@ -1,0 +1,32 @@
+% \usetikzlibrary{matrix}
+% ,positioning}
+\begin{tikzpicture}
+\matrix [matrix of math nodes,left delimiter={[},right delimiter={]},row sep=0.1cm,column sep=0.1cm] (n) {
+      -3 & 3 \\
+      -2 & 4 \\
+      2&3\\
+      };
+      \node[above=.4 cm] at (n-1-1) {$P$};
+      \node[above=.4 cm] at (n-1-2) (b) {$Q$};
+      
+      \node[below=.4 cm] at (n-3-1) (a) {$(2)$};
+      \node[below=.4 cm] at (n-3-2) {$4$};
+%       \node[above=.4 cm] at (m-1-3) {$B_3$};
+      \node[above=1 cm] at (n-1-2.west) {Player $B$};
+%       \node[below=.4 cm] at (m-2-2) {$A$'s payoff matrix};
+      
+      \node[left=.75 cm] at (n-1-1) {$L$};
+      \node[left=.75 cm] at (n-2-1) {$M$};
+      \node[left=.75 cm] at (n-3-1) {$N$};
+      \node[left=0.5 cm of a]  {Column Maxima:};
+      \node[right=0.5 cm of b]  {Row Minima:};
+      \node[left=1.5 cm] at (n-2-1) {Player $A$};
+      
+      \node[right=1.25 cm] at (n-1-2) {$-3$};
+      \node[right=1.25 cm] at (n-2-2) {$-2$};
+      \node[right=1.25 cm] at (n-3-2) {$(2)$};
+      \node at (3.8,-0.2) {\textbf{maximin}};
+      \draw[-latex] (2.9,-0.4)--(2.3,-0.5);
+      \node at (-0.3,-2.2) {\textbf{minimax}};
+      \draw[-latex] (-0.25,-2)--(-0.25,-1.6);
+\end{tikzpicture}

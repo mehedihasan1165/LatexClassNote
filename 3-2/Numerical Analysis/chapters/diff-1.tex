@@ -1,0 +1,545 @@
+\documentclass[12pt,class=book,crop=false]{standalone}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Numerical Differentiation}
+\section{Introduction}
+In previous chapters we have considered the problem of interpolation, i.e. given the set of values of $ (x_0,y_0) $, $ (x_1,y_1),\dots $, $ (x_n,y_n) $ of $ x $ and $ y $, to find a polynomial $ p(x) $ of the lowest degree such that $ y(x) $ and $ p(x) $ agree at the set of tabulated points. In this chapter we shall consider the derivative at a point using those set of tabulated values. Numerical differentiation formulas can be derived by using the Taylor series expansion or by differentiating the interpolating polynomials. Here we shall consider both way of deriving the derivative formulas.
+\section{Derivative Formula from Taylor Series}
+From the Taylor series expansion of $ f(x) $ about $ x=x_0 $, we have
+\begin{align*}
+    f(x_0+h) & =f(x_0)+hf'(x_0)+\frac{h^2}{2!} f''(x_0)+\frac{h^3}{3!}f'''(x_0) \\
+    f(x_0-h) & =f(x_0)-hf'(x_0)+\frac{h^2}{2!} f''(x_0)-\frac{h^3}{3!}f'''(x_0)
+\end{align*}
+From the expansion of $ f(x_0+h) $, we have
+\begin{align*}
+    \frac{f(x_0+h)-f(x_0)}{h}              & =f'(x_0)+\frac{h}{2!}f''(x_0)+\frac{h^2}{3!}f'''(x_0) \\
+    \Rightarrow\,\frac{f(x_0+h)-f(x_0)}{h} & =f'(x_0)+O(h)
+\end{align*}
+and from $ f(x_0-h) $, we have
+\[
+    f'(x_0)=\frac{f(x_0)-f(x_0-h)}{h}+O(h)
+\]
+Similarly $ f(x_0+h)-f(x_0-h) $ gives
+\[
+    \frac{f(x_0+h)-f(x_0-h)}{2h}=f'(x_0)+O(h^2)
+\]
+Also $ f(x_0+h)+f(x_0-h) $ gives
+\[
+    \frac{f(x_0+h)-2f(x_0)+f(x_0-h)}{h^2}=f''(x_0)+O(h^2)
+\]
+Using different combinations we get different formulas for derivatives.
+\section{Derivative Formula from Interpolating Polynomials}
+Numerical differentiation formulas can also be derived by differentiating the interpolating polynomial. The method is illustrated with the Newton-Gregory forward difference formula.\\
+Consider the Newton-Gregory forward difference formula:
+\[
+    f(x)=f_0+s\Delta f_0+\frac{s(s-1)}{2!} \Delta^2 f_0+\frac{s(s-1)(s-2)}{3!}\Delta^3 f_0+\dots
+\]
+where
+\[
+    s=\frac{1}{h}(x-x_0) \qquad\text{and}\qquad f(x_0)=f_0
+\]
+Then
+\begin{align*}
+    f'(x) & =\frac{\D}{\D s}f(x)\frac{\D s}{\D x}                                                                    \\
+          & =\frac{1}{h}\left[ \Delta f_0+\frac{2s-1}{2} \Delta^2 f_0+\frac{3s^2-6s+2}{6} \Delta^3 f_0+\dots \right]
+\end{align*}
+The formula can be used for computing the values of $ f' (x) $ for non-tabular values of $ x $. For tabular values of $ x $, the formula takes a simpler form. For example, by setting $ x=x_0 $, we obtain $ s=0 $ and hence
+\[
+    f' (x_0)=\frac{1}{h}\left[ \Delta f_0-\frac{1}{2} \Delta^2 f_0+\frac{1}{3} \Delta^3 f_0-\dots \right]
+\]
+With one term we have
+\[
+    f'(x_0)\approx\frac{f_1-f_0}{h}
+\]
+Using two terms we get the 3-point formula
+\begin{align*}
+    f'(x_0) & \approx \frac{1}{h} \left[ f_1-f_0-\frac{1}{2} \Delta(f_1-f_0 ) \right]    \\
+            & \approx \frac{1}{h} \left[ f_1-f_0-\frac{1}{2} (f_2-f_1-(f_1-f_0)) \right] \\
+            & \approx \frac{1}{h} [-3f_0+4f_1-f_2 ]
+\end{align*}
+Differentiating $ f' (x) $ once again we obtain
+\[
+    f''(x)=\frac{1}{h^2}\left[ \Delta^2 f_0+\frac{6s-6}{6} \Delta^3 f_0+\frac{12s^2-36s+22}{24} \Delta^4 f_0+\dots \right]
+\]
+from which we obtain
+\[
+    f''(x_0)=\frac{1}{h^2}\left[ \Delta^2 f_0-\Delta^3 f_0+\frac{11}{12} \Delta^4 f_0-\dots\right]
+\]
+Formulas for higher derivatives may be obtained by successive differentiation. In a similar way, different formulas can be derived by starting with other interpolating formulas.
+
+
+Newton-Gregory backward difference formula gives
+\[
+    f'(x_n)=\frac{1}{h}\left[ \nabla f_n+\frac{1}{2} \nabla^2 f_n+\frac{1}{3} \nabla^3 f_n+\dots \right]
+\]
+and
+\[
+    f''(x_n)=\frac{1}{h^2}\left[  \nabla^2 f_n+\nabla^3 f_n+\frac{11}{12} \nabla^4 f_n-\dots\right]
+\]
+
+\section{Richardson Extrapolation}
+
+Suppose $ M(h) $ is an estimate of order $ h^n $ for $ M=\lim_{h\to 0} M(h) $ with step size $ h $. Then error can be expressed as
+\[
+    M-M(h)=a_n h^n+a_p h^p+a_q h^q+\dots,\quad a_n\neq 0,\,n<p<q
+\]
+The exact value $ M $ can be written as
+\begin{equation}
+    M=M(h)+a_n h^n+O(h^p)
+    \label{eq:rich1}
+\end{equation}
+where the notation $ O(h^p) $ is used to stand for ``a sum of terms of order $ h^p $ and higher''.
+
+
+Neglecting the higher order error term $ O(h^p) $ from Eq. \eqref{eq:rich1}, we have
+\begin{equation}
+    M=M(h)+a_n h^n
+    \label{eq:rich2}
+\end{equation}
+Using another step size $ rh $ instead of $ h $, we get
+\begin{equation}
+    \label{eq:rich3}
+    M=M(rh)+a_n (rh)^n
+\end{equation}
+The coefficient $ a_n $ in Eqs. \eqref{eq:rich2} and \eqref{eq:rich3} are not usually same for different step sizes. Apart from a small change, we shall assume they are equal.\\
+Subtracting \eqref{eq:rich2} and \eqref{eq:rich3} we can estimate the error term $ a_n h^n $ as follows
+\begin{align*}
+    (r^n-1)a_n h^n & =M(h)-M(rh)               \\
+    \intertext{or}
+    a_n h^n        & =\frac{M(h)-M(rh)}{r^n-1}
+\end{align*}
+Substituting the value of $ a_n h^n $ in \eqref{eq:rich1} we get $ M $ as
+\[
+    M=M(h)+\frac{M(h)-M(rh)}{r^n-1}+O(h^p)
+\]
+An approximate value $ M_1 (h) $ of $ M $ defined by
+\[
+    M_1 (h)=M(h)+\frac{M(h)-M(rh)}{r^n-1}
+\]
+is called the Richardson extrapolation of $ M(h) $ and it is an estimate of order $ h^p $ with $ p>n $.\\
+Thus, we can write
+\[
+    M=M_1 (h)+O(h^p)
+\]
+The process can be repeated to remove more error terms to get better approximations.\\
+Eliminating the next leading error term of order $ h^p $, next approximation to $ M $ is
+\[
+    M_2 (h)=M_1 (h)+\frac{M_1 (h)-M_1 (rh)}{r^p-1}
+\]
+If $ M_i (h) $ is an estimate of order $ h^m $ for $ M $, then
+\[
+    M=M_i (h)+O(h^m)
+\]
+A general recurrence relation can be defined for $ (i+1) $th approximation by
+\[
+    M_(i+1) (h)=M_i+\frac{M_i (h)-M_i (rh)}{r^m-1}=\frac{r^m M_i (h)-M_i (rh)}{r^m-1}
+\]
+\section{Formulas for Computing Derivatives}
+\textbf{First Derivatives}
+\begin{align*}
+    f' (x_0) & \approx \frac{f_1-f_0}{h},                  & O(h)\qquad    & 2-\text{points forward difference}  \\
+    f' (x_0) & \approx\frac{f_0-f_(-1)}{h},                & O(h)\qquad    & 2-\text{points backward difference} \\
+    f' (x_0) & \approx\frac{f_1-f_(-1)}{2h},               & O(h^2)\qquad  & 3-\text{points central difference}  \\
+    f' (x_0) & \approx\frac{1}{2h} [-3f_0+4f_1-f_2 ],      & O(h^2)\qquad  & 3-\text{points forward difference}  \\
+    f' (x_0) & \approx\frac{1}{2h} [3f_0-4f_{-1}+f_{-2} ], & O(h^2) \qquad & 3-\text{points backward difference}
+\end{align*}
+\textbf{Second Derivatives}
+\begin{align*}
+    f''(x_0) & \approx  \frac{1}{h^2}  [f_{-1}-2f_0+f_1 ],  & O(h^2)\qquad & 3-\text{point central difference}  \\
+    f''(x_0) & \approx\frac{1}{h^2}  [f_0-2f_1+f_2 ],       & O(h)\qquad   & 3-\text{point forward difference}  \\
+    f''(x_0) & \approx\frac{1}{h^2}  [f_0-2f_{-1}+f_{-2} ], & O(h)\qquad   & 3-\text{point backward difference}
+\end{align*}
+
+Lower order formula and Richardson extrapolation can be used to deduce the higher order formula.
+
+\begin{ex}
+    Derive 5-point central difference formula for $ f' (x_0)  $ using 3-point central difference formula and Richardson extrapolation.\\
+
+
+    For convenience, we shall use the notation $ f' (x_0,h) $ instead of $ f' (x_0) $ to indicate clearly the step size $ h $.\\
+    From 3-point central difference formula, we have
+    \begin{align*}
+        f' (x_0,h)  & =\frac{f(x_0+h)-f(x_0-h)}{2h}=\frac{f_1-f_(-1)}{2h}           \\
+        f' (x_0,2h) & =\frac{f(x_0+2h)-f(x_0-2h)}{2\times 2h}=\frac{f_2-f_(-2)}{4h}
+    \end{align*}
+    Using Richardson extrapolation
+    \begin{align*}
+        f_R' (x_0) & =\frac{2^2 f'(x_0,h)-f'(x_0,2h)}{2^2-1}=\frac{1}{3} \left[ \frac{4(f_1-f_(-1))}{2h}-\frac{f_2-f_(-2)}{4h} \right] \\
+                   & =\frac{1}{12h} (-f_2+8f_1-8f_{-1}+f_{-2})
+    \end{align*}
+    which is the five point central derivative formula for first derivative.
+\end{ex}
+\newpage
+\begin{ex}
+    Estimate $ f' (1) $ and $ f''(1 ) $ using three point formula and extrapolation for the following set of values of  $ x $ and $ f(x). $
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cS[table-format=2.4]}
+            \toprule
+            $ x $ & \multicolumn{1}{c}{$ f(x) $} \\\midrule
+            0.8   & 1.5505   \\
+            0.9   & 1.5289   \\
+            1.0   & 1.4687   \\
+            1.1   & 1.3627   \\
+            1.2   & 1.2031   \\\bottomrule
+        \end{tabular}
+    \end{table}
+
+    Using 3 point central for $ f' (1) $, we have
+    \begin{align*}
+        f' (1.0,0.1) & =\frac{f(1.1)-f(0.9)}{2(0.1)} \\
+                     & =\frac{1.3627-1.5289}{0.2}    \\
+                     & =-0.8310                      \\
+        f' (1.0,0.2) & =\frac{f(1.2)-f(0.8)}{2(0.2)} \\
+                     & =\frac{1.2031-1.5505}{0.4}    \\
+                     & =-0.8685
+    \end{align*}
+    Thus,
+    \begin{align*}
+        f' (1.0)\approx f_R' (1.0) & =\frac{2^2 f' (1.0,0.1)-f' (1.0,0.2)}{2^2-1} \\
+                                   & =\frac{4(-0.8310)-(-0.8685)}{3}              \\
+                                   & =-0.8185
+    \end{align*}
+    [The data were constructed from $ f(x)=e^x  \cos x $ and exact value of $ f' (1.0)=-0.818\,66 $]\\
+
+    Also, for $ f''(1 ) $, we have
+    \begin{align*}
+        f''(1,0.1) & =\frac{f(1.1)-2f(1.0)+f(0.9)}{(0.1)^2}     \\
+                   & =\frac{1.3627-2\times 1.4687+1.5289}{0.01} \\
+                   & =-4.580                                    \\
+        f''(1,0.2) & =\frac{f(1.2)-2f(1.0)+f(0.8)}{(0.2)^2}     \\
+                   & =\frac{1.2031-2\times 1.4687+1.5505}{0.04} \\
+                   & =-4.595
+    \end{align*}
+    Richardson's extrapolated estimates is
+    \begin{align*}
+        f''(1,0)\approx f_R''(1,0) & = \frac{2^2 f''(1.0,0.1)-f''(1.0,0.2)}{ 2^2-1} \\
+                                   & =\frac{4(-4.580)+4.595}{3}                     \\
+                                   & =-4.575
+    \end{align*}
+    [The exact value of $ f''(1 )=-4.574\,71 $]
+\end{ex}
+\begin{prob}
+    The distance $ D=D(t) $ traveled by an object is given in the table below:
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{S[table-format=2.1]S[table-format=2.3]}
+            \toprule
+            \multicolumn{1}{c}{$ t $}& \multicolumn{1}{c}{$ D(t) $} \\\midrule
+             8.0    & 17.453 \\
+             9.0    & 21.460 \\
+             10.0   & 25.752 \\
+             11.0   &  30.301 \\
+             12.0   & 35.084 \\\bottomrule
+        \end{tabular}
+    \end{table}
+
+    Using repeated Richardson extrapolation find
+    \begin{enumerate}[label=(\alph*)]
+        \item the velocity $ V(10) $,
+        \item the velocity $ V(8) $,
+        \item  In each case compare your results with exact results obtained from
+              \[
+                  D(t)=-70+7t+70 e^{\frac{-t}{10}}
+              \]
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    \begin{enumerate}[label=(\alph*)]
+        \item Using three point central formula at $ t = 10 $\\
+              \indent with $ h = 1 $:
+              \[
+                  D'(10,1)=\frac{D(11)-D(9)}{2(1)}=\frac{30.301-21.460}{2}=4.4205
+              \]
+              \indent with $ h = 2 $:
+              \[
+                  D' (10,2)=\frac{D(12)-D(8)}{2(2)}=\frac{35.084-17.453}{4}= 4.4078
+              \]
+              Using extrapolation,
+              \begin{align*}
+                  V(10)\approx D_R' (10) & =D'(10,1)+\frac{D' (10,1)-D' (10,2)}{2^2-1} \\
+                                         & =4.4205+\frac{4.4205-4.4078}{3}             \\
+                                         & = 4.4247
+              \end{align*}
+        \item Using two point forward difference formula at $ t = 8 $\\
+              \indent with $ h = 1 $:
+              \[
+                  D' (8,1)=\frac{D(9)-D(8)}{(1)}=21.460-17.453 = 4.0070
+              \]
+              \indent with $ h = 2 $:
+              \[
+                  D' (8,2)=\frac{D(10)-D(8)}{(2)}=\frac{25.752-17.453}{2}= 4.1495
+              \]
+              \indent with $ h = 4 $:
+              \[
+                  D' (8,4)=\frac{D(12)-D(8)}{(4)}=\frac{35.084-17.453}{4}= 4.4077
+              \]
+              Applying the Richardson extrapolation
+              \[
+                  g_{i+1} (h)=g_i (h)+\frac{g_i (h)-g_i (2h)}{2^m-1}
+              \]
+              where $ i $ denotes $ i $th iterate and $ m $ is the order of the error. Thus,
+              \begin{table}[H]
+                  \centering
+                  \textbf{Extrapolation Table\\}
+                  \begin{tabular}{c*{3}{S[table-format=2.4]}}
+                      \toprule
+                      $ h $ & \multicolumn{1}{c}{$ O(h) $} & \multicolumn{1}{c}{$ O(h^2) $} & \multicolumn{1}{c}{$ O(h^3) $} \\\midrule
+                      4     & 4.4077   &            &            \\
+                      2     & 4.1495   & 3.8913     &            \\
+                      1     & 4.40070  & 3.8645     & 3.8556     \\\bottomrule
+                  \end{tabular}
+              \end{table}
+        \item Comparison with exact results\\
+              Velocity is given by
+              \[
+                  V(t)=\frac{\D D}{\D t}=7-7e^{\frac{-t}{10}}
+              \]
+              Thus,
+              \[
+                  V_t(10) = 4.4248
+              \]
+              \begin{table}[H]
+                  \centering
+                  \textbf{\% of Errors for 3-point central difference formula\\}
+                  \begin{tabular}{ccc}
+                      \toprule
+                      $ h $ & $ O(h^2) $    & $ O(h^2) $    \\\midrule
+                      2     & $ 0.38 \% $   &               \\
+                      1     & $ 9.7\E{-2} $ & $ 2.3\E{-3} $ \\\bottomrule
+                  \end{tabular}
+              \end{table}
+              From the exact derivative
+              \[
+                  V(8) = 3.8547
+              \]
+              \begin{table}[H]
+                  \centering
+                  \textbf{\% of Errors for 2-point forward difference formula\\}
+                  \begin{tabular}{cccc}
+                      \toprule
+                      $ h $ & $ O(h) $     & $ O(h^2) $   & $ O(h^3) $  \\\midrule
+                      $ 4 $ & $ 14.35 \% $ &              &             \\
+                      $ 2 $ & $ 7.65 \% $  & $  0.95 \% $ &             \\
+                      $ 1 $ & $ 3.95 \% $  & $ 0.25 \% $  & $ 0.25 \% $ \\\bottomrule
+                  \end{tabular}
+              \end{table}
+    \end{enumerate}
+\end{soln}
+\begin{prob}
+    The distance $ D=D(t) $ traveled by an object is given in the table below:
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{S[table-format=2.1]S[table-format=2.3]}
+            \toprule
+            \multicolumn{1}{c}{$ t $}& \multicolumn{1}{c}{$ D(t) $}\\\midrule 
+            8.0    & 17.453 \\
+            9.0    & 21.460 \\
+            10.0   & 25.752 \\
+            11.0   & 30.301 \\
+            12.0   &35.084 \\\bottomrule
+        \end{tabular}
+    \end{table}
+    \begin{enumerate}[label=(\alph*)]
+        \item Estimate the velocity and acceleration at $ t = 10.4 $ using three suitable points.
+        \item Estimate the velocity and acceleration at $ t = 10.4 $ using four suitable points.
+    \end{enumerate}
+    In each case compare your results with exact results obtained from
+    \[
+        D(t)=-70+7t+70 e^{\frac{-t}{10}}
+    \]
+\end{prob}
+\begin{soln}
+    To construct  polynomial through the given points, the divided difference table is as follows:
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{c*{4}{S[table-format=2.5]}}
+            \toprule
+            \multicolumn{1}{c}{$ t $} & \multicolumn{1}{c}{$ D(t) $} & \multicolumn{1}{c}{$ D^1(t) $} & \multicolumn{1}{c}{$ D^2(t) $} & \multicolumn{1}{c}{$ D^3(t) $} \\\midrule
+            9     & 21.46    &            &            &            \\
+            10    & 25.752   & 4.292      &            &            \\
+            11    & 30.301   & 4.549      & 0.1285     &            \\
+            12    & 35.084   & 4.783      & 0.117      & -0.00383   \\\bottomrule
+        \end{tabular}
+    \end{table}
+    \begin{enumerate}[label=(\alph*)]
+        \item We need to consider 3 points that are closest to $ t=10.4 $ and we choose the points as $ t=9 $, $  t=10 $ and $ t=11 $. Then
+              \begin{align*}
+                  D(t) & =21.46+4.292(t-9)+0.1285(t-9)(t-10),\qquad 9\leq t\leq 11 \\
+                  v(t) & =\frac{\D D}{\D t}=4.292+0.1285(2t-9-10)                  \\
+                  a(t) & =\frac{\D^2 D}{\D t^2}=0.1285(2)=0.257
+              \end{align*}
+              Thus
+              \[
+                  v(10.4)=4.5233 \qquad \text{and}\qquad a(10.4)=0.257
+              \]
+        \item We need to consider 4 points that are closest to $ t=10.4 $ and we choose the points as $ t=9 $,  $ t=10 $, $ t=11 $ and $ t=12 $. Then
+              \begin{align*}
+                  D(t) & =21.46+4.292(t-9)+0.1285(t-9)(t-10)-0.00383(t-9)(t-10)(t-12),\qquad 9\leq t\leq 12 \\
+                  v(t) & =\frac{\D D}{\D t}=4.292+0.1285(2t-9-10)-0.00383[3t^2-2t(9+10+12)+(90+108+120)]    \\
+                  a(t) & =\frac{\D^2 D}{\D t^2}=0.1285(2)-0.00383[6t-2(31)]
+              \end{align*}
+              Thus
+              \[
+                  v(10.4)=4.5322 \qquad \text{and}\qquad a(10.4)=0.2554
+              \]
+    \end{enumerate}
+    \textbf{Error estimation:}\\
+    From the exact expression for distance we have
+    \[
+        \frac{\D D}{\D t}=7-7e^{\frac{-t}{10}}\qquad \text{and}\qquad	\frac{\D^2 D}{\D t^2}=\frac{7}{10} e^{\frac{-t}{10}}
+    \]
+    which gives,
+    \[
+        v(10.4)=4.5258 \qquad\text{and}\qquad a(10.4)=0.2474
+    \]
+    Error with 3-point polynomial:\\
+    \begin{align*}
+        \text{Absolute error in velocity}     & = \abs{\frac{4.5233-4.5258}{4.5258}}\times 100=0.055\% \\
+        \text{Absolute error in acceleration} & = \abs{\frac{0.257-0.2474}{0.2474}}\times 100=3.88\%
+    \end{align*}
+    Error with 4-point polynomial:
+    \begin{align*}
+        \text{Absolute error in velocity}     & = \abs{\frac{4.5322-4.5258}{4.5258}}\times 100=0.14\% \\
+        \text{Absolute error in acceleration} & =\abs{\frac{0.2554-0.2474}{0.2474}}\times 100=3.23\%
+    \end{align*}
+\end{soln}
+\section{Exercise}
+\begin{enumerate}
+    \item The values of  $ f(x) $ are given in the following table:
+          \begin{table}[H]
+              \centering
+              \begin{tabular}{cS[table-format=1.3]}
+                  \toprule
+                  $ x $    & \multicolumn{1}{c}{$ f(x) $} \\\midrule
+                  1.2   & 4.448 \\
+                  1.3   & 3.567 \\
+                  1.4   &2.624 \\
+                  1.5   & 1.625 \\
+                  1.6   &0.576 \\\bottomrule
+              \end{tabular}
+          \end{table}
+          \begin{enumerate}
+              \item Using two-point  formulae estimate the values of $ f'(1.2) $, $ f' (1.4) $, $ f' (1.6) $.
+              \item  Using three-point formulae estimate the values of $ f' (1.4) $ and $ f''(1.4) $.
+          \end{enumerate}
+    \item The table below shows the values of $ f(x) $ at different values of  $ x $:
+          \begin{table}[H]
+              \centering
+              \begin{tabular}{cS[table-format=1.4]}
+                  \toprule
+                  $ x $    & \multicolumn{1}{c}{$ f(x) $} \\\midrule
+                   1.4    & 1.3796 \\
+                   1.5    &  1.4962 \\
+                   1.6    & 1.5993 \\
+                   1.7    & 1.6858 \\
+                   1.8    & 1.7629 \\\bottomrule
+              \end{tabular}
+          \end{table}
+          \begin{enumerate}
+              \item Derive three-point forward and backward difference formulae for the first and second derivatives using two-point first derivative formula.\\
+                    Use three-point formulae to estimate the values of $ f' (1.4) $, $ f' (1.8) $, $ f''(1.4) $ and $ f''(1.8) $.
+              \item Derive five-point central difference formula for $ f' (x_0) $ and $ f''(x_0) $ using three-point central difference formula with Richardson extrapolation.\\
+                    Use five-points formulae to estimate the values of $ f' (1.6) $ and $ f''(1.6) $.
+
+
+                        [The table is constructed for $ f(x)=x \sin x $]
+          \end{enumerate}
+    \item Estimate $ f' (1.2) $ and $ f''(1.2) $ using Richardson extrapolation for the following data:
+          \begin{table}[H]
+              \centering
+              \begin{tabular}{cS[table-format=1.4]}
+                  \toprule
+                  $ x $    &\multicolumn{1}{c}{$ f(x) $}\\\midrule 
+                  0.8    &0.9548 \\
+                  1.0    &1.6487 \\
+                  1.2    &2.6239 \\
+                  1.4    & 3.9470 \\
+                  1.6    &5.6974 \\\bottomrule
+              \end{tabular}
+          \end{table}
+          Compare your result with the exact value  $ f'(1.2) = 5.6850 $ and $ f''(1.2)=8.6733 $ correct to 4 decimal places.
+
+
+              [The table is constructed for $ f(x)=x^2 e^{\frac{x}{2}} $]
+    \item Use the following table of values of  $ f(x) $ to estimate $ f' (1.0) $ and $ f''(1.0) $ by using three point central difference formulae with Richardson extrapolation.
+    \begin{table}
+        \begin{minipage}[c]{0.48\linewidth}
+            \centering
+            \begin{enumerate}[label=(a)]
+                \item \hfill
+                      \begin{tabular}{cS[table-format=1.3]}
+                          \toprule
+                          $ x $ & \multicolumn{1}{c}{$ f(x) $} \\\midrule
+                          0.7   & 1.297                        \\
+                          0.8   & 1.597                        \\
+                          1.0   & 2.287                        \\
+                          1.2   & 3.094                        \\
+                          1.3   & 3.536                        \\\bottomrule
+                      \end{tabular}
+            \end{enumerate}
+        \end{minipage}\hfill
+        \begin{minipage}[c]{0.48\linewidth}
+            \centering
+            \begin{enumerate}[label=(b)]
+                \item \hfill
+                      \begin{tabular}{cS[table-format=1.3]}
+                          \toprule
+                          $ x $ & \multicolumn{1}{c}{$ f(x) $} \\\midrule
+                          0.7   &
+                          1.297                                \\
+                          0.9   &
+                          1.927                                \\
+                          1.0   &
+                          2.287                                \\
+                          1.1   &
+                          2.677                                \\
+                          1.3   &
+                          3.536                                \\\bottomrule
+                      \end{tabular}
+            \end{enumerate}
+        \end{minipage}
+    \end{table}
+          [The table is constructed for $ f(x)=e^x  \sin x $]
+    \item The voltage $ E=E(t) $ in an electric circuit obeys the differential equations
+          \[
+              E(t)=L \frac{\D I}{\D t}+RI,
+          \]
+          where $ R $ is the resistance and $ L $ is the inductance. Use $ L =0.05 $ and $ R=2 $ and the $ I(t) $ in the table
+          \begin{table}[H]
+              \centering
+              \begin{tabular}{cS[table-format=2.4]}
+                  \toprule
+                  $ t $    & \multicolumn{1}{c}{$ I(t) $} \\\midrule
+                   1.0    &8.2277 \\
+                    1.1    &7.2428 \\
+                     1.2    &5.9908 \\
+                      1.3    &4.5260 \\
+                       1.4    &2.9122 \\\bottomrule
+              \end{tabular}
+          \end{table}
+          \begin{enumerate}
+              \item Find $ I' (1.2) $ by numerical differentiation as accurately as possible and use it to compute $ E(1.2) $.
+              \item Compare your result with the exact solution $ I(t)=10 e^{\frac{-t}{10}}\sin 2t $.
+          \end{enumerate}
+    \item Derive three-point forward and backward formulae for first derivative.\\
+          The table below gives the values of the distance traveled by a car at various time intervals during its journey
+          \begin{table}[H]
+              \centering
+              \begin{tabular}{cS[table-format=3.2]}
+                  \toprule
+                  Time, $ t $ (min) &\multicolumn{1}{c}{Distance traveled $ s(t) $ (km)} \\\midrule
+                   4   &7.5 \\
+                    5    &11.0 \\
+                     6    &15.0 \\
+                      7    &19.5 \\
+                       8    &24.0 \\\bottomrule
+              \end{tabular}
+          \end{table}
+          \begin{enumerate}
+              \item Estimate the velocity, $ v=\frac{\D s}{\D t} $, at time $ t=4 $, $ t=6 $ and $ t=8 $ using three-point formulae with Richardson extrapolation.
+              \item Estimate the velocity and acceleration at time $ t = 4.5 $ and 6.5 using 3 and 4 suitable points.
+          \end{enumerate}
+\end{enumerate}
+\end{document}

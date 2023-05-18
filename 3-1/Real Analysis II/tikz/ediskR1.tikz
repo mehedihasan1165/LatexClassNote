@@ -1,0 +1,11 @@
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}
+\draw[thick] (0,0)--(4.5,0);
+\draw[{(-)},thick] (2,0)--(4,0);
+\draw[-{Bar[]},thin] (0,0)--(3,0);
+\draw[<-] (3,.3)--(3.35,.3);
+\node at (3.5,.3) {$\varepsilon$};
+\node at (3,-.25) {$x$};
+\node at (2,.75) {$\R^{1}$};
+\draw[->] (3.65,.3)--(4,.3);
+\end{tikzpicture}

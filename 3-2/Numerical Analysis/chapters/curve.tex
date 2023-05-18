@@ -1,0 +1,1034 @@
+\documentclass[12pt,class=book,crop=false]{standalone}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Curve Fitting and Spline Interpolation}
+\section{Curve Fitting by Least Squares Method}
+The method of least squares may be one of the most systematic procedure to fit a curve through given data points.\\
+Consider the problem of fitting a set of data points
+\[
+	(x_r,y_r),\qquad r=1,2,3,\dots,m
+\]
+to a curve $ y=f(x) $ whose values depend on $ n $ parameters $ c_1,c_2,c_3,\dots,c_n $. The values of the function at a point depends on the values of the parameter involved. In least square method we determine a set of values of the parameter $ c_1,c_2,c_3,\dots,c_n $ such that the sum of the squares of the error
+\[
+	E(c_1,c_2,\dots,c_n)=\sum_i^m\left[f\left(x_i,c_1,c_2,\dots,c_n\right)-y_i \right]^2
+\]
+is minimum.\\
+The necessary conditions for $ E $ to have a minimum is that
+\[
+	\frac{\partial E}{\partial c_i}=0,\qquad i=1,2,3,\dots,n
+\]
+This condition gives a system of $ n $ equations, called \emph{normal equations}, in $ n $ unknowns $ c_1,c_2,c_3,\dots,c_n $.\\
+If the parameters appear in the function in non-linear form, the normal equations become non-linear and is difficult to solve. This difficulty may be avoided if $ f(x) $ is transformed to a form which is linear in parameter.
+\subsection{Parameters in Nonlinear Form}
+\begin{enumerate}[label=(\alph*)]
+	\item \textbf{Power function:} Let the curve
+	      \[
+		      y=ax^b
+	      \]
+	      be fitted to the given data.\\
+	      Taking logarithm of both sides, we get
+	      \[
+		      \ln y=\ln a+b \ln x
+	      \]
+	      which can be written in the form
+	      \[
+		      Y=A+bX
+	      \]
+	      where,
+	      \[
+		      Y=\ln y,\quad A=\ln a,\quad X=\ln x.
+	      \]
+	\item Let the curve
+	      \[
+		      y=\frac{400}{1+c e^{bx}}
+	      \]
+	      be fitted to the given data.\\
+	      The equation of the curve can be rewritten as
+	      \[
+		      \frac{400}{y}-1=c e^{bx}
+	      \]
+	      Taking logarithm of both sides, we get
+	      \[
+		      \ln\left(\frac{400}{y}-1\right)=\ln c+bx
+	      \]
+	      which can be written in the form
+	      \[
+		      Y=A+bx\qquad \text{ where}\qquad Y=\ln\left(\frac{400}{y}-1\right),\quad A=\ln c.
+	      \]
+\end{enumerate}
+\begin{prob}
+	The average price, $ P $, of a certain type of second-hand car is believed to be related to its age, $ x $ years, by an equation of the form
+	\[
+		P=50+ae^{bx}
+	\]
+	where $ a $ and $ b $ are constants. Data from a recent newspaper give the following average price (in Taka) for used car of this type,
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cS[table-format=3.1]}
+			\toprule
+			$ x $ &
+			\multicolumn{1}{c}{$ P $ (in thousands)} \\\midrule
+			  1  & 
+			  774.4  \\
+			  2      &
+			  603.4  \\
+			   3      &
+			   439.2  \\
+			    4      &
+				360.0  \\
+			     5      &
+					  328.3  \\\bottomrule
+		\end{tabular}
+	\end{table}
+	\begin{enumerate}[label=(\alph*)]
+		\item Estimate the values of $ a $ and $ b $ rounded to 3 significant figures.
+		\item Estimate the price of a car of this type that is 6 years old and the original new price of that car.
+	\end{enumerate}
+\end{prob}
+\begin{soln}
+	\begin{enumerate}[label=(\alph*)]
+		\item The curve $ P=50+ae^bx $ is to be fitted to the given data.\\
+		      The equation of the curve can be rewritten as $ P-50=ae^bx $\\
+		      Taking logarithm of both sides, we get $ \ln ( P-50)=\ln a+bx $\\
+		      which can be written in the form
+		      \[
+			      Y=A+bx\qquad \text{ where}\quad Y=\ln (P-50),\quad A=\ln a.
+		      \]
+		      \[
+			      E(A,b)=\sum_{i=1}^5 (A+bx_i-Y_i )^2
+		      \]
+		      At minimum,
+		      \[
+			      \frac{\partial E}{\partial A}=0\qquad\text{ and }\qquad\frac{\partial E}{\partial b}=0
+		      \]
+		      which give
+		      \begin{align*}
+			      2\sum[(A+bx_i-Y_i)]1  & =0 \\
+			      2\sum (A+bx_i-Y_i)x_i & =0
+		      \end{align*}
+		      which can be rearranged as
+		      \begin{align*}
+			      A\sum 1+b\sum x_i          & =\sum Y_i     \\
+			      A\sum x_i + b \sum {x_i}^2 & =\sum x_x Y_i
+		      \end{align*}
+		      The sum can be calculated in a tabular form as below:
+		      \begin{table}
+			      \centering
+			      \begin{tabular}{ccS[table-format=3.2]*{2}{S[table-format=3.3]}c}
+				      \toprule
+				      $ n $ & $ x $ & \multicolumn{1}{c}{$ P $} & \multicolumn{1}{c}{$ Y $}  & \multicolumn{1}{c}{$ xY $} & $ x^2 $ \\\midrule
+				      1     & 1     & 774.4 & 6.585  & 6.585  & 1       \\
+				      2     & 2     & 603.4 & 6.316  & 12.632 & 4       \\
+				      3     & 3     & 439.2 & 5.964  & 17.892 & 9       \\
+				      4     & 4     & 360.0 & 5.737  & 22.948 & 16      \\
+				      5     & 5     & 328.3 & 5.629  & 28.145 & 25      \\\midrule
+				      Sum   & 15    &       & 30.231 & 88.202 & 55      \\\bottomrule
+			      \end{tabular}
+		      \end{table}
+		      The normal equations are
+		      \begin{align*}
+			      5A+15b  & =30.231 \\
+			      15A+55b & =88.202
+		      \end{align*}
+		      Dividing 1st eq. by 5 and 2nd by 15, we have
+		      \begin{align*}
+			      A+3b     & =6.046 \\
+			      A+3.667b & =5.880
+		      \end{align*}
+		      Subtracting
+		      \[
+			      0.667b=-0.166 \qquad \text{or}\quad b=-0.249
+		      \]
+		      and
+		      \[
+			      A=5.88-3.667(-0.249)=6.793
+		      \]
+		      and hence
+		      \[
+			      a=e^6.793\approx 892
+		      \]
+		      The required best fitting curve is
+		      \[
+			      P=50+892e^{-0.249x}
+		      \]
+		\item When $ x = 6 $, we have
+		      \[
+			      P=50+892e^{-0.249\times 6}\approx 250.2
+		      \]
+		      The price of the 6 years old car is Tk. 250.2 thousand.
+		      New price corresponds to $ x = 0 $ and is $ 50+892=942 $ thousand taka.
+	\end{enumerate}
+\end{soln}
+\subsection{Exercise}
+\begin{enumerate}
+	\item Find the least square line  $ y=ax+b $ to the following data
+	      \begin{table}
+		      \centering
+		      \begin{tabular}{*{2}{S[table-format=2.1]}}
+			      \toprule
+			      \multicolumn{1}{c}{$ x $ }&
+				  \multicolumn{1}{c}{$ y $} \\\midrule
+				    -1  &
+					1.5    \\
+					 0   &
+					 3.7 \\
+					  2   & 
+					  6.2 \\
+					  4   &
+					  8.5 \\
+					   5    &
+						    12.8 \\\bottomrule
+		      \end{tabular}
+	      \end{table}
+	\item Students collected the following set of data to find the gravitational constant $ g $. Use the relation  $ d = (gt^2)/2 $,  where  $ d $  is the distance in metres and $ t $ is time in seconds, to find the value of  $ g $.
+	      \begin{table}[H]
+		      \centering
+		      \begin{tabular}{*{2}{S[table-format=1.4]}}
+			      \toprule
+			      \multicolumn{1}{c}{Time $ (t) $}     &
+				  \multicolumn{1}{c}{Distance $ (d) $} \\\midrule 
+				   0.2    &
+				   0.2142 \\
+				    0.4    &
+					0.7789 \\
+					 0.6    &
+					 1.7676 \\
+					  0.8    &
+					  3.1365 \\
+					   5.0    &
+						   4.9075 \\\bottomrule
+		      \end{tabular}
+	      \end{table}
+	\item Fit a curve of the form  $ y=ax^2+be^{-x} $    to the following data.
+	      \begin{table}[H]
+		      \centering
+		      \begin{tabular}{cS[table-format=2.2]}
+			      \toprule
+			      $ x $ &
+				  \multicolumn{1}{c}{$ y $ }\\\midrule
+				   1    &
+				   5.18 \\
+				    2    & 
+					6.70 \\
+					4     & 
+					21.31 \\
+					5     &
+					33.07 \\
+					8     &
+					84.48 \\\bottomrule
+		      \end{tabular}
+	      \end{table}
+	\item The temperature in a metal strip was measured at various time intervals. Given that the relation between the temperature $ T ({}^\circ C) $ and time $ t $ (min) is of the form $ T=a+be^{t/2} $. Six pairs of observations of the two variables $ T $ and $ t $ gave the following results.
+	      \[
+		      \sum T=165.5,\quad    \sum e^{t/2}=48.71,\quad \sum e^t=656.6,\quad \sum Te^{t/2}=1425
+	      \]
+	      Find the temperature after 7 minutes.
+	\item Given the following set of values of $ x $ and $ y :$
+	      \begin{table}[H]
+		      \centering
+		      \begin{tabular}{cS[table-format=1.2]}
+			      \toprule
+			      $ x $ &
+				  \multicolumn{1}{c}{$ y $ }\\\midrule 
+				   2    &
+				   1.14 \\
+				    3    &
+					1.45 \\
+					 6    &
+					 1.97 \\
+					  7    &
+					  2.41 \\
+					   10   &
+						   2.99 \\\bottomrule
+		      \end{tabular}
+	      \end{table}
+	      \begin{enumerate}
+		      \item Fit the power equation  $ y=ax^b $ to the given data.
+		      \item Find the best fitting curve of the form $ y = a e^{bx} $.
+		      \item Fit the saturation growth rate model $ y=\frac{ax}{b+x} $ to the above data.
+	      \end{enumerate}
+	      By finding errors determine which one of the above is the best fitting curve.
+	\item The following table gives the population of a certain country from 1960 to 2000 at ten yearly interval
+	      \begin{table}[H]
+		      \centering
+		      \begin{tabular}{cc}
+			      \toprule
+			      Year                      & 
+				  Population $ P $ (in Lac) \\\midrule
+				  1970 &
+				  20.5 \\
+				   1980 &
+				   26.4 \\
+				    1990 &
+					33.1 \\
+					 2000 &
+					 40.4 \\
+					  2010 &
+					   48.2 \\\bottomrule
+		      \end{tabular}
+	      \end{table}
+	      It is known that if environmental factors remain constant, the population size,  $ P $,  is given by
+	      \[
+		      P(t)=\frac{200}{1+c e^{at}}
+	      \]
+	      where $ c $ and $ a $ are constants.\\
+	      Estimate, to 3 significant figures, the values of $ c $ and $ a $.\\
+	      Hence, predict the population in the year 2015.
+	\item A bowl of hot water is kept in a room of constant temperature $ 25^\circ C $. At 5 minutes interval temperature of the water is recorded and listed as given below.
+	      \begin{table}[H]
+		      \centering
+		      \begin{tabular}{cc}
+			      \toprule
+			      $ t $ (in min)            &
+				  $ T $ (in $ {}^\circ C $) \\\midrule
+				   5    &
+				   75.3 \\
+				    10   &
+					70.0 \\
+					 15   &
+					 63.4 \\
+					  20   &
+					  58.5 \\
+					   25   &
+					   54.0 \\\hline
+		      \end{tabular}
+	      \end{table}
+	      The law of cooling can be assumed to be of the form	$ T=25+ae^{-kt} $.\\
+	      Find, to 2 significant figures, the best values of $ a $ and $ k $.\\
+	      Estimate the initial temperature.\\
+	      Hence, find the time, to the nearest minute, when the temperature of the water in the bowl will be  $ 51^\circ C $.
+	\item The pressure $ p $ and volume $ V $ of a fixed mass of gas are believed to be related by an equation of the form
+	      \[
+		      pV^\gamma=c
+	      \]
+	      where $ \gamma $ and $ c $ are constants.\\
+	      In six set of experiments on the fixed mass of gas, in each of which $ p $ was controlled and $ V $ measured. The results are as follows:
+	      \begin{table}[H]
+		      \centering
+		      \begin{tabular}{cc}
+			      \toprule
+			      $ p\,(Nm^{-2}) $ &
+				  $ V\,(m^3) $     \\\midrule
+				   0.4   & 
+				   1.894 \\
+				   0.6   &
+				   1.426 \\
+				    0.8   &
+					1.166 \\
+					 1.0   &
+					 0.998 \\
+					  1.2   &
+					  0.878 \\
+					   1.4   &
+					    0.789 \\\bottomrule
+		      \end{tabular}
+	      \end{table}
+	      Estimate to 2 decimal places
+	      \begin{enumerate}[label=(\roman*)]
+		      \item the value of $ \gamma $,
+		      \item the value of $ V $ when $ p = 0.75 Nm^{-2} $.
+	      \end{enumerate}
+	\item The method of least squares is used to estimate the constants $ a $, $ b $, $ c $ in the formula
+	      \[
+		      y=a+b \sin x+ce^{-x/5}
+	      \]
+	      Eight pairs of data points leads to the following normal equations, where the missing numerical values are to be determined.
+	      \begin{align*}
+		      {\_\_\_\_\_}a  -  3.616 b  + 5.784 c       & =   100.06  \\
+		      {\_\_\_\_\_}a +   3.261 b  -  2.737 c      & = - 46.796  \\
+		      {\_\_\_\_\_}a  + {\_\_\_\_\_} b +  4.403 c & =    73.060
+	      \end{align*}
+	      The method of Gaussian elimination leads to the following equations:
+	      \begin{align*}
+		      a  -  0.452 b + {\_\_\_\_\_} c & = {\_\_\_\_\_} \\
+		      0.450 b -  0.034 c             & =  -0.433      \\
+		      1.734 c                        & =  4.895
+	      \end{align*}
+	      Supply the missing values and complete the solution of the set of equations, giving $ a $, $ b $ and $ c $ to two decimal places.\\
+	      Using the estimated values of $ a $, $ b $ and $ c $, find the value of $ y $ given by the formula to one decimal place when $ x = 4 $.
+	\item Use a suitable substitution to derive a linearized form for the following functions:
+	      \begin{enumerate}[label=(\roman*)]
+		      \item \[y=\frac{x}{ax+b}\]
+		      \item \[y=(ax+b)^{-1}\]
+		      \item \[x=a^x b^y+2e^y\]
+		      \item \[y=\frac{5+ax}{b+x^3}\]
+		      \item \[y =\frac{x^2}{(a+bx)^2}\]
+		      \item \[y=\frac{1}{a(2^y)+b(2^{-x})}\]
+		      \item \[y=\frac{x^2}{(ax+1)(bx+2)}\]
+		      \item \[y=\frac{x}{1+ae^{bx} }\]
+		      \item \[y=\frac{1}{\sqrt{(x+a)(x+b)}}\]
+	      \end{enumerate}
+\end{enumerate}
+\section{Spline Interpolation}
+Spline interpolation is a form of interpolation where the interpolant is a special type of  piecewise polynomial called a \textbf{spline}. Spline interpolation is preferred over polynomial interpolation because the interpolation error can be made small even when using low degree polynomials for the spline.\\
+Divide the interval containing the tabular points as subintervals 	$ x_0<x_1<x_2<\dots<x_n  $ and replace the function $ f(x) $ by some lower degree interpolating polynomial in each of the subinterval. The tabular points $ x_0, x_1, x_3,\dots, x_n   $ at which the function changes its character is termed as \textbf{knots} in the theory of spline.\\
+
+
+A function $ S(x) $ of the form
+\[
+	S(x)=\begin{cases}
+		f_0 (x)     & x\in [x_0,x_1]    \\
+		f_1 (x)     & x\in [x_1,x_2]    \\
+		\vdots      &                   \\
+		f_{n-1} (x) & x\in[x_{n-1},x_n]
+	\end{cases}
+\]
+is called a spline of degree $ m $ if
+\begin{enumerate}[label=(\roman*)]
+	\item the domain of $ S(x) $ is the interval $ [x_0,x_n] $
+	\item $ S(x),\, S'(x),\, S''(x),\dots, S^{(m-1)} (x) $ are all continuous functions on $ [x_0, x_n] $
+	\item $ S(x) $ is a polynomial of degree less than equal to $ m $ on each subintervals $ [x_k, x_{k+1}]$, $k=0,1,2,3,\dots,n-1 $.
+\end{enumerate}
+\subsection{Linear Spline Interpolation}
+The simplest polynomial to use, a polynomial of degree one, produces a polygon path that consists of line segments that pass through the points. The point-slope formuala for the line segment may be used to represent this piecewise linear curve:
+\[
+	S(x)=f_k (x)=a_k (x-x_k)+b_k,\qquad \text{for } x_k \leq x \leq x_{k+1}(k = 0, 1, 2,\dots, n-1)
+\]
+Since the line passes through $ (x_k, y_k) $ and $ (x_{k+1}, y_{k+1}) $ we have
+\[
+	f_k (x_k)=y_k=b_k
+\]
+and
+\[
+	f_k (x_{k+1})=y_{k+1}=a_k (x_{k+1}-x_k)+b_k
+\]
+or
+\[
+	a_k=\frac{y_{k+1}-y_k}{x_k+1-x_k}=\frac{ \Delta y_k}{h_k}
+\]
+where
+\[
+	\Delta y_k=y_{k+1}-y_k \qquad \text{and}\quad h_k=x_{k+1}-x_k
+\]
+\begin{figure}[H]
+	\centering
+	\import{../tikz/}{linear-spline.tikz}
+\end{figure}
+The resulting linear spline curve $ f_k (x) $ in $ [x_k,x_{k+1}] $ can be written as
+\[
+	f_k (x)=\frac{\Delta y_k}{h_k} (x-x_k)+y_k,\qquad (k=0,1,2,\dots,n-1)
+\]
+The resulting curve looks like a ``broken line'' as shown in the diagram.
+\subsection{Quadratic Spline Interpolation}
+For a quadratic spline through $ (x_k,y_k) $ we may take $ f_k (x) $ is of the form
+\begin{equation}
+	\label{eq:quadspline1}
+	f_k(x)=a_k (x-x_k)^2+b_k (x-x_k)+c_k
+\end{equation}
+The quadratic spline function $ S(x) $ is
+\[
+	S(x)=f_k (x)
+\]
+on the interval $ [x_k, x_{k+1}] $ for $ k = 0, 1, 2,\dots, n-1 $.\\
+Each quadratic polynomial, $ f_k (x) $, has three unknown constants, hence there are $ 3n $ unknown coefficients $ a_k, b_k, c_k\,(k = 0, 1, 2, \dots, n-1) $.\\
+To find $ 3n $ unknowns, one needs to set up $ 3n $ equations and then simultaneously solve them. These $ 3n $ equations are found as follows:
+\begin{enumerate}
+	\item As the splines pass through $ (x_k,y_k) $, we have
+	      \[
+		      f_k (x_k)=c_k=y_k\qquad \text{for}\quad k = 0, 1, 2,\dots, n-1
+	      \]
+	      and
+	      \[
+		      f_{n-1} (x_n)=y_n
+	      \]
+	\item Continuity of $ S(x) $ at the interior points gives
+	      \begin{equation}
+		      \label{eq:quadspline2}
+		      f_k (x_{k+1})=f_{k+1} (x_{k+1})
+	      \end{equation}
+	      Since there are $ (n-1) $ interior points, we have $ (n-1) $ such equations.
+	\item Continuity of $ S' (x) $ at the interior points gives
+	      \begin{equation}
+		      \label{eq:quadspline3}
+		      f_k^{'} (x_{k+1})=f_{k+1}^{'} (x_{k+1})
+	      \end{equation}
+\end{enumerate}
+Differentiating eq. \eqref{eq:quadspline1} we have
+\[
+	f_k^{'} (x)=2a_k (x-x_k)+b_k
+\]
+From \eqref{eq:quadspline3} we have
+\[
+	2a_k h_k+b_k=b_{k+1}
+\]
+Using the notation,
+\[
+	f_k^{'}(x_k)=b_k=Z_k
+\]
+we have
+\[
+	a_k=\frac{Z_{k+1}-Z_k}{2h_k},\qquad k = 0, 1, 2, \dots, n-1
+\]
+From Eq. \eqref{eq:quadspline2},
+\begin{align*}
+	 & a_k (h_k^2)+b_k (h_k)+c_k=c_{k+1}                            \\
+	 & a_k h_k+b_k=\frac{c_{k+1}-c_k}{h_k} =\frac{y_{k+1}-y_k}{h_k} \\
+	 & \frac{Z_{k+1}-Z_k}{2}+Z_k=\frac{y_{k+1}-y_k}{h_k}            \\
+	 & Z_{k+1}+Z_k=2\frac{\Delta y_k}{h_k}
+\end{align*}
+Here also $ (n-1) $ interior points, we have $ (n-1) $ such equations.\\
+So far, the total number of equations are
+\[
+	(2n)+(n-1)=(3n-1)
+\]
+We still need one more equation. We can assume that the first spline is linear, that is
+\[
+	a_0=0
+\]
+This gives us $ 3n $ equations for $ 3n $ unknowns.  These can be solved by a number of techniques used to solve simultaneous linear equations.\\
+It should be mentioned that the curvature of the quadratic spline changes abruptly at each knot, and the curve may not be pleasing to the eye.
+\subsection{Cubic Spline Interpolation}
+For the cubic spline through the points $ (x_k,y_k ) $, $ k=0,1,2,\dots,n $ we may take $ f_k (x) $ is of the form
+\begin{equation}
+	\label{eq:cubespline1}
+	f_k (x)=a_k (x-x_k )^3+b_k (x-x_k )^2+c_k (x-x_k)+d_k \quad \text{in} [x_k, x_{k+1}]
+\end{equation}
+Thus the cubic spline function $ S(x) $ is of the form
+\[
+	S(x)=f_k (x) \qquad\text{on the interval}\quad [x_k,x_{k+1}] \quad\text{for } k = 0, 1, 2, 3,\dots,n-1
+\]
+with the following properties:
+\begin{enumerate}[label=(\alph*)]
+	\item \label{enum:a}\[
+		      f_k (x_k)=y_k,\qquad k=0,1,2,\dots,n-1\quad \text{and}\quad f_{n-1} (x_n)=y_n
+	      \]
+	\item \label{enum:b}\[
+		      f_k (x_{k+1})=f_{k+1} (x_{k+1}),\qquad k=0,1,2,\dots,n-1
+	      \]
+	\item \label{enum:c}\[
+		      f_k^{'} (x_{k+1})=f_{k+1}^{'} (x_{k+1}),\qquad k=0,1,2,\dots,n-1
+	      \]
+	\item \label{enum:d}\[
+		      f_{k}^{''} (x_{k+1})=f_{k+1}^{''} (x_{k+1}),\qquad k=0,1,2,\dots,n-1
+	      \]
+\end{enumerate}
+Each cubic polynomial, $ f_k (x) $, has four unknown constants, hence there are $ 4n $ coefficients to be determined. The data points supply $ (n+1) $ conditions, and properties \ref{enum:b}, \ref{enum:c} and \ref{enum:d} each supply $ (n-1) $ conditions. Hence, $ n+1+3(n-1)=4n-2 $ conditions are specified. Two more conditions are needed which will be discussed later.\\
+
+The conditions \ref{enum:a} then gives
+\[
+	d_k=y_k,\qquad k=0,1,2,\dots,n-1
+\]
+From \ref{enum:b} we have
+\begin{align}
+	y_{k+1} & =a_k (x_{k+1}-x_k )^3+b_k (x_{k+1}-x_k )^2+c_k (x_{k+1}-x_k)+y_k\notag              \\
+	        & =a_k {h_k}^3+b_k {h_k}^2+c_k h_k+y_k,\qquad k=0,1,2,\dots,n-1\label{eq:cubespline3}
+\end{align}
+where $ h_k=(x_{k+1}-x_k) $.\\
+Differentiating \eqref{eq:cubespline1} we have
+\begin{align}
+	f_k^{'} (x) & =3a_k (x-x_k )^2+2b_k (x-x_k)+c_k\label{eq:cubespline4} \\
+	f_k^{''}(x) & =6a_k(x-x_k)+2b_k \label{eq:cubespline5}
+\end{align}
+Development is simplified if we write the equations in terms of the second derivatives-that is, if we use
+\[
+	M_k=f^{''}_k(x_k) \qquad \text{for } k=0,1,2,\dots,n-1 \quad \text{ and } M_n=f^{''}_k(x_k)
+\]
+From Eq.\eqref{eq:cubespline5}, we have
+\begin{align*}
+	M_k     & =6a_k (x_k-x_k)+2b_k=2b_k              \\
+	M_{k+1} & =6a_k (x_{k+1}-x_k)+2b_k=6a_k h_k+2b_k
+\end{align*}
+Hence we can write
+\begin{align*}
+	b_k & =\frac{M_k}{2}            \\
+	a_k & =\frac{M_{k+1}-M_k}{6h_k}
+\end{align*}
+and from Eq.\eqref{eq:cubespline3}, we have
+\begin{align*}
+	y_{k+1}=\left(\frac{M_{k+1}-M_k}{6h_k} \right){h_k}^3+\frac{M_k}{2} {h_k}^2+c_k h_k+y_k \\
+	c_k & =\frac{y_{k+1}-y_k}{h_k} -\frac{h_k}{6}(M_{k+1}+2M_k)
+\end{align*}
+In order to get the cubic splines, it is required to determine the second derivatives
+\[
+	M_0,M_1,M_2,\dots,M_n
+\]
+at the knots and can be evaluated by the continuity of the second derivatives.\\
+From Eq. \eqref{eq:cubespline1},
+\[
+	f_k^{'} (x)=3a_k (x-x_k )^2+2b_k (x-x_k)+c_k
+\]
+At the common knot $ (x_{k+1},y_{k+1}) $ the first derivatives $ f_k^{'} (x) $ and $ f_(k+1)^{'} (x) $ should be equal i.e.
+\[
+	f_{k+1}^{'} (x_{k+1})=f_k^{'} (x_{k+1})
+\]
+But
+\begin{equation}
+	\label{eq:cubespline6a}
+	f_{k+1}^{'} (x_{k+1})=c_{k+1}=\frac{y_{k+2}-y_{k+1}}{h_{k+1}}-\frac{h_{k+1}}{6}(M_{k+2}+2M_{k+1})
+\end{equation}
+and
+\begin{align}
+	f_k^{'} (x_{k+1}) & =3a_k h_k^2+2b_k h_k+c_k\notag                                                                                                                 \\
+	                  & =3\left(\frac{M_{k+1}-M_k}{6h_k}\right){h_{k-1}}^2+2\left(\frac{M_k}{2}\right) h_k+\frac{y_{k+1}-y_k}{h_k} -\frac{h_k}{6}(M_{k+1}+2M_k )\notag \\
+	                  & =\frac{y_{k+1}-y_k}{h_k} +\frac{h_k}{6}(M_{k+1}+2M_k)\label{eq:cubespline6b}
+\end{align}
+Eq. \eqref{eq:cubespline6a} with Eq.\eqref{eq:cubespline6b},
+\begin{equation}
+	\label{eq:cubespline7}
+	h_k M_k+2(h_k+h_{k+1})M_{k+1}+h_{k+1} M_{k+2}=6\left[\frac{\Delta y_{k+1}}{h_{k+1}} -\frac{\Delta y_k}{h_k} \right],\qquad k = 0, 1, 2,\dots, n-2
+\end{equation}
+
+\subsection{End Points Constraints}
+We need to impose suitable end-conditions to get a unique cubic spline. The standard end points constraints are mentioned below.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\multicolumn{1}{c}{Description of the strategy}&\multicolumn{1}{c}{ Equations involving $ M_0 $ and $ M_n $ }\\\midrule
+		
+        Natural cubic spline ``a relaxed curve'': & \multicolumn{1}{c}{$ M_0=0,$}\\
+		$ S^{'}(x_0) $ and $ S^{''}(x_n )$. & \multicolumn{1}{c}{$M_n=0 $ }\\%\midrule
+		&\\
+        Clamped cubic spline:& \\
+		specify $ S^{'} (x_0) = A $ and $ S^{'} (x_n) = B $. & $\displaystyle 2M_0+M_1 =\frac{6}{h_0}\left[ \frac{\Delta y_0}{h_0}-A \right]$\\
+					& $\displaystyle M_n+2M_{n-1} =\frac{6}{h_{n-1}}6\left[ B-\frac{\Delta y_{n-1}}{h_{n-1}} \right] $      \\%\midrule
+		& \\
+        Extrapolated cubic spline:& \\
+		$ M_0 $ as linear extrapolation from & \\
+		$ M_1 $ and $ M_2 $ :$ \frac{M_1-M_0}{h_0}=\frac{M_2-M_1}{h_1} $ & $\displaystyle M_0 =M_1-\frac{h_0 (M_2-M_1)}{h_1}$\\
+		$ M_n $ as linear extrapolation from & \\
+		$ M_{n-1} $ and $ M_{n-2} $: & $\displaystyle M_n  =M_{n-1}-\frac{h_{n-1}(M_{n-1}-M_{n-2})}{h_{n-2}}$\\
+		$\displaystyle \frac{M_n-M_{n-1}}{h_{n-1}}=\frac{M_{n-1}-M_{n-2}}{h_{n-2}} $ & \\%\midrule
+		& \\
+        Parabolically terminated spline & \\
+		($ S^{''}(x) $ is constant near the end points)&\multicolumn{1}{c}{ $ M_0=M_1,\quad M_n=M_{n-1} $}\\\bottomrule
+	\end{tabular}
+\end{table}
+\begin{prob}
+	Find the linear spline for the following data:
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cc}
+			\toprule
+			$ x $	&
+			$ y $	\\\midrule
+			0	&
+			0.0	\\
+			1	&
+			0.5	\\
+			2	&
+			2.0	\\
+			3&
+			1.5 \\\bottomrule
+		\end{tabular}
+	\end{table}
+\end{prob}
+\begin{soln}
+	Here,  $ h_0=h_1=h_2=1 $.\\
+	Linear spline functions are
+	\begin{align*}
+		f_0 (x)&=\frac{\Delta y_0}{h_0} (x-x_0)+y_0=0.5x			& 0 \leq x \leq 1\\
+		f_1 (x)&=\frac{\Delta y_1}{h_1} (x-x_1)+y_1=1.5(x-1)+0.5		& 1 \leq x \leq 2\\
+		f_2 (x)&=\frac{\Delta y_2}{h_2} (x-x_2)+y_2=-0.5(x-2)+2		& 2 \leq x \leq 3
+	\end{align*}
+	Linear spline function is
+	\[
+		S(x)=\begin{cases}
+			0.5x, & 0 \leq x \leq 1\\
+			1.5(x-1)+0.5,& 1 \leq x \leq 2\\
+			-0.5(x-2)+2, & 2 \leq x \leq 3
+		\end{cases}
+	\]	
+\end{soln}
+\begin{prob}
+	Find the quadratic spline for the following data:
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cc}
+			\toprule
+			$ x $	&
+			$ y $	\\\midrule
+			0	&
+			0.0	\\
+			1	&
+			0.5	\\
+			2	&
+			2.0	\\
+			3&
+			1.5\\\hline
+		\end{tabular}
+	\end{table}
+\end{prob}
+\begin{soln}
+	Here,  $ h_0=h_1=h_2=1 $.
+	\[
+		Z_{k+1}+Z_k=2 \frac{\Delta y_k}{h_k}\qquad k = 0, 1, 2   
+	\]
+	Using the recurrence relation, we obtain the equations
+	\begin{align*}
+		Z_1+Z_0&=2(0.5)=1\\
+		Z_2+Z_1&=2(2-0.5)=3\\
+		Z_3+Z_2&=2(1.5-2)=-1\\
+	\end{align*}
+	Using the end condition $ a_0=0 $, we have
+	\[
+		\frac{Z_1-Z_0}{2(1)}=0\qquad \text{or}\quad Z_1=Z_0
+	\]
+	Solving above equations, we have
+	\begin{align*}
+		Z_0&=Z_1=\frac{1}{2}=0.5\\
+		Z_2&=3-0.5=2.5\\
+		Z_3&=-1-2.5=-3.5
+	\end{align*}
+	With these values of Z's the spline coefficients the spline coefficients can be obtained as follows:\\
+	With k = 0,
+	\[
+		a_0=0,\qquad b_0=Z_0=0.5,\qquad c_0=y_0=0
+	\]
+	and
+	\[
+		f_0 (x)=0.5x,\qquad 0 \leq x \leq 1
+	\]
+	With k = 1,
+	\[
+		a_1=\frac{Z_2-X_1}{2h_1}=\frac{2.5-0.5}{2(1)}=1,\qquad b_1=Z_1=0.5,\qquad c_1=y_1=0.5
+	\]
+	and
+	\[
+		f_1 (x)=(x-1)^2+0.5(x-1)+0.5,\qquad 1 \leq x \leq 2
+	\]
+	With k = 2,
+	\[
+		a_2=\frac{Z_3-Z_2}{2h_2}=\frac{-3.5-2.5}{2(1)}=3,\qquad b_2=Z_2=2.5,\qquad c_2=y_2=2
+	\]
+	and
+	\[
+		f_2 (x)=-3(x-2)^2+2.5(x-2)+2,\qquad 2 \leq x \leq 3
+	\]
+	The quadratic spline function is
+	\[
+		S(x)=\begin{cases}
+			0.5x, &0 \leq x \leq 1\\
+			(x-1)^2+0.5(x-1)+0.5,& 1 \leq x \leq 2\\
+			-3(x-2)^2+2.5(x-2)+2, &2 \leq x \leq 3
+		\end{cases}
+	\]
+\end{soln}
+\begin{prob}
+	Consider the points
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cc}
+			\toprule
+			$ x $	&
+			$ y $	\\\midrule
+			0	&
+			0.0	\\
+			1	&
+			0.5	\\
+			2	&
+			2.0	\\
+			3&
+			1.5\\\bottomrule
+		\end{tabular}
+	\end{table}
+	\begin{enumerate}[label=(\alph*)]
+		\item Find the natural cubic spline which fits the given data.
+		\item Find the clamped cubic spline with conditions $ S^{'} (0)=1 $ and $ S^{'} (3)=-1 $.
+		\item Find the extrapolated cubic spline.
+	\end{enumerate}	
+\end{prob}
+\begin{soln}
+	The governing recurrence is
+	\[
+		h_k M_k+2(h_k+h_{k+1})M_{k+1}+h_{k+1} M_{k+2}=6\left[\frac{\Delta y_{k+1}}{h_{k+1}} -\frac{\Delta y_k}{h_k} \right],\qquad k = 0, 1, 2
+	\] 
+	First, compute the quantities
+	\[
+		h_0=h_1=h_2=1
+	\]
+	and
+	\[
+		\frac{\Delta y_0}{h_0} =\frac{0.5-0}{1}=0.5,\quad\frac{ \Delta y_1}{h_1} =\frac{2-0.5}{1}=1.5,\quad \frac{\Delta y_2}{h_2} =\frac{1.5-2.0}{1}=-1.5
+	\]
+	\begin{enumerate}[label=(\alph*)]
+		\item Using natural cubic spline\\
+		Here the end conditions are
+		\[
+			M_0=M_3=0
+		\]
+		The equations corresponding to $ k = 0, 1 $ are
+		\[
+			M_0+4M_1+M_2=6(1.5-0.5)=6
+		\]
+		or
+		\begin{equation}
+			\label{eq:soln1}
+			4M_1+M_2=6
+		\end{equation}
+		and
+		\begin{equation*}	
+			M_1+4M_2+M_3=6(-0.5-1.5)=-12
+		\end{equation*}
+		or
+		\begin{equation}
+			\label{eq:soln2}
+			M_1+4M_2=-12
+		\end{equation}
+		Solving \eqref{eq:soln1} and \eqref{eq:soln2},
+		\[
+			M_1=2.4,\qquad M_2=-3.6
+		\]
+		With $ k = 0 $,
+		\begin{align*}
+			a_0&=\frac{M_1-M_0}{6}=\frac{2.4}{6}=0.4\\
+			b_0&=\frac{M_0}{2}=0\\
+			c_0&=\frac{\Delta y_0}{h_0} -\frac{h_0}{6}(M_1+2M_0)=0.5-\frac{2.4}{6}=0.1\\
+			d_0&=y_0=0
+		\end{align*}
+		and
+		\[
+			f_0 (x)=0.4x^3+0.1x,\qquad 0 \leq x \leq 1
+		\]
+		With $ k = 1 $,
+		\begin{align*}
+			a_1&=\frac{M_2-M_1}{6}=\frac{-6}{6}=-1\\
+			b_1&=\frac{M_1}{2}=\frac{2.4}{2}=1.2\\
+			c_1&=\frac{\Delta y_1}{h_1} -\frac{h_1}{6}(M_2+2M_1)=1.5-\frac{1.2}{6}=1.3\\	
+			d_1&=y_1=0.5
+		\end{align*}
+		and
+		\[
+			f_1 (x)=-(x-1)^3+1.2(x-1)^2+1.3(x-1)+0.5\qquad 0 \leq x \leq 1
+		\]
+		With $ k = 2 $,
+		\begin{align*}
+			a_2&=\frac{M_3-M_2}{6}=\frac{3.6}{6}=0.6\\
+			b_2&=\frac{M_2}{2}=\frac{-3.6}{2}=-1.8\\
+			c_2&=\frac{\Delta y_2}{h_2} -\frac{h_2}{6}(M_3+2M_2)=-0.5-\frac{-7.2}{6}=0.7\\
+			d_2&=y_2=2\\
+		\end{align*}
+		and
+		\[
+			f_2 (x)=0.6(x-2)^3-1.8(x-2)^2+0.7(x-2)+2,\qquad 0 \leq x \leq 1
+		\]
+		The natural cubic spline function is
+		\[
+			S(x)=\begin{cases}
+				0.4x^3+0.1x, &0 \leq x \leq 1\\
+				-(x-1)^3+1.2(x-1)^2+1.3(x-1)+0.5, &1 \leq x \leq 2\\
+				0.6(x-2)^3-1.8(x-2)^2+0.7(x-2)+2, &2 \leq x \leq 3	
+			\end{cases}
+		\]
+		\item With clamped spline condition\\
+		The first derivative boundary conditions are:
+		\[
+			S^{'} (0)=0.2 \qquad \text{and} \qquad S^{'} (3)=-1
+		\]
+		The equations involving M's are
+		\begin{align*}
+			&\text{At left end:}		&2M_0+M_1=6(0.5-0.2)=1.8\\
+			&\text{For } k = 0: &M_0+4M_1+M_2=6(1.5-0.5)=6\\
+			&\text{For } k = 1:		&M_1+4M_2+M_3=6(-0.5-1.5)=-12\\
+			&\text{At right end:}		&M_2+2M_3=6(-1+0.5)=-3
+		\end{align*}
+		Solution of the above equations are
+		\[
+			M_0=-0.36,\qquad M_1=2.52,\qquad M_2=-3.72,\qquad M_3=0.36
+		\]
+		Corresponding spline coefficients are
+		\begin{align*}
+			&k=0:		&a_0=0.48,\quad b_0=-0.18,\quad  c_0=0.2,\quad  d_0=0\\
+			&k=1:		&a_1=-1.04,\quad  b_1=1.26,\quad  c_1=1.28,\quad  d_1=0.5\\
+			&k=2:		&a_2=0.68,\quad  b_2=-1.86,\quad  c_2=0.68,\quad  d_2=2
+		\end{align*}
+		Thus the clamped cubic spline function is
+		\[
+			S(x)=\begin{cases}
+				0.48x^3-0.18x^2+0.2x, &0 \leq x \leq 1\\
+				-1.04(x-1)^3+1.26(x-1)^2+1.28(x-1)+0.5, &1 \leq x \leq 2\\
+				0.68(x-2)^3-1.8(x-2)^2+0.68(x-2)+2, &2 \leq x \leq 3
+			\end{cases}
+		\]
+		\item With extrapolated boundary condition\\
+		The equations involving M's are
+		\begin{align*}
+			&\text{At left end:} &M_1-M_0=M_2-M_1\\
+			&\text{or}			&M_0-2M_1+M_2=0\\
+			&\text{For }k = 0:		&M_0+4M_1+M_2=6(1.5-0.5)=6\\
+			&\text{For }k = 1:		&M_1+4M_2+M_3=6(-0.5-1.5)=-1.2\\
+			&\text{At right end:}		&M_3-M_2=M_2-M_1\\
+			&\text{or}			&M_1-2M_2+M_3=0
+		\end{align*}
+		Solution of the above equations are
+		\[
+			M_0=4,\qquad    M_1=1,\qquad    M_2=-2,\qquad    M_3=-5
+		\]
+		Corresponding spline coefficients are
+		\begin{align*}
+			&k=0:		&a_0=-0.5,\quad  b_0=2,\quad  c_0=-1,\quad  d_0=0\\
+			&k=1:		&a_1=-0.5,\quad  b_1=0.5,\quad  c_1=1.5,\quad  d_1=0.5\\
+			&k=2:		&a_2=-0.5,\quad  b_2=-1,\quad  c_2=1,\quad  d_2=2
+		\end{align*}
+		Thus the cubic spline function with extrapolated boundary condition is
+		\[
+			S(x)=\begin{cases}
+				-0.5x^3+2x^2-x, &0 \leq x \leq 1\\
+				-0.5(x-1)^3+0.5(x-1)^2+1.5(x-1)+0.5,& 1 \leq x \leq 2\\
+				-0.5(x-2)^3-(x-2)^2+(x-2)+2, &2 \leq x \leq 3
+			\end{cases}
+		\]
+	\end{enumerate}
+	\end{soln}
+	Comparison of the three types of spline curves are shown below:
+	\begin{figure}[H]
+		\centering
+		\import{../tikz/}{spline.tikz}
+	\end{figure}
+\section{EXERCISES}
+\begin{enumerate}
+	\item Determine whether this function is a first degree spline:
+	\[
+		f(x)=\begin{cases}
+			x,& -1 \leq x \leq 1\\
+			1-2(x-1),& 1 \leq x \leq 2\\
+			-1+3(x-2), &2 \leq x \leq 3
+		\end{cases}
+	\]
+	\item Is $ f(x)=\abs{x} $ a first degree spline? Why or why not?
+	\item Are these functions quadratic splines? Explain why or why not.
+	\begin{enumerate}
+		\item \[
+			f(x)=\begin{cases}
+				0.1x^2, &0 \leq x \leq 1\\
+				9.3x^2-18.4x+9.2,& 1 \leq x \leq 1.3
+			\end{cases}
+		\]
+		\item \[
+			f(x)=\begin{cases}
+				-x^2, &x \leq 0\\
+				x , &x>0
+			\end{cases}
+		\]
+	\end{enumerate}
+	\item Find first-degree and quadratic splines for the following data:
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{S[table-format=1.1]c}
+			\toprule
+			\multicolumn{1}{c}{$ x $}	&
+			$ y $	\\\midrule
+			-1.0	&
+			2	\\
+			0.0	&
+			1	\\
+			0.5	&
+			0	\\
+			1.0	&
+			1	\\
+			2.0&
+			2\\\bottomrule
+		\end{tabular}
+	\end{table}
+	\item Prove that the derivative of a quadratic spline is a first degree spline.
+	\item Show that the indefinite integral of a first-degree spline is a second-degree spline.
+	\item Determine whether $ f(x) $ is a cubic spline with knots -1, 0, 1 and 2:
+	\[
+		f(x)=\begin{cases}
+			1+2(x+1)+(x+1)^3, &-1 \leq x \leq 0\\
+			4+5x+3x^3, &0 \leq x \leq 1\\
+			11+1(x-1)+3(x-1)^2+(x-1)^3, &1 \leq x \leq 2
+		\end{cases}
+	\]
+	\item A natural cubic spline $ S $ on $ [0, 2] $ is defined by
+	\[
+		S(x)=\begin{cases}
+			1+2x-x^3, 0 \leq x \leq 1\\
+			2+b(x-1)+c(x-1)^2+d(x-1)^3, &1 \leq x \leq 2
+		\end{cases}
+	\]
+	Find $ b $, $ c $, and $ d $.
+	\item A natural cubic spline for a function $ f(x) $ on $ [-1, 2] $ is defined by
+	\[
+		f(x)=\begin{cases}
+			A(x+1)^3+B(x+1)^2-5(x+1)+5, &-1 \leq x \leq 0\\
+			x^3+3x^2-2x+1, &0 \leq x \leq 1\\
+			a(x+1)^3+b(x+1)^2+c(x+1)+d, &1 \leq x \leq 2
+		\end{cases}
+	\]
+	Find the values of $ A $, $ B $, $ a $, $ b $, $ c $ and $ d $.
+	Hence, estimate the values of $ f(-0.5) $ and $ f(1.5) $.
+	\item A clamped cubic spline for a function $ f(x) $ is defined on $ [1, 3] $ by
+	\[
+		f(x)=\begin{cases}
+			3(x-1)+2(x-1)^2-(x-1)^3, &0 \leq x \leq 1\\
+			a+b(x-2)+c(x-2)^2+d(x-2)^3,& 1 \leq x \leq 2
+		\end{cases}
+	\]
+	Given $ f^{'}(1)=f^{'}(3) $, find $ a $, $ b $, $ c $, and $ d $.
+	\item Find the natural cubic splines satisfying the following data points:
+	\begin{enumerate}
+		\item $ (0,1) $, $ (1,1) $ and $ (2,5) $
+		\item $ (-1,1) $, $ (0,2) $ and $ (1,-1) $
+	\end{enumerate}
+	\item Find the natural cubic spline which fits the following data:
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cc}
+			\toprule
+			$ x $	&
+			$ y $	\\\midrule
+			1	&
+			1	\\
+			2	&
+			5	\\
+			3	&
+			11	\\
+			4&
+			8\\\bottomrule
+		\end{tabular}
+	\end{table}
+	and hence find the values of $ y(1.5) $.
+	\item Find the natural cubic spline which fits the following data:
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{cS[table-format=1.0]}
+			\toprule
+			$ x $	&
+			\multicolumn{1}{c}{$ f(x) $}	\\\midrule
+			1	&
+			6	\\
+			2	&
+			-3	\\
+			3	&
+			6	\\
+			4	&
+			2	\\
+			5&
+			-6\\\bottomrule
+		\end{tabular}
+	\end{table}
+	Find $ f(x) $ at $ x = 1.3 $.
+	\item Consider the points 
+	\begin{table}
+		\centering
+		\begin{tabular}{*{2}{S[table-format=2.0]}}
+			\toprule
+			\multicolumn{1}{c}{$ x $}	&
+			\multicolumn{1}{c}{$ y $}	\\
+			-1	&
+			9	\\
+			0	&
+			26	\\
+			3	&
+			56	\\
+			4&
+			29\\\bottomrule
+		\end{tabular}
+	\end{table}
+	\begin{enumerate}
+		\item Find the natural cubic spline which fits this data and hence estimate the value of  $ y(1) $.
+		\item Find the clamped cubic spline with conditions $ S^{'} (-1)=1 $ and $ S^{'} (4)=-1 $.
+		\item Find the extrapolated cubic spline.
+	\end{enumerate}
+	\item Consider the points  $ (0,1) $, $ (1,4) $, $ (2,0) $ and $ (3,-2) $. Find
+	\begin{enumerate}
+		\item the natural cubic spline.
+		\item the clamped cubic spline with conditions $ S' (0)=2 $ and $ S' (3)=2 $.
+		\item the extrapolated cubic spline.
+		\item the parabolically terminated cubic spline.
+		\item the curvature adjusted cubic spline with the second derivative boundary conditions $ S^{''}(0)=-1.5 $ and $ S^{''} (3)=3 $.
+	\end{enumerate}
+\end{enumerate}
+\end{document}

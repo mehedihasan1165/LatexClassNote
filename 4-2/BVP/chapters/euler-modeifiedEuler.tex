@@ -1,0 +1,170 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\section{Euler Method}
+\[
+    \ddx{y}=f(x,y);\quad y(x_0)=y_0
+\]
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{.45\textwidth}
+        \import{../tikz/}{euler.tikz}
+    \end{minipage}
+    \begin{minipage}[c]{.45\textwidth}
+        \import{../tikz/}{euler-2.tikz}
+    \end{minipage}
+\end{figure}
+\begin{align*}
+    &\tan\;\theta=\frac{y_1-y_0}{x_1-x_0}\\
+    \Rightarrow\;&\tan\;\theta=\frac{y_1-y_0}{h}\\
+    \Rightarrow\;&f(x_0,y_0)=\frac{y_1-y_0}{h}\\
+    \Rightarrow\;&y_1=y_0+hf(x_0,y_0)
+\end{align*}
+Similarly,
+\[y_2=y_1+hf(x_1,y_1)\]
+Generally,
+\[y_{i+1}=y_i+hf(x_i,y_i)\]
+which is Euler's method.
+\section{Modified Euler Method}
+\begin{align*}
+    \ddx{y}&=f(x,y);\qquad y(x_0)=y_0\\
+    \text{or, } \ddt{y}&=f(t,y);\qquad y(t_0)=y_0\\
+\end{align*}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{modifiedEuler.tikz}
+\end{figure}
+\[
+    y_{n+1}=y_n+\frac{\Delta t}{2}\left[ f(t_n,y_n)+f(t_n+\Delta t,y_{n+1})\right]
+\]
+Predictor-Corrector Method:
+\begin{align*}
+    y_{n+1}^{p}&=y_n+\Delta t f(t_n,y_n)\\
+    \therefore\;\;y_{n+1}&=y_n+\frac{\Delta t}{2}\left[ f(t_n,y_n)+f(t_n+\Delta t,y_{n+1}^p)\right]
+\end{align*}
+which is called Modified Euler method.\\
+This is also called 2nd-order Runge-Kutta method.
+\section{Runge-Kutta Method (RK2) (Two stage)}
+\begin{align*}
+    k_1&=\Delta t f(t_n,y_n)\\
+    k_2&=\Delta t f(t_n+\Delta t,y_n+k_1)\\
+    \therefore\;\;y_{n+1}&=y_n+\frac{1}{2}(k_1+k_2)
+\end{align*}
+\begin{ex}
+    Modified Euler Method:\\
+    
+    
+    First approximation:
+    \[
+        y_1^{(1)}=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_1,y_{1})\right]
+    \]
+    where
+    \[
+        y_1=y_0+hf(x_0,y_0)
+    \]
+    Now,
+    \begin{align*}
+        y_1^{(2)}&=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_1,y_{1}^{(1)})\right]\\
+        y_1^{(3)}&=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_1,y_{1}^{(2)})\right]\\
+        \vdots &
+    \end{align*}
+    Let us consider \(y_1^{(n+1)}=y_1^{(n)}\), then \(y_1=y_1^{(n+1)}\).
+    
+    
+    Second approximation: \(x_1=x_0+h\)
+    \[
+        y_2^{(1)}=y_1+\frac{h}{2}\left[ f(x_1,y_1)+f(x_2,y_{2})\right]
+    \]
+    where
+    \[
+        y_2=y_1+hf(x_1,y_1)
+    \]
+    Now,
+    \begin{align*}
+        y_2^{(2)}&=y_1+\frac{h}{2}\left[ f(x_1,y_1)+f(x_2,y_{2}^{(1)})\right]\\
+        y_2^{(3)}&=y_1+\frac{h}{2}\left[ f(x_1,y_1)+f(x_2,y_{2}^{(2)})\right]\\
+        \vdots &
+    \end{align*}
+
+    Generally,
+    \[
+        y_{i+1}^{(n+1)}=y_i+\frac{h}{2}\left[ f(x_i,y_i)+f(x_{i+1},y_{i+1}^{(n)})\right]
+    \]
+    where
+    \[
+        y_{i+1}^{(n)}=y_i+hf(x_i,y_i)
+    \]
+\end{ex}
+\begin{prob}
+    \(\ddx{y}=x+y\), with \(y(0)=1\) for \(x=0.1\) taking \(h=0.05\)
+\end{prob}
+\begin{soln}
+    1st Iteration\\
+
+    1st approximation:
+    \begin{equation}
+        y_{1}^{(1)}=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_{1},y_{1})\right]
+        \label{eq:probme1.1}
+    \end{equation}
+    where,
+    \begin{align*}
+        y_1&=y_0+hf(x_0,y_0)\\
+        &=1+0.05(0+1)\\
+        &=1.05
+    \end{align*}
+    Now from \eqref{eq:probme1.1}
+    \begin{align*}
+        y_1^{(1)}&=1+\frac{0.05}{2}\left[ 0+1+0.05+1.05\right]\\
+        &=1.0525
+    \end{align*}
+    Again,
+    \begin{align*}
+        y_1^{(2)}&=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_{1},y_{1}^{(1)})\right]\\
+        &=1+\frac{0.05}{2}\left[ 0+1+0.05+1.0525\right]\\
+        &=1.0526
+    \end{align*}
+    [Note: \(f(x_1,y_1^{(1)})=x_1+y_1^{(1)}=0.05+1.0525\)]
+    \begin{align*}
+        y_1^{(3)}&=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_{1},y_{1}^{(2)})\right]\\
+        &=1+\frac{0.05}{2}\left[ 0+1+0.05+1.0526\right]\\
+        &=1.0526
+    \end{align*}
+    \(f(x_1,y_1^{(2)})=x_1+y_1^{(2)}=0.05+1.0526\)\\
+    So \(y=1.0526\) at \(x=0.05\)\\
+    
+    
+    2nd Iteration: \(x_0=0.05\), \(y_0=1.0526\), \(h=0.05\), \(x_1=x_0+h=0.05+0.05=0.10\)\\
+    \begin{equation}
+        \therefore\;\;y_{1}^{(1)}=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_{1},y_{1})\right]
+        \label{eq:probme1.2}
+    \end{equation}
+    where,
+    \begin{align*}
+        y_1&=y_0+hf(x_0,y_0)\\
+        &=1.0526+0.05f(0.05,1.0526)\\
+        &=1.1077
+    \end{align*}
+    Now from \eqref{eq:probme1.2}
+    \begin{align*}
+        y_1^{(1)}&=1.0526+\frac{0.05}{2}\left[ f(0.05,1.0526)+f(0.1,1.1077)\right]\\
+        &=1.0526+\frac{0.05}{2}\left[ 0.05+1.0526+0.1+1.1077\right]\\
+        &=1.1103
+    \end{align*}
+    Again,
+    \begin{align*}
+        y_1^{(2)}&=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_{1},y_{1}^{(1)})\right]\\
+        &=1.0526+\frac{0.05}{2}\left[ f(0.05,1.0526)+f(0.1,1.1103)\right]\\
+        &=1.0526+\frac{0.05}{2}\left[ 0.05+1.0526+0.1+1.1103\right]\\
+        &=1.1104
+    \end{align*}
+    \begin{align*}
+        y_1^{(3)}&=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_{1},y_{1}^{(2)})\right]\\
+        &=1.0526+\frac{0.05}{2}\left[ f(0.05,1.0526)+f(0.1,1.1104)\right]\\
+        &=1.0526+\frac{0.05}{2}\left[ 0.05+1.0526+0.1+1.1104\right]\\
+        &=1.1104
+    \end{align*}
+    So \(y=1.1104\) at \(x=0.1\)
+\end{soln}
+\end{document}

@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{xcolor,xparse}
+\usepackage{listings}
+\definecolor{mygray}{rgb}{0.8,0.8,0.8}
+\lstset{%
+basicstyle=\ttfamily,
+breaklines = true,
+backgroundcolor=\color{mygray},
+}
+\usepackage{realboxes}
+
+\DeclareDocumentCommand{\clist}{v}{%
+    \Colorbox{mygray}{\csname lstinline\endcsname!#1!}%
+}
+
+\begin{document}
+
+% demo using \lstinline only
+This is \lstinline|my code|
+
+% demo using \lstinline and \Colorbox
+This is \Colorbox{mygray}{\lstinline|my code|}
+\clist{my code}
+
+\end{document}

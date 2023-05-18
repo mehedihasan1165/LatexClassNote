@@ -1,0 +1,159 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+% \newcommand{\F}{{}_2F_1}
+% \newcommand{\abgx}{\alpha,\beta;\gamma;x}
+\begin{document}
+\chapter{Hypergeometric Function}
+\section{Introduction}
+The hypergeometric differential equation is an equation of the form 
+\begin{equation}
+    \left( x^2-x \right)y''+\big[(1+\alpha+\beta)x-\gamma\big]y'+\alpha\beta y=0 \label{eq:intro1}
+\end{equation}
+where the parameters \( \alpha \), \( \beta \), \( \gamma \) are constant, and it is assumed that \( \gamma \) is not a negative integer.
+
+Equation \eqref{eq:intro1} can be written as 
+\begin{equation}
+    y''+X_1y'+X_2y=0\label{eq:intro2}
+\end{equation}
+where
+\[
+    X_1=\frac{(1+\alpha+\beta)x-\gamma}{x(x-1)},\qquad\qquad X_2=\frac{\alpha \beta}{x(x-1)}
+\]
+Equation \eqref{eq:intro1} and \eqref{eq:intro2} has singularities at \( x=0,\,1 \) and \( \infty \).\\
+\emph{For \( x=0 \)}, the general solution of \eqref{eq:intro1} is \( y=Au+Bv \), where \( A \), \( B \) are constant and
+\begin{align*}
+    u&=1+\frac{\alpha\beta}{1\cdot\gamma}+\frac{\alpha(\alpha+1)\beta(\beta+1)}{1\cdot2\cdot\gamma(\gamma+1)}x^2+\dots\\
+    &=\sum_{r=0}^\infty \frac{(\alpha)_r (\beta)_r}{r!\,(\gamma)_r}x^r\\
+    &=F(\abgx) \quad\text{ or }\quad \F(\abgx)\\
+    \intertext{and}
+    v&=x^{1-\gamma}F(\alpha',\beta';\gamma';x)\qquad\left\vert\qquad\begin{aligned}
+        \text{Where, } \alpha'&=1-\gamma+\alpha\\
+        \beta'&=1-\gamma+\beta\\
+        \gamma'&=2-\gamma
+    \end{aligned}\right.
+\end{align*}
+Similarly, \emph{for \( x=1 \) and \( x=\infty \)}, the solutions of \eqref{eq:intro1} are
+\[
+    y=AF(\alpha,\beta;1+\alpha+\beta-\gamma;1-x)+B(1-x)^{\gamma-\alpha-\beta}F(\gamma-\alpha,\gamma-\beta;\gamma-\alpha-\beta+1;1-x)
+\]
+and 
+\[
+    y=Ax^{-\alpha}F\left(\alpha,\alpha-\beta+1;\alpha-\beta+1;\frac{1}{x}\right)+Bx^{-\beta}F\left(\beta,\beta-\gamma+1;\beta-\alpha+1;\frac{1}{x}\right)
+\]
+respectively.
+
+One of the solutions of the hypergeometric differential equation 
+\[
+    \F(\abgx)=\sum_{r=0}^\infty \frac{(\alpha)_r (\beta)_r}{(\gamma)_r\,r!}x^r
+\]
+is known as hypergeometric function.
+\subsection{Pochhammer Symbol}
+The Pochhammer symbol is denoted and defined by
+\[
+    (\alpha)_r=\alpha(\alpha+1)(\alpha+2)\dots(\alpha+r-1),\quad\text{ with }(\alpha)_0=1
+\]
+\( (\alpha)_r \) can also be expressed as 
+\[
+    (\alpha)_r=\frac{\Gamma(\alpha+r)}{\Gamma(\alpha)}
+\]
+\section{Integral Formula for the Hypergeometric Function}
+\begin{prob}
+    If \( \abs{x}<1 \) and if \( \gamma>\beta>0 \), prove that 
+    \[
+        \F(\abgx)=\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}\int_0^1t^{\beta-1}(1-t)^{\gamma-\beta-1}(1-xt)^{-\alpha}\D t
+    \]
+\end{prob}
+\begin{proof}
+    By definition, we have
+    \begin{equation}
+        F(\abgx)=\sum_{r=0}^\infty \frac{(\alpha)_r (\beta)_r}{(\gamma)_r\,r!}x^r \label{eq:int1}
+    \end{equation}
+    where
+    \begin{align*}
+        (\alpha)_r&=\alpha(\alpha+1)(\alpha+2)\dots(\alpha+r-1)\\
+        &=\frac{1\cdot2\cdot3\dots(\alpha-1)\alpha(\alpha+1)(\alpha+2)\dots(\alpha+r-1)}{1\cdot2\cdot3\dots(\alpha-1)}\\
+        &=\frac{\Gamma(\alpha+r)}{\Gamma(\alpha)}
+    \end{align*}
+    \begin{align*}
+        \therefore\, \frac{(\beta)_r}{(\gamma)_r}&=\frac{\Gamma(\beta+r)}{\Gamma(\beta)}\cdot\frac{\Gamma(\gamma)}{\Gamma(\gamma+r)}\\
+        &=\frac{\Gamma(\gamma)}{\Gamma(\beta)}\cdot\frac{\Gamma(\beta+r)\Gamma(\gamma-\beta)}{\Gamma(\gamma+r)\Gamma(\gamma-\beta)}\\
+        &=\frac{\Gamma(\gamma)}{\Gamma(\beta)}\cdot\frac{\Gamma(\beta+r)\Gamma(\gamma-\beta)}{\Gamma(\beta+\gamma+r-\beta)}\cdot\frac{1}{\Gamma(\gamma-\beta)}\\
+        &=\frac{\Gamma(\gamma)}{\Gamma(\beta)}\cdot\frac{\Gamma(\beta+r)\Gamma(\gamma-\beta)}{\Gamma(\beta+r+\gamma-\beta)}\cdot\frac{1}{\Gamma(\gamma-\beta)}\\
+        &=\frac{\Gamma(\gamma)}{\Gamma(\beta)\cdot\Gamma(\gamma-\beta)}\cdot B(\beta+r,\gamma-r)\qquad\text{ where } \beta+r>0\,\gamma-\beta>0\\
+        &=\frac{\Gamma(\gamma)}{\Gamma(\beta)\cdot\Gamma(\gamma-\beta)}\cdot\int_0^1 t^{\beta+r-1}(1-t)^{\gamma-\beta-1}\D t\qquad\text{ since }\frac{\Gamma(m)\Gamma(n)}{\Gamma(m+n)}=B(m,n)=\int_0^1 t^{m-1}(1-t)^{n-1}\D t\\
+        &=\frac{1}{\displaystyle \frac{\Gamma(\beta)\Gamma(\gamma-\beta)}{\Gamma(\beta+\gamma-\beta)}}\cdot\int_0^1 t^{\beta+r-1}(1-t)^{\gamma-\beta-1}\D t\\
+        &=\frac{1}{B(\beta,\gamma-\beta)}\cdot\int_0^1 t^{\beta+r-1}(1-t)^{\gamma-\beta-1}\D t
+    \end{align*}
+    Thus from \eqref{eq:int1}, we have
+    \begin{align*}
+        F(\abgx)&=\sum_{r=0}^\infty\frac{1}{B(\beta,\gamma-\beta)}\int_0^1 t^{\beta+r-1}(1-t)^{\gamma-\beta-1}\times\frac{(\alpha)_r}{r!}\cdot x^r\D t\\
+        &=\sum_{r=0}^\infty\frac{1}{B(\beta,\gamma-\beta)}\int_0^1 t^{\beta-1}(1-t)^{\gamma-\beta-1}\times\frac{(\alpha)_r}{r!}\cdot (xt)^r\D t\\
+        &=\frac{1}{B(\beta,\gamma-\beta)}\int_0^1 t^{\beta-1}(1-t)^{\gamma-\beta-1}\left\{ \sum_{r=0}^\infty\frac{(\alpha)_r (xt)^r}{r!}\right\}\D t\\
+    \end{align*}
+    \begin{note}
+        The general term in the expansion of \( (1-xt)^{-\alpha} \) is\footnote{\[
+            \sum_{r=0}^\infty\frac{(\alpha)_r (xt)^r}{r!}=1+\frac{\alpha(xt)}{1!}+\frac{\alpha(\alpha+1)}{2!}(xt)^2+\dots=(1-xt)^{-\alpha}
+        \]} 
+        \begin{align*}
+            (1-xt)^{-\alpha}&=\frac{(-\alpha)(-\alpha-1)\dots(-\alpha-r+1)}{r!}(-xt)^r\\
+            &=(-1)^r\frac{\alpha(\alpha+1)\dots(\alpha+r-1)}{r!}(-1)^r(xt)^r\\
+            &=\frac{\alpha(\alpha+1)\dots(\alpha+r-1)}{r!}x^r\,t^r\\
+            &=\frac{(\alpha)_r}{r!}\cdot x^r\cdot t^r
+        \end{align*}
+    \end{note}
+    % \newpage
+    \[
+        \therefore\,F(\abgx)=\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}\int_0^1 t^{\beta-1}(1-t)^{\gamma-\beta-1}(1-xt)^{-\alpha}\D t
+    \]
+    \[
+        \text{ or, }F(\abgx)=\frac{1}{B(\beta,\gamma-\beta)}\int_0^1 t^{\beta-1}(1-t)^{\gamma-\beta-1}(1-xt)^{-\alpha}\D t
+    \]
+    Which is known as the integral formula for hypergeometric function and is valid if \( \abs{x}<1 \) and \( \gamma>\beta>0 \).
+\end{proof}
+\section{Gauss's Theorem}
+\begin{thm}
+    \[
+        F(\alpha,\beta;\gamma;1)=\frac{\Gamma(\gamma)\Gamma(\gamma-\beta-\alpha)}{\Gamma(\gamma-\alpha)\Gamma(\gamma-\beta)}
+    \]
+\end{thm}
+\begin{proof}
+    From the definition of integral formula for the hypergeometric function, we have,
+    \begin{equation}
+        F(\abgx)=\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}\int_0^1 t^{\beta-1}(1-t)^{\gamma-\beta-1}(1-xt)^{-\alpha}\D t \label{eq:gauss1}
+    \end{equation}
+    Putting \( x=1 \) in \eqref{eq:gauss1}, we get,
+    \begin{align*}
+        F(\alpha,\beta;\gamma;1)&=\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}\int_0^1 t^{\beta-1}(1-t)^{\gamma-\beta-1}(1-t)^{-\alpha}\D t\\
+        &=\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}\int_0^1 t^{\beta-1}(1-t)^{(\gamma-\beta-\alpha)-1}\D t\\
+        &=\frac{B(\beta,\gamma-\beta-\alpha)}{B(\beta,\gamma-\beta)}\\
+        &=\frac{\displaystyle \frac{\Gamma(\beta)\Gamma(\gamma-\beta-\alpha)}{\Gamma(\beta+\gamma-\beta-\alpha)}}{\displaystyle \frac{\Gamma(\beta)\Gamma(\gamma-\beta)}{\Gamma(\beta+\gamma-\beta)}}\\
+        &=\frac{\Gamma(\beta)\Gamma(\gamma-\beta-\alpha)}{\Gamma(\gamma-\alpha)}\times\frac{\Gamma(\gamma)}{\Gamma(\beta)\Gamma(\gamma-\beta)}\\
+        &=\frac{\Gamma(\gamma)\Gamma(\gamma-\beta-\alpha)}{\Gamma(\gamma-\alpha)\Gamma(\gamma-\beta)}
+    \end{align*}
+    Hence \(\displaystyle  F(\alpha,\beta;\gamma;1)=\frac{\Gamma(\gamma)\Gamma(\gamma-\beta-\alpha)}{\Gamma(\gamma-\alpha)\Gamma(\gamma-\beta)} \)
+\end{proof}
+\newpage
+\section{Problems}
+\begin{prob}
+    Prove that
+    \[
+        P_n(x)=\F\left( -n,n+1;1;\frac{1-x}{2} \right)
+    \]
+\end{prob}
+\begin{proof}
+    From Rodrigue's formula for Legendre polynomial, we have
+    \begin{align*}
+        P_n(x)&= \frac{1}{2^n\,n!}\ddxn{}{n}\left( x^2-1 \right)^n\\
+        &= \frac{1}{n!}\ddxn{}{n}\left[(x-1)^n \left\{\frac{1}{2}( x+1) \right\}^n\right]\\
+        &= \frac{(-1)^n}{n!}\ddxn{}{n}\left[(1-x)^n \left\{1-\frac{1}{2}(1- x) \right\}^n\right]\\
+        &= \frac{(-1)^n}{n!} \ddxn{}{n} \left[(1-x)^n \left\{1-n\frac{1}{2}(1- x)+\frac{n(n-1)}{2!}\cdot\frac{(1-x)^2}{4}-\frac{n(n-1)(n-2)}{3!}\cdot\frac{(1-x)^3}{8}+\dots \right\}\right]\\
+        &= \frac{(-1)^n}{n!} \ddxn{}{n} \left[(1-x)^n-n\frac{1}{2}(1- x)^{n+1}+\frac{n(n-1)}{2!\, 2^2}\cdot(1-x)^{n+2}-\frac{n(n-1)(n-2)}{3!\cdot 2^3}\cdot(1-x)^{n+3}+\dots\right]\\
+        &=\frac{(-1)^n}{n!}\left[ (-1)^n\,n!-\frac{n}{2}(-1)^n\frac{(n+1)!}{1!}(1-x)+\frac{n(n-1)}{2!}(-1)^n\frac{(n+2)!}{2!}(1-x)^2-\dots \right]\\
+        &=1+\frac{(-n)(n+1)}{1\cdot 1!}\left( \frac{1-x}{2} \right)+\frac{(-n)(-n+1)(n+1)(n+2)}{1\cdot2\cdot2!}\left( \frac{1-x}{2} \right)^2+\dots\\
+        &=\F\left( -n,n+1;1;\frac{1-x}{2} \right)
+    \end{align*}
+    Hence \( P_n(x)=\F\left( -n,n+1;1;\frac{1-x}{2} \right) \).
+\end{proof}
+\end{document}

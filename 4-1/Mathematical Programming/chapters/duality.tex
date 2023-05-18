@@ -1,0 +1,73 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Duality}
+The term `duality' implies that every linear programming problem (LPP) whether if maximization or minimization has associated with it another linear programming problem based on the same data. The original (given) problem is called the \textbf{primal problem}, while the other is called its \textbf{dual problem}.\\
+
+A solution to the dual linear programming problem may be found in a manner similar to that used for the primal. The two problems have very closely related properties so that optimum solution of the dual gives the complete information about the optimal solution of the primal and vice versa.
+\section{An Algorithm for primal-dual constructions}
+To construct a dual linear programming problem from a primal (given) LPP, we have to follow the following steps:
+\begin{enumerate}[label={Step \arabic*:}]
+    \item Express the primal problem into its standard form.\\
+    (All primal constrains are equations with non-negative R.H.S., and all primal variables are non-negative)
+    \item Identify the variables to be used in the dual problem.\\
+    The number of new variables required in the dual problem equals the number of Constraints in the primal.
+    \item Objective function for the dual problem:\\
+    Using the right-hand side values of the primal constraints write down the objective function of the dual.\\
+    If the primal problem is of maximization (minimization), the dual will be minimization (maximization) problem.
+    \item Constraints for the dual problem:\\
+    Using the dual variables identified in \emph{step 2}, write the constraints for the dual problem.
+    \begin{enumerate}[label=(\roman*)]
+        \item If the primal is a maximization problem, the constraints in the dual must be all of \(\geq\) type. On the other hand, if the primal is a minimization problem, the constraints in the dual must be \(\leq\) type. [Note to self check these signs]
+        \item The row coefficients of the primal constraints become the column coefficients of the dual constraints.
+        \item The coefficients of the primal objective function become the R.H.S. of the dual constrains set.
+        \item The dual variables are defined to be unrestricted.
+    \end{enumerate}
+    \item Making use of \emph{steps 3} and \emph{4}, write the dual problem. This is the required dual problem of the given LPP.
+\end{enumerate}
+\begin{rem}
+    The dual constraint associated with an artificial variable in the standard form is always redundant, hence it is never necessary to consider the dual constrains associated with an artificial variable.
+\end{rem}
+\begin{note}
+    The rules for determining the sense of optimization, the type of the constraint, and the sign of the variables in the dual problem are summarized in the following table:
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc}
+        \toprule
+        \textbf{Standard primal} & \multicolumn{3}{c}{\textbf{Dual Problem}} \\ 
+        Objective & Objective & Constraints Type & Variable sign \\\midrule
+        Maximization & Minimization & \(\geq\) & unrestricted \\
+        Minimization & Maximization & \(\leq\) & unrestricted \\ \bottomrule
+        \end{tabular}
+        \end{table}
+\end{note}
+The characteristics of the primal-dual construction relationship may be summed as below
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+        \multicolumn{1}{c}{\cellcolor[HTML]{D9D9D9}Primal problem} & & \multicolumn{1}{c}{\cellcolor[HTML]{D9D9D9}Dual problem} \\
+        Minimize \(Z=12x_1+20x_2\) & & Maximize \(W=100y_1+120y_2\) \\
+        Subject to & & Subject to \\
+        \multicolumn{1}{r}{\(\begin{aligned}
+             6x_1+8x_2&\geq 100\\
+             7x_1+12x_2&\geq 120\\
+             x_1,\,x_2&\geq 0
+         \end{aligned}\)}& &\multicolumn{1}{r}{\(\begin{aligned}
+            6y_1+7y_2&\leq 12\\
+             8y_1+12y_2&\leq 20\\
+             y_1,\,y_2&\geq 0
+        \end{aligned}\)}\\ 
+        \end{tabular}
+\end{table}
+\underline{\textbf{In details:}}\\
+Standard form of the given L.P.P. is 
+\begin{mini*}
+    {}{Z=12x_1+20x_2+0x_3+0x_4}{}{}
+    \addConstraint{6x_1+8x_2-x_3}{= 100}
+    \addConstraint{7x_1+12x_2-x_4}{= 120}
+    \addConstraint{x_1,x_2,x_3,x_4}{\geq 0}
+\end{mini*}
+Notice that \(x_3\) and \(x_4\) are surplus variables in the 1st and 2nd constraints respectively; hence both have zero coefficient in the objective function. Also, the coefficients of \(x_4\) and \(x_3\) will be zero in the first and second constraints respectively.
+\end{document}

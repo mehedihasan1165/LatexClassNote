@@ -1,0 +1,588 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\begin{prob}
+    What is mathematical model? Discuss the steps in building a good mathematical model. Discuss briefly the limitations of mathematical modelling.
+\end{prob}
+\begin{soln}
+    \underline{Mathematical model:} A differential equation that describes some physical process is often called a mathematical model of the process.\\
+    \underline{Steps in building a good mathematical model:} The following steps are necessary for building a good mathematical model.
+    \begin{enumerate}[label=(\roman*)]
+        \item To identify the independent and dependent variables. The independent variable is often time.
+        \item To choose the limits of measurement for each variable.
+        \item To articulate the basic principle that underlies or governs the problem.
+        \item To express the principle or law in terms of the variables.
+        \item To make sure that each term in the equation has the same physical units.
+    \end{enumerate}
+    \underline{Limitations of mathematical modeling:}
+
+    There are still an equally large or even a larger number of situations which have not yet been mathematically modeled either because the situations are sufficiently complex or because mathematical models formed are mathematically intractable.\\
+    However, successful guidelines are not available for choosing the number of parameter and of estimating the values of these parameters. Mathematical modelling of large systems presents its own special problems.
+\end{soln}
+\begin{prob}
+    Discuss the mathematical model for population. What are the necessity and techniques of mathematical model?
+\end{prob}
+\begin{soln}
+    A differential equation that describes some physical process is often called a mathematical model of the process.
+
+    It is necessary first to formulate the appropriate differential equation that describes or models, the problem being investigated. Sometimes it is difficult to construct a satisfactory model.\\
+
+    The following are necessity and techniques of mathematical model.
+    \begin{enumerate}[label=(\roman*)]
+        \item Identify the dependent and independent variables. The independent variable is often time.
+        \item Choose the units of measurement for each variable.
+        \item Articulate the basic principle that underlies or governs the problem.
+        \item Express the principle or law in terms of the variables.
+        \item Make sure that each term in the equation has same physical units.
+    \end{enumerate}
+\end{soln}
+\begin{prob}
+    Discuss Malthusian model for single species population growth.\\
+    Discuss the limiting behavior of the model as \(t\to \infty\). Comment on the appropriateness of the model and suggest some improvement.\\
+    or,\\
+    Describe the mathematical model of a single species population. Comment on the plausibility of the model and suggest some improvement.
+\end{prob}
+\begin{soln}
+    Let \(N(t)\) be the population of species at time \(t\). Then the rate of change,
+    \begin{equation}
+        \ddt{N}=\text{births }-\text{deaths }+\text{migration}
+        \label{eq:1.1}
+    \end{equation}
+    is a conservation equation for the population.
+
+    The simplest model has no migration and the birth and death terms are proportional to \(N\).\\
+    Thus, \eqref{eq:1.1} takes the form,
+    \begin{align}
+        \ddt{N}&=(b-d)N\notag\\
+        &=rN\qquad\text{Where } r=b-d\notag\\
+       \Rightarrow \frac{\D N}{N}&=r\D t\notag\\
+       \Rightarrow\ln N&=rt+\ln c\quad [\text{Integrating}]\notag\\
+       \Rightarrow N&=c e^{rt}\label{eq:1.2}
+    \end{align}
+    Let the initial condition, \(N=N_0\) at \(t=t_0\)\\
+    From \eqref{eq:1.2} we have,
+    \begin{align*}
+        &N(0)=ce^{rt_0}\\
+        \Rightarrow &c=N_0 e^{-rt_0}
+    \end{align*}
+        \[\therefore N=N_0 e^{r(t-t_0)}\]
+    This is the Malthusian model for population growth.
+
+    \emph{Behaviour of the solution:}\\
+    For different values of \(r\), we obtain three different solution of Malthusian model.\\
+
+
+    \underline{Case 1:} If \(r<0\), then \(\lim_{t\to\infty}N(t)=0\). This is called the case of extinction decays (exponentially).\\
+    
+    
+    \underline{Case 2:} If \(r=0\), then \(N(t)=N_0\). The population remains unchanged. (constant)\\
+
+
+    \underline{Case 3:} If \(r>0\), then \(\lim_{t\to\infty}N(t)=\infty\). The population grows exponentially. (unlimited growth)
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{model-malthusian.tikz}
+    \end{figure}
+    Taking \(t_0=0\), then the solution reduces to
+    \[N(t)=N_0e^{rt}\]
+    In the absence of birth (\(b=0\)), the population is by death at rated and consequently the average life span of a number of this problem \(\frac{1}{d}\).
+    
+    If \(b>0\), then the average number of offspring over the lifetime of an average individual under the Malthusian model would be \(\frac{b}{d}\).
+    
+    If the ratio is greater than \(1\), then birth exceeds death and the population explodes.
+    
+    If the ratio is less than 1, then death exceeds birth and the population dies out.
+\end{soln}
+\begin{prob}
+    Describe the Verhulst logistic growth model for the dynamics of a single species population. Find the complete solution of the model. Discuss the behavior of the population as \(t\to \infty\). Discuss the stability of the equilibrium states of the logistic model.\\
+    Or, Describe the single species discrete time population model. Show that according to this model the population tends to be a constant (carrying capacity).
+\end{prob}
+\begin{soln}
+    \emph{1st part:} For the dynamics of a single species population Verhulst suggested the model
+    \[\ddt{N}=rN\left( 1-\frac{N}{K} \right)\]
+    where \(N=N(t)=\) population of single species at time \(t\) and \(r\) and \(K\) are constants. Here, \(r\left( 1-\frac{N}{K} \right)\) is the per capita birth rate. The constant \(K\) is the carrying capacity of the environment.\\
+    
+    \emph{2nd part:} We have,
+    \begin{align}
+        &\ddt{N}=rN\left( 1-\frac{N}{K} \right)\notag\\
+        \Rightarrow\; &\frac{k\D N}{N(K-N)}=r\D t\notag\\
+        \Rightarrow\; &\left(\frac{1}{N}+\frac{1}{K-N}\right)\D N=r\D t\notag\\
+        \intertext{Integrating both sides, we get}
+        \Rightarrow\; &\log N-\log(K-N)=rt+\log c\notag\\
+        \Rightarrow\; &\log \frac{N}{K-N}=\log c e^{rt}\qquad [\because \log e^{rt}=rt]\notag\\
+        \Rightarrow\; &\frac{N}{K-N}=c e^{rt}\label{eq:ver1.1}
+    \end{align}
+    Using the initial condition, \(N=N_0\) at \(t=0\)
+    \begin{align*}
+        &\frac{N_0}{K-N_0}=ce^0\\
+        \Rightarrow\; &c=\frac{N_0}{K-N_0}\\
+        \intertext{Equation \eqref{eq:ver1.1} becomes,}
+        \Rightarrow\; &\frac{N}{K-N}=\frac{N_0}{K-N_0}e^{rt}\\
+        \Rightarrow\; &N(K-N_0)=N_0(K-N)e^{rt}\\
+        \Rightarrow\; &N(K-N_0+N_0e^{rt})=N_0Ke^{rt}\\
+        \Rightarrow\; & N=\frac{N_0Ke^{rt}}{(K-N_0)+N_0e^{rt}}
+    \end{align*}
+    \begin{equation}
+        \therefore\;N=\frac{N_0K}{N_0+(K-N_0)e^{-rt}} \label{eq:ver1.2}
+    \end{equation}
+    
+    \emph{3rd part:} From \eqref{eq:ver1.2} we have
+    \[N(t)=\frac{N_0K}{N_0+(K-N_0)e^{-rt}}\]
+    when, \(t\to \infty\), then,
+    \begin{align*}
+        & N(t)\to\frac{KN_0}{N_0+(K-N_0)\cdot 0}\\
+        \Rightarrow\;& N(t)\to\frac{KN_0}{N_0}\\
+        \Rightarrow\;& N(t)\to K
+    \end{align*}
+    This is the limiting behavior of the model as \(t\to\infty\).
+    
+    \emph{4th part:} \underline{For stability and equilibrium:}\\
+    For stability and equilibrium,\\
+    we have,
+    \begin{align*}
+        &\ddt{N}=0\\
+        \Rightarrow\; &rN\left( 1-\frac{N}{K} \right)=0\\
+        \Rightarrow\; &N=0\quad\text{or,}\;\;\left( 1-\frac{N}{K} \right)=0\\
+        &\qquad\;\;\Rightarrow\;\frac{N}{K}=1\\
+        &\qquad\;\;\Rightarrow\;N=K
+    \end{align*}
+    Thus there are two equilibrium states \(N=0\) and \(N=K\).
+    \begin{enumerate}[label=(\roman*)]
+        \item \(N=0\) is unstable linearization about it gives \(\ddt{N}\approx rN\) and so \(N\) grows exponentially from any small initial values.
+        \item For linearization about \(N=k\),
+        we put \(N=k+\varepsilon\) with \(\abs{\varepsilon}\) small so that,
+        \begin{align*}
+            &\ddt{(k+\varepsilon)}=r(k+\varepsilon)\left( 1-\frac{(k+\varepsilon)}{k} \right)\\
+            \Rightarrow\;&\ddt{\varepsilon}=r(k+\varepsilon)\left( \frac{(-\varepsilon)}{k} \right)\\
+            \Rightarrow\;&\ddt{\varepsilon}\approx -r\varepsilon\quad \text{to the first order}\\
+            \Rightarrow\;&\ddt{(N-k)}\approx -r(N-k)
+        \end{align*}
+        which gives \(N\to k\) as \(t\to \infty\).\\
+        Hence, \(N=k\) is stable.
+    \end{enumerate}
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{model-stab.tikz}
+    \end{figure}
+\end{soln}
+\begin{prob}
+    A population grows according to the equation
+    \[\ddt{N}=1-e^{-r\left( 1-\frac{N}{k} \right)}\]
+    where \(r\) and \(k\) are positive constant.
+    \begin{enumerate}[label=(\roman*)]
+        \item Determine the equilibrium population size.
+        \item Decide whether the equilibrium is stable, unstable or neutral.
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    The given equation is
+    \[\ddt{N}=1-e^{-r\left( 1-\frac{N}{k} \right)},\qquad r,k>0\]
+    \begin{enumerate}[label=(\roman*)]
+        \item For equilibrium, we have
+        \begin{align*}
+            &\ddt{N}=0\\
+            \Rightarrow\; &1-e^{-r\left( 1-\frac{N}{k} \right)}=0\\
+            \Rightarrow\; & e^{-r\left( 1-\frac{N}{k} \right)}=1\\
+            \Rightarrow\; & e^{-r\left( 1-\frac{N}{k} \right)}=1=e^0\\
+            \Rightarrow\; & -r\left( 1-\frac{N}{k} \right)=0\\
+            \Rightarrow\; & 1-\frac{N}{k}=0\\
+            \Rightarrow\; & \frac{N}{k}=1\\
+            \Rightarrow\; & N=k
+        \end{align*}
+        Thus the equilibrium population size is \(N=N(t)=k=\) constant.
+        \item We linearize the given equation by putting \(N=k+\varepsilon\) with \(\abs{\varepsilon}\ll 1\).\\
+        We have
+    \end{enumerate}
+        \begin{align*}
+            &\ddt{}[k+\varepsilon]=1-e^{-r\left( 1-\frac{k+\varepsilon}{k} \right)}\\
+            \Rightarrow\; &\ddt{\varepsilon}=1-e^{-r\left( \frac{-\varepsilon}{k} \right)}\\
+            \Rightarrow\; &\ddt{\varepsilon}=1-e^{\left( \frac{r\varepsilon}{k} \right)}\\
+            \Rightarrow\; &\ddt{\varepsilon}=1-\left[ 1+\frac{r \varepsilon/k}{1!}+\frac{(r \varepsilon/k)^2}{2!}+\dots \right]\\
+            \Rightarrow\; &\ddt{\varepsilon}\approx -\frac{r\varepsilon}{k}\qquad \text{as }\abs{\varepsilon}\ll 1\\
+            \Rightarrow\; &\ddt{(N-k)}\approx -\frac{r}{k}(N-k)
+        \end{align*}
+        This shows the population decreases.\\
+        Hence, the equilibrium \(N=k\) is stable.
+\end{soln}
+\begin{prob}
+    Discuss the continuous/ discontinuous
+    \[u_{t+1}=u_t \exp [r(1-u_t)]\qquad 0<r<1\]
+    Discuss its total qualitative behavior.
+\end{prob}
+\begin{soln}
+    We have, the given discontinuous model.
+    \begin{equation}
+        u_{t+1}=u_t \exp [r(1-u_t)]\qquad 0<r<1\label{eq:6.1}
+    \end{equation}
+    For the steady states, we have, \(u_{t+1}=u_t=u^{*}\) and \eqref{eq:6.1} becomes
+    \begin{align*}
+        & u^{*}=u^{*} \exp [r(1-u^{*})]\\    
+        \Rightarrow\; & u^{*}[1- \exp \{r(1-u^{*})\}]=0\\    
+        \Rightarrow\; & u^{*}=0\quad \text{or} \quad 1- \exp \{r(1-u^{*})\}=0\\    
+        & \qquad\qquad\Rightarrow\; \exp \{r(1-u^{*})\}=e^0\quad [\because e^0=1]\\    
+        & \qquad\qquad\Rightarrow\; r(1-u^{*})=0\\    
+        & \qquad\qquad\Rightarrow\; (1-u^{*})=0,\;\;r>0\\    
+        & \qquad\qquad\Rightarrow\; u^{*}=1    
+    \end{align*}
+    The steady states are \(u^{*}=0\), \(u^{*}=1\)\\
+    Here,
+    \begin{align*}
+        &u_{t+1}=f(u_t;r)=u_t \exp\left\{ r(1-u_t) \right\}\\
+        &\qquad\qquad\qquad\;=u_t e^{ r(1-u_t)}\\
+        \Rightarrow\; &u_t=e^{r(1-u_t) }+u_t e^{ r(1-u_t)}(-1)r\\
+        \Rightarrow\; &(u_t)=(1-ru_t)e^{r(1-u_t) }
+    \end{align*}
+    The corresponding eigenvalues are, \(u^{*}=0,1\), then
+    \begin{align*}
+        \lambda=f'(u^{*}=0)&=(1-u^{*})e^{r(1-u^{*}) }\\
+        &=(1-0)e^{r(1-0) }\\
+        &=e^{r }>0\quad [\because r>0]
+    \end{align*}
+    when, \(u^{*}=1\), then,
+    \begin{align*}
+        \lambda&=f'(u^{*}=1)\\
+        &=(1-r)e^{r(1-1) }\\
+        &=(1-r) e^{0 }>0\\
+        &=(1-r)
+    \end{align*}
+    Hence, \(u^{*}=0\) is unstable and \(u^{*}=1\) is stable for \(0<r<2\).
+\end{soln}
+\begin{prob}
+    Suppose that a certain population obey the Verhulst model with intrinsic growth rate \(r\) and carrying capacity \(K\). Find a complete solution of the model. Obtain a formula for the time \(t\) where the population size \(p(t)=\beta K\), given that initial population \(p(0)=\alpha K\) with \(0<\alpha<\beta<1\).
+\end{prob}
+\begin{soln}
+    The considered population obeys the Verhulst model with intrinsic growth rate \(r\) and carrying capacity \(k\). So the model is,
+    \begin{equation}
+        \ddt{N}=rN\left( 1-\frac{N}{K} \right) \label{eq:7.1}
+    \end{equation}
+    where, \(N=N(t)\) is the population size at time \(t\) and \(r\) is the intrinsic growth and \(k\) is the carrying capacity.\\
+    From \eqref{eq:7.1}
+    \begin{align*}
+        &\frac{\D N}{N(K-N)}=\frac{r}{K} \D t\\
+        \Rightarrow\; &\frac{1}{K}\left( \frac{1}{N}+\frac{1}{K-N} \right) \D N=\frac{r}{K} \D t\\
+        \intertext{Taking integration,}
+        \Rightarrow\; &\frac{1}{K}\left\{ \ln {N}+\ln(K-N) \right\} =\frac{r}{K}t+A\quad\text{ [Where \(A\) is an arbitrary constant]}\\
+        \Rightarrow\; &\frac{1}{K}\ln \left( \frac{N}{K-N} \right) =\frac{1}{K} rt+A\numberthis \label{eq:7.2}
+    \end{align*}
+    If initially at \(t=0\), \(N=N(0)=N_0\), then 
+    \[\frac{1}{K}\ln \left( \frac{N_0}{K-N_0} \right) =A\]
+    putting the value of \(A\) in \eqref{eq:7.2}, we get
+    \begin{align*}
+        &\frac{1}{K}\ln \left( \frac{N}{K-N}\times\frac{K-N_0}{N_0}\right) =\frac{1}{K} rt\\
+        \Rightarrow\; &\frac{KN-NN_0}{KN_0-NN_0}=e^{rt}\\
+        \Rightarrow\; &KN-NN_0=KN_0e^{rt}-NN_0e^{rt}\\
+        \Rightarrow\; &KN-NN_0+NN_0e^{rt}=KN_0e^{rt}\\
+        \Rightarrow\; &N(K-N_0+N_0e^{rt})=KN_0e^{rt}\\
+        \Rightarrow\; &N=\frac{KN_0e^{rt}}{K-N_0+N_0e^{rt}}\\
+        \therefore\; &N(t)=\frac{KN_0}{N_0+(K-N_0)e^{-rt}}\numberthis\label{eq:7.3}
+    \end{align*}
+    Which is the complete solution of the model.\\
+
+    \emph{2nd part:} Let \(N(t)=P(t)\). If \(P(0)=\alpha K\), then \eqref{eq:7.3} gets,
+    \begin{align*}
+        \alpha K&=\frac{kP_0}{P_0+(K-P_0)e^0}\\
+        &=\frac{kP_0}{P_0+K-P_0}\\
+        &=\frac{kP_0}{K}\\
+        &=P_0\\
+        \therefore\;\alpha\,K&=P_0\numberthis \label{eq:7.4}
+    \end{align*}
+    Thus from equation \eqref{eq:7.3}
+    \begin{align*}
+        &P(t)=\frac{K\,P_0}{P_0+(K-P_0)e^{-rt}}\\
+        \Rightarrow\;&\beta\,K=\frac{K\,P_0}{P_0+(K-P_0)e^{-rt}}\\
+        \Rightarrow\;&\beta\,K=\frac{K\,P_0}{\alpha\,K+(K-\alpha\,K)e^{-rt}}\\
+        \Rightarrow\;&\beta\,\alpha\,K+(\beta\,K-\alpha\,\beta\,K)e^{-rt}=\alpha\,K\;\;[\text{dividing both sides by }K]\\
+        \Rightarrow\;&e^{-rt}=\frac{\alpha\,K-\beta\,\alpha\,K}{\beta\,K-\alpha\,\beta\,K}\\
+        \Rightarrow\;&e^{-rt}=\frac{K(\alpha-\beta\,\alpha)}{K(\beta-\alpha\,\beta)}\\
+        \Rightarrow\;&e^{rt}=\frac{\beta-\alpha\,\beta}{\alpha-\alpha\,\beta}\\
+        \Rightarrow\;&e^{rt}=\frac{\alpha\,\beta(\frac{1}{\alpha}-1)}{\alpha\,\beta(\frac{1}{\beta}-1)}\\
+        \Rightarrow\;&{rt}=\ln \left\{\frac{1-\frac{1}{\alpha}}{1-\frac{1}{\beta}}\right\}\\
+        \therefore\;&{t}=\frac{1}{r}\ln \left\{\frac{1-\frac{1}{\alpha}}{1-\frac{1}{\beta}}\right\}
+    \end{align*}
+    Which is the required formula for time \(t\).
+\end{soln}
+\begin{prob}
+    Determine the outcome of a competition modeled by the system.
+    \begin{align*}
+        \ddt{x}&=x(80-3x-2y)\\
+        \ddt{y}&=y(80-x-y)
+    \end{align*}
+\end{prob}
+\begin{soln}
+    Here, \(\begin{aligned}[t]
+        &f(x,y)=80-3x-2y\\
+        \therefore\;&fy=-2<0
+    \end{aligned}\)  and \(\begin{aligned}[t]
+        &g(x,y)=80-x-y\\
+        \therefore\;&gx=-1<0
+    \end{aligned}\)\\
+
+    
+    Since, \(fy<0\), \(gx<0\), hence the given system is competition model.\\
+    For equilibrium,
+    \begin{align*}
+        &x(80-3x-2y)=0\\
+        &y(80-x-y)=0
+    \end{align*}
+    A consistence equilibrium is found by solving this system.
+    \begin{align}
+        (80-3x-2y)=0\qquad\Rightarrow\;& 3x+2y=80\label{eq:8.2}\\
+        (80-x-y)=0\qquad\Rightarrow\;& x+y=80\nonumber\\
+        \therefore\;& y=80-x\label{eq:8.3}
+    \end{align}
+    From \eqref{eq:8.2}
+    \begin{align*}
+        &3x+2(80-x)=80\\
+        \Rightarrow\;&3x-2x=80-160\\
+        \Rightarrow\;&x=-80\\
+        \therefore\;&y=80+80=160
+    \end{align*}
+    \(\therefore\) The coenistence equilibrium \((-80,160)\), this is not possible, because the species \(x\) can not be negative.\\
+    When \(x=0\), then \(y=80\)\\
+    When \(y=0\), then \(3x=80\) \(\Rightarrow\;x=\frac{80}{3}\)\\
+
+
+    \(\therefore\) The equilibrium points are \((0,0)\), \((0,80)\), \((\frac{80}{3},x)\).\\
+
+    Thus, there is no equilibrium within \(x>0,\;y>0\).\\
+
+    Here, \(\begin{aligned}[t]
+        F(x,y)&=x(80-3x-2y)\\
+        G(x,y)&=y(80-x-y)
+    \end{aligned}\)\\
+    \begin{align*}
+        \therefore\;&F_x=80-6x-2y, &F_y&=-2x\\
+        &G_x=-y, &G_y&=80-x-2y
+    \end{align*}
+
+
+    For \((0,0)\): \(\begin{aligned}[t]
+        F_x(0,0)&=80,\\
+        F_y(0,0)&=0
+    \end{aligned}\)\hspace{1cm}\(\begin{aligned}[t]
+        G_x(0,0)&=0,\\
+        G_y(0,0)&=80
+    \end{aligned}\)
+
+    % \begin{align*}
+        % F_x(0,0)&=80, &F_y(0,0)&=0\\
+        % G_x(0,0)&=0, &G_y(0,0)&=80
+    % \end{align*}
+    \(\therefore\;\) The community matrix is \(A=\begin{pmatrix}
+        80&0\\
+        0&80
+    \end{pmatrix}\)
+    \begin{align*}
+        \therefore\;&\abs{A}=6400>0\\
+        &\text{tra }A=80+80=160>0\\
+        &\Delta =(80-80)^2+4\cdot0\cdot0=0
+    \end{align*}
+    So the equilibrium is unstable point \((0,0)\) is node.\\
+
+
+    For \((0,80)\): \(\begin{aligned}[t]
+        F_x(0,80)&=80-2\cdot80=-80,\\
+        F_y(0,80)&=0
+    \end{aligned}\)\hspace{1cm}\(\begin{aligned}[t]
+        G_x(0,80)&=-80,\\
+        G_y(0,80)&=80-0-2\cdot80=-80
+    \end{aligned}\)
+
+
+    \(\therefore\;\) The community matrix is \(A=\begin{pmatrix}
+        -80&0\\
+        -80&-80
+    \end{pmatrix}\)
+    \begin{align*}
+        \therefore\;&\abs{A}=6400>0\\
+        &\text{tra }A=-80-80=-160<0\\
+        &\Delta =(-80+80)+4\cdot0\cdot0=0
+    \end{align*}
+    So the equilibrium is asymptotically stable node point.
+
+    From Dulac's criterion with \(\beta(x,y)=\frac{1}{xy}\)\\
+    \[\therefore\; \pardx{}\left( \frac{80-3x-2y}{y} \right)+\pardy{}\left( \frac{80-x-y}{x} \right)=\frac{-3}{y}-\frac{1}{x}<0\]
+    So there is no periodic orbit, this means that every point approaches \((0,80)\).\\
+    
+    
+    For \((\frac{80}{3},0)\): \(\begin{aligned}[t]
+        F_x(\frac{80}{3},0)&=-80,\\
+        F_y(\frac{80}{3},0)&=\frac{-160}{3}
+    \end{aligned}\)\hspace{1cm}\(\begin{aligned}[t]
+        G_x(\frac{80}{3},0)&=0,\\
+        G_y(\frac{80}{3},0)&=\frac{160}{3}
+    \end{aligned}\)
+
+
+    \(\therefore\;\) The community matrix is \(A=\begin{pmatrix}
+        -80&\frac{-160}{3}\\
+        0&\frac{160}{3}
+    \end{pmatrix}\)
+    \begin{align*}
+        \therefore\;&\abs{A}=\frac{-3200}{3}<0\\
+        &\text{tr}(A)=\frac{160}{3}-80=\frac{-80}{3}<0\\
+        &\Delta =(-80-\frac{160}{3})+4\cdot0<0
+    \end{align*}
+    So the equilibrium point is unstable saddle point and every orbit approaches \((\frac{80}{3},0)\).
+\end{soln}
+\begin{prob}
+    The following two-dimensional NLODE has been proposed as a model for call differentiation.
+    \begin{align*}
+        \ddt{x}&=y-x\\
+        \ddt{y}&=\frac{5x^2}{4+x^2}-y
+    \end{align*}
+    \begin{enumerate}[label=(\roman*)]
+        \item Sketch the graph \(y=x\), \(y=\frac{5x^2}{4+x^2}\) in the positive quadrant of the \((x,y)\) plane.
+        \item Determine the equilibrium points.
+        \item Determine the local stability of each positive equilibrium point and classify the equilibrium points.
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    Given, \(\begin{aligned}[t]
+        y&=x\\
+        y&=\frac{5x^2}{4+x^2}
+    \end{aligned}\)\\
+    For \(y=\frac{5x^2}{4+x^2}\)
+    \begin{table}[H]
+        \begin{minipage}{.4\linewidth}
+            \centering
+            \begin{tabular}{|c|c|c|c|c|c|c|c|}
+                \hline
+                \(x\)&0&0.5&1&2&3&4&5\\
+                \hline
+                \(y\)&0&0.3&1&2.5&3.4&4&4.3\\\hline
+            \end{tabular}
+        \end{minipage}\quad
+        \begin{minipage}{.5\linewidth}
+            \begin{figure}[H]
+                \centering
+                \import{../tikz/}{graph-9.tikz}
+            \end{figure}
+        \end{minipage}
+    \end{table}
+    
+    
+    (ii) The equilibrium points are the solution of
+    \begin{equation}
+        y-x=0\label{eq:9.3}
+    \end{equation}
+    \begin{equation}
+        \frac{5x^2}{4+x^2}-y=0\label{eq:9.4}
+    \end{equation}
+    putting \(x\) in \eqref{eq:9.4}, we get
+    \begin{align*}
+        &\frac{5x^2}{4+x^2}-x=0\\
+        \Rightarrow\;&5x^2-4x-x^3=0\\
+        \Rightarrow\;&x(x^2-5x+4)=0\\
+        \Rightarrow\;&x(x^2-4x-x+4)=0\\
+        \Rightarrow\;&x\{x(x-4)-1(x-4)\}=0\\
+        \Rightarrow\;&x(x-4)(x-1)=0\\
+        \therefore\;&x=0,\;1\;4
+    \end{align*}
+    So the equilibrium points are \((0,0)\), \((1,1)\), \((4,4)\).
+
+    (iii) Here, \[F(x,y)=y-x,\qquad G(x,y)=\frac{5x^2}{4+x^2}-y\]
+    \begin{align*}
+        Fx&=-1, & Gx&=\frac{(4+x^2)10x-5x^2(2x)}{(4+x^2)^2}\\
+        Fy&=-1, & &=\frac{40x+10x^3-10x^3}{(4+x^2)^2}\\
+        & & &=\frac{40x}{(4+x^2)^2}\\
+        & & Gy&-1
+    \end{align*}
+    The linearization at an equilibrium \((x_{\infty},y_\infty)\) is
+    \begin{align*}
+        u'&=Fx(x_\infty,y_\infty)u+Fy(x_\infty,y_\infty)v\\
+        v'&=Gx(x_\infty,y_\infty)u+Gy(x_\infty,y_\infty)v
+    \end{align*}
+    Thus,
+    \begin{align*}
+        u'&=-u+v\\
+        v'&=\frac{40x_\infty}{(4+x_\infty^2)^2}u-v
+    \end{align*}
+    For equilibrium point \((0,0)\) with linearization
+    \begin{align*}
+        u'&=-u+v\\
+        v'&=-v
+    \end{align*}
+    For equilibrium point \((1,1)\) with linearization
+    \begin{align*}
+        u'&=-u+v\\
+        v'&=\frac{40}{(4+1)^2}u-v=\frac{8}{5}u-v
+    \end{align*}
+    For equilibrium point \((4,1)\) with linearization
+    \begin{align*}
+        u'&=-u+v\\
+        v'&=\frac{40\cdot 4}{(4+4)^2}u-v=\frac{2}{5}u-v
+    \end{align*}
+    The community matrix at the equilibrium point \((x_\infty,y_\infty)\) is,
+    \begin{align*}
+        A&=\begin{bmatrix}
+            Fx & Fy \\
+            Gx & Gy
+        \end{bmatrix}\\
+        &=\begin{bmatrix}
+            -1 & 1 \\
+            \displaystyle\frac{40x_\infty}{(4+x_\infty^2)^2} & -1
+        \end{bmatrix}
+    \end{align*}
+
+    \emph{For equilibrium point \((0,0)\):}\\
+    The community matrix, \(A_1=\begin{bmatrix}
+        -1 & 1 \\
+        0 & -1
+    \end{bmatrix}=1>1\)
+    \(\therefore \, \abs{A_1}=1>0\) and \(\text{tr }(A)=-1-1=-2<0\)\\
+    The critical point \((0,0)\) is asymptotically stable.\\
+    The characteristic equation is,
+    \begin{align*}
+        &\lambda^2-(-1-1)\lambda+1-0=0\\
+        \Rightarrow\;&\lambda^2+2\lambda+1=0\\
+        \Rightarrow\;&(\lambda+1)^2=0\\
+        \Rightarrow\;&\lambda=-1,-1
+    \end{align*}
+    Since, the roots are real, equal and both have \(-\)ve sign. Thus, the point \((0,0)\) is an asymptotically stable node.
+
+
+    \emph{For equilibrium point \((1,1)\):}
+    \begin{align*}
+        Fx(1,1)&=-1, &Fy(1,1)&=1\\
+        Gx(1,1)&=\frac{40}{25}=\frac{8}{5}, &Gy(1,1)&=-1
+    \end{align*}
+    The community matrix, \(A_2=\begin{bmatrix}
+        -1 & 1 \\
+        \frac{8}{5} & -1
+    \end{bmatrix}\)
+    \(\therefore \, \abs{A_2}=\frac{-3}{5}<0\) and \(\text{tr }(A_2)=-1-1=-2<0\)\\
+    Hence, \((1,1)\) is unstable saddle point.\\
+    The characteristic equation is,
+    \begin{align*}
+        &\lambda^2-5(-1-1)\lambda+1-\frac{8}{5}=0\\
+        \Rightarrow\;&5\lambda^2+10\lambda-3=0\\
+        \Rightarrow\;&\lambda=\frac{-10\pm \sqrt{100+60}}{2\cdot5}\\
+        \Rightarrow\;&\lambda=\frac{-10\pm \sqrt{10}}{10}
+    \end{align*}
+    Since, the roots are real, unequal and opposite sign. Thus, the equilibrium point \((0,0)\) is an unstable node.
+
+
+    \emph{For equilibrium point \((4,4)\):}
+    \begin{align*}
+        Fx(4,4)&=-1, &Fy(4,4)&=1\\
+        Gx(4,4)&=\frac{40\cdot4}{(4+4)^2}=\frac{2}{5}, &Gy(4,4)&=-1
+    \end{align*}
+    The community matrix, \(A_3=\begin{bmatrix}
+        -1 & 1 \\
+        \frac{2}{5} & -1
+    \end{bmatrix}\)
+    \(\therefore \, \abs{A_3}=\frac{3}{5}>0\) and \(\text{tr }(A_3)=-1-1=-2<0\)\\
+    Hence, \((4,4)\) is asymptotically stable point.\\
+    The characteristic equation is,
+    \begin{align*}
+        &\lambda^2+2\lambda+1-\frac{2}{5}=0\\
+        \Rightarrow\;&5\lambda^2+10\lambda+3=0\\
+        \Rightarrow\;&\lambda=\frac{-10\pm \sqrt{100-60}}{2\cdot5}\\
+        \Rightarrow\;&\lambda=\frac{-10\pm \sqrt{40}}{10}
+    \end{align*}
+    Since, the roots are real, unequal and both have negative sign. Thus, the equilibrium point \((4,4)\) is an asymptotically stable node.
+\end{soln}
+\end{document}

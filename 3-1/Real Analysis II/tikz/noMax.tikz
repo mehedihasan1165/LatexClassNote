@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+\begin{axis}
+	[axis lines =middle,
+	xmin=-.5, xmax=1.5,
+	ymin=-.5,ymax=1.5,
+	axis line style=thick,
+	ylabel style={above},
+	ylabel=$y$,
+    xlabel style={right},
+	xlabel=$x$,
+	xtick={1},
+	xticklabels={1},
+	ytick=\empty]
+\addplot[black, ultra thick,{[-)}] coordinates {(0,0) (1,0)};
+\addplot[black,thick,{-o}] coordinates {(0,0) (1,1)};
+\node[thick] at (axis cs:1.2,1.2) {$\displaystyle f(x)=x$};
+\node[thick] at (axis cs:-.1,-.1) {$O$};
+\end{axis}
+\end{tikzpicture}

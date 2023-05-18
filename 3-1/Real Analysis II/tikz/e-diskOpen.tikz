@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+
+\draw[use Hobby shortcut,thick][closed] (0,.5)..(0.875,1.25)..(1.25,2.25)..(1.5,3)..(4,.5);
+\draw[use Hobby shortcut,->,thick] (1.25,-.5) .. (1.5,0) .. (1.25,0.25)..(1.5,0.75);
+\draw[use Hobby shortcut,->,thick] (2.2,2.36) .. (2,2.75) .. (2.10,3.0);
+\draw[densely dashed,thick] (2.5,1.5) circle (1.25);
+\draw[mark=*] plot (2.5,1.5);
+\draw[<->,black,thick] (2.55,1.5)--(3.75,1.5);
+\draw[<->,black,thick] (2.5,1.55)--(2.5,2.35);
+
+\draw[<->,black,thick] (2.5,2.4)--(2.5,2.67);
+\draw[densely dashed,thick] (2.5,2.375) circle (.3);
+\draw[mark=*,mark size=.5pt] plot (2.5,2.375);
+
+
+
+\draw[->,thick] (2.5,2.125) -- (2.25,1.85);
+
+
+\node at (3,1.6) {$\varepsilon$};
+\node at (2.5,1.3) {$x$};
+\node at (.8,-.6) {$D_{\varepsilon}(x)$};
+\node at (2.3,2.375) {$y$};
+\node at (3,2) {$r$};
+\draw[->,thick] (2.5,2.55)--(2.9,2.1);
+\node at (4.2,2.5) {$M$};
+\node at (2.4,3.15) {$N_r (y)$};
+\node at (1.75,1.75) {$d(y,x)$};
+\end{tikzpicture}

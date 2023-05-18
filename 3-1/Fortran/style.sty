@@ -1,0 +1,27 @@
+\ProvidesPackage{style}
+\RequirePackage{listings}
+\RequirePackage{amsmath,amssymb,graphicx,float}
+\RequirePackage[cm]{fullpage}
+\RequirePackage[inline]{enumitem}
+\RequirePackage{xcolor,xparse,realboxes}
+\RequirePackage{lmodern}
+\RequirePackage{hyperref}
+\RequirePackage{background}
+\RequirePackage[object=vectorian]{pgfornament} 
+\RequirePackage{calligra}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\xn}[2]{{#1}_1{#2}{#1}_2{#2}\dots{#2}{#1}_n}
+\newcommand*\lstinputpath[1]{\lstset{language=[90]Fortran,captionpos=b,numbers=left,showstringspaces=false,
+keywordstyle=\color{blue},
+commentstyle=\color{green},
+morecomment=[l]{!\ },inputpath=#1}}
+
+\lstinputpath{code}
+\newcommand{\code}[1]{\lstinline[keywordstyle=\color{black},basicstyle=\ttfamily]{#1}}

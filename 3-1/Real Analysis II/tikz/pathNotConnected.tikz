@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+
+\begin{scope}[thick,scale=2]
+\draw[-latex] (-0.25,0)--(2,0)node[right]{$x$};
+\draw[black,samples=1000, domain=0.01:0.15] plot(\x, {sin(1/\x r)});
+\draw[black,smooth,samples=50, domain=0.15:1.5]    plot(\x, {sin(1/\x r)});
+\draw[-latex] (0,-1.5)--(0,-1.1) (0,-1)node[left]{$-1$}--(0,1)node[left]{$1$} (0,1.1)--(0,1.5)node [above]{$y$};
+\node at (1.1,1) {$\R^2$};
+\end{scope}
+\node at (4.2,-2.5) {$A=\{(x,\sin (\frac{1}{x})\mid x>0\}\cup \{(0,y)\mid y\in [-1,1]\}$};
+
+\end{tikzpicture}

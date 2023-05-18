@@ -1,0 +1,435 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\backgroundsetup{contents={}}
+\usepackage{enumitem}
+% \newcommand{\lap}[1]{\mathcal{L}\left\{ #1\right\}}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{The Laplace Transform}
+\section{Definition of The Laplace Transform}
+Let $ F(t) $ be a function of $ t $ specified for $ t>0 $. The \emph{Laplace transform} of $ F(t) $, denoted by $ \lap{F(t)} $, is defined by
+\begin{equation}
+    \lap{F(t)}=f(s)=\int_0^\infty e^{-st}F(t)\D t \label{eq:1}
+\end{equation}
+where we assume at present that the parameter $ s $ is real. Later it will be found useful to consider $ s $ complex.\\
+
+The Laplace transform of $ F(t) $ is said to \emph{exist} if the integer \eqref{eq:1} \emph{converges} for some values of $ s $; otherwise it does not exist.
+\section{Laplace Transforms of Some Elementary Functions}
+% \begin{table}[H]
+%     \centering
+%     \begingroup
+%     \setlength{\tabcolsep}{10pt}
+%     \renewcommand{\arraystretch}{1.9}
+%     \begin{tabular}{|c|c|}
+%         \hline
+%         $ \mathbf{F(t)} $ & $ \mathbf{\lap{F(t)}=f(s)} $\\\hline
+%         $ 1 $ & $\displaystyle \frac{1}{s}\qquad s>0 $\\\hline
+%         $ t $ & $\displaystyle \frac{1}{s^2}\qquad s>0 $\\\hline
+%         $ t^n $ & $\displaystyle \frac{n!}{s^{n+1}}\qquad s>0 $\\
+%         $ n=0,1,2,\dots $ & Note. Factorial $n=n!=1\cdot2\dots n $ Also, by definition $ 0!=1 $\\\hline
+%         $ e^{at} $ & $\displaystyle \frac{1}{s-a}\qquad s>a $\\\hline
+%         $ \sin at $ & $\displaystyle \frac{a}{s^2+a^2}\qquad s>0 $\\\hline
+%         $ \cos at $ & $\displaystyle \frac{s}{s^2+a^2}\qquad s>0 $\\\hline
+%         $ \sinh at $ & $\displaystyle \frac{a}{s^2-a^2}\qquad s>\abs{a} $\\\hline
+%         $ \cosh at $ & $\displaystyle \frac{s}{s^2-a^2}\qquad s>\abs{a} $\\\hline
+%     \end{tabular}
+%     \endgroup
+% \end{table}
+\begin{table}[H]
+    \centering
+    \newcolumntype{A}{>{$\displaystyle \rule{0pt}{1em}\rule[-1.25em]{0pt}{1em}}c<{$}}
+    \begin{tabular}{AA}
+        \toprule
+        \mathbf{F(t)} & \mathbf{\lap{F(t)}=f(s)}          \\\midrule
+        1             & \frac{1}{s}\qquad s>0             \\%\hline
+        t             & \frac{1}{s^2}\qquad s>0           \\%\hline
+        t^n\quad n=0,1,2,\dots             & \frac{n!}{s^{n+1}}\qquad s>0           \\%\hline
+        e^{at}        & \frac{1}{s-a}\qquad s>a           \\%\hline
+        \sin at       & \frac{a}{s^2+a^2}\qquad s>0       \\%\hline
+        \cos at       & \frac{s}{s^2+a^2}\qquad s>0       \\%\hline
+        \sinh at      & \frac{a}{s^2-a^2}\qquad s>\abs{a} \\%\hline
+        \cosh at      & \frac{s}{s^2-a^2}\qquad s>\abs{a} \\\bottomrule
+    \end{tabular}
+\end{table}
+% \newpage
+\section{Some Important Properties of Laplace Transforms}
+\begin{enumerate}
+    \item First translation or shifting property.
+        \begin{thm}
+            If $ \lap{F(t)}=f(s) $ then $ \lap{e^{at}F(t)}=f(s-a) $.
+        \end{thm}
+        \begin{ex}
+            Since $ \lap{\cos 2t}=\frac{s}{s^2+4} $, we have
+            \[\lap{e^{-t}\cos 2t}=\frac{s+1}{(s+1)^2+4}=\frac{s+1}{s^2+2s+5}\]
+        \end{ex}
+    \item Second translation or shifting property.
+        \begin{thm}
+            If $ \lap{F(t)}=f(s) $ and $ G(t)=\begin{cases}
+                F(t-a) & t>a\\
+                0 & t<a
+            \end{cases} $ then $ \lap{G(t)}=e^{-as}f(s) $.
+        \end{thm}
+    \begin{ex}
+        Since $ \lap{t^3}=\frac{3!}{s^4}=\frac{6}{s^4} $, the Laplace transform of the function $ G(t)=\begin{cases}
+            (t-2)^3&t>2\\
+            0&t<2
+        \end{cases} $ is $ \frac{6e^{-2s}}{s^4} $.
+    \end{ex}
+    \item Change of scale property.
+        \begin{thm}
+            If $ \lap{F(t)}=f(s) $ then $ \lap{F(at)}=\frac{1}{a}f\left( \frac{s}{a} \right) $
+        \end{thm}
+        \begin{ex}
+            Since $ \lap{\sin t}=\frac{1}{s^2+1} $, we have $ \lap{\sin 3t}=\frac{1}{3}\frac{1}{(s/3)^2+1}=\frac{3}{s^2+9} $.
+        \end{ex}
+    \item Laplace transform of derivatives.
+        \begin{thm}\label{thm:lapder}
+            If $ \lap{F(t)}=f(s) $, then $ \lap{F' (t)}=s\,f(s)-F(0) $.\\
+            If $ F(t) $ is continuous for $ 0\leqq t \leq N $ and of exponential order for $ t>N $ while $ F'(t) $ is sectionally continuous for $ 0\leqq t\leqq N $.
+        \end{thm}
+        \begin{ex}
+            If $ F(t)=\cos 3t $, then $ \lap{F'(t)}=\frac{s}{s^2+9} $ and we have 
+            \[
+                \lap{F'(t)}=\lap{-3\sin 3t }=s\left( \frac{s}{s^2+9} \right)-1=\frac{-9}{s^2+9}
+            \]
+        \end{ex}
+        This method is useful in finding Laplace transforms without integration.
+        \begin{thm}\label{thm:lapder2}
+            If $ \lap{F(t)}=f(s) $, then $ \lap{F''(t)}=s^2\,f(s)-s\,F(0) $.\\
+            If $ F(t) $ and $ F'(t) $ is continuous for $ 0\leq t \leq N $ and of exponential order for $ t>N $ while $ F''(t) $ is sectionally continuous for $ 0\leq t\leqq N $.
+        \end{thm}
+    \item Laplace transform of integrals.
+        \begin{thm}
+            If $ \lap{F(t)}=f(s) $ then 
+            \[ \lap{\int_0^t F(u)\D u}=\frac{f(s)}{s}\]
+        \end{thm}
+        \begin{ex}
+            Since $ \lap{\sin 2t}=\frac{2}{s^2+4} $, we have 
+            \[ \lap{\int_0^t \sin 2u \D u}=\frac{2}{s(s^2+4)}\]
+            as can be verified directly.
+        \end{ex}
+        % \newpage
+    \item Multiplication by $ t^n $.
+        \begin{thm}
+            \label{thm:lapmul}
+            If $ \lap{F(t)}=f(s) $ then 
+            \[ \lap{t^n F(t)}=(-1)^n\frac{\D^n}{\D s^n}f(s)=(-1)^n f^{(n)}(s)\]
+        \end{thm}
+        \begin{ex}
+            Since $ \lap{e^{2t}}=\frac{1}{s-2} $, we have
+            \begin{align*}
+                \lap{te^{2t}}&=-\frac{\D}{\D s}\left( \frac{1}{s-2} \right)=\frac{1}{(s-2)^2}\\
+                \lap{t^2e^{2t}}&=\frac{\D^2}{\D s^2}\left( \frac{1}{s-2} \right)=\frac{2}{(s-2)^2}\\
+            \end{align*}
+        \end{ex}
+\end{enumerate}
+\section{Solved Problems}
+\subsection{Laplace Transforms of Some Elementary Functions}
+\begin{prob}
+    Prove that 
+    \begin{enumerate}[label={(\alph*)}]
+        \item $ \lap{1}=\frac{1}{s},\,s>0 $
+        \item $ \lap{t}=\frac{1}{s^2},\,s>0 $
+        \item $ \lap{e^{at}}=\frac{1}{s-1},\,s>a $
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    \begin{enumerate}[label={(\alph*)}]
+        \item \begin{align*}
+            \lap{1}&=\int_0^\infty e^{-st}(1)\D t\\
+            &=\lim\limits_{P\to \infty}\,\int_0^P e^{-st}\D t\\
+            &=\lim\limits_{P\to \infty}\left.\frac{e^{-st}}{-s}\,\right\vert_0^P\\
+            &=\lim\limits_{P\to \infty}\frac{1-e^{-sP}}{s}\\
+            &=\frac{1}{s}\quad \text{ if } s>0
+        \end{align*}
+        \item \begin{align*}
+            \lap{t}&=\int_0^\infty e^{-st}(t)\D t\\
+            &=\lim\limits_{P\to \infty}\,\int_0^P te^{-st}(t)\D t\\
+            &=\lim\limits_{P\to \infty}\,\left.(t)\left( \frac{e^{-st}}{-s} \right)-(1)\left( \frac{e^{-st}}{s^2} \right)\right\vert_0^P\\
+            &=\lim\limits_{P\to \infty}\,\left(\frac{1}{s^2}-\frac{e^{-st}}{s^2}-\frac{Pe^{-sP}}{s} \right)\\
+            &=\frac{1}{s^2}\quad \text{ if } s>0
+        \end{align*}
+        \item \begin{align*}
+            \lap{e^{at}}&=\int_0^\infty e^{-st}\left( e^{at} \right)\D t\\
+            &=\lim\limits_{P\to \infty}\,\int_0^P e^{-(s-a)t}\D t\\
+            &=\lim\limits_{P\to \infty}\left.\frac{e^{-(s-a)t}}{-(s-a)}\,\right\vert_0^P\\
+            &=\lim\limits_{P\to \infty}\frac{1-e^{-(s-a)P}}{s-a}\\
+            &=\frac{1}{s-a}\quad \text{ if } s>a
+        \end{align*}
+    \end{enumerate}
+\end{soln}
+\begin{prob}
+    Prove that
+    \begin{enumerate}[label={(\alph*)}]
+        \item $ \lap{\sin at}=\frac{a}{s^2+a^2},\,s>0 $
+        \item $ \lap{\cos at}=\frac{s}{s^2+a^2},\,s>0 $
+    \end{enumerate}
+\end{prob}
+\newpage
+\begin{soln}
+    \hfill
+    \begin{enumerate}[label={(\alph*)}]
+        \item \begin{align*}
+            \lap{\sin at}&=\int_0^\infty e^{-st}\sin at \D t\\
+            &=\lim\limits_{P\to \infty}\,\int_0^P e^{-st}\sin at \D t\\
+            &=\lim\limits_{P\to \infty}\,\left.\frac{e^{-st}(-s\sin at -a \cos at)}{s^2+a^2}\right\vert_0^P\\
+            &=\lim\limits_{P\to \infty}\,\left\{ \frac{a}{s^2+a^2}-\frac{e^{-sP}(a\sin aP+a\cos aP)}{s^2+a^2}\right\}\\
+            &=\frac{a}{s^2+a^2}\quad \text{ if } s>0
+        \end{align*}
+        \item \begin{align*}
+            \lap{\cos at}&=\int_0^\infty e^{-st}\cos at \D t\\
+            &=\lim\limits_{P\to \infty}\,\int_0^P e^{-st}\cos at \D t\\
+            &=\lim\limits_{P\to \infty}\,\left.\frac{e^{-st}(-s\cos at +a \sin at)}{s^2+a^2}\right\vert_0^P\\
+            &=\lim\limits_{P\to \infty}\,\left\{ \frac{s}{s^2+a^2}-\frac{e^{-sP}(a\cos aP-a\sin aP)}{s^2+a^2}\right\}\\
+            &=\frac{s}{s^2+a^2}\quad \text{ if } s>0
+        \end{align*}
+    \end{enumerate}
+    We have used here the results
+    \[\int e^{\alpha t}\sin \beta t \D t=\frac{e^{at}(\alpha \sin \beta t-\beta \cos \beta t)}{\alpha^2+\beta^2}\]
+    \[\int e^{\alpha t}\cos \beta t \D t=\frac{e^{at}(\alpha \cos \beta t+\beta \sin \beta t)}{\alpha^2+\beta^2}\]
+\end{soln}
+\subsection{Translation and Change of Scale Properties}
+\begin{prob}
+    Prove the first translation or shifting property: If $ \lap{F(t)}=f(s) $, then $ \lap{e^{at}F(t)}=f(s-a) $.
+\end{prob}
+\begin{soln}
+    We have, $ \begin{aligned}
+        & \\
+        \lap{F(t)}&= \int_0^\infty e^{-st}F(t)\D t\\
+        &=f(s)
+    \end{aligned} $\\
+    Then 
+    \begin{align*}
+        \lap{e^{at}F(t)}&=\int_0^\infty e^{-st}\left\{ e^{at}F(t)\right\}\D t\\
+        &=\int_0^\infty e^{-(s-a)t}F(t)\D t\\
+        &=f(s-a)
+    \end{align*}
+\end{soln}
+\begin{prob}
+    Find
+    \begin{enumerate}[label={(\alph*)}]
+        \item $ \lap{t^2 e^{3t}}$
+        \item $ \lap{e^{-2t} \sin 4t}$
+        \item $ \lap{e^{4t} \cosh 5t}$
+        \item $ \lap{e^{-2t} (3\cos 6t - 5\sin 6t)}$
+    \end{enumerate}
+\end{prob}
+\newpage
+\begin{soln}
+    \hfill
+    \begin{enumerate}[label={(\alph*)}]
+        \item $ \lap{t^2 }=\frac{2!}{s^3}=\frac{2}{s^3}$. Then $ \lap{t^2 e^{3t}}=\frac{2}{(s-3)^3} $.
+        \item $ \lap{\sin 4t}=\frac{4}{s^2+16} $. Then $ \lap{e^{-2t} \sin 4t}=\frac{4}{(s+2)^2+16}=\frac{4}{s^2+4s+20}$.
+        \item $ \lap{\cosh 5t}=\frac{s}{s^2-25} $. Then $ \lap{e^{4t} \cosh 5t}=\frac{s-4}{(s-4)^2-25}=\frac{s-4}{s^2-8s-9}$.\\
+        
+        Another method.
+        \begin{align*}
+            \lap{e^{4t} \cosh 5t}&=\lap{e^{4t}\left( \frac{e^{5t}+e^{-5t}}{2} \right)}\\
+            &=\frac{1}{2}\lap{e^{9t}+e^{-t}}\\
+            &=\frac{1}{2}\left\{ \frac{1}{s-9}+\frac{1}{s+1}\right\}\\
+            &=\frac{s-4}{s^2-8s-9}
+        \end{align*}
+        \item \begin{align*}
+            \lap{3\cos 6t -5\sin 6t}&=3\lap{\cos 6t}-5\lap{\sin 6t}\\
+            &=3\left( \frac{s}{s^2+36} \right)-5\left( \frac{6}{s^2+36} \right)\\
+            &=\frac{3s-30}{s^2+36}
+        \end{align*}
+        Then 
+        \begin{align*}
+            \lap{e^{-2t} (3\cos 6t - 5\sin 6t)}&=\frac{3(s+2)-30}{(s+2)^2+36}\\
+            &=\frac{3s-24}{s^2+4s+40}
+        \end{align*}
+    \end{enumerate}
+\end{soln}
+\begin{prob}
+    Prove the second translation or shifting property:\\
+    If $ \lap{F(t)}=f(s) $ and $ G(t)=\begin{cases}
+        F(t-a) & t>a\\
+        0 & t<a
+    \end{cases} $, then $ \lap{G(t)}=e^{-as}f(s) $.
+\end{prob}
+\begin{soln}
+    \begin{align*}
+        \lap{G(t)}&=\int_0^\infty e^{-st}G(t)\D t\\
+        &=\int_0^a e^{-st}G(t)\D t+\int_a^\infty e^{-st}G(t)\D t\\
+        &=\int_0^a e^{-st}(0)\D t+\int_a^\infty e^{-st}F(t-a)\D t\\
+        &=\int_a^\infty e^{-st}F(t-a)\D t\\
+        &=\int_a^\infty e^{-s(u+a)}F(u)\D u\\
+        &=e^{-as}\int_a^\infty e^{-su}F(u)\D u\\
+        &=e^{-as}f(s)
+    \end{align*}
+    Where we have used the substitution $ t=u+a $.
+\end{soln}
+\begin{prob}
+    Find $ \lap{F(t)}  $ if $ F(t)=\begin{cases}
+        \cos\left( t-\frac{2\pi}{3} \right) & t>\frac{2\pi}{3}\\
+        0 & t<\frac{2\pi}{3}
+    \end{cases} $.
+\end{prob}
+\newpage
+\begin{soln}\hfill
+    \begin{enumerate}[label={Method \arabic*.}]
+        \item \begin{align*}
+            \lap{F(t)}&=\int_0^{\frac{2\pi}{3}} e^{-st}(0)\D t+\int_{\frac{2\pi}{3}}^\infty e^{-st} \cos \left( t-\frac{2\pi}{3} \right)\D t\\
+            &=\int_0^\infty e^{-s\left( u+\frac{2\pi}{3} \right)} \cos u \D u\\
+            &=e^{-\frac{2\pi}{3}}\int_0^\infty e^{-su} \cos u \D u\\
+            &=\frac{se^{-\frac{2\pi}{3}}}{s^2+1}
+        \end{align*}
+        \item Since $ \lap{\cos t}=\frac{s}{s^2+1} $, it follows from second translation property, with $ a=\frac{2\pi}{3} $, that 
+        \[
+            \lap{F(t)}=\frac{se^{-\frac{2\pi}{3}}}{s^2+1}
+        \]
+    \end{enumerate}
+\end{soln}
+\subsection{Laplace Transform of Derivatives}
+% 13*
+\begin{prob}
+    Prove Theorem \ref{thm:lapder}: If $ \lap{F(t)}=f(s) $ then $ \lap{F'(t)}=s\,f(s)-F(0) $.
+\end{prob}
+\begin{soln}\label{soln:13}
+    Using integration by parts, we have
+    \begin{align*}
+        \lap{F'(t)}&=\int_0^\infty e^{-st}F'(t)\D t-\lim\limits_{P\to \infty}\int_0^P e^{-st}F'(t)\D t\\
+        &=\lim\limits_{P\to \infty}\left\{ \left.e^{-st}F(t)\right\vert_0^P +s\int_0^P e^{-st}F(t)\D t \right\}\\
+        &=\lim\limits_{P\to \infty}\left\{ e^{-sP}F(P)-F(0) +s\int_0^P e^{-st}F(t)\D t \right\}\\
+        &=s\int_0^\infty e^{-st}F(t)\D t-F(0)\\
+        &=s\,f(s)-F(0)
+    \end{align*}
+    Using the fact that $ F(t) $ is of exponential order $ \gamma $ as $ t \to \infty $, so that $ \lim\limits_{P\to\infty} e^{-sP}F(P)=0$ for $ s>\gamma $.
+\end{soln}
+% 14*
+\begin{prob}
+    Prove Theorem \ref{thm:lapder2}: If $ \lap{F(t)}=f(s) $ then $ \lap{F''(t)}=s^2\,f(s)-s\,F(0)-F'(0) $.
+\end{prob}
+\begin{soln}
+    By Problem \ref{soln:13},
+    \[
+        \lap{G'(t)}=s\lap{G(t)}-G(0)=s\,g(s)-G(0)
+    \]
+    Let $ G(t)=F'(t) $. Then 
+    \begin{align*}
+        \lap{F''(t)}&=s\lap{F'(t)}-F'(0)\\
+        &=s\left[ s\lap{F(t)}-F(0) \right]-F'(0)\\
+        &=s^2 \lap{F(t)}-s\,F(0) -F'(0)\\
+        &=s^2 f(s)-s\,F(0) -F'(0)
+    \end{align*}
+    The generalization to higher derivatives can be proved by using mathematical induction.
+\end{soln}
+\subsection{Multiplication By Powers of $ t $}
+% 19
+\begin{prob}
+    Prove Theorem \ref{thm:lapmul}: If $ \lap{F(t)}=f(s) $, then 
+    \[ \lap{t^n F(t)}=(-1)^n\frac{\D^n}{\D s^n}f(s)=(-1)^n f^{(n)}(s)\qquad \text{where }n=1,2,3,\dots\]
+\end{prob}
+\begin{soln}
+    We have, 
+    \[
+        f(s)=\int_0^\infty e^{-st}F(t)\D t
+    \]
+    Then by Leibniz's rule for differentiating under the integral sign,
+    \begin{align*}
+        \frac{\D f}{\D s}=f'(s)&=\frac{\D}{\D s}\int_0^\infty e^{-st}F(t)\D t=\int_0^{\infty} \frac{\partial}{\partial s}e^{-st}F(t)\D t\\
+        &=\int_0^{\infty} -te^{-st}F(t)\D t\\
+        &=-\int_0^{\infty} e^{-st}\left\{tF(t)\right\}\D t\\
+        &=-\lap{tF(t)}
+    \end{align*}
+    Thus,
+    \begin{equation}
+        \lap{tF(t)}=-\frac{\D f}{\D s}=-f'(s)
+        \label{eq:mulprob1}
+    \end{equation}
+    which proves the theorem for $ n=1 $.\\
+
+    To establish the theorem in general, we use mathematical induction. Assume the theorem is true for $ n=k $, i.e., assume
+    \begin{equation}
+        \int_0^\infty e^{-st}\left\{ t^kF(t) \right\}\D t=(-1)^k f^{(k)}(s)
+        \label{eq:mulprob2}
+    \end{equation}
+    Then
+    \[
+        \frac{\D}{\D s}\int_0^\infty e^{-st}\left\{ t^kF(t) \right\}\D t=(-1)^k f^{(k+1)}(s)
+    \]
+    or by Leibniz's rule,
+    \[
+        -\int_0^\infty e^{-st}\left\{ t^{k+1}F(t) \right\}\D t=(-1)^k f^{(k+1)}(s)
+    \]
+    i.e.,
+    \begin{equation}
+        \int_0^\infty e^{-st}\left\{ t^{k+1}F(t) \right\}\D t=(-1)^{k+1} f^{(k+1)}(s) \label{eq:mulprob3}
+    \end{equation}
+    It follows that if \eqref{eq:mulprob2} is true, i.e., if the theorem holds for $ n=k $, then \eqref{eq:mulprob3} is true, i.e., the theorem holds for $ n=k+1 $. But by \eqref{eq:mulprob1} the theorem is true for $ n=1 $. Hence, it is true for $ n=1+1=2 $ and $ n=2+1=3 $, etc., and thus for all positive integer values of $ n $.
+\end{soln}
+% 20
+\begin{prob}
+    Find \begin{enumerate}[label=(\alph*)]
+        \item $ \lap{t\sin at} $
+        \item $ \lap{t^2 \cos at} $
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    \hfill
+    \begin{enumerate}[label=(\alph*)]
+        \item Since $ \lap{\sin at}=\frac{a}{s^2+a^2} $, we have by multiplication by the powers of $ t $
+        \[
+            \lap{t\sin at}=-\frac{\D}{\D s}\left( \frac{a}{s^2+a^2} \right)=\frac{2as}{(s^2+a^2)^2}
+        \]
+        \emph{Another method}\\
+        Since $ \displaystyle \lap{\cos at}=\int_0^\infty e^{-st}\cos at \D t =\frac{s}{s^2+a^2}$\\
+        We have by differentiating with respect to the parameter $ a $ [using Leibniz's rule],
+        \begin{align*}
+            \frac{\D}{\D a}\int_0^\infty e^{-st}\cos at\D t&=\int_0^\infty e^{-st}\left\{-t\sin at\right\}\D t=-\lap{t\sin at}\\
+            &=-\frac{\D}{\D a}\left( \frac{s}{s^2+a^2} \right)=-\frac{2as}{(s^2+a^2)^2}
+        \end{align*}
+        from which 
+        \[
+            \lap{t\sin at}=\frac{2as}{(s^2+a^2)^2}
+        \]
+        Note that the result is equivalent to $ \frac{\D}{\D a}\lap{\cos at}=\lap{\frac{\D}{\D a}\cos at} $.
+        \item Since $ \lap{\cos at}=\frac{s}{s^2+a^2} $, we have by multiplication by the powers of $ t $
+        \[
+            \lap{t^2\cos at}=-\frac{\D^2}{\D s^2}\left( \frac{s}{s^2+a^2} \right)=\frac{2s^3-6a^2s}{(s^2+a^2)^3}
+        \]
+        We can also use the second method of part (a) by writing
+        \[
+            \lap{t^2\cos at}=\lap{-\frac{\D^2}{\D a^2}\cos at}=-\frac{\D^2}{\D a^2}\lap{\cos at}
+        \]
+        which gives the same result.
+    \end{enumerate}
+\end{soln}
+% 45
+\subsection{Evaluation of Integral}
+\begin{prob}
+    Evaluate \begin{enumerate}[label=(\alph*)]
+        \item $ \displaystyle \int_0^\infty t e^{-2t}\cos t \D t$,
+        \item $ \int_0^\infty \frac{e^{-t}-e^{-3t}}{t}\D t $
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    \begin{enumerate}[label=(\alph*)]
+        \item By multiplication by the powers of $ t $,
+        \begin{align*}
+            \lap{t\cos t}&=\int_0^\infty t e^{-st}\cos t \D t\\
+            &=-\frac{\D}{\D s}\lap{\cos t}\\
+            &=-\frac{\D}{\D s}\left( \frac{s}{s^2+1} \right)\\
+            &=\frac{s^2-1}{(s^2+1)^2}
+        \end{align*}
+        Then letting $ s=2 $, we find
+        \[
+            \int_0^\infty te^{-2t}\cos t\D t=\frac{3}{25}
+        \]
+        \item If $ F(t)= e^{-t}-e^{-3t}$, then 
+        \[
+            f(s)=\lap{F(t)}=\frac{1}{s+1}-\frac{1}{s+3}
+        \]
+        Thus by division by powers of $ t $,
+        \begin{align*}
+            & \lap{\frac{e^{-t}-e^{-3t}}{t}}=\int_0^\infty \left\{ \frac{1}{u+1}-\frac{1}{u+3} \right\}\D u\\
+            \Rightarrow\,& \int_0^\infty e^{-st}\left(\frac{e^{-t}-e^{-3t}}{t}\right)\D t=\ln\left( \frac{s+3}{s+1} \right)
+        \end{align*}
+        Taking the limit as $ s\to 0^+ $, we find
+        \[
+            \int_0^\infty \frac{e^{-t}-e^{-3t}}{t}\D t=\ln 3
+        \]
+    \end{enumerate}
+\end{soln}
+\end{document}

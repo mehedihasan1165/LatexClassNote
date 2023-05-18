@@ -1,0 +1,116 @@
+\documentclass[class=book,crop=false]{standalone}
+\usepackage{../style}
+\begin{document}
+\chapter{Loops}
+\section{Types of \code{do} loop}
+If a block of code is to be performed repeatedly it is out inside a \code{do} loop. The basic structure of which is,
+\begin{lstlisting}[numbers=none]
+    do
+        repeated section
+    end do
+\end{lstlisting}
+Indentation helps to clarify the logical structure of the code. It is easy to see which section is being repeated.\\
+
+There are two basic types of \code{do} loops.
+\begin{enumerate}[label=(\alph*)]
+    \item Deterministic \code{do} loops: The number of times the section is repeated is stated explicitly. eg,
+    \begin{lstlisting}[numbers=none]
+        do i=1,10
+            repeated section
+        end do
+    \end{lstlisting}
+    This will perform the repeated section once for each value of the counter i=1,2,\dots,10.\\
+    The value of i itself may or may not actually be used in the repeated section.
+    \item Non-deterministic \code{do} loops: The number of repetitions is not stated in advance.
+    The enclosed section is repeated until some condition is or is not met.
+    This may be done in two alternative ways. 
+    The first requires a logical reason for stopping, whist the second requires a logical reason for continuing looping.
+    \begin{lstlisting}[numbers=none]
+        do
+            repeated section
+            if (logical expression) exit
+        end do
+    \end{lstlisting}
+    or,
+    \begin{lstlisting}[numbers=none]
+        do while (logical expression)
+            repeated section
+        end do
+    \end{lstlisting}
+\end{enumerate}
+\section{Deterministic \code{Do} Loops}
+The general form of the \code{do} statement in this case is 
+\begin{lstlisting}[numbers=none]
+    do variable=value1, value2, value3
+        repeated section
+    end do
+\end{lstlisting}
+Note that
+\begin{itemize}
+    \item The loop will execute for each value of the variable from value1 to value2 in steps of value3.
+    \item value3 is the stride, it may be negative or positive; if omitted it is assumed to be 1.
+    \item The counter variable must be \code{integer} type (there could be round off errors if using \code{real} variables).
+    \item value1, value2 and value3 may be constant (eg, 100) or expressions evaluating to \code{integer} (eg, 6*(2+j))
+\end{itemize}
+\subsection{Sample program}
+\lstinputlisting[caption= A sample program of Deterministic Do loop]{noTalking.f90}
+Alternatively, the counter (i in the program bellow) may actually be used in the repeated section.
+\lstinputlisting[caption=A sample program of do loop with counter used in repeated section]{do.f90}
+\section{Non-deterministic \code{Do} Loops}
+The \code{if (...) exit} form continues until some logical expression evaluates as \code{.true.}. Then it jumps out of the loop and continues with the code after the loop. In this form a \code{.true.} result tells you when to stop looping.
+
+This can actually be used to exit from any form of loop.\\
+
+The \code{do while(...)} form continues until some logical expression evaluates as \code{.false.}. Then it stops looping and continues with code after the loop. In this a \code{.true.} result tells you when to continue looping.\\
+
+Non-deterministic \code{do} loops are particularly good for
+\begin{itemize}
+    \item summing power series (looping stops when the absolute value of a term is less than some given tolerance)
+    \item Single-point iteration (looping stops when the change is less than a given tolerance)
+\end{itemize}
+As an example of the latter consider the following code for solving the Colebrook-White equation for the friction factor $ \lambda $ in flow through a pipe
+\[\frac{1}{\sqrt{\lambda}}=-2.0\log_{10} \left(\frac{k_s}{3.7D}+\frac{2.51}{Re\sqrt{\lambda}}\right)\]
+The user inputs values of the relative roughness $ \frac{k_s}{D} $ and Reynolds number $ Re $. For simplicity the program actually iterates for
+\begin{align*}
+    x &=\ \frac{1}{\sqrt{\lambda}} :\\
+    x &=\ -2.0\log_{10} \left(\frac{k_s}{3.7D}+\frac{2.51}{Re}x\right)
+\end{align*}
+\lstinputlisting[caption=Sample program of simple-point iteration]{friction.f90}
+\section{\code{Cycle} and \code{Exit} statement}
+The \code{cycle} statement interrupts the current execution cycle of the innermost \code{do} construct and a new iteration cycle of the \code{do} construct can begin.
+\begin{lstlisting}[numbers=none]
+    do i=1, 10
+        A(i)=c+D(i)
+        if (D(i)<0) cycle ! if true then the next statement is omitted
+        A(i)=1
+    end do
+\end{lstlisting}
+The  \code{exit} statement terminates execution of the innermost (or named) \code{do} construct.
+\begin{lstlisting}[numbers=none]
+    i=0
+    do
+        i=i+1
+        if (i>100) exit
+        print*, "i is ", i
+    end do
+    print*, "Loop finished"
+\end{lstlisting}
+\section{Nested \code{do} loops}
+\code{Do} loops can be nested. Indention is highly recommended here to clarify the loop structure.
+\lstinputlisting[caption=A sample program for nested loops]{nestedLoop.f90}
+\section{Implied \code{Do} loops}
+This highly-compact syntax is often use to initialize arrays or for I/O or sequential data.
+ The general form is,\\
+ \lstinline[basicstyle=\ttfamily]{(expression, index = start, end, [stride])}\\
+ and like any other \code{do} loops it may be nested. For example,
+ \begin{lstlisting}[numbers=none]
+    do i=1, nx
+        x=xo + (i - 1) * dx
+        print*, x
+    end do
+\end{lstlisting}
+can be condensed to single line,
+\begin{lstlisting}[numbers=none]
+    print*, (xo + (i - 1) * dx, i=1,nx)
+\end{lstlisting}
+\end{document}

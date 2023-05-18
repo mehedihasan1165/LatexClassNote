@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+    [level/.style={sibling distance = 5cm/#1,level distance = 1.5cm}]
+    \node[]{A}
+    child{node[] {B}
+        child{node[]{D}}
+        child{node[]{E}
+            child{node[]{F}}
+            child[missing]
+        }
+    }
+    child{node[]{C}
+        child{node[]{G}}
+        child{node[]{H}
+            child{node[]{J}
+                child{node[]{L}}
+                child[missing]
+            }
+            child{node[]{K}}
+        }
+    };
+\end{tikzpicture}

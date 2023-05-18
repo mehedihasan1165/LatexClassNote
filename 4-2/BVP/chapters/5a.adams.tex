@@ -1,0 +1,123 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Multistep Methods}
+Methods using the approximation at more than one previous mesh points to determine the approximation at the next point are called multistep methods.
+\begin{defn}
+    An \(m-\)step multistep method for solving the IVP
+    \begin{equation}
+        y'=f(t,y),\quad a\leq t\leq b,\quad y(a)=\alpha\label{eq:aba1}
+    \end{equation}
+    is one whose difference equation for finding the approximation \(w_{i+1}\) at mesh point \(t_{i+1}\) can be represented by the following equation, where \(m\) is an integer grater than 1:
+    \begin{equation}
+        w_{i+1}=a_{m-1}w_i+a_{m-2}w_{i-1}+\dots+a_0w_{i+1-m}+h[b_mf(t_{i+1},w_{i+1})+b_{m-1}f(t_i,w_i)+\dots+b_0f(t_{i+1-m},w_{i+1-m})]\label{eq:aba2}
+    \end{equation}
+    for \(i=m-1,m,\dots,N-1\), where \(h=(b-a)/N\). The \(a_0\), \(a_1,\dots,a_{m-1}\) and \(b_0,b_1,\dots,b_m\) are constants and the starting values \(w_0=\alpha\), \(w_1=\alpha_1\), \(w_2=\alpha_2,\dots,w_{m-1}=\alpha_{m-1}\) are specified.
+\end{defn}
+When \(b_m=0\), the method is called explicit or open, since equation \eqref{eq:aba2} then gives \(w_{i+1}\) explicitly in terms of previously determined values. When \(b_m\neq0\), the method is called implicit or closed, since \(w_{i+1}\) occures on both sides of \eqref{eq:aba2} and is specified only implicitly.
+
+Adams-Bashforth two-step method:
+\begin{align}
+    w_0&=\alpha, \quad w_1=\alpha_1\notag\\
+    w_{i+1}&=w_i+\frac{h}{2}\left[ 3f(t_i,w_i)-f(t_{i-1},w_{i-1})\right]\quad\text{ for } i=1,2,3,\dots, N-1 \label{eq:aba3}
+\end{align}
+Local Truncation error:
+\[T_{i+1}(h)=\frac{5}{12}y^{'''}(\mu_i)h^2\qquad \mu_i\in (t_{i-1},t_{i+1})\]
+
+
+Adams-Bashforth three-step method:
+\begin{align}
+    w_0&=\alpha, \quad w_1=\alpha_1,\quad w_2=\alpha_2\notag\\
+    w_{i+1}&=w_i+\frac{h}{12}\left[ 23f(t_i,w_i)-16f(t_{i-1},w_{i-1})+5f(t_{i-2},w_{i-2}) \right]\quad\text{ for } i=2,3,\dots, N-1\label{eq:aba4}
+\end{align}
+Local Truncation error:
+\[T_{i+1}(h)=\frac{3}{8}y^{(4)}(\mu_i)h^3\qquad \mu_i\in (t_{i-2},t_{i+1})\]
+
+Adams-Bashforth four-step method:
+\begin{align}
+    w_0&=\alpha, \quad w_1=\alpha_1,\quad w_2=\alpha_2,\quad w_3=\alpha_3\notag\\
+    w_{i+1}&=w_i+\frac{h}{24}\left[ 55f(t_i,w_i)-59f(t_{i-1},w_{i-1})+37f(t_{i-2},w_{i-2})-9f(t_{i-3},w_{i-3}) \right]\quad\text{ for } i=3,4,5,\dots, N-1\label{eq:aba5}
+\end{align}
+Local Truncation error:
+\[T_{i+1}(h)=\frac{251}{720}y^{(5)}(\mu_i)h^4\qquad \mu_i\in (t_{i-3},t_{i+1})\]
+Adams-Moulton two-step method:
+\begin{align}
+    w_0&=\alpha, \quad w_1=\alpha_1\notag\\
+    w_{i+1}&=w_i+\frac{h}{12}\left[ 5f(t_{i+1},w_{i+1})+8f(t_{i},w_{i})-f(t_{i-1},w_{i-1}) \right]\quad\text{ for } i=1,2,3,\dots, N-1 \label{eq:aba6}
+\end{align}
+Local Truncation error:
+\[T_{i+1}(h)=-\frac{1}{24}y^{(4)}(\mu_i)h^3\qquad \mu_i\in (t_{i-1},t_{i+1})\]
+Adams-Moulton three-step method:
+\begin{align}
+    w_0&=\alpha, \quad w_1=\alpha_1,\quad w_2=\alpha_2\notag\\
+    w_{i+1}&=w_i+\frac{h}{24}\left[ 9f(t_{i+1},w_{i+1})+19f(t_{i},w_{i})-5f(t_{i-1},w_{i-1})+f(t_{i-2},w_{i-2}) \right]\quad\text{ for } i=2,3,\dots, N-1\label{eq:aba7}
+\end{align}
+Local Truncation error:
+\[T_{i+1}(h)=-\frac{19}{720}y^{(5)}(\mu_i)h^4\qquad \mu_i\in (t_{i-2},t_{i+1})\]
+Adams-Moulton four-step method:
+\begin{align}
+    w_0&=\alpha, \quad w_1=\alpha_1,\quad w_2=\alpha_2,\quad w_3=\alpha_3\notag\\
+    w_{i+1}&=w_i+\frac{h}{720}\left[ 251f(t_{i+1},w_{i+1})+646f(t_{i},w_{i})-264f(t_{i-1},w_{i-1})+106f(t_{i-2},w_{i-2})-19f(t_{i-3},2_{i-3}) \right]
+    \label{eq:aba8}
+\end{align}
+for \(i=3,4,\dots, N-1\)
+Local Truncation error:
+\[T_{i+1}(h)=-\frac{3}{160}y^{(6)}(\mu_i)h^5\qquad \mu_i\in (t_{i-3},t_{i+1})\]
+\begin{ex}
+    Consider the IVP
+    \[y'=y-t^2+1,\qquad 0\leq t\leq 2, \quad y(0)=0.5\]
+    and the approximations given by the Adams-Bashforth four-step method and the Adams-Moulton three-step method, both using \(h=0.2\).\\
+    The Adams-Bashforth 4th step method has the difference equation
+    \[
+        w_{i+1}=w_i+\frac{h}{24}\left[ 55f(t_i,w_i)-59f(t_{i-1},w_{i-1})+37f(t_{i-2},w_{i-2})-9f(t_{i-3},w_{i-3}) \right]\quad\text{ for } i=3,4,5,\dots, 9
+    \]
+    Exact solution: \(y'(t)=(t+1)^2-0.5e^t\). Also, \(f(t,y)=y-t^2+1\), \(h=0.2\) and \(t_i=0.2i\).\\
+    So,
+    \[
+        w_{i+1}=\frac{1}{24}\left[ 35w_i-11.8w_{i-1}+7.4w_{i-2}-1.8w_{i-3}-0.192i^2-0.192i+4.736 \right]
+    \]
+    Adams-Moulton 3rd step method has the difference equation
+    \[
+        w_{i+1}=w_i+\frac{h}{24}\left[ 9f(t_{i+1},w_{i+1})+19f(t_{i},w_{i})-5f(t_{i-1},w_{i-1})+f(t_{i-2},w_{i-2}) \right]\quad\text{ for } i=2,3,\dots,9
+        \]
+    which reduces to,
+    \[
+        w_{i+1}=\frac{1}{24}\left[ 1.8w_{i+1}+27.88w_{i}+w_{i-1}+0.2w_{i-2}-0.192i^2-0.192i+4.736 \right]
+    \]
+    To use this method explicitly, we solve for \(w_{i+1}\) which gives
+    \[
+        w_{i+1}=\frac{1}{22.2}\left[ 27.8w_{i}-w_{i-1}+0.2w_{i-2}-0.192i^2-0.192i+4.736 \right]
+    \]
+    The results in the following table were obtained using the exact solutions from \(y(t)=(t+1)^2-0.5e^t\) for \(\alpha_0\), \(\alpha_1\), \(\alpha_2\) and \(\alpha_3\) for Adams-Bashforth case and \(\alpha_0\), \(\alpha_1\), and \(\alpha_2\) in the Adams-Moulton case.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{clcccc}
+        \toprule
+             &            & Adams- Bashforth &             & Adams-Moulton&           \\ 
+        \(t_i\)   &\multicolumn{1}{c}{Exact}& \(w_i\)             & Error       & \(w_i\)                                                            & Error     \\\midrule
+        0.0  & 0.5000000 \(\alpha_0\)  &                  &             &                                                               &           \\
+        0.2  & 0.8292986 \(\alpha_1\)  &                  &             &                                                               &           \\
+        0.4  & 1.2140877 \(\alpha_2\)  &                  &             &                                                               &           \\
+        0.6  & 1 .6489406 \(\alpha_3\) &                  &             & 1 .6489341                                                    & 0.0000065 \\
+        0.8  & 2.1272295  & 2.1273124        & 0.0000828   & 2.1272136                                                     & 0.0000160 \\
+        1.0  & 2.6408591  & 2.6410810        & 0.0002219   & 2.6408298                                                     & 0.0000293 \\
+        1.2 & 3.17994 15 & 3.1803480        & 0.0004065   & 3.1798937                                                     & 0.0000478 \\
+        1.4  & 3.7324000  & 3.7330601        & 0.0006601   & 3.7323270                                                     & 0.0000731 \\
+        1.6  & 4.2834838  & 4.2844931        & 0.0010093   & 4.2833767                                                     & 0.0001071 \\
+        1.8  & 4.8151763  & 4.8166575        & 0.0014812   & 4.8150236                                                     & 0.0001527 \\
+        2.0  & 5.3054720  & 5.3075838        & 0.0021119 & 5.3052587                                                     & 0.0002132 \\ \bottomrule
+        \end{tabular}
+        \end{table}
+    Implicit Adams-Moulton method gave better results than the explicit Adams-Bashforth method of the same order.
+\end{ex}
+\begin{note}
+    Implicit method is not always possible to convert an explicit form, for example \[y'=e^y,\quad 0\leq t\leq 0.25,\quad y(0)=1\]
+    Since \(f(t,y)=e^y\) the three-step Adams-Moulton method has the difference equation
+    \[
+        w_{i+1}=w_i+\frac{h}{24}\left[ 9e^{w_{i+1}}+19e^{w_{i}}-5e^{w_{i-1}}+e^{w_{i-2}} \right]
+        \]
+        Which cannot be solved explicitly for \(w_{i+1}\).
+\end{note}
+\end{document}

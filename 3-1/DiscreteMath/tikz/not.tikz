@@ -1,0 +1,7 @@
+\begin{tikzpicture}[circuit logic US]
+\begin{scope}[thick]
+    \node [not gate,info=center:{NOT},minimum size=12mm] (o) {};
+    \draw (o.output)--++(right:5mm) node[right] {$ y=x' $};
+    \draw (o.input)--++(left:5mm) node[left] {$ x $};
+\end{scope}
+\end{tikzpicture}

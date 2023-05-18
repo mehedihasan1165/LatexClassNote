@@ -1,0 +1,324 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Gauss-Seidel and SOR Method for Systems of Linear Equations}
+\section{Gauss-Seidel Method}
+\[
+    x_i^{(k)}=\frac{-\sum_{j=1}^{i-1} \left( a_{ij}x_j^{(k)} \right)-\sum_{j=i+1}^{n} \left( a_{ij}x_j^{(k-1)} \right)+b_i}{a_{ij}}
+\]
+for each \(i=1,2,3,\dots,n \) is called the Gauss-Seidel iterative technique.
+\begin{ex}
+    The linear system
+    \[\systeme{
+        10x_1 - x_2 + 2x_3=6,
+        -x_1 + 11x_2 - x_3 + 3x_4=25,
+        2x_1 - x_2 + 10x_3 - x_4=-11,
+        3x_2 - x_3 + 8x_4=15
+        }
+    \]
+    can be written
+    \begin{alignat*}{5}
+        x_1^{(k)} & {}={} &  & \phantom{+} \frac{1}{10}x_2^{(k-1)} & {}-{} \frac{1}{5}x_3^{(k-1)} & & {}+{} \frac{3}{5}\\
+        x_2^{(k)} & {}={} & \frac{1}{11}x_1^{(k)} & & {}+{} \frac{1}{11}x_3^{(k-1)}& {}-{} \frac{3}{11}x_4^{(k-1)} & {}+{} \frac{25}{11}\\
+        x_3^{(k)} & {}={} & {}-{} \frac{1}{5}x_1^{(k)} & {}+{} \frac{1}{10}x_2^{(k)} & & {}+{} \frac{1}{10}x_4^{(k-1)} & {}-{} \frac{11}{10}\\
+        x_4^{(k)} & {}={} & & {}-{} \frac{3}{8}x_2^{(k)} & {}+{} \frac{1}{8}x_3^{(k)} & & {}+{} \frac{15}{8}
+    \end{alignat*}
+    Letting \(x^{(0)}=(0,0,0,0)^t\), we generate the iterates in the table below.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{crrrrrr}
+        \toprule
+        \(k\) & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4} & \multicolumn{1}{c}{5} \\ \midrule
+        \(x_1^{(k)}\) & \(0.0000\) & \(0.6000\)  & \(1.0300\) & \(1.0065\) & \(1.0009\) & \(1.0001\) \\
+        \(x_2^{(k)}\) & \(0.0000\) & \(2.3272\)  & \(2.0370\) & \(2.0036\) & \(2.0003\) & \(2.0000\) \\
+        \(x_3^{(k)}\) & \(0.0000\) & \(-0.9873\) & \(-1.0140\) & \(-1.0025\) & \(-1.0003\) & \(-1.0000\) \\
+        \(x_4^{(k)}\) & \(0.0000\) & \(0.8789\)  & \(0.9844\) & \(0.9983\) & \(0.9999\) & \(1.0000\) \\ \bottomrule
+        \end{tabular}
+    \end{table}
+    Since
+    \[
+        \frac{\left\| x^{(5)}-x^{(4)} \right\|_{\infty}}{\left\| x^{(5)}\right\|_{\infty}}=\frac{0.0008}{2.0000}=4\times 10^{-4}
+    \]
+    \(x^{(5)}\) is accepted as a reasonable approximation to the solution.
+\end{ex}
+    \emph{Comment: } Jacobi method for this example require twice the iterations for the same degree of accuracy.
+
+    So the Gauss-Seidel method is superior to the Jacobi method. This is generally but not always true. There are linear systems for which Jacobi method is convergent but not Gauss-Seidel and others for which Gauss-Seidel method converges and the Jacobi method does not.
+
+    \begin{defn}
+        Suppose \(\tilde{x}\in \R^n\) is an approximation to the solution of the linear system defined by \(Ax=b\). The residual vector for \(\tilde{x}\) with respect to this system is \(r=b-A\tilde{x}\).
+    \end{defn}
+    \section{Successive Over Relaxation}
+    Gauss-Seidel procedure can be modified as follows
+    \begin{equation}
+        x_i^{(k)}=x_i^{(k-1)}+\omega \frac{r_{ii}^{(k)}}{a_{ii}}\label{eq:sor1}
+    \end{equation}
+    for certain choices of positive \(\omega\) reduces the norm of the residual vector and leads to significantly faster convergence. Where,
+    \[
+        r_{ii}^{(k)}=b_i-\sum_{j=1}^{i-1}a_{ij}x_j^{(k)}-\sum_{j=i+1}^{n}a_{ij}x_j^{(k-1)}-a_{ii}x_i^{(k-1)}
+    \]
+    Methods involving equation \eqref{eq:sor1} are called relaxation methods. For choices of \(\omega\) with \(0<\omega<1\), the procedures are called under-relaxation methods and can be used to obtain convergence of some systems that are not convergent by the Gauss-Seidel method. For choices of \(\omega\) with \(\omega>1\), the procedures are called over-relaxation methods, which are used to accelerate the convergence for systems that are convergent by the Gauss-Seidel technique.
+
+    These methods are called Successive Over-Relaxation (SOR) method and are particularly useful for solving the linear systems that occur in the numerical solution of certain partial-differential equations.
+    
+
+    \begin{note}
+        \[
+            x_i^{(k)}= (1-\omega) x_i^{(k-1)}+\frac{\omega}{a_{ii}}\left[ b_i-\sum_{j=1}^{i-1}a_{ij}x_j^{(k)}-\sum_{j=i+1}^{n}a_{ij}x_j^{(k-1)} \right]
+        \]
+    \end{note}
+    \begin{ex}
+        The linear system \(Ax=b\) given by
+        \[
+            \systeme{
+            4x_1+3x_2=24,
+            3x_1+4x_2-x_3=30,
+            -4x_2+4x_3=-24
+            }
+        \]
+        has the solution \((3,4,-5)^t\).\\
+
+        We want to solve the above system by Gauss-Seidel and SOR (with \(\omega=1.25\)) method using \(x^{(0)}=(1,1,1)^t\) for both methods.\\
+        Gauss-Seidel method:
+        \begin{alignat*}{4}
+            x_1^{(k)} & {}={} &  & - 0.75 x_2^{(k-1)} & & {}+{} 6\\
+            x_2^{(k)} & {}={} & -0.75 x_1^{(k)} & & {}+{} 0.25 x_3^{(k-1)}& {}+{} 7.5\\
+            x_3^{(k)} & {}={} & &  0.25 x_2^{(k)} & & {}-{} 6
+        \end{alignat*}
+        SOR method with \(\omega=1.25\):
+        \begin{alignat*}{4}
+            x_1^{(k)} & {}={} & {}-{} 0.25x_1^{(k-1)} & {}-{} 0.9375 x_2^{(k-1)} & & {}+{} 7.5\\
+            x_2^{(k)} & {}={} & {}-{} 0.9375 x_1^{(k)} & {}-{} 0.25x_2^{(k-1)} & {}+{} 0.3125 x_3^{(k-1)}& {}+{} 9.375\\
+            x_3^{(k)} & {}={} & &  0.3125 x_2^{(k)} & {}-{} 0.25 x_3^{(k-1)}& {}-{} 7.5
+        \end{alignat*}
+        The first 7 iterations are listed in the tables below. To obtain 7 digit accuracy Gauss-Seidel needs 34 and SOR required 14 iterations.
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{crrrrrrrr}
+            \toprule
+            \(k\) & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4} & 5 & \multicolumn{1}{c}{6} & 7 \\ \midrule
+            \(x_1^{(k)}\) & 1 & 5.250000 & 3.1406250 & 3.0878906 & 3.0549316 & 3.0343323 & 3.0214577 & 3.0134110 \\
+            \(x_2^{(k)}\) & 1 & 3.812500 & 3.8828125 & 3.9267578 & 3.9542236 & 3.9713898 & 3.9821186 & 3.9888241 \\
+            \(x_3^{(k)}\) & 1 & -5.046875 & -5.0292969 & -5.0183105 & -5.0114441 & -5.0071526 & -5.0044703 & -5.0027940 \\ \bottomrule
+            \end{tabular}
+            \caption{Gauss-Seidel}
+        \end{table}
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{crrrrrrrr}
+            \toprule
+            \(k\) & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4} & 5 & \multicolumn{1}{c}{6} & 7 \\ \midrule
+            \(x_1^{(k)}\) & 1 & 6.312500 & 2.6223145 & 3.1333027 & 2.9570512 & 3.0037211 & 2.9963276 & 3.0000498 \\
+            \(x_2^{(k)}\) & 1 & 3.5195313 & 3.9585266 & 4.0102646 & 4.0074838 & 4.0029250 & 4.0009262 & 4.0002586 \\
+            \(x_3^{(k)}\) & 1 & -6.6501465 & -4.6004238 & -5.0966863 & -4.9734897 & -5.0057135 & -4.9982822 & -5.0003486 \\ \bottomrule
+            \end{tabular}
+            \caption{SOR method with \(\omega=1.25\)}
+        \end{table}
+    \end{ex}
+    \begin{note}
+        There is no any general answer to know perfect choice of the values of \(\omega\) for solving a linear system of equation.
+    \end{note}
+    For certain situations we can follow the following theorems:
+    \begin{thm}[Kahan]
+        If \(a_{ii}\neq 0\) for each \(i=1,2,\dots,n\), then \(\rho(T_\omega)\geq \vert \omega-1\vert\). This implies that the SOR method can converge only if \(0< \omega <2\).
+    \end{thm}
+    \begin{thm}[Ostrowski-Reich]
+        If \(A\) is a positive definite matrix and \(0< \omega <2\), then the SOR method converges for any choice of initial approximate vector \(x^{(0)}\).
+    \end{thm}
+    \begin{thm}
+        If \(A\) is positive definite and tridiagonal, then \(\rho(T_g)=\left[ \rho(T_j) \right]^2 <1\), and the optimal choice of \(\omega\) for the SOR method is
+        \[
+            \omega=\frac{2}{1+\sqrt{1-\left[ \rho(T_j) \right]^2}}
+        \]
+        with this choice of \(\omega\) we have \(\rho(T_\omega)=1-\omega\).
+    \end{thm}
+    \begin{prob}[H.W.]
+        Find the first four iterations by Jacobi and Gauss-Seidel method using \(\mathbf{x}^{(0)}=0\), and check the relations 
+        \[
+            \frac{\left\| x^{(4)}-x^{(3)} \right\|_{\infty}}{\left\| x^{(4)}\right\|_{\infty}}
+        \]
+        for the all systems.
+        \begin{enumerate}
+            \item \(\systeme{
+                3x_1-x_2+x_3=1,
+                3x_1+6x_2+2x_3=0,
+                3x_1+3x_2+7x_3=4
+            }\)
+            \item \systeme{
+                10x_1-x_2=9,
+                -x_1+10x_2-2x_3=7,
+                -2x_2+10x_3=6
+            }
+            \item \systeme{
+                10x_1+5x_2=6,
+                5x_1+10x_2-4x_3=25,
+                -4x_2+8x_3-x_4=-11,
+                -x_3+5x_4=-11
+            }
+            \item \systeme{
+                4x_1+x_2-x_3+x_4=-2,
+                x_1+4x_2-x_3-x_4=-1,
+                -x_1-x_2+5x_3+x_4=0,
+                x_1-x_2+x_3+3x_4=1
+            }
+        \end{enumerate}
+    \end{prob}
+    \subsection{The SOR Method}
+    \begin{prob}
+    Consider a linear system \(Ax=b\), where
+    \[
+        A=\begin{bmatrix}
+            3 & -1 & 1 \\
+            -1 & 3 & -1 \\
+            1 & -1 & 3\\
+        \end{bmatrix}
+        \quad
+        b=\begin{bmatrix}
+            -1\\
+            7  \\
+            -7 \\
+        \end{bmatrix}
+    \]
+    \begin{enumerate}[label=(\roman*)]
+        \item Check that the SOR method with \(\omega=1.25\) of the relaxation parameter can be used to solve this system.
+        \item Compute the first four iteration by the SOR method starting at the point \(x^{(0)}=(0,0,0)^t\)
+    \end{enumerate}
+\end{prob}
+\begin{soln}\hfill
+    \begin{enumerate}[label=(\roman*)]
+        \item Let us verify the sufficient condition for using the SOR method. We have to check if matrix \(A\) is symmetric, positive definite.\\
+        (spd): \(A\) is symmetric, so let us check positive definiteness:
+        \[
+            \det(3)=3>0,\quad \det \begin{bmatrix}
+                3& -1 \\
+                -1& 3 \\
+            \end{bmatrix}=8>0, \quad \det(A)=20>0
+            \]
+            All the leading principal minors are positive and so the matrix \(A\) is positive definite. We know that for spd matrices the SOR method converges for values of the relaxation \(\omega\) from the interval \(0<\omega<2\).\\
+            
+            
+            \emph{Conclusion}: The SOR method with the value \(\omega=1.25\) can be used to solve this system.
+            \item The iterations of the SOR method are easier to compute by elements than in the vector form.\\
+            Write the system as equations:
+            \[
+                \systeme{
+                    3x_1-x_2+x_3=-1,
+                    -x_1+3x_2-x_3=7,
+                    x_1-x_2+3x_3=-7
+                }
+            \]
+            First we write down the equations for the Gauss-Seidel (GS) iterations:
+            \begin{align*}
+                x_1^{(k+1)}&=\frac{\left( -1+x_2^{(k)}-x_3^{(k)} \right)}{3}\\
+                x_2^{(k+1)}&=\frac{\left( 7+x_1^{(k+1)}+x_3^{(k)} \right)}{3}\\
+                x_3^{(k+1)}&=\frac{\left( -7-x_1^{(k+1)}+x_2^{(k+1)} \right)}{3}
+            \end{align*}
+            Now multiply the RHS by the parameter \(\omega=1.25\) and add to it the vector \(x^{(k)}\) from the previous iteration multiplied by the factor of \((1-\omega)\):
+            \begin{align*}
+                x_1^{(k+1)} &= (1-\omega)x_1^{(k)}+ \frac{\omega\left( -1+x_2^{(k)}-x_3^{(k)} \right)}{3}\\
+                x_2^{(k+1)} &=(1-\omega)x_2^{(k)}+ \frac{\omega\left( 7+x_1^{(k+1)}+x_3^{(k)} \right)}{3}\\
+                x_3^{(k+1)} &= (1-\omega)x_3^{(k)}+\frac{\omega\left( -7-x_1^{(k+1)}+x_2^{(k+1)} \right)}{3}
+            \end{align*}
+            For \(k=0,1,2,\dots\) compute \(x^{(k+1)}\) from these equations, starting by the first one.\\
+            
+            Computation for \(k=0\):
+            \begin{align*}
+                x_1^{(1)} &= (1-\omega)x_1^{(0)}+ \frac{\omega\left( -1+x_2^{(0)}-x_3^{(0)} \right)}{3}\\
+                &= (1-1.25)\times 0+ \frac{1.25\left( -1+0-0 \right)}{3}\\
+                &= -0.41667\\
+                x_2^{(1)} &=(1-\omega)x_2^{(0)}+ \frac{\omega\left( 7+x_1^{(1)}+x_3^{(0)} \right)}{3}=2.7431\\
+                x_3^{(1)} &= (1-\omega)x_3^{(0)}+\frac{\omega\left( -7-x_1^{(1)}+x_2^{(1)} \right)}{3}=-1.6001
+            \end{align*}
+            Similarly, the next three iterations are presented in the following table:
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{cccc}
+                \toprule
+                \(k\) & \(x_1^{(k)}\) & \(x_2^{(k)}\) & \(x_3^{(k)}\) \\ \midrule
+                2 & 1.4972 & 2.1880 & -2.2288 \\
+                3 & 1.0494 & 1.8782 & -2.0141 \\
+                4 & 0.9128 & 2.0007 & -1.9723 \\ \bottomrule
+                \end{tabular}
+            \end{table}
+        \end{enumerate}
+\end{soln}
+\begin{note}\hfill
+    \begin{enumerate}
+        \item The spectral radius \(\rho(A)\) of a matrix \(A\) is defined by \(\rho(A)=\max \abs{\lambda}\), \(\lambda\) is an eigen value of \(A\).
+        \item The \(n\times n\) matrix \(A\) is said to be strictly diagonally dominant when \(\abs{a_{ii}}>\sum_{j=1\\ j\neq i}^n \abs{a_{ij}}\) holds for each \(i=1,2,\dots,n\).
+        \item A matrix \(A\) is positive definite if it is symmetric and if \(x'Ax>0\) for every \(n-\)dimensional column vector \(x\neq 0\).\\
+        Here, 
+        \[
+            x'Ax=\begin{bmatrix}
+            x_1 & x_2 & \dots & x_n
+            \end{bmatrix}\begin{bmatrix}
+                a_{11} & a_{12} & \dots & a_{1n} \\
+                a_{21} & a_{22} & \dots & a_{2n} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                a_{n1} & a_{n2} & \dots & a_{nn} \\
+            \end{bmatrix}\begin{bmatrix}
+                x_1 \\
+                 x_2 \\
+                  \vdots \\
+                   x_n
+                \end{bmatrix}
+        \]
+    \end{enumerate}
+\end{note}
+\begin{thm}
+    If \(A\) is an \(n\times n\) positive definite matrix, then
+    \begin{enumerate}[label=(\roman*)]
+        \item \(A\) is non-singular;
+        \item \(a_{ii}>0\) for each \(i=1,2,\dots, n\);
+        \item \(\displaystyle \max_{1\leq k,j\leq n} \abs{a_{kj}}\leq \max_{1\leq i\leq n} \abs{a_{ii}}\);
+        \item \((a_{ij})^2< a_{ii}a_{jj}\) for each \(i\neq j\).
+    \end{enumerate}
+\end{thm}
+\begin{thm}
+    A symmetric matrix \(A\) is positive definite iff each of its leading principal sub matrices has a positive determinant.
+\end{thm}
+\begin{ex}
+    \(A=\begin{bmatrix}
+        2 & -1 &0\\
+        -1 & 2 &-1\\
+        0 & -1 &2
+    \end{bmatrix}\)
+    \[
+        \det A_1=\det \begin{bmatrix}
+            2
+        \end{bmatrix}=2,\qquad \det A_2=\det \begin{bmatrix}
+            2&-1\\
+            -1&2
+        \end{bmatrix}=3>0,\qquad \det A_3=\det A=4>0
+    \]
+\end{ex}
+\begin{prob}[H.W.]
+    Find the first 3 iterations of the SOR method with \(\omega=1.1\) for the following linear systems, using \(x^{(0)}=0\):
+    \begin{enumerate}[label=(\roman*)]
+        \item \systeme{
+            3x_1-x_2+x_3=1,
+            3x_1+6x_2+2x_3=0,
+            3x_1+3x_2+7x_3=4
+        }
+        \item \systeme{
+                10x_1-x_2=9,
+                -x_1+10x_2-2x_3=7,
+                -2x_2+10x_3=6
+            }
+            \item \systeme{
+                10x_1+5x_2=6,
+                5x_1+10x_2-4x_3=25,
+                -4x_2+8x_3-x_4=-11,
+                -x_3+5x_4=-11
+            }
+            \item \systeme{
+                4x_1+x_2-x_3+x_4=-2,
+                x_1+4x_2-x_3-x_4=-1,
+                -x_1-x_2+5x_3+x_4=0,
+                x_1-x_2+x_3+3x_4=1
+            }
+    \end{enumerate}
+\end{prob}
+\end{document}

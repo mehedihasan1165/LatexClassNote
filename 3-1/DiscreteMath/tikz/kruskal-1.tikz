@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+    [node distance=2cm,a/.style={circle,draw}]
+    \node[a] (a) {A};
+    \node[a] (b) [right =of a] {B};
+    \node[a] (c) [below left =of a] {C};
+    \node[a] (d) [below right =of b] {D};
+    \node[a] (e) [below right =of c] {E};
+    \node[a] (f) [right =of e] {F};
+    \node[node distance=.1cm](text1)[below right=of e]{(a)};
+    \path[-](a) edge node[above,sloped] {7}(c)
+                edge node[above left,sloped] {4}(e)
+                edge node[above right,sloped] {7}(f)
+            (b) edge node[above left,sloped] {$ 7\,\, $}(e)
+                edge node[below,sloped] {5}(f)
+                edge node[above,sloped] {3}(d)
+            (c) edge node[below,sloped] {8}(b)
+                edge node[below,sloped] {6}(e)
+            (d) edge node[below,sloped] {4}(f);
+    
+    \node[a] (cc) [right  =of d] {C};
+    \node[a] (aa)[above right =of cc] {A};
+    \node[a] (bb) [right =of aa] {B};
+    \node[a] (dd) [below right =of bb] {D};
+    \node[a] (ee) [below right =of cc] {E};
+    \node[a] (ff) [right =of ee] {F};
+    \node[node distance=.1cm](text2)[below right=of ee]{(b)};
+    \path[-](aa)edge node[above left,sloped] {4}(ee)
+            (bb) edge node[above left,sloped] {$ 7\,\, $}(ee)
+                edge node[above,sloped] {3}(dd)
+            (cc)edge node[below,sloped] {6}(ee)
+            (dd)edge node[below,sloped] {4}(ff);
+\end{tikzpicture}

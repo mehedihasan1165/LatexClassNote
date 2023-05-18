@@ -1,0 +1,12 @@
+\begin{tikzpicture}[every initial by arrow/.style={-latex}]
+	\node[state,initial,thick] (a)  {$S_0$};
+	\node[thick,state] (b)[right=50mm of a]  {$S_1$};
+	\path[-latex,thick] (a) edge[bend left] node[above]{11,0} (b)
+				(a) edge[loop above] node[above]{01,1} (a)
+				(a) edge[loop below] node[below]{00,0} (a)
+				(a) edge[loop right] node[right]{10,1} (a)
+				(b) edge[bend left] node[below]{00,1} (a)
+				(b) edge[loop above] node[above]{01,1} (b)
+				(b) edge[loop right] node[right]{11,1} (b)
+				(b) edge[loop below] node[below,sloped]{10,1} (b);
+	\end{tikzpicture}

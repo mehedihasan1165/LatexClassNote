@@ -1,0 +1,25 @@
+\documentclass[12pt,oneside]{book}
+\usepackage[subpreambles=false]{standalone}
+\renewcommand{\chaptername}{Sheet}
+\usepackage{style}
+\begin{document}
+\pagenumbering{roman}
+\title{Numerical Analysis Sheets}
+\author{Mehedi Hasan}
+\maketitle
+\newpage
+% \section*{Preface}
+% This is a compilation of lecture notes with some books and my own thoughts. This document is not a holy text. So, if there is a mistake, solve it by your own judgement.
+
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+% \part{Insert Part Name here}
+% chapter begins here
+\input{chapters/errors in numerical analysis.tex}
+\input{chapters/root.tex}
+\input{chapters/interpolation.tex}
+\input{chapters/interpolation-2.tex}
+\input{chapters/solution of linear.tex}
+\end{document}

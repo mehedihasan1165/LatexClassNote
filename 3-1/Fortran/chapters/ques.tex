@@ -1,0 +1,150 @@
+\documentclass[class=book,crop=false]{standalone}
+\usepackage{../style}
+\begin{document}
+% \section{2012}
+    % \begin{enumerate}
+    %     \item \begin{enumerate}
+    %         \item (2 marks) Write down the rules for naming the variables.
+    %         \item (6 marks) Briefly discuss by writing the general form of Type Specification statements, Implicit statement and what is the default rule for undeclared variables.
+    %         \item (4 marks) Write FORTRAN equivalent's against each of the following mathematical expressions: 
+    %         \begin{enumerate}
+    %             \item $ \log_e\left|\sec x + \tan x\right|+e^{mx}+\sin(ax+b) $
+    %             \item $ a\frac{b}{c}+\log_{10}\left(\cos (xy)\right)+\sqrt{k-bc} $
+    %             \item $ x^{2m}+y^x+a^b \ln\left(a+\abs{b}\right)+\sinh(x^2+2) $
+    %             \item $ \frac{e^{x+y+2}}{\sin(x+1)+\cos(x+y)}+\frac{ab}{c-d^2}+\frac{ba}{a+\frac{c}{\abs{d}}} $
+    %         \end{enumerate}
+    %     \end{enumerate}
+    %     \item \begin{enumerate}
+    %         \item (4 marks) What are the logical statements that are used to code all the computer processing?
+    %         \item (4 marks) What is the purpose of using assignment statement? Write down the general form of an assignment statement. Suppose the values of a and b are 10 and 20 respectively. Find the output if the following program is executed: 
+    %         \begin{lstlisting}[numbers=none]
+    %             integer a,b,c
+    %             read* a,b
+    %             c=a
+    %             a=b
+    %             b=c
+    %             print*, a,b,c
+    %         \end{lstlisting}
+    %         \item (6 marks) Which of the following are not acceptable as assignment statements and why?\\ \begin{enumerate*}[label={\roman*)},font={\bfseries}]
+    %             \item 2=I,
+    %             \item I=J+2,
+    %             \item A='2'+'3',
+    %             \item A*B*C=D*E*F.
+    %             \end{enumerate*}
+    %     \end{enumerate}
+    %     \item \begin{enumerate}
+    %         \item (4 marks) Assume that at the beginning of each of the following program fragment NRD=5 and JOC=8, NDD=?
+    %         \begin{enumerate}
+    %             \item \begin{lstlisting}
+    %                 IF(2*NRD.EQ.JOC)NRD=NRD+2
+    %                 NRD=NRD+3
+    %             \end{lstlisting}
+    %         \end{enumerate}
+    %     \end{enumerate}
+    %     \item a
+    %     \item a
+    %     \item a
+    %     \item a
+    %     \item a
+    %     \item a
+    %     \item a
+    % \end{enumerate}
+    \section{2019}
+    \begin{enumerate}
+        \item \begin{enumerate}
+            \item (2 marks) Briefly explain various types of constants used in FORTRAN.
+            \item (4 marks) What do you mean by variable in FORTRAN? Write the rules for naming a variable in FORTRAN. Explain which of the variables names in FORTRAN are valid or invalid and why?\\
+            \begin{enumerate*}[label={\roman*)},font={\bfseries}]
+                            \item Mathematics
+                            \item STOP
+                            \item ORPS
+                            \item width
+                            \end{enumerate*}
+            \item (2 marks) How is the type of a variable in FORTRAN specified? Explain with example.
+            \item (4 marks) Write the FORTRAN expressions for each of the following mathematical expressions:\\
+            \begin{enumerate}
+                \item $ \abs{\sqrt{a-b^2}-\frac{c^2}{a/b}} $
+                \item $ \cos(2x-y)+\abs{x^2+y^2}+e^{xy} $
+                \item $ \cos^{-1} x+\tan x^2+e^{mx}+x^3y^2e^{\abs{x}}  $
+                \item $ (a^n)^m+a^na^m+\ln(a+bx^2) $
+            \end{enumerate}
+        \end{enumerate}
+        \item \begin{enumerate}
+            \item (2 marks) The following IF construct is incorrect, why? Also write the correct form with flow chart.
+            \begin{lstlisting}[numbers=none]
+                IF (x<y)c=a+b*d
+                    ELSE IF (x==y) c=d
+                    a=b
+                    ELSE IF (x>y) THEN c=a-b/e+f
+                    ELSE e==f+g
+                        ENDIF
+            \end{lstlisting}
+            \item (6 marks) Write the appropriate subprogram and main program to\\
+            \begin{enumerate*}[label={\roman*)},font={\bfseries}]
+                \item interchange two values
+                \item sort an ascending array A(1),A(2),\dots,A(N) to a descending array using the subprogram in (i)
+            \end{enumerate*} 
+            \item (4 marks) THe commission on a clerk's total SALES is as follows:
+            \begin{enumerate}
+                \item IF SALES<\$50, then there is no commission
+                \item IF \$50$ \leq $ SALES $ \leq $ \$250, then commission =10\% of SALES
+                \item IF SALES>\$250, then commission =\$20+8\% of SALES above \$250
+            \end{enumerate}
+        \end{enumerate}
+        \item \begin{enumerate}
+            \item (4 marks) What do you mean by a DO loop? Write the general form of DO statement and explain its functionality. What is the terminal statement of a DO loop?
+            \item (2 marks) Find the final value of K after the following FORTRAN program segment is executed:
+            \begin{lstlisting}[numbers=none]
+                    K=2
+                10 DO 20 I+3,8,2
+                IF (1 .EQ. 5) GO TO 20
+                    K=K+1
+                  20 CONTINUE
+                    k=2*k
+            \end{lstlisting}
+            \item (6 marks) Write an algorithm, draw flow chart and write the FORTRAN program that reads an integer N and prints the sum of the series: $ 1^3+2^3+3^3+\dots+N^3 $
+        \end{enumerate}
+        \item \begin{enumerate}
+            \item (6 marks) Write a FORTRAN program to sum the following series using FOR loop and WHILE loop severally $ (1+\frac{1}{2})(1+\frac{1}{2}+\frac{1}{3})\dots(1+\frac{1}{2}+\frac{1}{3}+\dots+\frac{1}{N}) $
+            \item (4 marks) If M=12345, N=56789, A=456.123 and B=678.999, find the output after the following statements:
+            \begin{enumerate}
+                \item \begin{lstlisting}[numbers=none]
+                    print 10 M,N,A,B
+                    10 format (3x,18x2x17,2x,x(F8.3,2x))
+                \end{lstlisting}
+                \item \begin{lstlisting}[numbers=none]
+                    print 20 A,B,M,N
+                    20 format ('1', E12.2||1x,E12.2||1x,218)
+                \end{lstlisting}
+                
+            \end{enumerate}
+            \item (2 marks) Locate errors (if any) and correct them:
+            \begin{enumerate}
+                \item \begin{lstlisting}[numbers=none]
+                    read (5,10) A,K,M,Z
+                    10 format (F8.0,2x,2318)
+                \end{lstlisting}
+                \item \begin{lstlisting}[numbers=none]
+                    write (6,12) A,B,M
+                    12 format (2x,F8.2,2x,I8,x,F8.3)
+                \end{lstlisting}
+            \end{enumerate}
+        \end{enumerate}
+        \item \begin{enumerate}
+            \item (5 marks) Define an array, dimension statement and parameter statement in FORTRAN. Find the number of elements in the array: DIMENSION P(1:10), T(2:5,1:4),S(0:3,2:5,3:4)
+            \item (2 marks) Which of the following array names in FORTRAN are valid or invalid and why?\\
+            \begin{enumerate*}[label={\roman*)},font={\bfseries}]
+                            \item xx(3*4,6);
+                            \item XY(N+3,M);
+                            \item YZ(A,L,P);
+                            \item ZX(1=1+1)
+                            \end{enumerate*}
+            \item (5 marks) Four test are given to a class of 10 students. Write a program that calculates the average score of each student and the average score in each test.
+        \end{enumerate}
+        \item \begin{enumerate}
+            \item (3 marks) What do you mean by main program and subprogram? What are the main differences between a function subprogram and a subroutine subprogram?
+            \item (5 marks) What is meant by format directed input  and output? Explain the I-format, F-format, E-format and A-format specification statement in FORTRAN.
+            \item (5 marks) Briefly explain the file processing in FORTRAN. Explain open fine and close file in FORTRAN.
+        \end{enumerate}
+    \end{enumerate}
+    \end{document}

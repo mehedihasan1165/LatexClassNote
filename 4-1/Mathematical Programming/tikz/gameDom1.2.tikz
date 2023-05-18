@@ -1,0 +1,40 @@
+\begin{tikzpicture}
+    \matrix [matrix of math nodes,row sep=0.25cm,column sep=0.25cm] (n) {
+        \;4 & 2 & 0 & 2  & 1 & 1\; \\
+        \;4 & 3 & 1 & 3  & 2 & 2\; \\
+        \;4 & 3 & 7 & -5 & 1 & 2\; \\
+        \;4 & 3 & 4 & -1 & 2 & 2\; \\
+        \;4 & 3 & 3 & -2 & 2 & 2\; \\
+    };
+    \draw (n-1-1.north west) rectangle (n-5-6.south east);
+    \node[above=1 cm] at (n-1-4.west)(up) {Player $B$};
+    \node[left=1.5 cm] at (n-3-1) {Player $A$};
+
+    \foreach \x in {1,...,5} \node[above=.4 cm] at (n-1-\x) {\x};
+    \node[above=.4 cm] at (n-1-6)(b) {6};
+
+    \foreach \x in {1,...,4} \node[left=.75 cm] at (n-\x-1) {\x};
+    \node[left=.75 cm] at (n-5-1) {5};
+
+    \node[right=0.5 cm of b]  {Row Minima};
+    \node[right=1.45 cm] at (n-1-6) {$0$};
+    \node[right=1.35 cm] at (n-2-6)(maximin) {$\mathbf{(1)}$};
+    \node[right=1.25 cm] at (n-3-6) {$-5$};
+    \node[right=1.25 cm] at (n-4-6) {$-1$};
+    \node[right=1.25 cm] at (n-5-6) {$-2$};
+    \node[right=.75 cm of maximin,name=maxi] {maximin};
+    \draw[latex-] (maximin)--(maxi);
+
+
+    \node[below=.4 cm] at (n-5-1) (a) {$4$};
+    \node[left=0.4 cm of a]  {Column Maxima:};
+    \node[below=.4 cm] at (n-5-2) {$3$};
+    \node[below=.4 cm] at (n-5-3) {$7$};
+    \node[below=.4 cm] at (n-5-4) {$3$};
+    \node[below=.4 cm] at (n-5-5)(minimax) {$\mathbf{(2)}$};
+    \node[below=.4 cm of minimax,name=mani] {minimax};
+    \draw[latex-] (minimax)--(mani);
+    \node[below=.4 cm] at (n-5-6) {$2$};
+
+    \node[below=6.5 cm of up] {Table$-$1};
+\end{tikzpicture}

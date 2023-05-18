@@ -1,0 +1,49 @@
+% !TEX program = pdflatex
+% !TEX options = --shell-escape -synctex=1 -interaction=nonstopmode -file-line-error "%DOC%"
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\begin{tikzpicture}
+        % use GNUplot (avaiable in TeXLive)
+        \draw[->] (-4.5,0) -- (4.5,0) node[below] {$x$};
+        \draw[->] (0,-4.5) -- (0,4.5) node[left] {$y$};
+        
+        \draw[blue,thick] plot[raw gnuplot,smooth] function {
+            f(x,y) = x*y*y+2*(x**3)*(y**3)-y-1;
+            set xrange [-4:4];
+            set yrange [-4:4];
+            set view 0,0;
+            set isosample 500,500;
+            set cont base;
+            set cntrparam levels incre 0,0.1,0;
+            unset surface;
+            splot f(x,y);
+        };
+        \draw[red,thick] plot[raw gnuplot,smooth] function {
+            f(x,y) = x*y*y+2*(x**3)*(y**3)-y-3;
+            set xrange [-4:4];
+            set yrange [-4:4];
+            set view 0,0;
+            set isosample 500,500;
+            set cont base;
+            set cntrparam levels incre 0,0.1,0;
+            unset surface;
+            splot f(x,y);
+        };
+        \draw[red,thick] plot[raw gnuplot,smooth] function {
+            f(x,y) = x*y*y+2*(x**3)*(y**3)-y-2;
+            set xrange [-4:4];
+            set yrange [-4:4];
+            set view 0,0;
+            set isosample 500,500;
+            set cont base;
+            set cntrparam levels incre 0,0.1,0;
+            unset surface;
+            splot f(x,y);
+        };
+        \node[below=5mm,blue] at (current bounding box.south) 
+        {The curve $xy^2+2x^3y^3=y+1$.};
+        \end{tikzpicture}
+\end{document}

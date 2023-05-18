@@ -1,0 +1,25 @@
+\begin{tikzpicture}[scale=.75]
+\begin{axis}[
+	axis lines=middle,
+	xmin=-.5,xmax=5,
+	ymin=-.5,ymax=4,
+	ylabel style={above},
+	ylabel=$Y$,
+	xlabel style={right},
+	xlabel=$X$,
+	xtick={},
+	xticklabels={},
+	ytick={1,2,3},
+	yticklabels={1,2,3}
+]
+\addplot[black,thick,{[-]}] coordinates{(1,0) (4,0)};
+
+\addplot[black,thick,{-*}] coordinates{(1,1) (2.5,1)};
+\addplot[black,thick,{o-}] coordinates{(2.5,3) (4,3)};
+
+\addplot[black,mark=*,only marks]coordinates{(0,1) (0,2) (0,3)};
+
+\node at (axis cs: 2.5,-.25) {$A$};
+\node at (axis cs: 4.5,3) {$f(x)$};
+\end{axis}
+\end{tikzpicture}

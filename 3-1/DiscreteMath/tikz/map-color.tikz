@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+    [a/.style={circle,draw}]
+    \node[a](a){A};
+    \node[a](b)[right =of a]{B};
+    \node[a](c)[right =of b]{C};
+    \node[a](d)[below =of a]{D};
+    \node[a](e)[right =of d]{E};
+    \node[a](f)[right =of e]{F};
+    \node[a](g)[below left =of e]{G};
+    \node[a](h)[below right =of e]{H};
+    \path[-](e) edge node{} (b)
+                edge node{} (c)
+                edge node{} (d)
+                edge node{} (f)
+                edge node{} (g)
+                edge node{} (h)
+            (g) edge[bend right] node{} (a)
+                edge node{} (d)
+                edge node{} (h)
+                edge[bend right] node{} (c)
+            (d) edge node{} (a)
+                edge node{} (b)
+            (f) edge node{} (c)
+                edge node{} (h)
+            (b) edge node{} (a)
+                edge node{} (c);
+\end{tikzpicture}

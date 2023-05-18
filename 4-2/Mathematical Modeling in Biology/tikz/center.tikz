@@ -1,0 +1,8 @@
+\begin{tikzpicture}
+    \draw[thick,-latex](-2,0)--(2,0)node[right]{$x$};
+    \draw[thick,-latex](0,-2)--(0,2)node[left]{$y$};
+    \draw[thick,decoration={markings,mark=at position 0.1 with {\arrowreversed{latex}}},
+        postaction={decorate}] (0,0) circle (1.25);
+    \draw[thick,decoration={markings,mark=at position 0.1 with {\arrowreversed{latex}}},
+        postaction={decorate}] (0,0) circle (.75);
+\end{tikzpicture}

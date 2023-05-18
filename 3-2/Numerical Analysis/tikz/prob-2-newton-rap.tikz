@@ -1,0 +1,14 @@
+\begin{tikzpicture}[scale=1]
+\begin{axis}[
+	axis lines=middle,
+	ticks=none,
+	xlabel={$x$}, xlabel style=right,
+	ylabel={$y$}, ylabel style=above,
+	xmin=-5.0,xmax=10,
+	ymin=-3,ymax=5]
+\addplot[black,thick,smooth,samples=100,domain=-5:10]{sin(deg(x))};
+\addplot[black,thick,smooth,samples=100,domain=-5:10]{e^(-x)};
+\node at (axis cs:8,1.5){$y=\sin x$};
+\node at (axis cs:-3,3){$y=e^{-x}$};
+\end{axis}
+\end{tikzpicture}

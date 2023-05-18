@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+\draw[thick,dashed] plot[smooth cycle] coordinates
+		{(4.5,3)  (5.5,4)  (6,5) (6.5,5.5) (7,5) (7.5,2.5)(7,1)(6,0.5)(5,1.5)};
+\draw[mark=*] plot coordinates {(1,2)} node at (1,1.7) {$x_1$}
+			  plot coordinates {(2.5,1)} node at (2.5,0.7) {$x_2$}
+			  plot coordinates {(4.5,.5)} node at (4.5,0.2) {$x_3$}
+			  plot coordinates {(6,1)} node at (6,0.7) {$x_4$}
+			  plot coordinates {(6.5,2.5)} node at (6.5,2.2) {$x$}
+			  plot coordinates {(7,3)} node at (7.2,2.7) {$x_5$}
+			  plot[mark=*,mark size=1.5 pt] coordinates {(6.7,3)} 
+			  plot[mark=*,mark size=1.5pt] coordinates {(6.5,2.8)} ;
+\node at (7.5,5) {$U$};
+\end{tikzpicture}

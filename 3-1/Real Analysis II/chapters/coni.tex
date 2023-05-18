@@ -1,0 +1,42 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Continuity}
+\section{Limit}
+\begin{defn}[Limit]
+    Let $ X $ and $ Y $ be metric spaces; suppose $ E\subset X $, $ f $ maps $ E $ into $ Y $ (i.e., $ f:E\subset X\to Y $), and $ p $ is a limit point of $ E $. We write $ f(x)\to q $ as $ x\to p $ or $ \lim_{x\to p} f(x)=q$ if there is a point $ q\in Y $ with following property:\\
+    For every $ \epsilon> 0$ there exists a $ \delta>0 $ such that $ d_Y(f(x),q)<\epsilon $ for all points $ x\in E $ for which $ 0<d_x(f(x),p)<\delta $\footnote{The $ \delta $ may depend on $ f(x),\,p, $ and $ \epsilon $ i.e., $ \delta=\delta(p,f(x),\epsilon) $} 
+\end{defn}
+\begin{ex}
+    $ E=(0,2)\,\subset X=\R^1,\,Y=\R^1;\,f(x)=\frac{x^2-1}{x-1};\, p=1 $ is a limit point of $ E $,\\Then $ \lim_{x\to p} f(x)= \lim_{x\to 1}\frac{x^2-1}{x-1}=2$
+\end{ex}
+\begin{thm}[Sequential Criteron of Limits]
+    Let $ x,y,E,f $ and $ p $ as in the above definition. Then $ \lim_{x\to p} f(x)=q $ if and only if $ \lim_{n\to \infty} f(p_n)=q $ for every sequence $ \seq{p_n} $ in $ E $ such that $ p_n\neq p $, $ \lim_{n\to \infty} p_n=p $
+\end{thm}
+\section{Continuity}
+\begin{defn}[Continuity]
+    Suppose $ X $ and $ Y $ are metric spaces, $ E\subset X,\,p\in E $ and $ f $ maps $ E \to Y (f:E\to Y) $. Then $ f $ is said to be continuous at $ p $ if for every $ \epsilon>0 $ there exists a $ \delta>0 $ such that\\
+    \indent $ \mathrm{d_y(f(x), p)}<\epsilon $ for all points $ x \in E $ for which $ \mathrm{d_x(x,p)} <\delta$
+\end{defn}
+\begin{thm}
+    Let $ f:E\subset X\to Y $ be a mapping. Then the following assertions are equivalent:
+    \begin{enumerate}[label=(\roman*)]
+        \item $ f $ is continuous on $ E $.
+        \item For each convergent sequence $ x_n \to x_0 $, we have $ f(x_n) \to f(x_0) $
+        \item For each open set $ U $ i $ Y $, $ f^{-1}(U)\subset E $ is open relative to $ E $; that is, $ f^{-1}(U)=E\cap V $ for some open set $ V $.
+        \item For each closed set $ F\in Y $, $ f^{-1}(F)\subset E $ is closed relative to $ E $; that is $ f^{-1}(F)=E\cap G $ for some closed set $ G $.
+    \end{enumerate}
+\end{thm}
+\begin{thm}
+    Suppose $ f: X\to Y $ is a continuous mapping of a compact metric space $ X $ into a metric space $ Y $. Then $ f(X) $ is compact.
+\end{thm}
+\begin{proof}
+    Let $ \set{V_\alpha} $ be an open cover of $ f(X) $, since $ f $ is continuous, by previous theorem each of the sets $ f^{-1}(V_\alpha) $ is open. Since $ X $ is compact, there are finitely many indices say $ \xn{\alpha}{,} $, such that
+    \begin{equation}
+        X\subset f^{-1}(V_{\alpha_1})\cup f^{-1}(V_{\alpha_2})\cup \dots\cup f^{-1}(V_{\alpha_n}) \label{eqn:cont}
+    \end{equation}
+    since $ f(f^{-1}(E))\subset E $ for every $ E\subset Y $, then (\ref{eqn:cont}) implies that $ f(X)\subset V_{\alpha_1}\cup V_{\alpha_2}\cup \dots \cup V_{\alpha_n} $
+    This completes the proof.
+\end{proof}
+note to self :: There may be some page left.
+\end{document}

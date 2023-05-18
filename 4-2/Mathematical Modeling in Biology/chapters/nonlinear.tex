@@ -1,0 +1,486 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Non-Linear Differential Equations}
+The general 2nd order non-linear differential equation is of the form
+\begin{equation}
+    \ddtn{x}{2}=F\left( x,\ddt{x} \right)\label{eq:0.1}
+\end{equation}
+\section{Van der Pol Equation}
+A special example of 2nd order non-linear differential is
+\begin{equation}
+    \ddtn{x}{2}+\mu(x^2-1)\ddt{x}+x=0\label{eq:0.2}
+\end{equation}
+This equation is called Van der Pol equation.
+\begin{align*}
+    \Rightarrow\,&\ddtn{x}{2}=-\mu(x^2-1)\ddt{x}-x\\
+    \Rightarrow\,&F\left( x,\ddt{x} \right)=-\mu(x^2-1)\ddt{x}-x
+\end{align*}
+We can replace the above differential equation \eqref{eq:0.1} by the following system by supposing \(y=\ddt{x}\).\\
+So, \(\ddt{x}=y\) and \(\ddt{y}=F(x,y)\)\\
+More generally,
+\begin{align*}
+    \ddt{x}&=P(x,y)\\
+    \ddt{y}&=Q(x,y)
+\end{align*}
+\section{Dynamical System}
+If a system of ODE
+\begin{align*}
+    \dot{x}&=P(x,y)\\
+    \dot{y}&=Q(x,y)
+\end{align*}
+describe a physical problem then it is called a dynamical system.
+\section{Phase Plane}
+Let us suppose that the differential equation \(\ddtn{x}{2}=F\left( x,\ddt{x} \right)\) describes a certain dynamical system having one degree of freedom. The state of this system at time \(t\) is determined by the value of \(x\) (position) and \(\ddt{x}\) (velocity). The plane of variables \(x\) and \(\ddt{x}\) is called a phase plane.
+\section{Autonomous System}
+A system of the form
+\begin{align*}
+    \ddt{x}&=P(x,y)\\
+    \ddt{y}&=Q(x,y)
+\end{align*}
+where \(P\) and \(Q\) have continuous 1st partial derivatives for all \((x,y)\). Such a system in which the independent variable \(t\) appears only in the differential \(\D t\) of the left members and not explicitly in the function \(P\) and \(Q\) on the right is called autonomous system or time independent system.
+\section{Critical Point}
+A point \((x_0,y_0)\) of the autonomous system  
+\begin{align*}
+    \ddt{x}&=P(x,y)\\
+    \ddt{y}&=Q(x,y)
+\end{align*}
+at which \(P(x_0,y_0)=0\) and \(Q(x_0,y_0)=0\) is called a critical point or equilibrium point or singular point or stationary point.
+\section{Path}
+Consider the system
+\begin{equation}
+    \begin{rcases}
+        \displaystyle\ddt{x}=P(x,y)\quad\\
+        \displaystyle\ddt{y}=Q(x,y)    
+    \end{rcases}
+    \label{eq:p1}
+\end{equation}
+For given \(t_0\) and any pair \((x_0,y_0)\) of real numbers. There exists a unique solution  
+\begin{equation}
+    \begin{rcases}
+        x=f(t)\quad\\
+        {y}=g(t)
+    \end{rcases}
+    \label{eq:p2}
+\end{equation}
+of the system \eqref{eq:p1} such that
+\begin{align*}
+    f(t_0)&=x_0\\
+    g(t_0)&=y_0
+\end{align*}
+If \(f\) and \(g\) are not both constant function then \eqref{eq:p2} defines a curve in the \(xy\) plane called path (orbit/trajectory).
+\section{Isolated Critical Point}
+A critical point \((x_0,y_0)\) if the system
+\begin{align*}
+    \ddt{x}&=P(x,y)\\
+    \ddt{y}&=Q(x,y)
+\end{align*}
+is called isolated critical point if there exists a circle \((x-x_0)^2+(y-y_0)^2=r^2\) about the point \((x_0,y_0)\) such that \((x_0,y_0)\) is the only critical point of the system within this circle.
+\section{Center}
+The isolated critical point \((0,0)\) of the system 
+\begin{align*}
+    \ddt{x}&=P(x,y)\\
+    \ddt{y}&=Q(x,y)
+\end{align*}
+is called a center if there exist a neighborhood of \((0,0)\) which contains a countably infinite number of closed paths \(P_n(n=1,2,\dots)\) each of which are such that the diameter of the path approaches \(0\) as \(n\to \infty\) [but \((0,0)\) is not approached by any path either as \(t\to \infty\) or as \(t\to -\infty\).]
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{center.tikz}
+\end{figure}
+
+\section{Saddle Point}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{saddle.tikz}
+\end{figure}
+The isolated critical point \((0,0)\) of the system
+\begin{align*}
+    \ddt{x}&=P(x,y)\\
+    \ddt{y}&=Q(x,y)
+\end{align*}
+is called a saddle point if there exists a neighborhood of \((0,0)\) in which the following two condition holds.
+\begin{enumerate}[label=(\roman*)]
+    \item There exists two paths which approach and enter \((0,0)\) from a pair of opposite directions as \(t\to \infty\) and there exist two paths which approach and enter \((0,0)\) from a different pair of opposite direction as \(t\to -\infty\).
+    \item In each of the four domains between any two of the four direction in (i) there are infinity many paths which are arbitrary close to \((0,0)\) but do not approach \((0,0)\) either as \(t\to \infty\) or \(t\to-\infty\).
+\end{enumerate}
+\section{Spiral Point}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{spiral.tikz}
+\end{figure}
+The isolated critical point \((0,0)\) of the system
+\begin{align*}
+    \ddt{x}&=P(x,y)\\
+    \ddt{y}&=Q(x,y)
+\end{align*}
+is called a spiral point (focal point) if there exist a neighborhood of \((0,0)\) such that every path \(P\) in this neighborhood has the following properties.
+\begin{enumerate}[label=(\roman*)]
+    \item \(P\) is defined for all \(t>t_0\) (or for all \(t<t_0\)) for some number \(t_0\)
+    \item \(P\) approach \((0,0)\) as \(t\to\infty\) (or as \(t\to-\infty\))
+    \item \(P\) approaches \((0,0)\) in a spiral-like manner, winding around \((0,0)\) an infinite number of times as \(t\to \infty\) (or as \(t\to-\infty\))
+\end{enumerate}
+\section{Stability}
+Consider the autonomous system
+\begin{equation}
+    \begin{rcases}
+        \ddt{x}=P(x,y)\quad\\
+    \ddt{y}=Q(x,y)   
+    \end{rcases}
+    \label{eq:s1}
+\end{equation}
+Assume that \((0,0)\) is an isolated critical point of the system \eqref{eq:s1}. Let \(c\) be a path of \eqref{eq:s1}. Let \(x=f(t)\), \(y=g(t)\) be a solution of \eqref{eq:s1} define \(c\) parametrically.
+
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{stability.tikz}
+\end{figure}
+
+Let
+\begin{equation}
+    D(t)=\sqrt{\{f(t)\}^2+\{g(t)\}^2}\label{eq:s2}
+\end{equation}
+denote the distance between the critical point and the point \(R:[f(t),g(t)]\) on \(c\). The critical point \((0,0)\) is called stable if for every number \(\varepsilon>0\) there exist a number \(\delta>0\) such that the following is true.
+
+Every path \(C\) for which
+\begin{equation}
+    D(t_0)<\delta \qquad\text{for some value }t_0\label{eq:s3}
+\end{equation}
+is defined for all \(t\geq t_0\) and is such that
+\begin{equation}
+    D(t)<\varepsilon \qquad \text{for } t_0\leq t<\infty \label{eq:s4}
+\end{equation}
+\subsection{Asymptotically Stable}
+The isolated critical point \((0,0)\) is called asymptotically stable if 
+\begin{enumerate}[label=(\roman*)]
+    \item it is stable and
+    \item There exist a number \(\delta_0 >0\) such that if \(D(t_0)<\delta_0\) for some value \(t_0\) then \(\displaystyle \lim_{t\to\infty}f(t)=0\), \(\displaystyle \lim_{t\to\infty}g(t)=0\)
+\end{enumerate}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{asyStable.tikz}
+\end{figure}
+\subsection{Unstable}
+A critical point is called unstable if it is not stable.
+
+Center, spiral point and the node are all stable. Of these three spiral point and the node are asymptotically stable.
+
+\section{Node}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{.3\textwidth}
+        \import{../tikz/}{node1.tikz}
+    \end{minipage}
+    \begin{minipage}[c]{.3\textwidth}
+        \import{../tikz/}{node2.tikz}
+    \end{minipage}
+    \begin{minipage}[c]{.3\textwidth}
+        \import{../tikz/}{node3.tikz}
+    \end{minipage}
+\end{figure}
+The isolated critical point \((0,0)\) of the system
+\begin{align*}
+    \ddt{x}&=P(x,y)\\
+    \ddt{y}&=Q(x,y)
+\end{align*}
+is called a node if there exist a neighborhood of \((0,0)\) such that every path \(P\) in this neighborhood has the following properties.
+\begin{enumerate}[label=(\roman*)]
+    \item \(P\) is defined for all \(t>t_0\) (or all \(t<t_0\)) for some number \(t_0\)
+    \item \(P\) approach \((0,0)\) as \(t\to\infty\) (or as \(t\to-\infty\))
+    \item \(P\) enters \((0,0)\) as \(t\to\infty\) (or as \(t\to-\infty\))
+\end{enumerate}
+or simply, A critical point of an autonomous system which is approached and entered by both the rectilinear and non-rectilinear paths of the autonomous system as \(t\to \infty\) or \(t\to -\infty\) is called a node.
+\section{Nature and Stability of a Critical Point of a Linear Autonomous System}
+We consider the linear system
+\begin{equation}
+    \begin{rcases}
+        \ddt{x}=ax+by\quad\\
+        \ddt{y}=cx+dy    
+    \end{rcases}
+    \label{eq:n1}
+\end{equation}
+where \(a\), \(b\), \(c\), \(d\) are real constants. The origin \((0,0)\) is clearly a critical point of \eqref{eq:n1}.\\
+We assume that 
+\begin{equation}
+    \begin{vmatrix}
+        a&b\\
+        c&d
+    \end{vmatrix}\neq 0 \label{eq:n2}
+\end{equation}
+We know that the solution of \eqref{eq:n1} is of the form
+\begin{equation}
+    \begin{rcases}
+        {x}=Ae^{\lambda t}\quad\\
+        {y}=Be^{\lambda t}
+    \end{rcases}
+    \label{eq:n3}
+\end{equation}
+where \(A\), \(B\) and \(\lambda\) are constant.\\
+We know that if \eqref{eq:n3} is a solution of \eqref{eq:n1}, then \(\lambda\) must satisfy the characteristic equation
+\begin{equation}
+    \lambda^2-(a+d)\lambda+(ad-bc)=0\label{eq:n4}
+\end{equation}
+Because of \eqref{eq:n2} i.e., for \(ad-bc\neq 0\), the equation \eqref{eq:n4} has two non-zero solutions. Let \(\lambda_1\) and \(\lambda_2\) be the two roots of \eqref{eq:n4}.
+\subsection{Stability}
+\begin{enumerate}[label=(\roman*)]
+    \item If both roots be \(-\)ve then the critical point is asymptotically stable.
+    \item If both or one roots be positive then the critical point is unstable.
+    \item If both or one roots be purely imaginary then the critical point is stable.
+    \item If the real part of complex roots be \(-\)ve then the critical point is asymptotically stable.
+    \item If the real part of complex roots be \(+\)ve then the critical point is unstable.
+\end{enumerate}
+\subsection{Nature of the Roots}
+We now consider the following cases.
+
+
+\emph{\underline{Case I}: \(\lambda_1\) and \(\lambda_2\) are real and unequal.}\\
+In this case the general solution of \eqref{eq:n1} is
+\begin{equation}
+    \begin{rcases}
+        {x}(t)=x=c_1A_1e^{\lambda_1 t}+c_2A_2e^{\lambda_2 t}\quad\\
+        {y}(t)=y=c_1B_1e^{\lambda_1 t}+c_2B_2e^{\lambda_2 t}
+    \end{rcases}
+    \label{eq:n5}
+\end{equation}
+
+
+\emph{Subcase 1(a): \(\lambda_1<0\), \(\lambda_2<0\)}\\
+A qualitative picture of the paths \eqref{eq:n5} appears as follow.
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{subcase1a.tikz}
+\end{figure}
+Here the critical point \((0,0)\) is an asymptotically stable node.
+
+
+\emph{Subcase 1(b): \(\lambda_1>0\), \(\lambda_2>0\)}\\
+A qualitative picture of the paths \eqref{eq:n5} appears as follow.
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{subcase1b.tikz}
+\end{figure}
+Here the critical point \((0,0)\) is an unstable node.
+
+
+\emph{Subcase 1(c): \(\lambda_1>0\), \(\lambda_2<0\) or \(\lambda_1<0\), \(\lambda_2>0\)}\\
+A qualitative picture of the paths \eqref{eq:n5} appears as follow.
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{.45\textwidth}
+        \import{../tikz/}{sub1ca.tikz}
+    \end{minipage}
+    \begin{minipage}[c]{.45\textwidth}
+        \import{../tikz/}{sub1cb.tikz}
+    \end{minipage}
+\end{figure}
+Here the critical point \((0,0)\) is an unstable saddle point.\\
+
+\emph{\underline{Case II}: \(\lambda_1\) and \(\lambda_2\) are real and equal}\\
+i.e., \(\lambda_1=\lambda_2=\lambda\)\\
+Here the general solution of \eqref{eq:n1} is of the form
+\begin{align*}
+    x&=c_1A e^{\lambda t}+c_2(A_1 t+A_2)e^{\lambda t}\\
+    y&=c_1B e^{\lambda t}+c_2(B_1 t+B_2)e^{\lambda t}
+\end{align*}
+
+\emph{Subcase 2(a): \(\lambda<0\)}
+\begin{enumerate}[label=(\roman*)]
+    \item Here the family of half lines approach and enter \((0,0)\) as \(t\to \infty\) where \(a=d\neq 0\), \(b=c=0\)
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[thick]
+            \draw[decoration = {markings,
+                mark=at position 0.35 with {\arrow {latex}},mark=at position 0.65 with {\arrowreversed {latex}}  },postaction={decorate}](-2,0)--(2,0);
+            \draw[decoration = {markings,
+                mark=at position 0.35 with {\arrow {latex}},mark=at position 0.65 with {\arrowreversed {latex}}  },postaction={decorate}](0,2)--(0,-2);
+            \draw[domain=-1.7:1.7,decoration = {markings,
+                mark=at position 0.35 with {\arrow {latex}},mark=at position 0.65 with {\arrowreversed {latex}}  },postaction={decorate}] plot (\x,\x);
+            \draw[domain=-1.7:1.7,decoration = {markings,
+                mark=at position 0.35 with {\arrow {latex}},mark=at position 0.65 with {\arrowreversed {latex}}  },postaction={decorate}] plot (\x,-\x);
+            \node at (0,-2.2) {$t\to+\infty$};
+        \end{tikzpicture}
+    \end{figure}
+    Thus \((0,0)\) us an asymptotically stable node.
+    \item Two half line paths and family of non-rectilinear paths approach and enter \((0,0)\) where \(a=d\neq 0\) and \(b=c=0\) are not satisfied.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=.75]
+            \begin{axis}[axis lines*=middle,thick,anchor=origin,
+                    xmin=-4, xmax=4,
+                    ymin=-4, ymax=4,restrict y to domain=-2.5:2.5,
+                    ticks=none]
+                \addplot[thick,domain=-2:2,samples=100,transform canvas={rotate around={-50:(0,0)}},decoration = {markings,
+                            mark=at position 0.25 with {\arrowreversed {latex}},mark=at position 0.85 with {\arrow{latex}}  },postaction={decorate}] (x,-x^3+.6*x);
+                \addplot[thick,domain=-2:2,samples=100,transform canvas={rotate around={-50:(0,0)}},decoration = {markings,
+                            mark=at position 0.25 with {\arrowreversed {latex}},mark=at position 0.85 with {\arrow{latex}}  },postaction={decorate}] (x,-2*x^3+.6*x);
+                \addplot[thick,domain=-2:2,samples=100,transform canvas={rotate around={-50:(0,0)}},decoration = {markings,
+                            mark=at position 0.25 with {\arrowreversed {latex}},mark=at position 0.85 with {\arrow{latex}}  },postaction={decorate}] (x,-.5*x^3+.6*x);
+            \end{axis}
+            \draw[thick,-latex] (2.5,2.5)--(1.25,1.25);
+            \draw[thick] (1.25,1.25)-- (-1.25,-1.25);
+            \draw[thick,-latex] (-2.5,-2.5)--(-1.25,-1.25);
+            \node at (1.8,-1.5) {$t\to+\infty$};
+        \end{tikzpicture}
+    \end{figure}
+    Thus, \((0,0)\) is an asymptotically stable node.
+\end{enumerate}
+
+
+
+\emph{Subcase 2(b): \(\lambda>0\)}
+\begin{enumerate}[label=(\roman*)]
+    \item Here the family of half lines approach and enter \((0,0)\) as \(t\to -\infty\) where \(a=d\neq 0\), \(b=c=0\)
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[thick]
+            \draw[decoration = {markings,
+                mark=at position 0.35 with {\arrowreversed {latex}},mark=at position 0.65 with {\arrow {latex}}  },postaction={decorate}](-2,0)--(2,0);
+            \draw[decoration = {markings,
+                mark=at position 0.35 with {\arrowreversed {latex}},mark=at position 0.65 with {\arrow {latex}}  },postaction={decorate}](0,2)--(0,-2);
+            \draw[domain=-1.7:1.7,decoration = {markings,
+                mark=at position 0.35 with {\arrowreversed {latex}},mark=at position 0.65 with {\arrow {latex}}  },postaction={decorate}] plot (\x,\x);
+            \draw[domain=-1.7:1.7,decoration = {markings,
+                mark=at position 0.35 with {\arrowreversed {latex}},mark=at position 0.65 with {\arrow {latex}}  },postaction={decorate}] plot (\x,-\x);
+            \node at (0,-2.2) {$t\to-\infty$};
+        \end{tikzpicture}
+    \end{figure}
+    Thus, \((0,0)\) us an unstable node.
+    \item Two half line paths and family of non-rectilinear paths approach and enter \((0,0)\) as \(t\to-\infty\) where the conditions \(a=d\neq 0\) and \(b=c=0\) are not satisfied.
+    \item 
+    \begin{figure}[H]
+        \centering
+    \begin{tikzpicture}[scale=.75]
+        \begin{axis}[axis lines*=middle,thick,anchor=origin,
+                xmin=-4, xmax=4,
+                ymin=-4, ymax=4,restrict y to domain=-2.5:2.5,
+                ticks=none]
+            \addplot[thick,domain=-2:2,samples=100,transform canvas={rotate around={-50:(0,0)}},decoration = {markings,
+                        mark=at position 0.25 with {\arrow {latex}},mark=at position 0.85 with {\arrowreversed{latex}}  },postaction={decorate}] (x,-x^3+.6*x);
+            \addplot[thick,domain=-2:2,samples=100,transform canvas={rotate around={-50:(0,0)}},decoration = {markings,
+                        mark=at position 0.25 with {\arrow {latex}},mark=at position 0.85 with {\arrowreversed{latex}}  },postaction={decorate}] (x,-2*x^3+.6*x);
+            \addplot[thick,domain=-2:2,samples=100,transform canvas={rotate around={-50:(0,0)}},decoration = {markings,
+                        mark=at position 0.25 with {\arrow {latex}},mark=at position 0.85 with {\arrowreversed{latex}}  },postaction={decorate}] (x,-.5*x^3+.6*x);
+        \end{axis}
+        \draw[thick] (1.25,1.25)--(2.5,2.5);
+        \draw[thick,latex-latex] (-1.25,-1.25)--(1.25,1.25);
+        \draw[thick] (-1.25,-1.25)--(-2.5,-2.5);
+        \node at (1.8,-1.5) {$t\to-\infty$};
+    \end{tikzpicture}
+\end{figure}
+    The critical point \((0,0)\) is an unstable node.
+\end{enumerate}
+
+
+\emph{\underline{Case III:}}\\
+Let \(\lambda_1=\alpha+i\beta\), \(\lambda_2=\alpha-i\beta\), \(\beta\neq 0\)\\
+Here the general solution of \eqref{eq:n1} has the form
+\begin{align*}
+    x&=e^{\alpha t }[c_1 \cos \beta t+c_2 \sin \beta t]\\
+    y&=e^{\alpha t }[c_3 \cos \beta t+c_4 \sin \beta t]
+\end{align*}
+
+\emph{Subcase 3(a): \(\alpha<0\), \(\beta\neq 0\)}\\
+For \(\alpha<0\), the paths approach \((0,0)\) spirally as \(t\to \infty\).
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[shift=({-3,0}),thick] (-2,0)--(2,0);
+        \draw[shift=({-3,0}),thick] (0,-2)--(0,2);
+        \draw [decoration = {markings,mark=at position 0.45 with {\arrowreversed {latex}},mark=at position 0.95 with {\arrowreversed {latex}}    },shift=({-3,0}),postaction={decorate},thick,domain=-0:-20, variable=\t, samples=200] plot ({\t r}: {-0.004*\t*\t});
+        
+        \draw[shift=({2,0}),thick] (-2,0)--(2,0);
+        \draw[shift=({2,0}),thick] (0,-2)--(0,2);
+        \draw [decoration = {markings,mark=at position 0.45 with {\arrowreversed {latex}},mark=at position 0.95 with {\arrowreversed {latex}}    },shift=({2,0}),postaction={decorate},thick,domain=-0:-18, variable=\t, samples=200] plot ({-\t r}: {-0.004*\t*\t});
+        \node at (0,-1.8) {$t\to+\infty$};
+        \node at (-1.8,1.2) {Clockwise};
+        \node at (4,1.2) {Anti clockwise};
+        \end{tikzpicture}
+\end{figure}
+The critical point \((0,0)\) is an asymptotically stable spiral.
+
+
+\emph{Subcase 3(b): \(\alpha>0\), \(\beta\neq 0\)}\\
+For \(\alpha>0\), the paths approach \((0,0)\) spirally as \(t\to- \infty\).
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[shift=({-3,0}),thick] (-2,0)--(2,0);
+        \draw[shift=({-3,0}),thick] (0,-2)--(0,2);
+        \draw [decoration = {markings,mark=at position 0.45 with {\arrow {latex}},mark=at position 0.95 with {\arrow{latex}}},shift=({-3,0}),postaction={decorate},thick,domain=-0:-20, variable=\t, samples=200] plot ({\t r}: {-0.004*\t*\t});
+        
+        \draw[shift=({2,0}),thick] (-2,0)--(2,0);
+        \draw[shift=({2,0}),thick] (0,-2)--(0,2);
+        \draw [decoration = {markings,mark=at position 0.45 with {\arrow{latex}},mark=at position 0.95 with {\arrow {latex}}},shift=({2,0}),postaction={decorate},thick,domain=-0:-18, variable=\t, samples=200] plot ({-\t r}: {-0.004*\t*\t});
+        \node at (0,-1.8) {$t\to-\infty$};
+        \node at (-1.8,1.2) {Clockwise};
+        \node at (4,1.2) {Anti clockwise};
+        \end{tikzpicture}
+\end{figure}
+The critical point \((0,0)\) is an unstable spiral.
+
+
+\emph{Subcase 3(c): \(\alpha=0\), \(\beta\neq 0\)}\\
+For \(\alpha=0\), the paths are closed curve surrounding \((0,0)\) and do not approach \((0,0)\).
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \draw[shift=({-3,0}),thick] (-2,0)--(2,0);
+        \draw[shift=({-3,0}),thick] (0,-2)--(0,2);
+        \draw [decoration = {markings,mark=at position 0.9 with {\arrow{latex}}},shift=({-3,0}),postaction={decorate},thick] (0,0) circle (1.15);
+        \draw [decoration = {markings,mark=at position 0.9 with {\arrow{latex}}},shift=({-3,0}),postaction={decorate},thick] (0,0) circle (1.5);
+        \draw [decoration = {markings,mark=at position 0.9 with {\arrow{latex}}},shift=({-3,0}),postaction={decorate},thick] (0,0) circle (.75);
+        
+        \draw[shift=({2,0}),thick] (-2,0)--(2,0);
+        \draw[shift=({2,0}),thick] (0,-2)--(0,2);
+        \draw [decoration = {markings,mark=at position 0.9 with {\arrow{latex}}},shift=({2,0}),postaction={decorate},thick] (0,0) circle [x radius=1.2,y radius=1];
+        \draw [decoration = {markings,mark=at position 0.9 with {\arrow{latex}}},shift=({2,0}),postaction={decorate},thick] (0,0) circle [x radius=1.6,y radius=1.3];
+        \draw [decoration = {markings,mark=at position 0.9 with {\arrow{latex}}},shift=({2,0}),postaction={decorate},thick] (0,0) circle [x radius=.8, y radius=.6];
+        \end{tikzpicture}
+\end{figure}
+The critical point \((0,0)\) is a center.
+\section{Nature and Stability of a Critical Point of An Autonomous System}
+We consider the linear system
+\begin{equation}
+    \begin{rcases}
+        \ddt{x}=ax+by\quad\\
+        \ddt{y}=cx+dy    
+    \end{rcases}
+    \label{eq:ns1}
+\end{equation}
+where \(a\), \(b\), \(c\) and \(d\) are the real constants. We assume that
+\begin{equation}
+    ad-bc\neq 0
+    \label{eq:ns2}
+\end{equation}
+Clearly \((0,0)\) is a critical point of \eqref{eq:ns1}. We know that solution of \eqref{eq:ns1} is of the form 
+\begin{equation}
+    \begin{rcases}
+        {x}=A e^{\lambda t}\quad\\
+        {y}=B e^{\lambda t}
+    \end{rcases}
+    \label{eq:ns3}
+\end{equation}
+If \eqref{eq:ns3} is the solution of \eqref{eq:ns1} the \(\lambda\) must satisfy the characteristic equation
+\begin{equation}
+    \lambda^2-(a+d)\lambda+(ad-bc)=0
+    \label{eq:ns4}
+\end{equation}
+Let \(\lambda_1\) and \(\lambda_2\) be two roots of \eqref{eq:ns4}.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{.3\textwidth}|p{.3\textwidth}|p{.3\textwidth}|}
+        \hline
+        Nature of roots \(\lambda_1\) and \(\lambda_2\) of characteristic equation
+        \[\lambda^2-(a+d)\lambda+(ad-bc)=0\] & {Nature of critical point of linear system\[
+            \dot{x}=ax+by\]
+            \[\dot{y}=cx+dy\]} & Stability of critical point \((0,0)\)\\
+        \hline
+        real, unequal and of same sign & node & asymptotically stable if roots are negative; unstable if roots are positive\\\hline
+        real, unequal and of opposite sign & saddle point & unstable\\\hline
+        real and equal & node & asymptotically stable if roots are negative; unstable if roots are positive\\\hline
+        conjugate complex but not purely imaginary & spiral point & asymptotically stable if the real parts of roots are negative; unstable if the real parts of roots are positive\\\hline
+        pure imaginary & center &stable but not asymptotically stable\\\hline
+    \end{tabular}
+\end{table}
+\end{document}

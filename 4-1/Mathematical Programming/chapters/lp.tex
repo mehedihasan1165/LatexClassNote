@@ -1,0 +1,212 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Linear Programming}
+Linear programming (LP) is a mathematical modeling technique designed to optimize the usage of limited resources.
+
+In other words, linear programming deals with the optimization (maximization or minimization) of a function of variables known as objective function, subject to a set of linear equalities and/or inequalities known as constraints. The objective function may be profit, cost, production capacity or any other measure of effectiveness, which is to be obtained in the best possible or optimal manner. The constraints may be imposed by different sources such as market demand, production processes and equipment, storage capacity, raw material availability, etc.
+
+
+By '\emph{linearity}' is meant a mathematical expression in which the variables do not have powers.
+
+
+Successful applications of LP exist in the areas of military, industry, agriculture, transportation, economics, health systems, and even behavioral and social sciences.
+\section{Construction of the LP model}
+\begin{ex}[The Reddy Mikks Company]
+    Reddy Mikks produces both interior and exterior paints from two raw materials, M1 and M2. The following table provides the basic data of the problem:
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc}
+            \toprule
+                             & \multicolumn{2}{l}{Tons of raw material per ton of} & Maximum daily                        \\ \cmidrule(lr){2-3}
+                             & Exterior paint                                      & Interior paint & availability (tons) \\ \midrule
+            Raw material, M1 & 6                                                   & 4              & 24                  \\
+            Raw material, M2 & 1                                                   & 2              & 6                   \\ \midrule
+            Profit per ton   & 5                                                   & 4              &                     \\ \bottomrule
+        \end{tabular}
+    \end{table}
+    A market survey restricts the maximum daily demand of interior paint to 2 tons. Additionally, the daily demand for interior paint cannot exceed that of exterior paint by more than 1 ton. Reddy Mikks want to determine the optimum (best) product mix of interior and exterior paints that maximizes the total daily profit.\\
+
+    The LP model includes three basic elements.
+    \begin{enumerate}
+        \item Decision variables that we seek to determine.
+        \item Objective (goal) that we aim to optimize.
+        \item Constraints that the solution must satisfy.
+    \end{enumerate}
+
+
+    \begin{enumerate}[label=Step \arabic*:]
+        \item Here, we need to determine the amounts to be produced of exterior and
+              interior paint. The variables of the model are thus defined as
+
+              \(x_1=\) tons produced daily of exterior paint
+              \(x_2=\) tons produced daily of interior paint.
+        \item The next task is to construct the objective function. A logical objective for the company is to increase as much as possible (i.e., maximize) the total daily profit from both exterior and interior paints. Letting \(Z\) represent the daily profit, we get,
+              \[
+                  Z = 5x_1 +4x_2
+              \]
+              The objective of the company is
+              \[
+                  \text{Maximize } Z = 5x_1 +4x_2
+              \]
+        \item The last element of the model deals with the constraints that restrict raw materials usage and demand. The raw materials restrictions are expressed verbally as
+              \[
+                  \text{(Usage of raw material by both paints) } \geq \text{ (Maximum raw material availability)}
+              \]
+              From the data of the problem that
+              \begin{align*}
+                  \text{Usage of raw material }M1 & = 6x_1 +4x_2 \text{ tons/day} \\
+                  \text{Usage of raw material }M2 & = 1x_1 +2x_2 \text{ tons/day}
+              \end{align*}
+              Because the daily availabilities of raw materials M1 and M2 are limited to 24 and 6 tons,
+              respectively, the associated restrictions are given as
+              \begin{align*}
+                  6x_1 +4x_2 & \leq 24\quad \text{(raw materials M1)} \\
+                  x_1 + 2x_2 & \leq 6\quad \text{(raw materials M2)}
+              \end{align*}
+              There are two types of demand restrictions :
+              \begin{enumerate}
+                  \item Maximum daily demand of interior paint is limited to 2 tons, and
+                  \item  Excess of daily production of interior paint over that of exterior paint is at most 1 tons.
+                        \begin{align*}
+                            \text{Thus, first restriction} & ,\; x_2 \leq 2      \\
+                            \text{second restriction}      & ,\;x_2 - x_1 \leq 1
+                        \end{align*}
+              \end{enumerate}
+              An implicit (or, ``understood to be'') restriction on the model is that the variables \(x_1\) and \(x_2\) must not be negative. We thus add the non-negative restrictions, \(x_1\geq 0\)  and \(x_2 \geq 0\), to account for this requirement.\\
+
+
+              Here, the complete Reddy Mikks model is written as
+              \[
+                  \begin{array}{l}
+                      \hspace{0.5em}\text{Maximize } \quad Z=5 x_{1}+4 x_{2} \quad\text{(objective function)\qquad} \\
+                      \left.\begin{array}{r}
+                                \text{Subject to} \quad
+                                6 x_{1}+4 x_{2} \leq 24 \\
+                                x_{1}+2 x_{2} \leq 6    \\
+                                -x_{1}+x_{2} \leq 1     \\
+                                x_{2} \leq 2            \\
+                            \end{array}\right\} \text { Constraints (or, Restriction) }                             \\
+                      \begin{array}{r}
+                          \qquad \qquad \qquad \quad \hspace{1em} x_1,x_2\geq 0 \quad \text{Non-negativity restriction on decision variable} \\
+                      \end{array}
+                  \end{array}
+              \]
+              \begin{note}\(
+                  \begin{aligned}[t]
+                      \text{Profit problem} & \longrightarrow\; \text{maximization} \\
+                      \text{Cost problem}   & \longrightarrow\; \text{minimization}
+                  \end{aligned}\)
+              \end{note}
+    \end{enumerate}
+\end{ex}
+\begin{ex}[Production Allocation problem]
+    A firm produces three products. These products are processed on three different machines. The time required to manufacture one unit of each of the three products and the daily capacity of the three machines given in the table below:
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{ccccc}
+            \toprule
+            \multirow{2}{*}{Machine} & \multicolumn{3}{c}{Time per unit (minutes)} & \multirow{2}{*}{Machine capacity (minutes/day)}                   \\ \cmidrule(lr){2-4}
+                                     & Product 1                                    & Product 2                                        & Product 3 &     \\ \midrule
+            \(M_1\)                  & 2                                            & 3                                                & 2         & 440 \\
+            \(M_2\)                  & 4                                            & -                                                & 3         & 470 \\
+            \(M_3\)                  & 2                                            & 5                                                & -         & 430 \\ \bottomrule
+        \end{tabular}
+    \end{table}
+    It is required to determine the daily number of units to be manufactured for each product. The profit per unit for product 1, 2 and 3 is Tk. 4, Tk. 3 and Tk. 6 respectively. It is assumed that all the amounts produced are consumed in the market.\\
+
+    \emph{Solution}: Formulation of Linear Programming Model:
+    \begin{enumerate}[label=Step \arabic*:]
+        \item Identify the decision variable:\\
+              Let the amount of products 1, 2, and 3 manufactured daily be \(x_1\), \(x_2\) and \(x_3\) respectively.
+        \item Identify the constraints:\\
+              Here constrains are on the machine capacities and can be mathematically expressed as
+              \begin{alignat*}{4}
+                  2x_1 & {}+{} & 3x_2 & {}+{} & 2x_3 & {}\leq {} & 440 \\
+                  4x_1 &       &      & {}+{} & 3x_3 & {}\leq {} & 6   \\
+                  2x_1 & {}+{} & 5x_2 &       &      & {}\leq{}  & 430
+              \end{alignat*}
+              Also, since it is not possible to produce negative units, non-negative restriction will be \(x_1\geq 0\), \(x_2\geq0\) and \(x_3\geq0\).
+        \item Identify the objective function:\\
+              The objective is to maximize the total profit from sales. Assuming that a perfect market exists for the product such that all that is produced can be sold. The total profit from sale is
+              \[Z = 4x_1 + 3x_2 +6x_3\]
+              Hence, the linear programming model for our production allocation problem becomes
+              \begin{maxi*}
+                  {}{Z=4x_1+3x_2+6x_3}{}{}
+                  \addConstraint{2x_1 + 3x_2 + 2x_3}{\leq 440}
+                  \addConstraint{4x_1 + 3x_3}{\leq 470}
+                  \addConstraint{2x_1+5x_2}{\leq 430}
+                  \addConstraint{x_1, x_2, x_3}{\geq 0}
+              \end{maxi*}
+    \end{enumerate}
+\end{ex}
+\begin{ex}[Inspection problem]
+    A company has two grades of inspectors, 1 and 2 to undertake quality control inspection. At least 1500 pieces must be inspected in an 8-hour day. Grade 1 inspector can check 20 pieces in an hour with an accuracy of 96\%. Grade 2 inspector checks 14 pieces an hour with an accuracy of 92\%. The daily wages of grade 1 inspector are Tk.5 per hour while those of grade 2 inspector are Tk. 4 per hour. Any error made by an inspector costs Tk. 3 to the company.
+
+
+    If there are, in all, 10 grade 1 inspectors and 15 grade 2 inspectors in the company, formulate an LP for the optimal assignment of inspectors that minimize the daily inspection cost.\\
+
+
+    \emph{Formulation of LP Model}:
+    \begin{enumerate}[label=Step \arabic*:]
+        \item Identify the decision variables.\\
+        
+
+              We have to determine the number of grade 1 and grade 2 inspectors for assignment. Let \(x_1\), and \(x_2\) represent the number of grade 1 \& grade 2 inspectors, respectively. Here \(x_1 \geq 0\) and \(x_2 \geq 0\).
+        \item Identify the constraints.\\
+              
+        
+        Here, the number of pieces that inspected daily by grade 1 inspector is \(x_1 \times 20\times 8\) and that of grade 2 inspector is \(x_2 \times 14\times 8\). Hence, the constraints are
+              \begin{align*}
+                   & \text{On the number of pieces to be inspected daily}: & (x_1\times 20\times 8) + (x_2\times 14\times 8) & \geq 1500 \\
+                   &                                                       & \text{or,}\qquad\qquad 160x_1+112x_2                        & \geq 1500 \\
+                   & \text{On the number of grade 1 inspector}:            & x_1                                             & \leq 10\\
+                   & \text{On the number of grade 2 inspector}:            & x_2                                             & \leq 15
+              \end{align*}
+              \item Identify the objective function.\\
+              
+              
+              The objective is to minimize the daily cost of inspection. Now the company had to incur two types of costs: wage paid to the inspectors and the cost of their inspection errors.\\
+              
+              The cost of grade 1 inspector/hour is Tk. \((5 + 20\times 0.04\times 3) = \text{Tk.} 7.40\)\\
+              Similarly, cost of grade 2 inspector/hour is Tk. \((4+ 14\times 0.08\times 3) = \text{Tk.} 7.36\)\\
+              
+              
+              The objective function is
+              \[
+                  \text{Minimize}\quad Z = 8(7.40x_1 +7.36x_2)
+              \]
+              
+              
+              Hence, the linear programming model for our inspection problem becomes
+              \begin{mini*}
+                {}{Z=8(7.40x_1 +7.36x_2)}{}{}
+                \addConstraint{160x_1+112x_2}{\geq 1500}
+                \addConstraint{x_1}{\leq 10}
+                \addConstraint{x_2}{\leq 15}
+                \addConstraint{x_1,x_2}{\geq 0}
+              \end{mini*}
+    \end{enumerate}
+\end{ex}
+\section{Some definitions}
+
+\emph{Solution}: The set of values of decision variables \(x_j\;(j=1,2,\dots, n)\) which satisfy all the constraints of a linear programming problem, is called the solution of that linear programming problem.\\
+
+
+\emph{Feasible solution}: Any solution that satisfies all the constraints and non-negativity conditions of a linear programming problem simultaneously, is a feasible solution.\\
+
+
+\emph{Feasible region/solution space}: Set of all feasible solution or the area bounded by all the constraints is called the solution space or the region of feasible solutions.\\
+
+
+\emph{Optimum solution}: A solution of a model that optimizes (maximizes or minimizes) the value of the objective function while satisfying all the constraints, is referred to as the optimum solution.\\
+Note: The term \emph{optimal solution} is also used for \emph{optimum solution}.\\
+
+
+\emph{Unbounded solution}: A solution which can increase or decrease the value of objective function of the LP problem indefinitely is called an unbounded solution.\\
+
+
+\emph{Parameters}: The constants (namely, the coefficients and right-hand sides) in the constraints and the objective function are called the parameters of the LP problem.
+\end{document}

@@ -1,0 +1,8 @@
+\begin{tikzpicture}[circuit logic US]
+\begin{scope}[thick]
+\node [and gate,inputs={nnnn},info=center:{AND}] (o) {};
+\draw (o.input 1 -| -1,0)node [left] {$x$} -- (o.input 1);
+\draw (o.input 4 -| -1,0)node [left] {$y$} -- (o.input 4);
+\draw (o.output)--++(right:5mm) node[right] {$z=x\wedge y$};
+\end{scope}
+\end{tikzpicture}

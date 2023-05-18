@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+    \node[lattice] (a) at (0,0) {};
+    \node[lattice] (b) at  (0,2) {};
+    
+    \node[lattice] (c) at (2,0) {};
+    \node[lattice] (d) at  (2,2) {};
+    
+    \node[lattice] (e) at (4.25,1) {};
+    \node[lattice] (f) at  (5.5,1) {};
+    
+    \node[lattice] (g) at (8,0) {};
+    \node[lattice] (h) at  (7,2) {};
+    \node[lattice] (i) at  (9,2) {};
+    
+    \draw[thick] (a)--(b) (g)--(h) (g)--(i);
+    \node at (0,-.75) {$A$};
+    \node at (2,-.75) {$B$};
+    \node at (5,-.75) {$C$};
+    \node at (8,-.75) {$D$};
+    \end{tikzpicture}

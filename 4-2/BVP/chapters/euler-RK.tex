@@ -1,0 +1,209 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\section{Mid-Point Method}
+\begin{align*}
+    w_0&=\alpha\\
+    w_{i+1}&=w_i+h f\left( t_i+\frac{h}{2},\,w_i+\frac{h}{2}f(t_i,w_i) \right) \quad \text{for each } i=0,1,2,\dots,N-1
+\end{align*}
+\begin{center}
+    \begin{minipage}[c]{.4\textwidth}
+        \begin{align*}
+            w_0&=\alpha\\
+            k_1&=f(t_i,\,w_i)\\
+            k_2&=f\left(t_i+\frac{h}{2},\,w_i+\frac{h}{2}k_1\right)\\
+            w_{i+1}&=w_i+hk_2
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}[c]{.4\textwidth}
+        \centering
+        \begin{tabular}{c|cc}
+            0 & & \\[.5 em]
+            \(\frac{1}{2}\) & \(\frac{1}{2}\) & \\[.5 em]
+            \hline
+            \Tstrut & 0 & 1 \\
+        \end{tabular}
+    \end{minipage}
+\end{center}
+\section{Modified Euler Method}
+\begin{align*}
+    w_0&=\alpha\\
+    w_{i+1}&=w_i+\frac{h}{2} \left[ f(t_i,\,w_i)+f(t_{i+1},\,w_i+hf(t_i,w_i)) \right] \quad \text{for each } i=0,1,2,\dots,N-1
+\end{align*}
+\begin{center}
+    \begin{minipage}[c]{.4\textwidth}
+        \begin{align*}
+            w_0&=\alpha\\
+            k_1&=f(t_i,\,w_i)\\
+            k_2&=f\left(t_i+h,\,w_i+hk_1\right)\\
+            w_{i+1}&=w_i+\frac{h}{2}\left( k_1+k_2 \right)
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}[c]{.4\textwidth}
+        \centering
+        \begin{tabular}{c|cc}
+            0 & & \\[.5 em]
+            \(1\) & \(1\) & \\
+            \hline
+            \Tstrut & \(\frac{1}{2}\) & \(\frac{1}{2}\) \\
+        \end{tabular}
+    \end{minipage}
+\end{center}
+\section{Heun's Method}
+\begin{align*}
+    w_0 & = \alpha\\
+    w_{i+1} & = w_i + \frac{h}{4} \left[ f(t_i,\,w_i) + 3\left(f\left(t_{i} + \frac{2h}{3},\,w_i+\frac{2h}{3}f\left(t_i+\frac{h}{3},\,w_i+\frac{h}{3}f(t_i,\,w_i)\right)\right)\right) \right] \quad \text{for each } i=0,1,2,\dots,N-1
+\end{align*}
+\begin{center}
+    \begin{minipage}[c]{.4\textwidth}
+        \begin{align*}
+            w_0&=\alpha\\
+            k_1&=f(t_i,\,w_i)\\
+            k_2&=f\left(t_i+\frac{2h}{3},\,w_i+\frac{2h}{3}k_1\right)\\
+            w_{i+1}&=w_i+\frac{h}{4}\left( k_1+3k_2 \right)
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}[c]{.4\textwidth}
+        \centering
+        \begin{tabular}{c|cc}
+            0 & & \\[.5 em]
+            \(\frac{2}{3}\) & \(\frac{2}{3}\) & \\[0.5em]
+            \hline
+            \Tstrut & \(\frac{1}{4}\) & \(\frac{3}{4}\) \\
+        \end{tabular}
+    \end{minipage}
+\end{center}
+\begin{rem}
+    Heun's method is also known as \emph{Ralston's} Method.\\
+    See appendix \ref{butch} for using Butcher table.
+\end{rem}
+\begin{ex}
+    IVP:
+    \[
+        y'=y-t^2+1,\qquad 0\leq t\leq 2,\;\;y(0)=0.5
+    \]
+    with \(N=10\), \(h=0.2\), \(t_i=0.2i\), \(w_0=0.5\).\\
+    The differential equations are
+    \begin{align*}
+        \text{Midpoint }&: w_{i+1}=1.22w_i-0.0088i^2-0.008i+0.218\\
+        \text{Modified Euler }&: w_{i+1}=1.22w_i-0.0088i^2-0.008i+0.216\\
+        \text{Heun's }&: w_{i+1}=1.22w_i-0.0088i^2-0.008i+0.217\dot{3}
+    \end{align*}
+    for each \(i=0,1,2,\dots,9\) the following table lists the results of these calculations.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc@{}c@{}ccc}
+            \toprule
+            \(t_i\) & \(y(t_i)\) & Midpoint Method & Error & {Modified Euler Method} & Error& Heun's Method & Error\\\midrule
+            0.0 & 0.5000000 & 0.5000000 & 0 & 0.5000000 & 0 & 0.5000000 & 0\\
+            0.2 & 0.8292986 & 0.8280000 & 0.0012986 & 0.8260000 & 0.0032986 & 0.8273333 & 0.0019653\\
+            0.4 & 1.2140877 & 1.2113600 & 0.0027277 & 1.2069200 & 0.0071677 & 1.2098800 & 0.0042077\\
+            0.6 & 1.6489406 & 1.6446592 & 0.0042814 & 1.6372424 & 0.0116982 & 1.6421869 & 0.0067537\\
+            0.8 & 2.1272295 & 2.1212842 & 0.0059453 & 2.1102357 & 0.0169938 & 2.1176014 & 0.0096281\\
+            1.0 & 2.6408591 & 2.6331668 & 0.0076923 & 2.6176876 & 0.0231715 & 2.6280070 & 0.0128521\\
+            1.2 & 3.1799415 & 3.1704634 & 0.0094781 & 3.1495789 & 0.0303627 & 3.1635019 & 0.0164396\\
+            1.4 & 3.7324000 & 3.7211654 & 0.0112346 & 3.6936862 & 0.0387138 & 3.7120057 & 0.0203944\\
+            1.6 & 4.2834838 & 4.2706218 & 0.0128620 & 4.2350972 & 0.0483866 & 4.2587802 & 0.0247035\\
+            1.8 & 4.8151763 & 4.8009586 & 0.0142177 & 4.7556185 & 0.0595577 & 4.7858452 & 0.0293310\\
+            2.0 & 5.3054720 & 5.2903695 & 0.0151025 & 5.2330546 & 0.0724173 & 5.2712645 & 0.0342074\\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+    \begin{note}
+        Details calculations of midpoint method are included in appendix \ref{app}.
+    \end{note}
+\end{ex}
+\section{Runge-Kutta Method of Order Four}
+\begin{align*}
+    w_0&=\alpha\\
+    k_1&=hf(t_i,\,w_i)\\
+    k_2&=hf\left(t_i+\frac{h}{2},\,w_i+\frac{1}{2}k_1\right)\\
+    k_3&=hf\left(t_i+\frac{h}{2},\,w_i+\frac{1}{2}k_2\right)\\
+    k_4&=hf\left(t_{i+1},\,w_i+k_3\right)\\
+    w_{i+1}&=w_i+\frac{1}{6}(k_1+2k_2+2k_3+k_4) \quad \text{for each } i=0,1,2,\dots,N-1
+\end{align*}
+\begin{note}
+    This method has local truncation error \(O(h^4)\), provided the solution \(y(t)\) has five continuous derivatives.
+\end{note}
+\begin{ex}
+    Solve the IVP:
+    \[
+        y'=y-t^2+1,\qquad 0\leq t\leq 2,\;\;y(0)=0.5
+    \]
+    with \(N=10\), \(h=0.2\), \(t_i=0.2i\), gives the results and errors listed in the following table.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc}
+            \toprule
+                & Exact      & Runge-Kutta Order Four          & Error          \\
+            \(t_i\) & \(y_i=y(t_i)\)     &   \(w_i\)        &   \(\abs{y_i-w_i}\)        \\\midrule
+            0.0 & 0.5000000  & 0.5000000 & 0.0000000 \\
+            0.2 & 0.8292986  & 0.8292933 & 0.0000053 \\
+            0.4 & 1.2 140877 & 1.2140762 & 0.0000114 \\
+            0.6 & 1 .6489406 & 1.6489220 & 0.0000186 \\
+            0.8 & 2.1272295  & 2.1272027 & 0.0000269 \\
+            1.0 & 2.6408591  & 2.6408227 & 0.0000364 \\
+            1.2 & 3.1799415  & 3.1798942 & 0.0000474 \\
+            1.4 & 3.7324000  & 3.7323401 & 0.0000599 \\
+            1.6 & 4.2834838  & 4.2834095 & 0.0000743 \\
+            1.8 & 4.8151763  & 4.8150857 & 0.0000906 \\
+            2.0 & 5.3054720  & 5.3053630 & 0.0001089 \\ \bottomrule
+            \end{tabular}
+    \end{table}
+    \begin{note}
+        The main computational effort in applying the Runge-Kutta methods is the evaluation of \(f\).
+        In the second-order methods, the local truncation error is \(O(h^2)\), and the cost is two functional evaluation per step.
+        The Runge-Kutta method of order four requires four evaluation per step and the local truncation error is \(O(h^4)\).
+    \end{note}
+\end{ex}
+\begin{ex}
+    IVP
+    \[
+        y'=y-t^2+1,\qquad 0\leq t\leq 2,\;\;y(0)=0.5
+    \]
+
+    Euler's method \(h=0.025\), the midpoint method with \(h=0.05\) and the Runge-Kutta forth order method with \(h=0.1\) are compared at the mesh points \(0.1\), \(0.2\), \(0.3\), \(0.4\) and \(0.5\).
+    Each of these techniques requires 20 functional evaluation to determine the values listed in the following table to approximate \(y(0.5)\).
+    In this example, the fourth-order method is clearly superior.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccccc}
+            \toprule
+                &            & Euler      & Modified Euler & Runge-Kutta Order Four &\\
+            \(t_i\) & Exact  & \(h=0.025\)& \(h=0.05\) & \(h=0.1\) &  \\\midrule
+            0.0 & 0.5000000  & 0.5000000  & 0.5000000  & 0.5000000 &  \\
+            0.1 & 0.6574145  & 0.6554982  & 0.6573085  & 0.6574144 &  \\
+            0.2 & 0.8292986  & 0.8253385  & 0.8290778  & 0.8292983 &  \\
+            0.3 & 1.0150706  & 1.0089334  & 1.0147254  & l.0150701 &  \\
+            0.4 & 1.2140877  & 1.2056345  & 1.2136079  & 1.2140869 &  \\
+            0.5 & 1.4256394  & 1.4147264  & 1.4250141  & 1.4256384 &  \\\bottomrule
+            \end{tabular}
+    \end{table}
+    \begin{note}
+        Include the error table for each case.
+    \end{note}
+\end{ex}
+\subsection{Advantages of Runge-Kutta Method}
+\begin{enumerate}
+    \item They are easy to implement.
+    \item They are stable.
+\end{enumerate}
+\subsection{Disadvantages of Runge-Kutta Method}
+\begin{enumerate}
+    \item They require relatively large computer time.
+    \item Error estimation are not easy to be done.
+    \item Do not work well for stiff differential equations.
+    \item In particular, they are not good for systems of differential equations with a mix of fast and slow state dynamics.
+\end{enumerate}
+\emph{H.W.}
+\begin{enumerate}
+    \item \(y'=-y\), \(y(0)=1\) with \(h=0.01\) find \(y(0.04)\) by Euler's method.
+    \item \(y'=t^2+y\), \(y(0)=1\) find \(y(0.1)\) with \(h=0.05\)  by modified  Euler's method.
+    \item \(y'=y-t\), \(y(0)=2\) find \(y(0.1)\), \(y(0.2)\)  by Runge-Kutta order two and four. [See Sastry's Book]
+    \item \(\ddt{y}=1+y^2\), \(y(0)=0\) find \(y(0.2)\), \(y(0.4)\), \(y(0.6)\) with \(h=0.2\) by Runge-Kutta order four.
+    \item \({y}'=3t+\frac{1}{2}y\), \(y(0)=1\) by Euler, modified Euler and fourth order Runge-Kutta method. [See Sastry's Book]
+\end{enumerate}
+
+\end{document}

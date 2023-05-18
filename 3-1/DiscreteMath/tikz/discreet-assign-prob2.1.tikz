@@ -1,0 +1,18 @@
+\begin{tikzpicture}[a/.style={draw,circle,thick,node distance=2cm}]
+\node[a](a2){$A_2$};
+\node[a](a1)[left =of a2]{$A_1$};
+\node[a](a3)[right =of a2]{$A_3$};
+\node[a](b1)[below =of a1]{$B_1$};
+\node[a](b2)[below =of a2]{$B_2$};
+\node[a](b3)[below =of a3]{$B_3$};
+\path[-,thick] (a1) edge (b1)
+			edge (b2)
+			edge (b3)
+		(a2) edge (b1)
+			edge (b2)
+			edge (b3)
+		(a3) edge (b1)
+			edge (b2)
+			edge (b3);
+\node[](label)[below =of b2]{Figure: $K_{3,3}$};
+\end{tikzpicture}

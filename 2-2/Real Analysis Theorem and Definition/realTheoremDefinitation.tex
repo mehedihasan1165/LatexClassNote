@@ -1,0 +1,255 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,graphicx,enumitem,float,wrapfig}
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{perpage} %the perpage package
+\MakePerPage{footnote} %the perpage package command
+\usepackage{geometry}
+\usepackage{marginnote}
+\usepackage{subcaption}
+\usepackage{microtype}
+\graphicspath{ {./img/} }
+\everymath{\displaystyle}
+
+\catcode`\=13
+\def{$\bowtie$}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\nhd}{neighborhood\space}
+\newcommand{\ifnd}{if and only if\space}
+\newcommand{\sq}{sequence\space}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\seq}[1]{\left<#1\right>}
+\newcommand{\sumnf}{\sum_{n=1}^{\infty}}
+\newcommand{\seqx}{\left<x_n\right>}
+\newcommand{\eps}{\varepsilon}
+
+\theoremstyle{remark}
+\newtheorem* {rem}{Remark}
+
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}[section]
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}{Example}[section]
+\newtheorem*{soln}{Solution}
+\begin{document}
+\title{Real Analysis Theorem and Definition}
+\author{Mehedi Hasan}
+\maketitle
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\section{Sets}
+\begin{defn}[Supremum]
+  Let $S\subset\R$. A number $u\in\R$ is said to an upper bound of $S$, if $s\leq u$ for all $s\in S$. If $S$ is bounded above, then the upper bound is said to be a supremum or a least upper bound (l.u.b) of $S$, written as sup $S=u$, if no number less than $u$ is an upper bound of $S$.
+\end{defn}
+\begin{defn}[Infimum]
+  Let $S\subset\R$. A number $l\in\R$ is said to an lower bound of $S$, if $l\leq s$ for all $s\in S$. If $S$ is bounded below, then the lower bound $l$ is said to be a infimum or a greatest lower bound (g.l.b) of $S$, written as inf $S=l$, if no number greater than $l$ is an lower bound of $S$.
+\end{defn}
+\begin{thm}
+  A number $u$ is a supremum of a non empty subset of $S$ \ifnd $u$ satisfies these two condition:
+  \begin{enumerate}
+    \item $s\leq u$ for all $s\in S$
+    \item if $u<v$, then there exists an $s'\in S$ such that $v<s'$
+  \end{enumerate}
+\end{thm}
+\begin{thm}
+  An upper bound $u$ of a non empty set $S$ in $\R$ is the supremum of $S$ \ifnd for each $\eps>0$, there exists an $s_\eps\in S$ such that $u-\eps<s_\eps$
+\end{thm}
+\begin{proof}
+  Suppose that $u$ is an upper bound of $S$ and satisfies the stated condition. If $v<u$ and we take $\varepsilon := u-v$, then $\varepsilon>0$, and the stated condition implies there exits a number $s_\varepsilon \in S$ such that $u-\varepsilon<s_\varepsilon$ i.e. $v<s_\varepsilon$ which implies that $v$ is not an upper bound of $S$. Since $v$ is an arbitrary number less than $u$, we conclude that $u=$sup $S$.\\
+
+  Conversely, suppose that   $u=$sup $S$ and let $\varepsilon>0$. Since $u-\varepsilon<u$, then $u-\varepsilon$ is not an upper bound of $S$. Therefore, some elements $s_\varepsilon$ of $S$ must be greater than $u-\varepsilon$; that is, $u-\varepsilon<s_\varepsilon$
+\end{proof}
+\begin{defn}[Maximum of a Set]
+  Let $S\subset\R$. Then an element $m\in S$ is called the maximum(or the greatest or the largest) element of $S$ if $s\leq m$ for all $s\in S$.
+\end{defn}
+\begin{defn}[Minimum of a Set]
+  Let $S\subset\R$. Then an element $l\in S$ is called the minimum(or the least or the smallest) element of $S$ if $l\leq s$ for all $s\in S$.
+\end{defn}
+\begin{thm}[Supremum Property]
+  Every non empty set of real numbers that has an upper bound has a supremum is $\R$.
+\end{thm}
+\begin{thm}[Infimum Property]
+  Every non empty set of real numbers that has a lower bound has an infimum in $\R$.
+\end{thm}
+\begin{thm}[Archimedean Property]
+  If $x\in\R$, then there exists $n_x\in\N$ such that $x<n_x$.
+\end{thm}
+\begin{proof}
+  If the conclusion fails, then $x$ is an upper bound of $\N$. Therefore by the Supremum Property, the non empty set $\N$ has a supremum $u\in\R$. Since $u-1<u$, it follows from Supremum Characterization theorem that there exists $m\in\N$ such that $u-1<m$. But then $u<m+1$, and since $m+1\in\N$, this contradicts the assumption that $u$ is an upper bound of $\N$.
+\end{proof}
+\begin{defn}[Neighborhood]
+  Let $a\in \R$ and $\varepsilon >0$. Then the $\varepsilon$-neighborhood of $a$ is the set $N_\varepsilon(a)=\{x\in\R:|x-a|<\varepsilon\}$.
+\[|x-a|<\varepsilon\quad\Rightarrow\,a-\varepsilon<x<a+\varepsilon\]
+\begin{figure}[h]
+  \centering
+  \includegraphics{1}
+  \caption{A $\varepsilon-$neighborhood of $a$}\label{fig:epsilonNhd}
+\end{figure}
+
+\end{defn}
+\begin{defn}[Open Set]
+  Let $S\subset\R $ and $x\in S$, then $S$ is an open set if $N_\varepsilon(x)\subset S$. Generally, open set is denoted by $G$.
+\end{defn}
+\begin{enumerate}[label=(\alph*)]
+  \item The union of an arbitrary collection of open sets in $\R$ is open.
+  \item The intersection of any finite collection of open sets on $ \R$ is open.
+\end{enumerate}
+\begin{proof}
+  \begin{enumerate}[label=(\alph*)]
+    \item Let $\{G_\lambda:\lambda\in\Lambda\}$ be a family of sets in $\R$ that are open, and let $G$ be their union. Consider an element $x\in G$ by the definition of union, $x$ must belong to $G_{\lambda_0}$ for some $\lambda_0\in\Lambda$. Since $G_{\lambda_0}$ is open, there exists a \nhd $V$ of $x$ such that $V\subseteq G_{\lambda_0}$. But $G_{\lambda_0}\subseteq G$, so that $V\subseteq G$. Since $ x$ is an arbitrary element of $G$, we conclude that $G$ is open in $\R$.
+    \item Suppose $G_1$ and $G_2$ are open and let $G := G_1\cap G_2$. To show that $G$ is open, we consider any $x\in G$; then $x\in G_1$ and $x\in G_2$. Since $G_1$ is open, there exists $\varepsilon_1>0$ such that $(x-\varepsilon_1,x+\varepsilon_1)$ is contained in $G_1$. Similarly, since $G_2$ is open, there exists $\varepsilon_2>0$ such that $(x-\varepsilon_2,x+\varepsilon_2)$ is contained in $G_2$. If we now take $\varepsilon$ to be smaller of $\varepsilon_1$ and $\varepsilon_2$, then the $\varepsilon-$\nhd $U:=(x-\varepsilon,x+\varepsilon)$ satisfies both $U\subseteq G_1$ and $U\subseteq G_2$. Thus, $x\in U\subseteq G$. Since $x$ is an arbitrary element of $G$, we conclude that $G$ is open in $\R$.
+  \end{enumerate}
+\end{proof}
+\begin{defn}[Closed Set]
+  A set $F\subset\R$ is called closed set if $F^c$ is open set. Generally, close set is denoted by $F$.
+\end{defn}
+\begin{enumerate}[label=(\alph*)]
+  \item The intersection of an arbitrary collection of closed sets in $\R$ is closed.
+  \item The union of any finite collection of closed sets in $\R$ is closed.
+\end{enumerate}
+\begin{proof}
+  \begin{enumerate}[label=(\alph*)]
+    \item If $\{F_\lambda :\lambda\in\Lambda\}$ is a family of closed sets in $\R$ and $F:=\cap_{\lambda\in\Lambda} F_\lambda$, then $C(F)=\cup_{\lambda\in \Lambda}$ is the union of open sets. Hence, $C(F)$ is open by properties of open set(a) and consequently, $F$ is closed.
+    \item Suppose $F_1,F_2,\dots,F_n$ are closed in $\R$ and let $F:=F_1\cup F_2\cup\dots\cup F_n$. By the De Morgan identity of the complement\footnote{$(A\cup B)^c=A^c\cap B^c$ and $(A\cap B)^c=A^c\cup B^c$} of $F$ is given by
+        \[C(F)=C(F_1)\cap\dots\cap C(F_n)\]
+        Since each set $C(F_i)$ is open, it follows properties of open set(b) that $C(F)$ is open. Hence $F$ is closed.
+  \end{enumerate}
+\end{proof}
+\begin{defn}[Cluster/Limit point]
+  Let $A\subset\R$ and $x\in\R$. Then a point $c\in\R$ is called a cluster/limit point of $A$ if every $\eps-$neighbourhood $N_\eps(c)=(c-\eps,c+\eps)$ contains a point in $A$ other than $c$.
+\end{defn}
+\begin{defn}[Derived Set]
+  Let $A\subset\R$. Then the set of all cluster points of $ A$, denoted by $A'$, is called the derived set of $A$.
+\end{defn}
+\section{Sequences and Series}
+\subsection{Sequence}
+\begin{defn}[Sequence]
+  A sequence of real numbers (or a sequence in $\R$)is a function defined on the set $\N = {1, 2,\dots}$ of natural numbers whose range is contained in the set $\R$ of real
+numbers.
+\end{defn}
+\begin{defn}
+  A \sq $X=\seqx$ in $\R$ is said to \emph{converge} to $x\in \R$, or $x$ is said to be a \emph{limit} of $\seqx$ if for every $\eps > 0$ there exists a natural number $K(\eps)$ such that for all $n\geq K(\eps)$, the terms $x_n$ satisfy $\abs{x_n - x}<\eps$.\\
+If a sequence has a limit, we say that the sequence is \emph{convergent}; if it has no limit, we
+say that the sequence is \emph{divergent}.
+\end{defn}
+\begin{thm}[Uniqueness Theorem of Limit]
+  A \sq in $\R$ can have at most one limit.
+\end{thm}
+\begin{proof}
+  Suppose that $x'$ and $x''$ are both limits of $\seq{x_n}$. For each $\eps >0$ there exist $K'$ such that $\abs{x_n-x'}<\eps/2$ for all $n\geq K'$, and there exist $K''$ such that $\abs{x_n-x''}<\eps/2$ for all $n\geq K''$. We let $K$ be larger of $K'$ and $K''$. Then for $n\geq K$ we apply the Triangle inequality to get
+  \begin{align*}
+    \abs{x'-x''} &= \abs{x'-x_n+x_n-x''} \\
+     &\leq \abs{x'-x_n}+\abs{x_n-x''}\,<\,\eps/2+\eps/2=\eps
+  \end{align*}
+  Since $\eps >0$ is an arbitrary positive number, we conclude that $ x'-x''=0$
+\end{proof}
+\begin{proof}[Alternative proof]
+  Suppose that $x'$ and $x''$ are both limits of $\seqx$. Now $x'\neq x''$ \ifnd there exists $\eps>0$ such that $\abs{x'-x''}>\eps$. For each $\eps >0$ there exists $k'$ such that $\abs{x_n-x'}<\eps/2$ for all $n\geq k'$, and there exist $k''$ such that $\abs{x_n-x''}<\eps/2$ for all $n\geq k''$. We let $K$ be the larger of $k'$ and $k''$. Then for $n\geq K$ we apply the triangle inequality to get
+  \begin{align*}
+    \abs{x'-x''} &= \abs{x'-x_n+x_n-x''} \\
+     &\leq \abs{x'-x_n}+\abs{x_n-x''}\,<\,\eps/2+\eps/2=\eps
+  \end{align*}
+  $\therefore \abs{x'-x''}<\eps$.
+  This inequality contradicts with previous inequality.\\
+  Hence $x'=x''$.
+\end{proof}
+\begin{defn}[Bounded Sequence]
+  A \sq $\seqx$ of real number is said to be bounded if there exists a real number $M>0$ such that $\abs{x_n}\leq M$ for all $n\in\N$
+\end{defn}
+\begin{thm}
+  A convergent \sq of real number is bounded.
+\end{thm}
+\begin{proof}
+  Suppose that $\lim\seqx=x$ and let $\eps:=l$. Then there exists a natural number $K=K(l)$ such that $\abs{x_n-x}<1$ for all $n\geq K$. If we apply the triangular inequality with $n\geq K$ we obtain
+  \begin{align*}
+    \abs{x_n} &= \abs{x_n-x+x} \\
+     &\leq \abs{x_n-x}+\abs{x} <1+\abs{x}
+  \end{align*}
+  If we set
+  \[
+  M=\sup \{\abs{x_1},\abs{x_2},\dots,\abs{x_{k-1}},1+\abs{x}\}
+  \]
+  then it follows that $\abs{x_n}\leq M$ for all $n\in \N$.
+\end{proof}
+\begin{proof}[Alternate Proof]
+  Let $\seq{a_n}$ be a convergent \sq and converges to $\lim l$.
+  Let $\eps>0$ be given, then by definition there exists a positive number $m$ such that
+  \[\abs{a_n - l}<\eps\quad\text{for all }n\geq m\]
+  \[\eps-l<a_n<\eps+l\quad\text{for all }n\geq m\]
+  Let $G=\max\{\eps+l,a_1,a_2,\dots,a_{n+1}\}$\\
+  and $G=\min\{\eps-l,a_1,a_2,\dots,a_{n+1}\}$
+  Hence $g\leq a_n\leq g$ for all $n
+  \geq m$.\\
+  Therefore the \sq $\seq{a_n}$ is bounded.
+\end{proof}
+\begin{defn}
+  Let $X =\seq{x_n}$ be a sequence of real numbers. We say that $X$ is \emph{increasing} if it satisfies the inequalities
+  \[x_1\leq x_2\leq \dots\leq x_n\leq x_{n+1}\leq\dots\]
+  We say that $X$ is \emph{decreasing} if it satisfies the inequalities
+  \[x_1\geq x_2\geq \dots\geq x_n\geq x_{n+1}\geq\dots\]
+  We say that $X$ is \emph{monotone} if it is either increasing or decreasing.
+\end{defn}
+\begin{thm}[Monotone Convergence Theorem]
+  A monotone \sq of real number is convergent \ifnd it is bounded. Further:
+  \begin{enumerate}
+    \item If $X=\seqx$ is a bounded increasing \sq, then
+    \[\lim x_n=\sup\{x_n:n\in\N\}\]
+    \item If $Y=\seq{y_n}$ is a bounded decreasing \sq, then
+    \[\lim y_n=\inf\{y_n:n\in\N\}\]
+  \end{enumerate}
+\end{thm}
+\begin{defn}[Sub\sq]
+  Let $X =\seqx$ be a sequence of real numbers and let $n_1 < n_2 < \dots <n_k < \dots$ be a strictly increasing \sq of natural numbers.Then the sequence $X' = \seq{x_{n_k}}$ given by $\seq{x_{n_1},x_{n_2},\dots,x_{n_k},\dots}$ is called a sub\sq of $ X$.
+\end{defn}
+\begin{thm}[Bolzano-Weierstrass Theorem]
+  A bounded \sq of real numbers has a convergent sub\sq.
+\end{thm}
+\begin{defn}[Cauchy \sq]
+  A \sq $X=\seqx$ of real numbers is said to be Cauchy \sq if for every $\eps>0$ there exists a natural number $H(\eps)$ such that for all natural numbers $n,m\geq H(\eps)$, the terms $x_n,x_m$ satisfy $\abs{x_n-x_m}<\eps$.
+\end{defn}
+\begin{thm}
+  If $X=\seqx$ is a convergent ]sq of real numbers, then $X$ is a Cauchy \sq.
+\end{thm}
+\begin{proof}
+  If $x=\lim X$, then given $\eps>0$ there is a natural number $ K(\eps/2)$ such that if $n\geq k(\eps/2)$ then $\abs{x_n-x}<\eps/2$. Thus, if $H(\eps)=K(\eps/2)$ and if $n,m\geq H(\eps)$, then we have
+  \begin{align*}
+    \abs{x_n-x_m} &= \abs{(x_n-x)+(x-x_m)} \\
+   \Rightarrow \abs{x_n-x_m} &\leq \abs{x_n-x}+\abs{x_m-x} \\
+    \Rightarrow\abs{x_n-x_m} &< \eps/2+\eps/2 =\eps
+  \end{align*}
+  Since $\eps>0$ is arbitrary, it follows that $\seqx$ is a Cauchy \sq.
+\end{proof}
+\begin{thm}
+  A Cauchy \sq of real numbers is bounded.
+\end{thm}
+\begin{proof}
+  Let $X=\seqx$ be a Cauchy \sq and let $\eps=1$. If $H=H(1)$ and $n\geq H$, then $\abs{x_n-x_H}<1$. Hence by the triangle inequality, we have $\abs{x_n}\leq\abs{x_H}+1$ for all $n\geq H$. If we set
+  \[M=\sup\{\abs{x_1},\abs{x_2},\dots,\abs{x_{H-1}},\abs{x_H}+1\}\]
+  then it follows that $\abs{x_n}\leq M$ for all $n\in\N$.
+\end{proof}
+\subsection{Series}
+\begin{defn}[Series]
+  Sum of the terms of an infinite sequence is called series. Given a series $\sum_{n=1}^{\infty}x_n=x_1+x_2+x_3+\dots,$ let $s_n$ denote its $n-$th partial sum:
+  \[
+  s_n=\sum_{k=1}^{n}x_k =x_1+x_2+x_3+\dots+x_n.
+  \]
+  If the sequence $s_n$ is convergent, i.e. if $x$ is a real number such that $\lim(s_n)=x$, then the series $\sum x_n$ is called \emph{convergent} and we write
+  \[
+  \lim_{n\rightarrow\infty}\sum_{k=1}^{n}x_k =\sum_{k=1}^{\infty}x_k= x_1+x_2+x_3+\dots=x
+  \]
+  The number $x$ is called the sum of the series. Otherwise, the series is \emph{divergent}.\\
+  Note that $\sum_{k=1}^{\infty}x_k=\lim_{n\rightarrow\infty}\sum_{k=1}^{n}x_k$
+\end{defn}
+\end{document} 

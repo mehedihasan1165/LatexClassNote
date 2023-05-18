@@ -1,0 +1,378 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Game Theory}
+It was in 1928 when \textbf{Von Neumann} (called the father of game theory) developed the theory of games. After 1944, when \textbf{Von Neumann and Morgenstern} published their work named  ``Theory of Games and Economic Behaviour'',  the  theory received the proper  attention.  The  theory  of  games  (or  game  theory)  deals  with  mathematical analysis of competitive problems and is based on the \textbf{minimax} principle put forward by  Von  Neumann which  implies  that  each  competitor  will  act  so  as  to  minimize his maximum loss (or maximize his minimum gain).\\
+This theory does not describe how a game should be played. It describes only the procedures and principles by which plays should be selected. It is, therefore, a decision theory applicable to competitive situations.
+\begin{defn}[Game \& Player]
+    A conflicting or competitive situation involving two or more participants is said to be a \bfem{game}.\\
+    The participants are called \bfem{players}. The player may be an individual, a group of individuals, an organization or the nature.
+\end{defn}
+\begin{defn}[Strategy]
+    The decision rule by which a player determines his course of action(moves) is called a \bfem{strategy}.\\
+    To reach the decision regarding which strategy to use, neither player needs to know the other's strategy.
+\end{defn}
+\section{Characteristics of a competitive game}
+A competitive game has the following characteristics:
+\begin{enumerate}[label=(\roman*)]
+    \item There are a \emph{finite} number of participants. The number of participants is \(n\geq 2\), If \(n=2\), the game is called a \bfem{two-person game}; if \(n> 2\), it is called \(n-\)person game.
+    \item Each participant has a finite number of possible courses of action.
+    \item Each participant must know all the course of action available to others, but must not know which of these will be chosen.
+    \item A play of the game is said to occur when each player chooses one of his course of action. The choices are assumed to be made simultaneously, so that no participant knows the choice of other until he has decided his own.
+    \item The outcome of the game is affected by the choices made by the competitors.
+    \item All combinations of courses of action chosen by various players always result in some outcome of the game denoting gain (or loss) of an individual player.\\
+    This outcome can be represented by a single \textbf{pay off} number that can be zero (no gain - no loss), positive (gain) or negative (loss).
+\end{enumerate}
+\section{Payoff}
+The \bfem{payoff} is a connecting link between the sets of strategies open to all the players. In other words, payoff is the outcome of playing the game.\\
+
+Suppose at the end of a play of a game, player \(p_i (i=1,2,\dots, n)\) is expected to obtain an amount \(v_i\) called the payoff or return to the player \(p_i\). So, the total payoff to all the players in a play of the game is equal to \(\sum_{i=1}^n v_i\).\\
+
+The game is called a \textbf{zero-sum game} if \(\sum_{i=1}^n v_i=0\), at each play of the game. Thus, in a zero-sum game, the players make payments only to each other, i.e., the loss of one is the gain of others, and nothing comes from outside.\\
+A game with two players, where a gain of one player equals the loss of other is known as \textbf{two-person zero-sum game}. If there are \(n\) players and the sum of game is zero, then it is called \bfem{\(\mathbf{n-}\)person/players zero-sum game.}
+\subsection{Payoff matrix}
+In a two-person zero-sum game, the loss (gain) of one player is exactly equal to the gain (loss) of the opponent and each player knows the outcome for all possible strategies that he and his opponent may use during a play of the game. The resulting outcomes, representing gain (or loss) to a particular player, can be conveniently displayed in the form of a payoff matrix \(A=\begin{pmatrix}
+    a_{ij}
+\end{pmatrix}\), where \(a_{ij}\) is the payoff to player-I (say), when he employs his \(i-\)th move while player-II (the opponent) employs his \(j-\)th move.\\
+For a given payoff matrix, we adopt the following:
+\begin{enumerate}[label=(\roman*)]
+    \item Row designations are the courses of action available to player-I, who will be called the \emph{row player}.
+    \item Column designations are the courses of action available to player-II, who will be called the \emph{column player}.
+    \item The various payoffs are the payoff to the row player.
+\end{enumerate}
+Thus, if player-I has \(m\) strategies (moves) available to him and player-II has \(n\) moves available to him, then the payoffs for various strategy combinations nay be represented by an \(m\times n\) payoff matrix \(\begin{pmatrix}
+    a_{ij}
+\end{pmatrix}\). For this reason, the two-person zero-sum games are also called \textbf{matrix games}.\\
+
+To illustrate, suppose a two-person zero-sum game has two players. \(A\) and \(B\) with respective available strategies \(A_1,A_2\) and \(B_1,B_2,B_3\) respectively. Let the payoffs to the player \(A\) be expressed in terms of gains to him. Let the payoffs to player \(A\) be given by the following \(2\times 3\) payoff matrix:
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{gameSample.tikz}
+\end{figure}
+Then the following explanation may be given for the various payoffs:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cccc}
+        \toprule
+        \multicolumn{1}{c}{\multirow{2}{*}{Strategy of \(A\)}} & \multicolumn{3}{c}{Strategy of \(B\)} \\
+        \multicolumn{1}{c}{} & \(B_1\) & \(B_2\) & \(B_3\) \\ \midrule
+        \(A_1\) & \(A\) losses 1 unit & \(A\) gains 3 units & None gains \\
+        \(A_2\) & \(A\) gains 2 units & \(A\) losses 4 units & \(A\) gains 1 unit \\ \bottomrule
+        \end{tabular}
+\end{table}
+Since the game is zero-sum, every gain of player \(A\) is an equal loss of player \(B\) and vice-versa. Thus, the payoff matrix for the player \(B\) will be just the negative of the payoff matrix of \(A\), so that the sum of the payoff matrices of the two players is ultimately a \textbf{null matrix}.
+\begin{rem}
+    Though the payoff matrix for the column player can be obtained just by negating the payoff matrix of the row player, we hardly need to do so. This is so because the optimal course of action for the column player can be determined from the payoff matrix of the row player alone.
+\end{rem}
+\bfem{Summary:} A \textbf{payoff matrix} (also known as a \textbf{gain matrix} or a \textbf{game matrix}) is a table showing the amounts received by the player named at the left-hand side after all possible plays of the game. The payment is made by the player named at the top of the table.
+\section{Pure and Mixed Strategy}
+If a player decides to use only one particular course of action during every play, then it is said to use \bfem{pure strategy}. In other words, a decision to play a certain row (column) with probability zero, is called pure strategy for player-I (player-II). Otherwise, the strategy is called \emph{mixed strategy} i.e., if a player decides in advance, to use all or some of his available courses of action in some fixed proportion, called to use \bfem{mixed strategy}. Thus, a mixed strategy is a selection among pure strategies with some fixed probabilities (proportions).\\
+
+A mixed strategy if a player with possible course of action is denoted by a set \(\underline{\overline{X}}\)%\underaccent{\bar}{\bar{X}}\)
+of \(m\) non-negative numbers. The sum of these numbers is unity and each number represents the probability with which each course of action is chosen. Thus, if \(x_i\) is the probability of choosing the course of action \(i\), we have
+\[
+    \underline{\overline{X}}=\left(x_1,x_2,\dots,x_m\right) \qquad\text{ where }\sum_{i=1}^m x_i=1\quad \text{ and } x_i\geq 1;\;i=1,2,\dots,m
+\]
+A player may be able to choose only \(m\) pure strategies, but he has an infinite number of mixed strategies to choose them.
+\section{Maximin and minimax principle (Lower and upper bound)}
+The selection of an optimal strategy by each player, without the knowledge of the competitor's strategy, is the basic problem of playing games. So, the objective of the study is to know how these must select their respective strategies so that they are able to optimize their payoff. Such a decision-making criterion is referred to as the \textbf{minimax-maximin principle}. Such principle in pure strategies game always leads to the best possible selection of a strategy for both players.\\
+
+\bfem{Maximin principle}: In a two-person zero-sum game, player-I (row player) examines each row in the payoff matrix and selects the minimum element in each row, say \(p_{ij}\) with \(i=1,2,\dots,m\). He then selects the maximum of these minimum elements, say \(p_{rs}\). Mathematically, \[ p_{rs}=\max_{i}\left[\min_{j}p_{ij}\right]\]
+The element \(p_{rs}\) is called the \textbf{maximin (lower bound)} of the game, and decision to play row \(r\) is called the \emph{maximin pure strategy} (or \emph{maximin principle}).\\
+
+
+\bfem{Minimax principle}: Likewise, player-II (column player) examines each column in the payoff matrix to determine the maximum loss. Since player-II wants to minimize his losses, he then selects the strategy that gives the minimum loss among the column maximum values. Mathematically, this can be expressed as
+\[
+    p_{tu}=\min_j\left[\max_i p_{ij}\right]
+\]
+The element \(p_{tu}\) is called the \textbf{minimax (upper bound)} of the game, and decision to play column \(u\) is called the \emph{minimax pure strategy} (or \emph{minimax principle}).
+
+\section{Value of the game}
+This is the expected payoff at the end of the game, when each player uses his optimal strategy.\\
+The value of the game \(v\), in general, satisfies the equation:
+\[
+    \text{maximin value}\leq v \leq \text{minimax value}
+\]
+If the maximin value is equal to the minimax value, then the game is said to have a \textbf{saddle (equilibrium) point} and the corresponding strategies are called \bfem{optimal strategies}. The amount of payoff at an equilibrium point is the \bfem{value of the game}.
+\begin{itemize}
+    \item A game is said to be \bfem{fair} game if maximin=minimax=0, and is said to be \bfem{strictly determinable} if maximin=minimax\(\neq\)0.\\
+    In words, a game is said to be \bfem{fair} game if the lower (maximin) and upper (minimax) values of the game are equal and both equals zero.
+\end{itemize}
+\begin{defn}[Saddle point and Value of the game]
+    A \emph{saddle point} (or \emph{equilibrium point}) of a payoff matrix is that position in the payoff matrix where the maximum of row minima coincides with the minimum of the column maxima. The payoff at the saddle point is called the \emph{value of the game} and is obviously equal to the maximin and minimax values of the game.\\
+    Thus, \((k,r)\)th position of the payoff matrix \((a_{ij})\) will be a saddle point iff 
+    \[
+        a_{kr}=\max_i\left[\min_j \left\{a_{ij}\right\}\right]=\min_j\left[\max_i \left\{a_{ij}\right\}\right]
+    \]
+\end{defn}
+\begin{rem}\hfill
+    \begin{itemize}
+        \item The saddle point, and hence the value of the game, need not be unique.
+        \item We shall denote a value of the game by \(v\).
+        \item The importance of the saddle point arises from the fact that, in general, the optimum play consists in sticking to the strategies which correspond to the saddle point. To solve a game, we therefore merely need to look for the saddle point of the payoff matrix. If it exists, the game is solved. But, unfortunately, most payoff matrices do not possess any saddle point. A game with no saddle point is solved by employing mixed strategies.
+        \item By solving a game we mean determining the optimal strategies for both the players and the value of the game.
+    \end{itemize}
+\end{rem}
+\textbf{We summarize below the steps required to detect a saddle point}:
+\begin{enumerate}[label=(\roman*)]
+    \item Select the minimum (lowest) element in each row of the payoff matrix and write them under `row minima' heading at the right of the corresponding row. Then, ring the largest of them.
+    \item Select the maximum (largest) element in each column of the payoff matrix and write them under `column maxima' heading at the bottom of the corresponding column. Then, ring the smallest of them.
+    \item If these two ringed elements are \textbf{same}, the cell where the corresponding row and column meet is a \bfem{saddle point} and the element in that cell is the \emph{value of the game}.\\
+    If the two ringed elements are \textbf{unequal}, there is no saddle point, and the value of game lies between these two values.
+    \item If there are more than one saddle points, then there will be more than one solution, each solution corresponding to each saddle point.
+\end{enumerate}
+\section{Rules for Game Theory}
+\subsection{Rule 1. Pure strategy (Look for a saddle point)}
+In a certain game, player \(A\) has three possible choices \(L\), \(M\) and \(N\), while player \(B\) has two possible choices \(P\) and \(Q\). Payments are to be made according to the choices made
+\begin{table}[H]
+    \centering
+    \begin{tabular}{l@{\hspace{2cm}}l}
+        \underline{Choices} & \underline{Payment}\\
+        \(L,\, P\) & \(A\) pays \(B\) Tk. 3\\
+        \(L,\, Q\) & \(B\) pays \(A\) Tk. 3\\
+        \(M,\, P\) & \(A\) pays \(B\) Tk. 2\\
+        \(M,\, Q\) & \(B\) pays \(A\) Tk. 4\\
+        \(N,\, P\) & \(B\) pays \(A\) Tk. 2\\
+        \(N,\, Q\) & \(B\) pays \(A\) Tk. 3\\
+    \end{tabular}
+\end{table}
+What are the best strategies for player \(A\) and \(B\) in this game? What is the value of the game for \(A\) and \(B\)? Is this game (i) fair? (ii) strictly determinable?
+\begin{soln}
+    Let \((+)\)ve number represent a payment from \(B\) to \(A\) and \((-)\)ve number a payment from \(A\) to \(B\). We have the payoff matrix shown below:
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{gamepure1.1.tikz}
+    \end{figure}
+    Here, maximin=2=minimax\\
+    Thus the matrix has a saddle point at position \((3,2)\). The payoff amount in the saddle point position is 2, which is the \emph{value of the game}.\\
+    So, the optimal solution to the game is given by 
+    \begin{enumerate}[label=(\roman*)]
+        \item the best strategy for player \(A\) is \(N\);
+        \item the best strategy for player \(B\) is \(p\); and
+        \item the value of the game is Tk. 2 for player \(A\), and Tk. \(-2\) for player \(B\).
+    \end{enumerate}
+    Since the value of the game is not zero, the game is not fair. The game is strictly determinable.
+\end{soln}
+Let us consider a few more examples of games:
+\begin{ex}\hfill
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{gamePureEx1.tikz}
+    \end{figure}
+\end{ex}
+\begin{ex}\hfill
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{gamePureEx2.tikz}
+    \end{figure}
+\end{ex}
+\begin{ex}\hfill
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{gamePureEx3.tikz}
+    \end{figure}
+\end{ex}
+\begin{ex}\hfill
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{gamePureEx4.tikz}
+    \end{figure}
+\end{ex}
+\begin{note}
+    \hfill
+    \begin{itemize}
+        \item Always look for a saddle point before attempting to solve a game.
+        \item If there is no saddle point, neither player can optimize his chances by using a pure strategy; they must mix some or all of their course of action, resulting in mixed strategy.
+    \end{itemize}
+\end{note}
+\subsection{Rule 2. Mixed Strategy: Game without saddle point (For \(2\times 2\) games)}
+There are many solution procedures for determining the optimal strategies and the value of the game. In the most of the situation, the given rectangular game can be reduced to a much smaller \(2\times 2\) game. It is, therefore, worthwhile to determine formulae for the optimal strategies and the value of the game in the case of a \(2\times 2\) game.\\
+To find the optimum strategies as well as game value for a \(2\times 2\) game, we can use \textbf{algebraic} and \textbf{arithmetic method}.
+\subsubsection{Algebraic Method}
+Let us consider a two-person zero-sum game where the optimal strategies are not pure(i.e., mixed) and for which \(A\)'s payoff matrix is given by
+\begin{center}
+    \begin{tikzpicture}
+        \matrix [matrix of math nodes,left delimiter={[},right delimiter={]},row sep=0.1cm,column sep=0.1cm] (m) {
+            a_{11} & a_{12} \\
+            a_{21} & a_{22} \\
+            };
+            \node[above=.4 cm] at (m-1-1) {I};
+            \node[above=.4 cm] at (m-1-2) {II};
+            \node[above=1 cm] at (m-1-2.west) {Player $B$};
+            
+            \node[left=.75 cm] at (m-1-1) {I};
+            \node[left=.75 cm] at (m-2-1) {II};
+            \node[left=1.5 cm] at (m-2-1.north) {Player $A$};
+        \end{tikzpicture}
+    \end{center}
+    If \(\left(x_1^{*},x_2^{*}\right)\) and \(\left(y_1^{*},y_2^{*}\right)\) are the optimal strategies for \(A\) and \(B\) respectively, then
+    \[
+        \left.\begin{aligned}
+        x_1^{*}&=\frac{a_{22}-a_{21}}{(a_{11}+a_{22})-(a_{12}+a_{21})}\\
+        x_2^{*}&=1-x_1^{*}
+    \end{aligned}\quad\right\vert\quad
+        \begin{aligned}
+        y_1^{*}&=\frac{a_{22}-a_{12}}{(a_{11}+a_{22})-(a_{12}+a_{21})}\\
+        y_2^{*}&=1-y_1^{*}
+    \end{aligned}
+    \]
+    Value of the game, \(\displaystyle v=\sum_{i=1}^2\sum_{j=1}^2 x_i^{*}y_i^{*}a_{ij}\).
+    \begin{rem}
+        Here \(x_1^{*}\) and \(x_2^{*}\) are the \emph{probabilities} with which player \(A\) chooses his strategies I and II respectively. Also, \(y_1^{*}\) and \(y_2^{*}\) are the \emph{probabilities} with which player \(B\) chooses his strategies I and II respectively.
+    \end{rem}
+    \begin{note}
+        ~\\
+        \(\begin{aligned}[t]
+            \text{Value of game}&=(\text{Expected profits to player \(A\) when player \(B \) uses strategy I})\times \text{Prob. (player \(B\) using strategy I)}+\\
+            &\quad\;(\text{Expected profits to player \(A\) when player \(B\) uses strategy II})\times \text{Prob. (player \(B\) using strategy II)}\\
+            &=(a_{11}x_1^{*}+a_{21}x_2^{*})y_1^{*}+(a_{12}x_1^{*}+a_{22}x_2^{*})y_2^{*}\\
+            \text{i.e.,} v&=\sum_{i=1}^2\sum_{j=1}^2 x_i^{*}y_j^{*}a_{ij}
+        \end{aligned}\)
+    \end{note}
+    \subsubsection{Arithmetic Method}
+    This method consists of the following steps:
+    \begin{enumerate}[label=(\roman*)]
+        \item Subtract the two digits in column 1 and write them under column 2, ignoring sign.
+        \item Subtract the two digits in column 2 and write them under column 1, ignoring sign.
+        \item Similarly proceed for the two rows.
+    \end{enumerate}
+    These values are called \textbf{oddments}. They are the \emph{frequencies} with which the players must use their courses of action in their optimum strategies. These may be converted to \emph{probabilities} by dividing each of them by their sum.
+    \begin{ex}
+        In a game of matching coins, player \(A\) wins Tk. 2 if there are two heads, wins nothing if there are two tails and losses Tk. 1 when there are one head and one tail. Determine the payoff matrix, best strategies for each player and the value of game to \(A\).
+    \end{ex}
+    \begin{soln}
+        The payoff matrix for \(A\) will be 
+        \begin{figure}[H]
+            \centering
+            \import{../tikz/}{gameMixEx1.1.tikz}
+        \end{figure}
+        Since there is no saddle point, the optimal strategies will be mixed strategies.\\
+        Using \textbf{arithmetic method}, we get
+        \begin{figure}[H]
+            \centering
+            \import{../tikz/}{gameMixEx1.2.tikz}
+        \end{figure}
+        Thus for optimum gains, player \(A\) should use strategy \(H\) for \(25 \% \) of the time and strategy \(T\) for \(75 \% \) of the time, while player \(B\) should use strategy \(H\) \(25 \% \) of the time and strategy \(T\) \(75 \% \) of the time.\\
+
+        \underline{To obtain the value of the game any of the following expressions may be used:}\\
+        \textbf{\underline{Using \(A\)'s oddments:}}\\
+        \begin{align*}
+            B \text{ plays } H &: \text{Value of the game, } v=\text{Tk. }\left( \frac{1\times 2+3\times (-1)}{3+1} \right)=\text{Tk. }\left( -\frac{1}{4} \right)\\
+            B \text{ plays } T &: \text{Value of the game, } v=\text{Tk. }\left( \frac{1\times (-1)+3\times 0}{3+1} \right)=\text{Tk. }\left( -\frac{1}{4} \right)
+        \end{align*}
+        \textbf{\underline{Using \(B\)'s oddments:}}\\
+        \begin{align*}
+            A \text{ plays } H &: \text{Value of the game, } v=\text{Tk. }\left( \frac{1\times 2+3\times (-1)}{3+1} \right)=\text{Tk. }\left( -\frac{1}{4} \right)\\
+            A \text{ plays } T &: \text{Value of the game, } v=\text{Tk. }\left( \frac{1\times (-1)+3\times 0}{3+1} \right)=\text{Tk. }\left( -\frac{1}{4} \right)
+        \end{align*}
+        The above values of \(v\) are equal only if sum of the oddments vertically and horizontally are equal.\\
+        Thus, the full solution of the game is 
+        \begin{align*}
+            &\text{Strategies: } A(1,3)\text{ and } B(1,3);\\
+            &\text{Game value, }v=\text{ Tk. } \left( -\frac{1}{4} \right).
+        \end{align*}
+        This is the value of the game to \(A\) i.e., \(A\) gains Tk. \(-\frac{1}{4}\) i.e., he loses Tk. \(\frac{1}{4}\) which \(B\), in turn, gets.\\
+
+        \textbf{Algebraic Method:}
+        \begin{align*}
+            x_1^{*}&=\frac{a_{22}-a_{21}}{\left( a_{11}+a_{22} \right)-\left( a_{12}+a_{21} \right)}=\frac{0-(-1)}{\left( 2+0 \right)-\left( -1-1 \right)}=\frac{1}{4},\\
+            x_2^{*}&=1-x_1^{*}=1-\frac{1}{4}=\frac{3}{4}.\\
+            y_1^{*}&=\frac{a_{22}-a_{12}}{\left( a_{11}+a_{22} \right)-\left( a_{12}+a_{21} \right)}=\frac{0-(-1)}{\left( 2+0 \right)-\left( -1-1 \right)}=\frac{1}{4},\\
+            y_2^{*}&=1-y_1^{*}=1-\frac{1}{4}=\frac{3}{4}.
+        \end{align*}
+        \begin{align*}
+            \text{Value of the game, } v&=\sum_{i=1}^2\sum_{j=1}^2 x_i^{*}y_j^{*}a_{ij}\\
+            &=\sum_{i=1}^2 x_i^{*}y_1^{*}a_{i1}+x_i^{*}y_2^{*}a_{i2}\\
+            &= x_1^{*}y_1^{*}a_{11}+x_2^{*}y_1^{*}a_{21}+x_1^{*}y_2^{*}a_{12}+x_2^{*}y_2^{*}a_{22}\\
+            &=\frac{1}{4}\cdot\frac{1}{4}\cdot2+\frac{3}{4}\cdot\frac{1}{4}\cdot(-1)+\frac{1}{4}\cdot\frac{3}{4}\cdot(-1)+\frac{3}{4}\cdot\frac{3}{4}\cdot 0\\
+            &=-\frac{1}{4}
+        \end{align*}
+    \end{soln}
+    \subsection{Rule 3. Reduce game by dominance}
+    If no pure strategies exist, the next step is to eliminate certain strategies (row and/or column) by dominance. The principle of dominance states:\\
+    ``If one pure strategy of a player is better or superior than another, irrespective of the strategy employed by his opponent, then the inferior strategy may be simply ignored (i.e., assigned a zero probability) while searching for optimal strategies.''\\
+
+    The superior strategies are said to dominate the inferior ones. A player would have no incentive to use inferior strategies, which are dominated by some other(s).\\
+    The rules (principles) of dominance can be summarized as below:
+    \begin{enumerate}[label=(\roman*)]
+        \item The dominance rule for row:\\
+        Every value in the dominating row(s) must be greater than or equal to the corresponding value of the dominated row.
+        \item The dominance rule for column:
+        Every value in the dominating column(s) must be less than or equal to the corresponding value of the dominated column.
+        \item Dominance need no he based on the superiority of pure strategies only. A given strategy can be dominated if it is inferior to an \bfem{average} (or a \bfem{convex combination}) of two or more other pure strategies.
+    \end{enumerate}
+    After reducing the size of the payoff matrix, we will then obtain the solution of the game by applying any of the methods used for mixed-strategy game.
+    \begin{note}
+        Roughly speaking, \textbf{small rows} and \textbf{large columns} can be safely \underline{removed} form the payoff matrix.
+    \end{note}
+    \begin{rem}
+        \hfill
+        \begin{enumerate}
+            \item It should be noted that a  game reduced by \bfem{dominance} may disclose a saddle point which was not found in the original matrix under rule 1 (look for a pure strategy or saddle point). This is not necessarily a true saddle point since it may not be the least value in its row and the highest value in its column as per the original matrix. Therefore, this pseudo-saddle point is ignored and the reduced game should be solved for \bfem{mixed strategies}.
+            \item The rules of dominance discussed above are used when the payoff matrix is a profit matrix for player \(A\) (and a loss matrix for player \(B\)); if otherwise, the rules get reversed.
+        \end{enumerate}
+    \end{rem}
+    \begin{prob}
+        Solve the following problem using dominance rule.
+        \begin{figure}[H]
+            \centering
+            \import{../tikz/}{gameDom1.1.tikz}
+        \end{figure}
+    \end{prob}
+    \begin{soln}
+        \hfill
+        \begin{figure}[H]
+            \centering
+            \import{../tikz/}{gameDom1.2.tikz}
+        \end{figure}
+        From table-1, we see that maximin\(\neq\)minimax.\\
+        So, there is no saddle point. Now, we try to reduce the size of the given payoff matrix by dominance rule.\\
+        From player \(A\)'s point of view, row 1 is dominated by row 2. Similarly, row 5 is dominated by row 4. Therefore, row 1 and row 5 can be eliminated and the payoff matrix is given by in Table-2.
+        \begin{figure}[H]
+            \centering
+            \import{../tikz/}{gameDom1.3.tikz}
+        \end{figure}
+        Now, from \(B\)'s point of view, column 1 and column 2 are dominated by column 4 and column 5 respectively. Also, column 6 is dominated by column 5. So, the column 1, 2 and 6 are eliminated from the payoff table and the resulting table is given by Table-3.\\
+        Column 5 is dominated by the average of the column 3 and 4 which is \(\begin{pmatrix}
+            2\\
+            1\\
+            \frac{3}{2}
+        \end{pmatrix}\), so the column 5 is deleted from Table-3, and the resulting table is given by Table-4.
+        \begin{figure}[H]
+            \centering
+            \import{../tikz/}{gameDom1.4.tikz}
+        \end{figure}
+        Further, row 4 is obtained by the average of row 2 and 3. Hence, row 4 is deleted. The result \(2\times 2\) game is
+        \begin{figure}[H]
+            \centering
+            \import{../tikz/}{gameDom1.5.tikz}
+        \end{figure}
+        Let \(x_2^{*}\) and \(x_3^{*}\) be strategies for \(A\). Then by the arithmetic method, we have 
+        \[
+            x_2^{*}=\frac{6}{7},\qquad x_3^{*}=\frac{1}{7}
+        \]
+        while \(y_3^{*}\) and \(y_4^{*}\) be the strategies for \(B\) such that 
+        \[
+            y_3^{*}=\frac{4}{7},\qquad y_4^{*}=\frac{3}{7}
+        \]
+        Hence, the optimal strategies for \(A\) are \(\begin{pmatrix}
+            0,&\frac{6}{7},&\frac{1}{7},&0,&0
+        \end{pmatrix}\); and for \(B\) are \(\begin{pmatrix}
+            0,&0,&\frac{4}{7},&\frac{3}{7},&0
+        \end{pmatrix}\).\\
+        So, the value of the game is 
+        \[
+            v=\frac{4}{7}\cdot 1+\frac{3}{7}\cdot 3=\frac{13}{7}
+        \]
+    \end{soln}
+    \begin{itemize}
+        \item Try to solve it (table-4) by \underline{algebraic method}.
+    \end{itemize}
+    \subsection{Rule 4. Mixed Strategies (\(2\times n\) games or \(m\times 2\) games)}
+    These are the games in which one player has only two courses of action open to him while his opponent may have any number.\\
+    To  solve  such  games,  the  first  step  is  to  look  for  a  saddle  point;  if  there  is  one,  the game  is  readily  solved.  If  not,  next  step  is  to  reduce  the  given  matrix  to \(2\times 2\)  size 
+matrix by the rules of dominance. If the matrix can be reduced to \(2\times 2\) size, it can be 
+easily solved by the arithmetic or algebraic method.
+\end{document}

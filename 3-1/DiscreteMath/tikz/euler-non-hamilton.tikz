@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+    \node[circle,draw](a){};
+    \node[circle,draw, node distance = 3cm](b)[right =of a]{};
+    \node[circle,draw, node distance =.5cm](c)[below right =of a]{};
+    \node[circle,draw, node distance = 2cm](d)[below =of a]{};
+\node[circle,draw, node distance = 3cm](e)[right =of d]{};
+\node[circle,draw, node distance =.5cm](f)[above left =of e]{};
+\path[-](b) edge node{}(a)
+    edge node{}(e)
+    edge node{}(c)
+    edge node{}(f)
+(d)edge node{}(a)
+    edge node{}(e)
+    edge node{}(c)
+    edge node{}(f);
+% \node[node distance=.1cm](anchor)[right=of b]{};
+% \node[circle,draw,node distance=.1cm](aa)[right =of anchor]{};
+% \node[circle,draw](bb)[right =of aa]{};
+% \node[circle,draw](cc)[right =of bb]{};
+% \node[circle,draw](dd)[below =of aa]{};
+% \node[circle,draw](ee)[right =of dd]{};
+% \node[circle,draw](ff)[right =of ee]{};
+% \path[-](bb)edge node{}(aa)
+%     edge node{}(cc)
+%     edge node{}(dd)
+%     edge node{}(ff)
+%     edge node{}(ee)
+% (dd)edge node{}(aa)
+%     edge node{}(ee)
+% (ff)edge node{}(cc)
+%     edge node{}(ee);
+\end{tikzpicture}

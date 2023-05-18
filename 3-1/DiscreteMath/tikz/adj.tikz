@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+    [a/.style={circle,draw}]
+    \node[a](a){A};
+    \node[a](b)[right =of a]{B};
+    \node[a](c)[right =of b]{C};
+    \node[a](d)[below =of a]{D};
+    \node[a](e)[right =of d]{E};
+    \path[-](a) edge node{}(b)
+                edge node{}(d)
+            (e) edge node{}(d)
+                edge node{}(b)
+            (c) edge node{}(b);
+\end{tikzpicture}

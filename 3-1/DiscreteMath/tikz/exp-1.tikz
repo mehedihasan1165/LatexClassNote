@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+    [->,>=stealth,
+    level/.style={sibling distance = 5cm/#1,level distance = 1.5cm},
+    a/.style={text centered,align=center,circle,draw}]
+    \node[a]{$ - $}
+    child{node[a] {$ * $}
+        child{node[a]{$ - $}
+            child{node[a]{$ x $}}
+            child{node[a]{$ y $}}
+        }
+        child{node[a]{$ + $}
+            child{node[a]{$ w $}}
+            child{node[a]{$ z $}}
+        }
+    }
+    child{node[a]{$ * $}
+        child{node[a]{$ - $}
+            child{node[a]{$ x $}}
+            child{node[a]{$ y $}}
+        }
+        child{node[a]{$ - $}
+            child{node[a]{$ w $}}
+            child{node[a]{$ z $}}
+        }
+    };
+\end{tikzpicture}

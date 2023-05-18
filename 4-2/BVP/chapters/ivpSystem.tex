@@ -1,0 +1,131 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{System of IVPs}
+\section{Runge-Kutta Order 4}
+\begin{prob}
+    Consider the 2nd order IVP
+    \[
+        y''-2y'+2y=e^{2t}\sin t;\qquad 0\leq t\leq 1
+    \]
+    with \(y(0)=-0.4\), \(y'(0)=-0.6\).
+\end{prob}
+\begin{soln}
+    Let \(\begin{aligned}[t]
+        u_1(t)&=y(t)\\
+        \text{and } y'(t)&=u_1^{'}(t)=u_2(t)\\
+        \therefore\;y^{''}(t)&=u_1^{''}(t)=u_2^{'}(t)
+    \end{aligned}
+    \)\\
+    So, \(\displaystyle u_1^{'}(t)=\ddt{u_1}=u_2(t)\)
+    \begin{align*}
+        &u_2^{'}(t)-2u_2(t)+2u_1(t)=e^{2t}\sin t\\
+        \Rightarrow\;\;&u_2^{'}(t)=2u_2(t)-2u_1(t)+e^{2t}\sin t
+    \end{align*}
+    So,
+    \begin{align*}
+        &f_1=u_1^{'}=\ddt{u_1}=u_2\\
+        \Rightarrow\;\;&u_1^{'}=f_1(t,u_1,u_2)\\
+        &u_2^{'}=\ddt{u_2}=e^{2t}\sin t-2u_1+2u_2\\
+        \Rightarrow\;\;&u_2^{'}=f_2(t,u_1,u_2)
+    \end{align*} 
+    with \(\begin{aligned}[t]
+        &u_1(0)=-0.4
+        \Rightarrow\;\;&u_1^0=-0.4
+    \end{aligned}\) and \(\begin{aligned}[t]
+        &u_2(0)=-0.6
+        \Rightarrow\;\;&u_2^0=-0.6
+    \end{aligned}\)\\
+    Using 4th order Runge-Kutta with \(h=0.1\),
+    \begin{align*}
+        k_1&=hf_1(t_0,\,u_1^0,\,u_2^0)\\
+        &=0.1f_1(0,\,-0.4,\,-0.6)\\
+        &=0.1\times [(-0.6)]\\
+        &=-0.06\\
+        l_1&=hf_2(t_0,\,u_1^0,\,u_2^0)\\
+        &=0.1f_1(0,\,-0.4,\,-0.6)\\
+        &=0.1\times [e^{2\times 0}\sin \,0-2\times(-0.4)+2\times(-0.6)]\\
+        &=-0.04
+    \end{align*}
+    \begin{align*}
+        k_2&=hf_1\left(t_0+\frac{h}{2},\,u_1^0+\frac{k_1}{2},\,u_2^0+\frac{l_1}{2}\right)\\
+        &=hf_1\left(0+\frac{0.1}{2},\,-0.4+\frac{-0.06}{2},\,-0.6+\frac{-0.04}{2}\right)\\
+        &=hf_1\left(\frac{0.1}{2},\,-0.4-\frac{0.06}{2},\,-0.6-\frac{0.04}{2}\right)\\
+        &=h\left(-0.6-\frac{0.04}{2}\right)\\
+        &=-0.062\\
+        l_2&=hf_2\left(t_0+\frac{h}{2},\,u_1^0+\frac{k_1}{2},\,u_2^0+\frac{l_1}{2}\right)\\
+        &=hf_2\left(0.05,\,-0.4+\frac{-0.06}{2},\,-0.6+\frac{-0.04}{2}\right)\\
+        &=hf_2\left(0.05,\,-0.43,\,-0.62\right)\\
+        &=0.1\times\left[e^{2\times 0.05}\sin \,(0.05)-2\times(-0.43)+2\times(-0.62)\right]\\
+        &=-0.032476
+    \end{align*}
+    \begin{align*}
+        k_3&=hf_1\left(t_0+\frac{h}{2},\,u_1^0+\frac{k_2}{2},\,u_2^0+\frac{l_2}{2}\right)\\
+        &=hf_1\left(0.05,\,-0.4+\frac{-0.062}{2},\,-0.6+\frac{-0.032476}{2}\right)\\
+        &=h\left(-0.6-\frac{0.032476}{2}\right)\\
+        &=-0.06162381\\
+        l_3&=hf_2\left(t_0+\frac{h}{2},\,u_1^0+\frac{k_2}{2},\,u_2^0+\frac{l_2}{2}\right)\\
+        &=hf_2\left(0.05,\,-0.4+\frac{-0.062}{2},\,-0.6+\frac{-0.032476}{2}\right)\\
+        &=hf_2\left(0.05,\,-0.431,\,-0.616238\right)\\
+        &=0.1\times\left[e^{2\times 0.05}\sin \,(0.05)-2\times(-0.431)+2\times(-0.616238)\right]\\
+        &=-0.03152409
+    \end{align*}
+    \begin{align*}
+        k_4&=hf_1\left(t_0+h,\,u_1^0+k_3,\,u_2^0+l_3\right)\\
+        &=hf_1\left(0+0.1,\,-0.4-0.06162381,\,-0.6-0.03152409\right)\\
+        &=h\left(-0.6-0.03152409\right)\\
+        &=-0.063152409\\
+        l_4&=hf_2\left(t_0+h,\,u_1^0+k_3,\,u_2^0+l_3\right)\\
+        &=hf_2\left(0.1,\,-0.46162381,\,-0.63152409\right)\\
+        &=0.1\times\left[e^{2\times 0.1}\sin \,(0.1)-2\times(-0.46162381)+2\times(-0.63152409)\right]\\
+        &=-0.02178637
+    \end{align*}
+    So,
+    \begin{align*}
+        u_1^1&=u_1^0+\frac{1}{6}(k_1+2k_2+2k_3+k_4)=-0.4617333\\
+        u_2^1&=u_2^0+\frac{1}{6}(l_1+2l_2+2l_3+l_4)=-0.63163124
+    \end{align*}
+    Hence, \[u_1^1=y(0.1)=-0.4617333\]
+    and \[u_2^1=y'(0.1)=-0.63163124\]
+    Actual Solution: \(y(t)=0.2e^{2t}(\sin \,t-2\cos\,t)\)
+\end{soln}
+\# \(\displaystyle \ddt{y}=f(t,y); \qquad y(t_0)=y_0\)\\
+RK4:
+\(k_1=hf(t_i,y_i),\qquad k_2=hf\left( t_i+\frac{h}{2},\,y_i+\frac{k_1}{2} \right),\qquad k_3=hf\left( t_i+\frac{h}{2},\,y_i+\frac{k_2}{2} \right),\qquad k_4=hf(t_{i+1},y_i+k_3)\)
+\[
+    \therefore\;\;y_{i+1}=y_i+\frac{1}{6}(k_1+2k_2+2k_3+k_4)
+\]
+\# \begin{align*}
+    \ddt{u_1}&=f(t,u_1,u_2,\dots,u_m)\\
+    \ddt{u_2}&=f(t,u_1,u_2,\dots,u_m)\\
+    \vdots&\\
+    \ddt{u_m}&=f(t,u_1,u_2,\dots,u_m)
+\end{align*}
+for \(a\leq t\leq b\) with initial condition [Here \(a=t_0\)].
+\begin{align*}
+    &u_1(a)=\alpha_1,\quad u_2(a)=\alpha_2,\quad \dots,\quad u_m(a)=\alpha_m\\ 
+    \Rightarrow\;\;&u_1^0=\alpha_1,\quad u_2^0=\alpha_2,\quad \dots,\quad u_m^0=\alpha_m {\footnotemark}
+\end{align*}
+\footnotetext{{\(\begin{aligned}[t]
+    &u_1(a)=\alpha_1\\
+    \Rightarrow\;\;&u_1(t_0)=\alpha_1\\
+    \Rightarrow\;\;&u_1^0=\alpha_1
+\end{aligned}\)}}
+Consider, \(u_1^j,\,u_2^j,\dots,u_m^j\) have been computed. We obtain, \(u_1^{j+1},\,u_2^{j+1},\dots,u_m^{j+1}\) by first calculating
+\begin{align*}
+    k_{1,i}&=hf_i(t_i,u_1^j,u_2^j,\dots,u_m^j) &\text{ for each } i=1,2,\dots,m\\
+    k_{2,i}&=hf_i\left(t_i+\frac{h}{2},\,u_1^j+\frac{k_{1,1}}{2},\,u_2^j+\frac{k_{1,2}}{2},\dots,u_m^j+\frac{k_{1,m}}{2}\right) &\text{ for each } i=1,2,\dots,m\\
+    k_{3,i}&=hf_i\left(t_i+\frac{h}{2},\,u_1^j+\frac{k_{2,1}}{2},\,u_2^j+\frac{k_{2,2}}{2},\dots,u_m^j+\frac{k_{2,m}}{2}\right) &\text{ for each } i=1,2,\dots,m\\
+    k_{4,i}&=hf_i\left(t_i+h,\,u_1^j+k_{3,1},\,u_2^j+k_{3,2},\dots,u_m^j+k_{3,m}\right) &\text{ for each } i=1,2,\dots,m
+\end{align*}
+and then
+\[
+    u_i^{j+1}=u_i^j+\frac{1}{6}\left( k_{1,i}+2k_{2,i}+2k_{3,i} +k_{4,i}\right)\qquad \text{ for each }i=1,\,2,\,\dots,m \text{ and } j=0,\,1,\,2,\,\dots
+\]
+\begin{note}
+    \(k_{1,1},\,k_{1,2},\,k_{1,3},\dots,k_{1,m}\) must be computed before any of the terms of the form \(k_{2,1},\,k_{2,2},\,k_{2,3},\dots,k_{2,m}\) i.e., \(k_{2,i}\). 
+    In general, each \(k_{l,1},\,k_{l,2},\,k_{l,3},\dots,k_{l,m}\) must be computed before any of the expressions \(k_{l+1,i}\).
+\end{note}
+\end{document}

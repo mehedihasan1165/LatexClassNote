@@ -1,0 +1,12 @@
+\documentclass{article}
+\usepackage{pst-electricfield}
+
+\begin{document}
+\begin{center}
+\begin{pspicture*}(-2.5,-2.5)(2.5,2.5)
+\psscalebox{0.8}{%
+    \psElectricfield[Q={[-1 -1 0][1 1 0]},linecolor=red,linestyle=dashed]
+    \psEquipotential[Q={[-1 -1 0][1 1 0]},linecolor=blue](-4,-4)(4,4)}
+\end{pspicture*}
+\end{center}
+\end{document}

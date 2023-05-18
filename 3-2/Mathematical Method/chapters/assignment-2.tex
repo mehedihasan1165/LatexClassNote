@@ -1,0 +1,175 @@
+\documentclass[12pt,class=book,crop=false]{standalone}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\newcommand{\lap}[1]{\mathcal{L}\left\{ #1\right\}}
+\newcommand{\ilap}[1]{\mathcal{L}^{-1}\left\{ #1\right\}}
+\begin{document}
+\chapter{Inverse Laplace Transform}
+\section{Definition of Inverse Laplace Transform}
+If the Laplace transform of a function $ F(t) $ is $ f(s) $, i.e., if $ \lap{F(t)}=f(s) $, then $ F(t) $ is called an inverse Laplace Transform of $ f(s) $, and we write symbolically $ F(t)=\ilap{f(s)} $ where $ \mathcal{L}^{-1} $ is called the inverse Laplace transformation operator.
+\section{Some Inverse Laplace Transforms}
+Here is a table of some inverse Laplace transforms
+\begin{table}[H]
+    \centering
+    \begingroup
+    \setlength{\tabcolsep}{10pt}
+    \renewcommand{\arraystretch}{1.9}
+    \begin{tabular}{|c|c|}
+        \hline
+        $ f(s) $                                         & $ \ilap{f(s)}=F(t) $               \\\hline
+        $\displaystyle \frac{1}{s} $                     & $\displaystyle 1$                  \\\hline
+        $\displaystyle \frac{1}{s^2} $                   & $\displaystyle t$                  \\\hline
+        $\displaystyle \frac{1}{s^{n+1}},n=0,1,2,\dots $ & $\displaystyle \frac{t^n}{n!}$     \\\hline
+        $\displaystyle \frac{1}{s-a} $                   & $\displaystyle e^{at}$             \\\hline
+        $\displaystyle \frac{1}{s^2+a^2} $               & $\displaystyle \frac{\sin at}{a}$  \\\hline
+        $\displaystyle \frac{s}{s^2+a^2} $               & $\displaystyle \cos at$            \\\hline
+        $\displaystyle \frac{1}{s^2-a^2} $               & $\displaystyle \frac{\sinh at}{a}$ \\\hline
+        $\displaystyle \frac{s}{s^2-a^2} $               & $\displaystyle \cosh at$           \\\hline
+    \end{tabular}
+    \endgroup
+\end{table}
+\section{Properties}
+TODO :: Check class
+\section{The Convolution Theorem}
+The convolution theorem can be used to solved integral and integral-differential equations.
+\begin{thm}
+    If $ \ilap{f(s)}=F(t) $ and $ \ilap{g(s)}=G(t) $ then
+    \[
+        \ilap{f(s)g(s)}=\int_0^t F(u) G(t-u) \D u=F*G.
+    \]
+\end{thm}
+
+We call $ F*G $ the convolution or faulting of $ F $ and $ G $ and the theorem is called the convolution theorem. [Here, $ * $ (asterisk) denotes convolution in this context, not standard multiplication.]\\
+
+The formulation is especially useful for implementing a numerical convolution on a computer. The standard convolution algorithm has quadratic computational complexity. With the help of convolution theorem and the fast Fourier transform the complexity of the convolution can be reduced from $ O(n^2) $ to $ O(n\log n) $.
+\begin{prob}
+    Prove the convolution theorem:\\
+    If $ \ilap{f(s)}=F(t) $ and $ \ilap{g(s)}=G(t) $ then
+    \[
+        \ilap{f(s)g(s)}=\int_0^t F(u) G(t-u) \D u=F*G.
+    \]
+\end{prob}
+\begin{proof}
+    The required results follows if we can prove that
+    \begin{equation}
+        \lap{\int_0^t F(u) G(t-u)\D u}=f(s)g(s)\label{eq:convothm1}
+    \end{equation}
+    Where, $ \begin{aligned}[t]
+                 &                             \\
+            f(s) & =\lap{F(t)}\qquad\text{and} \\
+            g(s) & =\lap{G(t)}
+        \end{aligned} $\\
+    To show this we note the left side of \eqref{eq:convothm1} is
+    \begin{align}
+            & \int_{t=0}^\infty e^{-st}\left\{ \int_{u=0}^t F(u)G(t-u)\D u \right\}\D t\notag \\
+            & =\, \int_{t=0}^\infty \int_{u=0}^\infty e^{-st} F(u)G(t-u)\D u \D t\notag       \\
+            & =\, \lim_{M\to \infty} s_M\notag                                                \\
+        \intertext{where,}
+        s_M & =\, \int_{t=0}^M \int_{u=0}^t e^{-st} F(u)G(t-u)\D u \D t\label{eq:convothm2}
+    \end{align}
+    The region in the $ tu $ plane over which the integration \eqref{eq:convothm2} is performed is shown shaded in figure \ref{fig:convothm1}.
+    \begin{figure}[H]
+        \begin{minipage}[b]{0.5\textwidth}
+            \centering
+            \import{../tikz/}{convo-thm-1.tikz}
+            \caption{}
+            \label{fig:convothm1}
+        \end{minipage}
+        \begin{minipage}[b]{0.5\textwidth}
+            \centering
+            \import{../tikz/}{convo-thm-2.tikz}
+            \caption{}
+            \label{fig:convothm2}
+        \end{minipage}
+    \end{figure}
+    Let, $ t-u=v $ or $ t=u+v $, the shaded region $ R_{tu} $ of the $ tu $ plane is transformed into the shaded region $ R_{uv} $ of the $ uv  $ plane shown in figure \ref{fig:convothm2}. Then by a theorem on transformation on multiple integral,\\ We have
+    \begin{align}
+        s_M & =\iint\limits_{R_{tu}} e^{-st}F(u)G(t-u)\D u\D t\notag                                                            \\
+            & =\iint\limits_{R_{uv}} e^{-s(u+v)}F(u)G(v)\abs{\frac{\partial (u,t)}{\partial (u,v)}}\D u\D v\label{eq:convothm3}
+    \end{align}
+    where the Jacobian of the transformation is
+    \[
+        J=\frac{\partial (u,t)}{\partial (u,v)}=\begin{vmatrix}
+            \frac{\partial u}{\partial u} & \frac{\partial u}{\partial v} \\
+            \frac{\partial t}{\partial u} & \frac{\partial t}{\partial v}
+        \end{vmatrix}=\begin{vmatrix}
+            1 & 0 \\
+            1 & 1
+        \end{vmatrix}=1
+    \]
+    Thus, the right side of \eqref{eq:convothm3} is,
+    \begin{equation}
+        s_M=\int_{v=0}^M\int_{u=0}^M e^{-s(u+v)}F(u)G(v)\D u\D v \label{eq:convothm4}
+    \end{equation}
+    Let us define a function
+    \begin{equation}
+        \label{eq:convothm5}
+        k(u,v)=\begin{cases}
+            e^{-s(u+v)}F(u)G(v) & \text{ if } u+v\leq M \\
+            0                   & \text{ if } u+v> M
+        \end{cases}
+    \end{equation}
+    This function is defined over the square of figure \ref{fig:convothm3} but as indicated in \eqref{eq:convothm5}, is zero over
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{convo-thm-3.tikz}
+        \caption{}
+        \label{fig:convothm3}
+    \end{figure}
+    the unshaded portion of the square. In terms of this new function we can write \eqref{eq:convothm4} as,
+    \begin{align*}
+        s_M                    & =\int_{v=0}^M\int_{u=0}^M k(u,v)\D u\D v                                                           \\
+        \intertext{Then,}
+        \lim_{M\to \infty} s_M & =\int_{0}^\infty \int_{0}^\infty k(u,v)\D u\D v                                                    \\
+                               & =\int_{0}^\infty \int_{0}^\infty e^{-s(u+v)}F(u)G(v) \D u\D v                                      \\
+                               & =\left\{ \int_{0}^\infty e^{-su}F(u)\D u \right\}\left\{ \int_{0}^\infty e^{-sv}G(v) \D v \right\} \\
+                               & =f(s) g(s)
+    \end{align*}
+    Which establishes the theorem.
+
+    We call $ \int_0^t F(u)G(t-u)\D u=F*G $ the convolution integral or convolution of $ F $ and $ G $.
+\end{proof}
+\begin{prob}
+    Evaluate each of the following by the use of the convolution theorem
+    \begin{enumerate}[label=(\alph*)]
+        \item $ \displaystyle \ilap{\frac{s}{\left( s^2+a^2 \right)^2}} $
+        \item $ \displaystyle \ilap{\frac{1}{s^2\left( s+1 \right)^2}} $
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    \begin{enumerate}[label=(\alph*)]
+        \item We can write
+              \[
+                  \frac{s}{\left( s^2+a^2 \right)^2}=\frac{s}{s^2+a^2}\times \frac{1}{s^2+a^2}
+              \]
+              Now, $ \begin{aligned}[t]
+                                        &                       \\
+                      \quad \frac{s}{s^2+a^2} & =\cos at \qquad\text{ and } \\
+                      \quad \frac{1}{s^2+a^2} & =\frac{\sin at}{a}
+                  \end{aligned} $\\
+              By the convolution theorem we get,
+              \begin{align*}
+                  \ilap{\frac{s}{\left( s^2+a^2 \right)^2}} & =\int_0^t \cos au \,\frac{\sin a(t-u)}{a}\D u                                                                                    \\
+                                                            & =\frac{1}{a}\int_0^t (\cos^2 au) (\sin at \cos au -\cos at \sin au)\D u                                                          \\
+                                                            & =\frac{1}{a}\sin at \int_0^t \cos^2 au\D u-\frac{1}{a}\cos at \int_0^t \sin au \cos au \D u                                     \\
+                                                            & =\frac{1}{a}\sin at \int_0^t \frac{1+\cos 2au}{2}\D u-\frac{1}{a}\cos at \int_0^t \frac{\sin 2au}{2} \D u                       \\
+                                                            & =\frac{1}{a}\sin at \left(\frac{t}{2}+ \frac{\sin 2at}{4a} \right)-\frac{1}{a}\cos at \left( \frac{1-\cos 2at}{4a} \right)      \\
+                                                            & =\frac{1}{a}\sin at \left(\frac{t}{2}+ \frac{\sin at\cos at}{2a} \right)-\frac{1}{a}\cos at \left( \frac{\sin^2 at}{2a} \right) \\
+                                                            & =\frac{2\sin at}{2a}
+              \end{align*}
+        \item We have, $ \begin{aligned}[t]
+                                        &                 \\
+                      \frac{1}{s^2}     & =t \qquad\text{ and } \\
+                      \frac{1}{(s+1)^2} & =te^{-t}
+                  \end{aligned} $\\
+              By the convolution theorem we get,
+              \begin{align*}
+                  \ilap{\frac{1}{s^2\left( s+1 \right)^2}} & =\int_0^t ue^{-u}(t-u)\D u                                                                                     \\
+                                                           & =\int_0^t \left(ut-u^2\right)e^{-u}\D u                                                                        \\
+                                                           & =\left(ut-u^2\right)\left(-e^{-u}\right)-(t-2u)\left( e^{-u} \right)+(-2)\left( -e^{-u} \right)\Biggl\vert_0^t \\
+                                                           & =te^{-t}+2e^{-t}+t-2
+              \end{align*}
+    \end{enumerate}
+\end{soln}
+
+\end{document}

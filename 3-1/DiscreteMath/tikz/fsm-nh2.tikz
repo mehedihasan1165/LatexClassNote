@@ -1,0 +1,22 @@
+\begin{tikzpicture}[every initial by arrow/.style={-latex}]
+	\node[thick,state,initial] (a)  {$S_0$};
+	\node[thick,state] (b) [above right=30mm of a]  {$S_1$};
+	\node[thick,state,accepting] (c) [below right=30mm of b]  {$S_3$};
+	\node[thick,state,accepting] (d) [below right=30mm of a]  {$S_2$};
+	
+	\path[-latex,thick] (a) edge[bend left] node[above,sloped]{0} (b)
+				(a) edge[loop below] node[below]{0} (a)
+				(a) edge[bend right] node[below]{1}(c)
+				
+				(b) edge[] node[below,sloped]{0} (a)
+				(b) edge[loop above] node[above]{1} (b)
+				(b) edge[] node[right]{1} (c)
+				
+				(c) edge[bend right] node[above,sloped] {0,1} (b)
+				(c) edge[] node[above]{0}(a)
+				(c) edge node[below,sloped] {0} (d)
+				
+				(d) edge node[below,sloped] {1}(a)
+				(d) edge[loop below]node[below]{1}(d)
+				;
+	\end{tikzpicture}

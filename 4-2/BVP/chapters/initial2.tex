@@ -1,0 +1,134 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\begin{defn}
+    The IVP 
+    \begin{equation}
+        \ddt{y}=f(t,y),\quad a\leq t\leq b,\quad y(a)=\alpha
+        \label{eq:ini1}
+    \end{equation}
+    is said to be a well-posed problem if:
+    \begin{enumerate}
+        \item A unique solution, \(y(t)\), to the problem exists;
+        \item For any \(\varepsilon>0\), there exists a positive constant \(k(\varepsilon)\) with the property that, whenever \(\abs{\varepsilon_0}<\varepsilon\) and \(\delta(t)\) is continuous with \(\abs{\delta(t)}<\varepsilon\) on \([a,b]\), a unique solution \(z(t)\), to the problem
+        \begin{equation}
+            \ddt{z}=f(t,z)+\delta(t),\quad a\leq t<b, \quad z(a)=\alpha+\varepsilon_0 \label{eq:ini2}
+        \end{equation}
+        exists with \(\abs{z(t)-y(t)}< k(\varepsilon)\) for all \(a\leq t\leq b\).
+    \end{enumerate}
+\end{defn}
+
+The problem specified by \eqref{eq:ini2} is called a \emph{perturbed} problem associated with the original problem \eqref{eq:ini1}.
+\begin{thm}
+    \label{thm:ivp2}
+    Suppose \(D=\set{(t,y):a\leq t\leq b,\;-\infty<y<\infty}\).
+    If \(f\) is continuous and satisfies a Lipschitz condition in the variable \(y\) on the set \(D\), then the IVP
+    \[
+        \ddt{y}=f(t,y),\quad a\leq t\leq b,\quad y(a)=\alpha
+        \]
+        is well-posed.
+    \end{thm}
+    \begin{ex}
+        Let \(D=\set{(t,y):0\leq t\leq 1,\;-\infty<y<\infty}\) and consider the IVP 
+        \[
+            \ddt{y}=y-t^2+1,\quad 0\leq t\leq 2,\quad y(0)=0.5
+            \]
+            Since
+            \[\abs{\frac{\partial (y-t^2+1)}{\partial y}}=\abs{1}=1\]
+            Theorem \ref{thm:ivp1} implies that \(f(t,y)=y-t^2+1\) satisfies a Lipschitz condition on \(D\) with Lipschitz constant 1. Since \(f\) is continuous on \(D\), theorem \ref{thm:ivp2} implies that the problem is well-posed.
+        \end{ex}
+        \section{Euler's Method}
+        
+        The objective of this method is to obtain an approximation to the well-posed initial value problem
+        \begin{equation}
+            \ddt{y}=f(t,y),\quad a\leq t\leq b,\quad y(a)=\alpha
+            \label{eq:euler1}
+        \end{equation}
+        \begin{note}
+            A continuous approximation to the solution \(y(t)\) will not be obtained, but approximation to \(y(t)\) will be generated at various values, called \emph{mesh/grid} points, in the interval \([a,b]\).
+            Once the approximate solution is obtained at the points, the approximate solution at other points in the interval can be obtained by interpolation.
+        \end{note}
+
+        We first make the stipulation that the mesh points are equally distributed throughout the interval \([a,b]\).
+        This condition is ensured by choosing a positive integer \(N\) and selecting the mesh points \(\set{t_0,t_1,t_2,\dots,t_N}\), where \(t_i=a+ih\) for each \(i=0,1,2,\dots,N\).
+        The step size is \(h=(b-a)/N\).
+
+        Suppose that \(y(t)\), the unique solution to \eqref{eq:euler1} has two continuous derivatives on \([a,b]\), so that for each \(i=0,1,2,\dots,N-1\), we have by Taylor's theorem,
+        \[
+            y(t_{i+1})=y(t_i)+(t_{i+1}-t_i) y^{'}(t_i)+\frac{(t_{i+1}-t_i)^2}{2!}y^{''}(\xi_i)
+        \]
+        for some number \(\xi_i\) in \((t_{i+1},t_i)\).
+        If \(h=t_{i+1}-t_i\), then,
+        \[
+            y(t_{i+1})=y(t_i)+h y^{'}(t_i)+\frac{h^2}{2!}y^{''}(\xi_i)
+        \]
+        and since \(y(t)\) satisfies the differential equation \eqref{eq:euler1},
+        \begin{equation}
+            y(t_{i+1})=y(t_i)+h f(t_i,y(t_i))+\frac{h^2}{2!}y^{''}(\xi_i)
+            \label{eq:euler2}
+        \end{equation}
+        Euler's method constructs \(w_i\approx y(t_i)\) for each \(i=1,2,\dots,N\) by deleting the remainder term.\\
+        Thus,
+        \begin{equation}
+            \begin{rcases}
+                w_0=\alpha\\
+                w_{i+1}=w_i+hf(t_i,w_i)\quad
+            \end{rcases}
+            \label{eq:euler3}
+        \end{equation}
+        Equation \eqref{eq:euler3} is called the difference equation associated with Euler's method.
+        \begin{note}
+            Euler's method can be obtained by integration method also. For reference read Sastry.
+        \end{note}
+        \underline{Alternatively}:
+        \[
+            \ddt{y}=f(t,y),\quad a\leq t\leq b,\quad y(a)=\alpha
+        \]
+        In numerical methods, we determine a number \(y_i\) which is an approximation to the value of the solution \(y(t)\) at the point \(t_i\).
+        The set of numbers \(\set{y_i}\) i.e., \(y_0\), \(y_1\), \(y_2,\dots,y_N\) is the numerical solution of the IVP.
+        The numbers \(\set{y_i}\) are determined from a set of algebraic equations called the difference equations.
+        There are many difference approximations possible for a given differential equation.
+        Let us develop expressions for the first derivative in terms of the forward, backward and central difference operators.
+        We assume that the function \(y(t)\) may be expanded in a Taylor series in the closed interval \(t-h\leq t\leq t+h\) [where \(t_i=t_0+ih\); \(i=0,1,2,\dots,N\)].
+        We have,
+        \begin{equation}
+            y(t\pm h)=y(t)\pm \frac{h}{1!}y^{'}(t)\pm \frac{h^2}{2!}y^{''}(t)\pm \dots\pm (-1)^p \frac{h^p}{p!}y^{(p)}(t)\pm \dots \label{eq:euler4}
+        \end{equation}
+        We then have
+        \begin{align}
+            &\frac{y(t+h)-y(t)}{h}=y'(t)+\frac{h}{2}y''(t)+O(h^2)\notag\\
+            \Rightarrow\;&\frac{\Delta y(t)}{h}=\ddt{y}+O(h)\label{eq:euler5}
+        \end{align}
+        where the notation \(O(h)\) means that the first term neglected is of order \(h\).\\
+        Similarly, we obtain,
+        \begin{align}
+            \frac{\nabla y(t)}{h}&=\ddt{y}+O(h)\label{eq:euler6}\\
+            \intertext{and}
+            \frac{\delta y(t)}{h}&=\ddt{y}+O(h^2)\label{eq:euler7}
+        \end{align}
+        A difference approximation to \(y'(t)\) at \(t=t_i\) is obtained by neglecting the error term.\\
+        We have,
+        \begin{subequations}
+            \begin{align}
+            y^{'}(t_i) & \approx \frac{y_{i+1}-y_i}{h} \label{eq:euler8a}\\
+            y^{'}(t_i) & \approx \frac{y_{i}-y_{i-1}}{h} \label{eq:euler8b}\\
+            y^{'}(t_i) & \approx \frac{y_{i+1}-y_{i-1}}{2h} \label{eq:euler8c}
+            \end{align}
+            \label{eq:euler8}
+        \end{subequations}
+        We use the approximations \eqref{eq:euler8} for \(y'(t)\) in the given differential equation at the mesh point \(t_i\).
+        This gives
+        \begin{subequations}
+            \begin{align}
+            \frac{y_{i+1}-y_i}{h}&=f(t_i,y_i) \label{eq:euler9a}\\
+            \frac{y_{i}-y_{i-1}}{h}&=f(t_i,y_i) \label{eq:euler9b}\\
+            \frac{y_{i+1}-y_{i-1}}{2h}&=f(t_i,y_i) \label{eq:euler9c}
+            \end{align}
+            \label{eq:euler9}
+        \end{subequations}
+        \begin{note}
+            The equations \eqref{eq:euler9} are called difference equation because they are considered as a relation between differences of an unknown function \(y_i\).
+        \end{note}
+\end{document}

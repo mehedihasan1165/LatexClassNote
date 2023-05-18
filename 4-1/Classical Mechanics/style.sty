@@ -1,0 +1,85 @@
+\ProvidesPackage{style}
+\RequirePackage{amsmath,amsthm,amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{graphicx,float}
+\RequirePackage{enumitem}
+\RequirePackage[a4paper,margin=1cm]{geometry}
+\RequirePackage{hyperref}
+\RequirePackage{booktabs}
+\RequirePackage{lmodern}
+\RequirePackage[english]{babel}
+\RequirePackage{background}
+\RequirePackage[object=vectorian]{pgfornament} 
+\RequirePackage{calligra}
+\RequirePackage{mathrsfs}
+\RequirePackage{array}
+\RequirePackage{import}
+\RequirePackage{tikz,pgfplots}
+\pgfplotsset{compat=1.17}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+\newcolumntype{L}{>{$}l<{$}} 
+\newcolumntype{C}{>{$\displaystyle }c<{$}}
+
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\theoremstyle{remark}
+\newtheorem* {rem}{Remark}
+\newtheorem* {note}{Note}
+\graphicspath{ {./img/} }
+% \everymath{\displaystyle}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\theoremstyle{definition}
+% \newtheorem{prob}{Problem}
+\newtheorem{defn}{Definition}
+\newtheorem*{ex}{Example}
+\newtheorem*{soln}{Solution}
+
+\newtheorem{probinner}{Problem}
+\newenvironment{prob}[1]{%
+  \renewcommand\theprobinner{#1}%
+  \probinner
+}{\endprobinner}
+
+% add shorthand here
+\newcommand{\s}{\space}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\ddx}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,x}}
+\newcommand{\ddy}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,y}}
+\newcommand{\ddz}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,z}}
+\newcommand{\pardx}[1]{\,\frac{\partial\, #1}{\partial\, x}}
+\newcommand{\pardy}[1]{\,\frac{\partial\, #1}{\partial\, y}}
+\newcommand{\pardz}[1]{\,\frac{\partial\, #1}{\partial\, z}}
+\newcommand{\parx}{\,\partial\, x}
+\newcommand{\pary}{\,\partial\, y}
+\newcommand{\parz}{\,\partial\, z}
+\newcommand{\dx}{\,\mathrm{d}\, x}
+\newcommand{\dy}{\,\mathrm{d}\, y}
+\newcommand{\dz}{\,\mathrm{d}\, z}
+\newcommand{\D}{\,\mathrm{d}\,}
+\newcommand{\ddxn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\, x^{#2}}}
+\newcommand{\ddyn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\,y^{#2}}}
+\newcommand{\ddzn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\,z^{#2}}}
+\newcommand{\parxn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\, x^{#2}}}
+\newcommand{\paryn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\,y^{#2}}}
+\newcommand{\parzn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\,z^{#2}}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}

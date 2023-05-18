@@ -1,0 +1,119 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\begin{ex}
+    \[\frac{\D^2 y}{\dx^2}-2y=8x(9-x),\qquad y(0)=0,\;\;y(9)=0\]
+\end{ex}
+\begin{soln}
+    Use Euler's method with step size \(h=3\). Assume, \(y'(0)=4\).\\
+    Now, 
+    \[\frac{\D^2 y}{\dx^2}=2y+8x(9-x)=f(x,y,y'),\qquad y(0)=0,\;\;y'(0)=4\]
+    Let,
+    \begin{align}
+        \ddx{y}&=z\text{ (say) }=f_1(x,y,z);\quad y(0)=0\label{eq:shoot1}\\
+        \ddx{z}&=2y+8x(9-x)=f_2(x,y,z);\quad y'(0)=z(0)=4\label{eq:shoot2}\\
+    \end{align}
+    From \eqref{eq:shoot1}, \(y_{i+1}=y_i+hf_1(x_i,y_i,z_i)\)\\
+    From \eqref{eq:shoot2}, \(z_{i+1}=z_i+hf_2(x_i,y_i,z_i)\)\\
+    For \(i=0\):
+    \begin{align*}
+        y_1&=y_0+hf_1(x_0,y_0,z_0)\\
+        &=y_0+hf_1(0,0,4)\\
+        &=3\times 4=12 \quad[y_1=y(3)=12]\\
+        z_1&=z_0+hf_2(x_0,y_0,z_0)\\
+        &=4+3f_1(0,0,4)\\
+        &=4+3[2\times 0+8\times0\times(9-0)]=4 \quad[z_1=z(3)=4]
+    \end{align*}
+    For \(i=1\):
+    \begin{align*}
+        y_2&=y_1+hf_1(x_1,y_1,z_1)\\
+        &=12+3f_1(3,12,4)\\
+        &=12+3\times 4=28 \quad[y_2=y(6)=28]\\
+        z_2&=z_1+hf_2(x_1,y_1,z_1)\\
+        &=4+3f_1(3,12,4)\\
+        &=4+3[2\times 12+8\times3\times(9-3)]=508 \quad[z_2=z(6)=508]
+    \end{align*}
+    For \(i=3\), \(y_3=1548\approx y(9)\)\\
+    Now choose \(y'(0)=-24\)
+    Go through the steps of Euler's method
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc}
+            \toprule
+            \(i\) & \(x_i\) & \(y_i\) &\(z_i\)\\\midrule
+            \(0\) & \(0\) & \(0\) &\(-24\)\\
+            \(1\) & \(3\) & \(-72\) &\(-24\)\\
+            \(2\) & \(6\) & \(-144\) &\(-24\)\\
+            \(3\) & \(9\) & \(-216\) & \\\bottomrule
+        \end{tabular}
+    \end{table}
+    \(y_3=-216\approx y(9)\)\\
+    Now, we need interpolation technique to
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cc}
+            \toprule
+            \(y'(0)\) & \(y_3\approx y(9)\) \\\midrule
+            \(p_0=4\) & \(1548=q_0\)\\
+            \(p_1=-24\) & \(-216=q_1\) \\
+            \(p\) & \(q\) \\\bottomrule
+        \end{tabular}
+    \end{table}
+    \begin{align*}
+        p&=p_0+\frac{p_1-p_0}{q_1-q_0}(q-q_0);\quad q_0\leq q\leq q_1\\
+        p&=4+\frac{-24-4}{-216-1548}(q-1548)
+    \end{align*}
+    We want to find the value of \(p\) where \(q=0\)
+    \[\therefore \;p=4+\frac{-24-4}{-216-1548}(0-1548)=-20.57\]
+    So, \(y'(0)=-20.57\)\\
+    Now go through the steps of Euler's method
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc}
+            \toprule
+            \(i\) & \(x_i\) & \(y_i\) &\(z_i\)\\\midrule
+            \(0\) & \(0\) & \(0\) &\(-20.57\)\\
+            \(1\) & \(3\) & \(-61.7\) &\(-20.57\)\\
+            \(2\) & \(6\) & \(-123.42\) &\(41.17\)\\
+            \(3\) & \(9\) & \(0.09\) & \\\bottomrule
+        \end{tabular}
+    \end{table}
+    Hence, \(y_3=0.09\approx y(9)\)
+\end{soln}
+H.W.
+\begin{enumerate}[label=(\roman*)]
+    \item Does the value of \(y_3\) get close to zero on the 1st try because the example is a linear ODE.
+    \item Try to use this method with a nonlinear ODE.
+    \item Repeat the example using RK2 and RK4.
+\end{enumerate}
+\begin{note}
+    Consider the equation
+    \[y''=f(x,y,y'),\quad y(a)=A,\;y(b)=B\]
+    Let \(y'=z\), \(z'=f(x,y,z)\)
+
+    In order to solve this set as an initial value problem, we need to test condition at \(x=a\), therefore required another condition for \(z\) at \(x=a\).
+
+    Let us assume that \(z(a)=\mu_1\), where \(\mu_1\) is a guess, \(\mu_1\) represents the slope \(y'(x)\) at \(x=a\).\\
+    Thus,
+    \begin{equation}
+        \begin{rcases}
+            y'=z,\quad y(a)=A\quad\\
+            z'=f(x,y,z),\quad z(a)=\mu_1\quad\\
+        \end{rcases}
+        \label{eq:shot1.1}
+    \end{equation}
+    Equation \eqref{eq:shot1.1} can be solved for \(y\) and \(z\), using Heun's method or RK4 method.
+
+    If \(B=B_1\), the obtained required solution.\\
+    If \(B\neq B_1\), the require another guess \(z(a)=\mu_2\). Let the new estimate of \(y(x)\) at \(x=b\) be \(B_2\). If \(B_2\) is not equal to \(B\), then the process may be continued until we obtain the correct estimate of \(y(b)\). However, the procedure can be accepted by using an improved guess for \(z(a)\) after estimate of \(B_1\) and \(B_2\).
+
+    Let us assume that \(z(a)=\mu_3\) leads to the value of \(y(b)=B\). Then
+    \[\mu_3=\mu_2-\frac{B_2-B}{B_2-B_1}(\mu_2-\mu_1)\]
+    Now, \(z(a)=\mu_3\), we get the solution of \(y(x)\).
+\end{note}
+\begin{ex}
+    \[\frac{\D^2 y}{\dx^2}=6x,\qquad y(1)=2,\;\;y(2)=9 \text{ in } (1,2)\]
+\end{ex}
+\end{document}

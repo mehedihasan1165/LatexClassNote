@@ -1,0 +1,50 @@
+\ProvidesPackage{style}
+\RequirePackage{amsmath,amsthm,amssymb,dsfont}
+\RequirePackage{graphicx,float}
+\RequirePackage{enumitem}
+\RequirePackage[a4paper,margin=1.5cm]{geometry}
+\RequirePackage{hyperref}
+\RequirePackage{background}
+\RequirePackage[object=vectorian]{pgfornament} 
+\RequirePackage{calligra}
+\RequirePackage{lmodern}
+\RequirePackage{tikz,bm,color,pgfplots}
+\RequirePackage{import}
+\RequirePackage{booktabs}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning,automata}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{hobby}
+\usetikzlibrary{calc}
+\usetikzlibrary{circuits.logic.US}
+\theoremstyle{remark}
+\newtheorem* {rem}{Remark}
+
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}{Lemma}
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}[section]
+\newtheorem*{prob*}{Problem}
+\newtheorem{defn}{Definition}
+\newtheorem*{ex}{Example}
+\newtheorem*{soln}{Solution}
+
+\newcommand{\ptoq}{p \to q}
+\newcommand{\px}{P(x)}
+\newcommand{\s}{\space}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\C}{\mathds{C}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\Q}{\mathds{Q}}

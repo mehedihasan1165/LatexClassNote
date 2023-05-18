@@ -1,0 +1,251 @@
+% For inner product symbol use \seq{} it was decleared first as a symbol for sequence
+\documentclass[../main-sheet.tex]{subfiles}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Metric Spaces}
+\begin{defn}[Group]
+A group $ G $ is a non-empty set of elements for which a binary operation $ * $ is defined. This operation satisfies the following axioms:
+\begin{enumerate}[label=(\roman*)]
+    \item \emph{Closure:} If $ a,b \in G $ implies that $ a*b\in G $
+    \item \emph{Associativity:} If $ a,b,c \in G $ implies that $ (a*b)*c=a*(b*c) $
+    \item \emph{Identity:} There exists a unique element $ e\in G $(called the identity element) such that $ a*e=e*a=a $ for all $ a\in G $.
+    \item \emph{Inverse:} For every $ a\in G $ there exists an element $ a'\in G $(called the inverse of $ a $) such that $ a*a'=a'*a=e $.
+\end{enumerate}
+\end{defn}
+\begin{note}
+    When the binary operation is addition, $ G $ is called an additive group and when the binary operation is multiplication, $ G $ is called a multiplicative group.
+\end{note}
+\begin{defn}
+    A group $ G $ is called Abelian (or commutative) if for every $ a,b\in G $, $ a*b=b*a $.
+\end{defn}
+\begin{ex}
+    The set of all integers i.e., $ \set{0,\mp 1,\pm2,\pm3,\dots} $ is a group with respect to the binary operation of addition.
+\end{ex}
+\begin{ex}
+    The set $ \set{\pm 1,\pm i} $ where $ i=\sqrt{-1} $ is a group with respect to the binary operation of multiplication.
+\end{ex}
+\begin{defn}[Ring]
+An additive Abelian (or commutative) group $ (G,+) $ with the following properties is said to be a ring:
+\begin{enumerate}[label=(\roman*)]
+    \item The group $ G $ is closed with respect to the binary operation of multiplication. i.e., for $ a,b\in G\;\Rightarrow\; a\cdot b\in G $
+    \item Multiplication is associative, i.e., $ (a\cdot b)\cdot c=a\cdot (b\cdot c$ for all $ a,b,c\in G $.
+    \item Multiplication is distributive with respect to addition on both left and the right, that is $ a\cdot (b+c)=a\cdot b+a\cdot c $ and $ (b+c)\cdot a=b\cdot a+c\cdot a $ for all $ a,b,c\in G $.
+\end{enumerate}
+\end{defn}
+\begin{ex}
+    The set $ \Z =\set{0,\pm1,\pm2,\pm3,\dots} $ is a ring under binary operations of ordinary addition and multiplication.
+\end{ex}
+\begin{ex}
+    Consider the set $ \bar{Z}=\set{0,1,2,3,4,5} $, $ \bar{Z} $ is a ring under the binary operation of addition and multiplication modulo 6.
+\end{ex}
+\begin{defn}[Field]
+A field $ F $ is a commutative ring with unit element in which every non-zero element has a multiplicative inverse.
+\end{defn}
+\begin{ex}
+    Examples of fields are the ring of rational numbers, the ring of real numbers and the ring of complex numbers.
+\end{ex}
+\section{Metric Space}
+\begin{defn}
+    Euclidean space (or Euclidean $ n- $space) denoted $ \R^n $, consists of all ordered $ n- $ tuples of real numbers. Symbolically, $ \R^n=\set{\left( \xn{x}{,} \right)\mid \xn{x}{,}\in \R} $.
+
+    Thus, $ \R^n=\R\times \R\times\dots\times\R $($ n $ times) is the Cartesian product of $ \R $ with itself $ n $ times.
+\end{defn}
+\begin{ex}
+    The real line $ \R $, two-dimensional plane $ \R^2 $, three-dimensional space $ \R^3 $ are examples of Euclidean spaces.
+\end{ex}
+\begin{defn}[Metric space]
+    A metric space $ (M,d) $ is a set $ M $ and a function $ d:M\times M\to \R $ such that
+    \begin{enumerate}[label=(\roman*)]
+        \item \emph{Positivity:} $ d(x,y)\geq 0 $ for all $ x,y\in M$   
+        \item \emph{Non degeneracy (identity of indiscernibles):} $ d(x,y)=0 $ if and only if $ x=y$
+        \item \emph{Symmetry:} $ d(x,y)=d(y,x) $ for every $ x,y \in M $
+        \item \emph{Triangle inequality:} $ d(x,y)\leq d(x,z)+d(z,y) $ for all $ x,y,z \in M$
+    \end{enumerate}
+    Thus, a metric space $ M $ is a set equipped with a function $ d:M\times M \to\R $ that gives a reasonable way of measuring the distance between two elements of $ M $.
+\end{defn}
+\begin{ex}
+    The real line $ \R $ is a metric space with the metric defined by $ d(x,y)=\abs{x-y} $. Similarly, the complex plane $ \C $ and the Euclidean space $ \R^n $ are metric spaces together with the metric $ d(z,w)=\abs{z-w} $ and the standard metric respectively.
+\end{ex}
+\begin{defn}[Discrete metric]
+    Let $ M $ be any set and let $ d(x,y)=0 $ if $ x=y $ and $ d(x,y)=1 $ if $ x\neq y $. Then $ d $ is a discrete metric on $ M $.
+\end{defn}
+\begin{defn}[Bounded metric]
+    If $ d $ is a metric on a set $ M $ and $ \rho(x,y) $ is defined by $ \rho(x,y)=\frac{d(x,y)}{1+d(x,y)} $, then $ \rho $ is a metric called bounded metric. Observe that $ \rho(x,y)<1 $ for all $ x,y\in M $ i.e., $ \rho  $ is bounded by 1.
+\end{defn}
+\begin{note}
+    The distance function $ d $ on $ \R^n $ is given by $ d(x,y)=\left\{ \sum_{i=1}^n (x_i-y_i)^2 \right\}^{{}^1/{}_2} $.
+\end{note}
+\section{Vector Space}
+A vector space over an arbitrary field $ F $ is a non-empty set $ V $, whose elements are called vectors for which two operations are prescribed. The first operation, called \emph{vector addition}, assigns to each pair of vectors $ u $ and $ v $ a vector denoted by $ u+v $, called their sum. The second operation, called scalar multiplication assigns to each vector $ u $ in $ V $ and each scalar $ \alpha\in F $ a vector denoted by $ \alpha u $ which is in $ V $.
+\begin{defn}
+    A vector space (or a linear space) $ V $ is a set of elements called vectors, with given operations of vector addition $ +:V\times V\to V $ and scalar multiplication $ \cdot:F\times V\to V $ such that:
+    \begin{enumerate}[label=A(\roman*)]
+        \item \emph{Commutativity:} $ u+v=v+u $ for every $ u,v\in V $.
+        \item \emph{Associativity:} $ (u+v)+w=u+(v+w) $
+        \item \emph{Zero vector:} There is a zero vector $ 0 $ such that $ u+0=u $ for every $ u\in V $.
+        \item \emph{Negatives:} For each $ u\in V $ there is a vector $ -u $ such that $ u+(-u)=0 $.
+    \end{enumerate}
+    \begin{enumerate}[label=M(\roman*)]
+        \item \emph{Distributivity:} For $ \alpha\in F $ and $ u,v\in V $, $ \alpha\cdot(u+v)=\alpha\cdot u+\alpha\cdot v $
+        \item \emph{Distributivity:} For any $ \alpha,\beta\in F $ and $ u\in V $, $ (\alpha+\beta)\cdot u=\alpha\cdot u+\beta\cdot u $
+        \item \emph{Associativity:} For any $ \alpha,\beta\in F $ and $ u\in V $, $ (\alpha\beta)\cdot u=\alpha(\beta\cdot u) $
+        \item \emph{Multiplicative unity} For each $ u\in V $ there is a unit scalar $ e\in F $ such that $ e u=u $.
+    \end{enumerate}
+    If the field $ F=\R $, then the linear space $ V $ is called a real linear space, similarly if $ F=\C $, then the linear space is called a complex linear space. The subset $ S $ of a vector space $ V $ is called a subspace of $ V $ if $ S $ itself is a vector space.
+\end{defn}
+\section{Normed Linear Space (NLS)}
+A normed linear space $ (V,\norm{\cdot}) $ is a vector space $ V $ and a function $ \norm{\cdot}:V\to\R $ called a norm such that
+\begin{enumerate}[label=(\roman*)]
+    \item \emph{Positivity:} $ \norm{u}\geq 0 $ for all $ u\in V $.
+    \item \emph{Non degeneracy:} $ \norm{u}=0 $ if and only if $ u=0 $.
+    \item \emph{Multiplicativity:} $ \norm{\alpha u}=\abs{\alpha}\;\norm{u}  $ for every $ u\in V $ and every scalar $ \alpha $.
+    \item \emph{Triangle inequality:} $ \norm{u+v}\leq \norm{u}+\norm{v} $ for all $ u,v\in V $.
+\end{enumerate}
+\begin{defn}
+    The norm or length of a vector $ x $ in $ \R^n $ is defined by $ \norm{x}=\left\{ \sum_{i=1}^n x_i^2 \right\}^{{}^1/{}_2}  $, where $ x=(x_1,x_2,\dots,x_n) $. The distance between two vectors $ x $ and $ y $ in $ \R^n $ is the real number
+    \[d(x,y)=\norm{x-y}=\left\{ \sum_{i=1}^n (x_i-y_i)^2 \right\}^{{}^1/{}_2} \]
+    The inner product of $ x $ and $ y $ in $ \R^n $ is defined by $ \seq{x,y}=\sum_{i=1}^n x_iy_i $. Thus, $ \norm{x}^2=\seq{x,x} $.\\
+    In $ \R^3 $, we are also familiar with $ \seq{x,y}=\norm{x}\;\norm{y}\cos \theta $ where $ \theta $ is the angle between $ x $ and $ y $.
+\end{defn}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{inner-prod.tikz}
+\end{figure}
+\begin{thm}
+    For vectors in $ \R^n $, we have
+    \begin{enumerate}
+        \item Properties of the inner product:
+        \begin{enumerate}[label=(\roman*)]
+            \item \emph{Positivity:} $ \seq{x,x}\geq 0 $
+            \item \emph{Non degeneracy:} $ \seq{x,x}= 0 $ if and only if $ x=0 $
+            \item \emph{Distributivity:} $ \seq{x,y+z}= \seq{x,y}+\seq{x,z} $
+            \item \emph{Multiplicativity:} $ \seq{\alpha x,y}= \alpha \seq{x,y}$ for $ \alpha\in\R $
+            \item \emph{Symmetry:} $ \seq{x,y}= \seq{y,x}$
+        \end{enumerate}
+        \item Properties of the norm:
+        \begin{enumerate}[label=(\roman*)]
+            \item $ \norm{x}\geq 0 $
+            \item $ \norm{x}=0 $ if and only if $ x=0 $.
+            \item $ \norm{\alpha x}=\abs{\alpha}\;\norm{x}  $ for $ \alpha \in \R $.
+            \item $ \norm{x+y}\leq \norm{x}+\norm{y} $
+        \end{enumerate}
+        \item Properties of the distance:
+        \begin{enumerate}[label=(\roman*)]
+            \item $ d(x,y)\geq 0 $   
+            \item $ d(x,y)=0 $ if and only if $ x=y$
+            \item $ d(x,y)=d(y,x) $
+            \item $ d(x,y)\leq d(x,z)+d(z,y) $
+        \end{enumerate}
+        \item The Cauchy Schwarz inequality:\\
+        $ \abs{\seq{x,y}}\leq \norm{x}\;\norm{y} $ (Also, named Cauchy-Bunyakovskii-Schwarz inequality).
+    \end{enumerate}
+\end{thm}
+\subsection{Examples of normed linear space (NLS)}
+\begin{ex}
+    The real line $ \R  $ is a NLS with the norm $ \norm{x}=\abs{x} $. Similarly, the set of complex numbers $ \C $ is a NLS with $ \norm{z}=\abs{z} $.
+\end{ex}
+\begin{ex}[Taxicab norm]
+    Consider the space $ \R^2 $, but instead of the usual norm on it, set $ \norm{(x,y)}_1=\abs{x}+\abs{y} $. Then $ \norm{\cdot}_1 $ is a norm on $ \R^2 $, called the taxicab norm. If $ P=(x,y) $ and $ Q=(a,b) $, then $ d_1(P,Q)=\norm{P-Q}_1 =\abs{x-a}+\abs{y-b}$. This is the sum of the vertical and horizontal separations. You must travel this distance to get from $ P $ to $ Q $ if you always travel parallel to the axes (stay on the streets in a taxicab).
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{taxicab-norm.tikz}
+        \caption{The taxicab metric}
+    \end{figure}
+\end{ex}
+\begin{ex}[Supremum norm]
+    Let $ M= $ all real-valued functions on the interval $ [0,1] $ that are bounded. That is, let $ M=\set{f:[0,1]\to\R\mid \text{ there is a number $ B $ with }\abs{f(x)}\leq B \text{ for every }x\in[0,1]} $. For each $ f $ in $ M $, $ f([0,1]) $ is a bounded subset of $ \R $, and so $ \set{\abs{f(x)\mid x\in [0,1]}} $ is also. It then has a fine least upper bound and $ \snorm{f}=\sup\set{\abs{x}\mid x\in[0,1]}  $ defines a function $ \snorm{\cdot}:M\to\R $. The set $ M $ is a vector space and $ \norm{\cdot}_\infty $ is a norm on it, called supremum norm.
+
+    The metric in the space $ M $ of all bounded functions on $ [0,1] $ is thus defined by $ d(f,g)=\snorm{f-g}=\sup\set{\abs{f(x)-g(x)}\mid 0\leq x\leq 1} $. Thus, the metric given by the sup norm is the largest vertical separation between the graphs:
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{sup-norm.tikz}
+        \caption{The sup distance between function is the largest distance between their graphs.}
+    \end{figure}
+\end{ex}
+\begin{prop}
+    If $ (V,\norm{\cdot}) $ is a normal vector space and $ d(u,v) $ is defined by $ d(u,v)=\norm{u-v} $, then $ d $ is a metric in $ V $.
+\end{prop}
+\section{Inner Product Space}
+A vector space $ V $ over an arbitrary field $ F $ is called an inner product space if there is a function $ \seq{\cdot,\cdot}:V\times V\to F $ that associates a scalar $ \seq{u,v}\in F $ with each pair of vectors $ u $ and $ v $ in $ V $ in such a way that the following axioms are satisfied for all vectors $ u,v $ and $ w $ in $ V $ and all scalars $ \alpha, \beta \in F $
+\begin{enumerate}[label=(\roman*)]
+    \item \emph{Positivity:} $ \seq{u,u}\geq 0 $\label{enum:1}
+    \item \emph{Non degeneracy:} $ \seq{u,u}= 0 $ if and only if $ u=0 $\label{enum:2}
+    \item \emph{Hermitian symmetry:} $ \seq{u,v}=\overline{\seq{v,u}} $ \label{enum:3}
+    \item \emph{Distributivity:} $ \seq{u+v,w}= \seq{u,w}+\seq{v,w} $ \label{enum:4}
+    \item \emph{Multiplicativity:} $ \seq{\alpha u,v}= \alpha \seq{u,v}$ \label{enum:5}
+\end{enumerate}
+\begin{note}
+    The function $ \seq{\cdot,\cdot}:V\times V\to F $ is called the inner product on $ V $ and $ (V,\seq{\cdot,\cdot}) $ is called the inner product space.
+\end{note}
+\begin{note}
+    If $ F=\R $ (real field), then the inner product space $ (V,\seq{\cdot,\cdot}) $ is called a real inner product space. In this case the Hermitian symmetry $ \seq{u,v}=\overline{\seq{v,u}} $ becomes simply symmetry $ \seq{u,v}=\seq{v,u} $, and the second distributive property $ \seq{u,v+w}= \seq{u,v}+\seq{u,w} $ holds by the properties \ref{enum:3} and \ref{enum:4}.\\
+    
+    Similarly, if $ F=\C $, the inner product space $ (V,\seq{\cdot,\cdot}) $ is called a complex inner product space or UNITARY space. With the help of \ref{enum:3} and \ref{enum:5} we have $ \seq{\alpha u,v}= \bar{\alpha} \seq{u,v}$ if $ \alpha\in\C $.\\
+    
+    \ref{enum:5} implies that $ \seq{0,y}=0 $ for all $ y\in V $.\\
+
+    By \ref{enum:1}, we may define $ \norm{u} $, the norm of the vector $ x\in V $ to be the non-negative square roots of $ \seq{u,u} $. Thus, $ \norm{u}^2=\seq{u,u} $. The properties \ref{enum:1} to \ref{enum:5} excluding \ref{enum:2} imply that $ \abs{\seq{x,y}}\leq \norm{x}\;\norm{y} $ for all $ x,y\in V $.
+\end{note}
+\subsection{The Cauchy-Schwarz Inequality}
+If $ \left( V,\seq{\cdot,\cdot} \right) $ is an inner product space, then $ \abs{\seq{x,y}}\leq \norm{x}\;\norm{y} $ for all $ x $ and $ y \in V$. The equality holds if and only if $ x $ and $ y $ are linearly dependent.
+\begin{proof}[Proof. Method 1: ]
+    If either $ x $ and $ y $ is 0, then $ \seq{x,y}=0 $, and so the inequality holds. Therefore, we can assume $ x\neq 0 $, and $ y\neq 0 $. Then $ \seq{x,x}\,>0 $ and $ \seq{y,y}\,>0 $. Then for any $ \alpha $ and $ \beta  $ in $ \C $, we have
+    \begin{align*}
+        0\leq \norm{\alpha x+\beta y}^2&=\seq{\alpha x+\beta y,\alpha x+\beta y}\text{ where $ \alpha $ and $ \beta $ are not both zero}\\
+        &=\alpha \bar{\alpha}\seq{x,x}+\alpha \bar{\beta} \seq{x,y}+\bar{\alpha}\beta\seq{y,x}+\beta\bar{\beta}\seq{y,y}\\
+        &=\abs{\alpha}^2 \norm{x}^2+\alpha \bar{\beta} \seq{x,y}+\overline{\alpha \bar{\beta}\seq{x,y}}+\abs{\beta}^2\norm{y}^2\\
+        &=\abs{\alpha}^2 \norm{x}^2+2\text{Re}\left\{\alpha \bar{\beta} \seq{x,y}\right\}+\abs{\beta}^2\norm{y}^2\\
+        &\leq \abs{\alpha}^2 \norm{x}^2+2 \abs{\alpha} \abs{\beta} \abs{\seq{x,y}}+\abs{\beta}^2\norm{y}^2\qquad [\text{As } \text{Re}(z)\leq \abs{z} \text{ and } \abs{\bar{\beta}}=\abs{\beta}]
+    \end{align*}
+    \begin{align}
+        \Rightarrow\; &\abs{\alpha}^2 a+2\abs{\alpha}\abs{\beta}b+\abs{\beta^2}c \geq 0 \qquad \text{ Where } a=\norm{x}^2,\;b=\abs{\seq{x,y}},\text{ and } c=\norm{y}^2\notag\\
+        \Rightarrow\; &\abs{\frac{\alpha}{\beta}}^2 a+2\abs{\frac{\alpha}{\beta}}b+c \geq 0 \qquad\text{ If } \beta\neq 0\notag\\
+        \Rightarrow\; &ax^2 +2bx+c \geq 0\qquad \text{ Where } \abs{\frac{\alpha}{\beta}}=x, \text{ a real variable}\notag\\
+        \Rightarrow\; &0 \leq a \left( x^2 +2\cdot x\cdot \frac{b}{a}+\frac{b^2}{a^2} \right)+c-\frac{b^2}{a}\notag\\
+        \Rightarrow\; &0 = a \left( x+\frac{b}{a}\right)^2 + \frac{ca-b^2}{a}\label{eq:cauchy1}\\
+        \intertext{Inequality \eqref{eq:cauchy1} holds if and only if $ \frac{ca-b^2}{a} \geq0$ since $ \left( x+\frac{b}{a} \right)^2\geq0 $}
+        \Rightarrow\; & b^2\leq ac\notag\\
+        \Rightarrow\; & \abs{\seq{x,y}} \leq \norm{x}\;\norm{y}\notag
+    \end{align}
+    For equality, there must be a value of $ x $ of which $ ax^2+2bx+c=0 $, which is possible if and only if $ \alpha x+\beta y=0  $ where not bot of $ \alpha $ and $ \beta $ are zero, which implies that $ x $ and $ y $ are linearly dependent.\footnote{If $ \alpha\neq 0 $, $ x=\frac{-\beta}{\alpha}y $ and if $ \beta\neq 0 $, $ y=\frac{-\alpha}{\beta}x $}
+\end{proof}
+\begin{proof}[Method 2: ]
+    Let $ a=\norm{x}^2 $, $ b=\abs{\seq{x,y}} $, and $ c=\norm{y}^2 $.\\
+    There is a complex number $ \alpha $ such that $ \abs{\alpha}=1 $ and $ \alpha\seq{y,x}=b $.\\
+    For any real $ r $, we then have
+    \begin{align*}
+        0&\leq \seq{x-r \alpha y, x-r\alpha y}=\seq{x,x}-r\alpha \seq{y,x}-r\bar{\alpha}\seq{x,y}+r^2\seq{y,y}\\
+        &=cr^2-2br+a & \overline{\alpha \seq{y,x}}=\bar{\beta}\\
+        \text{i.e., } f(r)&= cr^2-2br+a \geq 0& \bar{\alpha} \seq{x,y}=b\text{ as $ b $ is real}
+    \end{align*}
+    Here $ \frac{\D f}{\D r} =2cr-2b$ and $ \frac{\D^2 f}{\D r^2}=2c >0 $.\\
+    Since, $ \frac{\D^2 f}{\D r^2}>0 $ so the quadratic expression $ f(r) $ has a minimum which occurs when $ \frac{\D f}{\D r}=0 $ i.e., $ r=\frac{b}{c} $.\\
+    Therefore, we insert the value of $ r $ and obtain,
+    \begin{align*}
+        & c\cdot \frac{b^2}{c^2}-2b\cdot \frac{b}{c}+a\geq 0\\
+        \Rightarrow\; &\frac{b^2}{c}\leq a\\
+        \Rightarrow\; & b^2\leq ac\\
+        \Rightarrow\; & \abs{\seq{x,y}} \leq \norm{x}\;\norm{y}
+    \end{align*}
+    The second part is followed if and only if $ x-r\alpha y=0 $, so $ x $ and $ y $ are linearly dependent.
+\end{proof}
+\begin{note}
+    The above inequality also variously known as the Schwarz, the Cauchy-Schwarz or the Cauchy-Buniakowsky-Schwarz inequality.
+\end{note}
+\begin{rem}
+    A consequence of this remark is that the linear function $ f(x)=\seq{x,y}[f:V\to F \text{ (here field }F=\C)] $ is bounded by $ \norm{y} $, and from this it follows that $ \seq{x,y} $ is a continuous function from $ V\times V $ to $ \C $.
+\end{rem}
+\begin{thm}
+    If $ (V,\seq{\cdot,\cdot}) $ is an inner product space and $ \norm{\cdot} $ is defined for $ v\in V $ by $ \norm{v}=\sqrt{\seq{v,v}}  $ then $ \norm{\cdot}  $ is a norm on $ V $.
+\end{thm}
+\begin{proof}
+    Hints for triangle inequality,
+    \begin{align*}
+        \norm{v+w}^2&=\seq{v+w,v+w}\\
+        &=\seq{v,v}+\seq{v,w}+\seq{w,v}+\seq{w,w}\\
+        &=\norm{v}^2+2\seq{v,w}+\norm{w}^2\\
+        &\leq \norm{v}^2+2\norm{v}\,\norm{w}+\norm{w}^2\\
+        &= \left( \norm{v}+\norm{w}\right) ^2 \qquad \text{ and so } \norm{v+w}\leq \norm{v}+\norm{w}
+    \end{align*}
+\end{proof}
+\end{document}

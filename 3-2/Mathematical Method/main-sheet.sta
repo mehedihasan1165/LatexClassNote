@@ -1,0 +1,20 @@
+\standalonepreambles
+\subpreamble{chapters/series solution.tex}
+\usepackage {../style}\graphicspath { {../img/} }
+\endsubpreamble
+\subpreamble{chapters/Legendre.tex}
+\usepackage {../style}\graphicspath { {../img/} }
+\endsubpreamble
+\subpreamble{chapters/bessel.tex}
+\usepackage {../style}\graphicspath { {../img/} }
+\endsubpreamble
+\subpreamble{chapters/hermite.tex}
+\usepackage {../style}\graphicspath { {../img/} }\everymath {\displaystyle }\newcommand {\diffher }{\ddxn {y}{2}-2x\ddx {y}+2ny=0}\newcommand {\Hnx }{\sum _{r=0}^N (-1)^r \frac {n!}{r!\,(n-2r)!}(2x)^{n-2r}}\newcommand {\Hn }[1]{\sum _{r=0}^N (-1)^r \frac {n!}{r!\,(n-2r)!}(2 #1)^{n-2r}}
+\endsubpreamble
+\subpreamble{chapters/Laguerre.tex}
+\usepackage {../style}\graphicspath { {../img/} }\newcommand {\difflag }{x\ddxn {y}{2}+(1-x)\ddx {y}+ny=0}\newcommand {\Lnx }{\sum _{r=0}^n (-1)^r \frac {n!}{(n-r)!\,(r!)^2}x^r}
+\endsubpreamble
+\subpreamble{chapters/hypergeometric.tex}
+\usepackage {../style}\graphicspath { {../img/} }\newcommand {\F }{{}_2F_1}\newcommand {\abgx }{\alpha ,\beta ;\gamma ;x}
+\endsubpreamble
+\endstandalonepreambles

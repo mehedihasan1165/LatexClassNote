@@ -1,0 +1,53 @@
+\begin{tikzpicture}[scale=.7]
+    \def\xmax{5}
+    \def\Nlines{3} % number of world lines (at constant x/t)
+    \pgfmathsetmacro\w{\xmax/(\Nlines+1)}
+    
+    \draw[thick] (0,-\xmax) -- (0,\xmax+0.2);
+    \draw[thick] (-\xmax,0) -- (\xmax+0.2,0);
+%     \node at (-.2,-.5) {$O$};
+%     \node at (5,2) {$D_1$};
+%     \node at (5,-2) {$D_4$};
+%     \node at (-5,2) {$D_2$};
+%     \node at (-5,-2) {$D_3$};
+    
+    \draw[thick] (-\xmax,-\xmax)-- (\xmax, \xmax);
+    \draw[thick,-latex] (2.55,2.55)--(2.5,2.5);
+    \draw[thick,-latex] (-2.55,-2.55)--(-2.5,-2.5);
+    \draw[thick] (-\xmax, \xmax) -- (\xmax,-\xmax);
+    \draw[thick,-latex] (2.45,-2.45)--(2.5,-2.5);
+    \draw[thick,-latex] (-2.45,2.45)--(-2.5,2.5);
+    
+    \foreach \i [evaluate={\s=\xmax*\i/(\Nlines+1); \xm=sqrt(\xmax^2-\s^2);}] in {1,...,\Nlines}{
+        \draw[thick,samples=50,variable=\x,domain=0:\xm,
+        decoration={markings,mark=at position 0.5 with {\arrowreversed{latex}}},
+                               postaction={decorate}] 
+        plot(\x,{sqrt(\s^2+(\x)^2)});
+        \draw[thick,samples=50,variable=\x,domain=-\xm:0,
+        decoration={markings,mark=at position 0.5 with {\arrowreversed{latex}}},
+                               postaction={decorate}] 
+        plot(\x,{sqrt(\s^2+(\x)^2)});
+        
+        \draw[thick,samples=50,variable=\x,domain=0:\xm,
+        decoration={markings,mark=at position 0.5 with {\arrow{latex}}},postaction={decorate}] 
+        plot(\x,-{sqrt(\s^2+(\x)^2)});
+        \draw[thick,samples=50,variable=\x,domain=-\xm:0,
+        decoration={markings,mark=at position 0.5 with {\arrow{latex}}},postaction={decorate}] 
+        plot(\x,-{sqrt(\s^2+(\x)^2)});
+        
+        
+        \draw[thick,samples=50,variable=\y,domain=0:\xm,
+        decoration={markings,mark=at position 0.5 with {\arrow{latex}}},postaction={decorate}]
+          plot(-{sqrt(\s^2+(\y)^2)},\y);
+          \draw[thick,samples=50,variable=\y,domain=-\xm:0,
+        decoration={markings,mark=at position 0.5 with {\arrow{latex}}},postaction={decorate}]
+          plot(-{sqrt(\s^2+(\y)^2)},\y);
+    \draw[thick,samples=50,variable=\y,domain=0:\xm,
+        decoration={markings,mark=at position 0.5 with {\arrowreversed{latex}}},postaction={decorate}]
+     plot({sqrt(\s^2+(\y)^2)},\y);
+    \draw[thick,samples=50,variable=\y,domain=-\xm:0,
+        decoration={markings,mark=at position 0.5 with {\arrowreversed{latex}}},postaction={decorate}] 
+    plot({sqrt(\s^2+(\y)^2)},\y);
+      }
+      \node at (0,-5.25) {For $\lambda_1<0$, $\lambda_2>0$};
+    \end{tikzpicture}

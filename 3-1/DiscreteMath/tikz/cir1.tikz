@@ -1,0 +1,32 @@
+\begin{tikzpicture}[circuit logic US]
+    \begin{scope}[thick]
+    \node[nand gate,inputs={inn}] at (2,0)(a1) {};
+    \node[nor gate,inputs={nnn}] at (2,1) (o1) {};
+    \node[and gate,inputs={nni}] at (2,2) (a2) {};
+    \node[or gate,inputs={nnn}] at (4,1) (o2) {};
+    
+    \draw(a2.input 1-| -1.5,-2) node [left] {$x$}--(a2.input 1);
+    \draw(a2.input 3-| -1.5,-2) node [left] {$y$}--(a2.input 3);
+    
+    \draw(a1.input 1-| -0.5,-2) |- (a1.input 1);
+    \draw(a1.input 3-| -1,-2) -- (a1.input 3);
+    \draw (-1,1.82) -- (-1,-.18);
+    \draw (-0.5,2.18) -- (-0.5,0.18);
+    
+    \draw(o1.input 1-| 0.5,-2) |- (o1.input 1);
+    \draw(o1.input 3-| 0,-2) -- (o1.input 3);
+    \draw (0,1.82) -- (0,0.82);
+    \draw (0.5,2.18) -- (0.5,1.18);
+    
+    \draw(a1.output) -- (3.25,0);
+    \draw(o1.output) -- (o2.input 2);
+    \draw(a2.output) -- (3.25,2);
+    \draw(3.25,2) |- (o2.input 1);
+    \draw(3.25,0) |- (o2.input 3);
+    \draw(o2.output) -- (5,1);
+    \end{scope}
+    \node at (4.8,1.2) {$t$};
+    \node at (3,2.2) {$t_1$};
+    \node at (2.9,0.8) {$t_2$};
+    \node at (3,-.2) {$t_3$};
+    \end{tikzpicture}

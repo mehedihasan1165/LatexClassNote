@@ -1,0 +1,109 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Initial Value Problem}
+\emph{ODE}: An ordinary differential equation is a relation between a function, its derivatives, and the variable upon which they depend.
+The most general form of an ordinary differential equation is given by
+\begin{equation}
+    \Phi(t,y,y',y'',\dots,y^{(m)})=0\label{eq:ivp1}
+\end{equation}
+where \(m\) represents the highest derivative, and \(y\) and its derivatives are functions of \(t\).
+
+\section{Initial Value Problem (IVP)}
+A general solution of an ordinary differential equation such as \eqref{eq:ivp1} is a relation between \(y\), \(t\) and \(m\) arbitrary constants which satisfies the equation, but which contains no derivatives.
+The solution may be an implicit relation of the form
+\begin{equation}
+    w(t,y,c_1,c_2,\dots,c_m)=0\label{eq:ivp2}
+\end{equation}
+or an explicit of \(t\) of the form
+\begin{equation}
+    y=w(t,c_1,c_2,\dots,c_m) \label{eq:ivp3}
+\end{equation}
+The \(m\) arbitrary constants \(c_1\), \(c_2,\dots,c_m  \) can be determined by prescribing \(m \) conditions of the form 
+\begin{equation}
+    y^{(k)}(t_0)=\alpha_k;\;\;k=0,1,2,\dots,m-1 \label{eq:ivp4}
+\end{equation}
+at one point \(t=t_0\), which are called initial conditions. The differential equation \eqref{eq:ivp1} together with the initial conditions \eqref{eq:ivp4} is called \(m\)th order initial value problem.
+\begin{note}
+    The system of first order differential equation of the form 
+    \begin{align*}
+        \ddt{y_1}&=f_1(t,y_1,y_2,\dots,y_n)\\
+        \ddt{y_2}&=f_2(t,y_1,y_2,\dots,y_n)\\
+        \vdots&\\
+        \ddt{y_n}&=f_n(t,y_1,y_2,\dots,y_n)
+    \end{align*}
+    for \(a\leq t\leq b\), subject to the initial conditions \(y_1(a)=\alpha_1\), \(y_2(a)=\alpha_2,\dots,y_n(a)=\alpha_n\).
+\end{note}
+\subsection{Elementary Theory of IVP}
+\begin{enumerate}
+    \item Differential equations are used to model problems in science and engineering.
+    \item Most of the problems require the solution to an IVP, i.e., that is the solution to a differential equation that satisfies a given initial condition.
+    \item In most real life situations the differential equation that models the problem is very difficult to solve exactly.
+    \item Hence, efficient numerical schemes are required for solving such differential equations.
+\end{enumerate}
+\begin{defn}[Convex Set]
+    A set \(D\subset\R^2\) is said to be convex if whenever \((t_1,y_1)\), \((t_2,y_2)\) belong to \(D\), the point \(((1-\lambda)t_1+\lambda t_2,(1-\lambda)y_1+\lambda y_2)\) also belong to \(D\) for each \(\lambda \in [0,1]\).
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[thick] (-3,0) circle [x radius=3cm,y radius=2cm];
+            \draw[use Hobby shortcut,thick] ([closed] 1,1) .. (2.5,-1)..(5,0).. (5,3)..(3.5,1) ;
+            \node[thick,circle,draw=black,fill=black,inner sep=0pt, minimum size=5pt,label=below:{$(t_1,y_1)$}] (a) at  (-5,0) {};
+            \node[thick,circle,draw=black,fill=black,inner sep=0pt, minimum size=5pt,label=below:{$(t_2,y_2)$}] (b) at  (-1,0) {};
+            \node[thick,circle,draw=black,fill=black,inner sep=0pt, minimum size=5pt,label=below:{$(t_1,y_1)$}] (c) at  (1.5,.75) {};
+            \node[thick,circle,draw=black,fill=black,inner sep=0pt, minimum size=5pt,label=below:{$(t_2,y_2)$}] (d) at  (5,2.75) {};
+            \draw[thick] (a)--(b)  (c)--(d);
+            \node at (-2.8,-2.5) {Convex};
+            \node at (3.5,-2.5) {Not Convex};
+            \end{tikzpicture}
+    \end{center}
+\end{defn}
+\# IVP obtained by observing physical phenomena generally only approximate the true solution, so we need to know whether small changes in the statement of problem introduce corresponding small changes in the solution.
+\begin{defn}
+    A function \(f(t,y)\) is said to satisfy a Lipschitz condition in the variable \(y\) on a set \(D\subset \R^2\) if a constant \(L>0\) exists with the property that
+    \[
+        \abs{f(t,y_1)-f(t,y_2)}\leq L\,\abs{y_1-y_2}
+    \]
+    whenever \((t,y_1),\;(t,y_2)\in D\).
+    The constant \(L\) is called a Lipschitz constant for \(f\).
+\end{defn}
+\begin{ex}
+    If \(D=\set{(t,y):1\leq t\leq 2, -3\leq y\leq 4}\) and \(f(t,y)=t\abs{y}\), then for each pair of points \((t,y_1)\) and \((t,y_2)\) in \(D\) we have,
+    \[
+        \abs{f(t,y_1)-f(t,y_2)}=\big\vert t\abs{y_1}-t\abs{y_2}\big\vert=\abs{t}\;\abs{y_1-y_2}\leq 2\,\abs{y_1-y_2}
+    \]
+    Thus \(f\) satisfies a Lipschitz condition on \(D\) in the variable \(y\) with Lipschitz constant 2.
+    The smallest value possible for the Lipschitz constant for this problem is \(L=2\), since, for example,
+    \[
+        \abs{f(2,1)-f(2,0)}=\abs{2-0}=2\abs{1-0}
+    \]
+\end{ex}
+\begin{thm}
+    \label{thm:ivp1}
+    Suppose that \(D=\set{(t,y):a\leq t\leq b,\;-\infty<y<\infty}\) and that \(f(t,y)\) is continuous on \(D\). If \(f\) satisfies a Lipschitz condition on \(D\) in the variable \(y\) then the initial value problem
+    \[
+        y'=\ddt{y}=f(t,y),\quad a\leq t\leq b,\;y(a)=\alpha
+    \]
+    has a unique solution \(y(t)\) for \(a\leq t\leq b\).
+\end{thm}
+\begin{thm}
+    Suppose \(f(t,y)\) is defined on a convex set \(D\subset \R^2\). If a constant \(L>0\) exists with \(\abs{\frac{\partial f(t,y)}{\partial y}}\leq L\) for all \((t,y)\in D\), then \(f\) satisfies a Lipschitz condition on \(D\) in the variable \(y\) with Lipschitz constant \(L\).
+\end{thm}
+\begin{ex}
+    Consider the IVP
+    \[
+        y'=1+t\sin(ty);\quad 0\leq t\leq 2,\;y(0)=0
+        \]
+    Holding \(t\) constant and applying the Mean-Value theorem to the function
+    \[
+        f(t,y)=1+t\sin(ty)
+        \]
+        we find that whenever \(y_1< y_2\), a number \(\xi\) in \((y_1,y_2)\) exists with
+        \[
+        \frac{f(t,y_1)-f(t,y_2)}{y_1-y_2}=\frac{\partial}{\partial y}f(t,\xi)=t^2 \cos(t\xi)
+    \]
+    Thus \( \abs{f(t,y_1)-f(t,y_2)}=\abs{y_1-y_2}\abs{t^2 \cos(t\xi)}\leq 4\,\abs{y_1-y_2}\) and \(f\) satisfies a Lipschitz condition in the variable \(y\) with Lipschitz constant \(L=4\).\\
+    Furthermore, \(f(t,y)\) is continuous in \(0\leq t\leq 2\) and \(-\infty < y<\infty\), by the above theorem, we can say that a unique solution exists to this IVP.
+\end{ex}
+\end{document}

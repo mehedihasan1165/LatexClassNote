@@ -1,0 +1,117 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Adams-Bashforth Method}
+\section{Derivation of Adams-Bashforth Method}
+Given that
+\begin{equation}
+    \ddt{y}=f(x,y);\quad t\leq a\leq b,\quad y(a)=\alpha \label{eq:ab1}
+\end{equation}
+Integrate \eqref{eq:ab1} over the interval \([t_i,t_{i+1}]\), has the property that
+\begin{align}
+    & y(t_{i+1})=y(t_{i})+\int_{t_i}^{t_{i+1}}y'(t)\D t\notag\\
+    \Rightarrow\;& y(t_{i+1})=y(t_{i})+\int_{t_i}^{t_{i+1}}f(t,y(t))\D t\label{eq:ab2}
+\end{align}
+Since we cannot integrate \(f(t,y(t))\) without knowing \(y(t)\), the solution to the problem, we instead integrate an interpolating polynomial \(P(t)\) to \(f(t,y(t))\) that is determined by some of the previously obtained data points \((t_0,w_0)\), \((t_1,w_1),\dots, (t_i,w_i)\). Assume \(y(t_i)\approx w_i\) equation \eqref{eq:ab2} becomes
+\begin{equation}
+    y(t_{i+1})=w_i+\int_{t_i}^{t_{i+1}}P(t)\D t \label{eq:ab3}
+\end{equation}
+To derive an Adams-Bashforth explicit \(m-\)step technique, we form the backward-difference polynomial \(P_{m-1}(t)\) through \((t_i,f(t_i,y(t_i)))\), \((t_{i-1},f(t_{i-1},y(t_{i-1}))),\dots, (t_{i+1-m},f(t_{i+1-m},y(t_{i+1-m})))\). Since \(P_{m-1}(t)\) is an interpolating polynomial of degree \(m-1\), some number \(\xi_i\) in \((t_{i+1-m},t_i)\) exists with
+\[
+    f(t,y(t))=P_{m-1}(t)+\frac{f^{(m)}(\xi_i,y(\xi_i))}{m!}(t-t_i)(t-t_{i-1})\dots (t-t_{i+1-m})
+\]
+Introducing the variable substitution \(t=t_i+sh\), with \(\D t=h\D s\) into \(P_{m-1}(t)\) and the error term implies that
+\begin{align*}
+    \int_{t_i}^{t_{i+1}} f(t,y(t))\D t&=\int_{t_i}^{t_{i+1}}\sum_{k=0}^{m-1}(-1)^k \binom{-s}{k}\nabla^k f(t_i,y(t_i))\D t+\int_{t_i}^{t_{i+1}}\frac{f^{(m)}(\xi_i,y(\xi_i))}{m!}(t-t_i)(t-t_{i-1})\dots(t-t_{i+1-m})\D t\\
+    &=\sum_{k=0}^{m-1}\nabla^k f(t_i,y(t_i)) h (-1)^k \int_{0}^{1}\binom{-s}{k}\D s+\frac{h^{m+1}}{m!}\int_{0}^{1} s (s+1) (s+2)\dots(s+m-1) f^{(m)}(\xi_i,y(\xi_i))\D s
+\end{align*}
+The integrands \((-1)^k\int_{0}^{1}\binom{-s}{k}\D s\) for various values of \(k\) are easily evaluated and are listed in the table below. For example when \(k=3\)
+\begin{align*}
+    (-1)^3\int_{0}^{1}\binom{-s}{3}\D s&=-\int_{0}^{1}\frac{(-s)(-s-1)(-s-2)}{1\cdot2\cdot3}\D s\\
+    &=\frac{1}{6}\int_{0}^{1} s^3+3s^2+2s \D s\\
+    &=\frac{1}{6}\left[ \frac{s^4}{4}+s^3+s^2\right]_0^1\\
+    &=\frac{1}{6}\left( \frac{9}{4} \right)=\frac{3}{8}
+\end{align*}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccccccc}
+        \toprule
+        \(k\) & 0 & 1& 2& 3& 4&5\\\midrule
+        \(\displaystyle (-1)^k\int_{0}^{1}\binom{-s}{k}\D s\) & 1 & \(\displaystyle\frac{1}{2}\)& \(\displaystyle\frac{5}{12}\)& \(\displaystyle\frac{3}{8}\)& \(\displaystyle\frac{251}{720}\)&\(\displaystyle\frac{95}{288}\)\\\bottomrule
+    \end{tabular}
+\end{table}
+As a consequence,
+\begin{align}
+    \int_{t_i}^{t_{i+1}}f(t,y(t))\D t&=h\left[ f(t_i,y(t_i))+\frac{1}{2}\nabla f(t_i,y(t_i))+\frac{5}{12}\nabla^2 f(t_i,y(t_i))+\dots \right]\notag\\
+    &+\frac{h^{m+1}}{m!}\int_{0}^{1}s(s+1)(s+2)\dots(s+m-1)f^{(m)}(\xi_i,y(\xi_i))\D s \label{eq:ab4}
+\end{align}
+By the weighted mean value theorem, the error terms in \eqref{eq:ab4}, for some number \(\mu_i\), where \(t_{i+1-m}<\mu_i<t_{i+1}\) becomes
+\begin{align}
+    \frac{h^{m+1}}{m!}\int_{0}^{1}s(s+1)(s+2)\dots(s+m-1)f^{(m)}(\xi_i,y(\xi_i))\D s&=\frac{h^{m+1}f^{(m)}(\mu_i,y(\mu_i))}{m!}\int_{0}^{1}s(s+1)\dots(s+m-1)\D s\notag\\
+    &=h^{m+1}f^{(m)}(\mu_i,y(\mu_i))(-1)^m\int_{0}^{1}\binom{-s}{m}\D s\label{eq:ab5}
+\end{align}
+Since \(y(t_{i+1})-y(t_i)=\int_{t_i}^{t_{i+1}}f(t,y(t))\D t\) equation \eqref{eq:ab4} can be written as
+\begin{equation}
+    y(t_{i+1})=y(t_i)+h\left[f(t_i,y(t_i))+\frac{1}{2}\nabla f(t_i,y(t_i))+\frac{5}{12}\nabla^2 f(t_i,y(t_i))+\dots\right]+h^{m+1}f^{(m)}(\mu_i,y(\mu_i))(-1)^m\int_{0}^{1}\binom{-s}{m}\D s\label{eq:ab5.1}
+\end{equation}
+\begin{note}
+    \[\Delta y_0=y_1-y_0,\quad \Delta y_1=y_2-y_1, \text{ etc. }\to \text{Forward}\]
+    \[\nabla y_1=y_1-y_0,\quad \nabla y_2=y_2-y_1, \text{ etc. }\to \text{Backward}\]
+\end{note}
+To derive the three step Adams-Bashforth technique, consider equation \eqref{eq:ab5.1} with \(m=3\)
+\begin{align*}
+    &y(t_{i+1})=y(t_i)+h\left[ f(t_i,y(t_i))+\frac{1}{2}\nabla f(t_i,y(t_i))+\frac{5}{12}\nabla^2 f(t_i,y(t_i)) \right]\\
+    \Rightarrow\;&y(t_{i+1})=y(t_i)+h\left[ f(t_i,y(t_i))+\frac{1}{2}[f(t_i,y(t_i))-f(t_{i-1},y(t_{i-1}))]+\frac{5}{12}[f(t_i,y(t_i))-f(t_{i-1},y(t_{i-1}))+f(t_{i-2},y(t_{i-2}))] \right]\\
+    \Rightarrow\;&y(t_{i+1})=y(t_i)+\frac{h}{12}\left[ 23f(t_i,y(t_i))-16f(t_{i-1},y(t_{i-1}))+5f(t_{i-2},y(t_{i-2})) \right]
+\end{align*}
+So, the three-step Adams-Bashforth method is consequently,
+\begin{align*}
+    w_0&=\alpha, \quad w_1=\alpha_1,\quad w_2=\alpha_2\\
+    w_{i+1}&=w_i+\frac{h}{12}\left[ 23f(t_i,w_i)-16f(t_{i-1},w_{i-1})+5f(t_{i-2},w_{i-2}) \right]\quad\text{ for } i=2,3,\dots, N-1
+\end{align*}
+\begin{defn}
+    If \(y(t)\) is the solution of the IVP:
+    \[y'=f(t,y),\quad a\leq t\leq b,\quad y(a)=\alpha\]
+    and 
+    \[w_{i+1}=a_{m-1}w_i+a_{m-2}w_{i-1}+\dots+a_0w_{i+1-m}+h[b_mf(t_{i+1},w_{i+1})+b_{m-1}f(t_i,w_i)+\dots+b_0f(t_{i+1-m},w_{i+1-m})]\]
+    is the \((i+1)\)th step in a multistep method, the local truncation error at this step is
+    \begin{equation}
+        T_{i+1}(h)=\frac{y(t_{i+1}-a_{m-1}y(t_i))-\dots-a_oy(t_{i+1-m})}{h}-[b_mf(t_{i+1},y(t_{i+1}))+\dots+b_0f(t_{i+1-m},y(t_{i+1-m}))]
+        \label{eq:ab6}
+    \end{equation}
+    for each \(i=m-1,m,\dots,N-1\)
+\end{defn}
+\section{Local Truncation Error for the Three-Step Adams-Bashforth Method \((m=3)\)}
+Consider the form of the error given in equation \eqref{eq:ab5.1} we have,
+\[
+    h^4f^{(3)}(\mu_i,y(\mu_i))(-1)^3\int_{0}^{1}\binom{-s}{3}\D s=\frac{3h^4}{8}f^{(3)}(\mu_i,y(\mu_i))
+\]
+Using \(f^{(3)}(\mu_i,y(\mu_i))=y^{(4)}(\mu_i)\) and the three-step Adams-Bashforth difference equation, we have,
+\begin{align*}
+    T_{i+1}(h)&=\frac{y(t_{i+1})-y(t_i)}{h}-\frac{1}{12}\left[ 23 f(t_i,y(t_i))-16f(t_{i-1},y(t_{i-1}))+5f(t_{i-2},y(t_{i-2})) \right]\\
+    &=\frac{1}{h}\left[ \frac{3h^4}{8}f^{(3)}(\mu_{i},y(\mu_{i})) \right]\\
+    &=\frac{3h^3}{8}y^{(4)}(\mu_{i})\qquad\text{ for some }\mu_i\in (t_{i-2},t_{i+1})
+\end{align*}
+\subsection{Comparison}
+Adams-Bashforth three step:
+\begin{align*}
+    w_0&=\alpha, \quad w_1=\alpha_1,\quad w_2=\alpha_2\\
+    w_{i+1}&=w_i+\frac{h}{12}\left[ 23f(t_i,w_i)-16f(t_{i-1},w_{i-1})+5f(t_{i-2},w_{i-2}) \right]\quad\text{ for } i=2,3,\dots, N-1
+\end{align*}
+Local Truncation error:
+\[T_{i+1}(h)=\frac{3}{8}y^{(4)}(\mu_i)h^3\qquad \mu_i\in (t_{i-2},t_{i+1})\]
+Adams-Moulton two-step:
+\begin{align*}
+    w_0&=\alpha, \quad w_1=\alpha_1\\
+    w_{i+1}&=w_i+\frac{h}{12}\left[ 5f(t_{i+1},w_{i+1})+8f(t_{i},w_{i})-f(t_{i-1},w_{i-1}) \right]\quad\text{ for } i=1,2,3,\dots, N-1
+\end{align*}
+Local Truncation error:
+\[T_{i+1}(h)=-\frac{1}{24}y^{(4)}(\mu_i)h^3\qquad \mu_i\in (t_{i-1},t_{i+1})\]
+\begin{note}
+    Implicit methods are derived by using \(\left( t_{i+1},f(t_{i+1},y(t_{i+1})) \right)\) as an additional interpolation node in the approximation of the integral \(\displaystyle \int_{t_i}^{t_{i+1}}f(t,y(t))\D t\)
+\end{note}
+
+An \(m-\)step Adams-Bashforth explicit and \((m-1)-\)step Adams-Moulton Implicit method, both are involved with \(m\) evaluations of \(f\) per step and both have the terms \(y^{(m+)}(\mu_i)h^m\) in their local truncation errors. Generally, the coefficients of the terms involving \(f\) and in the local truncation error are smaller for the implicit methods than for the explicit methods. This leads to grater stability and smaller round off errors for the implicit methods.
+\end{document}

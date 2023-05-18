@@ -1,0 +1,49 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Predictor-Corrector Method}
+\section{Predictor-Corrector Method}
+The combination of an explicit and implicit technique is called predictor-corrector method. The explicit method predicts an approximation and the implicit method corrects this prediction.
+
+Consider the following 4th order method for solving an IVP:
+\(y'=f(t,y);\quad a\leq t\leq b,\quad y(t_0)=y(a)=\alpha_0\)
+\[w_{4}^{(0)}=w_3+\frac{h}{24}\left[ 55f(t_3,w_3)-59f(t_{2},w_{2})+37f(t_{1},w_{1})-9f(t_{0},w_{0}) \right]\]
+The first step is to calculate the staring values \(w_0\), \(w_1\), \(w_2\) and \(w_3\) for the four-step Adams-Bashforth method. To do this, we use a fourth-order one-step method, the Runge-Kutta method of order four. The next step is to calculate an approximation, \(w_4^{(0)}\) to \(y(t_4)\) using the Adams-Bashforth method as predictor. This approximation is improved by inserting \(w_4^{(0)}\) in the right-hand side of the three step Adams-Moulton method and using that method as a corrector.
+\[w_{4}^{(1)}=w_3+\frac{h}{24}\left[ 9f(t_{4},w_{4}^{(0)})+19f(t_{3},w_{3})-5f(t_{2},w_{2})+f(t_{1},w_{1}) \right]\]
+The only function evaluation is required in this procedure is \(f(t_4,w_4^{(0)})\) in the corrector equation. All the other values of \(f\) have been calculated for earlier approximation.
+
+
+The value \(w_4^{(1)}\) is then used as the approximation to \(y(t_4)\), and the technique of using the Adams-Bashforth method as a predictor and the Adams-Moulton method as a corrector is repeated to find \(w_5^{(0)}\) and \(w_5^{(1)}\), the initial and final approximation to \(y(t_5)\) etc.
+
+Improved approximation to \(y(t_{i+1})\) can be obtained by iterating the Adams-Moulton formula
+\[
+    w_{i+1}^{(k+1)}=w_i+\frac{h}{24}\left[ 9f(t_{i+1},w_{i+1}^{(k)})+19f(t_{i},w_{i})-5f(t_{i-1},w_{i-1})+f(t_{i-2},w_{i-2}) \right]
+\]
+However, \(\set{w_{i+1}^{(k+1)}}\) converges to the approximation given by the implicit formula rather than to the solution \(y(t_{i+1})\), and it is usually more effective to use reduction in the step size if improved accuracy is needed.
+
+\begin{ex}
+    For the IVP: \(y'=y-t^2+1\), \(0\leq t\leq 2\), \(y(0)=0.5\) with \(N=10\).\\
+
+    The following table lists the results obtained by Adams fourth-order predictor corrector method:
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc}
+        \toprule
+        \(t_i\)  & \(y_i = y( t_i)\) & \(w_i\)        & \begin{tabular}[c]{@{}c@{}}Error\\      \(\abs{y_i-w_i}\)\end{tabular} \\ \midrule
+        0.0 & 0.5000000   & 0.5000000 & 0.0000000                                                              \\
+        0.2 & 0.8292986   & 0.8292933 & 0.0000053                                                      \\
+        0.4 & 1.2140877   & 1.2140762 & 0.0000114                                                      \\
+        0.6 & 1.6489406   & 1.6489220 & 0.0000186                                                      \\
+        0.8 & 2.1272295   & 2.1272056 & 0.0000239                                                      \\
+        1.0 & 2.6408591   & 2.6408286 & 0.0000305                                                      \\
+        1.2 & 3.1799415   & 3.1799026 & 0.0000389                                                      \\
+        1.4 & 3.7324000   & 3.7323505 & 0.0000495                                                      \\
+        1.6 & 4.2834838   & 4.2834208 & 0.0000630                                                      \\
+        1.8 & 4.8151763   & 4.8150964 & 0.0000799                                                      \\
+        2.0 & 5.3054720   & 5.3053707 & 0.0001013                                                      \\ \bottomrule
+        \end{tabular}
+        \end{table}
+\end{ex}
+\end{document}

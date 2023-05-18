@@ -1,0 +1,173 @@
+\documentclass[12pt,oneside,a4paper]{article}
+\usepackage{style}
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+\makeindex
+\begin{document}
+\pagenumbering{roman}
+\title{Differential Equation}
+\author{Mehedi Hasan}
+\maketitle
+\newpage
+\section*{Preface}
+This is a compilation of lecture notes with some books and my own thoughts. This document is not a holy text. So, if there is a mistake, solve it by your own judgement.
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\section{Basic Concepts}
+\subsection{Differential Equation}
+An equation including derivatives of one or more dependent variable with respect to one or more independent variables is called a \index{Differential equation}differential equation.
+\begin{ex}
+    \begin{align*}
+        \ddxn{y}{2}+xy\left(\ddx{y}\right)^2                             & =\,0 \\
+        \frac{\partial \, v}{\partial s}+\frac{\partial\,v}{\partial\,t} & =v   \\
+        \parxn{u}{2}+\paryn{u}{2}+\parxn{u}{2}                           & =0
+    \end{align*}
+\end{ex}
+\subsection{Partial Differential Equation}
+\blfootnote{$ y=f(x) $ here $ x  $ is independent variable and $ y $ is dependent variable.}
+A differential equation involving partial derivatives of one or more dependent variables \wrt more than one independent variable is called a partial differential equation\index{Partial differential equation}(PDE).
+\[
+    \parx{u}+\pary{u}=0
+\]
+\subsection{Ordinary Differential Equation}
+A differential equation involving ordinary derivatives of one or more dependent variables \wrt a single independent variable is called an ordinary differential equation\index{Ordinary differential equation}(ODE).
+\[
+    \ddxn{y}{2}+5\ddx{y}+6y=0
+\]
+\subsection{Order}
+The order of the highest ordered derivative involved in a differential equation is called the order of the differential equation\index{Order}.
+\subsection{Degree}
+The degree of an algebraic DE is the degree of the derivative or differential of the highest order in the equation after the equation is freed from radical and fractions in the derivatives\index{Degree}.
+
+\begin{ex}
+    \[\ddxn{y}{2}+4\left(\ddx{y}\right)^5+10y=0\]
+    Here the order of the DE is 2 and degree of the DE is 1.
+    \begin{align*}
+                    & \left[1+\left(\ddx{y}\right)^2\right]^\frac{2}{3}=\ddxn{y}{2}      \\
+        \Rightarrow & \left[1+\left(\ddx{y}\right)^2\right]^2=\left(\ddxn{y}{2}\right)^3
+    \end{align*}
+    Here, order = 2 and degree = 3.
+\end{ex}
+\subsection{Linear ODE}
+A linear ODE \index{Linear ODE} of order $ n $, in the dependent variable $ y $ and the independent variable $ x $ is an equation that is in or can be expressed in the form,
+\[a_0 \ddxn{y}{n}+a_1(x)\ddxn{y}{n-1}+\dots+a_{n-1}(x)\ddx{y}+a_n(x)y=b(x)\]
+\begin{ex}
+    \begin{align*}
+         & \ddxn{y}{2}+5\ddx{y}+6y=0                  \\
+         & \ddxn{y}{4}+x^2\ddxn{y}{3}+x^3\ddx{y}=xe^x
+    \end{align*}
+\end{ex}
+\begin{rem}
+    $ y $ and its various derivatives occur to the first degree only and that on products of $ y  $ and/or any of its derivatives are present.
+\end{rem}
+\subsection{Non-linear ODE}
+A nonlinear ODE is an ODE that os not linear.\index{Non-linear ODE}
+\begin{ex}
+    \begin{align*}
+         & \ddxn{y}{2}+5\left(\ddx{y}\right)^3+6y=0 \\
+         & \ddxn{y}{2}+5y\,\ddx{y}+y=0
+    \end{align*}
+\end{ex}
+\subsection{Solution}
+A solution\index{Solution} to a differential equation on an interval $ \alpha < t <\beta $ is any function $ y(t) $ which satisfies the differential equation in question on the interval $ \alpha < t <\beta $. It is important to note that solutions are often accompanied by intervals and these intervals can impart some important information about the solution.
+\begin{ex}
+    $ y(x)=x^{-\frac{3}{2}} $ is a solution to $ 4x^2\ddxn{y}{2}+12x\ddx{y}+3y=0 $ for $ x>0 $.
+\end{ex}
+
+A \emph{solution} of a differential equation is a relation between the variables (independent and dependent), which is free od derivatives of any order and which satisfies the differential equation identically. 
+\subsection{Initial-Value and Boundary-Value Problem}
+A differential equation along with subsidiary conditions on the unknown function and its derivatives, all given at the same value of the independent variable, constitutes an \emph{initial-value problem}\index{initial-value problem} (also known as \emph{Cauchy problem}\index{Cauchy problem}). The subsidiary conditions are \emph{initial condition}\index{initial condition}.
+
+If the subsidiary conditions are given at more than one value of the independent variable, the problem is a \emph{boundary-value problem}\index{boundary-value problem} and the conditions are \emph{boundary conditions.}\index{boundary conditions}
+\begin{ex}
+    The problem $ \ddxn{y}{2}+2\ddx{y}=e^x\,;\, y(\pi)=1,\,y'(\pi)=2 $ is an initial value problem, because the two subsidiary conditions are both given at $ x=\pi $.
+
+    The problem $  \ddxn{y}{2}+2\ddx{y}=e^x\,;\, y(0)=1,\,y(1)=1 $ is a boundary-value problem, because the two subsidiary conditions are given at $ x=0 $ and $ x=1 $.
+\end{ex}
+\subsection{General Solution}
+The \index{general solution}\emph{general solution} to a differential equation is the most general form that the solution can take and doesn't take any initial condition into account.
+\begin{ex}
+    $ y(t)=\frac{3}{4}+\frac{c}{t^2} $ is the general solution to $ 2t\ddx{y}+4y=3 $.
+\end{ex}
+
+The \emph{general solution} to a differential equation is the most general form that includes all possible solutions and typically includes arbitrary constants (in the case of an ODE) or arbitrary functions (in the case of PDE).
+\subsection{Actual Solution/Particular Solution}
+The \emph{actual solution}\index{actual solution} to a differential equation is the specific solution that not only satisfy the differential equation, but also satisfies the given initial condition(s).
+\begin{ex}
+    $ y(t)=\frac{3}{4}-\frac{19}{4t^2} $ is the actual solution to $ 2t\ddx{y}+4y=3 \,;\,y(1)=-4$.
+\end{ex}
+A \emph{particular solution}\index{Particular solution} of a differential equation is a solution obtained from the general solution by assigning specific values to the arbitrary constants.
+\subsection{Implicit/Explicit Solution}
+An \emph{explicit solution}\index{Explicit Solution} is any solution that is given in the form $ y=y(t) $. In other words the only place that $ y $ shows up is once on the left side and only raised to the first power.
+
+An \emph{implicit solution}\index{Implicit solution} is any solution that isn't in explicit form.
+\subsection{Linear Equations}
+Consider\index{Linear equation} a differential equation in the form $ y'=f(x,y) $. If $ f(x,y) $ can be written as $ f(x,y)=-p(x)y+q(x) $, the differential equation is linear. First-order linear differential equations can always be expressed as
+\[y'+p(x)y=q(x)\]
+\subsection{Bernoulli Equation}
+A \emph{Bernoulli differential equation}\index{Bernoulli Equation} is an equation of the form
+\[y'+p(x)y=q(x)y^n\]
+where $ n $ denotes a real number. When $ n=1 $ or $ n=0 $ a Bernoulli equation reduces to a linear equation.
+\subsection{Homogeneous Equations}
+A differential equation in standard form $ y'=f(x,y) $ is \emph{homogeneous}\index{Homogeneous Equation} if
+\[f(\alpha x,\alpha y)=\alpha^k f(x,y)\]
+for every real number $ t $.
+\begin{rem}
+    In the general framework of differential equations, the word "homogeneous" has entirely different meaning. Only in the context of first-order differential equations does "homogeneous" have the meaning defined above.
+\end{rem}
+\subsection{Separable Equations}
+Consider \index{Separable Equations} a differential equation in differential form $ M(x,y)\dx+N(x,y)\dy=0 $. If $ M(x,y)=A(x) $ (a function of only $ x $) and $ N(x,y)=B(y) $ (a function of only $ y $), the differential equation is \emph{separable} or has its \emph{variables separated}.
+\subsection{Exact Equations}
+A differential equation in \index{Exact equation} differential form $ M(x,y)\dx+N(x,y)\dy=0 $ is \emph{exact} if
+\[\pardy{M(x,y)}=\pardx{N(x,y)}\]
+\section{Solutions of First-Order Differential Equations}
+\subsection{Separable Equations}
+\subsubsection{General Solution}
+\index{Separable Equations}
+The solution to the first order separable differential equation \[A(x)\dx+B(y)\dy=0 \] is \[\int A(x)\dx+\int B(y)\dy=c\] where $ c $ represents an arbitrary constant.
+
+Or, the above equation can also be written as,\[\int B(y)\dy=\int A(x)\dx\]
+\begin{prob}
+    Solve $ (x^2-4)\ddx{y}+2xy+6x=0 $.
+\end{prob}
+\begin{soln}
+    Rearranging, we have,
+    \begin{align*}
+                    & (x^2-4)\ddx{y}=-2xy-6x              \\
+        \Rightarrow & \ddx{y}=\frac{-2x(y+3)}{x^2-4}      \\
+        \Rightarrow & \frac{\dy}{y+3}=\frac{-2x}{x^-4}\dx
+    \end{align*}
+    Integrating both sides we have,
+    \begin{align*}
+                    & \int \frac{\dy}{y+3}=\int \frac{-2x}{x^-4}\dx \\
+        \Rightarrow & \ln(y+3) = -\ln(x^2-4)+\ln(c)                 \\
+        \Rightarrow & \ln(y+3) + \ln(x^2-4)=\ln(c)                  \\
+        \Rightarrow & (y+3)(x^2-4)=C                                \\
+        \Rightarrow & y=\frac{C}{x^2-4}-3                           \\
+    \end{align*}
+    This is the required solution.
+\end{soln}
+\subsection{Homogeneous Equations}
+The homogeneous differential equation\index{Homogeneous Equation} $ \ddx{y}=f(x,y) $ having the property $f(\alpha x,\alpha y)=\alpha^k f(x,y)$ can be transformed into a separable equation by making the substitution\[y=vx\]along with its corresponding derivative\[\ddx{y}=v+x\ddx{v}\]
+The resulting equation in the variable $ v $ and $ x $ is solved as a separable differential equation; the required solution is then obtained by substituting $ v={}^y/_x $.
+
+Alternatively, the solution can be obtained by rewriting the differential equation as \[\frac{\dx}{\dy}=\frac{1}{f(x,y)}\]and then substituting \[x=yu\] and the corresponding derivative \[\ddy{x}=u+y\ddy{u}\] The resulting differential equation in the variable $ u $ and $ y $ is solved as a separable differential equation; the required solution is then obtained by substituting $ u={}^x/_y $.
+\begin{prob}
+    Solve $ xy^2\dy=(x^3+y^3)\dx $
+\end{prob}
+\begin{soln}
+    Let $ y=vx $. Then $ \dy =v\dx +x\D v $, and our equation becomes 
+    \begin{align*}
+        & xv^2x^2(v\dx +x\D v)=(x^3+v^3x^2)\dx\\
+        \Rightarrow & x^3v^3\dx+x^4v^2\D v= x^3\dx+v^3x^3\dx
+    \end{align*}
+\end{soln}
+\newpage
+\printindex
+\end{document}

@@ -1,0 +1,108 @@
+\ProvidesPackage{style}
+\RequirePackage{amsmath,amsthm,amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{graphicx,float}
+\RequirePackage{enumitem}
+\RequirePackage{gensymb}
+\RequirePackage[a4paper,margin=1.5cm]{geometry}
+\RequirePackage{hyperref}
+\RequirePackage{booktabs}
+\RequirePackage{lmodern}
+\RequirePackage[english]{babel}
+\RequirePackage{background}
+\RequirePackage[object=vectorian]{pgfornament} 
+\RequirePackage{calligra}
+% \RequirePackage{unicode-math}
+\RequirePackage{mathrsfs,dsfont}
+% \RequirePackage{dsfont}
+\RequirePackage[mathscr]{euscript}
+\RequirePackage{array}
+\RequirePackage{import}
+\RequirePackage{tikz,pgfplots}
+\pgfplotsset{compat=1.17}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+\newcolumntype{L}{>{$}l<{$}} 
+\newcolumntype{C}{>{$\displaystyle }c<{$}}
+
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\theoremstyle{remark}
+\newtheorem* {rem}{Remark}
+\newtheorem* {note}{Note}
+\graphicspath{ {./img/} }
+% \everymath{\displaystyle}
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{lem}{Lemma}[chapter]
+\newtheorem{prop}{Proposition}[chapter]
+\newtheorem{cor}[thm]{Corollary}
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}[chapter]
+\newtheorem{defn}{Definition}[chapter]
+\newtheorem{ex}{Example}[chapter]
+\newtheorem*{soln}{Solution}
+
+% add shorthand here
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand{\s}{\space}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\seq}[1]{\left\langle#1\right\rangle}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\ddx}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,x}}
+\newcommand{\ddy}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,y}}
+\newcommand{\ddz}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,z}}
+\newcommand{\pardx}[1]{\,\frac{\partial\, #1}{\partial\, x}}
+\newcommand{\pardy}[1]{\,\frac{\partial\, #1}{\partial\, y}}
+\newcommand{\pardz}[1]{\,\frac{\partial\, #1}{\partial\, z}}
+\newcommand{\parx}{\,\partial\, x}
+\newcommand{\pary}{\,\partial\, y}
+\newcommand{\parz}{\,\partial\, z}
+\newcommand{\dx}{\,\mathrm{d}\, x}
+\newcommand{\dy}{\,\mathrm{d}\, y}
+\newcommand{\dz}{\,\mathrm{d}\, z}
+\newcommand{\D}{\,\mathrm{d}\,}
+\newcommand{\ddxn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\, x^{#2}}}
+\newcommand{\ddyn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\,y^{#2}}}
+\newcommand{\ddzn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\,z^{#2}}}
+\newcommand{\parxn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\, x^{#2}}}
+\newcommand{\paryn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\,y^{#2}}}
+\newcommand{\parzn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\,z^{#2}}}
+\newcommand{\norm}[1]{\left\vert\left\vert#1\right\vert\right\vert}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\Q}{\mathds{Q}}
+
+\makeatletter
+\newsavebox\myboxA
+\newsavebox\myboxB
+\newlength\mylenA
+
+\newcommand*\xoverline[2][0.65]{%
+    \sbox{\myboxA}{$\m@th#2$}%
+    \setbox\myboxB\null% Phantom box
+    \ht\myboxB=\ht\myboxA%
+    \dp\myboxB=\dp\myboxA%
+    \wd\myboxB=#1\wd\myboxA% Scale phantom
+    \sbox\myboxB{$\m@th\overline{\copy\myboxB}$}%  Overlined phantom
+    \setlength\mylenA{\the\wd\myboxA}%   calc width diff
+    \addtolength\mylenA{-\the\wd\myboxB}%
+    \ifdim\wd\myboxB<\wd\myboxA%
+       \rlap{\hskip 0.5\mylenA\usebox\myboxB}{\usebox\myboxA}%
+    \else
+        \hskip -0.5\mylenA\rlap{\usebox\myboxA}{\hskip 0.5\mylenA\usebox\myboxB}%
+    \fi}
+\makeatother

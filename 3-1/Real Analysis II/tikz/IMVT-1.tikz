@@ -1,0 +1,35 @@
+\begin{tikzpicture}[scale=.75]
+\begin{axis}[
+	axis lines=middle,
+	xmin=-.5,xmax=10,
+	ymin=-3,ymax=6,
+	ylabel style={above},
+	ylabel=$Y$,
+	xlabel style={right},
+	xlabel=$X$,
+	xtick={5,6,7},
+	xticklabels={$x$,$z$,$y$},
+	ytick={cos(deg(5))+5-4,cos(deg(6))+6-4,cos(deg(7))+7-4},
+	yticklabels={$f(x)$,$c$, $f(y)$}
+]
+\addplot[black,thick,domain=2:10,smooth] {cos(deg(x))+x-4};
+\addplot[black,thick,{[-]}] coordinates{(3,0) (8,0)};
+
+\addplot[black,dashed] coordinates{(3,-.5) (3,-2)};
+\addplot[black,dashed] coordinates{(8,.25) (8,3.9)};
+
+\addplot[black,dashed] coordinates{(5,0) (5,{cos(deg(5))+5-4})};
+\addplot[black,dashed] coordinates{(0,{cos(deg(5))+5-4}) (5,{cos(deg(5))+5-4})};
+
+\addplot[black,dashed] coordinates{(6,0) (6,{cos(deg(6))+6-4})};
+\addplot[black,dashed] coordinates{(0,{cos(deg(6))+6-4}) (6,{cos(deg(6))+6-4})};
+
+\addplot[black,dashed] coordinates{(7,0) (7,{cos(deg(7))+7-4})};
+\addplot[black,dashed] coordinates{(0,{cos(deg(7))+7-4}) (7,{cos(deg(7))+7-4})};
+
+\addplot[black,mark=*,only marks]coordinates{(0,{cos(deg(7))+7-4}) (0,{cos(deg(6))+6-4}) (0,{cos(deg(5))+5-4})};
+
+\node at (axis cs: 5,-1) {$A$};
+\node at (axis cs: 9,5) {$f(x)$};
+\end{axis}
+\end{tikzpicture}

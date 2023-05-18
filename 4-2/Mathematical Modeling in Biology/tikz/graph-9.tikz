@@ -1,0 +1,22 @@
+\begin{tikzpicture} 
+    \begin{axis}[
+        axis lines=middle,
+        xmin=0,xmax=8,
+        ymin=0,ymax=8,
+        xtick={1,2,3,4,5,6},
+        ytick={1,2,3,4,5,6},
+        ylabel style={above},
+        ylabel={$y$},
+        xlabel style={right},
+        xlabel={$x$}]
+        \addplot[black,thick,domain=0:6] {x};
+        \addplot[black,thick,domain=0:7,smooth,samples=200] {	(5*x^2)/(4+x^2)};
+        \addplot[mark=*,only marks] coordinates{(1,1) (2,2.5) (3,3.4615) (4,4)};
+        \node at (1.9,1) {$(1,1)$};
+        \node at (1,2.5) {$(2,2.5)$};
+        \node at (3,4) {$(3,3.46)$};
+        \node at (4.3,3.5) {$(4,4)$};
+        \node at (5,5.8) {$y=x$};
+        \node at (7,4) {$y=\frac{5x^2}{4+x^2}$};
+    \end{axis}
+    \end{tikzpicture}

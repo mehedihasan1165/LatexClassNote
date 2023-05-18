@@ -1,0 +1,58 @@
+\documentclass[12pt,class=article,crop=false]{standalone}
+\usepackage{../style}
+\begin{document}
+\backgroundsetup{contents={}}
+\title{Discrete assignment (Question 7)}
+\author{Mehedi Hasan}
+\maketitle
+\begin{prob*}
+    State and prove Euler's theorem for connected graph.
+\end{prob*}
+\begin{soln}
+    \begin{thm*}
+        A finite connected graph $ G $ is Eulerian if and only if each vertex has even degree.
+    \end{thm*}
+    \begin{proof}
+        Suppose $ G $ is Eulerian and $ T $ is a closed Eulerian trail. For any vertex $ v $ of $ G $, the trail $ T $ enters and leaves $ v $ the same number of times without repeating any edge. Hence $ v $ has even degree.\\
+
+        Suppose conversely that each vertex of $ G $ has even degree. We construct an Eulerian trail. We begin a trail $ T_1 $ at any edge $ e $. We extend $ T_1 $ by adding one edge after the other. If $ T_1 $ is not closed at any step, say, $ T_1 $ begins at $ u $ but ends at $ v \neq u $, then only an odd number of the edges incident on $ v $ appear in $ T_1 $; hence we can extend $ T_1 $ by another edge incident on $ v $. Thus we can continue to extend $ T_1 $ until $ T_1 $ returns to its initial vertex $ u $, i.e., until $ T_1 $ is closed. If $ T_1 $ includes all the edges of $ G $, then $ T_1 $ is our Eulerian trail.\\
+
+        \begin{center}
+            \import{../tikz/}{discreet-assign-prob1.1.tikz}
+        \end{center}
+        Suppose $ T_1 $ does not include all edges of $ G $. Consider the graph $ H $ obtained by deleting all edges of $ T_1 $ from $ G $. $ H $ may not be connected, but each vertex of $ H $ has even degree since $ T_1 $ contains an even number of the edges incident on any vertex. Since $ G $ is connected, there is an edge $ e' $ of $ H $ which has an endpoint $ u' $ in $ T_1 $. We construct a trail $ T_2 $ in $ H $ beginning at $ u' $ and using $ e' $. Since all vertices in $ H $ have even degree, we can continue to extend $ T_2 $ in $ H $ until $ T_2 $ returns to $ u' $ as pictured in Fig. 1. We can clearly put $ T_1 $ and $ T_2 $ together to form a larger closed trail in $ G $. We continue this process until all the edges of $ G $ are used. We finally obtain an Eulerian trail, and so $ G $ is Eulerian.
+    \end{proof}
+\end{soln}
+\newpage
+\begin{prob*}
+    Establish that $ K_{3,3} $ is always non-planar.
+\end{prob*}
+\begin{soln}
+    \underline{Planar graph:} A graph is called planar if it can be drawn in the plane without any edges crossing. Such a drawing is called a planar representation of the graph.\\
+
+    \begin{center}
+        \import{../tikz/}{discreet-assign-prob2.1.tikz}
+    \end{center}
+    Above graph is $ K_{3,3} $ and it has $ p=6 $ vertices and $ q=9 $ edges. Let us assume this graph is planar. Euler's formula for planar graph is $ V-E+R=2 $ (here, $ V $ is the number of vertices, $ E $ is the number of edges, and $ R $ is the number of regions). So by Euler's formula a planar representation for this graph has $ r=5 $ regions. But here no three vertices are connected to each other; hence the degree of each region must be $ 4 $ or more and so the sum if degrees of the regions must be $ 20 $ or more. But we know that, the sum of the degrees of the regions of a map is equal to twice the number of edges. So the graph must have $ 10 $ or more edges. This contradicts the fact that the graph has $ q=9 $ edges. Thus, the graph $ K_{3,3} $ is always non-planar.
+\end{soln}
+\newpage
+\begin{prob*}
+    Define bipartite graph. Is the following graph bipartite? Explain why?
+    \begin{center}
+        \import{../tikz/}{discreet-assign-prob3.tikz}
+    \end{center}
+\end{prob*}
+\begin{soln}
+    \underline{Bipartite graph:} A simple graph $ G $ is called bipartite if its vertex set $ V $ can be partitioned into two disjoint sets $ V_1 $ and $ V_2 $ such that every edge in the graph connects a vertex in $ V_1 $ and a vertex in $ V_2 $ so that no edge in $ G $ connects either two vertices in $ V_1 $ or two vertices in $ V_2 $. When this condition holds, we call the pair $ (V_1,V_2) $ a bipartition of the vertex set $ V $ of $ G $.\\
+
+    \begin{center}
+        \import{../tikz/}{discreet-assign-prob3.1.tikz}
+    \end{center}
+    We can check if a graph is bipartite by using graph coloring. The graph in figure: 1 is not a bipartite graph.\\
+
+    Let $ V_1 $ and $ V_2 $ be two vertex sets and assign red color to vertices in $ V_1 $ and blue color to vertex set $ V_2 $. For $ a\in V_1 $, color it with red. From the graph, we can see that vertex $ a $ is connected to $ \left\{ b,d,e \right\}  $ so the must be in vertex set $ V_2 $. We assign blue color to vertices $ \left\{ b,d,e \right\}  $. Vertex $ c $ must be in the same set $ V_1 $ as it is connected to $ b $ and $ e $. We color it red. As vertex $ c $ is connected to vertex $ f $ so $ f $ must be in vertex set $ V_2 $ and assign blue color to $ f $ but this is not possible as $ f $ is connected to $ b $.\\
+    
+    
+    Therefore, the graph in figure: 1 is not bipartite.
+\end{soln}
+\end{document}

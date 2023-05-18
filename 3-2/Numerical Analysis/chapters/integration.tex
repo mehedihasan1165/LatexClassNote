@@ -1,0 +1,175 @@
+\documentclass[12pt,class=book,crop=false]{standalone}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Numerical Integration}
+The process of computing the value of a definite integral from a set of numerical values of the integrand is called \emph{Numerical Integration}. When applied to the integration of a function of a single variable, the process is known as quadrature.\\
+
+The problem of Numerical Integration is solved by representing the integrand by an interpolation formula and then integrating this formula between the desired limits.
+\section{A General Quadrature Formula for Equidistant Ordinates}
+Let $ I=\int_a^b y\dx  $ where $ y=f(x) $. Let $ f(x) $ be given for certain equidistant value of $ x $ say $ x_0,x_0+h,x_0+2h,\dots $. Let the range $ (a,b) $ be divided into $ n $ equal parts, each of width $ h $ so that $ b-a=nh $.\\
+Let $ x_0=a$, $x_1=x_0+h=a+h$, $x_2=a+2h$, $\dots$, $x_n=a+nh=b $. We have assumed that the $ n+1 $ ordinates $ y_0,\,y_1,\dots,y_n $ are at equal intervals.
+\[
+    \therefore\, I=\int_a^b y\dx=\int_{x_0}^{x_0+nh} y_x \dx
+\]
+Let, $ u=\frac{x-x_0}{h}\qquad \therefore \dx=h \D u $\\
+when $ \begin{aligned}[t]
+        x & =x_0,    & u=0 \\
+        x & =x_0+nh, & u=n
+    \end{aligned} $\\
+Now we have (from Newton's forward formula)
+\[
+    y_{x_0+uh}=y_0+u\Delta y_0+\frac{u(u-1)}{2!}\Delta^2 y_0+\dots
+\]
+\begin{align}
+    \therefore\,I  & =h\int_0^n \left[ y_0+u\Delta y_0+\frac{u(u-1)}{2!}\Delta^2 y_0+\dots \right]\D u\notag                 \\
+    \Rightarrow\,I & =h\left[ ny_0+\frac{n^2}{2}\Delta y_0+\left( \frac{n^3}{3}-\frac{n^2}{2} \right)\frac{\Delta^2 y_0}{2!}
+        +\dots \text{ upto $ (n+1)$ terms}\right] \label{eq:quad1}
+\end{align}
+This is the general quadrature formula.\\
+We can deduce a number of formulae from thus by putting $ n=1,2,\dots $.
+\section{Kinds of Rule for Determining Numerical Integration}
+\subsection{The Trapezoidal Rule}
+Putting $ n=1 $ in the formula \eqref{eq:quad1} and neglecting second and higher order differences, we get
+\[
+    \int_{x_0}^{x_0+h} y\dx=h\left[ y_0+\frac{1}{2}\left( y_1-y_0 \right) \right]=\frac{h[y_0+y_1]}{2}
+\]
+Similarly,
+\begin{align*}
+    \int_{x_0+h}^{x_0+2h} y\dx      & =h \,\frac{y_1+y_2}{2}    \\
+    \int_{x_0+(n-1)h}^{x_0+nh} y\dx & =h\,\frac{y_{n-1}+y_n}{2}
+\end{align*}
+Adding these $ n $ integrals we get
+\begin{align*}
+    \int_{x_0}^{x_0+nh} y\dx & =h\left[ \frac{1}{2}\left\{ (y_0+y_n)+(y_1+y_2)+\dots+(y_{n-1}+y_n) \right\} \right]                                \\
+                             & =h\left[ \frac{1}{2}(y_0+y_n)+(y_1+y_2+\dots+y_{n-1}) \right]                                                       \\
+                             & =\text{ distance between two consecutive ordinates} \times \left\{ \text{mean of the 1st and last ordinates}\right. \\
+                             & \, +\left. \text{ sum of all the intermediate ordinates} \right\}
+\end{align*}
+This rule is known as the Trapezoidal Rule.
+\subsection{Simpson's $ {}^1/{}_3 $ Rule (Simpson's rule)}
+Putting $ n=2 $ in the formula \eqref{eq:quad1} and neglecting third and higher order differences, we get
+\begin{align*}
+    \int_{x_0}^{x_0+2h} y \dx & =h\left[ 2y_0+\frac{4}{2}\Delta y_0+\left( \frac{8}{3}-\frac{4}{2} \right)\frac{\Delta^2 y_0}{2}+\dots \right] \\
+                              & =h\left[ 2y_0+2(y_1-y_0)+\frac{1}{3}\left\{ 4(y_1-y_0) \right\}\right]                                         \\
+                              & =h\left[ 2y_0+2y_1-2y_0+\frac{1}{3}\left( y_2-y_1-(y_1-y_0) \right)\right]                                     \\
+                              & =\frac{h}{3}\left[ 6y_1+y_2-y_1-y_1+y_0\right]                                                                 \\
+                              & =\frac{h}{3}\left[ y_0+4y_1+y_2\right]
+\end{align*}
+Similarly,
+\begin{align*}
+    \int_{x_0+2h}^{x_0+4h} y \dx     & =\frac{h}{3}\left[ y_2+4y_3+y_4\right]                                       \\
+    \int_{x_0+(n-2)h}^{x_0+nh} y \dx & =\frac{h}{3}\left[ y_{n-2}+4y_{n-1}+y_n\right]\qquad  \text{[$ n $ is even]}
+\end{align*}
+Adding all the integrals we get,
+\begin{align*}
+    \int_{x_0}^{x_0+nh} y \dx & =\frac{h}{3}\left[ (y_0+4y_1+y_2)+(y_2+4y_3+y_4)+\dots+(y_{n-2}+4y_{n-1}+y_n)\right]      \\
+                              & =\frac{h}{3}\left[ (y_0+y_n)+4(y_1+y_3+y_5+\dots+y_{n-1})+2(y_2+y_4+\dots+y_{n-2})\right]
+\end{align*}
+This formula is known as Simpson's $ {}^1/{}_{3} $ -rule also known as Simpson's rule.
+\subsection{Simpson's $ {}^3/{}_8 $ Rule}
+Putting $ n=3 $ in the formula \eqref{eq:quad1} and neglecting fourth and higher order differences, we get
+\begin{align*}
+    \int_{x_0}^{x_0+3h} y \dx & =h\left[ 3y_0+\frac{9}{2}\Delta y_0+\left( \frac{27}{3}-\frac{9}{2} \right)\frac{\Delta^2 y_0}{2!}+\left( \frac{81}{4}-27+9\right)\frac{\Delta^3 y_0}{3!} \right] \\
+                              & =h\left[ 3y_0+\frac{9}{2}(y_1-y_0)+\frac{9}{2}\cdot\frac{1}{2}(y_2-2Y_1+y_0)+\frac{81-104+36}{4}\cdot\frac{1}{6}\Delta(y_2-2y_1+y_0)\right]                       \\
+                              & =h\left[ 3y_0+\frac{9}{2}(y_1-y_0)+\frac{9}{4}\left( y_2-2y_1+y_0\right)+\frac{9}{4}\cdot\frac{1}{6}(y_3-y_2-2y_2+2y_1+y_1-y_0)\right]                            \\
+                              & =\frac{3h}{8}\left[ y_0+3y_1+3y_2+y_3\right]
+\end{align*}
+Similarly,
+\begin{align*}
+    \int_{x_0+3h}^{x_0+6h} y \dx     & =\frac{3h}{8}\left[ y_3+3y_4+3y_5+y_6\right]             \\
+    \int_{x_0+(n-3)h}^{x_0+nh} y \dx & =\frac{3h}{8}\left[ y_{n-3}+3y_{n-2}+3y_{n-1}+y_n\right]
+\end{align*}
+Adding all the integrals we get,
+\[
+    \int_{x_0}^{x_0+nh} y \dx =\frac{3h}{8}\left[ (y_0+y_n)+3(y_1+y_2+y_4+\dots+y_{n-2}+y_{n-1})+2(y_3+y_6+\dots+y_{n-3})\right]
+\]
+This formula is known as Simpson's $ {}^3/{}_{8} $ rule.
+\begin{prob}
+    Calculate the value of the integral
+    \[
+        \int_4^{5.2} \log_e x \dx
+    \]
+    by
+    \begin{enumerate}[label=(\roman*)]
+        \item Trapezoidal rule
+        \item Simpson's $ {}^1/{}_3 $ rule
+        \item Simpson's $ {}^3/{}_8 $ rule
+        \item Weddle's rule
+    \end{enumerate}
+    After finding the true value of the integral, compare the errors in tn the four cases.
+\end{prob}
+\begin{soln}
+    Divide the range of integration $ (4,5.2) $ in 6 equal parts each of width $ \frac{5.2-4}{6}=0.2 $, so that $ h=0.2 $. The value of the function $ f(x)=\ln x $ for each point of sub-division are given below:
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{r@{ = }S[table-format=1.2]r@{ = }S[table-format=1.7]}
+            \toprule
+            \multicolumn{2}{c}{$ x $}          & \multicolumn{2}{c}{$ y=f(x)=\ln x $  } \\\midrule
+            $ x_0$& 4.0 & $y_0$ &1.3862944  \\
+            $ x_0+h$&4.2   & $ y_1$& 1.4350845 \\
+            $ x_0+2h$&4.4  & $ y_2$& 1.4816045 \\
+            $ x_0+3h$&4.6  & $ y_3$& 1.5260563 \\
+            $ x_0+4h$&4.8  & $ y_4$& 1.5686159 \\
+            $ x_0+5h$&5.0  & $ y_5$& 1.6094379 \\
+            $ x_0+6h$&5.2  & $ y_6$& 1.6486586  \\\bottomrule
+        \end{tabular}
+    \end{table}
+    \begin{enumerate}[label=(\roman*)]
+        \item We have from Trapezoidal rule
+              \[
+                  \int_{x_0}^{x_0+nh} y\dx = h\left[ \frac{1}{2}(y_0+y_n)+(y_1+y_2+\dots+y_{n-1}) \right]
+              \]
+              In this case:
+              \begin{align*}
+                  \int_{4}^{5.2} \ln x \dx & = 0.2\left[ 1.517\,476\,5+7.620\,799\,2\right] \\
+                                           & =1.827\,655\,1
+              \end{align*}
+        \item By Simpson's $ {}^1/{}_3 $ rule:
+              \[
+                  \int_{x_0}^{x_0+nh} y \dx =\frac{h}{3}\left[ (y_0+y_n)+4(y_1+y_3+y_5+\dots+y_{n-1})+2(y_2+y_4+\dots+y_{n-2})\right]
+              \]
+              In this case:
+              \begin{align*}
+                  \int_{4}^{5.2} \ln x \dx & = \frac{0.2}{3}\left[ 3.034\,953\,0+18.282\,314\,9+6.100\,844\,09\right] \\
+                                           & =1.827\,847\,2
+              \end{align*}
+        \item By Simpson's $ {}^3/{}_8 $ rule:
+              \[
+                  \int_{x_0}^{x_0+nh} y \dx =\frac{3h}{8}\left[ (y_0+y_n)+3(y_1+y_2+y_4+\dots+y_{n-2}+y_{n-1})+2(y_3+y_6+\dots+y_{n-3})\right]
+              \]
+              In this case:
+              \begin{align*}
+                  \int_{4}^{5.2} \ln x \dx & = \frac{3\times 0.2}{8}\left[ 3.034\,953\,0+18.284\,228\,7+3.052\,112\,6\right] \\
+                                           & =1.827\,847
+              \end{align*}
+    \end{enumerate}
+    Actual value of
+    \begin{align*}
+        \int_4^{5.2}\ln x\dx & =(x\ln x-x)\Biggr\vert_4^{5.2} \\
+                             & =1.827\,847\,5
+    \end{align*}
+    Hence the errors are:
+    \begin{enumerate}[label=(\roman*)]
+        \item 0.000\,192\,4
+        \item 0.000\,000\,3
+        \item 0.000\,000\,5
+    \end{enumerate}
+    So Simpson's $ {}^1/{}_3 $ rule is more accurate.
+\end{soln}
+\vspace{2.5cm}
+Note To Self: May be missing a page\\
+\vspace{2.5cm}
+
+
+Similarly,
+\begin{align*}
+    \int_{x_0+6h}^{x_0+12h}y\dx    & =\frac{3h}{10}[y_6+5y_7+y_8+6y_9+y_{10}+5y_{11}+y_{12}]                  \\
+    \int_{x_0+(n-6)h}^{x_0+nh}y\dx & =\frac{3h}{10}[y_{n-6}+5y_{n-5}+y_{n-4}+6y_{n-3}+y_{n-2}+5y_{n-1}+y_{n}]
+\end{align*}
+Adding these integrals, we get
+\[
+    \int_{x_0}^{x_0+nh}y\dx=\frac{3h}{10}[y_{0}+5y_{1}+y_{2}+6y_{3}+y_{4}+5y_{5}+2y_{6}+5y_7+y_8+\dots]
+\]
+This formula is known as Weddle's rule.
+\end{document}

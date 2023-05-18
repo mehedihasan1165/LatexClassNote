@@ -1,0 +1,170 @@
+\documentclass[11pt,oneside]{book}
+\usepackage{amsmath,amssymb,amsthm,graphicx,enumitem,float,wrapfig}
+%\usepackage[cm]{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{marginnote}
+\usepackage[inline]{asymptote}
+\graphicspath{ {./image/} }
+
+
+\newtheorem{thm}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}[section]
+\newtheorem{ex}{Example}[section]
+\newtheorem{soln}{Solution}[section]
+
+\newcommand{\wrt}{with respect to}
+\newcommand{\perdis}{perpendicular distance}
+\newcommand{\s}{\space}
+\begin{document}
+\title{Statics And Dynamics\linebreak(Class Note and Sir's PDF)}
+\author{Mehedi Hasan}
+\maketitle
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\part{Statics}
+\chapter{Introduction}
+\section{Definitions}
+\textbf{Force:} Force is anything which changes or tend to change, the state of rest or uniform motion of a body.\\ \\
+\textbf{Rest:} A body is said to be rest when it does not change its position \wrt\s it's surrounding objects.\\ \\
+\textbf{Statics:} Statics is the science with treats the action of forces on bodies, the forces being so arranged that the bodies are at rest.\\ \\
+\textbf{Dynamics:} The science which treats the action of forces on bodies in motion is called dynamics.\\ \\
+\textbf{Particle:} A particle is a portion of matter which is indefinitely small in size.\\ \\
+\textbf{Rigid Body:} A rigid body is a body whose parts always preserve an invariable position \wrt\s one another.\\ \\
+\textbf{Equal Forces:} Two forces are said to be equal when if they act on a particle in opposite direction, the particle remains at rest.\\ \\
+\textbf{Mass:} The mass of a body is the quantity of matter in the body.\\ \\
+\textbf{Weight:} The force with which the earth attract any body to itself is called the weight of the body.\\ \\
+\textbf{Tension:}If we tie one end of a string to any point of a body and pull at the other end of the string, we exert a force on that body, such a force exerted by means of string or rod is called tension.\\ \\
+%TODO:need figure
+\textbf{Equilibrium:} When two or more forces act upon a body and are so arranged that the body remains at rest, the forces are said to be in equilibrium.\\ \\
+%TODO:need figure
+\textbf{Resultant:} If two or more forces $P,Q,S\cdots$ act upon a rigid body and it a single force $R$ can be found whose effect upon the body is the same as that of the forces $P,Q,S\cdots$. This single force $R$ is called the resultant of the other forces and the forces $P,Q,S\cdots$ are called the component of $R$.\\ \\
+\textbf{Moments:} The moment (or torque) of a force about a turning point is the force multiplied by the perpendicular distance to the force from the turning point. Moments are measured in Newton meters(Nm). Mathematically \[\text{Moment}=F.d\]
+\begin{ex}
+  A $10 \,N$ force acts at a \perdis\s of $0.5m$ from the turning point. What is the moment of the force?
+\end{ex}
+\begin{soln}
+  \begin{align*}
+    M &= F\,.\,d \\
+     &=10 \times 0.5  \\
+     &=5 \,Nm
+  \end{align*}
+\end{soln}
+\textbf{The principal of momentum:} When an object is in equilibrium, the sum of the anti-clockwise moments about a turning point
+must be equal to the sum of the clockwise moments.\\ \\
+\textbf{Couple:} Two forces of equal magnitudes and opposite direction whose line of action is not same is said to constitute a couple. A couple produces rotational effects in the body on which it acts and this rotational effect is measured by a physical quantity torque. Mathematically, $\text{Couple}= F.S$
+\chapter{Reduction of a System of Coplanar Forces}
+\section{Reduction of a System of Coplanar Forces}
+\textbf{Statement: } A system of forces acting in one plane ar different point of a rigid body can be reduces to a single force $R$ through any arbitrary point and a couple, whose moment is equal to the sum of the moments of the given forces about this point.
+\begin{proof}
+
+  Let $O$ be any point in the plane. Through $O$ take any pair of rectangular axes $OX$ and $OY$ . Let the forces $P_1,P_2,P_3,\cdots$ act at points $A_1(x_1,y_1),A_2(x_2,y_2),A_3(x_3,y_3),\cdots$.\\
+  \begin{figure}[H]
+    \centering
+    \includegraphics[height=7cm]{01}
+    %\caption{}\label{}
+  \end{figure}
+  Let the resolved parts of these forces in direction parallel to the axes be $(X_1,Y_1),(X_2,Y_2),(X_3,Y_3),\cdots$\\ \\
+  At $O$ introduce forces $X_1$ and $X_1$ along $OX$ and $OX^\prime$ also $Y_1$ and $Y_1$ along $OY$ and $OY^\prime$ respectively. So that their actions $O$ are zero. i.e. the body remain unaffected.\\ \\
+  Now the force $P_1$ at $A_1$ has component $X_1$ parallel to $OX$ and this component $X_1 \text{ at }O$ acts along $OX$. Another two equal forces $X_1$ at $A_1$ and $X_1$ at $O$ along $OX^\prime$ are equal and unlike parallel forces which form a couple of moment $-X_1 y_1$ and this couple has a tendency to rotate the body in a clockwise direction.\\ \\
+  Similarly, the force $Y_1$ acting at $O$ along $OY^\prime$ and the force $Y_1$ as $A_1$ parallel to $OY$ form a couple of moment $x_1 Y_1$.\\ \\
+  Hence the force $P_1$ at $A_1$ is equivalent to components $X_1,Y_1$ along $OX, OY$ and a couple $G_1=x_1Y_1-X_1y_1$, which is algebraic sum of the moments of two couples formed above.\\ \\
+  Similarly the force $P_2$ at $A_2$ is equivalent to components $X_2$ along $OX$ and $Y_2$ along $OY$ and a couple of moment $G_2=x_2Y_2-X_2y_2$.\\ \\
+  Resolving all other forces in similar way, if $R$ is the resultant of forces along $OX$ and $OY$ inclined at angle $\theta$ to $OX$.
+  \\ \\
+  $R \cos \theta=X=X_1+X_2+X_3+\cdots=\sum X_i$\\
+  $R \sin \theta=Y=Y_1+Y_2+Y_3+\cdots=\sum Y_i$\\
+  If $G$ represents the algebraic sum of the moments of the couple, then
+  \[G=G_1+G_2+G_3+\cdots=\sum(x_iY_i-X_iy_i)\]
+  Thus,
+  \begin{align*}
+    R &= \sqrt{X^2+Y^2} \qquad\text{Where, $X=\sum X_i$ and $Y=\sum Y_i$}\\
+    \theta & =\tan^{-1}\frac{Y}{X} \\
+    G &= \sum(x_iY_i-X_iy_i)
+  \end{align*}
+
+\end{proof}
+
+\section{Equation to the resultant of a system of forces in one plane}
+
+We have studied that the system of coplanar forces can be reduced to a single force $R$ through $O$ inclined at an angle $\theta$ with $OX$ and a couple of moments $G$ about $O$.\\
+\begin{figure}[h]
+  \centering
+  \includegraphics{02}
+\end{figure}
+
+
+Now replace the couple $G$ by two equal and unlike parallel forces one at $O$ opposite to the direction of $R$ and other at $O'$ perpendicular to $OO'$ so that,
+\[
+R.OO'\,=\,G\Rightarrow\, OO'\,=\frac{G}{R} \,\Rightarrow P=\frac{G}{R}
+\]
+Two forces at $O$ are equal and opposite and they cancel each other.\\
+
+Another force $R$ at $O'$ along $O'Q$ where $OO'=P$ is left whose equation is to be determined.\\
+
+Let $x\cos \alpha +y \sin \alpha=p$ be the equation of the line $OQ'$, where $OO'$ makes angle $\alpha$ with $OX$ and $OO'=p=\frac{G}{R}$.\\
+Now, $\alpha=-\angle O'OX=-(\frac{\pi}{2}-\theta)$\\
+Hence the equation of $O'Q$ is,
+\begin{align*}
+   & x\cos \left\{-\left(\frac{\pi}{2}\right)-\theta\right\}+y\sin  \left\{-\left(\frac{\pi}{2}\right)-\theta\right\}=\frac{G}{R}\\
+  \Rightarrow\, & x\sin\theta-y\cos\theta=\frac{G}{R} \\
+  \Rightarrow\, & x\,R\,\sin\theta-y\cos\theta=G \\
+  \Rightarrow\, & xY-yX=G \qquad\qquad\left[\because X=R\cos\theta \text{ and }Y=R\sin\theta\right]\\
+  \therefore\, & G-xY+yX=0
+\end{align*}
+\section{Condition of equilibrium of a system of coplanar forces}
+We have,\[R=\sqrt{X^2+Y^2}\text{ and } G=\sum(x_iY_i-y_iX_i)\]
+For equilibrium, \[R=0\quad\Rightarrow X=0,Y=0 \text{ and } G=0\]
+The conditions of equilibrium can be stated as:
+\begin{enumerate}[label=(\roman*)]
+  \item The algebraic sum of the resolved parts of all the forces along $OX$ should be zero.
+  \item The algebraic sum of the resolved parts of all the forces along $OY$ should be zero.
+  \item The algebraic sum of the moments of all the forces about $O$ should be zero.
+\end{enumerate}
+
+Hence the necessary and sufficient conditions for equilibrium are $X=0,\,Y=0,\,G=0$.\\
+These are known as the general conditions of equilibrium of forces.
+\section{A static equilibrium}
+
+A body is acted on by a system of coplanar forces, which keep it at rest. If all the forces are turned through the same angle about their points of application and if the equilibrium is not disturbed by such a rotation, then the equilibrium is said to be static.
+\section{Theorems}
+\section{Problems}
+\begin{ex}
+  $ABCD$ is a square whose side is $2$ units in length. Forces $a,b,c,d$ act along the sides $AB,\,BC,\,CD,\,DA$ taken in order and $p\sqrt{2},\,q\sqrt{2}$ act along $AC$ and $DB$ respectively. Show that if $p+q=c-a\text{ and } p-q=d-b$, the forces are equivalent to a couple of moment $a+b+c+d$.
+\end{ex}
+\begin{soln}
+  \begin{figure}
+    \centering
+    %\includegraphics[width=]{}
+    %\caption{}\label{}
+  \end{figure}
+  Resolve the forces along $AB \text{ and } AD$,
+  \begin{align*}
+    X &= a-c+p\sqrt{2} \cos 45^\circ +  q\sqrt{2} \cos 45^\circ \\
+     &= a-c+p+q \\
+     &= 0\qquad[\therefore p+q=c-a] \\
+    Y &= b-d+ p\sqrt{2} \sin 45^\circ -  q\sqrt{2} \sin 45^\circ\\
+     &= b-d+p-q\\
+     &= 0\qquad[\therefore p-q=d-b]
+  \end{align*}
+  Thus, there is no single resultant force.\\
+  Take momentum about $A$,
+  \begin{align*}
+     &= b\,.\,2+c\,.\,2-q\sqrt{2}\,.\,\text{OA} \\
+     & =2b+2c-q\sqrt{2}\,.\,2\cos 45^\circ \\
+     & =2(b+c)-2q\qquad[\therefore p+q=c-a \text{ and }p-q=d-b] \\
+     & =a+b+c+d
+  \end{align*}
+  %\reversemarginpar
+  \marginnote{'+ve' in Anti-clock wise and '-ve'in clock wise}
+  \marginnote{Moment = Force$\times$perp. dist. If the force passes through the point then no moment.}[-3cm]
+\end{soln}
+\chapter{Centre of Gravity}
+\chapter{Moments of Inertia}
+\part{Dynamics}
+\end{document} 

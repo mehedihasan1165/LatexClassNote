@@ -1,0 +1,242 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Newton's Method For Non-Linear Systems of Equations(Detail Calculation)}
+\section{Newton Raphson's Method}
+If \(f(x)=0\) is a nonlinear equation, then \(x_n=x_{n-1}-\frac{f(x)}{f'(x)}\).\\
+Consider a system of nonlinear equations
+\begin{align*}
+            f_1(x_1,x_2,\dots, x_n)&=0\\
+        f_2(x_1,x_2,\dots, x_n)&=0\qquad\qquad \mathbf{x}=G(\mathbf{x})\\
+        \vdots\qquad\quad& \\
+        f_n(x_1,x_2,\dots, x_n)&=0
+\end{align*}
+The Newton's method is
+\[
+    {G}\left( \mathbf{x}\right)=\mathbf{x}-J\left( \mathbf{x} \right)^{-1}\mathbf{F}\left( \mathbf{x} \right)
+\]
+where \(J(\mathbf{x})\) is the Jacobian matrix and it is
+\[
+    J(\mathbf{x}^{(k)})=\begin{bmatrix}
+        \frac{\partial f_1(\mathbf{x})}{\partial x_1} & \frac{\partial f_1(\mathbf{x})}{\partial x_2} &\dots&\frac{\partial f_1(\mathbf{x})}{\partial x_n} \\[1em]
+        \frac{\partial f_2(\mathbf{x})}{\partial x_1} & \frac{\partial f_2(\mathbf{x})}{\partial x_2} &\dots&\frac{\partial f_2(\mathbf{x})}{\partial x_n} \\[1em]
+        \vdots & \vdots & \ddots & \vdots\\
+        \frac{\partial f_n(\mathbf{x})}{\partial x_1} & \frac{\partial f_n(\mathbf{x})}{\partial x_2} &\dots&\frac{\partial f_n(\mathbf{x})}{\partial x_n} \\
+    \end{bmatrix}
+\]
+and the functional iteration procedure evolves from selecting \(\mathbf{x}^{(0)}\) and generating for \(k\geq 1\),
+\[
+    \mathbf{x}^{(k)}=\mathbf{G}\left( \mathbf{x}^{(k-1)} \right)=\mathbf{x}^{(k-1)}-J\left( \mathbf{x}^{(k-1)} \right)^{-1}\mathbf{F}\left( \mathbf{x}^{(k-1)} \right)
+\]\
+This is called Newton's method for nonlinear system.
+\begin{ex}
+    \begin{align*}
+        &3x_1-\cos(x_2x_3)-\frac{1}{2}=0\\
+        &{x_1}^2-81(x_2+0.1)^2+\sin x_3+1.06=0\\
+        &e^{-x_1x_2}+20x_3+\frac{10\pi -3}{3}=0
+    \end{align*}
+    So,
+    \begin{align*}
+        x_1=&\frac{1}{3}\cos(x_2x_3)+\frac{1}{6}=0\\
+        x_2=&\frac{1}{9}\sqrt{{x_1}^2+\sin x_3+1.06}-0.1\\
+        x_3=&-\frac{1}{20}e^{-x_1x_2}-\frac{10\pi -3}{60}
+    \end{align*}
+    We know,
+    \begin{equation}
+        \mathbf{x}^{(k)}=\mathbf{x}^{(k-1)}-J\left( \mathbf{x}^{(k-1)} \right)^{-1}\mathbf{F}\left( \mathbf{x}^{(k-1)} \right)
+        \label{eq:newtonNL1}
+    \end{equation}
+    Let,
+    \begin{align}
+        &\mathbf{y}^{(k-1)}=-J\left( \mathbf{x}^{(k-1)} \right)^{-1}\mathbf{F}\left( \mathbf{x}^{(k-1)} \right)\notag\\
+        \Rightarrow\;&J\left( \mathbf{x}^{(k-1)} \right)\mathbf{y}^{(k-1)}=-\mathbf{F}\left( \mathbf{x}^{(k-1)} \right)\label{eq:newtonNL2}\\
+        \intertext{from \eqref{eq:newtonNL1}}
+        \Rightarrow\;&\mathbf{x}^{(k)}=\mathbf{x}^{(k-1)}+\mathbf{y}^{(k-1)}\label{eq:newtonNL3}
+    \end{align}
+    where,
+    \[
+        \mathbf{x}=\begin{bmatrix}
+            x_1\\
+            x_2\\
+            x_3
+        \end{bmatrix},\qquad\quad
+        \mathbf{y}=\begin{bmatrix}
+            y_1\\
+            y_2\\
+            y_3
+        \end{bmatrix}
+    \]
+    Now,
+    \[
+        \mathbf{F}(\mathbf{x})=\begin{bmatrix}
+            f_1\\
+            f_2\\
+            f_3
+        \end{bmatrix}=
+        \begin{bmatrix}
+            3x_1-\cos(x_2x_3)-\frac{1}{2}\\[1em]
+        {x_1}^2-81(x_2+0.1)^2+\sin x_3+1.06\\[1em]
+        e^{-x_1x_2}+20x_3+\frac{10\pi -3}{3}
+        \end{bmatrix}
+    \]
+    So,
+    \[
+        \mathbf{F}(\mathbf{x}^{(k-1)})=
+        \begin{bmatrix}
+            3x_1^{(k-1)}-\cos(x_2^{(k-1)}x_3^{(k-1)})-\frac{1}{2}\\[1em]
+       \left(x_1^{(k-1)}\right)^2-81(x_2^{(k-1)}+0.1)^2+\sin x_3^{(k-1)}+1.06\\[1em]
+        e^{-x_1^{(k-1)}x_2^{(k-1)}}+20x_3^{(k-1)}+\frac{10\pi -3}{3}
+        \end{bmatrix}
+    \]
+    and
+    \[
+        J(\mathbf{x})=\begin{bmatrix}
+            \frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} &\frac{\partial f_1}{\partial x_3} \\[1em]
+            \frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} &\frac{\partial f_2}{\partial x_3} \\[1em]
+            \frac{\partial f_3}{\partial x_1} & \frac{\partial f_3}{\partial x_2} &\frac{\partial f_3}{\partial x_3}
+        \end{bmatrix}
+    \]
+    So,
+    \[
+        J(\mathbf{x})=\begin{bmatrix}
+            3 & x_3 \sin x_2x_3 & x_2 \sin x_2 x_3\\[1em]
+            2x_1 & -162(x_2+0.1) & \cos x_3\\[1em]
+            -x_2e^{-x_1x_2} & -x_1e^{-x_1x_2} & 20
+        \end{bmatrix}
+    \]
+    \[
+        \therefore J(\mathbf{x}^{(k-1)})=\begin{bmatrix}
+            3 & x_3^{(k-1)} \sin x_2^{(k-1)}x_3^{(k-1)} & x_2^{(k-1)} \sin x_2^{(k-1)} x_3^{(k-1)}\\[1em]
+            2x_1^{(k-1)} & -162(x_2^{(k-1)}+0.1) & \cos x_3^{(k-1)}\\[1em]
+            -x_2^{(k-1)}e^{-x_1^{(k-1)}x_2^{(k-1)}} & -x_1^{(k-1)}e^{-x_1^{(k-1)}x_2^{(k-1)}} & 20
+        \end{bmatrix}
+    \]
+    For \(k=1\), from \eqref{eq:newtonNL2}
+    \begin{equation}
+        \mathbf{x}^{(1)}=\mathbf{x}^{(0)}+\mathbf{y}^{(0)}
+        \label{eq:newtonNL4}
+    \end{equation}
+    where,
+    \begin{align*}
+        &\mathbf{y}^{(0)}=\left(J\left( \mathbf{x}^{(0)} \right)\right)^{-1}\mathbf{F}\left( \mathbf{x}^{(0)} \right)\\
+        \Rightarrow\; &J\left( \mathbf{x}^{(0)} \right)\mathbf{y}^{(0)}=\mathbf{F}\left( \mathbf{x}^{(0)} \right)
+    \end{align*}
+    Let us consider \({x}^{(0)}=(0.1,0.1,-0.1)^t\).\\So,
+    \begin{align*}
+        {F}({x}^{(0)})&
+        {=\begin{bmatrix*}
+            3x_1^{(0)}-\cos(x_2^{(0)}x_3^{(0)})-\frac{1}{2}\\[1em]
+            \left(x_1^{(0)}\right)^2-81(x_2^{(0)}+0.1)^2+\sin x_3^{(0)}+1.06\\[1em]
+            e^{-x_1^{(0)}x_2^{(0)}}+20x_3^{(0)}+\frac{10\pi -3}{3}
+        \end{bmatrix*}}\\
+        &={\begin{bmatrix*}
+            0.3-\cos(-0.01)-\frac{1}{2}\\[1em]
+            0.01-3.21+\sin (-0.1)+1.06\\[1em]
+            e^{-0.01}-2+\frac{10\pi -3}{3}
+        \end{bmatrix*}}\\
+        &={\begin{bmatrix*}
+            1.19995\\[1em]
+            -2.269833417\\[1em]
+            8.462025346
+        \end{bmatrix*}}
+    \end{align*}
+    and
+    \[
+        J(x^(0))={\begin{bmatrix*}
+            3& 0.000999983 & -0.00099983\\
+            0.2& -32.1 & 0.995001165\\
+            -0.099004984& 0.099001983 & 20
+        \end{bmatrix*}}
+    \]
+    Now,
+    \begin{align*}
+        & J\left( x^{(0)} \right)y^{(0)}=-F\left( x^{(0)} \right)\\
+        \Rightarrow\; & J\left( x^{(0)} \right){\begin{bmatrix}
+            y_1\\
+            y_2\\
+            y_3
+        \end{bmatrix}}=-{\begin{bmatrix*}
+            1.19995\\[1em]
+            -2.269833417\\[1em]
+            8.462025346
+        \end{bmatrix*}}
+    \end{align*}
+    It is a linear system of equations, using Gaussian elimination (or any other method), we get
+    \[
+        y^{(0)}=\begin{bmatrix}
+        0.40003702\\
+        -0.08053314\\
+        0.12152047
+        \end{bmatrix}
+    \]
+    \begin{align*}
+        & x^{(1)}=x^{(0)}+y^{(0)}\\
+        \Rightarrow\; & {\begin{bmatrix}
+            x_1^{(1)}\\
+            x_2^{(1)}\\
+            x_3^{(1)}
+        \end{bmatrix}}={\begin{bmatrix}
+            0.1\\
+            0.1\\
+            -0.1
+            \end{bmatrix}}+{\begin{bmatrix}
+            0.40003702\\
+            -0.08053314\\
+            0.12152047
+            \end{bmatrix}}\\
+        \Rightarrow\; & \mathbf{x}^{(1)}= {\begin{bmatrix}
+            x_1^{(1)}\\
+            x_2^{(1)}\\
+            x_3^{(1)}
+        \end{bmatrix}}={\begin{bmatrix}
+            0.50003702\\
+            0.01946686\\
+            -0.52152017
+            \end{bmatrix}}
+    \end{align*}
+    \begin{note}
+        Now, for \(k=2\), we have
+        \begin{equation}
+            {x}^{(2)}={x}^{(1)}+{y}^{(1)}
+        \label{eq:newtonNL5}
+    \end{equation}
+    where, 
+    \begin{equation}
+        J\left( x^{(1)} \right)y^{(1)}=-F\left( x^{(1)} \right)
+        \label{eq:newtonNL6}
+        \end{equation}
+        Use the results of \(x^{(1)}\), calculate \(J(x^{(1)})\), \(F\left( x^{(1)} \right)\), from \eqref{eq:newtonNL6} find \(y^{(1)}\), then put these values in \eqref{eq:newtonNL5} and then from \eqref{eq:newtonNL5} we will get \(x^{(2)}\) and then by continuing the process we will get the following results:
+    \end{note}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{clllc}
+            \toprule
+            \(k\) & \multicolumn{1}{c}{\(x_1^{(k)}\)} & \multicolumn{1}{c}{\(x_2^{(k)}\)} & \multicolumn{1}{c}{\(x_3^{(k)}\)} & \(\left\|\mathbf{x}^{(k)}-\mathbf{x}^{(k-1)}\right\|_\infty\)\\\midrule
+            0 & 0.10000000 & 0.10000000 & -0.10000000 & \\
+            1 & 0.50003702 & 0.01946686 & -0.52152077 & 0.422 \\
+            2 & 0.50004593 & 0.00158859 & -0.52355711 & \(1.79\times 10^{-2}\) \\
+            3 & 0.50000034 & 0.00001244 & -0.52359845 & \(1.58\times 10^{-3}\) \\
+            4 & 0.50000000 & 0.00000000 & -0.52359877 & \(1.24\times 10^{-5}\) \\
+            5 & 0.50000000 & 0.00000000 & -0.52359877 & 0 \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{ex}
+[Newton's based Techniques: N-R, Quasi-Newton method.]\\
+\begin{note}\hfill
+    \begin{enumerate}
+        \item Newton's method converge very rapidly.
+        \item But it is very difficult to determine initial solution. For known sufficiently accurate initial approximation, method converges very fast.
+        \item The method is comparatively expensive.
+        \item Accurate initial approximation is needed to ensure convergence.
+    \end{enumerate}
+\end{note}
+\section{Steepest Descent Techniques}
+\begin{enumerate}
+    \item It converges linearly to the solution.
+    \item It usually converges even for poor initial approximation.
+    \item This method is used to find sufficiently accurate starting approximation for the Newton based techniques.
+\end{enumerate}
+\end{document}

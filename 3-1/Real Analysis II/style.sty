@@ -1,0 +1,88 @@
+\ProvidesPackage{style}
+\RequirePackage{amsmath,amsthm,amssymb}
+\RequirePackage{mathtools,dsfont,mathrsfs}
+\RequirePackage{graphicx,float}
+\RequirePackage{tikz,pgfplots}
+\RequirePackage{enumitem}
+\RequirePackage{perpage,marginnote,subcaption}
+\RequirePackage[a4paper,margin=1.5cm]{geometry}
+\RequirePackage{hyperref}
+\RequirePackage{multirow}
+\RequirePackage[english]{babel}
+\RequirePackage{background}
+\RequirePackage[object=vectorian]{pgfornament} 
+\RequirePackage{calligra}
+\RequirePackage{lmodern}
+\RequirePackage{import}
+\RequirePackage{listings}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\graphicspath{ {./img/} }
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{3d,patterns}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc,hobby}
+
+\MakePerPage{footnote}
+% \everymath{\displaystyle}
+
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}{Lemma}
+\theoremstyle{remark}
+\newtheorem* {rem}{Remark}
+\newtheorem* {note}{Note}
+
+
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}[section]
+\newtheorem{defn}{Definition}
+\newtheorem*{ex}{Example}
+\newtheorem*{soln}{Solution}
+
+% add shorthand here
+\newcommand{\s}{\space}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\ddx}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,x}}
+\newcommand{\ddy}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,y}}
+\newcommand{\ddz}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,z}}
+\newcommand{\pardx}[1]{\,\frac{\partial\, #1}{\partial\, x}}
+\newcommand{\pardy}[1]{\,\frac{\partial\, #1}{\partial\, y}}
+\newcommand{\pardz}[1]{\,\frac{\partial\, #1}{\partial\, z}}
+\newcommand{\parx}{\,\partial\, x}
+\newcommand{\pary}{\,\partial\, y}
+\newcommand{\parz}{\,\partial\, z}
+\newcommand{\dx}{\,\mathrm{d}\, x}
+\newcommand{\dy}{\,\mathrm{d}\, y}
+\newcommand{\dz}{\,\mathrm{d}\, z}
+\newcommand{\D}{\,\mathrm{d}\,}
+\newcommand{\ddxn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\, x^{#2}}}
+\newcommand{\ddyn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\,y^{#2}}}
+\newcommand{\ddzn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\,z^{#2}}}
+\newcommand{\parxn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\, x^{#2}}}
+\newcommand{\paryn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\,y^{#2}}}
+\newcommand{\parzn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\,z^{#2}}}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\N}{\mathds{N}}
+\newcommand{\C}{\mathds{C}}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\Q}{\mathds{Q}}
+\newcommand{\E}[1]{\times 10^{#1}}
+\newcommand{\xn}[2]{{#1}_1{#2}\,{#1}_2{#2}\dots{#2}{#1}_n}
+\newcommand{\n}[1]{1,\,2,\,\dots,#1}
+\newcommand{\norm}[1]{\left\vert\left\vert#1\right\vert\right\vert}
+\newcommand{\snorm}[1]{\norm{#1}_{\infty}}
+\newcommand{\seq}[1]{\left<#1\right>}
+\newcommand{\sumnf}{\sum_{n=1}^{\infty}}
+\newcommand{\sfrac}[2]{{}^{#1}/{}_{#2}}
+\DeclareMathOperator{\inte}{int}
+\DeclareMathOperator{\cl}{cl}

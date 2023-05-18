@@ -1,0 +1,145 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Fuzzy Sets}
+\begin{defn}[Characteristic function]
+    Let \(X\) be a universal set and \(A\subseteq X\). Then the function\footnote{Some authors use \(\mu\) as characteristic function.}
+    \[\chi_A(x)=\begin{cases}
+        1;\quad x\in A\\
+        0;\quad x\notin A
+    \end{cases}\]
+    is characteristic function of \(A\) in \(X\).
+\end{defn}
+
+
+\begin{defn}[Fuzzy Set]
+    A fuzzy set\footnote{Sometimes fuzzy set is denoted by \(\underset{\sim}{A}\).} \(A\subseteq X\) is a mapping \(A:X\to[0,1]\), where, \(A(x)=y\in [0,1]\) is called the membership function or, grade of membership of \(x\) in \(A\). The collection of all fuzzy sets of \(X\) is denoted by \(\fx\).
+\end{defn}
+\begin{defn}[Fuzzy subset]
+    A fuzzy set \(A\) is called a fuzzy subset of another fuzzy set \(B\) if \(A(x)\leq B(x)\) \(\forall x\in X\). We denote it by \(A\leq B\).
+\end{defn}
+\begin{defn}[Empty fuzzy set]
+    A fuzzy set \(A \) is called empty fuzzy set if \(\forall x\in X\) \(A(x)=0\). The empty fuzzy set is denoted by \(\underbar{0}\). Thus, \(\underbar{0}(x)=0\; \forall x\in  X\).
+\end{defn}
+\begin{defn}[Total fuzzy set] The total fuzzy set \(\underbar{1}\) is defined by  \(\underbar{1}(x)=1\; \forall x\in  X\).
+\end{defn}
+\begin{defn}[Equality of two fuzzy sets]
+    Two fuzzy sets \(A\) and \(B\) of \(X\) is said to be equal iff \(A\leq B\) and \(B\leq A\).
+\end{defn}
+\begin{ex}[Empty and Total fuzzy set]
+    Suppose, \(A:X\to[0,1]\) where \(X=[20,80]\). Then,
+    \[
+        \underbar{0}(x)=\begin{cases}
+        0\quad \text{if } 15<x<90\\
+        1\quad \text{otherwise }
+    \end{cases}\qquad\text{and}\qquad
+        \underbar{1}(x)=\begin{cases}
+        1\quad \text{if } 20\leq x<90\\
+        0\quad \text{otherwise }
+    \end{cases}
+    \]
+\end{ex}
+\begin{ex}[Fuzzy subset]
+    Suppose, \(A:X\to[0,1]\) where, \(X=[0,100]\) defined by 
+    \[
+        A(x)=\begin{cases}
+            0;\quad \text{if }0\leq x<40\\
+            \frac{x}{75};\quad \text{if }40\leq x<75\\
+            1;\quad \text{if }75\leq x\leq 100
+        \end{cases}
+    \]
+    and \(B:X=[0,100]\to[0,1]\) defined by 
+    \[
+        B(x)=\begin{cases}
+            0;\quad \text{if }0\leq x<40\\
+            \frac{x}{95};\quad \text{if }40\leq x<95\\
+            1;\quad \text{if }95\leq x\leq 100
+        \end{cases}
+    \]
+    Then, \(B(x)\) is a subset of \(A(x)\). Since, \(B(x)\leq A(x)\;\forall x\in X\).
+\end{ex}
+\section{Fuzzy Set Operations}
+\begin{defn}[Union of Fuzzy Sets]
+    Let \(A,\; B\in \fx\). Then the union of \(A\) and \(B\) is denoted and defined by, \((A\vee B) (x)=\max\set{A(x),\,B(x)},\;\forall x\in X\).
+\end{defn}
+\begin{defn}[Intersection of Fuzzy Sets]
+    Let \(A,\; B\in \fx\). Then the intersection of \(A\) and \(B\) is denoted and defined by, \((A\wedge B) (x)=\min\set{A(x),\,B(x)},\;\forall x\in X\).
+\end{defn}
+\begin{defn}[Complement of Fuzzy Set]
+    Let \(A\) be a fuzzy set of \(X\). Then, the complement of \(A\) is denoted by \(A^c\) and defined by \(A^c(x)=1-A(x),\;\forall x\in X\).
+\end{defn}
+\begin{ex}
+    Given,
+    \[
+        A_1=\begin{cases}
+            \begin{aligned}
+                1; \qquad&\text{if }40\leq x<50\\
+                1-\frac{x-50}{10}; \qquad&\text{if }50\leq x<60\\
+                0; \qquad&\text{if }60\leq x\leq 100
+            \end{aligned}
+    \end{cases}
+    \qquad\text{and}\qquad
+    A_2=\begin{cases}
+        \begin{aligned}
+            0; \qquad&\text{if }40\leq x<50\\
+            \frac{x-50}{10}; \qquad&\text{if }50\leq x<60\\
+            1-\frac{x-60}{10}; \qquad&\text{if }60\leq x<70\\
+            0; \qquad&\text{if }70\leq x\leq 100
+        \end{aligned}
+    \end{cases}
+    \]
+    \begin{enumerate}
+        \item Find the complement of \(A_1\) and \(A_2\).
+        \item Find \((A_1\wedge A_2)(x)\) and \((A_1\vee A_2)(x)\)
+    \end{enumerate}
+    \underline{Solution:}
+    \begin{enumerate}
+        \item Complement of 
+        \[
+            A_1, A_1^c=\begin{cases}
+                \begin{aligned}
+                    0; \qquad&\text{if }40\leq x<50\\
+                    \frac{x-50}{10}; \qquad&\text{if }50\leq x<60\\
+                    1; \qquad&\text{if }60\leq x\leq 100
+                \end{aligned}
+            \end{cases}
+            \]
+        Complement of 
+        \[
+            A_2, A_2^c=\begin{cases}
+                \begin{aligned}
+                    1; \qquad&\text{if }40\leq x<50\\
+                    \frac{60-x}{10}; \qquad&\text{if }50\leq x<60\\
+                    \frac{x-60}{10}; \qquad&\text{if }60\leq x<70\\
+                    1; \qquad&\text{if }70\leq x\leq 100
+                \end{aligned}
+            \end{cases}
+            \]
+        \item 
+        \[
+            (A_1\wedge A_2)(x)=\begin{cases}
+                \begin{aligned}
+                    0; \qquad&\text{if }40\leq x<50\\
+                    \frac{x-50}{10}; \qquad&\text{if }50\leq x\leq 55\\
+                    1-\frac{x-50}{10}; \qquad&\text{if }55\leq x\leq 60\\
+                    0; \qquad&\text{if }60\leq x\leq 100
+                \end{aligned}
+            \end{cases}
+            \]
+        \[
+            (A_1\vee A_2)(x)=\begin{cases}
+                \begin{aligned}
+                    1; \qquad&\text{if }40\leq x\leq 50\\
+                    1-\frac{x-50}{10}; \qquad&\text{if }50\leq x\leq 55\\
+                    \frac{x-50}{10}; \qquad&\text{if }55\leq x< 60\\
+                    1-\frac{x-60}{10}; \qquad&\text{if }60\leq x< 70\\
+                    0; \qquad&\text{if }70\leq x< 100
+                \end{aligned}
+            \end{cases}
+            \]
+\end{enumerate}
+\end{ex}
+\end{document}

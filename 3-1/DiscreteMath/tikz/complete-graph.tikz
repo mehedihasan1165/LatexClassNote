@@ -1,0 +1,64 @@
+\begin{tikzpicture}
+    [place/.style={circle,draw,fill=black!50}]
+    \node[place] (a){};
+    \node[node distance=.25cm] (text1)[below =of a]{$ k_1 $};
+    \node[place] (b)[right=of a]{};
+    \node[place] (c)[right=of b]{};
+    \node[node distance=.25cm] (text2)[below right =of b]{$ k_2 $};
+    \path[-](b)edge node{}(c);
+    \node[place] (d)[right=of c]{};
+    \node[place,node distance=.6cm] (e)[above right=of d]{};
+    \node[place,node distance=1cm] (f)[right=of d]{};
+    \node[node distance=.25cm] (text3)[below right =of d]{$ k_3 $};
+    \path[-](e) edge node{}(d) edge node{}(f) (d)edge node{}(f);
+    \node[place] (g)[right=of f]{};
+    \node[place] (h)[right=of g]{};
+    \node[place] (i)[above=of g]{};
+    \node[place] (j)[right=of i]{};
+    \node[node distance=.25cm] (text4)[below right =of g]{$ k_4 $};
+    \path[-](g) edge node {} (i)
+                edge node {} (h)
+                edge node {} (j)
+            (i) edge node {} (j)
+                edge node {} (h)
+            (h) edge node {} (j);
+    \node[place] (k)[right=of h]{};
+    \node[place] (l)[right=of k]{};
+    \node[place] (m)[above=of k]{};
+    \node[place] (n)[right=of m]{};
+    \node[place,node distance=.6cm] (o)[above right=of m]{};
+    \node[node distance=.25cm] (text5)[below right =of k]{$ k_5 $};
+    \path[-](k) edge node {} (m)
+                edge node {} (n)
+                edge node {} (l)
+                edge node {} (o)
+            (n) edge node {} (m)
+                edge node {} (l)
+                edge node {} (o)
+            (l) edge node {} (m)
+                edge node {} (o)
+            (m) edge node {} (o);
+    
+    \node[place] (q)[right=of l]{};
+    \node[place] (r)[right=of q]{};
+    \node[place] (s)[above=of q]{};
+    \node[place] (t)[right=of s]{};
+    \node[place,node distance=.5cm] (p)[below left=of s]{};
+    \node[place,node distance=.5cm] (u)[below right=of t]{};
+    \node[node distance=.25cm] (text6) [below left =of r]{$ k_6 $};
+    \path[-](p) edge node {} (s)
+                edge node {} (q)
+                edge node {} (r)
+                edge node {} (t)
+                edge node {} (u)
+            (q) edge node {} (s)
+                edge node {} (r)
+                edge node {} (u)
+                edge node {} (t)
+            (t) edge node {} (s)
+                edge node {} (r)
+                edge node {} (u)
+            (s) edge node {} (r)
+                edge node {} (u)
+            (u) edge node {} (r);
+\end{tikzpicture}

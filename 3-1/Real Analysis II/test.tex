@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{multirow}
+
+\begin{document}
+% \begin{tabular}{p{5 cm}|l}
+%     {\begin{tikzpicture}
+%         \draw (0,0) circle (.5cm);
+%         \draw (0,0) circle (2cm);
+%     \end{tikzpicture}} &{\begin{align*}
+%          F&\supset F' \\
+%       F&\supset E \\
+%      F&\supset E' \\
+%      F&\supset \bar{E} 
+%     \end{align*}} \\
+% \end{tabular}
+\begin{tikzpicture}
+    \draw (-2,-2) circle (2cm);
+\end{tikzpicture}
+\\
+\begin{tabular}{p{5cm}|l}
+    {\begin{tikzpicture}
+                \draw (0,0) circle (.5cm);
+                \draw (0,0) circle (2cm);
+            \end{tikzpicture}} & 1st line\\
+            & 2nd line\\
+            & 3rd line\\
+\end{tabular}
+\\
+\begin{tabular}{c|l}
+    \multicolumn{1}{c|}{\multirow{4}{*}{\begin{tikzpicture}
+        \draw (-.5,.5) circle (1cm);
+        \draw (.1,.7) node {E};
+        \draw (1,1.5) node {F};
+        \draw (0,0) circle (2cm);
+    \end{tikzpicture}} } &  \\
+    \multicolumn{1}{c|}{} & \\ 
+    \multicolumn{1}{c|}{} & $ F\supset F' $\\ 
+    \multicolumn{1}{c|}{} & $ F\supset E $\\ 
+    \multicolumn{1}{c|}{} & $ F\supset E' $\\
+    \multicolumn{1}{c|}{} & $ F\supset \bar{E} $\\
+    \multicolumn{1}{c|}{} & \\
+    \multicolumn{1}{c|}{} & \\
+    \multicolumn{1}{c|}{} & \\
+    \end{tabular}
+    \newpage
+    \begin{tikzpicture}
+        \draw (0,0) circle (3cm);
+    \end{tikzpicture}
+\end{document}

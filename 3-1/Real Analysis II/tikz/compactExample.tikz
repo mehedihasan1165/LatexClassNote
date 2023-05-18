@@ -1,0 +1,10 @@
+\usetikzlibrary{decorations.pathreplacing}
+\begin{tikzpicture}
+\draw[thick,use Hobby shortcut,closed,fill=black!20] (-1,1)..(0,.75)..(1,1)..(0,0);
+\draw[thick,fill=black!20] (4.5,0)--(2.5,0)--(3.5,1.5);
+\draw[thick,decorate, decoration={brace, amplitude=5pt}] (3.5,1.5)--(4.5,0);
+\draw[thick,use Hobby shortcut,closed,densely dashed] (6,00)..(7.5,1)..(8,2)..(9,0);
+\node at (0,-.5) {Compact};
+\node at (3.5,-.5) {Non compact};
+\node at (7.5,-1.8) {Non compact};
+\end{tikzpicture}

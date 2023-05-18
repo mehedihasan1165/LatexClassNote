@@ -1,0 +1,309 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Graph Theory}
+\section{Graph and Multigraph}
+A graph $ G $ consists of two things:
+\begin{enumerate}[label=(\roman*)]
+    \item A set $ V=V(G) $ whose elements are called vertices, point or nodes of $ G $.
+    \item A set $ E=E(G) $ of unordered pairs of distinct vertices called edges of $ G $.
+\end{enumerate}
+We denote such a graph by $ G(V,E) $.\\
+\begin{figure}[h]
+    \begin{minipage}[b]{0.5\textwidth}
+        \centering
+        \import{../tikz/}{sample-graph-1.tikz}
+        \caption{$ G_1 $}
+        \label{fig:graph1}
+    \end{minipage}
+    \begin{minipage}[b]{0.5\textwidth}
+        \centering
+        \import{../tikz/}{sample-graph-2.tikz}
+        \caption{$ G_2 $}
+        \label{fig:graph2}
+    \end{minipage}
+\end{figure}
+\section{Multigraphs} 
+Look at the graph \ref{fig:graph2}, the edges $ e_4 $ and $ e_5 $ are called multiple edges since they connect the same endpoints and the edge $ e_6 $ is called a loop since its endpoints are the same vertex. Such a diagram is called multigraph.
+\section{Degree}
+The degree of a vertex $ v $ in a graph $ G $ written $ deg(v) $ is equal to the number of edges in $ G $ which contains $ v $, that is which are incident on $ v $. A vertex with degree zero is called isolated. In graph $ G_2 $, $ deg(D)=4,\,deg(C)=3 $.
+
+A multigraph is said to be finite if it has a finite number of vertices and a finite number of edges. The finite graph with one vertex and no edges is called the trivial graph.
+\section{Subgraph}
+Consider a graph $ G=G(V,E) $. A graph $ H=H(V',E') $ is called a subgraph of $ G $ if the vertices and edges of $ H $ are contained in the vertices and edges of $ G $.
+\section{Isomorphic Graphs and Homeomorphic Graph}
+Graphs $ G(V,E) $ and $ G^*(V^*,E^*) $ are said to be homeomorphic if the can be obtained from the same graph or isomorphic graphs by dividing an edge with additional vertices.
+\begin{figure}[H]
+    \begin{minipage}[b]{.3\textwidth}
+        \centering
+        \import{../tikz/}{iso-1.tikz}
+        \caption{Graph A}
+        \label{fig:graphIsoA}
+    \end{minipage}
+    \begin{minipage}[b]{.3\textwidth}
+        \centering
+        \import{../tikz/}{iso-2.tikz}
+        \caption{Graph B}
+        \label{fig:graphIsoB}
+    \end{minipage}
+    \begin{minipage}[b]{.3\textwidth}
+        \centering
+        \import{../tikz/}{iso-3.tikz}
+        \caption{Graph C}
+        \label{fig:graphIsoC}
+    \end{minipage}
+\end{figure}
+Graphs \ref{fig:graphIsoB} and \ref{fig:graphIsoC} are homeomorphic since they can be obtained from \ref{fig:graphIsoA} by adding appropriate vertices.
+
+Graphs $ G $ and $ G^* $ are said to be isomorphic if there exists a one-to-one correspondence $ f:V\to V^* $ such that $ \set{u,v} $ is an edge of $ G $ if and only if $ \set{f(u),f(v)} $ is an edge of $ G^* $. 
+\begin{figure}[H]
+    \begin{minipage}[b]{.5\textwidth}
+        \centering
+        \import{../tikz/}{isomorphic-1.tikz}
+        \caption{Isomorphic Graphs}
+        \label{fig:isoGraphA}
+    \end{minipage}
+    \begin{minipage}[b]{.5\textwidth}
+        \centering
+        \import{../tikz/}{isomorphic-2.tikz}
+        \caption{Isomorphic Graphs}
+        \label{fig:isoGraphB}
+    \end{minipage}
+\end{figure}
+\section{Paths, Connectivity}
+A path in a multigraph $ G $ consists of vertices and edges of the form,\\
+\indent\indent $ v_0,\,e_1,\,v_1,\,e_1,\,v_2,\,e_2,\dots,\,e_{n-1},\,v_{n-1},\,e_n,\,v_n $.
+
+Where each edge $ e_i $ contains the vertices $ v_{i-1} $ and $ v_i $. The number $ n $ of edges is called the length of the path.
+\begin{itemize}
+    \item The path is closed if $ v_0=v_n $.
+    \item A simple path is a path in which all vertices are different.
+    \item A path in which all edges are different will be called a trail.
+    \item A cycle is a closed path in which all vertices are distinct except $ v_0=v_n $.\\
+    \begin{center}
+        \import{../tikz/}{path-1.tikz}
+    \end{center}
+    $ \alpha=\set{p_4,p_1,p_2,p_5,p_1,p_2,p_3,p_6} $ is not a trail\\
+    $ \beta=\set{p_4,p_1,p_5,p_2,p_6} $ is not a path\\
+    $ \gamma=\set{p_4,p_1,p_5,p_2,p_3,p_5,p_6} $ is a trail but not simple\\
+    $ \delta=\set{p_4,p_1,p_5,p_3,p_6} $ is simple but not shortest\\
+    \item A graph $ G $ is connected if there is a path between any two of its vertices.
+    \item The distance between vertices $ u $ and $ v $ in $ G $ written $ d(u,v) $ is the length of the shortest path between $ u $ and $ v $ and the diameter of $ G $, written $ diam(g) $ is the maximum distance between any two points in $ G $.
+    \begin{figure}[H]
+        \begin{minipage}[b]{.5\textwidth}
+            \centering
+            \import{../tikz/}{multi-1.tikz}
+            \caption{$ G_1 $}
+            \label{fig:multi1}
+        \end{minipage}
+        \begin{minipage}[b]{.5\textwidth}
+            \centering
+            \import{../tikz/}{multi-2.tikz}
+            \caption{$ G_2 $}
+            \label{fig:multi2}
+        \end{minipage}
+    \end{figure}
+    In $ G_1 $(figure \ref{fig:multi1}), $ d(A,\,F)=2 $ and $ diam(G_1)=3 $\\
+    In $ G_2 $(figure \ref{fig:multi2}), $ d(A,\,F)=3 $ and $ diam(G_2)=4 $
+    \item A vertex $ v $ in $ G $ is called a cutpoint if $ G-v $ is disconnected.
+    \item An edge $ e $ is called a bridge if $ G-e $ is disconnected.\\($ D $ in graph $ G_1 $ is cutpoint and $ e=\set{D,F} $ is a bridge in $ G_2 $.)
+    \item  A multigraph is said to be traversable if it can be drawn without any breaks in the curve and without repeating any edges.\\
+    \begin{center}
+        \import{../tikz/}{trav.tikz}
+        \quad
+        \import{../tikz/}{trav-1.tikz}
+    \end{center}
+    A multigraph with more than two odd vertices cannot be traversable. The famous k\"onigsberg bridge problem has four odd vertices.
+    \item A graph $ G $ is called an Eulerian graph if there exists a closed traversable trail.
+    \item A finite connected graph is Eulerian if and only if each vertex has even degree.
+    \item A Hamiltonian circuit in a graph $ G $ named after the nineteenth-century Irish mathematician William Hamilton, is a closed path that visits every vertex in $ G $ exactly once.
+    
+    A graph $ G $ that admits a Hamiltonian circuit is called a Hamiltonian graph.
+    \begin{figure}[h]
+        \centering
+        \begin{minipage}[b]{0.4\textwidth}
+           \centering
+            \import{../tikz/}{hamilton-non-euler.tikz}
+            \caption{Hamiltonian and non-Eulerian}
+            \label{fig:hamilNonEuler}
+        \end{minipage}
+        \begin{minipage}[b]{0.5\textwidth}
+        \centering
+            \import{../tikz/}{euler-non-hamilton.tikz}
+            \caption{Eulerian and non-Hamilton}
+            \label{fig:eulerNonHamil}
+        \end{minipage}
+    \end{figure}
+    \item A graph $ G $ is called a labeled graph if its edges are assigned data of one kind.
+    
+    A graph $ G $ is called a weighted graph if each $ e $ of $ G $ is assigned a non-negative number $ w(e) $ called the weight or length of $ v $. 
+    \item A graph $ G $ is said to be complete if every vertex in $ G $ is connected to every other vertex in $ G $. The complete graph with $ n $ vertices is denoted by $ k_n $.
+    \begin{figure}[h]
+        \centering
+        \import{../tikz/}{complete-graph.tikz}
+        \caption{Some complete graphs}
+        \label{fig:comGraph}
+    \end{figure}
+    \item A graph $ G $ is $ k $-regular if every vertex has degree $ k $.
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{reg-graph.tikz}
+        \caption{Some regular graphs}
+        \label{fig:regGraph}
+    \end{figure}
+    \item A graph $ G $ is said to be bipartite if its vertices $ V $ can be partitioned into two subsets $ M $ and $ N $ such that each edge of $ G $ connects a vertex of $ M $ to a vertex of $ N $.
+
+    By $ k_{m,n} $ we mean that each vertex of $ M $ is connected to each vertex of $ N $, a complete bipartite graph.
+    \begin{center}
+        \import{../tikz/}{k-2-3.tikz}
+    \end{center}
+    \item A graph or multigraph which can be drawn in the plane so that its edges do not cross is said to be planar.
+    \begin{center}
+        \import{../tikz/}{map.tikz}
+    \end{center}
+    \item A particular planar representation of a finite planar multigraph is called a map. 
+    \item Let $ G $ be a connected planar graph with $ p $ vertices and $ q $ edges, where $ p\geq3 $. Then $ q\leq 3p-6 $.
+    \item Suppose $ G $ is a graph with $ m $ vertices and suppose the vertices have been ordered say, $ v_1,v_2,\dots,v_m $. Then the adjacency matrix $ A=[a_{ij}] $ of the graph $ G $ is the $ m\times m $ matrix defined by \[a_{ij}=\begin{cases}
+        1\quad\text{if $ v_i $ is adjacent to $ v_j $}\\
+        0\quad\text{Otherwise}
+    \end{cases}\]
+    Adjacency matrix is symmetric.
+    \begin{center}
+        \import{../tikz/}{adj.tikz}
+        $ \bordermatrix{~ & A & B & C & D & E \cr
+                        A & 0 & 1 & 0 & 1 & 0 \cr
+                        B & 1 & 0 & 1 & 0 & 1 \cr
+                        C & 0 & 1 & 0 & 0 & 0 \cr
+                        D & 1 & 0 & 0 & 0 & 1 \cr
+                        E & 0 & 1 & 0 & 1 & 0 \cr
+                        } $
+    \end{center}
+    \item A vertex coloring or simply a coloring of $ G $ is an assignment of colors to the vertices of $ G $ such that adjacent vertices have different colors.
+
+    The minimum number of colors needed to paint $ G $ is called the chromatic number of $ G $ and is denoted by $ \lambda(G) $.\\
+    \begin{center}
+        \import{../tikz/}{map-color.tikz}
+    \end{center}
+    \begin{enumerate}
+        \item Ordering the vertices of $ G $ according to decreasing degrees. Here they are $ E$, $G$, $B$, $C$, $D$, $A$, $F$, $H $
+        \item Assign first color $ c_1 $ to first vertex and assign $ c_1 $ to each vertex which is not adjacent to first vertex.
+        \item Repeat step 2 with second color $ c_2 $.
+        \item Repeat step 3 and 3 until no vertex left.
+        \item Exit.
+    \end{enumerate}
+    First color $ c_1 $ to $ E,\,A $\\
+    Second color $ c_2 $ to $ G, \,B,\,F $\\
+    Third color $ c_3 $ to $ C,\,D,\,H $\\
+    Since every vertex is adjacent to every other vertex, $ k_n $ requires $ n $ colors in any coloring. Thus, $ \lambda(k_n)=n $.
+\end{itemize}
+\section{Four Color Theorem}
+Any planar graph is four colorable.
+\subsection{Dual maps and the four color theorem}
+If the regions of any map $ M $ are colored so that adjacent regions have different colors, then no more than four colors are required.
+
+Consider a map $M$.
+\begin{itemize}
+    \item Two regions of $ M $ are said to be adjacent if they have an edge in common.
+    \item By a coloring of $ M $ we mean an assignment of a color to each region of $ M $ such that adjacent regions have different colors.
+    \begin{center}
+        \import{../tikz/}{planarMap.tikz}    
+    \end{center}
+    \item $ M $ is 3-colorable. Because $ r_1 $ red, $ r_2 $ white, $ r_3 $ red, $ r_4 $ white, $ r_5 $ red, $ r_6 $ blue.
+    \item In each region of $ M $ we choose a point and if two regions have an edge in common then we connect the corresponding points with a curve through the common edge. These curves can be drawn so that they are non-crossing. Thus, we obtain a new map $ M^* $, called the dual of $ M $, such that each vertex of $ M^* $ corresponds to exactly one region of $ M $.
+    \item A graph $ T $ is called a tree if $ T $ is connected and $ T $ has no cycles.
+\end{itemize}
+\section{Spanning Tree}
+A subgraph $ T $ of a connected graph $ G $ is called a spanning tree of $ G $ if $ T $ is a tree and $ T $ includes all the vertices of $ G $.
+
+Suppose $ G $ is a connected weighted graph. Then any spanning tree $ T $ of $ G $ is assigned a total weight obtained by adding the weights of the edges in $ T $.
+
+A minimal spanning tree of $ G $ is a spanning tree whose total weight is as small as possible.
+\subsection{Kruskal's algorithm for minimal spanning tree}
+\begin{enumerate}[label=step \arabic*:]
+    \item Arrange the edges of $ G $ in order of increasing weights.
+    \item Starting only with the vertices of $ G $ and proceeding sequentially, add each edge which does not result in a cycle until $ (n-1) $ edges are added.
+    \item Exit.
+\end{enumerate}
+\import{../tikz/}{kruskal-1.tikz}\\
+\import{../tikz/}{kruskal-2.tikz}\\
+First we order the edges by decreasing weights and then we successively delete edges without disconnecting $ Q $ until five edges remain. This yields the following data:\\
+\begin{tabular}{c c c c c c c c c c}
+    Edges & BC & AF & AC & BE & CE & BF & AE & DF & BD \\
+    Weight & 8 & 7 & 7 & 7 & 6 & 5 & 4 & 4 & 3\\
+    Delete & Yes & Yes & Yes & No  & No & Yes & No & No & No\\
+\end{tabular}\\
+Thus the minimal spanning tree of $ Q $ which is obtained contains the edges \[BE,\,CE,\,AE,\,DF,\,BD\]
+\section{Traversing Binary Tree}
+There are three standard ways of traversing a binary tree $ T $ with root $ R $. these three algorithm called pre order, in order and post order.
+\subsection{Pre order}
+\begin{enumerate}
+    \item Process the root $ R $.
+    \item Traverse the left subtree of $ R $ in pre-order.
+    \item Traverse the right subtree of $ R $ in pre-order.
+\end{enumerate}
+\subsection{In order}
+\begin{enumerate}
+    \item Traverse the left subtree of $ R $ in in order.
+    \item Process the root $ R $.
+    \item Traverse the right subtree of $ R $ in in order.
+\end{enumerate}
+\subsection{Post order}
+\begin{enumerate}
+    \item Traverse the left subtree of $ R $ in post order.
+    \item Traverse the right subtree of $ R $ in post order.
+    \item Process the root $ R $.
+\end{enumerate}
+% \newpage
+\begin{ex}
+    Traverse the tree of the following figure.\\
+    \begin{center}
+        \import{../tikz/}{tree.tikz}\\
+    \end{center}
+    Pre-order traversal = $ A,\,B,\,D,\,E,\,F,\,C,\,G,\,H,\,J,\,L,\,K $\\
+    In-order traversal = $ D,\,B,\,F,\,E,\,A,\,G,\,C,\,L,\,J,\,H,\,K $\\
+    Post-order traversal = $ D,\,F,\,E,\,B,\,G,\,L,\,J,\,K,\,H,\,C,\,A $ 
+\end{ex}
+\newpage
+\begin{ex}
+    Using Dijkstra's algorithm to find the shortest path from $ a $ to $ z $.\\
+    \begin{enumerate}[label=Step \arabic*:]
+        \item \hfill
+        \begin{figure}[H]
+            \centering
+            \import{../tikz/}{dijk-1.tikz}
+        \end{figure}
+        \item \hfill\begin{center}
+            \import{../tikz/}{dijk-2.tikz}
+        \end{center}
+        \item \hfill\begin{center}
+            \import{../tikz/}{dijk-3.tikz}
+        \end{center}
+        \item \hfill\begin{center}
+            \import{../tikz/}{dijk-4.tikz}
+        \end{center}
+        \item \hfill\begin{center}
+            \import{../tikz/}{dijk-5.tikz}
+        \end{center}
+        \item \hfill\begin{center}
+            \import{../tikz/}{dijk-6.tikz}
+        \end{center}
+        \item \hfill\begin{center}
+            \import{../tikz/}{dijk-7.tikz}
+        \end{center}
+    \end{enumerate}
+    The shortest path: $ a\to c\to b\to d\to e\to z $
+\end{ex}
+\section{Graphical Representation of an Expression}
+In compiler construction an expression such as $ '(x-y)*(w+z)*(x-y)*(w-z)' $ can be represented by the directed acyclic graph\footnote{See tree traversal, infix postfix expression, expression tree.}.
+\begin{center}
+    \import{../tikz/}{exp-1.tikz}
+\end{center}
+% \newpage
+\begin{ex}
+    Draw the tree which corresponds to the expression $ E=(2x+y)(5a-b)^3 $\\
+    \begin{center}
+        \import{../tikz/}{exp-2.tikz}
+    \end{center}
+\end{ex}
+\end{document}

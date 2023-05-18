@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+    [n/.style={circle,draw},node distance=2cm,
+    dot/.style={circle,draw,fill=black,minimum size=1pt}]
+    \node[dot] (a){};
+    \node[n,node distance=1mm] (texta)[left=of a]{a};
+    \node[rectangle,draw,node distance=5mm] (textaa)[left=of texta]{selected};
+    \path[->](textaa)edge node{}(texta);
+    \node[dot](b)[above right=of a]{};
+    \node[node distance=1mm] (textb)[above=of b]{b};
+    \node[node distance=.1mm] (textbb)[above=of textb]{4(a)};
+    \node[dot](c)[below right=of a]{};
+    \node[node distance=1mm] (textc)[below=of c]{c};
+    \node[node distance=.1mm] (textcc)[below=of textc]{2(a)};
+    \node[dot](d)[right=of b]{};
+    \node[node distance=1mm] (textd)[above=of d]{d};
+    \node[node distance=.1mm] (textdd)[above=of textd]{$ \infty $};
+    \node[dot](e)[right=of c]{};
+    \node[node distance=1mm] (texte)[below=of e]{e};
+    \node[node distance=.1mm] (textee)[below=of texte]{$ \infty $};
+    \node[dot](z)[above right=of e]{};
+    \node[node distance=1mm] (textz)[right=of z]{z};
+    \node[node distance=.1mm] (textzz)[right=of textz]{$ \infty $};
+    \path[-](c) edge[very thin] node[above,sloped]{1}(b)
+                edge[very thin] node[below,sloped]{2}(a)
+                edge[very thin] node[above,sloped]{8}(d)
+                edge[very thin] node[above,sloped]{10}(e)
+            (b) edge[very thin] node[above,sloped]{4}(a)
+                edge[very thin] node[above,sloped]{5}(d)
+            (z) edge[very thin] node[above,sloped]{6}(d)
+                edge[very thin] node[above,sloped]{3}(e)
+            (d) edge[very thin] node[above,sloped]{2}(e);
+\end{tikzpicture}

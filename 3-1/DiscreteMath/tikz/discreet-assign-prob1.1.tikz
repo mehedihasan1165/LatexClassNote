@@ -1,0 +1,33 @@
+\begin{tikzpicture}[a/.style={inner sep=0,outer sep=0,minimum size=0}]
+\node[circle,draw,fill=black,label={\small $u'$}](a){};
+\node[a,node distance=1cm](b)[above right=of a]{};
+\node[a,node distance=1cm](c)[below right=of b]{};
+\node[a,node distance=1.5cm](d)[above right=of c]{};
+\node[a,node distance=4cm](e)[right=of a]{};
+\node[a,node distance=1.5cm,label=below:{\small $T_2$}](f)[below =of c]{};
+
+\path[-,thick](a) edge (b)
+(b)edge (c)
+(c)edge (d)
+(d)edge (e)
+(e)edge (f)
+(f)edge (a);
+
+\node[a,node distance=1.5cm](bb)[above left=of a]{};
+\node[a,node distance=2.5 cm](cc)[left=of a]{};
+\node[a,node distance=1.5cm](dd)[above left=of cc]{};
+\node[a,node distance=2cm](ee)[left=of cc]{};
+\node[a,node distance=2.5cm](ff)[below right =of ee]{};
+\node[a,node distance=1cm](gg)[below left =of cc]{};
+\node[a,node distance=2.5cm,label=below:{\small $T_1$}](hh)[below =of bb]{};
+\path[-,thick](a) edge (bb)
+(bb)edge (cc)
+(cc)edge (dd)
+(dd)edge (ee)
+(ee)edge (ff)
+(ff)edge (gg)
+(gg)edge (cc)
+(cc)edge (hh)
+(hh)edge (a);
+\node[node distance=2cm,][below =of a]{Figure: 1};
+\end{tikzpicture}

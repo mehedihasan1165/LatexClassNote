@@ -1,0 +1,25 @@
+\usetikzlibrary{decorations.pathreplacing}
+\begin{tikzpicture}
+\draw[use Hobby shortcut] [closed](1,3).. (5,9)..(10,5)..(4,-2)..(0,0);
+\draw[thick,dashed] (5.5,4) circle (3);
+\draw[mark=*] plot coordinates{(5.5,4)} 
+				plot coordinates{(5.5,5.5)}
+				plot coordinates{(5.90,5.5)};
+
+\draw[-latex] (5.5,4)--(8.5,4);
+\draw (5.5,4)--(5.5,5.5) (5.5,5.5)--(6.25,5.5);
+\draw[decorate, decoration={brace, amplitude=7pt}] (5.5,5.5)--(6.25,5.5);
+\draw[thick,dashed] (5.5,5.5) circle (.75);
+
+\node at (2,1) {$D_\varepsilon (x)$};
+\node at (5.2,4) {$x$};
+\node at (7,3.8) {$\varepsilon$};
+\node at (5.25,5.5) {$y$};
+\node at (5.9,5.3) {$z$};
+\node at (5.9,5.9) {$r$};
+\node at (7,7.25) {$N_r(y)$};
+\node at (9.5,7.5) {$M$};
+
+\draw[-latex,use Hobby shortcut](6.5,7.2) ..(6,7)..(5.5,6);
+\draw[-latex,use Hobby shortcut] (2.4,1.25).. (3,2.5)..(4,3) ;
+\end{tikzpicture}

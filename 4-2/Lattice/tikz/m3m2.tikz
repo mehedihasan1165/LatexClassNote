@@ -1,0 +1,51 @@
+\begin{tikzpicture}
+    \node[lattice] (aa) at (-5,0) {};
+    \node[lattice] (a) at (-6,1) {};
+    \node[lattice] (b) at (-5,1) {};
+    \node[lattice] (c) at (-4,1) {};
+    \node[lattice] (bb) at (-5,2) {};
+    \draw[thick] (aa)--(a)--(bb)--(b)--(aa)--(c)--(bb);
+    
+    \node at (-3,1) {$\dot\cup$};
+    
+    \node[lattice] (AA) at (-1,0) {};
+    \node[lattice] (A) at (-2,1) {};
+    \node[lattice] (B) at (-0,1) {};
+    \node[lattice] (BB) at (-1,2) {};
+    \draw[thick] (AA)--(A)--(BB)--(B)--(AA);
+    \node at (1,1) {$\cong$};
+    
+    \node[lattice] (Aaa) at (3,0) {};
+    \node[lattice] (Aa) at (2,1) {};
+    \node[lattice] (Ab) at (3,1) {};
+    \node[lattice] (Ac) at (4,1) {};
+    \node[lattice] (Abb) at (3,2) {};
+    \draw[thick] (Aaa)--(Aa)--(Abb)--(Ab)--(Aaa)--(Ac)--(Abb);
+    
+    \node at (8,1) {and};
+    
+    \node[lattice] (aAA) at (6,0) {};
+    \node[lattice] (aA) at (5,1) {};
+    \node[lattice] (aB) at (7,1) {};
+    \node[lattice] (aBB) at (6,2) {};
+    \draw[thick] (aAA)--(aA)--(aBB)--(aB)--(aAA);
+    
+    % 
+    \node[lattice] (AAaa) at (10,-1.35) {};
+    \node[lattice] (AAa) at (9,-0.35) {};
+    \node[lattice] (AAb) at (10,-0.35) {};
+    \node[lattice] (AAc) at (11,-0.35) {};
+    \node[lattice] (AAbb) at (10,0.65) {};
+    \draw[thick] (AAaa)--(AAa)--(AAbb)--(AAb)--(AAaa)--(AAc)--(AAbb);
+    
+    \node[lattice] (aaAA) at (10,1.65) {};
+    \node[lattice] (aaA) at (9,2.65) {};
+    \node[lattice] (aaB) at (11,2.65) {};
+    \node[lattice] (aaBB) at (10,3.65) {};
+    \draw[thick] (aaAA)--(aaA)--(aaBB)--(aaB)--(aaAA)--(AAbb);
+    
+    \node at (4.5,-0.5) {$M_3\;\dot\cup\;M_2$};
+    \node at (10,-2) {$M_3\oplus M_2$};
+    \node at (-5,-0.5) {$M_3$};
+    \node at (-1,-0.5) {$M_2$};
+    \end{tikzpicture}

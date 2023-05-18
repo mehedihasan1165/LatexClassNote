@@ -1,0 +1,186 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+% \everymath{\displaystyle}
+% \newcommand{\difflag}{x\ddxn{y}{2}+(1-x)\ddx{y}+ny=0}
+% \newcommand{\Lnx}{\sum_{r=0}^n (-1)^r \frac{n!}{(n-r)!\,(r!)^2}x^r}
+% \newcommand{\Hn}[1]{\sum_{r=0}^N (-1)^r \frac{n!}{r!\,(n-2r)!}(2 #1)^{n-2r}}
+\begin{document}
+\chapter{Laguerre Polynomial}
+We define the standard solution of Laguerre's differential equation \( \difflag \) as that for which \( c_0=1 \) and call it the Laguerre polynomial of order \(n\)  and is denoted by \( L_n(x) \).
+\[
+    \therefore\, L_n(x)=\Lnx
+\]
+\section{Generating Function of Laguerre Polynomial}
+\begin{prob}
+    Prove that
+    \[
+        \frac{1}{(1-t)}e^{\frac{-tx}{1-t}}=\sum_{n=0}^\infty t^n\,L_n(x)
+    \]
+\end{prob}
+\begin{proof}
+    From exponential series we have
+    \begin{equation}
+        e_x=1\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+\dots+\frac{x^r}{r!}+\dots \label{eq:gen1}
+    \end{equation}
+    \begin{align*}
+        \therefore\,\frac{1}{(1-t)}e^{\frac{-tx}{1-t}} & =\frac{1}{1-t}\sum_{r=0}^\infty \frac{1}{r!}\left( \frac{-tx}{1-t} \right)^r \qquad\qquad \text{[using \( \ref{eq:gen1} \)]}                        \\
+                                                       & =\sum_{r=0}^\infty (-1)^r \frac{1}{r!} \frac{t^r\,x^r}{(1-t)^{r+1}}                                                                             \\
+                                                       & =\sum_{r=0}^\infty (-1)^r \frac{t^r\,x^r}{r!}(1-t)^{-(r+1)}                                                                                     \\
+                                                       & =\sum_{r=0}^\infty (-1)^r \frac{t^r\,x^r}{r!}\left[ 1+(r+1)^r+\frac{(r+1)(r+2)}{2!}t^2+\frac{(r+1)(r+2)(r+3)}{3!}t^3+\dots \right]              \\
+                                                       & =\sum_{r=0}^\infty\left[ (-1)^t \frac{t^r\,x^r}{r!}\sum_{s=0}^\infty\frac{(r+s)!}{r!\,s!}t^s \right]\qquad\qquad\text{[using binomial theorem]}\\
+                                                       &= \sum_{r=0}^\infty\sum_{s=0}^\infty(-1)^r\frac{(r+s)!}{(r!)^2\,s!}x^r\,t^{r+s}
+    \end{align*}
+    % \newpage
+    Let \( r \) be fixed. The coefficient of \( t^n \) can be obtained by setting \( r+s=n \) i.e., \( s=n-r \). Hence, for a fixed value of \( r \) the coefficient of \( t^n \) is given by 
+    \[
+        (-1)^r\frac{n!}{(r!)^2(n-r)!}x^r
+    \]
+    Therefore, the total coefficient of \( t^n \) is obtained by summing over all allowed values of \( r \).
+
+    Since \( s=n-r \) and \( s\geq 0 \).
+
+    \( \therefore\, n-r\geq 0 \) or, \( r\leq n \).\\
+
+    Hence, the coefficient of \( t^n \) is 
+    \[
+        \sum_{r=0}^\infty(-1)^r\frac{n!}{(r!)^2\,(n-r)!}x^r=L_n(x)
+    \]
+    Thus 
+    \[
+        \frac{1}{(1-t)}e^{\frac{-tx}{1-t}}=\sum_{n=0}^\infty t^n\,L_n(x)
+    \]
+\end{proof}
+
+\section{Rodrigue's Formula for Laguerre Polynomial}
+\begin{prob}
+    Prove that 
+    \[
+        L_n(x)=\frac{e^x}{n!}\ddxn{}{n}\left( x^ne^{-x} \right)
+    \]
+\end{prob}
+\begin{proof}
+    Right-hand side
+    \begin{align*}
+        &\frac{e^x}{n!}\ddxn{}{n}\left( x^ne^{-x} \right)\\
+        =& \frac{e^x}{n!}\left[ x^n(-1)^ne^{-n}+n\cdot nx^{n-1}(-1)^{n-1}e^{-x}+\frac{n(n-1)}{2!}n(n-1)x^{n-2}(-1)^{n-2}e^{-x}+\dots+n!e^{-x} \right]\\
+        =& \frac{e^x\cdot e^{-x}}{n!}\left[ (-1)^n x^{n}+\frac{n(n!)}{1!(n-1)!}x^{n-1}+(-1)^{n-2} \frac{n(n-1)}{2!}\cdot \frac{n!}{(n-2)!}x^{n-2}+\dots+n! \right]\\
+        =& (-1)^n\cdot\frac{n!}{(n!)^2}x^n+(-1)^{n-1}\frac{n!}{1!\{(n-1)!\}^2}x^{n-1}+(-1)^{n-2}\frac{n!}{2!\{(n-2)!\}^2}x^{n-2}+\dots\frac{n!}{n!}\\
+        =& \sum_{r=0}^n (-1)^r \frac{n!\,x^r}{\left\{ r!\right\}^2(n-r)!}\\
+        =& L_n(x)
+    \end{align*}
+    Hence
+    \[
+        L_n(x)=\frac{e^x}{n!}\ddxn{}{n}\left( x^ne^{-x} \right)
+    \]
+\end{proof}
+% \newpage
+\section{Orthogonality Property of Laguerre Polynomials}
+\begin{prob}
+    Prove that
+    \[
+        \int_0^\infty e^{-x}L_n(x)L_m(x)\dx=
+        \begin{cases}
+            0&\text{ if }m\neq n\\
+            1&\text{ if }m= n
+        \end{cases}
+    \]
+    or, Prove that
+    \[
+        \int_0^\infty e^{-x}L_n(x)L_m(x)\dx=\delta_{mn}
+    \]
+    or, Show that Laguerre polynomials are orthogonal over \( (0,\infty) \) with respect to the weighted function \( e^{-x} \).
+\end{prob}
+\begin{proof}
+    From generating function of Laguerre polynomial we have,
+    \[
+        \sum_{n=0}^\infty t^n\,L_n(x)=\frac{1}{(1-t)}e^{\frac{-tx}{1-t}}
+    \]
+    and
+    \[
+        \sum_{m=0}^\infty s^m\,L_m(x)=\frac{1}{(1-s)}e^{\frac{-sx}{1-s}}
+    \]
+    \begin{align} 
+        \therefore\,\sum_{n=0}^\infty\sum_{m=0}^\infty L_n(x)\,L_m(x)t^ns^m &= \frac{1}{(1-t)(1-s)}e^{\frac{-tx}{1-t}}\cdot e^{\frac{-sx}{1-s}}\notag\\
+        &=\frac{1}{(1-t)(1-s)}e^{-x\left\{ \frac{t}{1-t}+\frac{s}{1-s}\right\}}\label{eq:ortho1}
+    \end{align}
+    Multiplying both sides of \eqref{eq:ortho1} by \( e^{-x} \) and then integrating both sides with respect to x from \( 0 \) to \( \infty \), we get
+    \begin{align}
+        &\sum_{n=0}^\infty\sum_{m=0}^\infty\left[\int_0^\infty e^{-x} L_n(x)\,L_m(x)\dx\right]t^ns^m\notag\\
+        &= \frac{1}{(1-t)(1-s)}\int_0^\infty e^{-x\left\{ 1+\frac{t}{1-t}+\frac{s}{1-s}\right\}}\dx\notag\\
+        &= \frac{1}{(1-t)(1-s)}\left[\frac{e^{-x\left\{ 1+\frac{t}{1-t}+\frac{s}{1-s}\right\}}}{-\left( 1+\frac{t}{1-t}+\frac{s}{1-s} \right)}\right]_0^\infty\notag\\
+        &=\frac{1}{(1-t)(1-s)}\cdot\frac{1}{1+\frac{t}{1-t}+\frac{s}{1-s}}\notag\\
+        &=\frac{1}{(1-t)(1-s)+t(1-s)+s(1-t)}\notag\\
+        &=\frac{1}{1-t-s+st+t-ts+s-st}\notag\\
+        &=\frac{1}{1-st}\notag\\
+        &=(1-st)^{-1}\notag\\
+        &=1+st+(st)^2+\dots+(st)^n+\dots\notag\\
+        &=\sum_{n=0}^\infty s^nt^n\qquad\qquad\text{using binomial theorem}\label{eq:ortho2}
+    \end{align}
+    Now we see that the indices of \( t \) and \( s \) are always equal in each term on right hand side of \eqref{eq:ortho2}. Hence when \( m\neq n \), equating coefficient of \( t^ns^m \) on both sides of \eqref{eq:ortho2} gives
+    \begin{equation}
+        \int_0^\infty  e^{-x}L_n(x)L_m(x)\dx=0\qquad\qquad \text{ if } m\neq n \label{eq:ortho3}
+    \end{equation}
+
+    Again equating coefficients of \( t^ns^m \) on both sides of \eqref{eq:ortho2} gives
+    \begin{equation}
+        \int_0^\infty \big(L_n(x)\big)^2\dx=1\label{eq:ortho4}
+    \end{equation}
+    
+    Hence
+    \begin{equation}
+        \int_0^\infty e^{-x}L_n(x)L_m(x)\dx=
+        \begin{cases}
+            0&\text{ if }m\neq n\\
+            1&\text{ if }m= n
+        \end{cases} \label{eq:ortho5}
+    \end{equation}
+    Let
+    \begin{equation}
+        \delta_{mn}=
+        \begin{cases}
+            0&\text{ if }m\neq n\\
+            1&\text{ if }m= n
+        \end{cases} \label{eq:ortho6}
+    \end{equation}
+    Thus from \eqref{eq:ortho5} and \eqref{eq:ortho6}, we have
+    \[
+        \int_0^\infty e^{-x}L_n(x)L_m(x)\dx=\delta_{mn}=\begin{cases}
+            0&\text{ if }m\neq n\\
+            1&\text{ if }m= n
+        \end{cases}
+    \]
+\end{proof}
+\section{Recurrence Formula for Laguerre Polynomial}
+\begin{enumerate}[label={(\roman*)}]
+    \item \((n+1)L_{n+1}(x)=(2n+1-x)L_n(x)-nL_{n-1}(x)\)
+    \item \(xL_{n}^{'}(x)=nL_n(x)-nL_{n-1}(x)\)
+    \item \(L_{n}^{'}(x)=-\sum_{r=0}^{n-1}L_r(x)\)
+\end{enumerate}
+\newpage
+\section{Problems on Laguerre Polynomial}
+\begin{prob}
+    Expand \( x^3+x^2-3x+2 \) in a series of Laguerre polynomial.
+\end{prob}
+\begin{soln}
+    Let \( f(x)=x^3+x^2-3x+2 \). By definition of Laguerre polynomial, we know that \( L_n(x) \) is a polynomial of degree \( n \). Since \( x^3+x^2-3x+2 \) is a polynomial of degree \( 3 \), we may write
+    \begin{align}
+        &x^3+x^2-3x+2\notag\\
+        &=C_0L_0(x)+C_1L_1(x)+C_2L_2(x)+C_3L_3(x)\notag\\
+        &=C_0+C_1(1-x)+C_2\left( 1-2x+\frac{1}{2}x^2 \right)+C_3\left( 1-3x+\frac{3}{2}x^2-\frac{1}{6}x^3 \right)\notag\\
+        &=C_0+C_1-C_1x+C_2-2C_2x+\frac{C_2}{2}x^2+C_3-3C_3x+\frac{3}{2}C_3x^2-\frac{1}{6}C_3x^3\notag\\
+        &=(C_0+C_1+C_2+C_3)-(C_1+2C_2+3C_3)x+\left( \frac{C_3}{2}+\frac{3}{2}C_3 \right)x^2-\frac{1}{6}C_3x^3 \label{eq:prob1.1}
+    \end{align}
+    Equating the coefficients of like powers of x from both sides of \eqref{eq:prob1.1}, we get
+    \begin{align*}
+        C_0+C_1+C_2+C_3&=2\\
+        C_1+2C_2+3C_3&=3\\
+        \frac{C_3}{2}+\frac{3}{2}C_3&=1\\
+        -\frac{1}{6}C_3&=1
+    \end{align*}
+    Solving these for \( C_0\), \(C_1\), \(C_2\), and \(C_3 \), we get 
+    \[C_3=-6,\quad C_2=20,\quad C_1=-19,\quad C_0=-7\quad\]
+    Thus \( f(x)=x^3+x^2-3x+2=7L_0(x)-19L_1(x)+20L_2(x)-6L_3(x) \).
+\end{soln}
+\end{document}

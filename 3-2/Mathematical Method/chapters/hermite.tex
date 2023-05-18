@@ -1,0 +1,266 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\everymath{\displaystyle}
+% \newcommand{\diffher}{\ddxn{y}{2}-2x\ddx{y}+2ny=0}
+% \newcommand{\Hnx}{\sum_{r=0}^N (-1)^r \frac{n!}{r!\,(n-2r)!}(2x)^{n-2r}}
+% \newcommand{\Hn}[1]{\sum_{r=0}^N (-1)^r \frac{n!}{r!\,(n-2r)!}(2 #1)^{n-2r}}
+\begin{document}
+\chapter{Hermite Polynomial}
+The differential equation \( \diffher \) when \( n \) is a constant, is called Hermite's differential equation. The solutions of Hermite's equation is called the Hermite polynomial. Hermite polynomial of order \( n \) is denoted and defined by
+\begin{equation}
+    H_n(x)=\Hnx,\, N=
+    \begin{cases}
+        \quad \frac{n}{2}, & n \text{ is even} \\
+        \frac{n-1}{2},     & n \text{ is odd}
+    \end{cases}\label{eq:hnx}
+\end{equation}
+\section{Relation Between Legendre and Hermite Polynomial}
+\begin{prob}
+    Prove that
+    \[
+        P_n(x)=\frac{2}{\sqrt{\pi}\,n!}\int_0^\infty t^ne^{-t^2}H_n(xt)\D t
+    \]
+\end{prob}
+\begin{proof}
+    We have
+    \[
+        H_n(x)=\Hnx
+    \]
+    \[
+        \Rightarrow H_n(xt)= \Hn{xt}
+    \]
+    Now,
+    \begin{align}
+          & \frac{2}{\sqrt{\pi}\,n!}\int_0^\infty t^ne^{-t^2}H_n(xt)\D t\notag                                                             \\
+        = & \frac{2}{\sqrt{\pi}\,n!}\int_0^\infty t^n e^{-t^2}\left[ \Hn{xt} \right]\D t\notag                                             \\
+        = & \sum_{r=0}^N \frac{(-1)^r 2^{n-2r+1}x^{n-2r}}{\sqrt{\pi}\,r!\,(n-2r)!}\int_0^\infty e^{-t^2}t^{2n-2r}\D t \label{eq:relation1}
+    \end{align}
+    Now,
+    \begin{align*}
+          & \int_0^\infty e^{-t^2} t^{2n-2r-1+1} \D t                                                                                                                         \\
+        = & \int_0^\infty e^{-t^2} t^{2\left(n-r+\frac{1}{2}\right)-1}\D t                                                                                                    \\
+        = & \left. \frac{1}{2}\Gamma\left( n-r+\frac{1}{2} \right)\qquad \qquad\qquad\right\vert 2\int_0^\infty e^{-t^2} t^{2n-1}\D t =\Gamma(n)                              \\
+        = & \left. \frac{1}{2}\cdot\frac{(2n-2r)!}{2^{2n-2r}(n-r)!}\sqrt{\pi}\qquad\qquad \right\vert \Gamma\left( x+\frac{1}{2} \right)=\frac{(2x)!}{2^{2x}\,(x)!}\sqrt{\pi} \\
+    \end{align*}
+    From \eqref{eq:relation1},
+    \begin{align*}
+          & \sum_{r=0}^N \frac{(-1)^r 2^{n-2r+1}x^{n-2r}}{\sqrt{\pi}\,r!\,(n-2r)!} \frac{1}{2}\cdot\frac{(2n-2r)!}{2^{2n-2r}(n-r)!}\sqrt{\pi} \\
+        = & \sum_{r=0}^N (-1)^r \frac{(2n-2r)}{2^n\,r!\,(n-r)!\,(n-2r)!} x^{n-2r}                                                             \\
+        = & P_n(x)
+    \end{align*}
+    \[
+        \therefore P_n(x)=\frac{2}{\sqrt{\pi}\,n!}\int_0^\infty t^ne^{-t^2}H_n(xt)\D t
+    \]
+\end{proof}
+\section{Generating Function of Hermite Polynomial}
+\begin{prob}
+    Prove that
+    \[
+        e^{2tx-t^2}=\sum_{n=0}^\infty\frac{t^n}{n!}H_n(x)
+    \]
+\end{prob}
+\begin{proof}
+    \begin{align}
+        e^{2tx-t^2} & =e^{2tx}\cdot e^{-t^2}\notag                                                                                                                                                                     \\
+                    & = \left\{ 1+\frac{2tx}{1!}+\frac{2^2t^2x^2}{2!}+\dots+\frac{(2tx)^r}{r!}+\dots\right\}\times \left\{ 1-\frac{t^2}{1!}+\frac{t^4}{2!}-\frac{t^6}{3!}\dots+\frac{(t^2)^s}{s!}+\dots \right\}\notag \\
+                    & = \sum_{r=0}^\infty \frac{(2tx)^r}{r!}\sum_{s=0}^\infty\frac{(-1)^s\left( t^2 \right)^s}{s!}\notag                                                                                               \\
+                    & = \sum_{r,s=0}^\infty (-1)^s \frac{(2x)^r\cdot t^{r+2s}}{r!\,s!}\notag %\label{eq:gen1}
+    \end{align}
+    Let \( r+2s=n \) so that \( r=n-2s \)\\
+    so for a fixed value of \( s \), the coefficient of \( t^n \) is given by
+    \[
+        (-1)^s\frac{(2x)^{n-2s}}{(n-2s)!\,s!}
+    \]
+    The total value of \( t^n \) is obtained by summing over all allowed values of \( s \) and since \( r=n-2s \).\\
+    \( \therefore\,n-2s\geq0 \) or \( s\leq \frac{n}{2} \)\\
+    Thus if \( n \) is even, \( s \) goes from \( 0 \) to \( \frac{n}{2} \) and if \( n \) is odd, \( s \) goes from \( 0  \) to \( \frac{n-1}{2} \).\\
+    So coefficient of \( t^n \)
+    \begin{align*}
+        t^n & = \sum_{s=0}^\frac{n}{2} \frac{(-1)^s(2x)^{n-2s}}{(n-2s)!\,s!}                          \\
+            & = \sum_{s=0}^\frac{n}{2} \frac{(-1)^s n!}{(n-2s)!\,s!}\cdot(2x)^{n-2s}\cdot\frac{1}{n!} \\
+            & =\frac{H_n(x)}{n!}
+    \end{align*}
+    Since 
+    \[
+        \sum_{r=0}^{\frac{n}{2}} (-1)^r \frac{n!}{r!\,(n-2r)!}(2x)^{n-2r}
+    \]
+    Hence 
+    \[
+        e^{2xt-t^2}=\sum_{n=0}^\infty \frac{t^n}{n!}H_n(x)
+    \]
+    \[
+        \text{ Or,  }e^{x^2-(t-x)^2}=\sum_{n=0}^\infty \frac{t^n}{n!}H_n(x)
+    \]
+\end{proof}
+\section{Hermite Polynomials of Different Forms}
+\begin{thm}
+    Prove that 
+    \[
+        H_n(x)=(-1)^ne^{x^2}\ddxn{}{n}\left( e^{-x^2} \right)
+    \]
+\end{thm}
+\begin{proof}
+    Using the generating function, we have
+    \begin{equation}
+        e^{2xt-t^2}=\sum_{n=0}^\infty \frac{t^n}{n!}H_n(x) \label{eq:thm1.1}
+    \end{equation}
+    Or,
+    \begin{equation}
+        f(x,t)=e^{x^2-\left( t-x \right)^2}=\frac{H_0(x)}{0!}t^0+\frac{H_1(x)}{1!}t^1+\frac{H_2(x)}{2!}t^2+\dots+\frac{H_n(x)}{n!}t^n+\frac{H_{n+1}(x)}{(n+1)!}t^{n+1}+\dots \label{eq:thm1.2}
+    \end{equation}
+    Differentiating both sides of \eqref{eq:thm1.2} partially with respect to \( t \) \( n \) times
+    \begin{equation}
+        e^{x^2}\cdot\frac{\partial^n}{\partial t^n}\left\{ e^{-(t-x)^2}\right\}=0+\frac{H_n(x)}{n!}n!+\frac{H_{n+1}(x)}{(n+1)!}(n+1)n(n-1)\dots2t\dots+\dots \label{eq:thm1.3}
+    \end{equation}
+    Putting \( t=0 \) in \eqref{eq:thm1.3}, we get
+    \begin{align}
+        &e^{x^2}\left[ \frac{\partial^n}{\partial t^n}\left\{ e^{-(t-x)^2}\right\} \right]_{t=0}=\frac{H_n(x)\,n!}{n!}+0\notag\\
+        \Rightarrow\,&e^{x^2}\left[ \frac{\partial^n}{\partial t^n}\left\{ e^{-(t-x)^2}\right\} \right]_{t=0}=H_n(x)\notag\\
+        \Rightarrow\,&H_n(x)=e^{x^2}\left[ \frac{\partial^n}{\partial t^n}\left\{ e^{-(t-x)^2}\right\} \right]_{t=0} \label{eq:thm1.4}
+    \end{align}
+    Putting \( t-x=u \) so that \( \frac{\partial }{\partial t}=\frac{\partial}{\partial u} \)\\
+    But at \( t=0\,-x=u \) i.e., \( x=-u \)\\
+    Therefore,
+    \begin{align*}
+        \left[ \frac{\partial^n}{\partial t^n}\left\{ e^{-(t-x)^2}\right\} \right]_{t=0}&=\frac{\partial^n}{\partial u^n}\left( e^{-u^2} \right)\\
+        &=(-1)^n \parxn{}{n}\left( e^{-x^2} \right)\\
+        &=(-1)^n \ddxn{}{n}\left( e^{-x^2} \right)
+    \end{align*}
+    Thus from \eqref{eq:thm1.4}, we get
+    \begin{align*}
+        & H_n(x)=e^{x^2}\cdot(-1)^n \ddxn{}{n}\left( e^{-x^2} \right)\\
+        \Rightarrow\,& H_n(x)=(-1)^n\cdot e^{x^2} \ddxn{}{n}\left( e^{-x^2} \right)
+    \end{align*}
+    Which is also known as the \emph{Rodrigue's formula for \( H_n(x) \)}.
+\end{proof}
+\section{Orthogonality Properties of Hermite Polynomials}
+\begin{prob}
+    Prove that 
+    \[
+        \int_{-\infty}^\infty e^{-x^2}H_n(x)H_m(x)\dx =
+        \begin{cases}
+            \,\,\,0 & \text{ if }m\neq n\\
+            2^n\sqrt{\pi}\,n!&\text{ if }m=n
+        \end{cases}
+    \]
+\end{prob}
+\begin{proof}
+    From generating function of Hermite polynomial, we have
+    \begin{equation}
+        e^{-t^2+2tx}=\sum_{n=0}^\infty H_n(x)\frac{t^n}{n!}\label{eq:ortho1}
+    \end{equation}
+    and
+    \begin{equation}
+        e^{-s^2+2sx}=\sum_{m=0}^\infty H_m(x)\frac{s^m}{m!}\label{eq:ortho2}
+    \end{equation}
+    Multiplying the corresponding sides of \eqref{eq:ortho1} and \eqref{eq:ortho2}, we can write
+    \begin{align}
+        & e^{-t^2+2tx}\cdot e^{-s^2+2sx} =\sum_{n=0}^\infty H_n(x)\frac{t^n}{n!}\cdot\sum_{m=0}^\infty H_m(x)\frac{s^m}{m!}\notag\\
+        \Rightarrow\, &e^{2tx-t^2+2sx-s^2} =\sum_{n=0}^\infty\sum_{m=0}^\infty \frac{H_n(x)\,H_m(x)\,t^n\,s^m}{n!\,m!}\label{eq:ortho3}
+    \end{align}
+    Multiplying both sides of \eqref{eq:ortho3} by \( e^{-x^2} \) and then integrating both sides with respect to \( x \) from \( -\infty \) to \( \infty \), we have
+    \begin{align*}
+        &\sum_{n=0}^\infty \sum_{m=0}^\infty \left[ \int_{-\infty}^\infty e^{-x^2} H_n(x)H_m(x)\dx \right]\frac{t^n\,s^m}{n!\,m!}\\
+        =&\int_{-\infty}^\infty e^{-x^2+2(t+s)x\left( t^2+s^2 \right)}\dx\\
+        =&\int_{-\infty}^\infty e^{-x^2+2(t+s)x\left( t^2+s^2 \right)}\times e^{(t+s)^2-\left( t^2+s^2 \right)}\dx\\
+        =&e^{2st}\int_{-\infty}^\infty e^{-\left(x-(t+s)\right)^2}\dx\\
+        \intertext{Putting \( x-(t+s)=y \) so that \( \dx=\dy \)}
+        &\text{ Limits }\left.\begin{aligned}
+            x&=\infty\\
+            y&=\infty
+        \end{aligned}\right\}\qquad \left.\begin{aligned}
+            x&=-\infty\\
+            y&=-\infty
+        \end{aligned}\right\}\\
+        =& e^{2st}\cdot\int_{-\infty}^\infty e^{-y^2}\dy\\
+        =& e^{2st}\cdot2\int_{0}^\infty e^{-y^2}\dy\\
+        =& 2e^{2st}\cdot\frac{\sqrt{pi}}{2}\qquad \text{ since }\int_{0}^\infty e^{-y^2}\dy=\frac{\sqrt{\pi}}{2}\\
+        =& \sqrt{\pi} e^{2st}\\
+        =& \sqrt{\pi} \left[ 1+\frac{2st}{1!}+\frac{(2st)^2}{2!}+\frac{(2st)^3}{3!}+\dots \right]\\
+        =& \sqrt{\pi} \sum_{n=0}^\infty \frac{(2st)^n}{n!}\\
+        =& \sqrt{\pi} \sum_{n=0}^\infty 2^n \frac{s^nt^n}{n!}
+    \end{align*}
+    Thus coefficient of \( t^ns^m \) in the expansion of \( \int_{-\infty}^\infty e^{-x^2+2(t+s)x\left( t^2+s^2 \right)}\dx \) is $ \begin{cases}
+        \,\,\,0 & \text{ if }m\neq n\\
+        \frac{2^n\sqrt{\pi}}{n!}&\text{ if }m=n
+    \end{cases} $\\
+    Hence 
+    \[
+        \int_{-\infty}^\infty e^{-x^2}H_n(x)H_m(x)\dx =
+        \begin{cases}
+            \,\,\,0 & \text{ if }m\neq n\\
+            2^n\sqrt{\pi}\,n!&\text{ if }m=n
+        \end{cases}
+    \]
+\end{proof}
+Making use of the \emph{kronecker delta} we have 
+\begin{align*}
+    &\int_{-\infty}^\infty e^{-x^2}H_n(x)H_m(x)\dx =\sqrt{\pi}2^n\,n!\, \delta_{mn}\quad \text{ since } \delta_{mn}=
+    \begin{cases}
+        0 & \text{ if }m\neq n\\
+        1 & \text{ if } m=n
+    \end{cases}\\
+    \Rightarrow\,& \int_{-\infty}^\infty e^{-x^2}(H_n(x))^2\dx =\sqrt{\pi}2^n\,n!
+\end{align*}
+\section{Recurrence Relation of Hermite Polynomial}
+\begin{enumerate}[label={(\roman*)}]
+    \item \( H_n^{'}(x)=2nH_{n-1}(x),\,n\geq1;\,\,H_0^{'}(x)=0 \).
+    \item \( H_{n+1}(x)=2xH_{n}(x)-2nH_{n-1}(x),\,n\geq1;\,\,H_1(x)=2xH_0(x) \).
+    \item \( H_n^{'}(x)=2xH_{n}(x)-H_{n+1}(x) \).
+    \item \( H_n^{''}(x)-2xH_{n}^{'}(x)+2nH_{n}(x)=0 \).
+\end{enumerate}
+\section{Integral Formula for Hermite Polynomial}
+Let us assume 
+\begin{equation}
+    y_n=\frac{1}{2\pi \,i} \oint \rho^{-n-1}e^{\left\{ x^2-(\rho-x)^2\right\}}\D\rho \label{eq:int1}
+\end{equation}
+where the contour is taken around a circle having centre at origin.\\
+If we differentiate \eqref{eq:int1} with respect to \( x \) we get,
+\[
+    \left.\begin{aligned}
+        & \ddx{y_n} =\frac{1}{2\pi i} \oint 2\rho^{-n}e^{\left\{ x^2-(\rho-x)^2\right\}}\D\rho\\
+        \Rightarrow\,& \ddxn{y_n}{2} =\frac{1}{2\pi i} \oint 4 \rho^{-n+1}e^{\left\{ x^2-(\rho-x)^2\right\}}\D\rho
+    \end{aligned}\qquad\right\vert
+\]
+Thus
+\begin{align*}
+    &y_n^{''}-2xy_n^{'}-2ny_n\\
+    =& \frac{1}{2\pi i} \oint 4 \rho^{-n+1}e^{\left\{ x^2-(\rho-x)^2\right\}}\D\rho-\frac{2x}{2\pi i} \oint 2\rho^{-n}e^{\left\{ x^2-(\rho-x)^2\right\}}\D\rho+\frac{2n}{2\pi \,i} \oint \rho^{-n-1}e^{\left\{ x^2-(\rho-x)^2\right\}}\D\rho\\
+    =& \frac{1}{2\pi i}\oint \left( 4\rho^2-4x\rho+2n \right)e^{\left\{ x^2-(\rho-x)^2\right\}} \rho^{-n-1}\D\rho\\
+    =& \frac{-2}{2\pi i}\oint \frac{\D}{\D\rho}\left[ \rho^{-n} e^{\left\{ x^2-(\rho-x)^2\right\}}  \right]\D\rho
+\end{align*}
+But 
+\[
+    \oint \frac{\D}{\D\rho}\left[ \rho^{-n} e^{\left\{ x^2-(\rho-x)^2\right\}} \right]\D\rho=0
+\]
+\[
+    \therefore y_n^{''}-2xy_n^{'}-2ny_n=0
+\]
+Which is Hermite equation and hence \( y_n \) given by \eqref{eq:int1} is also a solution of the Hermite equation.
+
+So we may have \( H_n(x)=cy_n(x),\,c \) is a constant but if we put \( x=0 \) in \eqref{eq:hnx} we have,
+\[
+    H_n(0)=(-1)^{\frac{n}{2}}\frac{n!}{\frac{n}{2}}
+\]
+and form \eqref{eq:int1},
+\[
+    y_n(0)=\frac{1}{2\pi \,i} \oint \rho^{-n-1}e^{-(\rho-x)^2}\D\rho
+\]
+But by contour integration we have,
+\begin{align*}
+    &\oint \rho^{-n-1}e^{-(\rho-x)^2}\D\rho=\frac{2\pi i (-1)^{\frac{n}{2}}}{\left( \frac{n}{2} \right)!}\\
+    \therefore\, & y_n(0)=\frac{(-1)^{\frac{n}{2}}}{\left( \frac{n}{2} \right)!}
+\end{align*}
+Thus 
+\begin{align*}
+    & H_n(0)=cy_n(0)\\
+    \Rightarrow\, &(-1)^{\frac{n}{2}}\frac{n!}{\frac{n}{2}}=\frac{c(-1)^{\frac{n}{2}}}{\left( \frac{n}{2} \right)!}
+    \Rightarrow\, &c=n!\\
+    &\\
+    \therefore\, &H_n(x)=n!\,y_n(x)\\
+    \Rightarrow\, &H_n(x)=\frac{n!}{2\pi \,i} \oint \rho^{-n-1}e^{\left\{ x^2-(\rho-x)^2\right\}}\D\rho
+\end{align*}
+Which is the integral form of Hermite polynomial.
+\end{document}

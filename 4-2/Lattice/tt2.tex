@@ -1,0 +1,100 @@
+\documentclass[12pt]{article}
+\usepackage{stylea}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\begin{prob}
+    Define: modular lattice, distributive lattice, complement, atom, boolean lattice, relative complement, join irreducible element, complete lattice, congruence, equivalence relation.
+\end{prob}
+\begin{soln}
+    \emph{Modular lattice:}
+    Let \(L\) be a lattice. \(L\) is said to be modular if it satisfies the modular law,
+    \[(\forall a, b, c \in L) a \geq c \Rightarrow a \wedge (b \vee c) = (a \wedge b) \vee c.\]
+    \emph{Distributive lattice:}
+    Let \(L\) be a lattice. \(L\) is said to be distributive if it satisfies the distributive law,
+    \[(\forall a, b, c \in L) a \wedge (b \vee c) = (a \wedge b) \vee (a \wedge c)\]
+    \emph{Complement: } Let \(L\) be a lattice with 0 and 1. For \(a \in L\), we
+    say \(b \in L\) is a complement of \(a\) if \(a \wedge b = 0\) and \(a \vee b = 1\). If \(a\) has a unique complement, we denote this complement by \(a'\).\\
+
+
+    \emph{Atom:} Let \(L\) be a lattice with least element 0. Then \(a \in L\) is called an atom if \(0 \lefttail a\). The set of atoms of \(L\) is denoted by \(\mathcal{A}(L)\). The lattice \(L\) is called atomic if, given \(a \neq 0\) in \(L\), there exists \(x \in \mathcal{A}(L)\) such that \(x \leq a\). Every finite lattice is atomic.\\
+
+    \emph{Boolean Lattice: } A lattice \(L\) is called a Boolean lattice if
+    \begin{enumerate}[label=(\roman*)]
+        \item \(L\) is distributive,
+        \item \(L\) has 0 and 1,
+        \item each \(a \in L\) has a (necessarily unique) complement \(a' \in L\)
+    \end{enumerate}
+
+    \emph{Relative complement:}\\
+
+    \emph{Join irreducible element: } Let \(L\) be a lattice. An element \(x \in L\) is join irreducible if
+    \begin{enumerate}[label=(\roman*)]
+        \item \(x \neq 0\) (in case \(L\) has a zero),
+        \item \(x = a \vee b\) implies \(x = a\) or \(x = b\) for all \(a, b \in L\).
+    \end{enumerate}
+    Condition (ii) is equivalent to the more pictorial,
+    (ii)' \(a < x\) and \(b < x\) imply \(a \vee b < x\) for all \(a, b \in L\). A meet-irreducible element is defined dually.\\
+
+    \emph{Complete Lattice: } Let \(P\) be a non-empty ordered set. If \(\bigvee S\) and \(\bigwedge S\) exist for all \(S \subseteq P \), then \(P\) is called a complete lattice.\\
+
+    \emph{Congruence: } An equivalence relation on a lattice \(L\) which is compatible with both join and meet is called a congruence on \(L\).\\
+
+    \emph{Equivalence Relation:} An equivalence relation on a set \(A\) is a binary relation on \(A\) which is reflexive, symmetric and transitive. We write \(a \equiv b (mod \theta) \) or \(a\;\theta\;b\) to indicate that \(a\) and \(b\) are related under the relation \(\theta\).
+\end{soln}
+\begin{prob}
+    Show that \(M_3\) is a modular lattice but not distributive lattice.
+\end{prob}
+\begin{soln}
+    Consider the \(M_3\) lattice in the fig,
+    \begin{center}
+        \begin{tikzpicture}
+            \node[lattice,label=below:{$0$}] (aa) at (0,0) {};
+            \node[lattice,label=left:{$c$}] (a) at (1,1) {};
+            \node[lattice,label=left:{$b$}] (b) at (0,1) {};
+            \node[lattice,label=left:{$a$}] (c) at (-1,1) {};
+            \node[lattice,label=above:{$1$}] (bb) at (0,2) {};
+            \draw[thick] (aa)--(a)--(bb)--(b)--(aa)--(c)--(bb);
+        \end{tikzpicture}
+    \end{center}
+    Let us take \(1\), \(a\), \(0\) with \(1\geq 0\) \(\Rightarrow\;1\wedge(a\vee 0)=1\wedge a=a=(1\wedge a)\vee 0\).\\
+    Similarly, \(1\), \(b\), \(0\) with \(1\geq 0\) \(\Rightarrow\;1\wedge(b\vee 0)=1\wedge b=b=(1\wedge b)\vee 0\).\\
+    and, \(1\), \(c\), \(0\) with \(1\geq 0\) \(\Rightarrow\;1\wedge(c\vee 0)=1\wedge c=c=(1\wedge c)\vee 0\).\\
+    Hence, \(M_3\) is modular.\\
+    Now, we need to prove that, \(M_3\) is not distributive.\\
+    Consider, \(a,b,c\in M_3\), \(a\wedge(b\vee c)=a\wedge 1=a\), but \((a\wedge b)\vee (a\wedge c)=0\vee 0=0\).\\
+    Thus, \(a\wedge (b\vee c)\neq (a\wedge b)\vee (a\wedge c)\) and hence, \(M_3\) is not distributive.
+\end{soln}
+\begin{prob}
+    \(N_5\) is not modular and (also not distributive).
+\end{prob}
+\begin{prob}
+    The \(M_3-N_5\) theorem.
+\end{prob}
+\begin{soln}
+    \begin{thm}
+        Let \(L\) be a lattice.
+        \begin{enumerate}[label=(\roman*)]
+            \item \(L\) is non-modular if and only if \(N_5 \mapsto L\).
+            \item \(L\) is non-distributive if and only if \(N_5 \mapsto L\) or \(M_3 \mapsto L\).
+        \end{enumerate}
+    \end{thm}
+\end{soln}
+\begin{prob}
+    Show that every distributive lattice is modular, but the converse is not true.
+\end{prob}
+\begin{prob}
+    Let \(L\) be a lattice, then \(L\) is modular iff it has no sub-lattice isomorphic to \(N_5\).
+\end{prob}
+\begin{prob}
+    Prove: Let \(f:B\to C\) where \(B\) and \(C\) boolean algebras.
+\end{prob}
+\begin{prob}
+    Zorn's Lemma.
+\end{prob}
+\begin{prob}
+    A lattice \(L\) is distributive iff for any two ideals \(I\) and \(J\) of \(L\)
+    \[I\vee J=\set{x\in L|x=i\vee j, \quad\text{for some } i\in I\text{ and }j\in J}\]
+\end{prob}
+\end{document}

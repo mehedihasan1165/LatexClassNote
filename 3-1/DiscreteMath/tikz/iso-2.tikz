@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+        \node[circle,draw](a){};
+        \node[circle,draw](b)[above =of a]{};
+        \node[circle,draw](g)[above =of b]{};
+        \node[circle,draw](f)[above =of g]{};
+        \node[circle,draw](c)[below =of a]{};
+        \node[circle,draw](d)[left = of a]{};
+        \node[circle,draw](e)[right =of a]{};
+        \path[-](a) edge node{}(b)
+        edge node{}(c)
+        edge node{}(d)
+        edge node{}(e)
+        (b) edge node{}(g)
+        (g) edge node{}(f);
+\end{tikzpicture}

@@ -1,0 +1,17 @@
+\begin{tikzpicture}[every initial by arrow/.style={-latex}]
+    \node[state,initial,thick] (a) {$s_0$};
+    \node[state,thick] (b) [above right=15mm of a] {$s_1$};
+    \node[state,thick] (c) [right =15mm of b] {$s_2$};
+    \node[state,thick] (e) [below right=15mm of a] {$s_3$};
+    \node[state,thick] (d) [right=15mm of e] {$s_4$};
+    \path[-latex,thick](a) edge[] node[above,sloped] {$ 0,1 $} (b)
+    edge[bend right] node[below,sloped] {$ 1,0 $} (e)
+    (b) edge[] node[above,sloped] {$ 1,1 $} (c)
+    edge[loop above] node[above,sloped] {$ 0,1 $} (b)
+    (c) edge[] node[right]{$1,0$} (d)
+    edge[] node[below,sloped] {$ 0,0 $} (e)
+    (d) edge[loop right] node[right] {$ 1,0 $} (d)
+    edge[] node[below]{0,0} (e)
+    (e) edge[bend right] node[below,sloped]{$1,0$}(a)
+    edge[] node[right]{$0,0$}(b);
+\end{tikzpicture}

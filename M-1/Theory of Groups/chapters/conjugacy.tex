@@ -1,0 +1,40 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Conjugacy and Class Equation}
+\begin{defn}
+    Let \(G\) be a group. The \emph{normalizer} of a non-empty subset \(S\subseteq G\) is defined by \(N_S=\set{x\in G: xS=Sx}\).
+\end{defn}
+\begin{defn}
+    Let \(G\) be a group and \(a\in G\). Then the set \(N_a=\set{x\in G: ax=xa}\) is called the \emph{normalizer} of \(a\in G\) in \(G\).
+\end{defn}
+Thus, \(N_a\) is the set of those elements of \(G\) which commute with \(a\).
+\begin{ex}
+    \(N_a\) is a subgroup of \(G\).
+\end{ex}
+\begin{proof}
+    We know that \(N_a=\set{x\in G : ax=xa}\) when \(a\in G\). Let \(x,y\in N_a\). Then \(ax=xa\) and \(ay=ya\).\\
+    Hence, we have
+    \[a(xy)=(ax)y=(xa)y=x(ay)=x(ya)=(xy)a.\]
+    Besides, we also get
+    \[x^{-1}(ax)x^{-1}=x^{-1}(xa)^{-1}\;\; \text{which implies that }\;\; x^{-1}a=ax^{-1}.\]
+    Thus, it follows that \(xy\in N_a\) and \(x^{-1}\in N_a\) for all \(x,y\in N_a\).\\
+    So, \(N_a\) is a subgroup of \(G\).
+\end{proof}
+\begin{note}
+    \(N_a=G\;\Leftrightarrow\;\;a=Z\).
+\end{note}
+\begin{ex}
+    \(N_a\) need not be a normal subgroup\footnote{Normal subgroup: A subgroup \(N\) of a group \(G\) is called normal subgroup iff \(aN=Na\) holds \(\forall a\in G\). Denoted by \(N\triangleleft G\). } of \(G\).
+\end{ex}
+\begin{proof}
+    In order to show that \(N_a\) need not be normal in \(G\), consider an element \((2 3) \) of the symmetric group \(S_3\).\\
+    It is easy to verify that \(N_{(2 3)}=\set{(1),(2 3)}\) is a subgroup of \(S_3\).\\
+    But \((1 2)\circ N_{(2 3)}=\set{(1 2),(1 2 3)}\) and \(N_{(2 3)}\circ (1 2)=\set{(1 2),(1 3 2)}\)\\
+    Thus    \((1 2)\circ N_{(2 3)}\neq N_{(2 3)}\circ (1 2)\).\\
+    This shows that \(N_{(2 3)}\) is not a normal subgroup of \(S_3\).
+\end{proof}
+\end{document}

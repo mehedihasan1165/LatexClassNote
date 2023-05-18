@@ -1,0 +1,30 @@
+\begin{tikzpicture}
+    \matrix [matrix of math nodes,left delimiter={[},right delimiter={]},row sep=0.25cm,column sep=0.25cm] (n) {
+            2 & -1 \\
+            -1 & 0 \\
+        };
+    \node[above=1 cm] at (n-1-2.west) {Player $B$};
+    \node[left=1.5 cm] at (n-2-1.north) (a){Player $A$};
+    \node[above=.4 cm] at (n-1-1) {$H$};
+    \node[above=.4 cm] at (n-1-2)(ut) {$T$};
+
+    \node[below=.4 cm] at (n-2-1) (o1){$1$};
+    \node[below=.4 cm] at (n-2-2) (o2){$3$};
+
+
+    \node[left=.75 cm] at (n-1-1) {$H$};
+    \node[left=.75 cm] at (n-2-1) {$T$};
+    \node[right=0.4 cm of ut]  {\textbf{oddment}};
+    \node[right=3 cm of ut]  {Probability};
+    \node[below=0.35 cm of a,xshift=.5cm]  {\textbf{oddment}};
+    \node[below=1 cm of a,xshift=.5cm]  {Probability};
+    \node[right=1.5 cm] at (n-1-2) (o3){$1$};
+    \node[right=1.5 cm] at (n-2-2)(o4) {$3$};
+    \node[right=1cm of o3] {$\frac{1}{1+3}=\frac{1}{4}=0.25$};
+    \node[right=1cm of o4] {$\frac{3}{1+3}=\frac{3}{4}=0.75$};
+
+    \node[below=.2 cm of o1] {$\frac{1}{4}$};
+    \node[below=1 cm of o1,xshift=-.2cm] {$=0.25$};
+    \node[below=.2 cm of o2] {$\frac{3}{4}$};
+    \node[below=1 cm of o2,xshift=.25cm] {$=0.75$};
+\end{tikzpicture}

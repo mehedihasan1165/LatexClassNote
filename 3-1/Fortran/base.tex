@@ -1,0 +1,99 @@
+\documentclass[12pt,oneside,a4paper]{book}
+\usepackage[subpreambles=false]{standalone}
+\newcommand{\newtitle}{ForTran Programming}
+\newcommand{\course}{MAT315}
+\newcommand{\prof}{Prof. Dr Md Abdul Hye}
+\usepackage{style}
+\begin{document}
+\begin{titlepage}
+    \backgroundsetup{
+        scale=1,
+        opacity=1,
+        angle=0,
+        color=black,
+        contents={
+            \begin{tikzpicture}[color=black, every node/.style={inner sep= 15pt}]
+                \node (NW) [anchor=north west] at (current page.north west){\pgfornament[width=2.5cm] {61}};
+                \node (NE) [anchor=north east] at (current page.north east){\pgfornament[width=2.5cm, symmetry=v]{61}};
+                \node (SW) [anchor=south west] at (current page.south west){\pgfornament[width=2.5cm, symmetry=h]{61}};
+                \node (SE) [anchor=south east] at (current page.south east){\pgfornament[width=2.5cm, symmetry=c]{61}};
+                \foreach \i in {-4,0,4}
+                \node[anchor=north,xshift=\i cm] at (current page.north){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-4,0,4}
+                \node[xshift=\i cm, yshift=32.25 pt] at (current page.south){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-8,-4,0,4,8}
+                \node[yshift=\i cm, xshift=32.25pt, rotate=90] at (current page.west){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-8,-4,0,4,8}
+                \node[yshift=\i cm, xshift=-32.25pt, rotate=90] at (current page.east){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-11,-9,...,7,9}
+                \node[anchor=west, yshift=\i cm, xshift=52.25pt, rotate=90] at (current page.west){\pgfornament[scale=0.1]{80}};
+                \foreach \i in {-11,-9,...,7,9}
+                \node[anchor=east, yshift=\i cm, xshift=-52.25pt, rotate=-90] at (current page.east){\pgfornament[scale=0.1]{80}};
+            \end{tikzpicture}
+        }
+    }
+\centering
+
+\vspace*{\baselineskip}
+\vspace*{75pt}
+
+\rule{345pt}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+\rule{345pt}{0.4pt}
+
+\vspace{0.6\baselineskip}
+
+{\LARGE \calligra{\newtitle}\\} 
+
+\vspace{0.6\baselineskip}
+
+\rule{345pt}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule{345pt}{1.6pt}
+
+\vspace{2\baselineskip}
+
+{\scshape \Large{\course}} 
+
+\vspace*{5\baselineskip}
+
+
+
+\vspace{0.5\baselineskip} 
+
+{\scshape   \Large \prof\\ }
+
+\vspace{0.75\baselineskip} 
+
+{\textit{\large Shahjalal University of Science and Technology}} 
+
+\vfill 
+
+\vspace{0.3\baselineskip} 
+
+
+{\scshape \large Edited by\\  Mehedi Hasan} 
+\vspace*{40pt}
+\end{titlepage}
+\backgroundsetup{contents={}}
+\newpage
+\section*{Preface}
+This is a compilation of lecture notes with some books and my own thoughts. This document is not a holy text. So, if there is a mistake, solve it by your own judgement. For fortran lab code visit \href{https://github.com/mehedihasan1165/Fortran-Programming-Lab}{here}.
+\pagenumbering{roman}
+\newpage
+\tableofcontents
+\newpage
+\lstlistoflistings
+\newpage
+\pagenumbering{arabic}
+\part{Notes}
+    \input{chapters/intro.tex}
+    \input{chapters/basic.tex}
+    \input{chapters/loop.tex}
+    \input{chapters/conditional.tex}
+    \input{chapters/array.tex}
+\part{Assignment}
+    \input{chapters/assignment.tex}
+\part{Lab}
+    \input{chapters/lab.tex}
+\part{Questions from Past Years}
+    \input{chapters/ques.tex}
+\end{document}

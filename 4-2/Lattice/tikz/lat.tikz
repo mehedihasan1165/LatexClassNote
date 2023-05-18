@@ -1,0 +1,44 @@
+\begin{tikzpicture}
+    \node[lattice,label=below:{$a$}] at (0,0) {};
+    \node[lattice,label=below:{$b$}] at (1,0) {};
+    
+    \node[lattice,label=below:{$a$}] (a) at (3,-.5) {};
+    \node[lattice,label=below:{$b$}] (b) at (4,-.5) {};
+    \node[lattice,label=above:{$c$}] (c) at (3,.5) {};
+    \node[lattice,label=above:{$d$}] (d) at (4,.5) {};
+    \draw[thick] (a)--(c)--(b)--(d)--(a);
+    
+    \node[lattice,label=left:{$a$}] (aa) at (6,-1) {};
+    \node[lattice,label=left:{$b$}] (bb) at (7,-1) {};
+    \node[lattice,label=right:{$c$}] (cc) at (8,-1) {};
+    \node[lattice,label=right:{$d$}] (dd) at (9,-1) {};
+    
+    \node[lattice,label=left:{$e$}] (ee) at (6,0) {};
+    \node[lattice,label=left:{$f$}] (ff) at (7,0) {};
+    \node[lattice,label=left:{$g$}] (gg) at (8,0) {};
+    
+    \node[lattice,label=left:{$h$}] (hh) at (7,1) {};
+    \node[lattice,label=left:{$i$}] (ii) at (8,1) {};
+    \node[lattice,label=right:{$j$}] (jj) at (9,1) {};
+    \node[lattice,label=above:{$\top$}] (top) at (8,2) {};
+    \node[lattice,label=below:{$\top$}] (bot) at (7.5,-2) {};
+    \draw[thick] (bot)--(aa)--(ee)--(cc)--(bot)--(bb)--(ff)--(hh)--(top)--(jj)--(gg)--(ii)--(dd)--(bot)--(aa)--(ff)--(ii)--(top) (gg)--(cc) (ee)--(hh);
+    
+    \node[lattice,label=above:{$\top$}] (t) at (12,2) {};
+    \node[lattice,label=left:{$h$}] (h) at (11,1) {};
+    \node[lattice,label=right:{$i$}] (i) at (12,1) {};
+    \draw[thick] (h)--(t)--(i);
+    
+    \node[lattice,label=above:{$\top$}] (att) at (12,0) {};
+    \node[lattice,label=left:{$h$}] (ah) at (11,-1) {};
+    \node[lattice,label=right:{$i$}] (ai) at (12,-1) {};
+    \node[lattice,label=below:{$f$}] (af) at (11,-2) {};
+    \draw[thick] (ah)--(att)--(ai)--(af)--(ah);
+    
+    \node at (0.5,-1) {(i)};
+        \node at (3.5,-1.5) {(ii)};
+        \node at (7.5,-3) {(iii)};
+        
+        \node at (15,2) {$\set{b,c}^u=\set{\top,h,i}$};
+        \node at (15,-0.5) {$\set{a,b}^u=\set{\top,h,i,f}$};
+\end{tikzpicture}

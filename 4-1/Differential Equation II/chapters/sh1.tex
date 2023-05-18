@@ -1,0 +1,479 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+% \everymath{\displaystyle}
+\begin{document}
+\chapter{Non-Linear Partial Differential Equation of First Order}
+Suppose the non-linear partial differential equation is 
+\[
+    f(x,y,z,p,q)=0
+\]
+Type of solution of PDE of first order
+\begin{enumerate}
+    \item \emph{Complete solution/integral}: \(z=(x+a)(y+b)\) is a complete solution/integral of \(z=pq\).
+    \item \emph{Particular solution:} \(z=(x+3)(y-4)\) is a particular solution of \(z=pq\).
+    \item \emph{General solution:} The complete solution/integral \(\Phi(x,y,z,a,b)\) of PDE \(f(x,y,z,p,q)=0\) is said to be general solution if we can write as \(\Phi(x,y,z,a,b)=0\)
+    \item \emph{Singular solution:} Let \(z=ax+by+ab\) is a complete solution of \(z=xp+qy+pq\).\\
+    partial differential with respect to \(a\) and \(b\) gives\\
+    \noindent\begin{minipage}{.45\linewidth}
+        \begin{align*}
+            &\pd{z}{a}=x+b\\
+            \Rightarrow\;&0=x+b\\
+            \Rightarrow\;&b=-x
+        \end{align*}
+        \end{minipage}%
+        \hfill\vline\hfill%
+        \begin{minipage}{.45\linewidth}
+        \begin{align*}
+            &\pd{z}{b}=0+y+a\\
+            \Rightarrow\;&a=-y
+        \end{align*}
+        \end{minipage}\\
+        Putting in complete solution \(z=-yx-\cancel{xy}+\cancel{xy}\)\\
+        \(z=-xy\) is a singular solution.
+\end{enumerate}
+\begin{enumerate}[label=\underline{Type - \Roman*}:]
+    \item First standard form \(f(p,q)=0\) which does not contain \(x\), \(y\), \(z\) explicitly.\\
+    \emph{Working rule:}
+    \begin{enumerate}[label=\arabic*]
+        \item Write \begin{equation}
+            f(p,q)=0\label{eq:type1.1}
+        \end{equation}
+        Assume the solution of \eqref{eq:type1.1} is 
+        \begin{equation}
+            z=ax+by+c\label{eq:type1.2}
+        \end{equation}
+        \item Differentiate \eqref{eq:type1.2} with respect to \(x\) and \(y\) partially, we get
+        \begin{align*}
+            \pdx{z}&=a\quad\Rightarrow\;p=a\\
+            \pdy{z}&=b\quad\Rightarrow\;q=b
+        \end{align*}
+        \item Putting the values of \(p\), \(q\) in equation \eqref{eq:type1.1}, we get 
+        \begin{align*}
+            &f(a,b)=0\\
+            \Rightarrow\;& b=\Phi(a)
+        \end{align*}
+        \item Putting the values in \eqref{eq:type1.2}
+        \[z=ax+\Phi(a)y+c\]
+        This is the required complete solution.
+    \end{enumerate}
+        \begin{prob}
+            Find the complete solution of PDE \(p^2+q^2=m^2\)
+        \end{prob}
+        \begin{soln}
+            The given equation 
+            \begin{equation}
+                p^2+q^2=m^2\label{eq:t1.1.1}
+            \end{equation}
+            is the first standard form.\\
+            Suppose the solution is 
+            \begin{equation}
+                z=ax+by+c\label{eq:t1.1.2}
+            \end{equation}
+            partial Differentiate with respect to \(x\) and \(y\) the equation \eqref{eq:t1.1.2} gives,
+            \begin{align*}
+                \pdx{z}&=a\quad\Rightarrow\;p=a\\
+            \pdy{z}&=b\quad\Rightarrow\;q=b
+            \end{align*}
+            put in \eqref{eq:t1.1.1}, gives
+            \begin{align*}
+                &a^2+b^2=m^2\\
+                \Rightarrow\;&b=\pm \sqrt{m^2-a^2}
+            \end{align*}
+            Hence from \eqref{eq:t1.1.2}, we get
+            \[z=ax\pm \sqrt{m^2-a^2} y+c\qquad\text{(contains 2 arbitrary constants)}\]
+            This is the required complete solution.
+        \end{soln}
+        \begin{prob}
+            Find the complete solution of \(p^2+q^2=npq\)
+        \end{prob}
+        \begin{soln}
+            The is
+            \begin{equation}
+                p^2+q^2=m^2\label{eq:t1.2.1}
+            \end{equation}
+            first standard form.\\
+            Suppose the solution of \eqref{eq:t1.2.1} is 
+            \begin{equation}
+                z=ax+by+c\label{eq:t1.2.2}
+            \end{equation}
+            partial Differentiate with respect to \(x\) and \(y\) the equation \eqref{eq:t1.2.2} gives,
+            \begin{align*}
+                \pdx{z}&=a\quad\Rightarrow\;p=a\\
+            \pdy{z}&=b\quad\Rightarrow\;q=b
+            \end{align*}
+            put in \eqref{eq:t1.2.1}, gives
+            \begin{align*}
+                &a^2+b^2=nab\\
+                \Rightarrow\;& b^2-nab+a^2=0\\
+                \Rightarrow\;&b=\frac{na\pm \sqrt{n^2a^2-4a^2}}{2}
+            \end{align*}
+            Hence from \eqref{eq:t1.2.2}, we get
+            \[z=ax+\left[\frac{na\pm \sqrt{n^2a^2-4a^2}}{2}\right]y+c\]
+            This is the required complete solution.
+        \end{soln}
+        \item Second standard form 
+        \begin{equation}
+            f(z,p,q)=0\label{eq:t2.1}
+        \end{equation}
+        which does not contain \(x\), \(y\) explicitly.\\
+        \emph{Working rule:}
+        \begin{enumerate}[label=\arabic*]
+            \item Suppose \begin{equation}
+                z=f(x+ay)\label{eq:t2.2}
+            \end{equation}
+            is a solution of \eqref{eq:t2.1}
+            \item Let \(u=x+ay\) so that\footnote{Note to self: check other resources to confirm} 
+            \begin{align*}
+                &z=f(u) &\left[\pdx{u}=1\quad\pdy{u}=a\right]\\
+                \Rightarrow\; &\pdx{z}=\dd{z}{u}\cdot\pdx{u}\\
+                \Rightarrow\; &p=\dd{z}{u}\cdot 1\\
+                \Rightarrow\; &p=\dd{z}{u}\\
+                \intertext{and}
+                \Rightarrow\; &q=\pdy{z}=\dd{z}{u}\cdot \pdy{u}\\
+                \Rightarrow\; &q=a\cdot\dd{z}{u}\\
+                \Rightarrow\; &q=a\;\dd{z}{u}
+            \end{align*}
+            \item Put in \eqref{eq:t2.1} \[f\left(z,\;\dd{z}{u},\;a\dd{z}{u}\right)=0\]
+            \item Solve the above equation for \(z\). Which will be the required complete solution.
+        \end{enumerate}
+        \begin{prob}
+            Solve \(z=p^2+q^2\) (Find the complete solution)
+        \end{prob}
+        \begin{soln}
+            Given
+            \begin{equation}
+                z=p^2+q^2 \label{eq:t2.1.1}
+            \end{equation}
+            This is second standard form.\\
+            We assume the solution
+            \[z=f(x+ay)\]
+            and \(u=x+ay\), \(p=\displaystyle \dd{z}{u}\), \(q=\displaystyle a\dd{z}{u}\)
+            Put in \eqref{eq:t2.1.1}
+            \begin{align*}
+                &z=\left(\dd{z}{u}\right)^2+a^2\left(\dd{z}{u}\right)^2\\
+                \Rightarrow\;&z=\left(\dd{z}{u}\right)^2\left(1+a^2\right)\\
+                \Rightarrow\;&\sqrt{z}=\dd{z}{u}\sqrt{1+a^2}\\%partial or total check on book/online
+                \Rightarrow\;&\frac{\dz}{\sqrt{z}}=\frac{\D u}{\sqrt{1+a^2}}\\
+                \intertext{integrating we get,}
+                \Rightarrow\;&2\sqrt{z}=\frac{u}{\sqrt{1+a^2}}+b\\
+                \Rightarrow\;&2\sqrt{z}=\frac{x+ay}{\sqrt{1+a^2}}
+            \end{align*}
+            This is the required solution.
+        \end{soln}
+        \begin{prob}
+            Solve \(p(1+q^2=q(z-a))\)
+        \end{prob}
+        \begin{soln}
+            Given
+            \begin{equation}
+                p(1+q^2=q(z-a)) \label{eq:t2.2.1}
+            \end{equation}
+            This is second standard form.\\
+            We assume the solution
+            \[z=f(x+ay)\]
+            and \(u=x+ay\), \(p=\displaystyle \dd{z}{u}\), \(q=\displaystyle a\dd{z}{u}\)\\
+            Put in \eqref{eq:t2.2.1}
+            \begin{align*}
+                &\cancel{\dd{z}{u}}\left[1+a^2\left(\dd{z}{u}\right)^2\right]=b\cancel{\dd{z}{u}}(z-a)\\
+                \Rightarrow\;&\left(\dd{z}{u}\right)^2=\frac{b(z-a)-1}{b^2}\\
+                \Rightarrow\;&\frac{b\dz}{\sqrt{b(z-a)}}=\D u\\
+                \intertext{integrating we get,}
+                \Rightarrow\;&b\int\frac{\dz}{\sqrt{b(z-a)}}=u+c\\
+                \intertext{put \(b(z-a)=t,\;b\dz=\D t\)}
+                \Rightarrow\;&\int\frac{\D t}{\sqrt{t}}=u+c\\
+                \Rightarrow\;&2\sqrt{t}=u+c\\
+                \Rightarrow\;&2\sqrt{b(z-a)}=x+by+c
+            \end{align*}
+            This is the required solution.
+        \end{soln}
+        \begin{prob}
+            Solve \(x^2p^2+y^2q^2=z^2\) (which is reducible to 2nd...)
+        \end{prob}
+        \begin{soln}
+            Given
+            \begin{equation}
+                (xp)^2+(yp)^2=z^2\label{eq:t2.3.1}
+            \end{equation}
+            Put \(X=\ln x\);\quad \(Y=\ln y\)\\
+            \[\pd{X}{x}=\frac{1}{x}\qquad\pd{Y}{y}=\frac{1}{y}\]
+            \begin{align*}
+                &p=\pd{z}{x}\\
+                \Rightarrow\;&p=\pd{z}{X}\pd{X}{x}\\
+                \Rightarrow\;&p=\frac{1}{x}\pd{z}{X}\\
+                \Rightarrow\;&xp=\pd{z}{X}\\
+                \Rightarrow\;&xp=P
+            \end{align*}
+            \begin{align*}
+                &q=\pd{z}{y}\\
+                \Rightarrow\;&q=\pd{z}{Y}\pd{Y}{y}\\
+                \Rightarrow\;&q=\frac{1}{y}\pd{z}{Y}\\
+                \Rightarrow\;&yq=\pd{z}{Y}\\
+                \Rightarrow\;&yp=Q
+            \end{align*}
+            From \eqref{eq:t2.3.1} we get,
+            \begin{equation}
+                P^2+Q^2=z^2\label{eq:t2.3.2}
+            \end{equation}
+            This is 2nd standard form.\\
+            Assume the solution is\[z=f(X+aY)\] and \(u=X+aY\), \(P=\displaystyle \dd{z}{u}\), \(Q=\displaystyle a\dd{z}{u}\)\\
+            Put in \eqref{eq:t2.3.2}
+            \begin{align*}
+                &\left( \dd{z}{u} \right)^2+a^2\left( \dd{z}{u} \right)^2=z^2\\
+                \Rightarrow\;&\left( \dd{z}{u} \right)^2(1+a^2)=z^2\\
+                \Rightarrow\;&\dd{z}{u}=\frac{z}{\sqrt{1+a^2}}\\
+                \Rightarrow\;&\frac{\dz}{z}=\frac{\D u}{\sqrt{1+a^2}}\\
+                \intertext{Integrating,}
+                &\ln z=\frac{u}{\sqrt{1+a^2}}+b\\
+                \Rightarrow\;&\ln z=\frac{\ln x+a\ln y}{\sqrt{1+a^2}}+b
+            \end{align*}
+            This is the required complete solution.
+        \end{soln}
+        \begin{prob}
+            Solve \(xp^2+yq^2=z^2\)
+        \end{prob}
+        \begin{soln}
+            Given
+            \begin{equation}
+                (\sqrt{x}p)^2+(\sqrt{y}p)^2=z^2\label{eq:t2.4.1}
+            \end{equation}
+            Put \(X=2x^{\frac{1}{2}};\quad Y=2y^{\frac{1}{2}}\)\\
+            \[\pd{X}{x}=2\cdot\frac{1}{2}\cdot x^{\frac{1}{2}-1}=\frac{1}{\sqrt{x}}\qquad\pd{Y}{y}=\frac{1}{\sqrt{y}}\]
+            Now,
+            \begin{align*}
+                &p=\pd{z}{x}\\
+                \Rightarrow\;&p=\pd{z}{X}\pd{X}{x}\\
+                \Rightarrow\;&p=\frac{1}{\sqrt{x}}\pd{z}{X}\\
+                \Rightarrow\;&\sqrt{x}p=\pd{z}{X}\\
+                \Rightarrow\;&\sqrt{x}p=P
+            \end{align*}
+            \begin{align*}
+                &q=\pd{z}{y}\\
+                \Rightarrow\;&q=\pd{z}{Y}\pd{Y}{y}\\
+                \Rightarrow\;&q=\frac{1}{\sqrt{y}}\pd{z}{Y}\\
+                \Rightarrow\;&\sqrt{y}q=\pd{z}{Y}\\
+                \Rightarrow\;&\sqrt{y}p=Q
+            \end{align*}
+            continue...
+        \end{soln}
+        \begin{prob}
+            Solve \(\displaystyle \frac{p^2}{x^2}+\frac{q^2}{y^2}=z^2\)
+        \end{prob}
+        \begin{soln}
+            Given
+            \begin{equation}
+                \left( \frac{p}{x} \right)^2+\left( \frac{q}{y} \right)^2=z^2\label{eq:t2.5.1}
+            \end{equation}
+            Put \(X=\frac{1}{2}x^2\) \(Y=\frac{1}{2}y^2\)\\
+            continue...
+        \end{soln}
+    \item  Third standard form \(f_1(x,p)=f_2(y,q)\)\\
+    \emph{Working rule:}
+    \begin{enumerate}[label=\arabic*]
+        \item Let
+            \begin{align*}
+                &f_1(x,p)=f_2(y,q)=a\\
+                &f_1(x,p)=a\quad \text{and}\quad f_2(y,q)=a\\
+                \Rightarrow\;&p=\Phi_1(x,a)\quad \text{and}\quad q=\Phi_2(y,a)
+            \end{align*}
+        \item Solve 
+        \begin{align*}
+            \dz&=p\D u+q\D u\\
+            &=\Phi_1(x,a)\D u+\Phi_2(y,a)\D u
+        \end{align*}
+        Integrate on both side
+        \[z=\int \Phi_1(x,a)\D u+\Phi_2(y,a)\D u+c\]
+        This is the required complete solution.
+    \end{enumerate}
+    \begin{prob}
+        Solve \(p^2-q^2=x-y\)
+    \end{prob}
+    \begin{soln}
+        Given,
+        \begin{equation}
+            p^2-x=q^2-y\label{eq:t3.1.1}
+        \end{equation}
+        This is 3rd standard form.\\
+        Let 
+        \begin{align*}
+            &p^2-x=q^2-y=a\\
+            \Rightarrow\;&p=\sqrt{a+x}\quad \text{and}\quad q=\sqrt{a+y}\\
+        \end{align*}
+        Since,
+        \begin{align*}
+            \dz&=p \dx+q\dy\\
+            \dz&=\sqrt{a+x}\dx+\sqrt{a+y}\dy\\
+            \intertext{Integrating,}
+            z&=\int\sqrt{a+x}\dx+\int\sqrt{a+y}\dy\\
+            z&=\frac{2}{3}(a+x)^{\frac{3}{2}}+\frac{2}{3}(a+y)^{\frac{3}{2}}+c
+        \end{align*}
+        This is the required complete solution.
+    \end{soln}
+    \begin{prob}
+        Solve \(yp+xq+pq=0\)
+    \end{prob}
+    \begin{soln}
+        Given,
+        \begin{align*}
+            &yp+xq=-pq\\
+            \Rightarrow\;&\frac{yp}{-pq}+\frac{xq}{-pq}=1\\
+            \Rightarrow\;&\frac{x}{p}=1+\frac{y}{q}
+        \end{align*}
+        This is 3rd standard form.\\
+        Let 
+        \begin{align*}
+            &\frac{x}{p}=1+\frac{y}{q}=a\\
+            \Rightarrow\;&p=\frac{x}{a}\quad \text{and}\quad q=\frac{y}{a-1}\\
+        \end{align*}
+        Since,
+        \begin{align*}
+            \dz&=p \dx+q\dy\\
+            \dz&=\frac{x}{a}\dx+\frac{y}{a-1}\dy\\
+            \intertext{Integrating,}
+            z&=\frac{1}{2a}x^2+\frac{1}{2(a-1)}y^2+c
+        \end{align*}
+        This is the required complete solution.
+    \end{soln}
+    \begin{prob}
+        Solve \(z^2(p^2+q^2)=x^2+y^2\)
+    \end{prob}
+    \begin{soln}
+        Given,
+        \begin{equation}
+            (zp)^2+(zq)^2=x^2+y^2\label{eq:t3.11.1}
+        \end{equation}
+        Taking \(Z=\frac{z^2}{2}\) and \(\pdz{Z}=z\)\\
+        Now,
+        \begin{align*}
+            p&=\pdx{z}=\pd{z}{Z}\pdx{Z}\\
+            p&=\frac{1}{z}P\\
+            \intertext{and,}
+            q&=\pdy{z}=\pd{z}{Z}\pdy{Z}\\
+            zq&=Q\qquad\left[\text{Where } P=\pdx{Z},\;Q=\pdy{Z}\right]
+        \end{align*}
+        From \eqref{eq:t3.11.1}
+        \begin{align*}
+            &P^2+Q^2=x^2+y^2\\
+            \Rightarrow\;&P^2-x^2=y^2-Q^2
+        \end{align*}
+        This is 3rd standard form.\\
+        Let 
+        \begin{align*}
+            &P^2-x^2=y^2-Q^2=a^2\\
+            \Rightarrow\;&P^2=a^2+x^2\quad \text{and}\quad Q^2=y^2-a^2
+        \end{align*}
+        Since,
+        \begin{align*}
+            \D Z&=P \dx+Q\dy\\
+            \Rightarrow\;\D Z&=(a^2+x^2)\dx+(y^2-a^2)\dy\\
+            \intertext{Integrating,}
+            Z&=\frac{1}{2}\left[x\sqrt{x^2+a^2}+a^2\log (x+\sqrt{x^2+a^2})\right]+\frac{1}{2}\left[y\sqrt{y^2-a^2}-a^2\log (y+\sqrt{y^2-a^2})\right]+c\\
+            \Rightarrow\;\frac{z^2}{2}&=\frac{1}{2}\left[x\sqrt{x^2+a^2}+a^2\log (x+\sqrt{x^2+a^2})\right]+\frac{1}{2}\left[y\sqrt{y^2-a^2}-a^2\log (y+\sqrt{y^2-a^2})\right]+c\\
+            \Rightarrow\;z^2&=\left[x\sqrt{x^2+a^2}+a^2\log (x+\sqrt{x^2+a^2})\right]+\left[y\sqrt{y^2-a^2}-a^2\log (y+\sqrt{y^2-a^2})\right]+c
+        \end{align*}
+        This is the required complete solution.
+    \end{soln}
+    \begin{prob}
+        Solve \(p^2-q^2=z(x-y)\)
+    \end{prob}
+    \begin{soln}
+        Given,
+        \begin{equation}
+            \left(\frac{p}{\sqrt{z}}\right)^2-\left(\frac{q}{\sqrt{z}}\right)^2=x-y\label{eq:t3.12.1}
+        \end{equation}
+        Taking \(Z=2\sqrt{z}\) and \(\pdz{Z}=\frac{1}{\sqrt{z}}\)\\
+        Now,
+        \begin{align*}
+            p&=\pdx{z}=\pd{z}{Z}\pdx{Z}\\
+            \Rightarrow\;p&=\sqrt{z}\pdx{Z}\\
+            \Rightarrow\; \frac{p}{\sqrt{z}}=P\\
+            \intertext{and,}
+            q&=\pdy{z}=\pd{z}{Z}\pdy{Z}\\
+            &=\sqrt{z}\pdy{Z}\\
+            \Rightarrow\;\frac{q}{\sqrt{z}}&=Q\qquad\left[\text{Where } P=\pdx{Z},\;Q=\pdy{Z}\right]
+        \end{align*}
+        From \eqref{eq:t3.12.1}
+        \begin{align*}
+            &P^2-Q^2=x-y\\
+            \Rightarrow\;&P^2-x=Q^2-y
+        \end{align*}
+        This is 3rd standard form.\\
+        Let 
+        \begin{align*}
+            &P^2-x=Q^2-y=a\\
+            \Rightarrow\;&P^2=x+a\quad \text{and}\quad Q^2=a+y\\
+            \Rightarrow\;&P=\sqrt{x+a}\quad \text{and}\quad Q=\sqrt{a+y}
+        \end{align*}
+        Since,
+        \begin{align*}
+            \D Z&=P \dx+Q\dy\\
+            \Rightarrow\;\D Z&=\sqrt{x+a}\dx+\sqrt{y+a}\dy\\
+            \intertext{Integrating,}
+            Z&=\frac{2}{3}(x+a)^{\frac{3}{2}}+\frac{2}{3}(y+a)^{\frac{3}{2}}+c\\
+            \Rightarrow\;2\sqrt{z}&=\frac{2}{3}(x+a)^{\frac{3}{2}}+\frac{2}{3}(y+a)^{\frac{3}{2}}+c
+        \end{align*}
+        This is the required complete solution.
+    \end{soln}
+    \begin{prob}
+        Solve \(z(p^2-q^2)=x-y\)
+    \end{prob}
+    \begin{soln}
+        Given,
+        \begin{equation}
+            \left(\sqrt{z}p\right)^2-\left(\sqrt{z}q\right)^2=x-y
+        \end{equation}
+        Put \(Z=\frac{2}{3}z^{\frac{3}{2}}\) and \(\pdz{Z}=\sqrt{z}\)
+    \end{soln}
+    \begin{prob}
+        Solve \(p^2+q^2=z^2(x^2+y^2)\)
+    \end{prob}
+    \begin{soln}
+        Given,
+        \begin{equation}
+            \left(\frac{p}{z}\right)^2+\left(\frac{q}{z}\right)^2=x^2+y^2
+        \end{equation}
+        Put \(Z=\log z\) and \(\pdz{Z}=\frac{1}{z}\)
+    \end{soln}
+    \item Forth standard form
+    \[z=px+qy+f(p,q)\]
+    The complete solution is
+    \begin{equation}
+        z=ax+by+f(a,b)\label{eq:t4.1}
+    \end{equation}
+    Singular solution\\
+    Partial differentiate \eqref{eq:t4.1} with respect to \(a\) and \(b\)
+    \begin{align}
+        0&=x+0+f'(a,b)\label{eq:t4.2}\\
+        0&=0+y+f'(a,b)\label{eq:t4.3}
+    \end{align}
+    Solve \eqref{eq:t4.2} and \eqref{eq:t4.3} find the value of \(a\), \(b\) put in \eqref{eq:t4.1}, which gives the required singular solution.
+\end{enumerate}
+\begin{prob}
+    Find the complete and singular solution of 
+    \[z=px+qy+p^2+q^2\]
+\end{prob}
+\begin{soln}
+    Given,
+    \begin{equation}
+        z=px+qy+p^2+q^2\label{eq:t4.1.1}
+    \end{equation}
+    This is fourth standard form.\\
+    The complete solution is
+    \begin{equation}
+        z=ax+by+a^2+b^2\label{eq:t4.1.2}
+    \end{equation}
+    Singular solution\\
+    Partial differentiate \eqref{eq:t4.1.2} with respect to \(a\) and \(b\)
+    \begin{align*}
+        0&=x+0+2a+0\qquad\Rightarrow\;a=\frac{-x}{2}\\
+        0&=0+y+0+2b\qquad\Rightarrow\;b=\frac{-y}{2}
+    \end{align*}
+    Putting in \eqref{eq:t4.1.2}
+    \begin{align*}
+        z&=-\frac{x^2}{2}-\frac{y^2}{2}+\frac{y^2}{4}+\frac{x^2}{4}\\
+        z&=-\frac{x^2}{4}-\frac{y^2}{4}
+    \end{align*}
+    \(x^2+y^2+4z=0\) is singular solution.
+\end{soln}%
+\end{document}%

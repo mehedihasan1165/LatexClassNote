@@ -1,0 +1,11 @@
+\begin{tikzpicture}[decoration = {markings,
+    mark=at position 0.1 with {\arrow {latex}},
+    mark=at position 0.32 with {\arrow {latex}},
+    mark=at position 0.72 with {\arrow {latex}}    
+    }]
+\draw[thick,-latex] (-3,0)--(3,0) node[below] {$x$};
+\draw[thick,-latex] (0,-3)--(0,3) node [left] {$y$};
+\node at (.25,.25) {$O$};
+\draw [postaction={decorate},thick,domain=-10:-30, variable=\t, samples=200] 
+plot ({\t r}: {-0.003*\t*\t});
+\end{tikzpicture}

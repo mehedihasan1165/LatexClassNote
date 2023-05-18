@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+    \node[circle,draw] (a){};
+    \node[circle,draw] (b)[above =of a]{};
+    \node[circle,draw] (c)[below =of a]{};
+    \node[circle,draw] (d)[above right =of a]{};
+    \node[circle,draw] (e)[below right =of a]{};
+    \path[-] (a) edge node{}(b)
+                edge node{}(c)
+                edge node{}(d)
+                edge node{}(e);
+    \node[node distance=1.5cm](anchor)[right =of a]{};
+    \node[circle,draw] (aa)[right =of anchor]{};
+    \node[circle,draw] (bb)[above right =of aa]{};
+    \node[circle,draw] (cc)[below right =of aa]{};
+    \node[circle,draw] (dd)[above left =of aa]{};
+    \node[circle,draw] (ee)[below left =of aa]{};
+    \path[-] (aa) edge node{}(bb)
+                edge node{}(cc)
+                edge node{}(dd)
+                edge node{}(ee);
+\end{tikzpicture}

@@ -1,0 +1,286 @@
+\documentclass[12pt,class=book,crop=false]{standalone}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter*{Questions from Previous Years}
+\section*{2012-2013 (2015)}
+\begin{enumerate}
+    \item Marks : $ 4+4+6=14 $
+          \begin{enumerate}
+              \item Derive Newton-Raphson formula using Taylor's series expansion to solve a nonlinear equation.
+              \item Show that Newton-Raphson method converges quadratically.
+              \item Find a root, correct to three decimal places, of the equation $ \cos x-xe^x=0 $ using Regula-Falsi method, and then find its percentage error.
+          \end{enumerate}
+    \item Marks : $ (6+1)+7=14 $
+          \begin{enumerate}
+              \item Obtain Newton's formula for backward interpolation. Discuss its drawback if any compare to Lagrange interpolation formula.
+              \item Find the Lagrange interpolation polynomial to fit the following data:
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}{|c|c|c|c|c|}
+                            \hline
+                            $ x $    & $ 0 $ & $ 1 $      & $ 2 $      & $ 3 $       \\\hline
+                            $ f(x) $ & $ 0 $ & $ 1.7183 $ & $ 6.3891 $ & $ 19.0855 $ \\\hline
+                        \end{tabular}
+                    \end{table}
+          \end{enumerate}
+    \item Marks : $ 7+7=14 $
+          \begin{enumerate}
+              \item Describe the Gauss-Seidal iterative method to solve a system of linear equations numerically. Write down the conditon that for any choice of the first approximation of the Gauss-Seidal method converges.
+              \item Solve the tri-diagonal system:
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}{rcrcrcll}
+                            $ 0.5 x_1 $  & $ + $ & $ 0.25x_2 $ &       &            &       &            & $ =0.35 $  \\
+                            $ 0.35x_1 $ & $ + $ & $ 0.8x_2 $  & $ + $ & $ 0.4x_3 $ &       &            & $ =0.77 $  \\
+                                        &       & $ 0.25x_2 $ & $ + $ & $ x_3 $    & $ + $ & $ 0.5x_4 $ & $ =-0.5 $  \\
+                                        &       &             &       & $ x_3 $    & $ - $ & $ 2.0x_4 $ & $ =-2.25 $
+                        \end{tabular}
+                    \end{table}
+                    % \begin{align*}
+                    %     0.5x_1+0.25x_2&=0.35\\
+                    %     0.35x_1+0.8x_2+0.4x_3&=0.77\\
+                    %     0.25x_2+x_3+0.5x_4&=-0.5\\
+                    %     x_3-2.0x_4&=-2.25
+                    % \end{align*}
+          \end{enumerate}
+    \item Marks : $ 2+4+8=14 $
+          \begin{enumerate}
+              \item What are spline functions and spline interpolation? Discuss briefly.
+              \item Derive Newton's general interpolation formula with divided difference.
+              \item Fit cubic splines to the following data, and utilize the results to estimate the value at $ x=5 $.
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}{|c|c|c|c|c|}
+                            \hline
+                            $ x $    & $ 2.0 $ & $ 4.5 $ & $ 7.0 $ & $ 9.0 $ \\\hline
+                            $ f(x) $ & $ 2.5 $ & $ 1.0 $ & $ 2.5 $ & $ 0.5 $ \\\hline
+                        \end{tabular}
+                    \end{table}
+          \end{enumerate}
+    \item Marks : $ 8+6=14 $
+          \begin{enumerate}
+              \item Derive general quadrature formula for equidistant ordinates to integrate a function numerically and hence deduce Weddle's rule.
+              \item Compute the value of the integral $ \displaystyle \int_0^3 \left( e^{x^2}-1 \right)\dx,\,n=6 $ by Trapezoidal rule and Simpson's $ {}^1/{}_3 $ rule.
+          \end{enumerate}
+    \item Marks : $ 7+7=14 $
+          \begin{enumerate}
+              \item Derive a formula for numerical evaluation of $ \ddx{y}  $ and $ \ddxn{2}{y} $ from a given data set of $ (x,y) $.
+              \item The deflection $ y $, measured at various distance $ x $ from one end of a cantilever, is given by
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}{|c|c|c|c|c|c|c|}
+                            \hline
+                            $ x: $ & $ 0.0 $    & $ 0.2 $    & $ 0.4 $    & $ 0.6 $    & $ 0.8 $    & $ 1.0 $    \\\hline
+                            $ y: $ & $ 0.0000 $ & $ 0.0347 $ & $ 0.1173 $ & $ 0.2160 $ & $ 0.2987  $& $ 0.3333 $ \\\hline
+                        \end{tabular}
+                    \end{table}
+                    Find $ f'(0.8) $, where $ y=f(x) $.
+          \end{enumerate}
+    \item Marks : $ 7+7=14 $
+          \begin{enumerate}
+              \item Explain the Euler's method to solve the ordinary differential equation $ \ddx{y}=f(x,y),\,y(x_0)=y_0 $.
+              \item Use the 4th order Runge-Kutta method to solve $ 10\ddx{y}=x^2+y^2,\,y(0)=1 $, for the interval $ 0\leq x\leq 0.4 $ with $ h=0.2 $.
+          \end{enumerate}
+    \item Marks : $ 7+7=14 $
+          \begin{enumerate}
+              \item Obtain finite difference formula for $ \frac{\partial u}{\parx} $ and $ \frac{\partial^2 u }{\partial x^2} $. Derive explicit finite difference scheme to solve the BVP:
+                    \[
+                        u''(x)+p(x)u'(x)+q(x)u(x)+r(x)=0
+                    \]
+                    with boundary conditions $ u(x_0)=a $ and $ u(x_n)=b $, $ x_0\leq x\leq x_n $.
+              \item Solve the boundary value problem $ y''-y=0 $ with boundary conditions $ y(0)0=0 $ and $ y(2)=3.627 $ by the finite difference method with $ h=0.5 $.
+          \end{enumerate}
+\end{enumerate}
+\newpage
+\section*{2015-2016 (2018)}
+\begin{enumerate}
+    \item Marks: $ (2+2)+6+4=14 $
+    \begin{enumerate}
+        \item Define algebraic and transcendental equations. Discuss how the intermediate value theorem exhibits the bracketing interval.
+        \item Describe the method of iteration for finding a root of the equation $ f(x) = 0 $. Also establish the condition of convergence of this method.
+        \item Find a real root, correct to three decimal places, of the equation $ \sin^2 x = x^2 - 1 $ lying in the interval $ [1.3, 1.5] $ by using iteration method.
+    \end{enumerate}
+    \item Marks: $ 7+7=14 $
+    \begin{enumerate}
+        \item Write down the iteration formula of Newton-Raphson method to find a root of the equation $ f(x) = 0 $. Then show that Newton-Raphson method converges quadratically.
+        \item Solve the equation $ e^x -x-2 = 0 $ by Newton-Raphson method.
+    \end{enumerate}
+    \item Marks: $ 5+4+5=14 $
+    \begin{enumerate}
+        \item Define interpolation and extrapolation. Derive the Newton's formula for the backward interpolation.
+        \item Derive the first fourth backward difference formula and construct its backward difference table.
+        \item The population of a town in the decennial census was as given below.
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                Year: $ x $& $ 1981 $ &$ 1991 $ &$  2001 $ &$ 2011 $\\\hline
+                Population: $ y $ (in thousands)& $ 46 $& $ 66 $ &$ 81 $&$ 93 $\\\hline
+            \end{tabular}
+        \end{table}
+        Estimate the population for the year $ 1985 $.
+    \end{enumerate}
+    \item Marks: $ 7+7=14 $
+    \begin{enumerate}
+        \item Derive the Lagrange's interpolation formula for unequal intervals.
+        \item Given the following data:
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                $ x $& $ 10.1 $& $ 22.2 $&$  32.0 $&$  41.6 $&$  50.5 $\\\hline               
+                $ f(x) $ & $ 0.17537 $& $ 0.37784 $& $ 0.52992 $&$ 0.66393 $& $ 0.63608 $\\\hline
+            \end{tabular}
+        \end{table}        
+        Estimate the value of $ f(27.5) $ by using divided difference formula.
+    \end{enumerate}
+    \item Marks: $ 7+7=14 $
+    \begin{enumerate}
+        \item Derive general quadrature formula for equidistance ordinates to integrate $ f(x) $ numerically and hence deduce Simpson's rule.
+        \item Evaluate the value of the integral $\displaystyle \int_{0.2}^{1.4} \left( \cos x- \log_e x+ e^x \right) \dx $ by 
+        \begin{enumerate}[noitemsep]
+            \item Simpson's $ {}^{1}/{}_3 $ rule and
+            \item Weddle's rule.
+        \end{enumerate}
+    \end{enumerate}
+    \item Marks: $ 8+6=14 $
+    \begin{enumerate}
+        \item Derive cubic spline interpolating method.
+        \item Fit a natural cubic spline to the following data:
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|}
+                \hline
+                $ x $& $ 1 $&$  2 $& $ 3 $\\\hline               
+                $ y $ & $ -8 $& $ -1 $& $ 18 $\\\hline
+            \end{tabular}
+        \end{table}
+        and compute $ y(1.5) $ and $ y'(1) $.
+    \end{enumerate}
+    \item Marks: $ 7+7=14 $
+    \begin{enumerate}
+        \item Use the decomposition method to solve the system of equations
+        \begin{align*}
+            x_1 + x_2 + x_3 &= 1\\
+            4x_1 +3x_2 - x_3 &= 6\\
+            3x_1 + 5x_2 + 3x_3 &= 4.
+        \end{align*}
+        \item Use Gauss-Seidel iteration method to solve the following system of equations:
+        \begin{align*}
+            4x +y + 2z &= 4\\
+            3x + 5y +z &= 7\\
+            x +y+ 3z &= 3
+        \end{align*}
+        up to four decimal places.
+    \end{enumerate}
+    \item Marks: $ 7+7=14 $
+    \begin{enumerate}
+        \item Derive Euler's method to solve the IVP:
+        \[
+            \ddx{y} = f(x, y),\quad y(x_0) = y_0
+        \]
+        Also explain its modification.
+        \item Solve the initial value problem:
+        \[
+            \frac{\D u}{\D t} =-2tu^2,\quad u(0) = 1
+        \]
+        with $ h = 0.2 $ on the interval $ [0,0.4] $ by using the fourth-order classical Runge-Kutta method.
+    \end{enumerate}
+\end{enumerate}
+\newpage
+\section*{2016-2017 (2019)}
+\begin{enumerate}
+    \item Marks: $ 5+4+5 $
+    \begin{enumerate}
+        \item What is meant by error in numerical analysis? Explain the following error:\\
+        Truncation error, round-off error and inherent error.
+        \item Define bracketing interval. Derive the formula for the chord method to find a real root of a transcendental equation.
+        \item Find a root of the equation $ x \log_{10} x = 4.77 $ by Newton-Raphson method, correct to three decimal places.
+    \end{enumerate}
+    \item Marks: $ 7+7 $
+    \begin{enumerate}
+        \item Derive the close form formulae to solve the tridiagonal system of linear equations:
+        \[
+            a_r x_{r-1} + b_rx_r+ c_rx_{r +1} = dr,\quad a_1 = c_n = 0 \quad \text{for } r = 1,2, 3,\dots, n
+        \]
+        \item Apply above formulae to solve the following system of linear equations:
+        \begin{align*}
+            0.5x_1 +0.25x_2 &= 0.35\\
+            0.35x_1 +0.8x_2 +0.4x_3 &= 0 . 77\\
+            0. 25x_2 + x_3 + 0.5x_4 &= -0.50\\
+            x_3 -2. 0x_4& = -2.25
+        \end{align*}
+    \end{enumerate}
+    \item Marks: $ 4+5+5 $
+    \begin{enumerate}
+        \item Discuss Gauss-Seidel and Gauss-Jacobi iteration methods to find solutions of the system of linear equations $ Ax = b $ and write their advantages and disadvantages.
+        \item Use Gauss-Seidel iteration method to find the solutions, correct up to 3 decimal places of the following system of linear equations:
+        \begin{align*}
+            4x_1 + x_2 + 2x_3 &= 4\\
+            x_1 + x_2 + 3x_3 &= 3\\
+            3x_1+ 5x_2 + x_3 &=7
+        \end{align*}
+        \item Solve the following system of Linear equations:
+        \begin{align*}
+            5x - 2y + z &= 4\\
+            7x + y - 5z &= 8\\
+            3x + 7y+4z &= 10
+        \end{align*}
+        by Crout's reduction method.
+    \end{enumerate}
+    \item Marks: $ 6+8 $
+    \begin{enumerate}
+        \item Define interpolation and extrapolation. Derive the expression for the error in polynomial interpolation.
+        \item The following table gives the population of a town during the last six censuses. Estimate using any suitable interpolation formula, the increase in the population during the period from $ 1976 $ to $ 1978 $.
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|c|c|}
+                \hline
+                Year& $ 1941 $& $ 1951 $& $ 1961 $& $ 1971 $& $ 1981 $& $ 1991 $\\\hline               
+                Population (in thousand)& $ 12 $&$ 15 $&$ 20 $&$ 27 $&$ 39 $&$ 52 $\\\hline
+            \end{tabular}
+        \end{table}
+    \end{enumerate}
+    \item Marks: $ 7+7 $
+    \begin{enumerate}
+        \item Discuss briefly the properties of cubic spline and defines its knots. Fits a cubic spline curve that passes through $ (0, 0.0) $, $ (1, 0.5) $. $ (2,2.0) $ and $ (3,1.5) $ with the natural-end boundary conditions.
+        \[
+            S''(0) = 0,\quad S''(3) = 0
+        \]
+        \item Find interpolating polynomial for the following data using Lagrange's formula
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|}
+                \hline
+                $ x $& $ 1 $& $ 2 $& $ -4 $\\\hline               
+                $ y=f(x) $ & $ 3 $& $ -5 $& $ 4 $\\\hline
+            \end{tabular}
+        \end{table}
+        Hence, find $ f(2.25) $.
+    \end{enumerate}
+    \item Marks: $ 7+7 $
+    \begin{enumerate}
+        \item  Derive general quaderature formula to evaluate the integral $ \displaystyle I=\int_a^b y(x)\dx $, hence deduce the trapezoidal, Simpsons $ {}^1/{}_3 $ and Simpson's $ {}^3/{}_8 $ formula to find $ I $.
+        \item Compute the value of the definite integral $ \displaystyle \int_0^{\frac{\pi}{2}}e^{\sin x}\dx $ by Simpson's $ {}^3/{}_8 $ rule and Weddle's rule. After finding the true value of the integral, compare the errors in both cases and comment which method is better. 
+    \end{enumerate}
+    \item Marks: $ 7+7 $
+    \begin{enumerate}
+        \item Define initial value problem. Derive Euler's method to solve the IVP.
+        \[
+            \ddx{y}= (fx, y),\quad y(x_0) =y_0
+        \]
+        Also explain its modification.
+        \item Using modified Euler's method, obtain the solution of the differential equation $ \ddx{y}=t+\sqrt{y} $ with the initial conditon $ y (0) = 1 $, for the range $ 0\leq t\leq 0.6 $ in steps of $ 0.2 $.
+    \end{enumerate}
+    \item Marks: $ 6+8 $
+    \begin{enumerate}
+        \item Use fourth order Runge-Kutta method to solve numerically the initial value problem
+        \[
+            \frac{\dy}{\D t}=y^2-100e^{-100(t-1)^2},\quad y(0.8)=4.9491
+        \]
+        and find $ y(0.85) $ taking $ h = 0.01 $.
+        \item Find $ y(0.8) $ using Milne's predictor-corrector Method, if $ y(x) $ is the solution of the differential equation $ \ddx{y}=-xy^2 $, $ y(0)=2 $ assuming $ y(0.2) = 1.92308$, $Y(0.4) = 1.72414 $ and $ y(0.6) =1.47059 $.
+    \end{enumerate}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,639 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\everymath{\displaystyle}
+\begin{document}
+\chapter{Topological Space}
+This chapter opens with the definition of a topology and then we study a number of ways of constructing a topology on a set so as to make it into a topological space.
+We also consider some of the elementary concepts associated with topological spaces.
+Open and closed sets, neighborhoods, limit points, interior, exterior and boundary of a set are introduced as natural generalization of corresponding ideas for the real line and Euclidean space.\\
+Topology, like other branches of pure mathematics such as group theory, is an axiomatic subject.
+We start with a set of axioms and we use these axioms to prove propositions and theorems.
+\begin{defn}
+    Let  \(X\) be a non-empty set. A class  \(\tau \) of subsets of  \(X\) is said to be a \bfem{topology} on  \(X\) iff  \(\tau\) satisfies the following axioms:
+    \begin{enumerate}[label=(\roman*)]
+        \item  \(X\) and the empty set  \(\varnothing\) belongs to  \(\tau\).
+        \item The union of any collection of elements of  \(\tau\) belongs to  \(\tau\).
+        \item The intersection of any finite subcollection of elements of  \(\tau\) belongs to  \(\tau\).
+    \end{enumerate}
+    If  \(\tau\) is a topology on  \(X\), then the pair  \((X, \tau)\) is called a \bfem{topological space}. It is customary to denote this topological space simply by  \(X\) if no confusion will arise.
+\end{defn}
+\begin{defn}
+    Let  \(\xt\) be a topological space. Then
+    members of  \(\tau\) are called open sets in  \(X\).
+\end{defn}
+    Obviously, we have,
+    \begin{enumerate}[label=(\roman*)]
+        \item  \(\varnothing\) and  \(X\) are open sets in  \(X\) with respect to any topology  \(\tau\) on  \(X\).
+        \item Union of arbitrary number of open sets is an open set.
+        \item Intersection of finite number topological space is an open set. \label{enum:defn3}
+    \end{enumerate}
+    \begin{ex}
+        Consider the following collections of subsets of  \(X = \{a,b, c, d,e\}\):
+        \begin{align*}
+            \tau_1 &= \{X, \varnothing, \{a\}, \{c,d\},\{a,c,d\}\}\\
+            \tau_2 &= \{X, \varnothing, \{b, c\}, \{b, c, e\}, \{b, c, d,e\}\}\\
+            \tau_3&= \{X,\varnothing, \{a\}, \{c, d\}, \{a,c,d\}, \{a, b, d, e\}\}
+        \end{align*}            
+        Observe that  \(\tau_1\) and  \(\tau_2\) are topologies on  \(X\) since they satisfy all the three axioms of the definition of topology whereas  \(\tau_3\) is not, because the intersection
+        \[
+            \{a, c, d\} \cap \{a, b, d, e\} = \{a,d\}
+        \]
+        does not belong to  \(\tau_3\); i.e.,  \(\tau_3\) does not satisfy the condition \ref{enum:defn3} of the definition of topology.
+    \end{ex}
+From this example we see that a set  \(X\) may have many topologies but not every collection is a topology.
+\begin{ex}
+    \label{ex:1.02}
+    Let  \(X\) be a non-empty set and  \(\tau\) be the class of all subsets of  \(X\). Then obviously  \(\tau\) is a topology on  \(X\).
+    This topology is known as \bfem{discrete topology} and the pair  \(\xt\) is called a \bfem{discrete topological space}.
+\end{ex}
+\begin{ex}
+    \label{ex:1.03}
+    For any non-empty set  \(X\), the class consisting of only  \(X\) and  \(\varnothing\), i.e.;  \(\tau=\{X,\varnothing\}\) is a topology on  \(X\). This topology is called \bfem{indiscrete topology} and the pair  \(\xt\) is called an \bfem{indiscrete topological space.}
+\end{ex}
+The topologies in the Example \ref{ex:1.02} and Example \ref{ex:1.03} are known as \bfem{trivial topologies}. All other topologies are known as \bfem{non-trivial topologies}.
+\begin{rem}
+    If  \(\abs{X} = 1\), then discrete and indiscrete topologies on  \(X\) coincide, otherwise they are different.
+\end{rem}
+\begin{ex}
+    Let  \(\mathscr{U}\) denotes the class of all open subsets of real numbers  \((\R)\). Then  \(\mathscr{U}\) is a topology on  \(\R\). For,  \(\varnothing\) and  \(\R\) are both open, arbitrary union of open sets is open and finite intersection of open sets is open. We call this topology a \bfem{usual topology} on  \(\R\).\\
+    This topology is also known as \bfem{standard topology} or \bfem{Euclidean topology} on  \(\R\).
+\end{ex}
+Similarly, the class of all open sets in the plane  \(\R^2\) is a topology and also called usual topology/Euclidean topology on  \(\R^2\).
+\begin{ex}
+    Let  \((S,d)\) be a metric space and  \(\tau\) be the collection of all open sets in S. Then  \(\tau\) is a topology on  \(S\) and called \bfem{metric topology} on  \(S\) induced by the metric  \(d\).
+\end{ex}
+\begin{ex}
+    Let  \(X\) be a non-empty set and  \(\tau\) be a collection of all those subsets  \(U\) of  \(X\) such that  \(X - U\) is finite or all of  \(X\). Then this collection forms a topology on  \(X\). This topology is known as the \bfem{co-finite topology} or the \bfem{finite complement topology} on  \(X\).\\
+    To prove that  \(\tau\) is a topology on  \(X\), we see that
+    \begin{enumerate}[label=(\roman*)]
+        \item  Both  \(X\),  \(\varnothing\) are in  \(\tau\) since  \(X-X = \varnothing\) is finite and  \(X - \varnothing = X\) is all of  \(X\).
+        \item If  \(\{U_\alpha\}\) is any collection of elements of  \(\tau\), then, for each  \(\alpha \in \Omega\),  \(X - U_\alpha\) is finite and so  \(X-\cup U_\alpha=\cap (X - U_\alpha)\) is finite [by De Morgan's Law]. Hence,  \(\cup U_\alpha\in \tau\)
+        \item If  \(\{U_1, U_2,\dots, U_n)\) is a finite collection of elements of  \(\tau\) then  \(\displaystyle X -\bigcap_{k=1}^n U_k = \bigcup_{k=1}^n (X - U_k)\) is finite since each set  \(X-U_k\) is finite. Hence,  \(\displaystyle \bigcap_{k=1}^n U_k\in \tau\).
+    \end{enumerate}
+\end{ex}
+\begin{rem}
+    If  \(X\) is finite set, then co-finite topology on  \(X\) coincides with the discrete topology on  \(X\).
+\end{rem}
+\begin{ex}
+    Let  \(X\) be any uncountable set and  \(\tau\) be a collection of all those subsets  \(U\) of  \(X\) such that  \(X-U\) is countable or all of  \(X\). This collection forms a topology on  \(X\) and we call it \textbf{co-countable topology}.
+\end{ex}
+To prove that  \(\tau\) is a topology on  \(X\), we see that
+\begin{enumerate}[label=(\roman*)]
+    \item  \(X, \varnothing \in \tau\), because  \(X-X=\varnothing\) which is countable and  \(X-\varnothing=X\) which is all of  \(X\).
+    \item If  \(\{U_\alpha\}\) is any collection of elements of  \(\tau\), then for each  \(\alpha\in\Omega\),  \(X-U_\alpha\) is countable and so  \(X-\cup U_\alpha =\cap (X-U_\alpha)\) [by De Morgan's Law] is countable. Hence,  \(\cup U_\alpha \in \tau\).
+    \item If  \(\{U_1, U_2,\dots, U_n\}\) is a finite collection of elements of  \(\tau\), then  \(\displaystyle X-\bigcap_{k=1}^n U_k=\bigcup_{k=1}^n (X-U_k)\) which countable since each set  \(X - U_k\) is countable. Hence, \(\displaystyle \bigcap_{k=1}^n U_k\in \tau\).
+\end{enumerate}
+\begin{rem}
+    If  \(X\) is a countable set, the co-countable topology on  \(X\) coincides with the discrete topology on  \(X\).
+\end{rem}
+\begin{ex}
+    Let  \(\N\) be the set of natural numbers and let  \(\tau\) consists of  \(\varnothing\) and each subset  \(S\) of  \(\N\) such that  \(\N - S\) is finite. Then  \(\tau\) is a topology on  \(X\).\\
+    By hypothesis,  \(\varnothing \in \tau\). Also  \(\N-\N = \varnothing\), a finite set, so  \(\N\in\tau\).\\
+    Thus,  \(\N, \varnothing \in \tau\).
+    For each natural number  \(n\), define the set  \(S_n\), as follows:
+    \[S_n=\{1\} \cup \{n+1\} \cup \{n + 2\}\dots = {1} \cup \bigcup_{m=n+1}^{\infty}\{m\}\]
+    Then clearly each  \(S_n\) is infinite and  \(\N-S_n\) is finite; so  \(S_n \in \tau\). Now,  \(\N-\cup S_n =\cap (\N-S_n)\) is finite since each  \((\N-S)\) is finite. Hence,  \(\cup S_n \in \tau\).\\
+    Also  \(\N - \bigcap_1^n S_k = \bigcup_1^n(\N-S_k)\) is finite, so  \(\cap S_n \in \tau\).\\
+    Thus  \(\tau\) is a topology on  \(\N\).
+\end{ex}
+Observe that the infinite intersection
+\[
+    \bigcap_{n=1}^\infty S_n=\{1\}
+\]
+is finite whose compliment is not finite; so, it does not belong to  \(\tau\). Thus, the infinite intersection of open sets may not be open.
+\begin{rem}
+    \hfill
+    \begin{itemize}
+        \item In a topological space  \(\xt\), each member of  \(\tau\) is a subset of  \(X\), but each subset of  \(X\) is not a member of  \(\tau\). For this consider the topology  \(\tau = \{X, \varnothing, \{a\}, \{a,b\}\}\) on  \(X = \{a,b,c\}\). Then  \(\{b,c\} \subset X\) but  \(\{b,c\} \notin \tau\).
+        \item Intersection of finite number of members of  \(\tau\) is a member of  \(\tau\) but intersection of any number members of  \(\tau\) need not be member of  \(\tau\). For this, consider the usual topological space  \((\R, \tau_u)\) and  \((-n, n) \in \tau_u\), for each  \(n \in \N\). But
+        \[
+            \bigcap_{n\in\N}(-n, n) = \{0\}
+        \]
+        which is not a member of  \(\tau\).
+    \end{itemize}
+\end{rem}
+\textbf{The set of all topologies on  \(X\)}\\
+Given any nonempty set  \(X\), there always exists a topology on  \(X\) viz. the discrete topology or the indiscrete topology. Hence, every non-empty set can be considered as a topological space.\\
+
+
+The collection  \(\mathscr{F}\) of all topologies defined on a non-empty set  \(X\) is surely non-empty and is partially ordered set (poset in short) under the partial ordering relation  \(\leq \) defined by  \(\tau_1 \leq \tau_2\) iff  \(\tau_1 \subseteq \tau_2\), for  \(\tau_1, \tau_2 \in \mathscr{F}\). The poset  \((\mathscr{F},\leq)\) is a bounded poset with indiscrete topology as the smallest element and discrete topology as the greatest element.\\
+
+If  \(\tau_1\subseteq \tau_2\), we say that  \(\tau_1\) is \bfem{coarser} (or \bfem{weaker}) than  \(\tau_2\), or equivalently, we say that  \(\tau_2\) is \bfem{finer} (or \bfem{stronger}) than  \(\tau_1\).\\
+Whenever either  \(\tau_1\subseteq\tau_2\) or  \(\tau_2\subseteq\tau_1\), we say that  \(\tau_1\) and  \(\tau_2\) are \bfem{comparable}, otherwise they are \bfem{non-comparable}.\\
+
+
+If  \(\tau_1, \tau_2 \in \mathscr{F}\), then  \(\tau_1 \cap \tau_2 \in \mathscr{F}\). Actually, arbitrary intersection of elements of  \(\mathscr{F}\) is also an element of  \(\mathscr{F}\). But the union of elements of  \(\mathscr{F}\) may not be a topology on  \(X\).\\
+
+\begin{thm}
+    The intersection of arbitrary family of topologies is again a topology.
+\end{thm}
+\begin{proof}
+    Let  \(\{\tau_\alpha\}_{\alpha\in \Omega}\) be a family of topologies on a set  \(X\) and let  \(\Im =\bigcap_{\alpha\in \Omega} \tau_\alpha\). Then for each  \(\alpha; X,\varnothing\in\tau_\alpha\) and so  \(X,\varnothing\in \bigcap_{\alpha\in \Omega}\tau_\alpha\)\\
+    Let  \(\set{U_\lambda}_{\lambda\in\Omega}\) be a collection of elements of  \(\Im =\bigcap_{\alpha\in\Omega}\tau_\alpha\). Then for each  \(\alpha\) and for all  \(\lambda, U_\lambda \in \tau_\alpha\) and so  \(\cup U_\lambda \in\tau_\alpha\) for each  \(\alpha\) since  \(\tau_\alpha\) is a topology. Therefore,  \(\cup U_\lambda\in\Im\).\\
+    Let  \(\set{u_1,u_2,\dots,u_n}\) be a finite collection of elements of  \(\Im\).
+    Then for all  \(k, U_k, \in\tau_\alpha\) for each  \(\alpha\) and hence  \(\bigcap_{k=1}^n U_k\in\tau_\alpha\) since each  \(\tau_\alpha\) is a topology. Consequently,  \(\bigcap_{k=1}^nU_k\in\Im\).\\
+    Thus  \(\Im=\cap \tau_\alpha\) is a topology on  \(X\).
+\end{proof}
+\begin{rem}
+    The union of topologies needs not to be a topology.\\
+    For example, let  \(X = \set{a,b,c}\).
+    Consider the two topologies on  \(X\):
+    \[
+        \tau_1 = \set{X, \varnothing, \set{a}} \text{ and } \tau_2 = \set{X, \varnothing, \set{b}}
+    \]
+    Then their union
+    \[
+        \tau_1 \cup \tau_2 = \set{X, \varnothing, \set{a}, \set{b}}
+    \]
+    is not a topology on  \(X\) because  \(\set{a} \cup \set{b} \notin \tau_1 \cup \tau_2\) which violates the definition of topology.
+\end{rem}
+\section{Neighborhood System}
+\begin{defn}
+    Let  \(\xt\) be a topological space, and  \(x\) be a point of  \(X\). A \bfem{neighbourhood} of  \(x\) is any subset  \(X\) which contains an open set containing the point  \(x\). That is, if  \(G\) is an open set containing  \(x\), then  \(G\) is a neighbourhood of  \(x\). Also, every superset of  \(G\) is a neighbourhood of  \(x\).\\
+    Thus, a subset  \(N\) of  \(X\) is a neighborhood of  \(x\) if there exists an
+    open set  \(U\) containing  \(x\) such that  \(x \in U \subseteq N\).\\
+    The class of all neighborhoods of  \(p \in X\), denoted by  \(N_p\), is called the \bfem{neighborhood system} of  \(p\).
+\end{defn}
+\begin{ex}
+    
+Let  \(X = \set{a, b, c, d, e}\) and  \(T = \set{X, \varnothing, \set{a}, \set{a,b}, \set{a, c, d}, \set{a,b,c,d}, \set{a,b,e}}\)
+be a topology on X.
+Find the neighbourhood system of 
+\begin{enumerate}[label=(\roman*)]
+    \item the point  \(e\),
+    \item the point  \(c\).
+\end{enumerate}
+\end{ex}
+\begin{soln}
+    \hfill
+    \begin{enumerate}[label=(\roman*)]
+        \item The open sets containing  \(e\) are  \(\set{a,b, e}\) and  \(X\). The superset of  \(\set{a, b, e}\) are  \(\set{a,b, e}, \set{a, b, c, e}, \set{a, b, d,e}\) and  \(X\). The superset of  \(X\) is  \(X\) itself. Therefore, neighborhood system of  \(e\) is
+        \[
+            N_e =\set{\set{a,b, e}, \set{a, b, c, e}, \set{a, b, d, e}, X}
+        \]
+        \item The open sets containing  \(c\) are  \(\set{a, c, d}, \set{a,b,c,d}\) and  \(X\). The super sets of these open sets are  \(\set{a,c,d}, \set{a,b,c,d}, \set{a, c, d, e}\), and  \(X\). Hence, neighborhood system of  \(c\) is
+        \[
+            N_c= \set{\set{a, c, d}, \set{a, b, c, d}, \set{a, c, d, e}, X}
+        \]
+    \end{enumerate}
+\end{soln}
+In this example we see that \(-\)\\
+In  \(N_e\), the elements  \(\set{a, b, e}\) and  \(X\) are open but the elements  \(\set{a, b, c, e}\) and  \(\set{a, b,d, e}\) are not open but they are all neighbourhood of  \(e\).\\
+Similarly, in  \(N_c\), the element  \(\set{a, c, d, e}\) is not open in  \(X\).\\ Therefore, neighbourhood of a point may not be open.
+\begin{rem}
+    \hfill
+    \begin{itemize}
+        \item In topological space  \(\xt\), any open set  \(G\) in  \(\tau\) is a neighbourhood of each of its points.
+        \item If  \(N\) is a neighbourhood of a point  \(x \in X\), then any
+        superset of  \(N\) is also a neighbourhood of x.
+        \item Each point  \(x \in X\) is contained in some neighbourhood.
+    \end{itemize}
+\end{rem}
+\begin{lem}
+    A subset  \(V\) of a topological space  \(X\) is open if and only if  \(V\) is a neighborhood of each point belonging to  \(V\).
+\end{lem}
+\begin{proof}
+    Suppose  \(V\) is an open in  \(X\). Then, each point  \(p \in V\)
+    belongs to the open set  \(V\) contained in  \(V\). Hence,  \(V\) is a
+    neighborhood of each point belonging to  \(V\).\\
+    Conversely, suppose that  \(V\) is a neighborhood of each its points. Then, by definition of neighborhood, given any point  \(p\in V\), there is an open set  \(G_p\), such that  \(p\in G_p \subseteq V\). Then clearly  \(\cup\set{G_p:p\in V}=V\)and  \(V\) is open since it is the union of open sets.
+\end{proof}
+\section{The Subspace Topology}
+\begin{defn}
+    Let  \(X\) be a topological space with a topology  \(\tau\)
+    and let  \(A\) be a subset of  \(X\). Let  \(\tau_A\) be the collection of all subsets of  \(A\) that are of the form  \(G\cap A\) for  \(G\in\tau\).\\
+    i.e.,  \(\tau_A =\set{U\subseteq A: U=G\cap A,G\in\tau}\).\\
+    Then  \(\tau_A\) is a topology, called the \bfem{subspace topology} on  \(A\) or the \bfem{relative topology} on  \(A\). The pair  \((A, \tau_A)\) is called the \bfem{subspace} of the topological space  \(\xt\).
+\end{defn}
+To prove that  \(\tau_A\) is a topology on  \(X\), we see that  \(-\)
+\begin{enumerate}[label=(\roman*)]
+    \item Both  \(A\) and  \(\varnothing\) are in  \(\tau_A\), because  \(\varnothing=\varnothing\cap A\) and  \(A = X \cap A\), where  \(\varnothing, X \in \tau\).
+    \item Let  \(\set{U_\alpha}_{\alpha\in \Omega}\) be an arbitrary collection of elements of  \(\tau_A\) Then for each  \(\alpha, U_\alpha = G_\alpha \cap A\) where  \(G_\alpha \in \tau\). Now,  \( \bigcup_{\alpha\in\Omega} U_\alpha=U_{\alpha\in \Omega} (G_\alpha\cap A) =\left(\bigcup_{\alpha\in \Omega} G_\alpha\right)\cap A\) and  \(\bigcup_{\alpha\in \Omega} G_\alpha \in \tau\).\\
+    So  \(\bigcup_{\alpha\in \Omega} U_\alpha \in \tau_A\)
+    \item If  \(\set{U_1,U_2,\dots,U_n}\) is a finite collection of elements of  \(\tau_A\) then for each  \(k\),  \(U_k= G_k\cap A\) where  \(G_k \in\tau\). Then  \(\bigcap_{k=1}^n U_k=\bigcap_{k=1}^n \left(G_k\cap A\right)=\left(\bigcap_{k=1}^n G_k\right)\cap A\) and  \(\bigcap_{k=1}^n G_k\in \tau\).\\
+    Hence,  \(\bigcap_{k=1}^n U_k\in \tau_A\)
+\end{enumerate}
+\begin{ex}
+    Consider the following topology
+    \[\tau= \set{X, \varnothing, \set{a}, \set{a,b}, \set{a,c,d}, \set{a,b,c,d}, \set{a,b,e}}\]
+    on  \(X = \set{a,b,c,d.e}\).\\
+    Let  \(A = \set{a,c,e}\). To find the relative topology on  \(A\). We see that  \(X\cap A = A\) and  \(\varnothing \cap A=\varnothing\),  \(X,\varnothing\) are open in  \(\tau\), so that  \(A, \varnothing\in\tau_A\). Also,  \(\set{a}\cap A= \set{a}\),  \(\set{a,b}\cap A= \set{a}, \set{a,c,d}\cap A = \set{a,c}, \set{a,b,c, d} \cap A= \set{a, c}\) and  \(\set{a, b, e} \cap A = \set{a, e}\). Hence,
+    \[ \tau_A =\set{A,\varnothing, \set{a}, \set{a,c}, \set{a,e}}.\]
+    Clearly it is a topology on  \(A\).\\
+    We observe that  \(\set{a,c}\) and  \(\set{a,e}\) are not open in  \(\tau\) but they are relatively open in  \(A\).
+\end{ex}
+\begin{ex}
+    Let  \(\xt\) be any topological space and  \(A=\set{a}\) for some  \(a \in X\). Then the relative topology  \(\tau_A\) on  \(A\) is the indiscrete topology on  \(A\) as  \(\tau_A = \set{\varnothing, \set{a}}\).
+\end{ex}
+\begin{ex}
+    Let  \((\R, \tau_u)\) be a usual topological space and  \(N\subset \R\). Then the relative topology  \(\tau^{*}\) on  \(\N\) is a discrete topology on  \(\N\) as for any  \(n\in\N\),  \(\set{n} = \left(n-\frac{1}{2},n+\frac{1}{2}\right)\cap \N \in \tau^{*}\) \\
+    Similarly, the relative topology of  \(\tau_u\) on  \(\Z\) is a discrete topology,
+\end{ex}
+\begin{rem}
+    Let  \((Y,\tau^{*})\) be a subspace of a topological space  \(\xt\). Then for each subset open in  \((Y,\tau^{*})\) to be open in  \(\xt\) it is necessary and sufficient that  \(Y\) is open in  \(X\).
+\end{rem}
+\section{Closed sets}
+\begin{defn}
+    A subset  \(A\) of a topological space  \(X\) is said to be closed if its compliment is open, that is, if  \(X-A\in \tau\)
+\end{defn}
+\begin{ex}
+    Let  \(X=\set{a,b,c,d,e}\) and  \(\tau=\set{X,\varnothing,\set{a},\set{c,d},\set{a,c,d},\set{b,c,d,e}}\). Find the closed sets of  \(X\).
+\end{ex}
+\begin{proof}
+    We know that a set is closed if its compliment is open.\\
+    Hence, the compliment of each set in  \(\tau\) are
+    \[
+        X,\varnothing,\set{b,c,d,e},\set{a,b,e},\set{b,e},\set{a}
+    \]
+    These are the closed sets of  \(X\).
+\end{proof}
+\begin{thm}
+    Let  \(X\) be a topological space. Then the following conditions holds:
+    \begin{enumerate}[label=\alph*)]
+        \item  \(\varnothing\) and  \(X\) are closed.
+        \item arbitrary intersections of closed sets are closed.
+        \item finite unions of closed sets are closed.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    \hfill
+    \begin{enumerate}[label=\alph*)]
+        \item Since  \(\varnothing\) and  \(X\) are the compliments of the open sets  \(X\) and  \(\varnothing\) respectively, so they are closed sets.
+        \item Let  \(\set{F_\alpha}_{\alpha\in I}\) be a family of closed sets. Then by De Morgan's law,
+        \[
+            X-\bigcap_{\alpha\in I}F_\alpha=\bigcup_{\alpha\in I}(X-F_\alpha)
+        \]
+        Since the sets  \(X-F_\alpha\) are open, the union of arbitrary open sets is open. Thus  \(\bigcup_{\alpha\in I}(X-F_\alpha)\) is open; i.e.,  \(X-\bigcap_{\alpha\in I}F_\alpha\) is open and therefore  \(\bigcap_{\alpha\in I} F_\alpha\) is closed.
+        \item Let  \(F_i\) is closed for each  \(i=1,2,\dots,n\). Then
+        \[
+            X-\bigcup_{i=1}^n F_i=\bigcap_{i=1}^n (X-F_\alpha)
+        \]
+        Since the sets  \(X-F_\alpha\) are open, the finite intersection of open sets is open. Thus,  \(\bigcap_{i=1}^n (X-F_\alpha)\) is open, i.e.,  \(X-\bigcup_{i=1}^n F_i\) is open and therefore  \(\bigcup_{i=1}^n F\) is closed.
+    \end{enumerate}
+\end{proof}
+\begin{thm}
+    Let  \(X\) be a topological space and  \(A\subseteq X\). If  \(F\subseteq A\), then  \(F\) is relativity closed iff there is closed subset  \(F^{*}\) of  \(X\) such that  \(F=F^{*}\cap A\).
+\end{thm}
+\begin{proof}
+    Let  \(F\) is relatively closed; then  \(A-F\) is relatively open. Then there is an open set  \(U\) in  \(X\) such that 
+    \begin{align*}
+        A-F&=U\cap A\\
+        \intertext{and}
+        F&=(X-U)\cap A
+    \end{align*}
+    If we let  \(X-U=F^{*}\), then  \(F^{*}\) is closed in  \(X\) and  \(F=F^{*}\cap A\).\\
+    Conversely, let  \(F=F^{*}\cap A\) and  \(F^{*}\) is closed in  \(X\). Then  \(X-F^{*}\) is open in  \(X\) and so  \((X-F^{*}\cap A)\) is open in  \(A\), by definition of the subspace topology. But  \((X-F^{*}\cap A=A-F)\). Hence,  \(A-F\) is open in  \(A\) and so  \(F\) is closed in  \(A\).
+\end{proof}
+\section{Limit points/Accumulation points}
+\begin{defn}
+    Let  \(X\) be a topological space and  \(A\subseteq X\). A point  \(p\in X\) is said to be an \bfem{accumulation point} (or, \bfem{limit point}, or, \bfem{cluster point}) of  \(A\) if for every open set  \(G\) containing  \(p\) contains a point of  \(A\) other than  \(p\) i.e.,  \(\set{G-\set{p}}\cap A\neq \varnothing\).
+
+    The set of all limit points of  \(A\), denoted by  \(A'\), is called the \bfem{derived set} of  \(A\).
+\end{defn}
+\begin{ex}
+    Let the class 
+    \[\tau=\set{X,\varnothing,\set{a},\set{c,d},\set{a,c,d},\set{b,c,d,e}}\]
+    be a topology on  \(X=\set{a,b,c,d,e}\) and  \(A=\set{a,b,c}\subseteq X\). Then  \(a\in X\) is not a limit point of  \(A\), because the open set  \(\set{a}\) contains no other point of  \(A\).\\
+    The set  \(\set{c,d}\) is an open set containing  \(c\), but it contains no other point of  \(A\). So  \(c\) is not a limit point of  \(A\).\\
+    The point  \(b\in X\) is a limit point of  \(A\), because the only open set containing  \(b\) are  \(X\) and  \(\set{b,c,d,e}\) and both contain another point of  \(A\), namely  \(c\); i.e.,  \(\set{\set{b,c,d,e}-\set{b}}\cap A=\set{c}\neq \varnothing\). So  \(b\) is a limit point of  \(A\).\\
+    The point  \(d\) is a limit point of  \(A\) even though  \(d\) is not in  \(A\) because every open set containing  \(d\) contains a point of  \(A\).\\
+    Similarly, the point  \(e\) is a limit point of  \(A\) even though  \(c\) is not in  \(A\). Thus, the derived set of  \(A\) is  \(A'=\set{b,d,e}\).
+\end{ex}
+\begin{ex}
+    Let  \(\xt\) be a discrete topological space and  \(A\) be a subset of  \(X\). Then  \(A\) has no limit points, since for each  \(x\in A,\;\set{x} \) is an open set containing no point of  \(A\) other than  \(x\).
+\end{ex}
+\begin{ex}
+    Let  \(\xt\) be an indiscrete topological space and  \(A\) be a subset of  \(X\) with at least two elements. Then it is readily seen that every point of  \(X\) is a limit of  \(X\).
+\end{ex}
+
+The next theorem provides a useful way of testing whether a set is closed or not.
+\begin{thm}\label{thm:1.04}
+    Let  \(\xt\) be a topological space and  \(A \subseteq  X\).
+    Then  \(A\) is closed iff  \(A\) contains all its limit points  \((A'\subseteq A)\).
+\end{thm}
+\begin{proof}
+    First suppose that  \(A\) is closed in  \(X\). Let  \(p \in A'\). Then  \(p\) is
+    a limit point of  \(A\). If  \(p \notin A\), then  \(p \in X-A\) and  \(X-A\) is open. Then clearly  \(\set{A-\set{p}}\cap \set{X-A}=\varnothing\) which shows that  \(p\) is not a limit point of  \(A\), a contradiction. Therefore,  \(p \in A\). Thus,  \(A'\subseteq  A\), i,e.,  \(A\) contains all its limit points.\\
+    Conversely, let  \(A'\subseteq A\), i.e.,  \(A\) contains all its limit points. To
+    show  \(A\) is closed, we show that  \(X-A\) is open in  \(X\). So, let
+     \(y \in X-A\). Then  \(y\) is not a limit point of  \(A\) and so there is an
+    open set  \(U_y\) such that  \(U_y \cap A=\varnothing\). Then  \(U_y\subseteq X-A\) and
+    therefore  \(X-A=\bigcup_{y\in X-A}U_y\). So  \(x\) is a union of open sets
+    and hence  \(X -A \) is open. Thus,  \(A\) is closed.
+\end{proof}
+\begin{ex}
+    As applications of Theorem \ref{thm:1.04}, we have the
+    following:
+    \begin{enumerate}[label=(\roman*)]
+        \item The set  \([a,b)\) is not closed in  \(\R\), since  \(b\) is a limit point of  \([a,b)\) and  \(b\notin [a,b)\).
+        \item The set  \([a,b]\) is closed in  \(\R\) because all the limit points of  \([a,b]\) are in  \([a,b]\).
+        \item  \((a,b)\) is not closed in  \(\R\), because it does not contain the limits  \(a\) and  \(b\).
+        \item  \([a,\infty)\) is a closed subset of  \(\R\) because all the limit points of  \((a, \infty)\) are in  \([a, \infty)\).
+    \end{enumerate}
+\end{ex}
+\begin{thm}
+    Let  \(A\) be a subset of a topological space  \(\xt\) and  \(A'\) be the set of all limit points of  \(A\). Then  \(A \cup A'\) is closed. \label{thm:1.05}
+\end{thm}
+\begin{proof}
+    It suffices to show that the set  \(A \cup A'\) contains all of its limit points or equivalently that no element of  \(X - (A\cup A')\) is a limit point of  \(A \cup A'\).\\
+    Let  \(p \in X - (A\cup A')\). Then  \(p \notin A\) and  \(p\) is not a limit point of  \(A\). So, there is an open set  \(U\) containing  \(p\) such that  \(U \cap A = \varnothing\). We claim that  \(U \cap A'= \varnothing\). For; if  \(x\in U\), then  \(U\cap A=\varnothing\) implies  \(x\) is not a limit point of  \(A\), i.e.,  \(x \notin A'\). Thus,  \(U \cap A'=\varnothing\). Therefore,  \(U \cap (A \cup A') = \varnothing\) and  \(p \in U\). This implies  \(p\) is not a
+    limit point of  \(A \cup A'\). Thus, no element of  \(X - (A \cup A')\) is a limit
+    point of  \(A\cup A'\). Hence,  \(A \cup A'\) is a closed set.
+\end{proof}
+\begin{prob}
+    Let  \(A\) and  \(B\) are subsets of a topological space  \(\xt\). If  \(A \subseteq B\) then show that  \(A' \subseteq B'\).
+\end{prob}
+\begin{soln}
+    Let  \(p \in A'\). Then by definition of limit point, there is
+    an open set  \(G\) containing  \(p\) such that  \(\set{G-\set{p}}\cap A\neq\varnothing\). But  \(A\subseteq B\); hence  \(\set{G - \set{p}}\cap B\neq \varnothing\) and so  \(p \in B'\). Thus,  \(A' \subseteq B'\).
+\end{soln}
+\begin{prob}
+    Let  \(A\) and  \(B\) are subsets of a topological space
+     \(\xt\). Then prove that  \((A \cup B)' = A' \cup B'\).
+\end{prob}
+\begin{soln}
+    We know that  \(A \subseteq A \cup B\) and  \(B \subseteq A \cup B\) and so  \(A' \subseteq(A \cup B)'\) and  \(B' \subset (A\cup B)'\); hence   \(A' \cup B' \subseteq (A \cup B)'\).\\
+    To show  \((A\cup B)'\subseteq A'\cup B'\), we proceed by the method of contradiction. So, assume that  \((A \cup B)'\nsubseteq  A' \cup B'\). Then there is an element  \(p \in (A \cup B)'\) such that  \(p\notin(A'\cup B)\). This implies  \(p\) is neither a limit point of  \(A\) nor of  \(B\). Hence there are open sets  \(G\)
+    and  \(H\) such that
+    \[p\in G \text{ and } G \cap A \subseteq \set{p};\qquad \text{and}\qquad p \in H \text{ and } H \cap B\subseteq \set{p}\]
+    But  \(p\in G\cap H\) and  \(G \cap H\) is open. Now
+    \[(G\cap H)\cap(A\cup B)=(G\cap H\cap A)\cup(G\cap H\cap B)\subseteq \set{p}\]
+    Thus  \(p\) is not a limit point of  \(A\cup B\), i.e.,  \(p\notin (A \cup B)'\) which is a contradiction. Hence,  \((A \cup B)' \subseteq A'\cup B'\).
+\end{soln}
+\begin{defn}
+    Let  \(\xt\) be a topological space. A sequence  \(\seq{x_n}\) on  \(X\) is said to converge to a point  \(x \in X \) if for every open
+    set  \(U\) containing  \(x\), there is an  \(N \in\N\) such that  \(X_n \in U\) for all  \(n>N\).
+\end{defn}
+An important thing is that a sequence in a topological space may
+have more than one limit. Here are some examples where it
+happens.
+\begin{ex}
+    Let  \(X=\set{1,2,3}\) and  \(\tau =\set{X,\varnothing,\set{1,2}}\) be a
+    topology on  \(X\). Let  \(\seq{x_n}\) be a constant sequence such that  \(x_n=1\)
+    for every  \(n\). There are two open sets containing  \(1: \set{1,2}\) and  \(X\),
+    every term of  \(\seq{x_n}\) is in the open set, thus,  \(\seq{xn}\) converges to 1.
+    Also, the open sets containing 2 contains all the terms of  \(\seq{x_n}\), so
+     \(\seq{x_n}\) also converges to 2. It is easy to see that the open set
+    containing 3 also contains all terms of  \(\seq{x_n}\). Thus, the set of
+    limits of  \(\seq{x_n}\) is  \(\set{1,2,3}\). Therefore, the limit of the sequence on  \(\xt\) is not unique.
+\end{ex}
+\begin{ex}
+    Let  \(X\) be any nonempty set and let  \(\tau =\set{X,\varnothing}\) be
+    the indiscrete topology on  \(X\). Then every sequence  \(\seq{x_n}\) in  \(X\)
+    converges to every point of  \(X\). For; let  \(x \in X\) be any point. The
+    only open set containing  \(x\) is  \(X\) and so, for all  \(N\) and for any
+     \(n>N\),  \(X_n \in X\).
+\end{ex}
+\section{Adherent point}
+\begin{defn}
+    A point  \(p \in X\) is called an \bfem{adherent point} of
+     \(A \subseteq X\) iff every open set  \(G\) containing  \(p\) contains a point of  \(A\),
+    i.e., for any open set  \(G\) with  \(p \in G\) implies  \(G \cap A\neq\varnothing\).
+    Thus, a point  \(p \in X\) is an \bfem{adherent point} of  \(A\) if  \(p \in \bar{A}\).
+\end{defn}
+From the definition, it is clear that an adherent point is either a
+point of  \(A\) or a limit point of  \(A\). But every adherent point is not a
+limit point.
+\begin{ex}
+    Consider the topology
+    \[\tau =\set{X,\varnothing,\set{a},\set{a,b},\set{a,b,e}}\]
+    on  \(X = \set{a,b,c,d,e}\). Then the closed subsets of  \(X\) are
+     \(X\),  \(\varnothing\),  \(\set{c, d}\),  \(\set{c, d, e}\),  \(\set{b,c, d, e}\).\\
+    If we consider  \(A=\set{a,c,d}\), then  \(A'=\set{b,c,d,e}\). Here the
+    point  \(a\) is not a limit point of  \(A\) but it is an adherent point of  \(A\),
+    because the open sets containing  \(a\) are  \(G_1=\set{a}\),  \(G_2=\set{a,b}\),
+     \(G_3=\set{a,b,e}\) and  \(G_4 = X\) and any of the case,  \(G_i \cap A \neq \varnothing\).
+\end{ex}
+\section{Closure of a Set}
+\begin{defn}
+    Let  \(A\) be a subset of a topological space  \(X\).
+    Then the \bfem{closure} of  \(A\), denoted by Cl \((A)\) or  \(\bar{A}\), is the smallest
+    closed set containing  \(A\). Mathematically;
+    \[\bar{A}=\cap \set{F:F \text{ is closed and } A\subseteq F}\]
+\end{defn}
+From this definition, it is obvious that
+\begin{enumerate}
+    \item  \(\bar{A}\) is closed.
+    \item  \(A^{\degree} \subseteq A \subseteq \bar{A}\)
+    \item If  \(A\) is closed, then  \(A=\bar{A}\).
+\end{enumerate}
+To find the closure of a particular set. We shall find all the
+closed sets containing that set and then select the smallest.
+\begin{ex}
+    Let  \(X=\set{a,b,c,d,e}\) and  \(t=\set{X,\varnothing,\set{a},\set{c,d},\set{a,c,d},\set{b,c,d,e}}\)
+    Show that  \(\xoverline{\set{b}}=\set{b,e}\),  \(\xoverline{\set{a, c}}=X\) and  \(\xoverline{\set{b,d}}=\set{b,c,d,e}\)
+\end{ex}
+\begin{proof}
+    The closed sets are  \(X\),  \(\varnothing\),  \(\set{b,c,d,e}\),  \(\set{a,b,e}\),  \(\set{b,e}\) and  \(\set{a}\). So, the smallest closed set containing  \(\set{b}\) is  \(\set{b, e}\); i.e.,  \(\xoverline{\set{b}} = \set{b,e}\). Similarly,  \(\xoverline{\set{a, c}} = X\) and  \(\xoverline{\set{b, d}} = \set{b,c,d,e}\).
+\end{proof}
+\begin{prob}
+    Prove that  \(\bar{A} = A \cup A'\)
+\end{prob}
+\begin{proof}
+    Since  \(\bar{A}\) is the smallest closed set containing  \(A\) and  \(A \cup A'\) is a closed set containing  \(A\) [by Theorem \ref{thm:1.05}], so  \(\bar{A} \subseteq A \cup A'\). Again, since  \(A \subseteq \bar{A}\) and  \(\bar{A}\) is closed, so  \(A'\subseteq (\bar{A})' \subseteq \bar{A}\) and hence  \(A\cup A'\subseteq \bar{A}\). Thus,  \(\bar{A}=A\cup A'\).
+\end{proof}
+\begin{prob}
+    If  \(A \subseteq B\) then prove that  \(\bar{A} \subseteq \bar{B}\).
+\end{prob}
+\begin{proof}
+    We know that if  \(A \subseteq B\) then  \(A' \subseteq B'\) and hence
+     \(A \cup A' \subseteq B \cup B'\); i.e.;  \(\bar{A}\subseteq \bar{B}\).
+\end{proof}
+\section{Dense Set}
+\begin{defn}
+    Let  \(A\) be a nonempty subset of a topological
+    space  \(\xt\). Then  \(A\) is said to be dense in  \(X\) (or everywhere
+    dense in  \(X\)) iff for every nonempty open set  \(U\) of  \(X\),  \(U \cap A\neq \varnothing\).
+\end{defn}
+In the Example 1.18, we have seen that  \(\set{a, c}\) is dense in  \(X\).
+\begin{thm}
+    Let  \(A\) be a subset of a topological space  \(\xt\).
+    Then  \(A\) is dense in  \(X\) iff  \(\bar{A} = X\).
+\end{thm}
+\begin{proof}
+    First suppose that  \(A\) is dense in  \(X\). Then for every
+    nonempty open set  \(U\) of  \(X\),  \(U \cap A \neq \varnothing\). If  \(A = X\), then clearly  \(A\) is dense in  \(X\). If  \(A\neq X\), let  \(x \in X - A\). Then for any open set  \(U\) containing  \(x, U \cap A \neq \varnothing\). Since  \(x \in A\), so  \(x\) is a limit point of  \(A\) and hence  \((X-A) \subseteq A'\). Then  \(\bar{A} = A \cup A' = X\).
+
+
+    Conversely, assume that  \(\bar{A} = X\). Then every point of  \(X-A\) is
+    a limit point of  \(A\). Suppose  \(A\) is not dense in  \(X\). Then there is an
+    open set  \(U\) of  \(X\) such that  \(U \cap A = \varnothing\). Then for any  \(x \in U,\, x \notin A\) and so  \(x \in X -A\). Clearly,  \(x\) is not a limit point of  \(A\), since  \(U \cap A = \varnothing\). This is a contradiction. So, our supposition is false and hence  \(U \cap A\neq \varnothing\). Therefore,  \(A\) is dense in  \(X\).
+\end{proof}
+\begin{prob}
+    For any subset  \(A\) of a topological space  \(\xt\), determine all the dense subsets of  \(X\) when
+    \begin{enumerate}[label=(\roman*)]
+        \item  \(X\) is discrete
+        \item  \(X\) is indescrete.
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    \hfill
+    \begin{enumerate}[label=(\roman*)]
+        \item In a discrete space  \(X\), every subset of  \(X\) is closed.
+        So, for any  \(A \subseteq X\),  \(\bar{A}= A\) and hence  \(X\) is the only closed subset of  \(X\) for which  \(\bar{X}=X\). Thus, the only dense subset of  \(X\) is  \(X\) itself.
+        \item In an indiscrete space  \(X\), the only closed subsets of  \(X\) are  \(\varnothing\) and  \(X\). Let  \(A\) be any non-empty subset of  \(X\). Since  \(X\) is the only closed set containing  \(A\), so  \(\bar{A}= X\). Therefore, every non-empty subset  \(A\) of  \(X\) is dense in  \(X\).
+    \end{enumerate}
+\end{soln}
+\section{Interior, Exterior and Boundary of a Set}
+\begin{defn}[Interior Point]
+    Let  \(X\) be a topological space and  \(A \subseteq X\). Then a point  \(p \in A\) is called an interior point of  \(A\) if there is an open set  \(G\) containing  \(p\) such that  \(p \in G \subseteq A\).
+\end{defn}
+\begin{defn}
+    The \bfem{interior} of a set  \(A\) is the set of all interior
+    points of  \(A\). The interior of  \(A\) is denoted  \(int(A)\), or  \(A^{\degree}\). The
+    interior of a set has the following properties.
+    \begin{itemize}
+        \item  \(A^{\degree}\) is an open subset of  \(A\).
+        \item  \(A^{\degree}\) is the union of all open sets contained in  \(A\).
+        \item  \(A^{\degree}\) is the largest open set contained in  \(A\).
+        \item A set  \(A\) is open if and only if  \(A= A^{\degree}\).
+        \item  \((A^{\degree})^{\degree}=A^{\degree}\) If  \(A\) is a subset of  \(S\), then  \(A^{\degree}\) is a subset of  \(S^{\degree}\).
+    \end{itemize}
+\end{defn}
+Sometimes the second or the third property above is taken as
+the definition of the interior of a set.
+\begin{ex}
+    Consider the set  \(X = \set{a, b,c}\) with the topology
+     \(\tau = \set{\varnothing,\set{a}, \set{a, b}, X}\).
+
+
+    If we choose the set  \(A = \set{a,c} \subset X\), then  \(a \in A\) is an interior
+    point of  \(A\) if we let  \(G = \set{a} \in \tau\) since  \(a \in G \subset \set{a,c} = A\).\\
+    However, the point  \(c \in A\) is not an interior point with respect to
+    this topology  \(\tau\). The only open set that contains  \(c\) is  \(X\) and
+     \(c\in X\nsubseteq \set{a,c}= A\). Therefore,  \(A^{\degree}= \set{a}\).
+\end{ex}
+\begin{defn}[Exterior Point]
+    Let  \(A\) be a subset of a
+    topological space  \(X\). Then a point  \(p\in X\) is called an exterior
+    point of  \(A\) if  \(p\) is the interior point of  \(X- A\).
+\end{defn}
+The exterior of  \(A\) is the set of all exterior points of  \(A\) and we
+denote it by  \(ext(A)\). Clearly an exterior point of a set  \(A\) is neither
+a point of  \(A\) nor a limit point of  \(A\). It is the interior point of  \(A^{c}\).
+\begin{defn}[Boundary point]
+    Let  \(A\) be a subset of a
+    topological space  \(X\). Then a point  \(p\in X\) is called a \bfem{boundary
+    point (frontier point)} of  \(A\) if for any open set  \(G\)
+    containing  \(p\),  \(G \cap A \neq \varnothing\) and  \(G \cap (X -A) \neq \varnothing\).
+\end{defn}
+From the above definition, we see that the boundary of  \(A\) is the
+set of those points of  \(X\) which are neither exterior points of  \(A\) nor
+interior points of  \(A\). We denote it by  \(bd(A)\) or  \(\delta A\). Also, the set
+ \(\bar{A} - A^{\degree}\) is called the boundary of  \(A\).
+\begin{ex}
+    Consider the topology
+     \(\tau =\set{X,\varnothing,\set{a}, \set{a,b}, \set{a, c, d},\set{a, b,c,d},\set{a,b,e}}\)
+    on  \(X=\set{a,b, c, d,e}\). Let  \(A = \set{a,b, c}\). Find the interior points,
+    exterior points and boundary points of  \(A\).
+\end{ex}
+\begin{soln}
+    Here the open subsets in  \(A\) are,  \(\varnothing,\,\set{a},\, \set{a,b}\).Clearly, their union is  \(\set{a, b}\) and so  \(A^{\degree} = \set{a,b}\).\\
+     \(A^{c}=\set{d,e}\). We see that there are no open sets containing  \(d\) or  \(e\)
+    lies in  \(A^{c}\). So  \(ext(A)=int(A^c)=\varnothing\).\\
+    The boundary of  \(A\) is neither exterior nor interior, so clearly
+     \(bd(A)=\set{c,d,e}\).
+\end{soln}
+From the above example, we see that
+\begin{align*}
+    X&=int(A)\cup bd(A)\cup ext(A)\\
+    \intertext{Or}
+    X&=int(A)\cup bd(A)\cup int(A^{c})
+\end{align*}
+\begin{thm}
+    Let  \(A\) be a subset of a topological space  \(X\). Then
+    the closure of  \(A\) is the union of interior and boundary of  \(A\),
+    i.e.,  \(\bar{A} = int(A) \cup bd(A)\).
+\end{thm}
+\begin{proof}
+    Since  \(X = int(A) \cup bd(A)\cup ext(A)\), so
+    \begin{equation}
+        (int(A)\cup bd(A))^c=ext(A) \label{eq:thm1.07.1}
+    \end{equation}
+    It suffices to show that  \((\bar{A})^{c} \subseteq ext(A)\).\\
+    Let  \(p \in ext(A)\). Then there exist an open set  \(G\) containing  \(p\)
+    such that  \(G \subseteq A^{c}\) which implies  \(G \cap A = \varnothing\). Then  \(p\) is not a limit point of  \(A\). Also,  \(p\notin A\). Hence,  \(p\notin A\cup A'=\bar{A}\); i.e.; \(p \in(\bar{A})^c\).\\
+    Thus,
+    \begin{equation}
+        ext(A)\subseteq(\bar{A})^{c}\label{eq:thm1.07.2}
+    \end{equation}
+    Now let  \(p \in(\bar{A})^c = (A \cup A')^{c}\). Then  \(p\notin A'\) and so there exist
+    an open set  \(G\) containing  \(p\) such that  \(\set{G-\set{p}}\cap A=\varnothing\). Also
+     \(p\notin A\), so  \(G \cap A =\varnothing\) and  \(p\in G\subset A^{c}\). Thus,  \(p\) is an interior
+    point of  \(A^{c}\), i.e.,  \(p \in ext(A)\). Thus,
+    \begin{equation}
+        (\bar{A})^{c}\subseteq ext(A) \label{eq:thm1.07.3}
+    \end{equation}
+    From \eqref{eq:thm1.07.2} and \eqref{eq:thm1.07.3}, we get  \((\bar{A})^{c} = ext(A)\).\\
+    Hence,
+    \[
+        \bar{A}=(ext(A))^c=int(A)\cup bd(A) \qquad\text{by \eqref{eq:thm1.07.1}}
+    \]
+\end{proof}
+\begin{thm}
+    Let  \(A\) be a subset of a topological space  \(X\). Prove
+    that  \(\bar{A}\) is a closed set.
+\end{thm}
+\begin{proof}
+    We know that
+    \[X = int(A) \cup bd(A) \cup int(A^{c})\]
+    Then  \(int(A) \cup bd(A) = X - int(A^{c})\). Since  \(\bar{A} = int(A) \cup bd(A)\)
+    and  \(int(A^{c})\) is open, so  \(\bar{A} = X - int(A^{c})\) is closed.
+\end{proof}
+\begin{prob}
+    Let  \(f:X\to Y\) be a function from a non-empty set
+     \(X\) into a topological space  \((Y,\tau^*)\). Define  \(\tau = \set{f^{\leftarrow}(G): G \in \tau^*}\).
+    Show that,  \(\tau\) is a topology on  \(X\).
+\end{prob}
+\begin{soln}
+    Since   \(\tau^*\) is a topology on  \(Y\), so  \(\varnothing,Y \in \tau^*\). Again,
+    since  \(X = f^{\leftarrow}(Y)\) and  \(\varnothing = f^{\leftarrow}(\varnothing)\), by definition of  \(\tau\),  \(\varnothing, X \in \tau\).
+    Let  \(\set{U_i}\) be a class of sets in  \(\tau\). Then for each  \(i\), there exist  \(G_i\) such that  \(U_i=f^{\leftarrow}(G_i)\). Now,
+    \[
+        \cup U_i =\cup f^{\leftarrow}(G_i) = f^{\leftarrow}(\cup G_i) \in \tau \text{ } \cup G_i \in t^*
+    \]
+    Finally, for any two elements  \(U_1, U_2 \in \tau\).
+    \[
+        U_1 \cap U_2 =f^{\leftarrow}(G_1)\cap f^{\leftarrow}(G_2)=f^{\leftarrow}(G_1 \cap G_2)\in \tau \text{ as } G_1 \cap G_2 \in \tau^*
+    \]
+    Thus  \(t\) is a topology on  \(X\).
+\end{soln}
+\begin{prob}
+    Let  \(\tau\) be a topology on a set  \(X\) consisting of four
+    subsets, i.e.,
+    \[
+        \tau=\set{X,\varnothing, A, B}
+    \]
+    where  \(A\) and  \(B\) are non-empty distinct proper subsets of  \(X\). What
+    conditions  \(A\) and  \(B\) must satisfy?
+\end{prob}
+\begin{soln}
+    Since  \(\tau = \set{X,\varnothing,A,B}\) is a topology on  \(X\); So  \(A \cap B \in \tau\) and  \(A\cup B\in \tau\).\\
+    \emph{Case I.} If  \(A \cap B=\varnothing\), then  \(A \cup B\) cannot be  \(A\) or  \(B\); but it must be an element of  \(\tau\); hence  \(A \cup B = X\). Thus,  \(\set{A,B}\) is a partition of  \(X\).\\
+    \emph{Case II.} If  \(A \cap B \neq\varnothing\), then either  \(A \cap B=A\) or  \(A \cap B=B\); i.e., either  \(A \subseteq B\) or  \(B \subseteq A\). Then the members of  \(\tau\) are totally ordered set; i.e.,  \(\varnothing\subseteq A\subseteq B\subseteq X\) or  \(\varnothing\subseteq B\subseteq A\subseteq X\).
+\end{soln}
+\begin{prob}
+    List all topologies on  \(X =\set{a,b,c}\) which consist of exactly four elements.
+\end{prob}
+\begin{soln}
+    Each topology  \(\tau\) on  \(X\) with four members is of the form  \(\tau = \set{X,\varnothing,A,B}\) where either  \(\set{A,B}\) is a partition of  \(X\) or
+    the members of  \(\tau\) is totally ordered.\\
+    \emph{Case I.}  \(\set{A,B}\) is a partition of  \(X\).\\
+    In this case the topologies are
+    \[\tau_1=\set{X,\varnothing,\set{a},{b,c}}, \tau_2 = \set{X,\varnothing,\set{b},\set{a,c}} \text{ and } \tau_3=\set{X,\varnothing,\set{c},\set{a,b}}\]
+    \emph{Case II.} The members of  \(\tau\) are totally ordered.\\
+    The topologies in this case are the following:\\
+    \[\tau_4 =\set{X,\varnothing,\set{a},\set{a,b}},\quad \tau_5 =\set{X,\varnothing,\set{a},\set{a,c}},\]
+    \[\tau_6 =\set{X,\varnothing,\set{b},\set{a,b}},\quad \tau_7 = \set{X,\varnothing,\set{b},\set{b,c}},\]
+    \[\tau_8 = \set{X,\varnothing,\set{c},\set{a,c}},\quad \tau_9 =\set{X,\varnothing,\set{c},\set{b,c}}\]
+\end{soln}
+\section{Exercise}
+\begin{enumerate}
+    \item Let  \(p \in X\). Define  \(\tau = \set{\varnothing} \cup \set{B\subseteq X: p \in B}\). Then show that  \(\tau\) is a topology on  \(X\).
+    \item Let  \(p \in X\). Define  \(\tau=\set{X}\cup \set{B \subseteq X:p\notin B}\). Then show that  \(\tau\) is a topology on  \(X\).
+    \item  Let  \(\tau = \set{\varnothing} \cup \set{A \subseteq \R\vert \forall p \in A \exists a, b \in \R}\) such that  \(p \in [a,b) \subseteq A\). Then show that  \(\tau\) is a topology on  \(\R\).
+    \item  Let  \(\tau = \set{\varnothing} \cup \set{A_n\vert n = 1,2,\dots}\) where  \(A_n = \set{n,n + 1,n + 2,\dots}\). Then prove that  \(\tau\) is a topology on  \(\N\).
+\end{enumerate}
+\end{document}

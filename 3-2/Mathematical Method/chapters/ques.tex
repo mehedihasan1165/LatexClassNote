@@ -1,0 +1,230 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\usepackage{enumitem}
+\newcommand{\lap}[1]{\mathcal{L}\left\{ #1\right\}}
+\newcommand{\ilap}[1]{\mathcal{L}^{-1}\left\{ #1\right\}}
+\begin{document}
+\chapter*{Questions from Previous Years}
+% \section*{2009-2010 (2012)}
+% \begin{enumerate}
+%     \item Marks: $ 6+8=14 $
+%     \begin{enumerate}
+%         \item Define Fourier series. Find the values of Fourier coefficient from the Fourier series.
+%         \item Find the series of sines and cosines of multiplies of $ x $ which represents $ f(x) $ in the interval $ -\pi<x<\pi $, where
+%         \[
+%             f(x)=\begin{cases}
+%             0,&\text{when }-\pi<x<0\\
+%             \frac{\pi x}{4},&\text{when }0<x<\pi
+%             \end{cases}
+%         \]
+%         and hence deduce $\displaystyle \frac{\pi^2}{8}=1+\frac{1}{3^2}+\frac{1}{5^2}+\dots $
+%     \end{enumerate}
+%     \item Marks: $ 7+7=14 $
+%     \begin{enumerate}
+%         \item Define Fourier transform of a function $ F(x) $ for $ -\infty<x<\infty $. Find the Fourier transform of 
+%         \[
+%             f(x)=\begin{cases}
+%             1-x^2,&\abs{x}\leq 1\\
+%             0,&\abs{x}> 1
+%             \end{cases}
+%         \]
+%         Hence deduce that $ \displaystyle \int_{-\infty}^\infty\left( \frac{\sin x-x\cos x}{x^3} \right)e^{\frac{- something}{2}}\dx =\frac{3\pi}{8} $
+%     \end{enumerate}
+%     \item Marks: $ 6+8=14 $
+%     \item Marks: $ 6+8=14 $
+%     \item Marks: $ 6+8=14 $
+%     \item Marks: $ 6+8=14 $
+%     \item Marks: $ 6+8=14 $
+%     \item Marks: $ 6+8=14 $
+% \end{enumerate}
+\section*{2014-2015 (2017)}
+\begin{enumerate}
+    \item Marks: $ 5+6+3=14 $
+    \begin{enumerate}
+        \item Show that $ P_n(x) $ is the coefficient of $ z^n $ in the expansion of $ (1-2xz+z^2)^{-1/2} $ in ascending powers of $ z $.
+        \item Prove that $ \displaystyle P_n(x)=\frac{1}{2^n n!}\ddxn{}{n}(x^2-1)^n $.
+        \item Show that $\displaystyle \int_{-1}^1 P_n(x)\dx =0 $ except when $ n=0 $; in which case the value of the integral is 2.
+    \end{enumerate}
+    \item Marks: $ 8+6=14 $
+    \begin{enumerate}
+        \item Prove that 
+        \[
+            \int_0^\infty e^{-x}L_n(x)L_m(x)\dx=\delta_{mn}=\begin{cases}
+            0&\text{if }m\neq n\\
+            1&\text{if }m= n.
+            \end{cases}
+        \]
+        \item Prove that \begin{enumerate}
+            \item $\displaystyle H_n'(x)=2nH_{n-1}(x),\quad (n\geq 1),\quad H_0'(x)=0 $;
+            \item $\displaystyle H_{n+1}(x)=2xH_n(x)-2nH_{n-1}(x), n\geq 1 $.
+        \end{enumerate}
+    \end{enumerate}
+    \item Marks: $ 8+6=14 $
+    \begin{enumerate}
+        \item Define Fourier series in complex form. If 
+        \[
+            f(x)=\begin{cases}
+            -\cos x &\text{when } -\pi\leq x<0\\
+            \cos x &\text{when } 0\leq x<\pi
+            \end{cases}
+        \]
+        then show that its Fourier series is $ \displaystyle f(x)=\frac{8}{\pi}\left[ \frac{\sin 2x}{1\cdot 3}+\frac{2\sin 4x}{3\cdot 5}+\frac{3\sin 6x}{5\cdot 7}+\dots \right] $.\\
+        Hence, deduce $ \displaystyle \frac{\pi\sqrt{2}}{16}=\frac{1}{1\cdot 3}-\frac{3}{5\cdot 7}+\frac{5}{9\cdot 11}-\dots $.
+        \item Find the cosine transform of a function of $ x $ which is unity for $ 0<x<a $ and zero for $ x\geq a $. What is the function whose Fourier cosine transform is $ \displaystyle\frac{\sin na}{n} $?
+    \end{enumerate}
+    \item Marks: $ 10+4=14 $
+    \begin{enumerate}
+        \item Solve in series and find the region of convergence of the D.E: $\displaystyle (2x+x^3)\ddxn{y}{2}-\ddx{y}-6xy=0 $.
+        \item If $ \lap{F(t)}=f(s) $, then prove that $\displaystyle \lap{F^{n}(t)}=s^nf(s)-s^{n-1}F(0)-s^{n-2}F'(0)-\dots $.
+    \end{enumerate}
+    \item Marks: $ 7+7=14 $
+    \begin{enumerate}
+        \item Show that $\displaystyle J_n(x)J_{-n}'(x)-J_n'(x)J_{-n}(x)=\frac{2\sin \pi x}{\pi x} $.
+        \item If $ \alpha, \beta $ are roots of $ J_n(x)=0 $, then prove that \[\int_0^1xJ_n(\alpha x)J_n(\beta x)\dx =\begin{cases}
+            0, &\text{ if }\alpha\neq \beta\\
+            \frac{1}{2}J_{n+1}^2(\alpha), &\text{ if }\alpha= \beta
+        \end{cases}\]
+    \end{enumerate}
+    \item Marks: $ 5+5+4=14 $
+    \begin{enumerate}
+        \item If $ F(t) $ has period $ T>0 $ then prove that $ \displaystyle \lap{F(t)}=\frac{\int_0^Te^{-st}F(t)\D t}{1-e^{-sT}} $.
+        \item Find $ \lap{J_0(t)}$ where $ J_0(t) $ is the Bessel function of order zero.
+        \item Find $\displaystyle \ilap{\frac{6s-4}{s^2-4s+20}} $.
+    \end{enumerate}
+    \item Marks: $ (5+5)+4=14 $
+    \begin{enumerate}
+        \item Solve the following equations by using Laplace transforms:
+        \begin{enumerate}[label=(\roman*)]
+            \item $\displaystyle y''+2y'+5y=e^{-t}\sin t,\qquad y(0)=0\quad y'(0)=1 $.
+            \item $\displaystyle y''+9y=\cos 2t,\qquad y(0)=1\quad y'(\pi/2)=-1 $.
+        \end{enumerate}
+        \item Find the Fourier integral of the function $\displaystyle f(x)=e^{-kx} $ when $ x> 0 $ and $ f(-x)=f(x) $ for $ k>0 $ and hence prove that $ \displaystyle \int_0^\infty\frac{\cos ux}{k^2+u^2}\D u=\frac{\pi}{2k}e^{-kx} $.
+    \end{enumerate}
+    \item Marks: $ 7+7=14 $
+    \begin{enumerate}
+        \item Define Eigenvalue and Eigenfunction. Find the Eigenvalues and corresponding Eigenfunctions of the BVP $ y''+\lambda y=0 $ when $ y(0)=y'(\pi)=0 $.
+        \item Define Green's function by the relations of the BVP $ y''+\lambda y=f(x),\qquad y(0)=y(\pi)=0 $.
+    \end{enumerate}
+\end{enumerate}
+\newpage
+\section*{2015-2016 (2018)}
+\begin{enumerate}
+    \item Marks: $ 6+(3+5)=14 $
+    \begin{enumerate}
+        \item Establish the relation $ \displaystyle P_n(x)=\frac{1}{2^n\,n!}\ddxn{}{n}\left( x^2-1 \right)^n $ for Legendre's polynomial.
+        \item Prove that \begin{enumerate}[label=(\roman*)]
+            \item $ nP_n(x)=xP_n'(x)-P_{n-1}'(x) $;
+            \item $ \displaystyle\int_0^\pi P_n(\cos \theta)\cos n\theta \D \theta =\frac{1\cdot3\cdot5\dots(2n-1)}{2\cdot4\cdot6\dots2n}\pi $.
+        \end{enumerate}
+    \end{enumerate}
+    \item Marks: $ 10+4=14 $
+    \begin{enumerate}
+        \item Derive Bessel's equation from Legendre differential equation.
+        \item Show that $ \displaystyle J_n(x)=\frac{1}{\pi}\int_0^\pi \cos(n\phi -x\sin \phi)\D \phi $.
+    \end{enumerate}
+    \item Marks: $ 7+(3+4)=14 $
+    \begin{enumerate}
+        \item Prove that $ \displaystyle \int_{-\infty}^\infty x^2e^{-x^2}\left\{ H_n(x) \right\}^2\dx=\sqrt{\pi} 2^n\,n!\left( n+\frac{1}{2} \right). $
+        \item Prove that
+        \begin{enumerate}
+            \item $ H_n'(x)=2n H_{n-1}(x),\qquad (n\geq 1),\quad H_0'(x)=0 $;
+            \item $ \displaystyle\int_0^\infty e^{-ax}J_0(bx)\dx=\frac{1}{\sqrt{a^2+b^2}},\,a>0 $
+        \end{enumerate}
+    \end{enumerate}
+    \item Marks: $ 14 $\\
+    Define regular and irregular singular points. Locate and classify the singular points of the following differential equation:
+    \[
+        x(1-x)\ddxn{y}{2}+\left\{ \gamma-\left( 1+\alpha+\beta \right)x \right\}\ddx{y}-\alpha\beta\gamma=0,
+    \]
+    where $ \alpha $, $ \beta $, $ \gamma $ are parametric constants.\\
+    By the method of Frobenius obtain the solution of the above differential equation.
+    \item Marks: $ 6+8=14 $
+    \begin{enumerate}
+        \item Obtain Fourier's series for the expansion of $ f(x)=x\sin x $ in the interval $ -\pi<x<\pi $. Hence, deduce that $ \displaystyle\frac{\pi}{4}=\frac{1}{2}+\frac{1}{1\cdot3}-\frac{1}{3\cdot5}+\frac{1}{5\cdot7}-\dots $
+        \item Using Fourier transform solve $ \displaystyle \frac{\partial^2 u}{\partial t^2}=4\frac{\partial^2 u}{\partial x^2} $ with conditions\\
+        $ U(0,t)=0 $; $ U(\pi,t)=0 $, $ U(x,0)=0.1\sin x+0.001\sin 4x $ and $ U_t(x,0)=0 $ for $ 0<x<\pi,\,t>0 $.
+    \end{enumerate}
+    \item Marks: $ 5+3+6=14 $
+    \begin{enumerate}
+        \item Define Laplace transformation. If $ \lap{F(t)}=f(s) $, then prove that\\ $ \displaystyle\lap{t^nF(t)}=(-1)^n\frac{\D^n}{\D s^n}f(s)=(-1)f^n(s) $ where $ n=1,2,3,\dots $
+        \item Find $ \lap{J_0(t)} $ where $ J_0(t) $ is the Bessel function of order zero.
+        \item Find \begin{enumerate}
+            \item $ \displaystyle\ilap{\frac{s}{(s^2+a^2)^2}} $;
+            \item $ \displaystyle\ilap{\frac{4s+12}{s^2+8s+16}} $
+        \end{enumerate}
+    \end{enumerate}
+    \item Marks: $ 6+8=14 $
+    \begin{enumerate}
+        \item State and prove the convolution theorem.
+        \item Solve the following equations by using Laplace transforms:
+        \begin{enumerate}
+            \item $ y''-3y'+2y=4e^{2t},\qquad y(0)=-3,\quad y'(0)=5 $;
+            \item $ y''+9y=\cos 2t,\qquad y(0)=1,\quad y(\pi/2)=-1 $.
+        \end{enumerate}
+    \end{enumerate}
+    \item Marks: $ 7+7=14 $
+    \begin{enumerate}
+        \item Prove that the solution of the boundary value problem
+        \[
+            \frac{\partial U}{\partial t}=3\frac{\partial^2 U}{\partial x^2}\qquad U(0,t)=U(2,t)=0,\,t>0\qquad U(x,0)=x,\,0<x<2
+        \]
+        is $ \displaystyle U(x,t)=\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n\pi}\sin\frac{n\pi x}{2}e^{-\frac{3}{4}n^2\pi^2t} $
+        \item Define eigenvalue and eigenfunction. Find the eigenvalues and the corresponding eigenfunctions of the Strum-Liouville problem $ y''+\lambda y=0 $ when $ y(0)=y'(\pi)=0 $.
+    \end{enumerate}
+\end{enumerate}
+\newpage
+\section*{2016-2017(2019)}
+\begin{enumerate}
+    \item Marks: $ 8+6=14 $
+    \begin{enumerate}
+        \item Define Fourier series for the function $ f(x) $ in the interval $ (-l,l) $. Find the Fourier series expansion of the function $ f(x)=x+x^2 $ in the interval $ -\pi<x<\pi $. Hence, deduce that 
+        \[
+            \frac{\pi^2}{6}=1+\frac{1}{2^2}+\frac{1}{3^2}+\frac{1}{4^2}+\frac{1}{5^2}+\dots
+        \]
+        \item Find the Fourier integral of the function $ f(x)=e^{-kx} $ when $ x>0 $ and $ f(-x)=f(x) $ for $ k>0 $ and hence prove that
+        \[
+            \int_0^\infty \frac{\cos ux}{k^2+u^2}\D u=\frac{\pi}{2k}e^{-kx}
+        \]
+    \end{enumerate}
+    \item Marks: $ 6+8=14 $
+    \begin{enumerate}
+        \item Find the Fourier transform of the function
+        \[
+            f(x)=\begin{cases}
+            1,&\abs{x}<a\\
+            0,&\abs{x}>a
+            \end{cases}
+        \]
+        and find the reciprocal relation.
+        \item Using finite Fourier transforms solve
+        \[
+            \frac{\partial U}{\partial t}=\frac{\partial^2 U}{\partial x^2},\qquad U(0,t)=0,\quad U(\pi,t)=0,\quad U(x,0)=2x\text{ where }0<x<\pi,\,t>0
+        \]
+    \end{enumerate}
+    \item Marks: $ 6+8=14 $
+    \begin{enumerate}
+        \item Define Laplace transform and inverse Laplace transform. Find the Laplace transform of $ e^{4t}\cos5t $ and the inverse Laplace transform of $ \frac{3s+1}{(s-1)(s^2+6)} $.
+        \item Solve the following differential equation by Laplace transform
+        \[
+            X''(t)+4X'(t)+4X(t)=4e^{-2t},\qquad X(0)=-1,\,,X'(0)=4
+        \]
+        verify that your solution satisfies the above differential equation and the given function.
+    \end{enumerate}
+    \item Marks: $ 4+6+4=14 $
+    \begin{enumerate}
+        \item If $ \lap{F(t)}=f(s) $ then prove that $ \lap{F'(t)}=s^2f(s)-sF(0)-F'(0) $.
+        \item If $ F(t) $ has a period $ T>0 $ then prove that $\displaystyle \lap{F(t)}=\frac{\displaystyle \int_0^T e^{-st}F(t)\D t}{1-e^{-sT}} $.
+        \item State the convolution theorem for the inverse Laplace transform. Evaluate $ \ilap{\frac{1}{s^2(s^2+4)}} $ by using the convolution theorem.
+    \end{enumerate}
+    \item Marks: $ 6+8=14 $
+    \begin{enumerate}
+        \item Define singular point and regular singular point of a differential equation. Find the singular points of the differential equation $ \displaystyle 2x^2\ddxn{y}{2}-x\ddx{y}+(x-5)y=0 $.
+        \item Find the series solution of the differential equation $ y''+xy'+(x^2+2)y=0 $ in powers of $ x $.
+    \end{enumerate}
+    \item Marks: $ 5+4+5=14 $
+    \item Marks: $ 6+5+3=14 $
+    \item Marks: $ 7+7=14 $
+\end{enumerate}
+\end{document}

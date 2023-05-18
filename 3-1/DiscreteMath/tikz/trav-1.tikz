@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+    \node[circle,draw](a){A};
+    \node[circle,draw](c)[above right =of a]{C};
+    \node[circle,draw](b)[below right =of c]{B};
+    \node[circle,draw](d)[below right =of a]{D};
+    \path[-](a) edge node{}(c)
+                edge [bend right] node {}(c)
+                edge node{}(b)
+                edge node{}(d)
+                edge[bend left] node {}(d)
+            (b)edge node{}(c)
+            edge node{}(d);
+    \draw[dashed] (-1,1)--(4,1);
+    \draw[dashed] (-1,-1)--(4,-1);
+\end{tikzpicture}

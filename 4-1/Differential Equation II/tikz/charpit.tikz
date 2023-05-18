@@ -1,0 +1,16 @@
+\usetikzlibrary{trees,positioning}
+\begin{tikzpicture}[edge from parent/.style = {draw, -latex},
+    sibling distance=12em,
+    every node/.style = {shape=rectangle, rounded corners,
+    draw, align=center}]
+
+    \node {Auxiliary Equation}[edge from parent fork down]
+        child {node {$p=a,\;q=b$} child{node {put in equation \eqref{eq:dia1} \\which is the required \\complete solution}}}
+        child {node(a) {$p=$ constant}}
+        child {node(b) {$p=\Phi(q)$}};
+
+    \node(c) at (2.5,-2.8) {Put the value of $p$ in \\equation \eqref{eq:dia1} and find the value of $q$}[edge from parent fork down]
+    child {node {$\dz=p \dx+q \dy$} child{node {integrate}}};
+\draw (a) -- (b);\draw[-latex] (b) -| (c.north);
+\draw[-latex] (c.east) to [bend right=90] (b.east);
+\end{tikzpicture}

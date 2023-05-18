@@ -1,0 +1,188 @@
+\documentclass[../main.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Assignment}
+\section{Questions}
+\begin{enumerate}
+    \item An X-ray photon is found to have its wavelength doubled on being scattered through $ 90^\circ $. Find the wavelength of the incident photon. $ [m_0=9.11\E{-31} \,kg,\, h= 6.63\E{-34} \,Js] $
+    \item Monochromatic X-rays of wavelength $ \lambda= 0.124\,$\AA are scattered from a carbon block. Determine the wavelength of the X-ray scattered through $ 45^\circ $.
+    \item In an experiment, Tungsten cathode, which has a threshold $ 2300\,$\AA, is irradiated by ultraviolet light of wavelength $ 1800 \,$\AA. Calculate
+          \begin{enumerate}[label=(\roman*)]
+              \item maximum energy of emitted photoelectron and
+              \item  work function for tungsten.
+          \end{enumerate}
+    \item Calculate the time required for $ 10\% $ of a sample of thorium to disintegrate. Assume the half-life of thorium to be $ 1.4\E{10} $ years.
+    \item Write down the postulates of Bohr atomic model. Establish a relation between de-Broglie hypothesis and Bohr theory of atom.
+    \item State uncertainty principle. How does uncertainty principle prohibit an electron staying inside the nucleus of atom?
+\end{enumerate}
+\newpage
+\begin{prob}
+    An X-ray photon is found to have its wavelength doubled on being scattered through $ 90^\circ $. Find the wavelength of the incident photon. $ [m_0=9.11\E{-31} \,kg,\, h= 6.63\E{-34}\, Js] $
+\end{prob}
+\begin{soln}
+    Let,
+    \begin{table}[H]
+        \begin{tabular}{rl}
+            \hspace{2.5cm}$ \lambda $ & $ =\lambda $\qquad and \\
+            $ \lambda'$               & $ =2\lambda $
+        \end{tabular}
+    \end{table}
+    Given,
+    \begin{table}[H]
+        \begin{tabular}{rl}
+            \hspace{2.5cm}$ h $ & $ =6.63\E{-34}\,Js $ \\
+            $ m_0$              & $ =9.11\E{-31}\,kg $ \\
+            $ c$                & $ =3\E{8}\,ms^{-1} $ \\
+            $ \phi$             & $ =90^\circ $
+        \end{tabular}
+    \end{table}
+    We know,
+    \begin{align*}
+                      & \lambda' -\lambda=\frac{h}{m_0c}(1-\cos \phi)         \\
+        \Rightarrow\, & 2\lambda -\lambda=\frac{h}{m_0c}(1-\cos \phi)         \\
+        \Rightarrow\, & \lambda=\frac{6.63\E{-34}}{9.11\E{-31}\times 3\E{8}}\,m \\
+        \therefore \, & \lambda=2.4259\E{-12}\,m
+    \end{align*}
+\end{soln}
+\newpage
+\begin{prob}
+    Monochromatic X-rays of wavelength $ \lambda= 0.124\,$\AA are scattered from a carbon block. Determine the wavelength of the X-ray scattered through $ 45^\circ $.
+\end{prob}
+\begin{soln}
+    Given,
+    \begin{table}[H]
+        \begin{tabular}{rl}
+            \hspace{2.5cm}$ \lambda $ & $ =0.124\,$\AA       \\
+                                      & $ =0.124\E{-10}\,m$  \\
+            $ h $                     & $ =6.63\E{-34}\,Js $ \\
+            $ m_0$                    & $ =9.11\E{-31}\,kg $ \\
+            $ c$                      & $ =3\E{8}\,ms^{-1} $ \\
+            $ \phi$                   & $ =45^\circ $
+        \end{tabular}
+    \end{table}
+    We know,
+    \begin{align*}
+                      & \lambda' -\lambda=\frac{h}{m_0c}(1-\cos \phi)                                       \\
+        \Rightarrow\, & \lambda'=\lambda+\frac{h}{m_0c}(1-\cos \phi)                                        \\
+        \Rightarrow\, & \lambda'=0.124\E{10}+\frac{6.63\E{-34}(1-\cos 45^\circ)}{9.11\E{-31}\times 3\E{8}}\,m \\
+        \therefore \, & \lambda'=1.3111\E{-11}\,m
+    \end{align*}
+\end{soln}
+\newpage
+\begin{prob}
+    In an experiment, Tungsten cathode, which has a threshold $ 2300$\AA, is irradiated by ultraviolet light of wavelength $ 1800 $\AA. Calculate
+    \begin{enumerate}[label=(\roman*)]
+        \item maximum energy of emitted photoelectron and
+        \item  work function for tungsten.
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    Given,
+    \begin{table}[H]
+        \begin{tabular}{rl}
+            \hspace{2.5cm}$ \lambda $ & $ =1800\,$\AA       \\
+                                      & $ =1800\E{-10}\,m$  \\
+            $ \lambda_0 $               & $ =2300\,$\AA       \\
+                                      & $ =2300\E{-10}\,m$  \\
+            $ h $                     & $ =6.63\E{-34}\,Js $ \\
+            $ c$                      & $ =3\E{8}\,ms^{-1} $ 
+        \end{tabular}
+    \end{table}
+    Now,
+    \indent Work function for tungsten, $ \Phi\begin{aligned}[t]
+        &=\frac{hc}{\lambda_0}\\
+        &=\frac{6.63\E{-34}\times 3\E{8}}{2300\E{-10}}\,J\\
+        &=8.6478\E{-19}\,J
+    \end{aligned} $\\
+    Again,
+    \indent Maximum energy, $ KE\begin{aligned}[t]
+        &=\frac{hc}{\lambda}-\Phi\\
+        &=\frac{6.63\E{-34}\times 3\E{8}}{1800\E{-10}}-8.6478\E{-19}\,J\\
+        &=2.4022\E{-19}\,J
+    \end{aligned} $\\
+\end{soln}
+\newpage
+\begin{prob}
+    Calculate the time required for $ 10\% $ of a sample of thorium to disintegrate. Assume the half-life of thorium to be $ 1.4\E{10} $ years.
+\end{prob}
+\begin{soln}
+    Let,\\
+    \indent Initial mass $ = N_0$\\
+    If in time $ t, \,10\% $ of thorium is disintegrated, then the amount of thorium that disintegrate $ =N_0\times \frac{10}{100}=0.1\, N_0 $.\\
+    \indent Thorium left, $ N\begin{aligned}[t]
+        &=N_0-0.1N_0\\
+        &=0.9 N_0    
+    \end{aligned}
+    $\\
+    Now,
+    \begin{align*}
+        &N=N_0e^{-\lambda t}\\
+        \Rightarrow\,&e^{-\lambda t}=\frac{N_0}{N}\\
+        \Rightarrow\,&{\lambda t}=\ln \left( \frac{0.9 N_0}{N_0} \right)\\
+        \Rightarrow\,&\frac{0.693}{T} t = \ln \left(0.9\right)\qquad\text{Here, $ T =$ half life}\\
+        \Rightarrow\,&t = \frac{T}{0.693}\times 0.1053\\
+        \Rightarrow\,&t = \frac{1.4\E{10}\times 0.1053}{0.693}\\
+        \therefore \,&t = 2.1272\E{6}\text{ years}
+    \end{align*}
+\end{soln}
+\newpage
+\begin{prob}
+    Write down the postulates of Bohr atomic model. Establish a relation between de-Broglie hypothesis and Bohr theory of atom.
+\end{prob}
+\begin{soln}
+    \underline{Postulates of Bohr atomic model:}
+    \begin{enumerate}
+        \item First postulate (relating Angular momentum):\\ While orbiting in a permanent orbit total angular momentum of an electron will be an integer of $ \frac{h}{2\pi} $ i.e., $ L=\frac{nh}{2\pi} $, here $ h $ is the plank's constant.
+        \item Second postulate (relating energy state):\\ Electrons in an atom revolve round the nucleus in all probable orbits rather they rotate in certain fixed prescribed circular orbits. These orbits are called permanent and non-radiating orbits.
+        \item Third postulate (relating frequency):\\ Whenever an electron jumps from a convenient orbit to another convenient orbit, then radiation of energy takes place.\\
+        
+
+        The amount of this radiated or absorbed energy is equal to the difference of the energies of these two orbits between which transition takes place and its value is one quantum. i.e., $ hv $.
+        \[\therefore E=E_2-E_1=hv\]
+    \end{enumerate}
+    \underline{Relation between de-Broglie hypothesis and Bohr's theory of atom:}\\
+    de-Broglie came up with an explanation for why the angular momentum might be quantized in the manner Bohr assumed it was. de-Broglie realized that if you use the wavelength associated with the electron and assume that an integer number of wavelengths must fit in the circumference of an orbit, you get the same quantized angular momentum that Bohr did.\\
+
+    The derivation works like this, starting from the idea that the circumference of the circular orbit must be an integer number of wavelengths.
+    \[2\pi r=n\lambda\]
+    Taking the wavelength to be de-Broglie wavelength $ \lambda=\frac{h}{p} $, this becomes,
+    \[2\pi r=\frac{nh}{p}\]
+    the momentum $ p $ is simply $ mv $ as long as we are talking about non-relativistic speeds, so this becomes,
+    \[2\pi r=\frac{nh}{mv}\]
+    rearranging this a little gives the Bohr relationship.
+    \[L_n=mv r=\frac{nh}{2\pi}\]
+\end{soln}
+\newpage
+\begin{prob}
+    State uncertainty principle. How does uncertainty principle prohibit an electron staying inside the nucleus of atom?
+\end{prob}
+\begin{soln}
+    \underline{Uncertainty principle:}\\
+    The Heisenberg's uncertainty principle states that:\\ 
+    \indent ``Position and momentum of a particle cannot be simultaneously measured accurately.''\\
+    Mathematically the principle of uncertainty can be expressed as,
+    \[\Delta x\Delta p\leq \frac{\hslash }{2}\]
+    Here, $ \hslash=\frac{h}{2\pi}= $ plank's reduced constant.
+
+    \underline{Electron cannot be found inside nucleus:}\\
+    \indent Radius of a nucleus is approximately $ \E{-14}\,m $. So for an electron to stay inside the nucleus, uncertainty in the position cannot be more than $ 2\E{-14}\,m $.\\
+
+    Now if $ \Delta x $ and $ \Delta p $ are uncertainties of the position and momentum respectively. Then,
+    \begin{align*}
+        \Delta x \Delta p&=\frac{\hslash }{2}\\
+        \Rightarrow\, \Delta p&=\frac{h}{2\times 2\pi\times\Delta x}\\
+        &=\frac{6.63\E{-34}}{4\times 3.14\times2\E{-14}}\\
+        &=2.64\E{-22}\,kgms^{-1}
+    \end{align*}
+    Now, if the uncertainty in the momentum is of this magnitude then momentum of the electron must be of this magnitude. i.e., $ p=2.6\E{-22}\,kgms^{-1} $.\\
+    The kinetic energy of electron is 
+    \begin{align*}
+        E&=\frac{p^2}{2m}\\
+        &=\frac{\left( 2.64\E{-22} \right)^2}{2\times 9.1\E{-31}}\\
+        &=3.83\E{-12}\,J\\
+        &=23.93\,MeV
+    \end{align*}
+    This means for the electron to stay inside the nucleus, it has to have $ 23.93\,MeV $ energy. But from experiment result it is found that kinetic energy of electron is not more than $ 4\,MeV $. So electron cannot stay inside the nucleus.
+\end{soln}
+\end{document}

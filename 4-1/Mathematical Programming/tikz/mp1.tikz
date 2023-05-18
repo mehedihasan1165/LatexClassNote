@@ -1,0 +1,29 @@
+\usetikzlibrary{intersections}
+\begin{tikzpicture}[xscale=1.2,yscale=1]
+\draw[-latex,thick] (-1, 0) -- (7, 0) node[right] {$x_1$};
+ \draw[-latex,thick] (0, -1) -- (0, 8.5) node[above] {$x_2$};
+
+\draw[name path=A,domain=-1:7,variable=\x, black, thick] plot ({\x}, {5});
+\draw[name path=B,domain=-.5:5, variable=\x, black, thick] plot ({\x}, {(22-5*\x)/3)});
+\draw[name path=C,black,thick] (4,-1)--(4,8);
+
+\path [name intersections={of=A and B,by={aa}}];
+\path [name intersections={of=B and C,by={bb}}];
+\path [name intersections={of=A and C,by={cc}}];
+
+\draw[fill=black!30] (aa)-- (bb)--(cc)--cycle;
+
+\node at (-.4,-.3) {(0,0)};
+\node at (4.8,.8) {A(8,5/3)};
+\node at (4.8,5.4) {B(8,10)};
+\node at (1.8,5.4) {C(3,10)};
+\node at (6.8,5.4) {\(x_2=10\)};
+\node at (4.6,8) {\(x_1=8\)};
+\node at (1.4,2.2) {\(5x_1+3x_2=45\)};
+\node at (3,-1.4) {Area \(ABC\rightarrow\) Solution space or feasible region};
+\draw[-latex,thick] (1.4,2.4)--(2,4);
+\draw[-latex,thick] (4,-0.5)--(3,-0.5);
+\draw[-latex,thick] (6.8,5)--(6.8,4.6);
+\draw[-latex,thick] (4.8,-0.6)--(5.4,-0.4);
+
+\end{tikzpicture}

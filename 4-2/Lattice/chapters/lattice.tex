@@ -1,0 +1,153 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Lattice}
+\begin{defn}
+    An algebra \(\langle L;\wedge,\vee\rangle\) i.e., a set equipped with two binary operation \(\wedge\) and \(\vee\) where, \(\wedge\) and \(\vee\) are maps from \(L^2\) to \(L\).
+\end{defn}
+\begin{defn}
+    An algebra \(\langle L;\wedge, \vee\rangle\) is called a lattice if \(L\) is a non-empty set and both \(\wedge\) and \(\vee\) satisfy the following conditions:
+    \begin{enumerate}[label=(\roman*)]
+        \item \(a\wedge a=a,\qquad a\vee a=a\qquad \) [Idempotency]
+        \item \(a\wedge b=b\wedge a,\qquad a\vee b=b\vee a\qquad \) [Commutative]
+        \item \((a\wedge b)\wedge c=a\wedge (b\wedge c),\qquad (a\vee b)\vee c=a\vee (b\vee c) \qquad \) [Associativity]
+        \item \(a\wedge (a\vee b)=a,\qquad a\vee (a\wedge b)=a\qquad \) [Absorption]
+    \end{enumerate}
+\end{defn}
+
+
+Now we want to characterize \(\langle L;\leq\rangle\) as \(\langle L;\wedge,\vee\rangle\). Because if we can treat lattices as algebras then all concepts and methods of universal algebra will become applicable.\\
+We will use the notations:
+\[\inf \set{a,b}=a\wedge b\to \text{ read `\(a\) meet \(b\)'}\]
+\[\sup \set{a,b}=a\vee b\to \text{ read `\(a\) join \(b\)'}\]
+\begin{defn}
+    Let \(P\) be a non-empty ordered set.
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(x\vee y\) and \(x\wedge y\) exists \(\forall x,y\in P\), then \(P\) is called a lattice.
+        \item If \(\vee S\) and \(\wedge S\) exists \(\forall S\subseteq P\), then \(P\) is called a complete lattice.
+    \end{enumerate}
+\end{defn}
+\section{Remark on \(\wedge\) and \(\vee\)}
+\begin{enumerate}
+    \item Let \(P\) be an ordered set. If \(x,y\in P\) and \(x\leq y\), then \(\set{x,y}^{u}=\uparrow y\) and \(\set{x,y}^\ell=\downarrow x\). Since the least element of \(\uparrow y\) is \(y\) and the greatest element of \(\downarrow x\) is \(x\). We have \(x\vee y=y\) and \(x\wedge y=x;\;\;x\leq y\).
+    \item In fig (i) we have, \(\set{a,b}^u=\varnothing\) and hence, \(a\vee b\) does not exist. In fig (ii), \(\set{a,b}^u=\set{c,d}\) and thus \(a\vee b\) does bot exist as \(\set{a,b}^u\) has no least element.
+    \item Here, \(\set{b,c}^u=\set{\top,h,i}\). Since \(\set{b,c}^u\) has distinct minimal element namely \(h\) and \(i\), it can not have a least element. Hence, \(b\vee c\) does not exist. On the other hand, \(\set{a,b}^u=\set{\top,h,i,f}\) has a least element \(f\), so \(a\vee b=f\). 
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{lat.tikz}
+    \end{figure}
+\end{enumerate}
+\begin{defn}
+    Let \(P\) be a non-empty ordered set. If \(x\vee y\) and \(x\wedge y\) exist \(\forall x,y\in P\), then \(P\) is called a lattice.
+\end{defn}
+\begin{thm}
+    Let the algebra \(\mathcal{L}=\langle L; \wedge,\vee\rangle\) be a lattice.
+    Set \(a\leq b\) iff \(a\wedge b=a\).
+    Then, \(\mathcal{L}^p=\langle L;\leq  \rangle\) is a poset and the poset \(\mathcal{L}^p\) is a lattice. 
+\end{thm}
+\begin{proof}
+    Given \(\mathcal{L}=\langle L; \wedge,\vee\rangle\) be a lattice.
+    Set \(a\leq b\) to mean \(a\wedge b=a\).
+    To show that \(\langle L; \leq\rangle\) is a poset, we need to show:
+    \begin{enumerate}[label=(\roman*)]
+        \item ``\(\leq\)'' is reflexive: Since, \(\wedge\) is idempotent, i.e., \(a\wedge a=a\).
+        So, \(\leq\) is reflexive.
+        \item ``\(\leq\)'' is antisymmetric: Let \(a\leq b\) and \(b\leq a\).
+        It means that \(a\wedge b=a\) and \(b\wedge a=b\).
+        But, \(\wedge\) is commutative, therefore,
+        \begin{align*}
+            & a\wedge b=b\wedge a\\
+            \Rightarrow\;& a=b
+        \end{align*}
+        Hence, \(\leq\) is antisymmetric.
+        \item ``\(\leq\)'' is transitive: Let, \(a\leq b\) and \(b\leq c\).
+        It means, \(a\wedge b=a\) and \(b\wedge c=b\).\\
+        Now, 
+        \begin{align*}
+            a&=\;a\wedge b\\
+            &=\;a\wedge (b\wedge c)\\
+            &=\;(a\wedge b)\wedge c\\
+            &=\;a\wedge c
+        \end{align*}
+        Therefore, \(a\leq c\). Hence, ``\(\leq\)'' is transitive.
+    \end{enumerate}
+
+
+    Thus, \(\langle L;\leq  \rangle\) is a poset.
+    
+    Conversely, to prove that \(\langle L;\leq  \rangle\) is a lattice: we will verify that,
+    \[
+        a\wedge b=\inf \set{a,b}\qquad\text{ and }\qquad a\vee b=\sup \set{a,b}
+    \]
+    Indeed, \(a\wedge b\leq a\), since,
+    \begin{align*}
+        (a\wedge b)\wedge a&=a\wedge (b\wedge a)\\
+        &=\;a\wedge (a\wedge b)\\
+        &=\;(a\wedge a)\wedge b\\
+        &=\;a\wedge b
+    \end{align*}
+    \(\therefore (a\wedge b)\leq a\). Similarly, \((a\wedge b)\leq b\).\\
+    Now if \(c\leq a\), \(c\leq b\), i.e., \(c\wedge a=c\) and \(c\wedge b=c\) then,
+    \begin{align*}
+        &c\wedge (a\wedge b)\\
+        =\;& (c\wedge a)\wedge b\\
+        =\;& c\wedge b\\
+        =\;& c
+    \end{align*}
+    \(\therefore c\leq a\wedge b\) and so, \(a\wedge b=\inf\set{a,b}\).
+    
+    Finally, \(a,b\leq a\vee b\). Because, \(a\wedge (a\vee b)=a\) and also \(b=b\wedge (a\vee b)\) by the first absorption identity.\\
+    Now if, \(a\leq c\), \(b\leq c\), i.e., \(a\wedge c=a\) and \(b\wedge c=b\) then,
+    \(a \vee c=(a\wedge c)\vee c=c\) and \(b \vee c=(b\wedge c)\vee c=c\) by the second absorption identity.\\
+    Now,
+    \begin{align*}
+        & (a\vee b)\wedge c\\
+        =\;& (a\vee b)\wedge (a\vee c)\\
+        =\;& (a\vee b)\wedge [a\vee (b\vee c)]\\
+        =\;& (a\vee b)\wedge [(a\vee b)\vee c]\\
+        =\;& a\vee b\quad \Rightarrow\; a\vee b\leq c
+    \end{align*}
+    Hence, \(a\vee b=\sup\set{a,b}\).\\
+    Therefore, \(\langle L; \leq\rangle\) is a lattice.
+\end{proof}
+\begin{ex}
+    The ordered set \(M_n (n\geq1 )\) is easily seen to be a lattice. Here for 
+    Let \(x, y \in M_n\) with \(x | y\). Then \(x\) and \(y\) are in the central antichain of \(M_n\) and hence \(x\vee y = \top\) and \(x \wedge y = \bot\).
+    \begin{center}
+        \begin{tikzpicture}
+            \node[lattice] (a) at (0,0) {};
+            \node[lattice] (b) at (0,1) {};
+            \node[lattice] (c) at (0,2) {};
+            \draw [thick] (a)--(b)--(c);
+            
+            \node[lattice] (aa) at (3,0) {};
+            \node[lattice] (ab) at (2,1) {};
+            \node[lattice] (ac) at (4,1) {};
+            \node[lattice] (ad) at (3,2) {};
+            \draw [thick] (aa)--(ab)--(ad)--(ac)--(aa);
+            
+            \node[lattice] (1) at (7,0) {};
+            \node[lattice] (2) at (6,1) {};
+            \node[lattice] (3) at (7,1) {};
+            \node[lattice] (4) at (8,1) {};
+            \node[lattice] (5) at (7,2) {};
+            \draw [thick] (1)--(2)--(5)--(3)--(1)--(4)--(5);
+            \node at (0,-0.5) {$M_1$};
+            \node at (3,-0.5) {$M_2$};
+            \node at (7,-0.5) {$M_3$};
+            
+            \node[lattice] (a1) at (11,0) {};
+            \node[lattice] (a2) at (10,1) {};
+            \node[lattice] (a3) at (10.7,1) {};
+            \node[lattice] (a4) at (11.3,1) {};
+            \node[lattice] (a5) at (12,1) {};
+            \node[lattice] (a6) at (11,2) {};
+            \draw [thick] (a1)--(a2)--(a6)--(a3)--(a1)--(a4)--(a6)--(a5)--(a1);
+            \node at (11,-0.5) {$M_4$};
+        \end{tikzpicture}
+    \end{center}
+\end{ex}
+\end{document}

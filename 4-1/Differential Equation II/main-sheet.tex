@@ -1,0 +1,124 @@
+\documentclass[12pt,oneside]{book}
+% \usepackage[subpreambles=false]{standalone}
+% \renewcommand{\chaptername}{Sheet}
+\usepackage{style}
+\usepackage{subfiles}
+\newcommand{\lap}[1]{\mathcal{L}\left\{ #1\right\}}
+\newcommand{\ilap}[1]{\mathcal{L}^{-1}\left\{ #1\right\}}
+\newcommand{\F}{{}_2F_1}
+\newcommand{\abgx}{\alpha,\beta;\gamma;x}
+\newcommand{\diffher}{\ddxn{y}{2}-2x\ddx{y}+2ny=0}
+\newcommand{\Hnx}{\sum_{r=0}^N (-1)^r \frac{n!}{r!\,(n-2r)!}(2x)^{n-2r}}
+\newcommand{\Hn}[1]{\sum_{r=0}^N (-1)^r \frac{n!}{r!\,(n-2r)!}(2 #1)^{n-2r}}
+\newcommand{\difflag}{x\ddxn{y}{2}+(1-x)\ddx{y}+ny=0}
+\newcommand{\Lnx}{\sum_{r=0}^n (-1)^r \frac{n!}{(n-r)!\,(r!)^2}x^r}
+\newcommand{\newtitle}{Classical Mechanics}
+\newcommand{\course}{MAT411}
+\newcommand{\prof}{Prof. Dr. Md Gulam Ali Hayder Chowdhury}
+
+\begin{document}
+\pagenumbering{roman}
+\begin{titlepage}
+    \backgroundsetup{
+        scale=1,
+        opacity=1,
+        angle=0,
+        color=black,
+        contents={
+            \begin{tikzpicture}[color=black, every node/.style={inner sep= 15pt}]
+                \node (NW) [anchor=north west] at (current page.north west){\pgfornament[width=2.5cm] {61}};
+                \node (NE) [anchor=north east] at (current page.north east){\pgfornament[width=2.5cm, symmetry=v]{61}};
+                \node (SW) [anchor=south west] at (current page.south west){\pgfornament[width=2.5cm, symmetry=h]{61}};
+                \node (SE) [anchor=south east] at (current page.south east){\pgfornament[width=2.5cm, symmetry=c]{61}};
+                \foreach \i in {-4,0,4}
+                \node[anchor=north,xshift=\i cm] at (current page.north){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-4,0,4}
+                \node[xshift=\i cm, yshift=32.25 pt] at (current page.south){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-8,-4,0,4,8}
+                \node[yshift=\i cm, xshift=32.25pt, rotate=90] at (current page.west){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-8,-4,0,4,8}
+                \node[yshift=\i cm, xshift=-32.25pt, rotate=90] at (current page.east){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-11,-9,...,7,9}
+                \node[anchor=west, yshift=\i cm, xshift=52.25pt, rotate=90] at (current page.west){\pgfornament[scale=0.1]{80}};
+                \foreach \i in {-11,-9,...,7,9}
+                \node[anchor=east, yshift=\i cm, xshift=-52.25pt, rotate=-90] at (current page.east){\pgfornament[scale=0.1]{80}};
+            \end{tikzpicture}
+        }
+    }
+\centering
+
+\vspace*{\baselineskip}
+\vspace*{75pt}
+
+\rule{345pt}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+\rule{345pt}{0.4pt}
+
+\vspace{0.6\baselineskip}
+
+{\LARGE \calligra{\newtitle}\\} 
+
+\vspace{0.6\baselineskip}
+
+\rule{345pt}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule{345pt}{1.6pt}
+
+\vspace{2\baselineskip}
+
+{\scshape \Large{\course}} 
+
+\vspace*{5\baselineskip}
+
+
+
+\vspace{0.5\baselineskip} 
+
+{\scshape   \Large \prof\\ }
+
+\vspace{0.75\baselineskip} 
+
+{\textit{\large Shahjalal University of Science and Technology}} 
+
+\vfill 
+
+\vspace{0.3\baselineskip} 
+
+
+{\scshape \large Edited by\\  Mehedi Hasan} 
+\vspace*{40pt}
+\end{titlepage}
+\backgroundsetup{contents={}}
+\newpage
+\section*{Preface}
+This is a compilation of lecture notes with some books and my own thoughts. This document is not a holy text. So, if there is a mistake, solve it by your own judgement. Currently, the following topics are not included
+\begin{itemize}
+    % \item Inverse Laplace Transform
+    % \item Applications of Laplace Transform
+    \item Fourier Transform and Applications
+    \item Boundary value problems
+    \item Eigenfunctions
+    \item Green's functions
+    \item Strum-Liouville problems
+    \item Laplace Equation
+\end{itemize}
+
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+% \part{Insert Part Name here}
+% chapter begins here
+
+\subfile{./chapters/syl.tex}
+\part{Class Note/Sheet}%
+\subfile{./chapters/sh1.tex}%
+\subfile{./chapters/sh2.tex}%
+% \subfile{./chapters/laplaceTransform(mine).tex}
+% \subfile{./chapters/ilap.tex}
+% \subfile{./chapters/lapApp.tex}
+% \subfile{./chapters/series solution.tex}
+% \subfile{./chapters/Legendre.tex}
+% \subfile{./chapters/bessel.tex}
+% \subfile{./chapters/hermite.tex}
+% \subfile{./chapters/Laguerre.tex}
+% \subfile{./chapters/hypergeometric.tex}
+\end{document}

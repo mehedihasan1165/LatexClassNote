@@ -1,0 +1,23 @@
+\documentclass[class=book,crop=false]{standalone}
+\usepackage{../style}
+\begin{document}
+\begin{itemize}
+    \item Example of \code{if} statements\lstinputlisting[caption=Mark to Grade convert using if statement]{lab1.f90}\newpage
+    \item Example of \code{select case} statements\lstinputlisting[caption=Mark to Grade convert using select case statement]{lab2.f90}\newpage
+    \item Consider the following program to fit a straight line to the set of points $ (x_1, y_1), (x_2, y_2),\dots,(x_n, y_n) $ and then print them out with the best-fit straight line. The data file assumed to be of the form shown bellow 
+    \begin{verbatim}
+        -------------
+        | n         |
+        | x1  y1    |
+        | x2  y2    |
+        | ... ...   |
+        | xn  yn    |
+        -------------
+    \end{verbatim}
+    and the best-fit straight line is $ y=mx+c $ where,
+    $$ m=\frac{\frac{\sum xy}{n}-\bar{x}\bar{y}}{\frac{\sum x^2}{n}-\bar{x}^2},\, c=\bar{y}-m\bar{x}, \text{ where } \bar{x}=\frac{\sum x}{n},\, \bar{y}=\frac{\sum y}{n}$$
+    \lstinputlisting[caption=Example of array using best-fit line problem]{regression.f90}
+    \item l
+    \item l
+\end{itemize}
+\end{document}

@@ -1,0 +1,45 @@
+\begin{tikzpicture}
+    [place/.style={circle,draw,fill=black!50}]
+    \node[place] (a){};
+    \node[node distance=.25cm] (text1)[below =of a]{0-regular};
+    \node[place,node distance=1cm] (b)[right=of a]{};
+    \node[place] (c)[right=of b]{};
+    \node[node distance=.2cm] (text2)[below right=of b]{1-regular};
+    \path[-](b)edge node{}(c);
+    \node[place,node distance=1.5cm] (d)[right=of c]{};
+    \node[place,node distance=.6cm] (e)[above right=of d]{};
+    \node[place,node distance=1cm] (f)[right=of d]{};
+    \path[-](e) edge node{}(d) edge node{}(f) (d)edge node{}(f);
+    \node[place,node distance=.2cm] (g)[right=of f]{};
+    \node[place] (h)[right=of g]{};
+    \node[place] (i)[above=of g]{};
+    \node[place] (j)[right=of i]{};
+    \node[node distance=.25cm] (text4)[below =of h]{2-regular};
+    \path[-](g) edge node {} (i)
+                edge node {} (h)
+            (i) edge node {} (j)
+            (h) edge node {} (j);
+    \node[place,node distance=.2cm] (k)[right=of h]{};
+    \node[place] (l)[right=of k]{};
+    \node[place] (m)[above=of k]{};
+    \node[place] (n)[right=of m]{};
+    \node[place,node distance=.6cm] (o)[above right=of m]{};
+    \path[-](k) edge node {} (m)
+                edge node {} (l)
+            (n) edge node {} (l)
+                edge node {} (o)
+            (m) edge node {} (o);
+    
+    \node[place,node distance=.5cm] (q)[right=of l]{};
+    \node[place] (r)[right=of q]{};
+    \node[place] (s)[above=of q]{};
+    \node[place] (t)[right=of s]{};
+    \node[place,node distance=.5cm] (p)[below left=of s]{};
+    \node[place,node distance=.5cm] (u)[below right=of t]{};
+    \path[-](p) edge node {} (s)
+                edge node {} (q)
+            (u) edge node {} (r)
+                edge node {} (t)
+            (t) edge node {} (s)
+            (r) edge node {} (q);
+\end{tikzpicture}

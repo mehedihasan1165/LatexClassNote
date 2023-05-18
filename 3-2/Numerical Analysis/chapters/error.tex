@@ -1,0 +1,88 @@
+\documentclass[12pt,class=book,crop=false]{standalone}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Errors In Numerical Analysis}
+\section{Rounding Off}
+We come across numbers with a large number of digits, and it will be necessary to cut them to a measurable number of figures. This process is called rounding off.
+
+To round off a number to \( n \) significant digits, discard all digits to the right of the \( n \)th digit and if this discarded number is
+\begin{enumerate}[label=(\alph*)]
+    \item less than half a unit then in the \( n \)th place, leave the \( n \)th digit unaltered.
+    \item greater than half a unit then in the \( n \)th place, increase the \( n \)th digit by unity.
+    \item exactly half a unit then in the \( n \)th place, increase the \( n \)th digit by unity, if it is odd, otherwise leave it unchanged.
+\end{enumerate}
+The number thus rounded off is said to be exact to \( n \) significant figures.
+\begin{ex}
+    The numbers given below are rounded off to four significant figures.\\
+    \indent \( 1.658\,3 \) to \( 1.658 \)\\
+    \indent \( 30.056\,7 \) to \( 30.06 \)\\
+    \indent \( 0.859\,378 \) to \( 0.859\,4 \)\\
+    \indent \( 3.141\,59 \) to \( 3.142 \)
+\end{ex}
+\section{Significant}
+The digits that are used to express numbers are called significant digits or significant figures.
+
+Thus, the number \( 3.141\,6, 0.666\,67 \) and \( 5.068\,7 \) contain five significant digits. The number \( 0.00023 \) has, however, only two significant digits viz.\ \( 2 \) and \( 3 \). Since, the zeros serve only to fix the position of the decimal points.
+
+Any real number is represented as \( y=0.d_1d_2\dots d_kd_{k+1}\dots \times10^n \,\rightarrow\) floating point number.\\
+FLOAT\( (y) \) is obtained by terminating the mantissa of \( y \) at \( k \) decimal digits by,
+\begin{enumerate}
+    \item chopping off the digits \( d_{k+1}\dots \) to get
+          \( \text{FLOAT}(y)=0.d_1d_2\dots d_k \times10^n \)
+    \item Adding \( 10^{n-(k+1)} \) to \( y \) and the \( n \) chop off to get
+          \( \text{FLOAT}(y)=0.d_1d_2\dots d_k \times10^n \rightarrow\) rounding off.
+\end{enumerate}
+\begin{ex}
+    We have $ \begin{aligned}[t]
+            \pi & =3.141\,592\,65\dots        \\
+                & =0.314\,159\,265\times 10^1
+        \end{aligned} $\\
+    Let \( k=5 \), here \( n=1 \)\\
+    So
+    \begin{enumerate}[label=(\roman*)]
+        \item by chopping, $ \begin{aligned}[t]
+                      \text{FLOAT}(\pi) & =0.314\,15\times 10^1 \\
+                                        & =3.141\, 5
+                  \end{aligned} $
+        \item by rounding $ \begin{aligned}[t]
+                      \text{FLOAT}(\pi) & =0.314\,159\,265\times 10^1+10^{1-(5+1)} \\
+                                        & =(0.314\,159\,265+10^{-5})\times 10^1    \\
+                                        & =(0.314\,15+0.000\,01)\times 10^1        \\
+                                        & =3.141\,6
+                  \end{aligned} $\\
+              Here rounding error is \( 0.000\,1 \).
+    \end{enumerate}
+\end{ex}
+\section{Errors and Their Analysis}
+In numerical analysis, we usually come across two types of errors:
+\begin{enumerate}
+    \item Inherent errors:
+
+          Most numerical computation are inexact, either due to the given data being approximate or due to the limitations of the computing aids: mathematical tables, disk calculators or the digital computer. Due to this limitation, numbers have to be rounded off, causing what are called rounding errors. In computations inherent errors can be minimized by obtaining better data, by correcting obvious errors in the data and by using computation aids of higher precision. In hand computations, the round off error can be reduced by carrying the computations to more significant figures at each step of the computation. A useful rule is:\\
+          \indent \indent At each step of the computation, retain at least one more significant figure than that given in the data, perform the last operation and then round off.
+    \item Truncation errors:
+
+          These are errors caused by using approximate formulae in computations such as the one that arises when a function \( f(x) \) is evaluated from an infinite series for \( x \) after `truncating' it at a certain stage. The study of this type of error is usually associated with the problem of convergence.
+
+          Truncation error in a problem can be evaluated, and it is desirable to make it as small as possible.
+\end{enumerate}
+\section{Absolute Error, Relative Error and Percentage Error}
+\subsection{Absolute Error}
+The numerical difference between the true value of a quantity and its approximate value is called absolute error. Thus, the absolute error \( E_A \) is given by\\
+\indent \( E_A=X-X_1=\delta_x \)\\
+Where,\\
+\indent \( X= \) True value of a quantity\\
+\indent \( X_1= \) The approximate value
+\subsection{Relative Error}
+Relative Error \( E_R \) is defined by
+\[
+    E_R=\frac{E_A}{X}=\frac{\delta_X}{X}
+\]
+\subsection{Percentage Error}
+Percentage error \( E_P \) is defined by
+\[
+    E_P=100 E_R
+\]
+Let \( \Delta x \) be a number such that \( \abs{X_1-X}\leq \Delta X \). Then \( \Delta X \) is an upper limit on the magnitude of the absolute error and is said to measure absolute accuracy. Similarly, the quantity \( \frac{\Delta X}{\abs{X}}\approx\frac{\Delta X}{\abs{X_1}} \) measures the relative accuracy.
+\end{document}

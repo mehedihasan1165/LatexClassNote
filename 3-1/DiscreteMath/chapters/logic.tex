@@ -1,0 +1,1347 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Logic and Proof}
+% \section{Proposition}
+% \begin{defn}[Proposition]
+%     A proposition is a declarative sentence (that is a sentence that declares a fact) that is either true or false but not both.
+% \end{defn}
+% \begin{ex}
+%     \hfill
+%     \begin{enumerate}
+%         \item Toronto is the capital of Canada.
+%         \item \(1+1=2\)
+%         \item $2+2=3$
+%     \end{enumerate}
+%     Proposition 1 and 3 are false where as 2 is true.\\
+%     Consider the following sentences:
+%     \begin{enumerate}
+%         \item What time it is?
+%         \item $x+y=z$
+%     \end{enumerate}
+%     are not propositions.
+% \end{ex}
+% \begin{defn}[Negation of $ p $]
+%     Let $p$ be a proposition.
+%     The negation of $p$ denoted by $\neg\ p$ (also denoted by $\bar{p}$) is the statement "It is not the case that p".
+%     The proposition $\neg\ p$ is read "not $p$".
+% \end{defn}
+% "Today is friday". \\
+% The negation is, "It is not the case that today is friday."
+% Simply, "Today is not friday."
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|}
+%         \hline
+%         p & \(\neg\ p\) \\ \hline
+%         T & F           \\ \hline
+%         F & T           \\ \hline
+%     \end{tabular}
+%     \caption{Truth table for negation of a proposition}
+% \end{table}
+% \begin{defn}[Conjunction of \(p\) and \(q\)]
+%     Let \(p\) and \(q\) be propositions. The conjunction of \(p\) and \(q\), denoted by \((p\wedge q)\) is the proposition "p and q". The conjunction \(p\wedge q\) is true when both \(p\) and \(q\) are true and is false otherwise.
+% \end{defn}
+% "Today is friday and it is raining."
+
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         p & q & \(p\wedge q\) \\ \hline
+%         T & T & T             \\ \hline
+%         T & F & F             \\ \hline
+%         F & T & F             \\ \hline
+%         F & F & F             \\ \hline
+%     \end{tabular}
+%     \caption{Truth table for \(p\wedge q\)}
+% \end{table}
+% \begin{defn}[Disjunction of \(p\) and \(q\)]
+%     Let \(p\) and \(q\) be propositions. The disjunction of \(p\) and \(q\) denoted by \((p \vee q)\) is the proposition "p or q". The disjunction \(p\vee q\) is false when both \(p\) and \(q\) are false and is true otherwise.
+% \end{defn}
+% "Students who have taken calculus or computer science can take this class."
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         p & q & \(p\vee q\) \\ \hline
+%         T & T & T           \\ \hline
+%         T & F & T           \\ \hline
+%         F & T & T           \\ \hline
+%         F & F & F           \\ \hline
+%     \end{tabular}
+%     \caption{Truth table for \(p\vee q\)}
+% \end{table}
+% \begin{defn}[Exclusive or of \(p\) and \(q\)]
+%     Let \(p\) and \(q\) be propositions. The exclusive or of \(p\) and \(q\) denoted by \((p \oplus q)\) is the proposition that is true when exactly one of \(p\) and \(q\) is true and is false otherwise.
+% \end{defn}
+% "Students who have taken calculus or computer science, but not both, can take this class."
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         p & q & \(p\oplus q\) \\ \hline
+%         T & T & F             \\ \hline
+%         T & F & T             \\ \hline
+%         F & T & T             \\ \hline
+%         F & F & F             \\ \hline
+%     \end{tabular}
+%     \caption{Truth table for \(p\oplus q\)}
+% \end{table}
+% Let \(p\) and \(q\) be propositions. The conditional statement \(p \to q\) is the proposition "If p then q". The conditional statement \(p\to q\) is false when \(p\) is true and \(q\) is false and true otherwise. In the conditional statement \(p\to q\), \(p\) is called hypothesis and \(q\) is called conclusion.
+% "If I am elected, then I will lower taxes."
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         p & q & \(p\to q\) \\ \hline
+%         T & T & T          \\ \hline
+%         T & F & F          \\ \hline
+%         F & T & T          \\ \hline
+%         F & F & T          \\ \hline
+%     \end{tabular}
+%     \caption{Truth table for \(p\to q\)}
+% \end{table}
+% \begin{defn}[Converse, Contrapositive and Inverse]
+%     The proposition \(q\to p\) is called converse of \(\ptoq\).
+%     The contrapositive of \(\ptoq\) is the proposition \(\neg\ q \to \neg\ p\).
+%     The proposition \(\neg\ p \to \neg\ q\) is called inverse of \(\ptoq\).
+% \end{defn}
+% \begin{ex}
+%     "If it is raining, then the home team wins."\\
+%     Contrapositive: If the home team does not win then it is not raining.\\
+%     Converse: If the home team wins, then it is raining.\\
+%     Inverse: If it is not raining, then the home  team does not win.
+% \end{ex}
+% \begin{defn}[Biconditional]
+%     Let $ p $ and $ q $ be propositions. The biconditional statement \(p\leftrightarrow q\) is the proposition "p if and only if q". The biconditional statement \(p\leftrightarrow q\) is true when $ p $ and $ q $ have the same truth values and is false otherwise.
+%     "You can take the flight if and only if you buy a ticket."
+%     \[(\ptoq)\wedge(q\to p)\]
+% \end{defn}
+
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         p & q & \(p\leftrightarrow q\) \\ \hline
+%         T & T & T                      \\ \hline
+%         T & F & F                      \\ \hline
+%         F & T & F                      \\ \hline
+%         F & F & T                      \\ \hline
+%     \end{tabular}
+%     \caption{Truth table for \(p\leftrightarrow q\)}
+% \end{table}
+% \begin{prob}
+%     Construct the truth table of the compound proposition.\[(p\vee \neg\ q)\to (p\wedge q)\]
+% \end{prob}
+% \begin{soln}
+%     Let us construct a table
+%     \begin{center}
+%         \begin{tabular}{|c|c|c|c|c|c|}
+%             \hline
+%             $ p $ & $ q $ & \(\neg\ q\) & \(p\vee \neg\ q\) & \(p \wedge q\) & \((p\vee \neg\ q)\to (p\wedge q)\) \\ \hline
+%             T     & T     & F           & T                 & T              & T                                  \\ \hline
+%             T     & F     & T           & T                 & F              & F                                  \\ \hline
+%             F     & T     & F           & F                 & F              & T                                  \\ \hline
+%             F     & F     & T           & T                 & F              & F                                  \\ \hline
+%         \end{tabular}
+%     \end{center}
+% \end{soln}
+% \begin{prob}
+%     How can this English sentence be translated into a logical expression?\\
+%     "You can access the internet from campus only if you are a computer science major or you are not a freshman."
+% \end{prob}
+% \begin{soln}
+%     \hfill\\
+%     \indent$ a $ \(\to\) You can access the internet from campus\\
+%     \indent$ b $ \(\to\) You are a computer science major\\
+%     \indent$ c $ \(\to\) You are a freshman\\
+%     \indent\(a\to(b\vee\neg\ c)\)
+% \end{soln}
+% \begin{itemize}
+%     \item Computer represent information using bits.
+%     \item A bit is a symbol with two possible values, namely, 0 and 1, 1 represents true, 0 represents false.
+%     \item A variable is called a Boolean variable if its value is either true or false.
+%     \item A bit string is a sequence of zero or more bits. The length of this string is the number of bits in this string.
+%           \begin{align*}
+%               01\,1011\,0110   &                                   \\
+%               11\, 0001 \,1101 &                                   \\\cline{1-1}
+%               11 \,10111\, 111 & \longleftarrow \text{bitwise OR}  \\
+%               01 \,0001 \,0100 & \longleftarrow \text{bitwise AND} \\
+%               10 \,1010\, 1011 & \longleftarrow \text{bitwise XOR}
+%           \end{align*}
+% \end{itemize}
+% \begin{defn}[Tautology and Contradiction]
+%     A compound proposition that is always true, no matter what the truth values of the propositions that occur in it is called tautology.
+%     A compound proposition that is always false is called a contradiction.
+%     A compound proposition that is neither a tautology nor a contradiction is called a contingency.
+% \end{defn}
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|c|}
+%         \hline
+%         $ p $ & \(\neg\ p\) & \(p\wedge \neg\ p\) & \(p\vee\neg\ p\) \\ \hline
+%         T     & F           & F                   & T                \\ \hline
+%         F     & T           & F                   & T                \\ \hline
+%     \end{tabular}
+%     \caption{Truth table for tautology and contradiction}
+% \end{table}
+% \begin{defn}[Logically Equivalent]
+%     The compound proposition $ p $ and $ q $ are called logically equivalent if \(p\leftrightarrow q\) is a tautology. It is denoted as \(p \equiv q\)
+% \end{defn}
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|c|c|c|c|}
+%         \hline
+%         $ p $ & $ q $ & \(p\vee q\) & \((\neg\ p\vee q)\) & \(\neg\ p\) & \(\neg\ q\) & \(\neg\ p\wedge \neg\ q\) \\ \hline
+%         T     & T     & T           & F                   & F           & F           & F                         \\ \hline
+%         T     & F     & T           & F                   & F           & T           & F                         \\ \hline
+%         F     & T     & T           & F                   & T           & F           & F                         \\ \hline
+%         F     & F     & F           & T                   & T           & T           & T                         \\ \hline
+%     \end{tabular}
+%     \caption{Truth table for logically equivalent}
+%     \[(\neg\ p\vee q)\equiv \neg\ p\wedge \neg\ q\]
+% \end{table}
+% \begin{prob}
+%     Prove that \(p\vee(q\wedge r)=(p\vee q)\wedge(p\vee r)\)
+% \end{prob}
+% \begin{prob}
+%     Show that \((\neg\ p\vee(\neg\ p\wedge q))\equiv\neg\ p \wedge \neg\ q\)
+% \end{prob}
+% \begin{soln}
+%     \begin{align*}
+%         \neg\ (p\vee(\neg\ p\wedge q)) & \equiv \neg\ p \wedge \neg\ (\neg\ p \wedge q)       \\
+%                                        & \equiv \neg\ p \wedge (\neg\ \neg\ p\vee \neg\ q)    \\
+%                                        & \equiv \neg\ p \wedge(p\vee \neg\ q)                 \\
+%                                        & \equiv (\neg\ p\wedge p) \vee (\neg\ p \vee \neg\ q) \\
+%                                        & \equiv \neg\ p \vee \neg\ q
+%     \end{align*}
+% \end{soln}
+% \begin{defn}[Predicates]
+%     Suppose a statement involving variables, such as \(x>3\)\\
+%     The statement "x is greater than 3" has two parts.
+%     The first part, the variable $ x $, is the subject of the statement.
+%     The second part - the predicate, "is greater than 3" refers to a property that the subject of the statement can have.
+
+%     We can denote the statement by \(P(x)\), where $ p $ denotes the predicates and x is the variable.
+%     Propositional function p at x. Once a value has been assigned to the variable $ x $ the statement \(P(x)\) becomes a proposition and has a truth value.
+% \end{defn}
+% \begin{ex}
+%     Let \(P(x)\) denotes the statement "\(x>3\)". What are the values of \(P(4)\) and \(P(2)\)?\\
+%     \(P(4)\), which is the statement "\(4>3\)" is true and \(P(2)\), which is the statement "\(2>3\)" is false.
+% \end{ex}
+% A statement of the form \(P(x_1,x_2,\dot,x_n)\) is the value of the propositional function $ P $ at the n-tuple \((x_1,x_2,\dot,x_n)\) and $ P $ is called an n-place predicate or a n-ary predicate.
+% \begin{prob}
+%     Consider the following program:
+%     \begin{quote}
+%         temp:=x\\x:=y\\y:=temp
+%     \end{quote}
+%     Find predicates that we can use as the precondition and the post-condition to verify the correctness of this program.
+%     Then explain how to use them to verify that for all valid input the program does what is intended?
+% \end{prob}
+% TODO:: Solve this.
+% \begin{defn}[Quantifiers]
+%     The universal quantification of \(P(x)\) is the statement "\(P(x)\) for all the values of x in the domain".
+%     THe notation \(\forall x P(x)\) denotes the universal quantification of \(P(x)\) and \(\forall\) is called the universal quantifier.
+
+%     An element for which \(P(x)\) is false is called a counterexample of \(\forall x P(x)\).
+% \end{defn}
+% \begin{ex}
+%     Let \(P(x)\) be the statement "\(x+1>x\)". What is the truth value of the quantification \(\forall x P(x)\). Where domain consists of all real numbers?
+
+%     Because \(P(x)\) is true for all real numbers \(x\), the quantification, \(\forall x P(x)\) is true.
+% \end{ex}
+% \begin{defn}[Existential Quantifier]
+%     The existential quantification of \(P(x)\) is the proposition "There exists an element $ x $ in the domain such that \(P(x)\)."
+
+%     We use the notation \(\exists xP(x)\) for the existential quantification of \(P(x)\). Here \(\exists\) is called the existential quantifier.
+%     Let \(P(x)\) denote the statement "\(x>3\)". What is the truth value of the quantification \(\exists xP(x)\), where the domain consists of all real numbers?
+% \end{defn}
+% \paragraph{\#}\(\forall x<0\,(x^2>0)\), \(\forall y\neq 0(y^3\neq 0)\)\\
+% \(\forall x (x<0 \rightarrow x^2>0)\) \(\forall y (y\neq 0\rightarrow y^3\neq0)\)\\
+% \(\exists z>0(z^2=2)\)\\\(\exists z (z>0\wedge z^2=2)\)
+% \paragraph{\#} Statements involving predicate and quantifiers are logically equivalent if and only if they have the same truth value no matter which predicates are substituted into these statement and which domain of discourse is used for the variables in these propositional function.
+% \begin{prob}
+%     Show that \(\forall x\,(P(x)\wedge Q(x))\) and \(\forall x\,P(x)\wedge \forall x\,Q(x)\) are logically equivalent.
+% \end{prob}
+% \begin{soln}
+%     Let \(\forall x\,(P(x)\wedge Q(x))\) is true. This means if $ a $ is in the domain then \((P(a)\wedge Q(a))\) is true. Hence \(P(a)\) and \(Q(a)\) is true for every element in the domain, we can conclude that \(\forall xP(x)\) and \(\forall xQ(x)\) are both true. This means that \(\forall xP(x)\wedge\forall x Q(x)\) is true.
+
+%     Next suppose that \(\forall xP(x)\wedge\forall x Q(x)\) is true. It follows that \(\forall xP(x)\) is true and \(\forall xQ(x)\) is true.
+%     Hence if $ a $ is in the domain, \(P(a)\) is true and \(Q(a)\) is true. It follows that for all $ a $, \(P(a)\wedge  Q(a)\) is true. Hence \(\forall x(P(x)\wedge Q(x))\) is true.
+% \end{soln}
+% \(\neg\ \forall\ xP(x)\equiv\exists\ x\neg\ P(x)\)
+% \begin{enumerate}
+%     \item \( \neg\ \exists x \px \equiv \forall x \neg\ \px\) [For every $ x $, $ \px $ is false]
+%     \item \(\neg\ \forall x\px \equiv\exists x\neg\px\) [There is an $ x $ for which $ \px $ is false]
+% \end{enumerate}
+% \begin{prob}
+%     Show that, \(\neg\ \forall x(\px\to Q(x))\equiv\exists x(\px\wedge\neg\ Q(x))\)
+% \end{prob}
+% TODO: solve Problem
+% \begin{prob}
+%     Express the statements "some student in this class has visited Mexico" and "Every student in this class has visited either Canada or Mexico" using predicates and quantifiers.
+% \end{prob}
+% \begin{soln}
+%     Let,\\
+%     \(S(x)\to x\) is a student in this class.\\
+%     \(M(x)\to x\) has visited Mexico.\\
+%     \(C(x)\to x\) has visited Canada.\\
+%     The solution for first statement is \(\exists x (S(x)\wedge M(x))\)\\
+%     The solution for second statement is \(\forall x (S(x)\to (C(x)\vee M(x)))\)
+% \end{soln}
+% \begin{defn}[Theorem]
+%     A theorem is a statement that can be shown to be true.
+%     Less important theorems sometimes are called \emph{proposition}.
+% \end{defn}
+% \begin{defn}[Proof]
+%     A proof is a valid argument that establish the truth of a theorem.
+% \end{defn}
+% \begin{defn}[Lemma]
+%     A less important theorem that is helpful in proof of other results is called a lemma.
+% \end{defn}
+% \begin{defn}[Corollary]
+%     A corollary is a theorem that can be established directly from a theorem that has been proved.
+% \end{defn}
+% \begin{defn}[Conjucture]
+%     A conjecture is a statement that is being proposed to be true statement, usually on the basis of some partial evidence.
+% \end{defn}
+% \begin{defn}[Direct Proof]
+%     A direct proof of a conditional statement \(\ptoq\) is constructed when the first step is the assumption that $ P $ is true; subsequent steps are constructed using rules of interference, with the final step showing that \(q\) must also be true.
+% \end{defn}
+% \begin{defn}[Indirect Proof]
+%     The proof that do not start with the hypothesis and end with the conclusion are called indirect proof.
+% \end{defn}
+% \begin{defn}[Proof by Contraposition]
+%     Proof by contraposition means that the conditional statement \(\ptoq\) can be proved by showing that the contrapositive \(\neg\ q\to\neg\ p\) is true.
+% \end{defn}
+% \begin{prob}
+%     Prove that if \(n\) is an integer and \(3n+2\) is odd, then \(n\) is odd.
+% \end{prob}
+% \begin{proof}
+%     Direct proof:
+
+%     Let, \(3n+2\) is odd and \(3n+2=2k+1\), for some integer \(k\)\\
+%     This implies, \(3n+1=2k\)\\
+%     There does not seem to be any direct way to conclude that \(n\) is odd.
+
+%     Our attempt at direct proof failed.
+
+%     Proof by contraposition:
+
+%     Assume that \(n\) is even.\\
+%     So, \(n=2k\) for some integer \(k\).\\
+%     So, we have,
+%     \[3n+2=3(2k)+2=2(3k+1)\]
+%     This tells us that \(3n+2\) is even.
+
+%     Because the negation of the conclusion of the conditional statement implies that the hypothesis is false, the original conditional statement is true.
+% \end{proof}
+% \begin{defn}[Vacuous Proof]
+%     \(\ptoq\) is true when $ P $ is false \(\ptoq\equiv(\neg\ p\vee q)\).\\ If we can show that $ p $ is false, then we have a proof called a vacuous proof of the conditional statement \(\ptoq\).
+% \end{defn}
+% \begin{defn}[Trivial Proof]
+%     A proof of \(\ptoq\) that uses the fact that $ q $ is true is called a trivial proof.
+% \end{defn}
+% \begin{defn}[Proofs by Contradiction]
+%     Because the statement \(r\wedge\ \neg\ r\) is a contradiction whenever $ r $ is a proposition, we can prove that $ p $ is true if we can show that \(\neg\ p\to(r\wedge\ \neg\ r)\) is true for some proposition $ r $. Proofs of this type are called proofs by contradiction.
+% \end{defn}
+% \begin{prob}
+%     Prove that \(\sqrt{2}\) is irrational by giving a proof by contradiction.
+% \end{prob}
+% \begin{proof}
+%     If \(\sqrt{2}\) is rational, there exists integer \(a\) and \(b\) with, \(\sqrt{2}=\frac{a}{b}\) where $ a $ and $ b $ have no common factors.(Every rational number can be written in lowest terms.)
+%     So, \(2=\frac{a^2}{b^2}\Rightarrow2b^2=a^2\) \\
+%     So, \(a^2\) is even and $ a $ is also even.\\
+%     So, \(a=2c\). Then, \(2b^2=4c^2\Rightarrow b^2=2c^2\)\\
+%     Similarly $ b $ is also even.\\
+%     Now we have $ a $ and $ b $ have no common factors, $ a $ ans $ b $ are even, that is 2 divides both $ a $ and $ b $.
+
+%     Because our assumption of \(\neg\ p\) leads to the contradiction that 2 divides both $ a $ and $ b $ and 2 does not divide both $ a $ and $ b $, \(\neg\ p\) must be false.\\
+%     So \(\sqrt2\) must be irrational.
+% \end{proof}
+% A statement of the form \(\forall x\px\) is false we need only find a counterexample that is an example for which \(\px\) is false.
+
+% Mistakes is proofs:
+% \begin{align*}
+%                 & \,a = b              \\
+%     \Rightarrow & \,a^2 =ab            \\
+%     \Rightarrow & \,a^2-b^2=ab-b^2     \\
+%     \Rightarrow & \,(a+b)(a-b)= b(a-b) \\
+%     \Rightarrow & \,a+b=b              \\
+%     \Rightarrow & \,2b=b               \\
+%     \Rightarrow & \,2=1
+% \end{align*}
+% \begin{defn}[Exhaustive Proof]
+%     Some theorems can be proved by examining a relatively small number of examples. Such proofs are called exhaustive proof.
+% \end{defn}
+% \begin{ex}
+%     Prove that, \((n+1)^3\geq3^n\) if n is a positive integer and \(n\leq4\).\\
+%     If \(n=1,\quad(1+1)^3\geq3^1\,\Rightarrow8\geq3\)\\
+%     \(n=2,\quad(2+1)^3\geq3^2\,\Rightarrow27\geq9\)\\
+%     \(n=3,\quad(3+1)^3\geq3^3\,\Rightarrow64\geq27\)\\
+%     \(n=4,\quad(4+1)^3\geq4^3\,\Rightarrow125\geq81\)\\
+% \end{ex}
+% A proof by cases must cover all possible cases that arise in a theorem.\\
+% When the phrase "without loss of generality" is used in a proof, we assert that by proving one case of a theorem, no additional argument is required to prove other specified cases.
+% \begin{defn}[Uniqueness Proofs]
+%     The two parts of a uniqueness proof are:
+%     \begin{itemize}
+%         \item \textbf{Existence:} We show that an element $ x $ with desired property exists.
+%         \item \textbf{Uniqueness:} We show that if \(y\neq x\), then $ y $ does not have the desired property.\\
+%               Equivalently, we can show that if $ x $ and $ y $ both has the desired property, then \(x=y\).
+%     \end{itemize}
+% \end{defn}
+% \begin{defn}[Argument]
+%     By an argument, we mean a sequence of statements that end with a conclusion.\\
+%     By \emph{valid}, we mean that the conclusion or final statement of the argument must follow form the truth of the preceding statements or premises of the argument.
+
+%     That is an argument is valid if and only if it is impossible for all the premises to be true and the conclusion to be false.
+% \end{defn}
+% \begin{defn}[Premises \& Conclusion]
+%     An argument in propositional logic is a sequence of propositions. All but the final proposition in the argument are called premises and the final proposition is called the conclusion.
+
+%     An argument is valid if the truth of all its premises implies that the conclusion is true.
+% \end{defn}
+% \paragraph{\#}
+% We can first establish the validity of some relatively simple argument forms called rules of interference.\\
+% \(p\to\) It is below freezing now\\
+% \(q\to\) It is raining now\\
+% "It is below freezing now. Therefore it is either below freezing or raining now."\\
+% \begin{align*}
+%     p \qquad\qquad                   & p\to(p\vee q)\quad \text{addition} \\
+%     \cline{1-1}
+%     \therefore\, p \vee q \qquad\,\, &                                    \\
+% \end{align*}
+% \begin{table}[H]
+%     \centering
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         Rule of interference             & Tautology                                                & Name                   \\\hline
+%         {\(\begin{aligned}
+%                 p                       &         \\
+%                 p                       & \to \ q \\
+%                 \cline{1-2}\therefore q &
+%             \end{aligned}\)} & \([p\wedge(\ptoq)]\to q\)                                & Modus pones            \\\hline
+%         {\(\begin{aligned}
+%                 \neg\ q                       &         \\
+%                 p                             & \to \ q \\
+%                 \cline{1-2}\therefore \neg\ p &
+%             \end{aligned}\)} & \([\neg\ q\wedge(\ptoq)]\to \neg\ q\)                    & Modus tollens          \\\hline
+%         {\(\begin{aligned}
+%                 p                       & \to\ q  \\
+%                 q                       & \to \ r \\
+%                 \cline{1-2}\therefore p & \to\ r
+%             \end{aligned}\)} & \([(\ptoq)\wedge(q\to q)]\to (p\to r)\)                  & Hypothetical Syllogism \\\hline
+%         {\(\begin{aligned}
+%                 p                       & \wedge\ q \\
+%                 \neg\&p                             \\
+%                 \cline{1-2}\therefore q &
+%             \end{aligned}\)} & \([(p\vee\ q)\wedge\neg\ p]\to q\)                       & Disjunctive Syllogism  \\\hline
+%         {\(\begin{aligned}
+%                 p                       &         \\
+%                 \cline{1-2}\therefore p & \vee\ q
+%             \end{aligned}\)} & \(p\to (p\vee\ q)\)                                      & Addition               \\\hline
+%         {\(\begin{aligned}
+%                 p                       & \wedge\ q \\
+%                 \cline{1-2}\therefore p &
+%             \end{aligned}\)} & \((p\wedge\ q)\to p\)                                    & Simplification         \\\hline
+%         {\(\begin{aligned}
+%                 p                       &            \\
+%                 q                       &            \\
+%                 \cline{1-2}\therefore p & \wedge \ q
+%             \end{aligned}\)} & \([(p)\wedge (q)]\to (p\wedge\ q)\)                      & Conjunction            \\\hline
+%         {\(\begin{aligned}
+%                 p                       & \vee\ q \\
+%                 \neg                              \\ p &\vee \ r\\
+%                 \cline{1-2}\therefore q & \vee\ r
+%             \end{aligned}\)} & \([(p\vee\ q)\ \wedge\ (\neg\ p \vee\ r)]\to (q\vee\ r\) & Resolution             \\\hline
+%     \end{tabular}
+%     \caption{Rules of Interference}
+% \end{table}
+% \begin{prob}
+%     Show that the hypothesis "It is not sunny this afternoon and it is colder than yesterday",
+%     "We will go swimming only if it is sunny",
+%     "If we do not go swimming, then we will take a canoe trip", and
+%     "If we take a canoe trip, then we will be home by sunset"
+%     lead to the conclusion "We will be home by sunset."
+% \end{prob}
+% \begin{soln}
+%     Let,\newline
+%     \(p\to\) It is sunny this afternoon\\
+%     \(q\to\) It is colder than yesterday\\
+%     \(r\to\) We will go swimming\\
+%     \(s\to\) We will take a canoe trip\\
+%     \(t\to\) We will be home by sunset\\
+
+%     We construct an argument to show that our hypothesis lead to the desired conclusion as follows:\\
+%     \begin{tabular}{p{.4\textwidth} p{.4\textwidth}}
+%         \qquad Steps & \qquad Reason              \\
+%         {
+%         \begin{enumerate}
+%             \item \(\neg\ p\wedge\ q\)
+%             \item \(\neg\ p\)
+%             \item \(r\to\ p\)
+%             \item \(\neg\ r\)
+%             \item \(\neg\ r\to s\)
+%             \item \(s\)
+%             \item \(s\to t\)
+%             \item \(t\)
+%         \end{enumerate}
+%         }            & \begin{itemize}
+%             \item [] Hypothesis
+%             \item [] Simplification using 1
+%             \item [] Hypothesis
+%             \item [] Modus tollens using 2 and 3
+%             \item [] Hypothesis
+%             \item [] Modus pones using 4 and 5
+%             \item [] Hypothesis
+%             \item [] Modus pones using 6 and 7
+%         \end{itemize} \\
+%     \end{tabular}
+% \end{soln}
+% \begin{prob}
+%     Prove that, if $ n $ is an integer then \(n^2\geq\ n\).
+% \end{prob}
+% \begin{proof}
+%     We split the proof into three cases.\\
+%     Case i: When \(n=0\), because \(0^2=0\). We see that, \(0^2=0\).
+%     It follows that \(n^2\geq\ n\) is true in this case.\\
+%     Case ii: When \(n\geq\ 1\). We obtain \(n^2\geq\ n\) for positive integer n.\\
+%     Case iii: When \(n\leq\ -1\). We obtain \(n^2\geq\ 0\geq\ n\)
+
+%     Because the inequality \(n^2\geq\ n\) holds in all three cases, we can conclude that if n is an integer then \(n^2\geq\ n\).
+% \end{proof}
+% \paragraph{\# Division Algorithm} Let $ a $ be an integer and $ d $ be a positive integer.
+% Then there are unique integers $ q $ and $ r $ with \(0\geq\ r <\ d\).
+% Such that,
+% \[a=\ dq+r\]
+% \[q=\ \text{div}\ d,\qquad r=\ a \mod \ d\]
+% \begin{prob}
+%     What are the quotients when -11 is divided by 3?
+% \end{prob}
+% \begin{soln}
+%     \(11=3(-4)+1\) remainder cannot be negative.
+% \end{soln}
+% If $ a $ and $ b $ are integers and $ m $ is a positive integer.
+% Then $ a $ is congruent to $ b $ modulo $ m $ if $ m $ divides $ (a-b) $
+% \[a\equiv\ b \mod\ m\]\[17\equiv\ 5 \mod\ 6\]
+% \paragraph{\# Fundamental Theorem of Arithmetic} Every positive integer greater that 1 can be written uniquely as a prime or as the product of two or more primes where the prime factors are written in order of non-decreasing size.
+% \[100=2\cdot2\cdot5\cdot5=2^2\cdot5^2\]\[999=3\cdot3\cdot3\cdot37=3^3 \cdot37\]
+
+% \paragraph{\# Representations of Integers} Let $ b $ be a positive integer greater that 1. Then if $ n $ is a positive integer, it can be uniquely expressed in the form,
+% \[n=\ a_k b^k+a_{k-1} b^{k-1}+\dots +a_1 b+a_0\]
+% Where $ k $ is a non-negative integer, \(a_0,a_1,\dots,a_k\) are non-negative integers less than $ b $ and \(a_k\neq0\)
+% \begin{prob}
+%     What is the decimal expansion of the integer that has \((1\,0101\,1111)_2\) as its binary expansion?
+% \end{prob}
+% \begin{soln}
+%     We have,
+%     \[(1\,0101\,1111)_2=1\cdot 2^8+0\cdot2^7+1\cdot2^6+0\cdot2^5+1\cdot2^4+1\cdot2^3+1\cdot2^2+1\cdot2^1+1\cdot2^0=351\]
+% \end{soln}
+% \paragraph{\# Hexadecimal Expansions} The base 16 expansion of an integer is called its hexadecimal expansion.
+% \[(2AE0B)_{16}=2\cdot16^4+10\cdot16^3+14\cdot16^2+0\cdot16^1+11\cdot16^0=(175627)_{10}\]
+% \[(1110\,0101)_{2}=(E5)_{16}\]
+% \paragraph{\# Base Conversion} integer $ n $, base $ b $
+% \begin{align*}
+%     n      & =\ bq_0+a_0,\quad 0\leq a_0<b \\
+%     q_0    & =\ bq_1+a_1,\quad 0\leq a_1<b \\
+%     \cdots &                               \\
+% \end{align*}
+% This process terminates when we obtain a quotient equal to zero.
+% \begin{prob}
+%     Find the base 8 or octal expansion of \((12345)_{10}\).
+% \end{prob}
+% \begin{soln}
+%     First divide 12345 by 8, we obtain
+%     \begin{align*}
+%         12345 & =\ 8\cdot1543+1 \\
+%         1543  & =\ 8\cdot 192+7 \\
+%         192   & =\ 8\cdot24+0   \\
+%         24    & =\ 8\cdot3+0    \\
+%         3     & =\ 8\cdot0+3
+%     \end{align*}
+%     So \((12345)_{10}=(30071)_8\)
+% \end{soln}
+% \begin{prob}
+%     Find the hexadecimal expansion of \((177130)_{10}\).
+% \end{prob}
+% \begin{soln}
+%     First divide 177130 by 16 to obtain,
+%     \begin{align*}
+%         177130 & =\ 16\cdot11070+10 \\
+%         11070  & =\ 16\cdot691+14   \\
+%         691    & =\ 16\cdot43+3     \\
+%         43     & =\ 16\cdot2+11     \\
+%         2      & =\ 16\cdot0+2
+%     \end{align*}
+%     So \((177130)_{10}=(2B3EA)_{16}\)
+% \end{soln}
+% \begin{prob}
+%     Find the binary expansion of \((241)_{10}\).
+% \end{prob}
+% \begin{soln}
+%     First divide 241 by 2 to obtain,
+%     \begin{align*}
+%         241 & =\ 2\cdot120+1 \\
+%         120 & =\ 2\cdot60+0  \\
+%         60  & =\ 2\cdot30+0  \\
+%         30  & =\ 2\cdot15+0  \\
+%         15  & =\ 2\cdot7+1   \\
+%         7   & =\ 2\cdot3+1   \\
+%         3   & =\ 2\cdot1+1   \\
+%         1   & =\ 2\cdot0+1
+%     \end{align*}
+%     So \((241)_{10}=(1111\,0001)_{2}\)
+% \end{soln}
+% \paragraph{\# Binary Addition} Add \((1110)_2\) and \((1011)_2\)\\
+% Following the procedure specified in the algorithm\\
+% \(a_0+b_0=0+1=0\cdot2+1\)\\
+% \(c_0=0\) and \(s_0=1\)\\
+% Then \(a_1+b_1+c_0=1+1+0=1\cdot2+0\)\\
+% \(c_1=1\) and \(s_1=0\)\\
+% Continuing,\\
+% \(a_2+b_2+c_1=1+0+1=1\cdot2+0\)\\
+% \(c_2=1\) and \(s_2=0\)\\
+% \(a_3+b_3+c_2=1+1+1=1\cdot2+1\)\\
+% \(c_3=1\) and \(s_3=1\)\\
+% Then \(s_4=c_3=1\)\\
+% so, \((1110)_2+(1011)_2=(1\,1001)_2\)
+% \paragraph{\# Binary Substraction}
+% \begin{enumerate}
+%     \item \begin{tabular}{r}
+%               0  \\
+%               -0 \\\hline
+%               0
+%           \end{tabular} \qquad \begin{tabular}{r}
+%               1  \\
+%               -0 \\\hline
+%               1
+%           \end{tabular} \qquad \begin{tabular}{r}
+%               1  \\
+%               -1 \\\hline
+%               0
+%           \end{tabular} \qquad \begin{tabular}{r}
+%               0  \\
+%               -1 \\\hline
+%               11
+%           \end{tabular}\\
+%           \begin{tabular}{r|r}
+%               1 0101  & 21 \\
+%               -1 0100 & 20 \\\hline
+%               0 0001  & 1
+%           \end{tabular} \qquad\qquad\begin{tabular}{r|r}
+%               1101  & 13 \\
+%               -0011 & 3  \\\hline
+%               1010  & 10
+%           \end{tabular}
+%     \item \begin{enumerate}[label=(\roman*)]
+%               \item 1's complement method:
+
+%                     To subtract a smaller number form a larger number, the 1's complement method is as follows:
+%                     \begin{ex}
+%                         Subtract \((1010)_2\) from \((1111)_2\)\\
+%                         \begin{tabular}{rrr}
+%                                                  & 1111               &                                              \\
+%                                                  & + 0101             & \(\leftarrow\) 1's complement of\((1010)_2\) \\\cline{2-2}
+%                             carry \(\leftarrow\) & \underline{1} 0100 &                                              \\
+%                             Add carry \(\to\)    & 1                  &                                              \\\cline{2-2}
+%                                                  & 0101               &                                              \\
+%                         \end{tabular}
+%                     \end{ex}
+%               \item 2's complement subtraction:
+
+%                     The 2's complement of a binary number can be obtained by adding 1 to it's 1's complement.
+%                     \begin{ex}
+%                         Subtract \((10\,1101)_2\) from \((11\,0110)_2\)\\
+%                         \begin{tabular}{rrr}
+%                                                  & 11 0110              &                                                  \\
+%                                                  & + 01 0011            & \(\leftarrow\) 2's complement of\((10\,1101)_2\) \\\cline{2-2}
+%                             carry \(\leftarrow\) & \underline{1}00 1001 &                                                  \\
+%                         \end{tabular}\\
+%                         The carry is discarded. Thus answer is \((1001)_2\)
+%                     \end{ex}
+%                     \emph{Note:} The 2's complement method is also for subtractions of a large number from a smaller one.
+%           \end{enumerate}
+% \end{enumerate}
+% \end{document}
+\section{Proposition}
+\begin{defn}[Proposition]
+    A proposition is a declarative sentence (that is a sentence that declares a fact) that is either true or false but not both.
+\end{defn}
+\begin{ex}
+    \hfill
+    \begin{enumerate}
+        \item Toronto is the capital of Canada.
+        \item \(1+1=2\)
+        \item $2+2=3$
+    \end{enumerate}
+    Proposition 1 and 3 are false whereas 2 is true.\\
+    Consider the following sentences:
+    \begin{enumerate}
+        \item What time it is?
+        \item $x+y=z$
+    \end{enumerate}
+    are not propositions.
+\end{ex}
+\begin{defn}[Negation of $ p $]
+    Let $p$ be a proposition.
+    The negation of $p$ denoted by $\neg\ p$ (also denoted by $\bar{p}$) is the statement ``It is not the case that p''.
+    The proposition $\neg\ p$ is read ``not $p$''.
+\end{defn}
+``Today is Friday.'' \\
+The negation is, ``It is not the case that today is Friday.''
+Simply, ``Today is not Friday.''
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lr}
+        \toprule
+        p & \(\neg\ p\) \\ \midrule
+        T & F           \\ 
+        F & T           \\ \bottomrule
+    \end{tabular}
+    \caption{Truth table for negation of a proposition}
+\end{table}
+\begin{defn}[Conjunction of \(p\) and \(q\)]
+    Let \(p\) and \(q\) be propositions. The conjunction of \(p\) and \(q\), denoted by \((p\wedge q)\) is the proposition ``p and q''. The conjunction \(p\wedge q\) is true when both \(p\) and \(q\) are true and is false otherwise.
+\end{defn}
+``Today is Friday and it is raining.''
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        p & q & \(p\wedge q\) \\ \midrule
+        T & T & T             \\ 
+        T & F & F             \\ 
+        F & T & F             \\ 
+        F & F & F             \\ \bottomrule
+    \end{tabular}
+    \caption{Truth table for \(p\wedge q\)}
+\end{table}
+\begin{defn}[Disjunction of \(p\) and \(q\)]
+    Let \(p\) and \(q\) be propositions. The disjunction of \(p\) and \(q\) denoted by \((p \vee q)\) is the proposition ``p or q.'' The disjunction \(p\vee q\) is false when both \(p\) and \(q\) are false and is true otherwise.
+\end{defn}
+``Students who have taken calculus or computer science can take this class.''
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        p & q & \(p\vee q\) \\ \midrule
+        T & T & T           \\ 
+        T & F & T           \\ 
+        F & T & T           \\ 
+        F & F & F           \\ \bottomrule
+    \end{tabular}
+    \caption{Truth table for \(p\vee q\)}
+\end{table}
+\begin{defn}[Exclusive or of \(p\) and \(q\)]
+    Let \(p\) and \(q\) be propositions. The exclusive or of \(p\) and \(q\) denoted by \((p \oplus q)\) is the proposition that is true when exactly one of \(p\) and \(q\) is true and is false otherwise.
+\end{defn}
+``Students who have taken calculus or computer science, but not both, can take this class.''
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        p & q & \(p\oplus q\) \\ \midrule
+        T & T & F             \\ 
+        T & F & T             \\ 
+        F & T & T             \\ 
+        F & F & F             \\ \bottomrule
+    \end{tabular}
+    \caption{Truth table for \(p\oplus q\)}
+\end{table}
+Let \(p\) and \(q\) be propositions. The conditional statement \(p \to q\) is the proposition ``If p then q.'' The conditional statement \(p\to q\) is false when \(p\) is true and \(q\) is false and true otherwise. In the conditional statement \(p\to q\), \(p\) is called hypothesis and \(q\) is called conclusion.
+``If I am elected, then I will lower taxes.''
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        p & q & \(p\to q\) \\ \midrule
+        T & T & T          \\ 
+        T & F & F          \\ 
+        F & T & T          \\ 
+        F & F & T          \\ \bottomrule
+    \end{tabular}
+    \caption{Truth table for \(p\to q\)}
+\end{table}
+\begin{defn}[Converse, Contrapositive and Inverse]
+    The proposition \(q\to p\) is called converse of \(\ptoq\).
+    The contrapositive of \(\ptoq\) is the proposition \(\neg\ q \to \neg\ p\).
+    The proposition \(\neg\ p \to \neg\ q\) is called inverse of \(\ptoq\).
+\end{defn}
+\begin{ex}
+    ``If it is raining, then the home team wins.''\\
+    Contrapositive: If the home team does not win then it is not raining.\\
+    Converse: If the home team wins, then it is raining.\\
+    Inverse: If it is not raining, then the home  team does not win.
+\end{ex}
+\begin{defn}[Biconditional]
+    Let $ p $ and $ q $ be propositions. The biconditional statement \(p\leftrightarrow q\) is the proposition ``p if and only if q.'' The biconditional statement \(p\leftrightarrow q\) is true when $ p $ and $ q $ have the same truth values and is false otherwise.
+    ``You can take the flight if and only if you buy a ticket.''
+    \[(\ptoq)\wedge(q\to p)\]
+\end{defn}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccc}
+        \toprule
+        p & q & \(p\leftrightarrow q\) \\ \midrule
+        T & T & T                      \\ 
+        T & F & F                      \\ 
+        F & T & F                      \\ 
+        F & F & T                      \\ \bottomrule
+    \end{tabular}
+    \caption{Truth table for \(p\leftrightarrow q\)}
+\end{table}
+\begin{prob}
+    Construct the truth table of the compound proposition.\[(p\vee \neg\ q)\to (p\wedge q)\]
+\end{prob}
+\begin{soln}
+    Let us construct a table
+    \begin{center}
+        \begin{tabular}{cccccc}
+            \toprule
+            $ p $ & $ q $ & \(\neg\ q\) & \(p\vee \neg\ q\) & \(p \wedge q\) & \((p\vee \neg\ q)\to (p\wedge q)\) \\ \midrule
+            T     & T     & F           & T                 & T              & T                                  \\ 
+            T     & F     & T           & T                 & F              & F                                  \\ 
+            F     & T     & F           & F                 & F              & T                                  \\ 
+            F     & F     & T           & T                 & F              & F                                  \\ \bottomrule
+        \end{tabular}
+    \end{center}
+\end{soln}
+\begin{prob}
+    How can this English sentence be translated into a logical expression?\\
+    ``You can access the internet from campus only if you are a computer science major or you are not a freshman.''
+\end{prob}
+\begin{soln}
+    \hfill\\
+    \indent$ a $ \(\to\) You can access the internet from campus\\
+    \indent$ b $ \(\to\) You are a computer science major\\
+    \indent$ c $ \(\to\) You are a freshman\\
+    \indent\(a\to(b\vee\neg\ c)\)
+\end{soln}
+\begin{itemize}
+    \item Computer represent information using bits.
+    \item A bit is a symbol with two possible values, namely, 0 and 1, 1 represents true, 0 represents false.
+    \item A variable is called a Boolean variable if its value is either true or false.
+    \item A bit string is a sequence of zero or more bits. The length of this string is the number of bits in this string.
+          \begin{align*}
+              01\,1011\,0110   &                                   \\
+              11\, 0001 \,1101 &                                   \\\cline{1-1}
+              11 \,10111\, 111 & \longleftarrow \text{bitwise OR}  \\
+              01 \,0001 \,0100 & \longleftarrow \text{bitwise AND} \\
+              10 \,1010\, 1011 & \longleftarrow \text{bitwise XOR}
+          \end{align*}
+\end{itemize}
+\begin{defn}[Tautology and Contradiction]
+    A compound proposition that is always true, no matter what the truth values of the propositions that occur in it is called tautology.
+    A compound proposition that is always false is called a contradiction.
+    A compound proposition that is neither a tautology nor a contradiction is called a contingency.
+\end{defn}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cccc}
+        \toprule
+        $ p $ & \(\neg\ p\) & \(p\wedge \neg\ p\) & \(p\vee\neg\ p\) \\ \midrule
+        T     & F           & F                   & T                \\ 
+        F     & T           & F                   & T                \\ \bottomrule
+    \end{tabular}
+    \caption{Truth table for tautology and contradiction}
+\end{table}
+\begin{defn}[Logically Equivalent]
+    The compound proposition $ p $ and $ q $ are called logically equivalent if \(p\leftrightarrow q\) is a tautology. It is denoted as \(p \equiv q\)
+\end{defn}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccccccc}
+        \toprule
+        $ p $ & $ q $ & \(p\vee q\) & \(\neg(\ p\vee q)\) & \(\neg\ p\) & \(\neg\ q\) & \(\neg\ p\wedge \neg\ q\) \\ \midrule
+        T     & T     & T           & F                   & F           & F           & F                         \\ 
+        T     & F     & T           & F                   & F           & T           & F                         \\ 
+        F     & T     & T           & F                   & T           & F           & F                         \\ 
+        F     & F     & F           & T                   & T           & T           & T                         \\ \bottomrule
+    \end{tabular}
+    \caption{Truth table for logically equivalent}
+    \[\neg\ (p\vee q)\equiv \neg\ p\wedge \neg\ q\]
+\end{table}
+\begin{prob}
+    Prove that \(p\vee(q\wedge r)=(p\vee q)\wedge(p\vee r)\)
+\end{prob}
+\begin{prob}
+    Show that \(\neg\ (p\vee(\neg\ p\wedge q))\equiv\neg\ p \wedge \neg\ q\)
+\end{prob}
+\begin{soln}
+    \begin{align*}
+        \neg\ (p\vee(\neg\ p\wedge q)) & \equiv \neg\ p \wedge \neg\ (\neg\ p \wedge q)       \\
+                                       & \equiv \neg\ p \wedge (\neg\ \neg\ p\vee \neg\ q)    \\
+                                       & \equiv \neg\ p \wedge(p\vee \neg\ q)                 \\
+                                       & \equiv (\neg\ p\wedge p) \vee (\neg\ p \vee \neg\ q) \\
+                                       & \equiv \neg\ p \vee \neg\ q
+    \end{align*}
+\end{soln}
+\begin{defn}[Predicates]
+    Suppose a statement involving variables, such as \(x>3\)\\
+    The statement ``x is greater than 3'' has two parts.
+    The first part, the variable $ x $, is the subject of the statement.
+    The second part - the predicate, ``is greater than 3'' refers to a property that the subject of the statement can have.
+
+    We can denote the statement by \(P(x)\), where $ p $ denotes the predicates and x is the variable.
+    Propositional function p at x. Once a value has been assigned to the variable $ x $ the statement \(P(x)\) becomes a proposition and has a truth value.
+\end{defn}
+\begin{ex}
+    Let \(P(x)\) denotes the statement ``\(x>3\)''. What are the values of \(P(4)\) and \(P(2)\)?\\
+    \(P(4)\), which is the statement ``\(4>3\)'' is true and \(P(2)\), which is the statement ``\(2>3\)'' is false.
+\end{ex}
+A statement of the form \(P(x_1,x_2,\dot,x_n)\) is the value of the propositional function $ P $ at the n-tuple \((x_1,x_2,\dot,x_n)\) and $ P $ is called an n-place predicate or a n-ary predicate.
+\begin{prob}
+    Consider the following program:
+    \begin{quote}
+        temp:=x\\x:=y\\y:=temp
+    \end{quote}
+    Find predicates that we can use as the precondition and the post-condition to verify the correctness of this program.
+    Then explain how to use them to verify that for all valid input the program does what is intended?
+\end{prob}
+TODO:: Solve this.
+\begin{defn}[Quantifiers]
+    The universal quantification of \(P(x)\) is the statement ``\(P(x)\) for all the values of x in the domain''.
+    The notation \(\forall x P(x)\) denotes the universal quantification of \(P(x)\) and \(\forall\) is called the universal quantifier.
+
+    An element for which \(P(x)\) is false is called a counterexample of \(\forall x P(x)\).
+\end{defn}
+\begin{ex}
+    Let \(P(x)\) be the statement ``\(x+1>x\)''. What is the truth value of the quantification \(\forall x P(x)\). Where domain consists of all real numbers?
+
+    Because \(P(x)\) is true for all real numbers \(x\), the quantification, \(\forall x P(x)\) is true.
+\end{ex}
+\begin{defn}[Existential Quantifier]
+    The existential quantification of \(P(x)\) is the proposition ``There exists an element $ x $ in the domain such that \(P(x)\).''
+
+    We use the notation \(\exists xP(x)\) for the existential quantification of \(P(x)\). Here \(\exists\) is called the existential quantifier.
+    Let \(P(x)\) denote the statement ``\(x>3\)''. What is the truth value of the quantification \(\exists xP(x)\), where the domain consists of all real numbers?
+\end{defn}
+\paragraph{\#}\(\forall x<0\,(x^2>0)\), \(\forall y\neq 0(y^3\neq 0)\)\\
+\(\forall x (x<0 \rightarrow x^2>0)\) \(\forall y (y\neq 0\rightarrow y^3\neq0)\)\\
+\(\exists z>0(z^2=2)\)\\\(\exists z (z>0\wedge z^2=2)\)
+\paragraph{\#} Statements involving predicate and quantifiers are logically equivalent if and only if they have the same truth value no matter which predicates are substituted into these statements and which domain of discourse is used for the variables in these propositional function.
+\begin{prob}
+    Show that \(\forall x\,(P(x)\wedge Q(x))\) and \(\forall x\,P(x)\wedge \forall x\,Q(x)\) are logically equivalent.
+\end{prob}
+\begin{soln}
+    Let \(\forall x\,(P(x)\wedge Q(x))\) is true. This means if $ a $ is in the domain then \((P(a)\wedge Q(a))\) is true. Hence, \(P(a)\) and \(Q(a)\) is true for every element in the domain, we can conclude that \(\forall xP(x)\) and \(\forall xQ(x)\) are both true. This means that \(\forall xP(x)\wedge\forall x Q(x)\) is true.
+
+    Next suppose that \(\forall xP(x)\wedge\forall x Q(x)\) is true. It follows that \(\forall xP(x)\) is true and \(\forall xQ(x)\) is true.
+    Hence, if $ a $ is in the domain, \(P(a)\) is true and \(Q(a)\) is true. It follows that for all $ a $, \(P(a)\wedge  Q(a)\) is true. Hence, \(\forall x(P(x)\wedge Q(x))\) is true.
+\end{soln}
+\(\neg\ \forall\ xP(x)\equiv\exists\ x\neg\ P(x)\)
+\begin{enumerate}
+    \item \( \neg\ \exists x \px \equiv \forall x \neg\ \px\) [For every $ x $, $ \px $ is false]
+    \item \(\neg\ \forall x\px \equiv\exists x\neg\px\) [There is an $ x $ for which $ \px $ is false]
+\end{enumerate}
+\begin{prob}
+    Show that, \(\neg\ \forall x(\px\to Q(x))\equiv\exists x(\px\wedge\neg\ Q(x))\)
+\end{prob}
+TODO: solve Problem
+\newpage
+\begin{prob}
+    Express the statements ``some student in this class has visited Mexico'' and ``Every student in this class has visited either Canada or Mexico'' using predicates and quantifiers.
+\end{prob}
+\begin{soln}
+    Let,\\
+    \(S(x)\to x\) is a student in this class.\\
+    \(M(x)\to x\) has visited Mexico.\\
+    \(C(x)\to x\) has visited Canada.\\
+    The solution for first statement is \(\exists x (S(x)\wedge M(x))\)\\
+    The solution for second statement is \(\forall x (S(x)\to (C(x)\vee M(x)))\)
+\end{soln}
+\begin{defn}[Theorem]
+    A theorem is a statement that can be shown to be true.
+    Less important theorems are sometimes called \emph{proposition}.
+\end{defn}
+\begin{defn}[Proof]
+    A proof is a valid argument that establish the truth of a theorem.
+\end{defn}
+\begin{defn}[Lemma]
+    A less important theorem that is helpful in proof of other results is called a lemma.
+\end{defn}
+\begin{defn}[Corollary]
+    A corollary is a theorem that can be established directly from a theorem that has been proved.
+\end{defn}
+\begin{defn}[Conjucture]
+    A conjecture is a statement that is being proposed to be true statement, usually on the basis of some partial evidence.
+\end{defn}
+\begin{defn}[Direct Proof]
+    A direct proof of a conditional statement \(\ptoq\) is constructed when the first step is the assumption that $ P $ is true; subsequent steps are constructed using rules of interference, with the final step showing that \(q\) must also be true.
+\end{defn}
+\begin{defn}[Indirect Proof]
+    The proof that do not start with the hypothesis and end with the conclusion are called indirect proof.
+\end{defn}
+\begin{defn}[Proof by Contraposition]
+    Proof by contraposition means that the conditional statement \(\ptoq\) can be proved by showing that the contrapositive \(\neg\ q\to\neg\ p\) is true.
+\end{defn}
+\begin{prob}
+    Prove that if \(n\) is an integer and \(3n+2\) is odd, then \(n\) is odd.
+\end{prob}
+\begin{proof}
+    Direct proof:
+
+    Let, \(3n+2\) is odd and \(3n+2=2k+1\), for some integer \(k\)\\
+    This implies, \(3n+1=2k\)\\
+    There does not seem to be any direct way to conclude that \(n\) is odd.
+
+    Our attempt at direct proof failed.
+
+    Proof by contraposition:
+
+    Assume that \(n\) is even.\\
+    So, \(n=2k\) for some integer \(k\).\\
+    So, we have,
+    \[3n+2=3(2k)+2=2(3k+1)\]
+    This tells us that \(3n+2\) is even.
+
+    Because the negation of the conclusion of the conditional statement implies that the hypothesis is false, the original conditional statement is true.
+\end{proof}
+\begin{defn}[Vacuous Proof]
+    \(\ptoq\) is true when $ P $ is false \(\ptoq\equiv(\neg\ p\vee q)\).\\ If we can show that $ p $ is false, then we have a proof called a vacuous proof of the conditional statement \(\ptoq\).
+\end{defn}
+\begin{defn}[Trivial Proof]
+    A proof of \(\ptoq\) that uses the fact that $ q $ is true is called a trivial proof.
+\end{defn}
+\begin{defn}[Proofs by Contradiction]
+    Because the statement \(r\wedge\ \neg\ r\) is a contradiction whenever $ r $ is a proposition, we can prove that $ p $ is true if we can show that \(\neg\ p\to(r\wedge\ \neg\ r)\) is true for some proposition $ r $. Proofs of this type are called proofs by contradiction.
+\end{defn}
+\begin{prob}
+    Prove that \(\sqrt{2}\) is irrational by giving a proof by contradiction.
+\end{prob}
+\begin{proof}
+    If \(\sqrt{2}\) is rational, there exists integer \(a\) and \(b\) with, \(\sqrt{2}=\frac{a}{b}\) where $ a $ and $ b $ have no common factors.(Every rational number can be written in the lowest terms.)
+    So, \(2=\frac{a^2}{b^2}\Rightarrow2b^2=a^2\) \\
+    So, \(a^2\) is even and $ a $ is also even.\\
+    So, \(a=2c\). Then, \(2b^2=4c^2\Rightarrow b^2=2c^2\)\\
+    Similarly $ b $ is also even.\\
+    Now we have $ a $ and $ b $ have no common factors, $ a $ ans $ b $ are even, that is 2 divides both $ a $ and $ b $.
+
+    Because our assumption of \(\neg\ p\) leads to the contradiction that 2 divides both $ a $ and $ b $ and 2 does not divide both $ a $ and $ b $, \(\neg\ p\) must be false.\\
+    So \(\sqrt2\) must be irrational.
+\end{proof}
+A statement of the form \(\forall x\px\) is false we need only find a counterexample that is an example for which \(\px\) is false.
+
+Mistakes is proofs:
+\begin{align*}
+                & \,a = b              \\
+    \Rightarrow & \,a^2 =ab            \\
+    \Rightarrow & \,a^2-b^2=ab-b^2     \\
+    \Rightarrow & \,(a+b)(a-b)= b(a-b) \\
+    \Rightarrow & \,a+b=b              \\
+    \Rightarrow & \,2b=b               \\
+    \Rightarrow & \,2=1
+\end{align*}
+\begin{defn}[Exhaustive Proof]
+    Some theorems can be proved by examining a relatively small number of examples. Such proofs are called exhaustive proof.
+\end{defn}
+\begin{ex}
+    Prove that, \((n+1)^3\geq3^n\) if n is a positive integer and \(n\leq4\).\\
+    If \(n=1,\quad(1+1)^3\geq3^1\,\Rightarrow8\geq3\)\\
+    \(n=2,\quad(2+1)^3\geq3^2\,\Rightarrow27\geq9\)\\
+    \(n=3,\quad(3+1)^3\geq3^3\,\Rightarrow64\geq27\)\\
+    \(n=4,\quad(4+1)^3\geq4^3\,\Rightarrow125\geq81\)\\
+\end{ex}
+A proof by cases must cover all possible cases that arise in a theorem.\\
+When the phrase ``without loss of generality'' is used in a proof, we assert that by proving one case of a theorem, no additional argument is required to prove other specified cases.
+\begin{defn}[Uniqueness Proofs]
+    The two parts of a uniqueness proof are:
+    \begin{itemize}
+        \item \textbf{Existence:} We show that an element $ x $ with desired property exists.
+        \item \textbf{Uniqueness:} We show that if \(y\neq x\), then $ y $ does not have the desired property.\\
+              Equivalently, we can show that if $ x $ and $ y $ both has the desired property, then \(x=y\).
+    \end{itemize}
+\end{defn}
+\begin{defn}[Argument]
+    By an argument, we mean a sequence of statements that end with a conclusion.\\
+    By \emph{valid}, we mean that the conclusion or final statement of the argument must follow form the truth of the preceding statements or premises of the argument.
+
+    That is an argument is valid if and only if it is impossible for all the premises to be true and the conclusion to be false.
+\end{defn}
+\begin{defn}[Premises \& Conclusion]
+    An argument in propositional logic is a sequence of propositions. All but the final proposition in the argument are called premises and the final proposition is called the conclusion.
+
+    An argument is valid if the truth of all its premises implies that the conclusion is true.
+\end{defn}
+\# We can first establish the validity of some relatively simple argument forms called rules of interference.\\
+\(p\to\) It is below freezing now\\
+\(q\to\) It is raining now\\
+``It is below freezing now. Therefore, it is either below freezing or raining now.''
+\begin{align*}
+    p \qquad\qquad                   & p\to(p\vee q)\quad \text{addition} \\
+    \cline{1-1}
+    \therefore\, p \vee q \qquad\,\, &
+\end{align*}
+\begin{table}[H]
+    \centering
+    \begingroup
+    % \renewcommand{\arraystretch}{2}
+    \begin{tabular}{ccc}
+        \toprule
+        Rule of interference             & Tautology                                                & Name                   \\\midrule
+        {\(\begin{aligned}
+                p                       &         \\
+                p                       & \to \ q \\
+                \cline{1-2}\therefore q &
+            \end{aligned}\)} & \([p\wedge(\ptoq)]\to q\)                                & Modus pones            \\
+            &\\
+        {\(\begin{aligned}
+                \neg\ q                       &         \\
+                p                             & \to \ q \\
+                \cline{1-2}\therefore \neg\ p &
+            \end{aligned}\)} & \([\neg\ q\wedge(\ptoq)]\to \neg\ p\)                    & Modus tollens          \\
+            &\\
+            {\(\begin{aligned}
+                p                       & \to\ q  \\
+                q                       & \to \ r \\
+                \cline{1-2}\therefore p & \to\ r
+            \end{aligned}\)} & \([(\ptoq)\wedge(q\to q)]\to (p\to r)\)                  & Hypothetical Syllogism \\
+            &\\
+            {\(\begin{aligned}
+                p                       & \vee\ q \\
+                \neg\ p                             \\
+                \cline{1-2}\therefore q &
+            \end{aligned}\)} & \([(p\vee\ q)\wedge\neg\ p]\to q\)                       & Disjunctive Syllogism  \\
+            &\\
+            {\(\begin{aligned}
+                p                       &         \\
+                \cline{1-2}\therefore p & \vee\ q
+            \end{aligned}\)} & \(p\to (p\vee\ q)\)                                      & Addition               \\
+            &\\
+            {\(\begin{aligned}
+                p                       & \wedge\ q \\
+                \cline{1-2}\therefore p &
+            \end{aligned}\)} & \((p\wedge\ q)\to p\)                                    & Simplification         \\
+            &\\
+            {\(\begin{aligned}
+                p                       &            \\
+                q                       &            \\
+                \cline{1-2}\therefore p & \wedge \ q
+            \end{aligned}\)} & \([(p)\wedge (q)]\to (p\wedge\ q)\)                      & Conjunction            \\
+            &\\
+            {\(\begin{aligned}
+                p                       & \vee\ q \\
+                \neg p &\vee \ r\\
+                \cline{1-2}\therefore q & \vee\ r
+            \end{aligned}\)} & \([(p\vee\ q)\ \wedge\ (\neg\ p \vee\ r)]\to (q\vee r)\) & Resolution             \\\bottomrule
+    \end{tabular}
+    \endgroup
+    \caption{Rules of Interference}
+\end{table}
+\begin{prob}
+    Show that the hypothesis ``It is not sunny this afternoon and it is colder than yesterday'',
+    ``We will go swimming only if it is sunny'',
+    ``If we do not go swimming, then we will take a canoe trip'', and
+    ``If we take a canoe trip, then we will be home by sunset''
+    lead to the conclusion ``We will be home by sunset.''
+\end{prob}
+\begin{soln}
+    Let,\newline
+    \(p\to\) It is sunny this afternoon\\
+    \(q\to\) It is colder than yesterday\\
+    \(r\to\) We will go swimming\\
+    \(s\to\) We will take a canoe trip\\
+    \(t\to\) We will be home by sunset\\
+% \newpage
+    We construct an argument to show that our hypothesis lead to the desired conclusion as follows:\\
+    \begin{tabular}{p{.4\textwidth} p{.4\textwidth}}
+        \qquad Steps & \qquad Reason              \\
+        {
+        \begin{enumerate}
+            \item \(\neg\ p\wedge\ q\)
+            \item \(\neg\ p\)
+            \item \(r\to\ p\)
+            \item \(\neg\ r\)
+            \item \(\neg\ r\to s\)
+            \item \(s\)
+            \item \(s\to t\)
+            \item \(t\)
+        \end{enumerate}
+        }            & \begin{itemize}
+            \item [] Hypothesis
+            \item [] Simplification using 1
+            \item [] Hypothesis
+            \item [] Modus tollens using 2 and 3
+            \item [] Hypothesis
+            \item [] Modus pones using 4 and 5
+            \item [] Hypothesis
+            \item [] Modus pones using 6 and 7
+        \end{itemize} 
+    \end{tabular}
+\end{soln}
+\begin{prob}
+    Prove that, if $ n $ is an integer then \(n^2\geq\ n\).
+\end{prob}
+\begin{proof}
+    We split the proof into three cases.\\
+    Case i: When \(n=0\), because \(0^2=0\). We see that, \(0^2=0\).
+    It follows that \(n^2\geq\ n\) is true in this case.\\
+    Case ii: When \(n\geq\ 1\). We obtain \(n^2\geq\ n\) for positive integer n.\\
+    Case iii: When \(n\leq\ -1\). We obtain \(n^2\geq\ 0\geq\ n\).
+
+    Because the inequality \(n^2\geq\ n\) holds in all three cases, we can conclude that if n is an integer then \(n^2\geq\ n\).
+\end{proof}
+\paragraph{\# Division Algorithm} Let $ a $ be an integer and $ d $ be a positive integer.
+Then there are unique integers $ q $ and $ r $ with \(0\geq\ r <\ d\).
+Such that,
+\[a=\ dq+r\]
+\[q=\ \text{div}\ d,\qquad r=\ a \mod \ d\]
+\begin{prob}
+    What are the quotients when -11 is divided by 3?
+\end{prob}
+\begin{soln}
+    \(11=3(-4)+1\) remainder cannot be negative.
+\end{soln}
+If $ a $ and $ b $ are integers and $ m $ is a positive integer.
+Then $ a $ is congruent to $ b $ modulo $ m $ if $ m $ divides $ (a-b) $
+\[a\equiv\ b \mod\ m\]\[17\equiv\ 5 \mod\ 6\]
+\paragraph{\# Fundamental Theorem of Arithmetic} Every positive integer greater than 1 can be written uniquely as a prime or as the product of two or more primes where the prime factors are written in order of non-decreasing size.
+\[
+    100=2\cdot2\cdot5\cdot5=2^2\cdot5^2
+\]
+\[
+    999=3\cdot3\cdot3\cdot37=3^3 \cdot37
+\]
+
+\paragraph{\# Representations of Integers} Let $ b $ be a positive integer greater than 1. Then if $ n $ is a positive integer, it can be uniquely expressed in the form,
+\[n=\ a_k b^k+a_{k-1} b^{k-1}+\dots +a_1 b+a_0\]
+Where $ k $ is a non-negative integer, \(a_0,a_1,\dots,a_k\) are non-negative integers less than $ b $ and \(a_k\neq0\)
+\begin{prob}
+    What is the decimal expansion of the integer that has \((1\,0101\,1111)_2\) as its binary expansion?
+\end{prob}
+\begin{soln}
+    We have,
+    \[(1\,0101\,1111)_2=1\cdot 2^8+0\cdot2^7+1\cdot2^6+0\cdot2^5+1\cdot2^4+1\cdot2^3+1\cdot2^2+1\cdot2^1+1\cdot2^0=351\]
+\end{soln}
+\paragraph{\# Hexadecimal Expansions} The base 16 expansion of an integer is called its hexadecimal expansion.
+\[(2AE0B)_{16}=2\cdot16^4+10\cdot16^3+14\cdot16^2+0\cdot16^1+11\cdot16^0=(175627)_{10}\]
+\[(1110\,0101)_{2}=(E5)_{16}\]
+\paragraph{\# Base Conversion} integer $ n $, base $ b $
+\begin{align*}
+    n      & =\ bq_0+a_0,\quad 0\leq a_0<b \\
+    q_0    & =\ bq_1+a_1,\quad 0\leq a_1<b \\
+    \cdots &                               
+\end{align*}
+This process terminates when we obtain a quotient equal to zero.
+\begin{prob}
+    Find the base 8 or octal expansion of \((12345)_{10}\).
+\end{prob}
+\begin{soln}
+    First divide 12345 by 8, we obtain
+    \begin{align*}
+        12345 & =\ 8\cdot1543+1 \\
+        1543  & =\ 8\cdot 192+7 \\
+        192   & =\ 8\cdot24+0   \\
+        24    & =\ 8\cdot3+0    \\
+        3     & =\ 8\cdot0+3
+    \end{align*}
+    So \((12345)_{10}=(30071)_8\)
+\end{soln}
+\begin{prob}
+    Find the hexadecimal expansion of \((177130)_{10}\).
+\end{prob}
+\begin{soln}
+    First divide 177130 by 16 to obtain,
+    \begin{align*}
+        177130 & =\ 16\cdot11070+10 \\
+        11070  & =\ 16\cdot691+14   \\
+        691    & =\ 16\cdot43+3     \\
+        43     & =\ 16\cdot2+11     \\
+        2      & =\ 16\cdot0+2
+    \end{align*}
+    So \((177130)_{10}=(2B3EA)_{16}\)
+\end{soln}
+\newpage
+\begin{prob}
+    Find the binary expansion of \((241)_{10}\).
+\end{prob}
+\begin{soln}
+    First divide 241 by 2 to obtain,
+    \begin{align*}
+        241 & =\ 2\cdot120+1 \\
+        120 & =\ 2\cdot60+0  \\
+        60  & =\ 2\cdot30+0  \\
+        30  & =\ 2\cdot15+0  \\
+        15  & =\ 2\cdot7+1   \\
+        7   & =\ 2\cdot3+1   \\
+        3   & =\ 2\cdot1+1   \\
+        1   & =\ 2\cdot0+1
+    \end{align*}
+    So \((241)_{10}=(1111\,0001)_{2}\)
+\end{soln}
+\paragraph{\# Binary Addition} Add \((1110)_2\) and \((1011)_2\)\\
+Following the procedure specified in the algorithm\\
+\(a_0+b_0=0+1=0\cdot2+1\)\\
+\(c_0=0\) and \(s_0=1\)\\
+Then \(a_1+b_1+c_0=1+1+0=1\cdot2+0\)\\
+\(c_1=1\) and \(s_1=0\)\\
+Continuing,\\
+\(a_2+b_2+c_1=1+0+1=1\cdot2+0\)\\
+\(c_2=1\) and \(s_2=0\)\\
+\(a_3+b_3+c_2=1+1+1=1\cdot2+1\)\\
+\(c_3=1\) and \(s_3=1\)\\
+Then \(s_4=c_3=1\)\\
+so, \((1110)_2+(1011)_2=(1\,1001)_2\)
+\paragraph{\# Binary Subtraction}
+\begin{enumerate}
+    \item \begin{tabular}{r}
+              0  \\
+              -0 \\\hline
+              0
+          \end{tabular} \qquad \begin{tabular}{r}
+              1  \\
+              -0 \\\hline
+              1
+          \end{tabular} \qquad \begin{tabular}{r}
+              1  \\
+              -1 \\\hline
+              0
+          \end{tabular} \qquad \begin{tabular}{r}
+              0  \\
+              -1 \\\hline
+              11
+          \end{tabular}\\
+          \begin{tabular}{r|r}
+              1 0101  & 21 \\
+              -1 0100 & 20 \\\hline
+              0 0001  & 1
+          \end{tabular} \qquad\qquad\begin{tabular}{r|r}
+              1101  & 13 \\
+              -0011 & 3  \\\hline
+              1010  & 10
+          \end{tabular}
+    \item \begin{enumerate}[label=(\roman*)]
+              \item 1's complement method:
+
+                    To subtract a smaller number form a larger number, the 1's complement method is as follows:
+                    \begin{ex}
+                        Subtract \((1010)_2\) from \((1111)_2\)\\
+                        \begin{tabular}{rrr}
+                                                 & 1111               &                                              \\
+                                                 & + 0101             & \(\leftarrow\) 1's complement of\((1010)_2\) \\\cline{2-2}
+                            carry \(\leftarrow\) & \underline{1} 0100 &                                              \\
+                            Add carry \(\to\)    & 1                  &                                              \\\cline{2-2}
+                                                 & 0101               &                                              \\
+                        \end{tabular}
+                    \end{ex}
+              \item 2's complement subtraction:
+
+                    The 2's complement of a binary number can be obtained by adding 1 to it's 1's complement.
+                    \begin{ex}
+                        Subtract \((10\,1101)_2\) from \((11\,0110)_2\)\\
+                        \begin{tabular}{rrr}
+                                                 & 11 0110              &                                                  \\
+                                                 & + 01 0011            & \(\leftarrow\) 2's complement of\((10\,1101)_2\) \\\cline{2-2}
+                            carry \(\leftarrow\) & \underline{1}00 1001 &                                                  \\
+                        \end{tabular}\\
+                        The carry is discarded. Thus answer is \((1001)_2\)
+                    \end{ex}
+                    \emph{Note:} The 2's complement method is also for subtractions of a large number from a smaller one.
+          \end{enumerate}
+\end{enumerate}
+\end{document}

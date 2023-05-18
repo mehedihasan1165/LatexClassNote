@@ -1,0 +1,122 @@
+\documentclass[12pt,oneside]{book}
+% \usepackage[subpreambles=false]{standalone}
+% \renewcommand{\chaptername}{Sheet}
+\usepackage{style}
+\usepackage{subfiles}
+\newcommand{\xt}{(X, \tau)}
+\newcommand{\fin}{f^{-1}}
+\newcommand{\fa}{f^{\leftarrow}}
+\newcommand{\bfem}[1]{\textbf{\emph{#1}}}
+
+\newcommand{\newtitle}{General Topology}
+\newcommand{\course}{MAT411}
+\newcommand{\prof}{Prof. Dr. Md Mahbubur Rashid}
+
+\begin{document}
+\pagenumbering{roman}
+\begin{titlepage}
+    \backgroundsetup{
+        scale=1,
+        opacity=1,
+        angle=0,
+        color=black,
+        contents={
+            \begin{tikzpicture}[color=black, every node/.style={inner sep= 15pt}]
+                \node (NW) [anchor=north west] at (current page.north west){\pgfornament[width=2.5cm] {61}};
+                \node (NE) [anchor=north east] at (current page.north east){\pgfornament[width=2.5cm, symmetry=v]{61}};
+                \node (SW) [anchor=south west] at (current page.south west){\pgfornament[width=2.5cm, symmetry=h]{61}};
+                \node (SE) [anchor=south east] at (current page.south east){\pgfornament[width=2.5cm, symmetry=c]{61}};
+                \foreach \i in {-4,0,4}
+                \node[anchor=north,xshift=\i cm] at (current page.north){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-4,0,4}
+                \node[xshift=\i cm, yshift=32.25 pt] at (current page.south){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-8,-4,0,4,8}
+                \node[yshift=\i cm, xshift=32.25pt, rotate=90] at (current page.west){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-8,-4,0,4,8}
+                \node[yshift=\i cm, xshift=-32.25pt, rotate=90] at (current page.east){\pgfornament[scale=0.25,symmetry=v]{71}};
+                \foreach \i in {-11,-9,...,7,9}
+                \node[anchor=west, yshift=\i cm, xshift=52.25pt, rotate=90] at (current page.west){\pgfornament[scale=0.1]{80}};
+                \foreach \i in {-11,-9,...,7,9}
+                \node[anchor=east, yshift=\i cm, xshift=-52.25pt, rotate=-90] at (current page.east){\pgfornament[scale=0.1]{80}};
+            \end{tikzpicture}
+        }
+    }
+\centering
+
+\vspace*{\baselineskip}
+\vspace*{75pt}
+
+\rule{345pt}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+\rule{345pt}{0.4pt}
+
+\vspace{0.6\baselineskip}
+
+{\LARGE \calligra{\newtitle}\\} 
+
+\vspace{0.6\baselineskip}
+
+\rule{345pt}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule{345pt}{1.6pt}
+
+\vspace{2\baselineskip}
+
+{\scshape \Large{\course}} 
+
+\vspace*{5\baselineskip}
+
+
+
+\vspace{0.5\baselineskip} 
+
+{\scshape   \Large \prof\\ }
+
+\vspace{0.75\baselineskip} 
+
+{\textit{\large Shahjalal University of Science and Technology}} 
+
+\vfill 
+
+\vspace{0.3\baselineskip} 
+
+
+{\scshape \large Edited by\\  Mehedi Hasan} 
+\vspace*{40pt}
+\end{titlepage}
+\backgroundsetup{contents={}}
+\newpage
+\section*{Preface}
+This is a compilation of lecture notes with some books and my own thoughts. This document is not a holy text. So, if there is a mistake, solve it by your own judgement. Currently, the following topics are not included
+\begin{itemize}
+    % \item Inverse Laplace Transform
+    % \item Applications of Laplace Transform
+    \item Fourier Transform and Applications
+    \item Boundary value problems
+    \item Eigenfunctions
+    \item Green's functions
+    \item Strum-Liouville problems
+    \item Laplace Equation
+\end{itemize}
+
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+% \part{Insert Part Name here}
+% chapter begins here
+
+\subfile{./chapters/syl.tex}
+\part{Class Note/Sheet}
+\subfile{./chapters/topo.tex}
+\subfile{./chapters/base.tex}
+\subfile{./chapters/continuity.tex}
+\subfile{./chapters/metric.tex}
+\subfile{./chapters/sep.tex}
+% \subfile{./chapters/ilap.tex}
+% \subfile{./chapters/lapApp.tex}
+% \subfile{./chapters/series solution.tex}
+% \subfile{./chapters/Legendre.tex}
+% \subfile{./chapters/bessel.tex}
+% \subfile{./chapters/hermite.tex}
+% \subfile{./chapters/Laguerre.tex}
+% \subfile{./chapters/hypergeometric.tex}
+\end{document}

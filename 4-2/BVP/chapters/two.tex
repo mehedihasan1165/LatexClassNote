@@ -1,0 +1,182 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Shooting Method}
+\section{Two point Boundary Value Problems}
+Consider the two point boundary value problem
+\[y''=f(x,y,y'), \qquad a\leq x\leq b\]
+a second order ODE with boundary conditions
+\[y(a)=\alpha,\qquad y(b)=\beta\]
+This problem is guaranteed to have a unique solution if the following conditions hold:
+\begin{enumerate}[label=(\roman*)]
+    \item \(f,\;f_y,\;f_{y^{'}}\) are continuous on the domain \(D=\set{(x,y,y'):a\leq x\leq b,\;\;-\infty < y<\infty,\;\;-\infty < y'<\infty}\)
+    \item \(f_y>0\) on \(D\)
+    \item \(f_{y^{'}}\) is bounded on \(D\).
+\end{enumerate}
+\begin{note}
+    There are several methods to solve this type of problem. The first method that we will examine is called shooting method. It treats the two point boundary value problem as an initial value problem, in which \(x\) plays the role of the time variable, with \(a\) being the initial time and \(b\) being the final time. Specifically, the shooting method solves the IVP
+    \[y''=f(x,y,y'), \qquad a\leq x\leq b\]
+    with initial conditions \(y(a)=\alpha\), \(y'(a)=t\) where \(t\) must be chosen so that the solution satisfies the remaining boundary condition \(y(b)=\beta\). Since \(t\) being the first derivative of \(y(x)\) at \(x=a\) is the initial slope of the solution, this approach requires selecting the proper slope or `trajectory', so that the solution will `hit the target' of \(y(x)=\beta\) at \(x=b\). This viewpoint indicates how the shooting method earned its name. Since ODE associated with the IVP is of second-order, it must normally be rewritten as a system of first-order equations before it can be solved by standard numerical methods such as Euler's method, Taylor series method, RK method or multistep methods.
+\end{note}
+\section{Linear BVP}
+Consider a linear two-point BVP
+\begin{equation}
+    y''(x)=p(x)y'(x)+q(x)y(x)+r(x)\quad a\leq x\leq b,\quad y(a)=\alpha,\quad, y(b)=\beta \label{eq:sho1}
+\end{equation}
+satisfies
+\begin{enumerate}[label=(\roman*)]
+    \item \(p(x)\), \(q(x)\) and \(r(x)\) are continuous on \([a,b]\)
+    \item \(q(x)>0\) on \([a,b]\)
+\end{enumerate}
+then the problem \eqref{eq:sho1} has a unique solution.
+
+To approximate the unique solution guaranteed by the satisfaction of the above hypothesis, let us first consider the IVPs:
+\begin{equation}
+    y''(x)=p(x)y'+q(x)y+r(x)\quad a\leq x\leq b,\quad y(a)=\alpha,\quad, y'(a)=0 \label{eq:sho2}
+\end{equation}
+and
+\begin{equation}
+    y''(x)=p(x)y'+q(x)y+r(x)\quad a\leq x\leq b,\quad y(a)=0,\quad, y'(a)=1 \label{eq:sho3}
+\end{equation}
+Let \(y_1(x)\) be the solution of the IVP \eqref{eq:sho2} and \(y_2(x)\) be the solution of the IVP \eqref{eq:sho3}.
+
+Then the linear combination
+\begin{equation}
+    y(x)=y_1(x)+ty_2(x) \label{eq:sho4}
+\end{equation}
+will be the solution of the BVP \eqref{eq:sho1}, where \(t\) is the correct slope, since any linear combination of solutions of the ODE also satisfies the ODE, and the initial values are linearly combined in the same manner as the solutions themselves. To find the proper value of \(t\), we evaluate \(y(b)\), which yields
+\begin{equation}
+    y(b)=y_1(b)+ty_2(b)=\beta\;\;\;\Rightarrow\;t=\frac{\beta-y_1(b)}{y_2(b)}\label{eq:sho5}
+\end{equation}
+It follows that \(y_2(b)\neq 0\), the \(y(x)\) is the unique solution of the original BVP.
+\section{Method of Linear Interpolation}
+\begin{equation}
+    m_2=m_0+(m_1-m_0)\cdot\frac{y(b)-y(m_0;b)}{y(m_1;b)-y(m_0;b)}\label{eq:sho6}
+\end{equation}
+\begin{align*}
+    m_0,\,\,m_1&=\;\;\text{ are two initial guesses}\\
+    y(m_0;b)&=y(b)\;\;\text{ obtained by using } m_0\\
+    y(m_1;b)&=y(b)\;\;\text{ obtained by using } m_1\\
+    y'(a)&=m
+\end{align*}
+In \eqref{eq:sho6}, \(m_2\) is a better approximation for \(m\).
+\begin{ex}
+    Solve the BVP
+    \begin{equation}
+        y''(x)=y(x)\quad y(0)=0,\quad, y(1)=1.1752 \label{eq:sho7}
+    \end{equation}
+    by the shooting method, taking \(m_0=0.8\) and \(m_1=0.9\).
+
+    [Consider the IVP \(y''(x)=y(x)\), \(y(0)=0\), \(y'(0)=m_2\)]
+\end{ex}
+\begin{soln}
+    Using Taylor's series we obtain,
+    \[y(x+0)=y(0)+xy'(0)+\frac{x^2}{2!}y''(0)+\frac{x^3}{3!}y'''(0)++\frac{x^4}{4!}y^{(4)}(0)+\dots\]
+    Since 
+    \begin{align*}
+        &y''(x)=y(x) \quad \text{(Given)} \Rightarrow\;\; y''(0)=y(0)=0\\
+        \therefore&y'''(x)=y'(x) \quad \Rightarrow\;\; y'''(0)=y'(0)=0\\
+        \therefore&y^{(4)}(x)=y''(x) \quad \Rightarrow\;\; y^{(4)}(0)=y''(0)=0
+    \end{align*}
+    and so on.\\
+    Therefore,
+    \begin{align*}
+        & y(x)=y'(0)+\frac{x^3}{6}y'(0)+\frac{x^5}{120}y'(0)+\frac{x^7}{5040}y^{'}(0)+\frac{x^9}{362800}y^{'}(0)+\dots\\
+        \Rightarrow\;\;& y(x)=y'(0)\left[x+\frac{x^3}{6}+\frac{x^5}{120}+\frac{x^7}{5040}+\frac{x^9}{362800}+\dots\right]\\
+        \intertext{Hence,}
+        & y(1)=y'(0)\left[1+\frac{1}{6}+\frac{1}{120}+\frac{1}{5040}++\dots\right]\\
+        \Rightarrow\;\;& y(1)=y'(0)\times 1.1752
+    \end{align*}
+    Taking \(y'(0)=m_0=0.8\), so \(y(m_0;1)=0.9402\).\\
+    Again, if \(y'(0)=m_1=0.9\), then \(y_1(m_1;1)=1.0578\)\\
+    From \eqref{eq:sho6}, we have,
+    \begin{align*}
+        m_2&=0.8+0.1\cdot\frac{1.1752-0.9402}{1.0578-0.9402}\\
+        &=0.9998
+    \end{align*}
+    which is closer to the exact value of \(y'(0)=1\). With this value of \(m_2\), we now solve the IVP
+    \[y''(x)=y(x)\quad y(0)=0,y'(0)=m_2\]
+    Using Taylor's series, similarly we will get \(y(m_2;1)=1.174\) which is also closer to the exact value of \(y(1_=1.1752)\)
+\end{soln}
+H.W.: \(y''(x)=y(x)\quad y(0)=0,\;\;y(1)=2\)
+
+
+\underline{Alternative Procedure:} For the IVP
+\begin{equation}
+    y''=f(x,y,y')\quad y(a)=r_1,\;\;y'(a)=\alpha \label{eq:sho8}
+\end{equation}
+
+We suppose that we have computed two solutions \(y_1(x)\) and \(y_2(x)\) of the DE \eqref{eq:sho8}. Both the solutions are obtained using the same initial value \(y_1(a)=r_1=y_2(a)\), but different initial slopes \(y_1'(a)\) and \(y_2'(a)\). Then by the superposition principal, the solution of the DE can be written as
+\begin{equation}
+    y(x)=c_1y_1(x)+c_2y_2(x) \label{eq:sho9}
+\end{equation}
+We have, 
+\begin{align}
+    &y(a)=c_1y_1(a)+c_2y_2(a)\notag\\
+    \Rightarrow\;\;&r_1=c_1r_1+c_2r_2\notag\\
+    \Rightarrow\;\;&c_1+c_2=1\label{eq:sho10}\\
+    \intertext{and}
+    &y(b)=c_1y_1(b)+c_2y_2(b)=r_2\notag\\
+    \Rightarrow\;\;&c_2=\frac{r_2-y_1(b)}{y_2(b)-y_1(b)}\qquad \text{and }\quad c_1=1-c_2\label{eq:sho11}
+\end{align}
+Substituting \eqref{eq:sho11} in \eqref{eq:sho9} we get the solution of the DE.
+\begin{ex}
+    Find the solution of the BVP
+    \[x''=y+x,\qquad x\in [0,1],\quad y(0)=0,\quad y(1)=0\]
+    using shooting method.
+\end{ex}
+\begin{soln}
+    Use the forth order Taylor series method so solve the IVP with \(h=0.2\)
+    \[y_n''=y_n+x_n\]
+    We take \(y'(0)=1/2\)\\
+    The Taylor series method gives,
+    \begin{align*}
+        y_{n+1}&=y_n+hy_n'+\frac{h^2}{2}y_n''+\frac{h^3}{6}y_n'''+\frac{h^4}{24}y_n^{(iv)}\\
+        &=y_n+hy_n'+\frac{h^2}{2}(y_n+x_n)+\frac{h^3}{6}(y_n'+1)+\frac{h^4}{24}(y_n+x_n)\;\;[y_n'''=y_n'+1,y_n^{(iv)}=y_n''=y_n+x_n]\\
+        &=(1+\frac{h^2}{2}+\frac{h^4}{24})y_n+hy_n'(1+\frac{h^2}{6})+(\frac{h^2}{2}+\frac{h^4}{24})x_n+\frac{h^3}{6}\\
+        \therefore\;y_{n+1}'&=y_n'+hy_n''+\frac{h^2}{2}y_n'''+\frac{h^3}{6}y_n^{(iv)}\\
+        &=(1+h^2/2)y_n'+(h+h^3/6)y_n+(h+h^3/6)x_n+\frac{h^2}{2}
+    \end{align*}
+    with \(h=0.2\)
+    \begin{align*}
+        y_{n+1}&=0.00133+0.62007x_n+1.02007y_n+0.20133y_n'\\
+        y_{n+1}'&=0.2+0.20133 x_n+0.20133 y_n+1.02y_n'
+    \end{align*}
+    We get
+    \begin{align*}
+        y(0.2)&\approx y_2=0.10200,\quad y'(0.2)\approx y_2'=0.53000\\
+        y(0.4)&\approx y_3=0.21610,\quad y'(0.4)\approx y_3'=0.62140\\
+        y(0.6)&\approx y_4=0.35490,\quad y'(0.6)\approx y_4'=0.77787\\
+        y(0.8)&\approx y_5=0.53200,\quad y'(0.8)\approx y_5'=1.00568\\
+        y(1.0)&\approx y_6=0.76254,\quad y'(1.0)\approx y_6'=1.31397
+    \end{align*}
+    Let the second choice of the initial slope be \(y'(0)=-1/2\). We get,
+    \begin{align*}
+        y(0.2)&\approx y_2=-0.09934,\quad y'(0.2)\approx y_2'=-0.4900\\
+        y(0.4)&\approx y_3=-0.19464,\quad y'(0.4)\approx y_3'=-0.45953\\
+        y(0.6)&\approx y_4=-0.28171,\quad y'(0.6)\approx y_4'=-0.40738\\
+        y(0.8)&\approx y_5=-0.35601,\quad y'(0.8)\approx y_5'=-0.33145\\
+        y(1.0)&\approx y_6=-0.41250,\quad y'(1.0)\approx y_6'=-0.22869
+    \end{align*}
+    We have
+    \[c_2=\frac{0-0.76254}{-0.41250-0.76254}=0.64895\]
+    and \(c_1=1-c_2=0.35105\)\\
+    Hence \(y(x)=0.35105y_1(x)+0.64895y_2(x)\)\\
+    We find,
+    \begin{align*}
+        y(0.2)&=0.35105y_1(0.2)+0.64895y_2(0.2)\\
+        &\approx 0.35105(0.10200)+0.64895(-0.09934)\\
+        &\approx -0.02866\\
+        y(0.4)&=0.35105y_1(0.4)+0.64895y_2(0.4)\\
+        % &\approx 0.35105(0.10200)+0.64895(-0.09934)\\
+        &\approx -0.05045\\
+        \intertext{Similarly,}
+        y(0.6)&\approx -0.05823\\
+        y(0.8)&\approx -0.04427\\
+        y(1.0)&\approx -0.000002
+    \end{align*}
+    The exact solution is \(y(0.2)=-0.02888\), \(y(0.4)=-0.05048\), \(y(0.6)=-0.05826\), \(y(0.8)=-0.04429\), \(y(1.0)=0\).
+\end{soln}
+\end{document}

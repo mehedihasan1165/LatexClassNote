@@ -1,0 +1,88 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Parabolic Partial Differential Equation}
+We consider the numerical solution of the wave Equation which is an example of hyperbolic partial differential equation. The wave equation is given by the differential equation
+\begin{equation}
+    \frac{\partial^2 u}{\partial t^2}-\alpha^2\frac{\partial^2 u}{\partial x^2}=0;\qquad 0<x<l,\quad t>0\label{eq:13.1}
+\end{equation}
+subject to the conditions
+\begin{align*}
+    &u(0,t)=u(l,t)=0,\quad t>0\\
+    &u(x,0)=f(x),\quad 0\leq x\leq l\\
+    \intertext{and}
+    &\frac{\partial u(x,0)}{\partial t}=u_t(x,0)=g(x);\quad 0\leq x\leq l
+\end{align*}
+where \(\alpha\) is a constant. For the finite difference method, let an integer \(m>0\) and time-step size \(k>0\), with \(h=l/m\). The mesh points \((x_i,t_j)\) are 
+\begin{align*}
+    &x_i=ih\qquad \text{for each }\quad i=0,1,2,\dots,m\\
+    \intertext{and}
+    &t_j=jk\qquad \text{for each }\quad j=0,1,2,\dots
+\end{align*}
+At any interior mesh point \((x_i,t_j)\), the wave equation becomes
+\begin{equation}
+    \frac{\partial^2 u(x_i,t_j)}{\partial t^2}-\alpha^2\frac{\partial^2 u(x_i,t_j)}{\partial x^2}=0\label{eq:13.2}
+\end{equation}
+The difference method is obtained using the center-difference quotient for the second partial derivatives given by,
+\[
+    \frac{\partial^2 u(x_i,t_j)}{\partial t^2}=\frac{u(x_i,t_{j+1})-2u(x_i,t_j)+u(x_i,t_{j-1})}{k^2}-\frac{k^2}{12}\frac{\partial^4 u(x_i,\mu_j)}{\partial t^4}
+    \]
+    where \(\mu_j\in (t_{j-1},t_{j+1})\) and
+    \[
+        \frac{\partial^2 u(x_i,t_j)}{\partial x^2}=\frac{u(x_{i+1},t_{j})-2u(x_i,t_j)+u(x_{i-1},t_{j})}{h^2}-\frac{h^2}{12}\frac{\partial^4 u(\xi_i,t_j)}{\partial x^4}\]
+        where \(\xi_i\in (x_{i-1},x_{i+1})\). Substituting these into equation \eqref{eq:13.2} gives,
+    \[\frac{u(x_i,t_{j+1})-2u(x_i,t_j)+u(x_i,t_{j-1})}{k^2}-\alpha^2\frac{u(x_{i+1,t_j})-2u(x_i,t_j)+u(x_{i-1},t_j)}{h^2}
+    =\frac{1}{12}\left[ k^2\frac{\partial^4 u(x_i,\mu_j)}{\partial t^4}-\alpha^2h^2\frac{\partial^4 u(\xi_i,t_j)}{\partial x^4} \right]\]
+    Neglecting the error term
+    \[T_{i,j}=\frac{1}{12}\left[ k^2\frac{\partial^4 u(x_i,\mu_j)}{\partial t^4}-\alpha^2h^2\frac{\partial^4 u(\xi_i,t_j)}{\partial x^4} \right]\]
+    leads to the difference equation
+    \[\frac{u(x_i,t_{j+1})-2u(x_i,t_j)+u(x_i,t_{j-1})}{k^2}-\alpha^2\frac{u(x_{i+1,t_j})-2u(x_i,t_j)+u(x_{i-1},t_j)}{h^2}=0\]
+    If \(\lambda=\alpha k/h^2\), we can write the difference equation as
+    \begin{align}
+        &u_{i,j+1}-2u_{i,j}+u_{i,j-1}-\lambda^2 u_{i+1,j}+2\lambda u_{i,j}-\lambda^2u_{i-1,j}=0\notag\\
+        \Rightarrow\;\;&u_{i,j+1}=2(1-\lambda^2)u_{i,j}+\lambda^2(u_{i+1,j}+ u_{i-1,j})-u_{i,j-1}=0\label{eq:13.3}
+    \end{align}
+    This equation holds for each \(i=1,2,3,\dots,m-1\) and \(j=1,2,3,\dots\).
+    The boundary conditions give 
+    \begin{equation}
+        u_{0,j}=u_{m,j}=0 \quad \text{ for each } j=1,2,3,\dots \label{eq:13.4}
+    \end{equation}
+    and the initial condition implies that
+    \begin{equation}
+        u_{i,0}=f(x_i)\quad \text{ for each } i=1,2,3,\dots,m-1 \label{eq:13.5}
+    \end{equation}
+    Writing this set of equations in matrix form gives
+    \begin{equation}
+        \begin{bmatrix}
+            u_{1,j+1}\\u_{2,j+1}\\\vdots\\u_{m-1,j+1}
+        \end{bmatrix}=
+        \begin{bmatrix}
+            2(1-\lambda^2)& \lambda^2 & 0& \dots &0\\
+            \lambda^2& 2(1-\lambda^2) & \lambda^2 & \ddots &0\\
+            0& \ddots & \ddots & \ddots & \vdots\\
+            \vdots& \ddots & \ddots & \ddots & \vdots\\
+            0& \dots & 0 & \lambda^2 & 2(1-\lambda^2)\\
+        \end{bmatrix}
+        \begin{bmatrix}
+            u_{1,j}\\u_{2,j}\\\vdots\\u_{m-1,j}
+        \end{bmatrix}-
+        \begin{bmatrix}
+            u_{1,j-1}\\u_{2,j-1}\\\vdots\\u_{m,j-1}
+        \end{bmatrix}
+        \label{eq:13.6}
+    \end{equation}
+    Equations \eqref{eq:13.3} and \eqref{eq:13.4} imply that the \((j+1)\)st time step requires values from the \(j\)th and \((j-1)\)th time steps. This produces a minor starting problem since values for \(j=0\) are given by \eqref{eq:13.5}, but values for \(j=1\) which are needed in equation \eqref{eq:13.3} to compute \(u_{i,2}\) must be obtained from the initial velocity condition
+    \[\frac{\partial u(x,0)}{\partial t}=g(x);\qquad 0\leq x\leq l\]
+    Forward-difference approximation is used for \(\frac{\partial u}{ \partial t}\),
+    \begin{align}
+        & \frac{\partial u(x,0)}{\partial t}=\frac{u(x_i,t_1)-u(x_i,0)}{k}-\frac{k}{2}\;\frac{\partial^2 u(x_i,\bar{\mu_j})}{\partial t^2};\quad 0< \bar{\mu_j}< t_1\label{eq:13.7}\\
+        \Rightarrow\;\;& u(x_i,t_1)=u(x_i,0)+k\frac{\partial u(x_i,0)}{\partial t}+\frac{k^2}{2}\frac{\partial^2 u(x_i,\bar{\mu_j})}{\partial t^2}\notag\\
+        \Rightarrow\;\;& u(x_i,t_1)=u(x_i,0)+kg(x_i)+\frac{k^2}{2}\frac{\partial^2 u(x_i,\bar{\mu_j})}{\partial t^2}\label{eq:13.8}
+    \end{align}
+    As a consequence
+    \begin{equation}
+        u_{i,1}=u_{i,0}+kg(x_i) \quad \text{ for each } i=1,2,3,\dots,m-1 \label{eq:13.9}
+    \end{equation}
+\end{document}

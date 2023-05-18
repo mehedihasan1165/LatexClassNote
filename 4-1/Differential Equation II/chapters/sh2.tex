@@ -1,0 +1,164 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+% \everymath{\displaystyle}
+\begin{document}
+\chapter{Charpit's Method}
+\section{Derivation}
+Let us suppose the partial differential equation of first order is given by
+\begin{equation}
+    f(x,y,z,p,q)=0\label{eq:d1}
+\end{equation}
+Also, we have
+\begin{align}
+    \dz&=\pdx{z}\dx+\pdy{z}\dy\notag\\
+    \Rightarrow\;\dz&=p\dx+q\dy\label{eq:d2}
+\end{align}
+We assume that a relation
+\begin{equation}
+    F(x,y,z,p,q)=0\label{eq:d3}
+\end{equation}
+exists such that after solving \eqref{eq:d1} and \eqref{eq:d3} simultaneously for \(p\) and \(q\) and putting these values of \(p\), \(q\) in \eqref{eq:d2}, \eqref{eq:d2} becomes integrable.\\
+Thus, \(z\), \(p\), \(q\) may be expressed as functions of \(x\) and \(y\).
+
+Since these values identically satisfy \eqref{eq:d1} and \eqref{eq:d3} both, their differentiating coefficient with respect to \(x\) and \(y\) vanish.\\
+We know that,
+\begin{align*}
+    p&=\pdx{z}\\
+    q&=\pdy{z}\\
+    \pdx{p}&=\pdn{z}{x}{2}{2}=r\\
+    \pdy{q}&=\pdn{z}{y}{2}{2}=t\\
+    \pdy{p}&=\pdn{z}{y\;\partial\,x}{2}{}=\pdn{z}{x\;\partial\, y}{2}{}=\pdx{q}=s
+\end{align*}
+Now differentiating \eqref{eq:d1} with respect to \(x\), we get
+\begin{align}
+    &\pdx{f}+\pdz{f}\cdot\pdx{z}+\pd{f}{p}\cdot\pdx{p}+\pd{f}{q}\pdx{q}=0\notag\\
+    &f_x+f_z\,p+f_p\,r+f_q\,s=0\label{eq:d4}
+\end{align}
+Similarly differentiating \eqref{eq:d3} with respect to \(x\), we get
+\begin{equation}
+    F_x+F_z\,p+F_p\,r+F_q\,s=0\label{eq:d5}
+\end{equation}
+multiplying \eqref{eq:d4} by \(F_p\) and \eqref{eq:d5} by \(f_p\) we have
+\begin{align}
+    f_x\,F_p+f_z\,F_p\,p+f_p\,F_p\,r+f_q\,F_p\,s&=0\label{eq:d4.1}\\
+    f_p\,F_x+f_p\,F_z\,p+f_p\,F_p\,r+f_p\,F_q\,s&=0\label{eq:d5.1}
+\end{align}
+Subtracting \eqref{eq:d5.1} from \eqref{eq:d4.1}, i.e., eliminating \(r\) we get,
+\begin{equation}
+    (f_x\,F_p-f_p\,F_x)+(f_z\,F_p-f_p\,F_z)p+(f_q\,F_p-f_p\,F_q)s=0 \label{eq:db}
+\end{equation}
+Again, differentiating \eqref{eq:d1} and \eqref{eq:d3} with respect to \(y\), we get
+\begin{align}
+    f_y+f_zq+f_ps+f_qt&=0\label{eq:d6}\\
+    F_y+F_zq+F_ps+F_qt&=0\label{eq:d7}
+\end{align}
+multiplying \eqref{eq:d6} by \(F_q\) and \eqref{eq:d7} by \(f_q\) we have
+\begin{align}
+    f_y\,F_q+f_z\,F_q\,q+f_p\,F_q\,s+f_q\,F_q\,t&=0\label{eq:d6.1}\\
+    f_q\,F_y+f_q\,F_z\,q+f_q\,F_p\,s+f_q\,F_q\,t&=0\label{eq:d7.1}
+\end{align}
+Subtracting \eqref{eq:d7.1} from \eqref{eq:d6.1}, i.e., eliminating \(t\) we get,
+\begin{equation}
+    (f_y\,F_q-f_q\,F_y)+(f_z\,F_p-f_q\,F_z)q+(f_p\,F_q-f_q\,F_p)s=0 \label{eq:dc}
+\end{equation}
+Equation \eqref{eq:db} and \eqref{eq:dc} contains \(s\) and for elimination of \(s\) we add \eqref{eq:db} and \eqref{eq:dc}, we get
+\begin{align*}
+    &(f_xF_p-f_pF_x)+(f_yF_q-f_qF_y)+(f_zF_p-f_pF_z)p+(f_zF_q-f_qF_z)q=0\\
+    \Rightarrow\;&(f_x+pf_z)F_p+(f_y+qf_z)F_q+(-pf_p-qf_q)F_z+(-f_p)F_x+(-f_q)F_y=0
+\end{align*}
+This is a linear equation of order one with \(x\), \(y\), \(z\), \(p\), \(q\) as independent variables and \(F\) is dependent variable. Therefore, as in Lagrange's method, the auxiliary equations are
+\begin{equation}
+    \frac{\D p}{f_x+pf_z}=\frac{\D q}{f_y+qf_z}=\frac{\D z}{-pf_p-qf_q}=\frac{\dx}{-f_p}=\frac{\dy}{-f_q}=\frac{\D F}{0} \label{eq:d8}
+\end{equation}
+Any integral of \eqref{eq:d8} will satisfy \eqref{eq:db} and \eqref{eq:dc}. The simplest relation involving at least one of \(p\) and \(q\) may be taken as \(F=0\). Now from equation \eqref{eq:d1} and \eqref{eq:d3} that is \(F=0\) and \(f=0\) the values of \(p\) and \(q\) should be found in terms of \(x\) and \(y\) and should be substituted in \eqref{eq:d2} which on integration gives the solution.
+
+Generally, Charpit's auxiliary equations are written as
+\[
+    \frac{\D p}{\pdx{f}+p\pdz{f}}=\frac{\D q}{\pdy{f}+q\pdz{f}}=\frac{\D z}{-p\pd{f}{p}-q\pd{f}{q}}=\frac{\dx}{-\pd{f}{p}}=\frac{\dy}{-\pd{f}{q}}=\frac{\D F}{0}
+\]
+Either this form or the form given in \eqref{eq:d8} should be memorized.
+\section{Charpit's Method}
+\emph{Working rule:}
+\begin{enumerate}
+    \item Let us suppose we have non-linear partial differential equation 
+    \begin{equation}
+        f(x,y,z,p,q)=0 \label{eq:dia1}
+    \end{equation}
+    \item Find \(\displaystyle \pdx{f},\;\pdy{f},\;\pdz{f},\;\pd{f}{p},\;\pd{f}{q}\)
+    \item Write the Charpit's auxiliary equations\[\frac{\D p}{\pdx{f}+p\pdz{f}}=\frac{\D q}{\pdy{f}+q\pdz{f}}=\frac{\D z}{-p\pd{f}{p}-q\pd{f}{q}}=\frac{\dx}{-\pd{f}{p}}=\frac{\dy}{-\pd{f}{q}}=\frac{\D F}{0}\]
+    \item Find the values of \(p\) and \(q\) such that \(p\) and \(q \) are independent to each other.
+    \item Since \(\dz=p\dx+q\dy\)\\
+    putting the values of \(p\) and \(q\) and integrate which gives the required complete solution.
+\end{enumerate}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{charpit.tikz}
+\end{figure}
+
+\begin{prob}
+    Solve \(z=px+qy+pq\)
+\end{prob}
+\begin{soln}
+    \begin{equation}
+        z=px+qy+pq \label{eq:charex1.1}
+    \end{equation}
+    Given,
+    \[
+        f(x,y,z,p,q)=z-px-qy-pq
+    \]
+    \[
+        \pdx{f}=p,\quad\pdy{f}=-q,\quad\pdz{f}=1,\quad\pd{f}{p}=-x-q,\quad\pd{f}{q}=-y-p
+        \]
+        The Charpit's auxiliary equation,
+        \begin{align*}
+            &\frac{\D p}{\pdx{f}+p\pdz{f}}=\frac{\D q}{\pdy{f}+q\pdz{f}}=\frac{\D z}{-p\pd{f}{p}-q\pd{f}{q}}=\frac{\dx}{-\pd{f}{p}}=\frac{\dy}{-\pd{f}{q}}=\frac{\D F}{0}\\
+            \Rightarrow\;&\frac{\D p}{-p+p}=\frac{\D q}{-q+q}=\frac{\D z}{-p(-x-q)-q(-y-p)}=\frac{\dx}{-(x-q)}=\frac{\dy}{-(y-p)}=\frac{\D F}{0}
+        \end{align*}
+        From first two fractions or ratios, we get 
+        \[\D p=0\qquad\text{and}\qquad \D q=0\]
+        Integrating we get,
+        \[p=a\qquad\text{and}\qquad q=b\]
+        putting the values of \(p\) and \(q \) in \eqref{eq:charex1.1}
+        \[z=ax+by+ab\]
+        This is the required complete solution.
+\end{soln}
+\begin{prob}
+    Solve \(pxy+pq+qy=yz\)
+\end{prob}
+\begin{soln}
+    \begin{equation}
+        pxy+pq+qy=yz \label{eq:charex2.1}
+    \end{equation}
+    Given,
+    \[
+        f=pxy+pq+qy-yz
+    \]
+    \[
+        \pdx{f}=py,\quad\pdy{f}=pz+q-z,\quad\pdz{f}=-y,\quad\pd{f}{p}=xy+q,\quad\pd{f}{q}=p+y
+    \]
+    The Charpit's auxiliary equation,
+    \begin{align*}
+        &\frac{\D p}{\pdx{f}+p\pdz{f}}=\frac{\D q}{\pdy{f}+q\pdz{f}}=\frac{\D z}{-p\pd{f}{p}-q\pd{f}{q}}=\frac{\dx}{-\pd{f}{p}}=\frac{\dy}{-\pd{f}{q}}=\frac{\D F}{0}\\
+        \Rightarrow\;&\frac{\D p}{py+p(-y)}=\frac{\D q}{(px+q-z)+q(-y)}=\frac{\D z}{-p(xy+q)-q(p+y)}=\frac{\dx}{-(xy+q)}=\frac{\dy}{-(p+y)}=\frac{\D F}{0}\\
+        \Rightarrow\;&\D p=0
+    \end{align*}
+    Integrating we get, \(p=\) constant \(=a\)
+    putting the values of \(p\) in \eqref{eq:charex2.1}
+    \begin{align*}
+        &axy+aq+qy=yz\\
+        \Rightarrow\;&q(a+y)=yz-axy\\
+        \Rightarrow\;&q=\frac{y(z-ax)}{a+y}\\
+        \intertext{Since,}
+        &\dz=p\dx+q\dy\\
+        \Rightarrow\;&\dz=a\dx+\frac{y(z-ax)}{a+y}\dy\\
+        \Rightarrow\;&\dz-a\dx=\frac{y(z-ax)}{a+y}\dy\\
+        \Rightarrow\;&\frac{\D (z-ax)}{z-ax}=\frac{y}{a+y}\dy\\
+        \Rightarrow\;&\frac{\D (z-ax)}{z-ax}=\left(1-\frac{a}{a+y}\right)\dy
+    \end{align*}
+    Integrating we get,
+    \[\ln (x-ax)=y-a\ln(a+y)+c\]
+    This is the required complete solution.
+\end{soln}
+\end{document}

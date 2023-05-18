@@ -1,0 +1,30 @@
+\begin{tikzpicture}
+    \begin{axis}[
+            axis x line=middle,
+            axis y line= middle,
+            xmin=0, xmax=10,
+            ymin=0,ymax=10,
+            ylabel style={above left},
+            ylabel=PL,
+            xlabel style={below},
+            xlabel=Real GDP,
+            xtick={3,7},
+            xticklabels={$Y_2$,$Y_1$},
+            ytick={3,7},
+            yticklabels={$P_1$,$P_2$}]
+        \addplot[black,mark=*,only marks] coordinates{(3,7)(7,3)};
+        \addplot[black,thick] coordinates{(1.5,8.5)(9,1)};
+        \addplot[black,thick,dashed] coordinates{(0,3)(7,3)};
+        \addplot[black,thick,dashed] coordinates{(0,7)(3,7)};
+        \addplot[black,thick,dashed] coordinates{(3,0)(3,7)};
+        \addplot[black,thick,dashed] coordinates{(7,0)(7,3)};
+        \addplot[black,thick] coordinates{(1,5)(5,9)};
+        \addplot[black,thick] coordinates{(5,1)(9,5)};
+        \node at (axis cs:8,5.5) {$SRAS1$};
+        \node at (axis cs:1.5,9) {$AD$};
+        \node at (axis cs:5.5,8) {$SRAS2$};
+    \end{axis}
+    \draw[black,-latex](-.5,2.25)--(-.5,3.65);
+    \draw[black,-latex](4.25,-.5)--(2.5,-.5);
+    \draw(-.25,-.25) node {O};
+\end{tikzpicture}

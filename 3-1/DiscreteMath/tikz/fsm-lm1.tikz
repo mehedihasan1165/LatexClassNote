@@ -1,0 +1,7 @@
+\begin{tikzpicture}[every initial by arrow/.style={-latex}]
+	\node[thick,state,initial,accepting] (a)  {$S_0$};
+	\node[thick,state] (b) [right=30mm of a]  {$S_1$};
+	\path[-latex,thick] (a) edge node[above]{0} (b)
+				(a) edge[loop above] node[above]{1} (a)
+				(b) edge[loop right] node[right]{0,1} (b);
+	\end{tikzpicture}

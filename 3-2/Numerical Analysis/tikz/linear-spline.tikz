@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+\begin{axis}[
+	axis lines=middle,
+	xmin=0,xmax=1,
+	ymin=0,ymax=1,
+	ticks=none,
+	ylabel style={above},
+	ylabel={$y$},
+	xlabel style={right},
+	xlabel={$x$}]
+\addplot[black,thick,mark=*] coordinates{(.1,.2) (.3,.4) (.5,.3) (.8,.8)};
+\node at (axis cs:.125,.12) {$(x_0,y_0)$};
+\node at (axis cs:.3,.48) {$(x_1,y_1)$};
+\node at (axis cs:.5,.25) {$(x_2,y_2)$};
+\node at (axis cs:.8,.88) {$(x_3,y_3)$};
+\end{axis}
+\end{tikzpicture}

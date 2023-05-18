@@ -1,0 +1,12 @@
+\usetikzlibrary{shapes.geometric}
+\begin{tikzpicture}
+\draw (-3,0) circle [radius=2];
+\node[regular polygon,draw,minimum size=4.5cm] (p) at (1.6,-0.2) {};
+\draw (5,-2)--(8.6,-2)--(8.6,0.8)--(7.4,0.8)--(6.8,-0.2)--(6,0.8)--(5,0.8)--cycle;
+\draw (-4,.5)node[below]{$x_1$} -- (-2,.5)node[below]{$x_2$};
+\draw (0.6,0.6)node[below]{$x_1$} -- (2.8,0)node[below]{$x_2$};
+\draw (5.8,0.2)node[below]{$x_1$} -- (8,0.2)node[below]{$x_2$};
+\node at (6.8,-2.6) {(c)};
+\node at (1.6,-2.4) {(b)};
+\node at (-3,-2.4) {(a)};
+\end{tikzpicture}

@@ -1,0 +1,321 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Applications Of Laplace Transform}
+\section{Applications To Differential Equations}
+\subsection{Ordinary Differential Equations With Constant Coefficients}
+The Laplace transform is useful in solving linear ordinary differential equations with constant coefficients. For example, suppose we wish to solve the second order linear differential equation
+\begin{equation}
+    \label{eq:withconstat1}
+    \frac{\D^2 Y}{\D t^2}+ \alpha \frac{\D Y}{\D t}+\beta Y=F(t)\qquad \text{or }\qquad Y'' + \alpha Y' + \beta Y = F(t)
+\end{equation}
+where $ \alpha $ and $ \beta $ are constants, subject to the initial or boundary conditions
+\begin{equation}
+    \label{eq:withconstat2}
+    Y(0) = A,\quad Y'(0) = B
+\end{equation}
+where $ A $ and $ B $ are given constants. On taking the Laplace transform of both sides of (\ref{eq:withconstat1}) and using (\ref{eq:withconstat2}), we obtain an algebraic equation for determination of $ \lap{Y(t)} = y(s) $. The required solution is then obtained by finding the inverse Laplace transform of $ y(s) $. The method is easily extended to higher order differential equations.
+\begin{prob}
+    Solve $ Y''+Y=t $, $ Y(0)=1 $, $ Y'(0)=-2 $.
+\end{prob}
+\begin{soln}
+    Taking the Laplace transform of both sides of the differential equation and using the given conditions, we have
+    \begin{align*}
+        &\lap{Y''}+\lap{Y}=\lap{t}\\
+        \Rightarrow&s^2y-sY(0)-Y'(0)+y=\frac{1}{s^2}\\
+        \Rightarrow&s^2y-s-2+y=\frac{1}{s^2}
+    \end{align*}
+    Then
+    \begin{align*}
+        y=\lap{Y}&=\frac{1}{s^2(s^2+1)}+\frac{s-2}{s^2+1}\\
+        &=\frac{1}{s^2}-\frac{1}{s^2+1}+\frac{s}{s^2+1}-\frac{2}{s^2+1}\\
+        &=\frac{1}{s^2}+\frac{s}{s^2+1}-\frac{3}{s^2+1}
+    \end{align*}
+    and 
+    \[Y=\ilap{\frac{1}{s^2}+\frac{s}{s^2+1}-\frac{3}{s^2+1}}=t+\cos t-3\sin t\]
+    \emph{Check:} $ Y=t+\cos t-3\sin t $, $ Y'=1-\sin t-3\cos t $, $ Y''=-\cos t+3\sin t $. Then $ Y''+Y=t $, $ Y(0)=1 $, $ Y'(0)=-2 $ and the function obtained is the required solution.
+\end{soln}
+\newpage
+\begin{prob}
+    Solve $ Y''-3Y'+2Y=4e^{2t} $, $ Y(0)=-3 $, $ Y'(0)=5 $.
+\end{prob}
+\begin{soln}
+    We have,
+    \begin{align*}
+        &\lap{Y''}-3\lap{Y'}+2\lap{Y}=4\lap{e^{2t}}\\
+        \Rightarrow &\{s^2y-sY(0)-Y'(0)\}-3\{sy-Y(0)\}+2y=\frac{4}{s-2}\\
+        \Rightarrow &\{s^2y+3s-5\}-3\{sy+3\}+2y=\frac{4}{s-2}\\
+        \Rightarrow &(s^-3s+2)y+3s-14=\frac{4}{s-2}\\
+        \Rightarrow &y=\frac{4}{(s^2-3s+2)(s-2)}+\frac{14-3s}{s^2-3s+12}\\
+        \Rightarrow &y=\frac{-3s^2+20s-24}{(s-1)(s-2)^2}\\
+        \Rightarrow &y=\frac{-7}{s-1}\frac{4}{s-2}+\frac{4}{(s-2)^2}
+    \end{align*}
+    Thus,
+    \[
+        Y=\lap{\frac{-7}{s-1}\frac{4}{s-2}+\frac{4}{(s-2)^2}}=-7e^t+4e^{2t}+4te^{2t}
+    \]
+    which can be verified as the solution.
+\end{soln}
+\subsection{Ordinary Differential Equations With Variable Coefficients}
+The Laplace transform can also be used in solving some ordinary differential equations in which the coefficients are variable. A particular differential equation where the method proves useful is one in which the terms have the form 
+\[
+    t^m Y^{(n)}(t)
+\]
+the Laplace transform of which is
+\[
+    (-1)^m\frac{\D^m}{\D s^m}\lap{Y^{(n)}(t)}
+\]
+%9
+\begin{prob}
+    Solve $ tY''+Y'+4tY=0 $, $ Y(0)=3 $, $ Y'(0)=0 $.
+\end{prob}
+\begin{soln}
+    We have,
+    \[\lap{tY''}+\lap{Y'}+\lap{4tY}=0\]
+    or,
+    \[-\frac{\D}{\D s}\left\{ s^2y-sY(0)-Y'(0) \right\}+\{sy-Y(0)\}-4\frac{\D y}{\D s}=0\]
+    i.e.,
+    \[(s^2+4)\frac{\D y}{\D s}+sy=0\]
+    Then 
+    \[\frac{\D y}{y}+\frac{s\D s}{s^2+4}=0\]
+    and integrating 
+    \[\ln y+\frac{1}{2}\ln(s^2+4)=c_1\quad \text{or, }\quad y=\frac{c}{\sqrt{s^2+4}}    \]
+    Inverting, we find 
+    \[Y=cJ_0(2t)\]
+    To determine $ c $ we note that $ Y(0)=cJ_0(0)=c=3 $. Thus,
+    \[Y=3J_0(2t)\]
+\end{soln}
+%10
+\newpage
+\begin{prob}
+    Solve $ tY''+2Y'+tY=0 $, $ Y(0+)=1 $, $ Y'(\pi)=0 $.
+\end{prob}
+\begin{soln}
+    Let $ Y(0+)=c $. Then  taking the Laplace transform of each term
+    \[-\frac{\D}{\D s}\{s^2y-sY(0+)-Y'(0+)\}+2\{sy-Y(0+)\}-\frac{\D}{\D s}y=0\]
+    or 
+    \[-s^2y'-2sy+1+2sy-2-y'=0\]
+    i.e.,
+    \[-(s^2+1)y'-1=0\quad\text{or}\quad y'=\frac{-1}{s^2+1}\]
+    Integrating
+    \[y=-\tan^{-1} s+A\]
+    Since $ y\to 0 $ as $ s\to \infty $, we must have $ A=\pi/2 $. Thus,
+    \[y=\frac{\pi}{2}-\tan^{-1}s=\tan^{-1}\frac{1}{s}\]
+    Then,
+    \[Y=\ilap{\tan^{-1}\frac{1}{s}}=\frac{\sin t }{t}\]
+\end{soln}
+\subsection{Partial Differential Equations}
+%22
+\begin{prob}
+    \label{prob:1}
+    Given the function $ U(x,t) $ defined for $ a\leq x\leq b $, $ t>0 $. Find
+    \begin{enumerate}[label=(\alph*)]
+        \item $ \displaystyle\lap{\frac{\partial U}{\partial t}}=\int_0^\infty e^{-st}\frac{\partial U}{\partial t}\D t $
+        \item $ \displaystyle\lap{\frac{\partial U}{\partial x}}=\int_0^\infty e^{-st}\frac{\partial U}{\partial x}\D t $
+    \end{enumerate}
+    assuming suitable restrictions on $ U=U(x,t) $.
+\end{prob}
+\begin{soln}
+    \hfill 
+    \begin{enumerate}[label=(\alph*)]
+        \item Integrating by parts, we have
+        \begin{align*}
+            \lap{\frac{\partial U}{\partial t}}&=\int_0^\infty e^{-st}\frac{\partial U}{\partial t}\D t\\
+            &=\lim_{P\to \infty}\int_0^P e^{-st}\frac{\partial U}{\partial t}\D t\\
+            &=\lim_{P\to \infty}\left\{ e^{-st} U(x,t)\Big\rvert_0^P+ s\int_0^P e^{-st}U(x,t)\D t\right\}\\
+            &= s\int_0^\infty e^{-st}U(x,t)\D t-U(x,0)\\
+            &= su(x,s)-U(x,0)\\
+            &= su-U(x,0)
+        \end{align*}
+        where $ u=u(x,s)=\lap{U(x,t)} $.
+
+        We have assumed that $ U(x,t) $ satisfies the restrictions of sectionally continuous in finite interval, when regraded as a function of $ t $.
+        \item We have, using Leibniz's rule for differentiating under the integral sign,
+        \[\lap{\frac{\partial U}{\partial x}}=\int_0^\infty e^{-st}\frac{\partial U}{\partial x}\D t =\ddx{}\int_0^\infty e^{-st}U \D t=\ddx{u}\]
+    \end{enumerate}
+\end{soln}
+%23
+\newpage
+\begin{prob}
+    \label{prob:2}
+    Referring to problem \ref{prob:1}, show that
+    \begin{enumerate}[label=(\alph*)]
+        \item $ \displaystyle \lap{\frac{\partial^2 U}{\partial t^2}}=s^2u(x,s)-sU(x,0)-U_t(x,0) $
+        \item $ \displaystyle \lap{\frac{\partial^2 U}{\partial x^2}}=\ddxn{u}{2} $
+    \end{enumerate}
+    where $\displaystyle U_t(x,0)=\left. \frac{\partial U}{\partial t}\right\vert_{t=0} $ and $ u=u(x,s)=\lap{U(x,t)} $.
+\end{prob}
+\begin{soln}
+    Let $ V=\partial U/\partial t $. Then as in part (a) of Problem \ref{prob:1}, we have
+    \begin{align*}
+        \lap{\frac{\partial^2 U}{\partial t^2}}=\lap{\frac{\partial V}{\partial t}}&=s\lap{V}-V(x,0)\\
+        &=s\left[s\lap{U}-U(x,0)\right]-U_t(x,0)\\
+        &=s^2 u-sU(x,0)-U_t(x,0)
+    \end{align*}
+\end{soln}
+%24
+\begin{prob}
+    Find the solution of 
+    \[
+        \pardx{U}=2\frac{\partial U}{\partial t}+U,\qquad U(x,0)=6e^{-3x}
+    \]
+    which is bounded for $ x>0 $, $ t>0 $.
+\end{prob}
+\begin{soln}
+    Taking the Laplace transform of the given partial differential equation with respect to $ t $ and using Problem \ref{prob:1}, we find
+    \begin{align}
+        \ddx{u}&=2\{su-U(x,0)\}+u\notag\\
+        \intertext{or, }
+        \ddx{u}&-(2s+1)u=-12e^{-3x}\label{eq:24.1}
+    \end{align}
+    from the given boundary conditions. Note that the Laplace transformation has transformed the partial differential equation into an ordinary differential equation \eqref{eq:24.1}.
+
+    To solve \eqref{eq:24.1} multiply both sides by the integrating factor $ \displaystyle e^{\int -(2s+1)\dx }=e^{-(2s+1)x } $. Then \eqref{eq:24.1} can be written 
+    \[
+        \ddx{}\left\{ u e^{-(2s+1)x} \right\}=-12 e^{-(2x+4)x}
+    \]
+    Integration yields
+    \[
+        ue^{-(2s+1)x}=\frac{6}{s+2}e^{-(2s+4)x}+c\qquad\text{or,}\qquad u=\frac{6}{s+2}e^{-3x}+ce^{(2s+1)x}
+    \]
+    Now since $ U(x,t) $ must be bounded as $ x\to \infty $, we must have $ u(x,s) $ also bounded as $ x\to\infty $ and it follows that we must choose $ c=0 $. Then 
+    \[
+        u=\frac{6}{s+2}e^{-3x}
+    \]
+    and so, on taking the inverse, we find
+    \[
+        U(x,t)=6e^{-2t-3x}
+    \]
+    This is easily checked as the required solution.
+\end{soln}
+%25
+\newpage
+\begin{prob}
+    Solve $ \displaystyle \frac{\partial U}{\partial t}=\parxn{U}{2} $, $ U(x,0)=3\sin 2\pi x $, $ U(0,t)=0 $, $ U(1,t)=0 $ where $ 0<x<1 $, $ t>0 $.
+\end{prob}
+\begin{soln}
+    Taking the Laplace transform of the partial differential equation using Problem \ref{prob:1} and \ref{prob:2}, we find
+    \begin{equation}
+        \label{eq:25.1}
+        su-U(x,0)=\ddxn{u}{2}\qquad\text{or}\qquad \ddxn{u}{2}-su=-3\sin 2\pi x
+    \end{equation}
+    where $ u=u(x,s)=\lap{U(x,t)} $. The general solution of \eqref{eq:25.1} in
+    \begin{equation}
+        \label{eq:25.2}
+        u=c_1e^{\sqrt{s}x}+c_2e^{-\sqrt{s}x}+\frac{3}{s+4\pi^2}\sin 2\pi x
+    \end{equation}
+    Taking the Laplace transform of those boundary conditions which involve $ t $, we have
+    \begin{equation}
+        \label{eq:25.3}
+        \lap{U(0,t)}=u(0,s)=0\qquad\text{and}\qquad \lap{U(1,t)}=u(1,s)=0
+    \end{equation}
+    Using the first condition $ [u(0,s)=0] $ of \eqref{eq:25.3} in \eqref{eq:25.2}, we have
+    \begin{equation}
+        \label{eq:25.4}
+        c_1+c_2=0
+    \end{equation}
+    Using the second condition $ [u(1,s)=0] $ of \eqref{eq:25.3} in \eqref{eq:25.2}, we have
+    \begin{equation}
+        \label{eq:25.5}
+        c_1e^{\sqrt{s}}+c_2e^{-\sqrt{s}}=0
+    \end{equation}
+    From \eqref{eq:25.4} and \eqref{eq:25.5} we find $ c_1=0 $, $ c_2=0 $ and so \eqref{eq:25.2} becomes
+    \begin{equation}
+        \label{eq:25.6}
+        u=\frac{3}{s+4\pi^2} \sin2\pi x
+    \end{equation}
+    from which we obtain on inversion
+    \begin{equation}
+        \label{eq:25.7}
+        U(x,t)=3e^{-4\pi^2 t}\sin 2\pi x
+    \end{equation}
+
+    This problem has an interesting physical interpretation. If we consider a solid bounded by the infinite plane faces $ x=0 $ and $ x=1 $, the equation
+    \[
+        \frac{\partial U}{\partial t}=k\parxn{U}{2}
+    \]
+    is the \emph{equation for heat conduction} in this solid where $ U=U(x,t) $ is the \emph{temperature} at any plane face $ x $ at any time $ t $ and $ k $ is a constant called the \emph{diffusivity}, which depends on the material of the solid. The boundary conditions $U(0, t) = 0$ and $U (1, t) = 0$ indicate that the temperatures at $x = 0$ and $x = 1$ are kept at temperature zero, while $U(x, 0) = 3 \sin 2\pi x$ represents the initial temperature everywhere in $0 < x < 1$. The result \eqref{eq:25.7} then is the temperature everywhere in the solid at time $t > 0$.
+\end{soln}
+\section{Applications To Integral Equations}
+\subsection{Integral Equations}
+An \emph{integral equation} is an equation having the form
+\[
+    Y(t)=F(t)+\int_a^b K(u,t)Y(u)\D u
+\]
+where $ F(t) $ and  $ K(u, t) $ are known, $ a $ and $ b $ are either given constants or functions of $ t $, and the function $ Y(t) $ which appears under the integral sign is to be determined.
+
+The function $ K(u, t) $ is often called the \emph{kernel} of the integral equation. If $ a $ and $ b $ are constants, the equation is often called a \emph{Fredholm integral equation}. If $ a $ is a constant while $ b = t $, it is called a \emph{Volterra integral equation}.
+
+It is possible to convert a linear differential equation into an integral equation.
+%1
+\begin{prob}
+    Convert the differential equation
+    \[
+        Y''(t)+3Y'(t)+2Y(t)=4\sin t,\quad Y(0)=1,\quad Y'(0)=-2
+    \]
+    into an integral equation.
+\end{prob}
+\begin{soln}
+    % \hfill
+    % \textbf{Method 1.}
+    % 
+    % 
+    % Let 
+    Integrating both sides of the given differential equation, we have
+    \begin{align*}
+        & \int_0^t \left\{ Y''(u)-3Y'(u)+2Y(u) \right\}\D u=\int_0^t 4 \sin u \D u\\
+        \Rightarrow& Y'(t)-Y'(0)-3Y(t)+3Y(0)+2\int_0^t Y(u)\D u=4-4\cos t\\
+        \intertext{This becomes, using $ Y'(0)=-2 $ and $ Y(0)=1 $}
+        \Rightarrow& Y'(t)-3Y(t)+2\int_0^t Y(u)\D u=-1-4\cos t\\
+        \intertext{Integrating again from 0 to $ t $ as before, we find}
+        \Rightarrow& Y(t)-Y(0)-3\int_0^t Y(u)\D u+2\int_0^t (t-u)Y(u)\D u=-t-4\sin t\\
+        \Rightarrow& Y(t)+\int_0^t \left\{ 2(t-u)-3 \right\}Y(u)\D u=1-t-4\sin t
+    \end{align*}
+\end{soln}
+\subsection{Integral Equations Of Convolution Type}
+A special integral equation of importance in applications is
+\[
+    Y(t)=F(t) +\int_0^t K(t - u) Y(u) \D u
+\]
+This equation is of \emph{convolution type} and can be written as 
+\[
+    Y(t)=F(t) + K(t) * Y(t)
+\]
+Taking the Laplace transform of both sides, assuming $ \lap{F(t)} = f(s) $ and $ \lap{K(t)}=k(s) $ both exist, we find
+\[
+    y(s) = f (s) + k(s) y(s)\qquad \text{or}\qquad y(s) =\frac{f(s)}{1-k(s)}
+\]
+The required solution may then be found by inversion.
+%5
+\begin{prob}
+    Solve the integral equation $ \displaystyle Y(t)=t^2+\int_0^t Y(u)\sin(t-u)\D u $.
+\end{prob}
+\begin{soln}
+    The integral equation can be written
+    \[
+        Y(t)=t^2+Y(t)*\sin t
+    \]
+    Then taking the Laplace transform and using the convolution theorem, we find, if $ y=\lap{Y} $
+    \begin{align*}
+        &y=\frac{2}{s^3}+\frac{y}{s^2+1}\\
+        \intertext{solving,}
+        \Rightarrow&y=\frac{2(s^2+1)}{s^5}\\
+        \Rightarrow&y=\frac{2}{s^3}+\frac{2}{s^5}\\
+        \intertext{and so}
+        \Rightarrow&Y=2\left(\frac{t^2}{2!}\right)+2\left(\frac{t^4}{4!}\right)=t^2+\frac{1}{12}t^4
+    \end{align*}
+    This can be checked by direct substitution in the integral equation.
+\end{soln}
+\subsection{Applications of Integral Equation}
+A large class of initial and boundary value problems can be converted to Volterra or Fredholm integral equations.\\
+Mathematical physics models, such as
+\begin{itemize}
+    \item Diffraction problems
+    \item Scattering in quantum mechanics
+    \item Conformal mapping
+    \item Water waves
+\end{itemize}
+Also contributed to the creation of integral equations.
+\end{document}

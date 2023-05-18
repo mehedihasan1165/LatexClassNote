@@ -1,0 +1,71 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Convexity}
+The \textbf{\emph{line segment}} joining the points \(x_1,x_2\in \R^n\) is the set of points given by
+\[
+    \set{ x : x = \lambda x_1 + (1- \lambda ) x_2 , 0\leq \lambda \leq 1}
+\]
+The points \(x_1\) and \(x_2\) are called the \emph{end points} of this segments and, for each \(\lambda,\;0<\lambda<1\), the point \(\lambda x_1+(1-\lambda)x_2\) is called an in-between point (or, internal point) of the line segment.\\
+
+
+A vector \(x \in \R^n\) is called a \textbf{\emph{linear combination}} of vectors \(x^1,x^2,\dots,x^m\) in \(\R^n\) if there exists real numbers \(\lambda_i(i=1,2,\dots,m)\) such that \(x=\sum_{i=1}^m \lambda_i x^i\).\\
+
+
+A vector \(x\in\R^n\) is called a \textbf{\emph{convex combination}} of vectors \(x^1,x^2\dots,x^m\; (m\leq n)\) if there exists real numbers \(\lambda_i\) satisfy 
+\[
+    \lambda_i\geq0\;(i=1,2,\dots,m),\;\sum_{i=0}^m\lambda_i =1 \quad\text{ and }\quad x=\sum_{i=1}^m\lambda_i x^i
+\]
+\section{Convex set}
+A set \(S\) in the \(n\)-dimensional space is said to be \emph{convex} if the \emph{line segment} joining any two distinct points in the set lies entirely in \(S\).\\
+
+
+Mathematically, this means that if \(x^1\) and \(x^2\) are two distinct points in \(S\), then every points 
+\[x= \lambda x^1 + (l - \lambda )x^2, 0\leq \lambda\leq1 \]
+must also be in \(S\).\\
+i.e. A set \(S\subset \R^n\) is called convex set if \(x^1,x^2\in S\Rightarrow \lambda x^1+(1-\lambda)x^2 \in S\), for all \(0\leq \lambda 1\).
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{mp-convex.tikz}
+\end{figure}
+The diagrams above illustrate the definition where sets (a) and (b) are convex, and set (c) is non-convex.
+\begin{itemize}
+    \item A set \(S\subseteq \R^n\) is called \emph{line variety} if \[x^1,x^2\in S\Rightarrow\lambda x^1+(1-\lambda)x^2\in S, \quad\text{for all }\lambda \in \R\]
+    \item The \emph{extreme points} of a convex set are those points in the set that cannot be expressed as a convex combination of any two distinct points in the same set.
+\end{itemize}
+In the figure, the convex set (a) has an infinite number of extreme points (namely, the tangent points of the circle) and the set (b), which is typical LP solution space, has only a finite number (=6).
+\section{Extreme Points (or vertex):}
+Let \(S\subseteq \R^n\) be a convex set. A point \(x\in S\) is called an extreme point or vertex of \(S\) if there exists no distinct points \(x_1\) and \(x_2\) in \(S\) such that, \[x=\lambda x^1+(1-\lambda)x^2 \quad\text{for}0<\lambda <1\]
+\begin{rem}
+    Note that strict inequalities are imposed on \(\lambda\). By definition stipulates that an extreme point cannot be ``between'' any other two points of the set. Clearly, an extreme point is a boundary point of a convex set are necessarily extreme points. Some boundary points may be between two other boundary points.
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{mp-convex-2.tikz}
+    \end{figure}
+    The polygons in the above are convex sets and, the extreme points are the vertices. Point \(x_1\) is not an extreme point because it can be represented as a convex combination of \(x_2\) and \(x_3\) with \(0<\lambda<1\).
+\end{rem}
+\begin{prob}
+    Show that \(S=\set{(x_1,x_2):2x_1+3x_2=7}\subset\R^2\) is a convex set.
+\end{prob}
+\begin{soln}
+    Let \(U,V\in S\), where \(U=(u_1,u_2)\), \(V=(v_1,v_2)\).
+    \[\therefore 2u_1+3u_2=7\qquad \text{and}\qquad 2v_1+3v_1=7\]
+    The line segment joining \(U\) and \(V\) is the set
+    \[\set{Z:Z=\lambda U+(1-\lambda)V,\;0\leq \lambda \leq1}\]
+    For some \(\lambda\), \(0\leq \lambda \leq 1\), let \(Z=(z_1,z_2)\) be a point of this set, so that
+    \[z_1=\lambda u_1+(1-\lambda)v_1,\quad z_2=\lambda u_2+(1-\lambda)v_2\]
+    Now,
+    \begin{align*}
+        2z_1+3z_2&= 2\left[\lambda u_1 + (1-\lambda)v_1\right]+3\left[\lambda u_2 + (1-\lambda)v_2\right]\\
+        &= \lambda(2u_1+3u_2)+(1-\lambda)(2v_1+3v_2)\\
+        &= 7\lambda+7(1-\lambda)\\
+        &= 7\\
+        \therefore Z&= \left(z_1,z_2\right) \text{ is a point of } S
+    \end{align*}
+    Since \(Z\) is any point of the line segment joining \(U\) and \(V\),
+    \[\therefore U,V\in S \Rightarrow \lambda u+(1-\lambda)V\in S \;\; \forall\; 0\leq \lambda \leq 1\]
+    Hence, \(S\) is a convex set.
+\end{soln}
+\end{document}

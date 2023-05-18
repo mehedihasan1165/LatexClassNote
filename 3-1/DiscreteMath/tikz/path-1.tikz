@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+    \node[circle,draw] (a) {$ p_1 $};
+    \node[circle,draw] (b)[right =of a] {$ p_2 $};
+    \node[circle,draw] (c)[right =of b] {$ p_3 $};
+    \node[circle,draw] (d)[below =of a] {$ p_4 $};
+    \node[circle,draw] (e)[right =of d] {$ p_5 $};
+    \node[circle,draw] (f)[right =of e] {$ p_6 $};
+    \path[-](a) edge node{}(b)
+                edge node{}(d)
+                edge node{} (e)
+            (e) edge node{}(f)
+                edge node{}(b)
+                edge node{} (c)
+            (b) edge node{}(c)
+            (c) edge node {}(f)
+            (d) edge node {} (e);
+\end{tikzpicture}

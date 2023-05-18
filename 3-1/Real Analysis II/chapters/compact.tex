@@ -1,0 +1,193 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Compact and Connected Sets}
+\begin{defn}
+    Let $ M $ be a metric space. A subset $ A\subset M $ is called \emph{sequentially compact} if every sequence in $ A $ has a subsequence that converges to a point in $ A $.
+\end{defn}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{compactExample.tikz}
+\end{figure}
+\begin{defn}[Some useful definitions]
+    Let $ M $ be a metric space and $ A\subset M $ a subset. A \emph{cover of } $ A $ is collection $ \set{U_i} $ of sets whose union contains $ A $; it is an \emph{open cover} if each $ U_i $ is open. A sub-cover of a given cover is a sub-collection of $ \set{U_i} $ whose union also contains $ A $; it is a \emph{finite sub-cover} if the sub-collection contains only a finite number of sets.
+\end{defn}
+
+Open covers are not necessarily countable collections of open sets. For example, the uncountable set of disks $ \set{D_{\varepsilon}((x,0))}=\set{D_1((x,0))\mid x\in\R^1} $ in $ \R^2 $ covers the real axis, and the sub-collection of all disks $ D_1((n,0)) $ centered at integer points on the real line forms a countable sub-cover. Note that the set of disks $ D_1((2n,0)) $ centered at even integer points on the real line does not form a sub-covering (why?).
+\begin{defn}[Compact set]
+    A subset $ A $ of a metric space $ M $ is called \emph{compact} if every open cover of $ A $ has a finite sub-cover.
+\end{defn}
+\section{Bolzano-Weierstrass  Theorem}
+\begin{thm}[Bolzano-Weierstrass  Theorem]
+    A subset of a metric space is compact if and only if it is sequentially compact.
+\end{thm}
+We will provide the proof of the theorem later on. Some simple observations will help give a feel for compactness and for the theorem.\par
+
+\emph{First, a sequentially compact set must be closed}:\\
+Indeed, if $ x_n\in A $ converges to $ x\in M $, then by assumption there is a subsequence converging to a point $ x_0\in A $; by uniqueness of limits $ x=x_0 $, and so $ A $ is closed.\par
+
+\emph{Secondly, a sequentially compact set $ A $ must be bounded}:\\
+For if not, there is a point $ x_0\in A $ and a sequence $ x_n\in A $ with $ d(x_n,x_0)\geq n $. Then $ x_n  $ cannot have any convergent subsequence. To show directly that a compact set is bounded, use the fact that for any $ x_0\in A $, the open balls $ D_n(x_0), n=1,2,\dots $ cover $ A $, so there is a finite sub-cover.
+\begin{defn}[Totally Bounded]
+    A set $ A  $ in a metric space $ M $ is called totally bounded if for each $ \varepsilon>0 $ there is a finite set $ \set{x_1,x_2,\dots,x_N} $ in $ M $ such that $ A\subset \bigcup_{i=1}^N D(x_i,\varepsilon) $.
+\end{defn}
+
+\emph{Note that, a totally bounded set is bounded}:\\
+If $ A $ is totally bounded, then for each $ \varepsilon>0 $, there is a finite set $ \set{x_1,x_2,\dots,x_N} $ in a metric space $ M $ such that $ A\subset \bigcup_{i=1}^N D(x_i,\varepsilon) $. Observe that $ D(x_i,\varepsilon)\subset D(x_1,\varepsilon+d(x_i,x_1)) $, so that if $ R=\varepsilon+\max\{d(x_2,x_1),\dots,d(x_N,x_1)\} $, then $ A\subset D(x_1,R) $ and so a totally bounded set is bounded.
+\begin{ex}
+    The entire real line is \emph{not} compact, for it is unbounded. Another reason is that\\ $ \set{D(n,1)=(n-1,n+1)\mid n=0,\pm 1,\pm 2,\pm 3,\dots} $ is on open cover of $ \R $ but does not have a finite sub-cover (why?).
+\end{ex}
+\begin{prob}
+    Let $ A=(0,1] $. Find an open cover with no finite sub-cover.
+\end{prob}
+\begin{soln}
+    Consider the open cover $ \set{(\frac{1}{n},2)\mid n=1,2,3,\dots} $. Then we have $ A=(0,1]\subset (1,2)\cup (\frac{1}{2},2)\cup (\frac{1}{3},2)\cup \dots=(0,2) $. Clearly, this open cover cannot have a finite sub-cover. This time compactness fails because $ A $ is not closed; the point $ 0 $ is ``missing'' from $ A $.
+\end{soln}
+\underline{Proof of Bolzano-Weierstrass  Theorem}\\
+We begin with two lemmas:
+\begin{lem}
+    \label{lem:1}
+    A compact set $ A\subset M $ is closed.
+\end{lem}
+\begin{proof}
+    We will show that $ M\setminus A $ is open. Let $ x\in M\setminus A $ and consider the following collection of open sets: $ U_n=\set{y\mid d(y,x)>\sfrac{1}{n}} $. Since every $ y\in M $ with $ y\neq x $ has $ d(y,x)>0 $, $ y $ lies in some $ U_n $. Thus, the $ U_n $ cover $ A $, and since $ A$ is compact, so there must be a finite sub-cover. One of these has the largest index, say, $ U_N $. If $ \varepsilon=\frac{1}{N} $, then, by conclusion(?/ contradiction), $ D(x,\frac{1}{N})\subset M\setminus A  $, and so $ M\setminus A $ is open.  
+\end{proof}
+\begin{lem}
+    \label{lem:2}
+    If $ M $ is a compact metric space and $ B\subset M $ is closed, then $ B $ is compact.
+\end{lem}
+\begin{proof}
+    Let $ \set{U_i} $ be an open covering of $ B $ and let $ V=M\setminus B $, so that $ V $ is open. Thus, $ \set{U_i,V} $ is an open cover of $ M $. Therefore, $ M $ has a finite cover, say $ \set{U_1,U_2,\dots,U_N,V} $. Then $ \set{U_1,U_2,\dots,U_N} $ is a finite open cover of $ B $. Hence, $ B $ is compact.
+\end{proof}
+\begin{proof}[Bolzano-Weierstrass  Theorem Proof]
+    Let $ A $ be compact. Assume that there exists a sequence $ x_k\in A $ that has no convergent subsequences. In particular, this means that $ x_k $ has infinitely many distinct points, say $ y_1,y_2,\dots $. Since there are no convergent subsequences, there is some neighborhood $ U_k $ of $ y_k $ containing no other $ y_i $. This is because if every neighborhood of $ y_k $ contained another $ y_i $ we could, by choosing the neighborhoods $ D(y_k,\sfrac{1}{m}),m=1,2,3,\dots, $ select a subsequence converging to $ y_k $. We claim that the set $ \set{y_1,y_2,y_3,\dots} $ is closed. Indeed, it has no accumulation points, by the assumption that there are no convergent subsequences. Applying lemma (\ref{lem:2}) to $ \set{y_1,y_2,y_3,\dots} $ as a subset of $ A $, we find that $ \set{y_1,y_2,y_3,\dots} $ is compact. But $ \set{U_k} $ is an open cover that has no finite sub-cover, a contradiction. Thus, $ x_k $ has a convergent subsequence. The limit lies in $ A $, since $ A $ is closed, by lemma (\ref{lem:1}).\par
+
+    Conversely, suppose that $ A $ is sequentially compact. To prove that $ A $ is compact, let $ \set{U_i} $ be an open cover of $ A $. We need to prove that this has a finite sub-cover. To show this we proceed in several steps.
+\end{proof}
+\begin{lem}
+    \label{lem:3}
+    There is an $ r>0 $ such that for each $ y\in A $, $ D(y,r)\subset U_i $ for some $ U_i $.
+\end{lem}
+\begin{proof}
+    If not, then for every integer $ n $, there is some $ y_n $ such that $ D(y_n,\sfrac{1}{n}) $ is not contained in any $ U_i $. By hypothesis, $ y_n $ has a convergent subsequence, say $ z_n\to z\in A $. Since the $ U_i $ cover $ A $, $ z\in U{i_0} $. Choosing $ \varepsilon>0 $ such that $ D(z,\varepsilon)\subset U_{i_0} $\footnote{$ D_\varepsilon(z)=\set{z^*\colon d(z,z^*)<\varepsilon} $}, which is possible since $ U_{i_0} $ is open. Choose $ N $ large enough so that \footnote{$ D_{\sfrac{\varepsilon}{2}(z)\subset D_\varepsilon(z)} $ when $ \sfrac{1}{N}<\sfrac{\varepsilon}{2} $\\$ \Rightarrow D_{\sfrac{1}{N}}(z_n)\subset D_{\sfrac{\varepsilon}{2}}(z_n) \subset D_{\varepsilon}(z_n)\subset U$}$ d(z_N,z)<\sfrac{\varepsilon}{2} $ and $ \sfrac{1}{N}<\sfrac{\varepsilon}{2} $. Then $ D(z_n,\sfrac{1}{N})\subset U_{i_0} $, a contradiction.
+\end{proof}
+\begin{lem}
+    \label{lem:4}
+    $ A $ is totally bounded.
+\end{lem}
+\begin{proof}
+    If $ A $ is not totally bounded, then some $ \varepsilon>0 $, we cannot cover $ A $ with finitely many disks. Choose $ y_1\in A $ and $ y_2\in A\setminus D(y_1,\varepsilon) $. By assumption, we can repeat; choose $ y_n\in A\setminus [D(y_1,\varepsilon)\cup \dots \cup D(y_{n-1},\varepsilon)] $. This is a sequence with $ d(y_n,y_m) \geq \varepsilon $ for all $ n$ and $ m $, and so $ y_n $ has no convergent subsequence, a contradiction to the assumption that $ A $ is sequentially compact.
+\end{proof}
+\begin{proof}[Bolzano-Weierstrass Theorem Proof (continued)]
+    To complete our proof, let $ r $ be as in lemma (\ref{lem:3}). By lemma (\ref{lem:4}) we can write $ A\subset D(y_1,r)\cup D(y_2,r)\cup \dots \cup D(y_n,r) $ for finitely many $ y_i $. By lemma (\ref{lem:3}), $ D(y_i,r)\subset U_{i_j},j=1,2,\dots,n $ for some index $ j $. Then $ U_{i_1},U_{i_2},\dots,U_{i_n} $ cover $ A $.
+\end{proof}
+\section{Heine-Borel Theorem}
+\begin{thm}[Heine-Borel Theorem]
+    A set $ A\subset \R^n $ is compact if and only if it is closed and bounded. (In fact, a compact set is closed and bounded in any metric space.)
+\end{thm}
+\begin{proof}
+    We have already proved that compact sets are closed and bounded. We must now show that a set $ S\subset \R^n $ is compact if it is closed and bounded. In fact, we shall prove that a closed and bounded set $ A $ is sequentially compact.
+
+    Let $ x_k=\left( x_k^1,x_k^2,\dots,x_k^n \right)\in \R^n $ be a sequence. Since $ A $ is bounded $ x_k^1 $ has a convergent subsequence, say, $ x_{f_1(k)}^1 $. Then $ x_k^2 $ has a convergent subsequence, say, $ x_{f_2(k)}^2 $. Continuing, we get a further subsequence $ x_{f_n(k)}=\left( x_{f_1(k)}^1,\dots,x_{f_n(k)}^n \right)$, all of whose components converge. This, $ x_{f_n(k)} $ converges in $ \R^n $. The limit lies in $ A $ since $ A $ is closed. Thus, $ A $ is sequentially compact, and so is compact.
+\end{proof}
+\begin{thm}[Nested Set Property]
+    Let $ F_k $ be a sequence of compact non-empty sets in a metric space $ M $ such that $ F_{k+1}\subset F_k $ for all $ k=1,2,3,\dots $. Then there is at least one point in $ \bigcap_{k=1}^\infty F_k $.
+\end{thm}
+\section{Path Connected Sets}
+\begin{defn}
+    We call a map $ \varphi:[a,b]\to M $ of an interval $ [a,b] $ into a metric space $ M $ \emph{continuous} if $ (t_k\to t) $ implies $ \left( \varphi(t_k)\to \varphi(t)\right) $ for every sequence $ t_k $ in $ [a,b] $ converging to some $ t\in [a,b] $. A \emph{continuous path} joining two points $ x,y $ in a metric space $ M $ is a mapping $ \varphi:[a,b]\to M $ such that $ \varphi(a)=x, \;\varphi(b)=y $, and $ \varphi $ is continuous: the $ x $ may or may not be equal $ y $, and $ b\geq a $. A path $ \varphi$ is said to lie in a set $ A $ if $ \varphi(t)\in A $ for all $ t\in [a,b] $.
+
+    We say a set is \emph{path-connected} if every two points in the set can be joined by a continuous path lying in the set.
+\end{defn}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \import{../tikz/}{pathNotConnected.tikz}
+        \caption{$ A $ is not path-connected}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \import{../tikz/}{pathConnected.tikz}
+        \caption{$ B $ is path-connected}
+    \end{minipage}
+\end{figure}
+\begin{ex}
+    $ [0,1]\subset \R^1 $ is \emph{path-connected}: To prove this, let $ x,y\in [0,1] $ and define $ \varphi:[0,1]\to \R $ by $ \varphi(t)=(y-x)t+x $. This is a continuous path connecting $ x $ and $ y $, and it lies in $ [0,1] $.
+\end{ex}
+\begin{ex}[H.W.]
+    Which of the sets are path-connected?
+    \begin{enumerate}[label=(\roman*)]
+        \item $ [0,3] $
+        \item $ [1,2]\cup [3,4] $
+        \item $ \set{(x,y)\in\R^2\mid 0<x\leq 1} $
+        \item $ \set{(x,y)\in\R^2\mid 0<x^2+y^2\leq 1} $
+    \end{enumerate}
+\end{ex}
+\begin{ex}
+    Let $ \varphi:B=[0,1]\to \R^2 $ be a continuous path, and $ C=\varphi([0,1]) $. Show that $ C $ is path-connected.
+\end{ex}
+\begin{soln}
+    This is intuitively clear, for we can i=use the path $ \varphi $ itself to join two points in $ C $. Precisely, if $ x=\varphi(a) $, $ y=\varphi(b) $, where $  0\leq a\leq b\leq1  $, let $ c:B\to \R^2 $ be defined by $ c(t)=\varphi(t) $. Then $ c $ is path joining $ x $ to $ y $ and $ c $ lies in $ C $.
+\end{soln}
+\section{Connected Sets}
+\begin{defn}
+    Let $ A $ be a subset of a metric space $ M $. Then $ A $ is said to be disconnected if there exists two open sets $ U $ and $ V $ such that
+    \begin{enumerate}[label=(\roman*)]
+        \item $ U\cap V\cap A=\varnothing $
+        \item $ U\cap A\neq \varnothing $
+        \item $ V\cap A\neq \varnothing $
+        \item $ A\subset U\cup V $
+    \end{enumerate}
+\end{defn}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{connected.tikz}
+    \caption{$ A $ is neither connected nor path-connected}
+\end{figure}
+\begin{thm}
+    \label{thm:1}
+    Path-connected sets are connected.
+\end{thm}
+\begin{prob}
+    Is $ \Z=\set{\dots,-2,-1,0,1,2,3,\dots}\subset \R  $ connected?
+\end{prob}
+\begin{soln}
+    No, for if $ U=(\frac{1}{2},\infty) $ and $ V=(-\infty,\frac{1}{4}) $, then $ \Z\subset U\cup V $, $ \Z \cap U=\set{1,2,3,\dots}\neq \varnothing $, $ \Z\cap V=\set{\dots,-2,-1,0}\neq \varnothing $, and $ \Z \cap U\cap V=\varnothing $. Hence, $ \Z $ is disconnected(i.e., not connected).
+\end{soln}
+\newpage
+\begin{prob}
+    Is $ \set{(x,y)\in \R^2\mid 0<x^2+y^2\leq 1} $ is connected?
+\end{prob}
+\begin{soln}
+    Yes, because $ \set{(x,y)\in\R^2\mid 0<x^2+y^2\leq1} $ is path-connected and hence is connected by theorem \ref{thm:1}.
+\end{soln}
+\begin{ex}[H.W.]
+    Are $ [0,1]\cup(2,3] $ and $ \set{(x,y)\in\R^2\mid 0\leq x\leq 1}\cup \set{(x,0)\mid 1<x<2}  $ connected? Prove or disprove.
+\end{ex}
+\begin{prob}
+    Determine the compactness of
+    \begin{enumerate}[label=(\roman*)]
+        \item finite set $ A=\set{x_1,x_2,\dots,x_n} $
+        \item $ \R $
+        \item $ B=[0,\infty)\to G_n=(-1,n)\Rightarrow B\subset \bigcup_1^\infty G_n \Rightarrow B\not\subset \bigcup_{i=1}^k G_{n_i}$
+        \item $ C=(0,1) $
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    \hfill
+    \begin{enumerate}[label=(\roman*)]
+        \item $ A=\set{x_1,x_2,\dots,x_n} -$ a finite subset of $ \R $,
+        
+        Let $ \mathscr{G}=\set{G_\alpha} $ be any open cover of $ A $, then each $ x_i $ is contained in some ..... Then $ A\subset \bigcup_{i=1}^n G_{\alpha_i}\Rightarrow \set{G_{\alpha_i}:i=1,2,\dots,n} $ is a finite sub-cover of $ \mathscr{G} $. Since $ \mathscr{G} $ is arbitrary, so $ A $ is compact.
+    \end{enumerate}
+\end{soln}
+\begin{prob}
+    Show that $ A=\set{x\in \R^n\mid \norm{x}\leq 1} $ is compact and connected.
+\end{prob}
+\begin{soln}
+    To show that $ A $ is compact, we show it is closed and bounded. To show that it is closed, consider $ A^\complement=\R^n\setminus A=\set{x\in \R^n\mid \norm{x}>1}=B $. For $ x\in B $, $ \norm{x}=1,\; N_\delta (x)\subset B $, with $ \delta=\norm{x}-1 $, so that $ B $ is open and hence $ A $ is closed. It is clear that $ A $ is bounded, since $ A\subset N_2(0) $ and therefore $ A $ is compact.
+
+    To show that $ A $ is connected, we show that $ A $ is path-connected. Let $ x,y\in A $. Then the straight line joining $ x,y $ is the required path. Explicitly, we use $ \varphi:[0,1]\to\R^n,\varphi(t)=(1-t)x+ty $. One sees that $ \varphi(t)\in A $, since $ \norm{\varphi(t)}\leq (1-t)\norm{x}+t\norm{y}\leq (1-t)+t=1 $, by triangle inequality.
+\end{soln}
+\end{document}

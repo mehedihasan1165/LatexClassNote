@@ -1,0 +1,46 @@
+\begin{tikzpicture}
+    % \draw (-10,-10) grid (10,10);
+    \node[lattice] (qb) at (-2,0) {};
+    \node[lattice] (qc) at (-2,1) {};
+    \node[lattice] (qa) at (-2,-1) {};
+    \draw[thick] (qa)--(qb)--(qc);
+
+    \node[lattice] (pb) at (-3.5,.5) {};
+    \node[lattice] (pa) at (-3.5,-.5) {};
+    \draw[thick] (pa)--(pb);
+    \node at (-3.75,-1.75) {$P=\mathbf{2}$};
+    \node at (-2,-1.75) {$Q=\mathbf{3}$};
+    \node at (.25,-1.75) {$\mathbf{2}\;\dot\cup\;\mathbf{3}$};
+
+    \node at (-2.75,0) {$\dot{\cup}$};
+    \node at (-1,0) {$\cong$};
+    \node[lattice](PQA) at (0,.5) {};
+    \node[lattice](PQB) at (0,-.5) {};
+    \draw[thick] (PQA)--(PQB);
+    \node[lattice](PQBB) at (0.75,0) {};
+    \node[lattice](PQCC) at (0.75,1) {};
+    \node[lattice](PQAA) at (0.75,-1) {};
+    \draw[thick] (PQAA)--(PQBB)--(PQCC);
+    \node[lattice] (Qb) at (6,0) {};
+    \node[lattice] (Qc) at (6,1) {};
+    \node[lattice] (Qa) at (6,-1) {};
+    \draw[thick] (Qa)--(Qb)--(Qc);
+
+    \node[lattice] (Pb) at (4,.5) {};
+    \node[lattice] (Pa) at (4,-.5) {};
+    \draw[thick] (Pa)--(Pb);
+
+    \node at (5,0) {$\oplus$};
+    \node at (7,0) {$\cong$};
+    \node[lattice] (pqb) at (8,-.5) {};
+    \node[lattice] (pqa) at (8,-1.5) {};
+    \node[lattice] (pqc) at (8,.5) {};
+    \node[lattice] (pqd) at (8,1.5) {};
+    \node[lattice] (pqe) at (8,2.5) {};
+    \draw[thick] (pqa)--(pqb)--(pqc)--(pqd)--(pqe);
+    \node at (2.5,0) {and};
+    \node at (4,-1.75) {$P$};
+    \node at (6,-1.75) {$Q$};
+    \node at (8,-2) {$\mathbf{2}\;\oplus\;\mathbf{3}$};
+
+\end{tikzpicture}

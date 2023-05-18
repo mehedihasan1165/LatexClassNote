@@ -1,0 +1,11 @@
+\begin{tikzpicture}
+    [a/.style={circle,draw,fill=black!50}]
+    \node[a](a) {};
+    \node[a](b)[above right=of a] {};
+    \node[a](c)[below right=of a] {};
+    \node[a](d)[below left=of c] {};
+    \node[a](e)[right=of d] {};
+    \node[node distance=.1cm](text)[below right=of d] {$ k_{2,3} $};
+    \path[-](a) edge node{}(b)edge node{}(c)edge node{}(e)
+    (d)edge node{}(b)edge node{}(c)edge node{}(e);
+\end{tikzpicture}

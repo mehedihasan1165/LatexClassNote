@@ -1,0 +1,18 @@
+\usetikzlibrary{decorations.pathreplacing}
+\begin{tikzpicture}
+\draw[-latex,thick] (0,0,0) -- (5,0,0);
+\draw[-latex,thick] (0,0,0) -- (0,5,0);
+\draw[-latex,thick] (0,0,0) -- (0,0,5);
+\node at (0,5.3,0) {$x_3$};
+\node at (0,0,5.3) {$x_1$};
+\node at (5.3,0,0) {$x_2$};
+
+\draw[-latex,thick] (0,0,0) -- (2,3,1);
+\draw[-latex,thick] (0,0,0) -- (4,2,1);
+\draw[dashed] (4,2,1) -- (6,3,1.5);
+\draw[dashed] (2,3,1) -- (2,1.05,1);
+\draw[decorate, decoration={brace, amplitude=10pt}] (0,0,0) -- (2,3,1);
+\node at (0.4,1.8,0) {$\left\vert\left\vert x \right\vert\right\vert$};
+\draw[decorate, decoration={brace, amplitude=20pt}] (2,1.05,1) -- (0,0,0);
+\node at (1,-1,0) {$\displaystyle \frac{\langle x,y\rangle}{\left\vert\left\vert y \right\vert\right\vert}$};
+\end{tikzpicture}

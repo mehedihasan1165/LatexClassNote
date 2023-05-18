@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+    \node[lattice,label=below right:{$0$}] (bot) at (1,0) {};
+    \node[lattice,label=left:{$a$}] (a) at  (1,1) {};
+    \node[lattice,label=left:{$b$}] (b) at  (0,2) {};
+    \node[lattice,label=right:{$c$}] (c) at  (2,2) {};
+    \node[lattice,label=above right:{$1$}] (top) at  (1,3) {};
+    
+    \draw[thick] (bot)--(a)--(b) (a)--(c)--(top)--(b);
+    \end{tikzpicture}
+    

@@ -1,0 +1,17 @@
+\begin{tikzpicture}[a/.style={circle,draw}]
+    \node[a](b){b};
+    \node[a,node distance=1.5cm](a)[below left=of b]{a};
+    \node[a,node distance=3cm](f)[below =of b]{f};
+    \node[a,node distance=3cm](c)[right =of b]{c};
+    \node[a,node distance=1.5cm](d)[below right =of c]{d};
+    \node[a,node distance=3cm](e)[below =of c]{e};
+    \path[-](b) edge node{}(a)
+                edge node{}(f)
+                edge node{}(c)
+            (a) edge node{}(d)
+                edge node{}(e)
+            (c) edge node{}(d)
+            edge node{}(f)
+            edge node{}(e);
+    \node[](label)[below left =of e]{Figure: 1};
+\end{tikzpicture}

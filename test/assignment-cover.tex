@@ -1,0 +1,88 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{graphicx,float}
+% \RequirePackage{enumitem}
+% \RequirePackage[cm]{fullpage}
+% \RequirePackage{hyperref}
+% \RequirePackage{lmodern}
+% \RequirePackage[english]{babel}
+\usepackage{background}
+\usepackage[object=vectorian]{pgfornament} 
+\usepackage{calligra}
+\newcommand{\newtitle}{Assignment On \\Eigen Value Problem and Green's Function}
+\newcommand{\course}{Mathematical Method}
+\newcommand{\prof}{Prof. Dr. Mohammed Ashaque Meah}
+\begin{document}
+    \begin{titlepage}
+        \backgroundsetup{
+            scale=1,
+            opacity=1,
+            angle=0,
+            color=black,
+            contents={
+                \begin{tikzpicture}[color=black, every node/.style={inner sep= 15pt}]
+                    \node (NW) [anchor=north west] at (current page.north west){\pgfornament[width=2.5cm] {61}};
+                    \node (NE) [anchor=north east] at (current page.north east){\pgfornament[width=2.5cm, symmetry=v]{61}};
+                    \node (SW) [anchor=south west] at (current page.south west){\pgfornament[width=2.5cm, symmetry=h]{61}};
+                    \node (SE) [anchor=south east] at (current page.south east){\pgfornament[width=2.5cm, symmetry=c]{61}};
+                    \foreach \i in {-4,0,4}
+                    \node[anchor=north,xshift=\i cm] at (current page.north){\pgfornament[scale=0.25,symmetry=v]{71}};
+                    \foreach \i in {-4,0,4}
+                    \node[xshift=\i cm, yshift=32.25 pt] at (current page.south){\pgfornament[scale=0.25,symmetry=v]{71}};
+                    \foreach \i in {-8,-4,0,4,8}
+                    \node[yshift=\i cm, xshift=32.25pt, rotate=90] at (current page.west){\pgfornament[scale=0.25,symmetry=v]{71}};
+                    \foreach \i in {-8,-4,0,4,8}
+                    \node[yshift=\i cm, xshift=-32.25pt, rotate=90] at (current page.east){\pgfornament[scale=0.25,symmetry=v]{71}};
+                    \foreach \i in {-11,-9,...,7,9}
+                    \node[anchor=west, yshift=\i cm, xshift=52.25pt, rotate=90] at (current page.west){\pgfornament[scale=0.1]{80}};
+                    \foreach \i in {-11,-9,...,7,9}
+                    \node[anchor=east, yshift=\i cm, xshift=-52.25pt, rotate=-90] at (current page.east){\pgfornament[scale=0.1]{80}};
+                \end{tikzpicture}
+            }
+        }
+    \centering
+    \includegraphics{logo.png}
+    \vspace*{\baselineskip}
+    \vspace*{50pt}
+    
+    \rule{345pt}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+    \rule{345pt}{0.4pt}
+    
+    \vspace{0.6\baselineskip}
+    
+    {\LARGE \calligra{ \newtitle }\\} 
+    
+    \vspace{0.6\baselineskip}
+    
+    \rule{345pt}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+    \rule{345pt}{1.6pt}
+    
+    \vspace{2\baselineskip} % Whitespace after the title block
+    
+    %------------------------------------------------
+    %	Subtitle
+    %------------------------------------------------
+    
+    {\scshape \Large{\course}} 
+    
+    \vspace*{5\baselineskip} % Whitespace under the subtitle
+    
+    
+    
+    \vspace{0.5\baselineskip} 
+    
+    {\scshape   \Large \prof\\ } % Editor list
+    
+    \vspace{0.75\baselineskip} 
+    
+    {\textit{\large University}} 
+    
+    \vfill 
+    
+    \vspace{0.3\baselineskip} 
+    
+    
+    {\scshape \large Submitted by\\  Alimul \\ Atif \\ Mehedi Hasan \\ sohan \\ Farzana } 
+    \vspace*{40pt}
+    \end{titlepage}
+    \backgroundsetup{contents={}}
+\end{document}

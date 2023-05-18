@@ -1,0 +1,216 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\everymath{\displaystyle}
+\begin{document}
+\chapter{Continuity}
+The central concept in topology is continuity, defined for functions between sets equipped with a notion of nearness (topological spaces) which is preserved by a continuous function. Topology is one kind of geometry in which the important properties of a figure are those are preserved under continuous motions.
+\begin{defn}
+    Let \(X\) and \(Y\) be two topological spaces and \(f:X\to Y\) be a mapping. Then \(f\) is said to be continuous at \(p\) in \(X\) if given any open set \(V\) containing \(f(p)\) there exist an open set \(U\) containing \(p\) such that \(f(U)\subseteq V\).
+
+    If \(f\) is continuous for each \(p \in X\), then \(f\) is said to be continuous on \(X\).
+\end{defn}
+\begin{ex}
+    Let \(X=\set{a,b,c,d}\) and \(\tau =\set{X,\varnothing,\set{a},\set{b},\set{a,b},\set{b,c,d}}\) be a topology on \(X\). Define \(f:X\to Y\) by \(f(a)=b\), \(f(b)=d\), \(f(c)=b\), \(f(d)=c\). Discuss/examine/check the continuity at \(c\) and \(d\).
+\end{ex}
+\begin{soln}
+    \textbf{Continuity of \(f\) at \(c\):}\\
+    We see that at \(c\), \(f(c)=b\) and the open sets containing \(f(c)\) are \(X,\set{b},\set{a,b},\set{b,c,d}\). If we take \(V=\set{a,b}\), then
+    \[\fin(V)=\fin(\set{a,b})=\set{a,c}\]
+    The open sets containing \(c\) are \(X\) and \(\set{b,c,d}\). Now, \(f(X)=\set{b,c,d}\), and \(f(\set{b,c,d})=\set{b,c,d}\). But none of them contained in \(V=\set{a,b}\). Hence, \(f\) is not continuous at \(c\).
+    \textbf{Continuity of \(f\) at \(d\):} Here \(f(d)=c\) and the open sets containing \(f(d)\) are \(X\) and \(\set{b,c,d}\). Also, the open sets containing \(d\) are \(X\) and \(\set{b,c,d}\).
+
+    If we take \(V=X\), then we get an open set \(\set{b,c,d}\) containing \(d\) with \(f(\set{b,c,d})=\set{b,c,d}\subseteq V\).\\
+    And if we take \(V=\set{{b,c,d}}\), we get the open set \(\set{b,c,d} \) containing \(d\) with \(f(\set{b,c,d})=\set{b,c,d}\subseteq V \). Therefore, \(f\) is continuous at \(d\).
+\end{soln}
+\begin{ex}
+    If a  singleton set \(\set{p} \) is an open in a topological space \(\xt\) then any function \(f:X\to Y\), is continuous at \(p\in X\).
+\end{ex}
+\begin{proof}
+    Suppose \(H\)be a open set containing \(f(p)\). But
+    \[f(p)\in H \quad\text{implies}\quad p\in\fa(H) \quad\text{implies}\quad \set{p}\subseteq \fa(H)\]
+    This implies \(f(\set{P})\subseteq H\). Hence, \(f\) is continuous at \(p\).
+\end{proof}
+From this example we can say that any function defined on a discrete space is continuous.
+
+\begin{thm}
+    A function \(f:X\to Y\) is continuous iff for each open subset \(V\) in \(Y\), \(fa(V)\) is open in \(X\).
+\end{thm}
+\begin{proof}
+    First suppose \(f\) is continuous on \(X\) and let \(V\) be any open subset of \(Y\). Let \(U=\fa(V)\). Choose any point \(p\in U\). Then \(f(p)\in V\). Since \(f\) is continuous at \(p\), there exist an open set \(W_p\) containing \(p\) such that \(f(W_p)\subseteq V\). Then \(p\in W_p \subseteq \fa(V)=U\). Hence, \(U\) is a neighborhood of \(p\). Since \(p\) is arbitrary, so \(U\) is a neighborhood of each point of \(U\). Therefore, \(U=\fa(V)\) is open.
+    
+    Conversely, let for each open subset \(V\) of \(Y\), \(\fa(V)\) is open in \(X\). Let \(U=\fa(V)\). Then \(f(U)=f(\fa(V))\subseteq V\).\\
+    Hence, by definition, \(f\) is continuous.
+\end{proof}
+\begin{ex}
+    Let \(f:(\R,\mathcal{U})\to (\R,\mathcal{U})\) be given by \(f(x)=x\) for all \(x\in\R\); that is, \(f\) is an identity function. Then for any open set \(V\) in \(\R\), \(\fa(V)=V\) and so \(\fa(V)\) is open. Hence, \(f\) is continuous.
+    \label{ex:3.3}
+\end{ex}
+\begin{ex}
+    Let \(f:(\R,\mathcal{U})\to (\R,\mathcal{U})\) be given by \(f(x)=c\) for all \(x\in\R\); that is, \(f\) is a constant function. Then for any open set \(V\) in \(\R\), clearly \(\fa(V)=\R\) if \(c\in V\) and \(\fa(V)=\varnothing\) if \(c\notin V\). In both cases \(\fa(V)\) is open. Hence, \(f\) is continuous.
+\end{ex}
+\begin{ex}
+    Let \(\xt\) and \((Y,\tau^{*})\) be two topologies defined by \(X=\set{a,b,c}\) \(\tau=\set{X,\varnothing,\set{a},\set{b,c}}\) and \(Y=\set{p,q,r}\) \(\tau^{*}=\set{Y,\varnothing,\set{r},\set{p,q}}\). Define \(f:X\to Y \) by \(f(a)=p\), \(f(b)=q\), \(f(c)=r\). The \(f\) is not continuous, because if we take the open set \(V=\set{r} \) in \(Y\), the \(\fa(V)=\set{c}\) which is not open in \(X\).
+\end{ex}
+\begin{thm}
+    A function \(f:(\xt)\to(Y,\tau^{*})\) is continuous iff for each member of a base \(\mathcal{B}\) for \(Y\), \(\fa =(B)\) is open in \(X\).
+\end{thm}
+\begin{proof}
+    Let \(f\) be continuous and \(B\in \mathcal{B}\). Then \(B\) is open in \(Y\) since it is a member of base \(\mathcal{B}\), and hence \(\fa(B)\) is open in \(X\).
+
+    Conversely, let \(V\) be any open set in \(Y\). We show that \(\fa(V)\) is open in \(X\). Since \(\mathcal{B}\) is a base for \(Y\), every open set in \(Y\) is the union of members of \(\mathcal{B}\) and so \(V=\cup\set{B:B\in\mathcal{B}}\). Then
+    \[\fa(V)=\fa(\cup\set{B:B\in\mathcal{B}})=\cup\set{\fa(B):B\in \mathcal{B}}\]
+    But, by the hypothesis \(\fa(B)\) is open in \(X\) and their union is also open in \(X\). Hence, \(\fa(V)\) is open. Thus, \(f\) is continuous.
+\end{proof}
+\begin{thm}
+    Let \(f:(\xt)\to(Y,\tau^{*})\) and \(\mathcal{A}\) be a subbase for the topology \(\tau^{*}\) on \(Y\). Then \(f\) is continuous iff the inverse of each member of the subbase \(\mathcal{A}\) is an open subset of \(X\).
+\end{thm}
+\begin{proof}
+    Let \(f:(\xt)\to(Y,\tau^{*})\) be continuous and \(\mathcal{A} \) be a subbase to \(\tau^{*}\). Then each element \(\mathcal{S}\) of \(\mathcal{A}\) is open in \(Y\) and so \(\fa(\mathcal{S})\) is open in \(X\), \(f\) being continuous.
+
+    Conversely, suppose for any \(\mathcal{S}\in \mathcal{A}\), \(\fa(\mathcal{S})\) is open in \(X\). We show that \(f\) is continuous; i.e., \(G\in \tau^{*}\) implies \(\fa(G)\in\tau\). Let \(G\in\tau^{*}\). Then by definition of subbase,
+    \[G=\cup(\mathcal{S}_1\cap\mathcal{S}_2\cap \dots\cap\mathcal{S}_n),\quad \text{where } \mathcal{S}_i\in \mathcal{A}\]
+    Hence 
+    \begin{align*}
+        \fa(G)&=\fa(\cup(\mathcal{S}_1\cap\mathcal{S}_2\cap \dots\cap\mathcal{S}_n))\\
+        &=\cup\fa(\mathcal{S}_1\cap\mathcal{S}_2\cap \dots\cap\mathcal{S}_n)\\
+        &=\cup[\fa(\mathcal{S}_1)\cap\fa(\mathcal{S}_2)\cap \dots\cap\fa(\mathcal{S}_n)]
+    \end{align*}
+    But, by hypothesis, \(\mathcal{S}_i\in \mathcal{A}\) implies \(\fa(\mathcal{S}_i)\) is open in \(X\) and hence \(\fa(G)\) is open in \(X\) since the union of finite intersection of open sets is open. Therefore, \(f\) is continuous.
+\end{proof}
+\begin{thm}
+    A function \(f:X\to Y\) is continuous iff for any subset of \(Y\), \(\fa(B^{\circ})\subseteq\fa(B)^{\circ}\).
+\end{thm}
+\begin{proof}
+    Suppose \(f\) is continuous on \(X\) and let \(B\) be any subset of \(Y\). Then \(B^{\circ}\) is open in \(Y\) and so \(\fa(B^{\circ})\) is open in \(X\). Now, we have, \(B^{\circ}\subseteq B\) and so \(\fa(B^{\circ})\subseteq\fa(B)\), and then \([\fa(B^{\circ})]^{\circ}\subseteq [\fa(B^{\circ})]^{\circ}=\fa(B)^{\circ}\).\\
+    But \(\fa(B^{\circ})\) is open, so \([\fa(B^{\circ})]^{\circ}=\fa(B^{\circ})\) and hence \(\fa(B^{\circ})\subseteq \fa(B)^{\circ}\).
+
+    Conversely, let for any subset \(B\) of \(Y\), \(\fa(B^{\circ})\subseteq [\fa(B)]^{\circ}\). Let \(V\) be any open set in \(Y\). Then \(\fa(V^{\circ})\subseteq[\fa(B)]^{\circ}\). But \(V\) is open, so \(V^{\circ}=V\). Hence \(\fa(V^{\circ})=\fa(V)\subseteq[\fa(V)]^{\circ}\).\\
+    Bur it is always the case that \([\fa(V)]^{\circ}\subseteq\fa(V)\). Hence \(\fa(V)=[\fa(V)]^{\circ}\) which is open in \(X\). Therefore, \(f\) is continuous on \(X\).
+\end{proof}
+\begin{thm}
+    A function \(f:X\to Y\) is continuous iff for each closed subset \(F\) of \(Y\), \(\fa(F)\) is a closed subset in \(X\).
+\end{thm}
+\begin{proof}
+    Suppose \(f\) is continuous on \(X\) and let \(F\) be any closed subset of \(Y\). Let \(V=Y-F\). Then \(V\) is open in \(Y\) and hence \(\fa(V)\) is open in \(X\). Now,
+    \[X-\fa(F)=\fa(Y-F)=\fa(V)\]
+    which is open in \(X\). Hence, \(\fa(F)\) is closed in \(X\).
+
+    Conversely, let \(V\) be any open set in \(Y\). Then \(Y-V\) is closed and hence \(\fa(Y-V)\) is closed ain \(X\). But,
+    \[\fa(Y-V)=X-\fa(V)\]
+    which is closed in \(X\). Hence, \(\fa(V)\) is open in \(X\). Thus, \(f\) is continuous on \(X\).
+\end{proof}
+\begin{thm}
+    A function \(f:X\to Y\) is continuous iff for any subset \(A \) of \(X\), \(f(\overbar{A})\subseteq\overbar(f(A))\).
+\end{thm}
+\begin{proof}
+    Suppose \(f\) is continuous on \(X\) and let \(A\) be any subset of \(X\). Then \(f(A)\) is a subset of \(Y\) and \(\overbar{f(A)}\) is closed in \(Y\); hence \(\fa(\overbar{f(A)})\) is closed in \(X\). Now, we have
+    \begin{align*}
+        f(A)&\subseteq \overbar{f(A)}\\
+        \intertext{and so}
+        \fa(f(A))&\subseteq \fa(\overbar{f(A)})
+    \end{align*}
+    But \(A\subseteq \fa(f(A))\); hence \(A\subseteq \fa(\overbar{f(A)})\). Since \(\fa(\overbar{f(A)})\) is closed and \(\overbar{A}\) is the smallest closed set containing, it follows that
+    \begin{align*}
+        \overbar{A}&\subseteq \fa(\overbar{f(A)})\\
+        \intertext{and so}
+        f(\overbar{A})&\subseteq \overbar{f(A)}
+    \end{align*}
+    Conversely, let for any subset \(A\) of \(X\), \(f(\overbar{A})\subseteq\overbar{f(A)}\). Let \(F\) be any closed set in \(Y\). Then \(\fa(F)\) is subset of \(X\). We claim that \(\fa(F)\) is closed in \(X\). Since \(fa(F)\) is subset of \(X\), so
+    \[f\overbar{(\fa(F))}\subseteq\overbar{f(\fa(F))}=\overbar{F}=F\]
+    \(\therefore \overbar{(\fa(F))}\subseteq \fa(F)\).\\
+    But it is always the case that \(\fa(F)\subseteq\overbar{(\fa(F))}\). Hence \(\fa(F)=\overbar{(\fa(F))}\) i.e., \(\fa(F)\) is closed and therefore \(f\) is continuous on \(X\).
+\end{proof}
+\section{Sequential Continuity}
+\begin{defn}
+    A function \(f:X\to Y\) is said to be sequentially continuous at a point \(p\in X\) iff for every sequence \(\langle a_n\rangle\) converging to \(p\), the sequence \(f(a_n)\) converges to \(f(p)\); i.e., iff \(a_n\to p\) implies \(f(a_n)\to f(p)\).
+\end{defn}
+Continuity and sequential continuity at a point are related as follows:
+\begin{thm}
+    If a function \(f:X\to Y\) is continuous at \(p\in X\), then it is sequentially continuous at  \(p\).
+\end{thm}
+\begin{proof}
+    Let the sequence \(\langle a_n\rangle\) in \(X\) converges to \(p\). Let \(M\) be the neighborhood of \(f(p)\). Then \(f\) being continuous at \(p\) implies \(\fa(M)\) is open in \(X\) containing \(p\). Let \(N=\fa(M)\). Then, since \(\langle a_n\rangle\) converges to \(p\), so \(a_n\in N\) for almost all \(n\in \N\). This implies \(f(a_n)\in f(N)=f(\fa(M))=M\) for almost all \(n\in \N\). So, the sequence \(\langle f(a_n)\rangle\) converges to \(f(p)\). Hence, \(f\) is sequentially continuous at  \(p\).
+\end{proof}
+\section{Open and Closed functions}
+A function \(f:X\to Y\) is called an \textbf{open function} if the image of every open set is open.\\
+Similarly, a function \(f:X\to Y\) is called a \textbf{closed function} if the image of every closed set is closed.\\
+In general, functions which are not open need not be closed and vice versa.
+\begin{ex}
+    Let \(f:(\R,\mathcal{U})\to (\R,\mathcal{U})\) be given by \(f(x)=c\) for all \(x \in \R\). Then \(f\) is continuous (see ex \ref{ex:3.3}). Let \(V\) be a open set and \(H \) be a closed set in \(R\). Then,
+    \[f(v)=\set{c}\text{ and }f(H)=\set{c}\text{ for all }x\in V \text{ and for all } x\in H\]
+    Since \(\set{c} \) is finite, it is closed but not open. Therefore \(f\) is a closed map and continuous but it is not open.
+\end{ex}
+\begin{ex}
+    Let \(X=\set{a,b,c}\), \(\tau=\set{\varnothing,\set{a},X}\), \(Y=\set{p,q,r}\) and \(\tau^{*}=\set{\varnothing,\set{p},\set{p,r},Y}\).
+    \begin{enumerate}
+        \item Define \(f:X\to Y\) by \(f(a)=p\), \(f(b)=q\), \(f(c)=r\). Then \(f\) is an open map but it is not continuous.
+        \item Define \(g:X\to Y\) by \(g(x)=q\) for all \(x\in X\). Then \(g\) is a closed map and it is continuous but not open.
+        \item Define \(h:X\to Y\) by \(h(x)=p\) for all \(x\in X\). Then \(h\) is an open map and it is not continuous and not open.
+    \end{enumerate}
+\end{ex}
+\section{Homeomorphism}
+Between any two topological spaces \(\xt\) and \((Y,\tau^{*})\), there are many functions \(f:X\to Y\). We choose to discuss continuous, or open or closed functions rather than arbitrary functions since these functions preserves some aspects of the structure of the spaces \(\xt\) and \((Y,\tau^{*})\).\\
+If the function \(f:X\to Y\) defines a one to one correspondence between the open sets in \(X\) and the open sets in \(Y\), then the spaces \(\xt\) and \((Y,\tau^{*})\) are identical from the topological point of view.
+\begin{defn}
+    Let \(X \) and \(Y\) be topological spaces. A bijective function \(f:X\to Y\) is said to be a homeoporphism if \(f\) is open and continuous, or equivalently, both \(f\) and \(\fa\) are continuous.\\
+    If there exists a homeoporphism between \(X\) and \(Y\), we say that \(X\) and \(Y\) are \textbf{homeomorphic} spaces, or that they are topologically equivalent, and write \(X\cong Y\).
+\end{defn}
+\begin{lem}
+    If \(f:X\to Y\) is a homeoporphism, then so is the inverse map \(\fa:Y\to X\).
+\end{lem}
+\begin{lem}
+    If \(f:X\to Y\) and \(g:Y\to Z\) are homeoporphisms, then so is the composite map \(gf:X\to Z\).
+\end{lem}
+\begin{ex}
+    For each space \(X\) the identity function \(i_d:X\to X\), with \(i_d(x)=x\) for all \(x\in X\), is a homeoporphism.
+\end{ex}
+\begin{ex}
+    Any two open intervals of the real line are homeomorphic. For example, if \(S=(-1,1)\) and \(T=(0,5)\), then define \(f:S\to T\) and \(g:T\to S\) by \(f(x)=\frac{5}{2}(x+1)\), \(g(x)=\frac{2}{5}(x-1)\). These maps are continuous, being composites of addition and multiplication, and it is easy to verify that they are inverse to each other. So \(f\) and \(g\) are homeomorphisms, and \((-1,1)\) and \((0,5)\) are homeomorphic.
+\end{ex}
+\begin{ex}
+    The function \(f:(-1,1)\to\R\) given by \(f(x)=\frac{x}{1-x^2}\) is homeoporphism. To find the inverse of \(f\), we rewrite the equation \(\frac{x}{1-x^2}=y\) as \(yx^2+x-y=0\) and solve for \(x\) as a function of \(y\in \R\), namely
+    \[\fin(y)=\frac{-1+\sqrt{1+4y^2}}{2y}=\frac{2y}{1+\sqrt{1+4y^2}}\]
+    It is well known that both \(f\) and \(\fin\) are continuous, hence \(\R\) is homeomorphic to any open interval \((a,b)\).
+\end{ex}
+If we define a continuous map \(f:(-1,1)\to \R\) by \[f(x)=\tan(\frac{\pi}{2}x)\] This is a bijection and has a continuous invgrse     \(g:\R\to (-1,1)\) given by 
+\[g(x)=\frac{2}{\pi}\tan^{-1}(x)\]
+\begin{ex}
+    A solid square is homeomorphic to a solid disc.\\
+    We will illustrate this with the square \(Q=\set{(x,y)\in\R^2:-1\leq x\leq1,-1\leq y\leq1}\) and disc \(D=\set{(x,y)\in\R^2:x^2+y^2\leq 1}\).\\
+    Define \(f:D\to Q\) by \[f(x,y)=\frac{\sqrt{x^2+y^2}}{\max(\abs{x},\abs{y})}(x,y)\]
+    if \((x,y)\neq (0,0)\) and \(f(0,0)=(0,0)\). Its inverse \(g:Q\to D\) is given by \[g(x,y)=\frac{\max(\abs{x},\abs{y})}{\sqrt{x^2+y^2}}(x,y)\]
+    if \((x,y)\neq (0,0)\) and \(g(0,0)=(0,0)\).
+\end{ex}
+The idea of these maps is that \(f\) pushes the disc out radially to form a square, and \(g\) contracts the square radially to form a disc.
+\begin{figure}[ht]
+    \centering
+    Insert fig
+\end{figure}
+Using this idea, you can see that the preimage of an open subset of \(Q\) under \(f\) will be open in \(D\) and similarly for \(g\). So, they are continuous maps.
+\section{Topological Properties}
+A property \(P\) is said to be a topological property or a topological invariant if, whenever a topological space \(\xt\) has the property \(P\), then every space homeomorphic to \(\xt\) also has the property    \(P\).\\
+Briefly, a property, that is preserved under a homeomorphism, is called a topological property or topological invariant.
+\begin{ex}
+    Let \(X=(0,\infty)\). Define a function \(f:X\to X\) by \(f(x)=\frac{1}{x}\). Then \(f\) is a homeomorphism. Observe that the sequence
+    \[\langle a_n\rangle=1,\frac{1}{2},\frac{1}{3},...\]
+    correspond, under homeoporphism, to the sequence
+    \[\langle f(a_n)\rangle=1,2,3,...\]
+    We see that the sequence \(\langle a_n\rangle\) is a Cauchy sequence but the sequence \(\langle f(a_n)\rangle\) is not. Hence the property of being a Cauchy sequence is not topological.
+\end{ex}
+\begin{ex}
+    Being a finite topological space, having the discrete, trivial or cofinte topology, or being a Hausdorff space, are all examples of topological properties. So, if \(X\) is a Hausdorff space and \(X\cong Y\) then \(Y\) is a Hausdorff space. Compactness and connectedness are also topological properties.
+\end{ex}
+\begin{prob}
+    Show that an identity map on a topological space is continuous but the identity map in different topological spaces may not be continuous.
+\end{prob}
+\begin{soln}
+    Let \(f:\xt\to \xt\) defined by \(f(x)=x\) for all \(x\in X\); that is, \(f\) is an identity map. Then for any open set \(V\) in \(X\), \(fa(V)=V\) and so \(\fa(V)\) is open. Hence \(f\) is continuous.\\
+    To prove the 2nd part, let \(\tau=\) co-finite topology on \(\R\) and \(\tau_u=\) usual topology on \(\R\).\\
+    Let \(i:(\R,\tau)\to (\R,\tau_u)\) be an identity map. Let \(V=(0,1)\in \tau_u\). Then \(i^{\leftarrow}(0,1)=(0,1)\notin \tau\) because \(\R-(0,1)\) is not finite. Thus we can see that, though \(V=(0,1)\) is open in \((\R,\tau_u)\), \(i^{\leftarrow}(0,1)\) is not open in \((\R,\tau)\). Hence the identity map \(i:(\R,\tau)\to (\R,\tau_u)\) is not continuous.
+    
+    Again, let \(i:(\R,\tau_u)\to (\R,\tau)\) be an identity map. Let \(G\in \tau\). Then \(\R-G\) is finite. Hence \(i^{\leftarrow}(\R-G)=\R-G\) is closed in \(\R,\tau_u\). Hence \(G\) is open in \(\R\). Thus \(i\) is continuous.\\
+    Therefore, the identity map on different topological spaces may not be continuous.
+\end{soln}
+\end{document}

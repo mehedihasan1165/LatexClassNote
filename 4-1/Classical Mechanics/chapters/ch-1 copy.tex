@@ -1,0 +1,164 @@
+% \documentclass[../main-sheet.tex]{subfiles}
+\documentclass[12pt]{article}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+% \chapter{First Chapter}
+Define
+\begin{itemize}
+    \item Generalized coordinates
+    \item Constraints
+    \item Holonomic Constraints
+    \item NonHolnomic Constraints
+    \item  Degrees of freedom
+\end{itemize}
+* Explain D' Alembert's principle and derive Lagrange's equation from D'Alembert's principle.
+\section{Degrees of Freedom}
+A system of \(N\) particle, free from constraints has \(3N\) independent coordinates, or \emph{degrees of freedom}. If there exists holonomic constraints expressed as \(k\) equations of the form \(f(\vec{r_1},\vec{r_2},\dots,t)=0\) then we can use these equations to eliminate \(k\) from \(3N\) coordinates, and left with \(3N-k\) independent coordinates, and the system is said to have \(3N-k\) degrees of freedom.
+\section{D'Alembert's Principle}
+D'Alembert's principle involves the general motion of the system. Consider the motion of an \(N-\)particle system. Let the force acting on \(i\)th particle be \(\vec{F_i}\). Then the equation of motion is,
+\[
+    \vec{F_i}=\dot{\vec{p_i}}\quad \Rightarrow \vec{F_i}-\dot{\vec{p_i}}=0
+\]
+Which states that the particles in the system will be in equilibrium under a force equal to the actual forces plus a ``reversed effective force'' \(-\dot{\vec{p_i}}\). Adding virtual displacement \(\delta \vec{r_i}\) we get
+\begin{equation}
+    \sum_i (\vec{F_i}-\dot{\vec{p_i}})\cdot \delta\vec{r_i}=0\label{eqn:alem1}
+\end{equation}
+Now let us decompose \(\vec{F_i} \) into applied force \(\vec{F_i}^{(a)}\), and the force of the constraint, \(\vec{f_i}\), i.e., \(\vec{F_i}=\vec{F_i}^{(a)}+\vec{f_i}\). So \eqref{eqn:alem1} becomes,
+\[
+    \sum_i (\vec{F_i}^{(a)}-\dot{\vec{p_i}})\cdot\delta\vec{r_i}+\sum_i\vec{f_i}\cdot\delta\vec{r_i}=0
+\]
+By restricting ourselves to systems for which the virtual work of the forces of constraints vanishes, i.e., \(\sum_i\vec{f_i}\cdot\delta\vec{r_i}=0\) and we therefore obtain
+\[
+    \sum_i (\vec{F_i}^{(a)}-\dot{\vec{p_i}})\cdot\delta\vec{r_i}=0
+\]
+This is the D'Alembert's principle.
+\section{Lagrange's Equations}
+From D'Alembert's principle we get 
+\begin{equation}
+    \sum_i \left( \vec{F_i}-\dot{\vec{p}} \right)\cdot\delta \vec{r_i}=0\label{eq:lag1}
+\end{equation}
+The virtual displacement \(\delta \vec{r_i}\) are not independent. We need to change these by generalized coordinates which are independent.
+
+Consider a system with \(N-\)particle at \(\vec{r_1},\vec{r_2},\dots,\vec{r_N}\) having \(k\) equations of holonomic constraints. The system will have \(n=3N-k\) generalized coordinates \(q_1,q_2,\dots,q_n\). The transformation equations from the \(r\) variables to the \(q\) variables are given by \(\vec{r_i}=\vec{r_i}(q_1,q_2,\dots,q_n,t)\). Thus, \(\vec{v_i}\) is expressed in terms of the \(\dot{q_k}\) by the formula 
+\[
+    \vec{v_i}=\frac{d\vec{r_i}}{dt}=\sum_k\frac{\partial \vec{r_i}}{\partial q_k}\dot{q_k}+\frac{\partial \vec{r_i}}{\partial t}
+\]
+Similarly the arbitrary virtual displacement \(\delta \vec{r_i}\) can be connected with virtual displacement \(\delta q_i\) by 
+\[
+    \delta \vec{r_i}=\sum_j \frac{\partial \vec{r_i}}{\partial q_j}\delta q_j
+\]
+In terms of the generalized coordinates, the virtual work of \(\vec{F_i}\) becomes 
+\[
+    \sum_i \vec{F_j}\cdot \delta \vec{r_i}=\sum_{i,j} \vec{F_i}\cdot\frac{\partial \vec{r_i}}{\partial q_j}\delta q_j=\sum_j Q_j \delta q_j
+\]
+Where \(Q_j\) are the components of the generalized force, defined as
+\[
+    Q_j=\sum_i \vec{F_i}\cdot \frac{\partial\vec{r_i}}{\partial q_j}
+\]
+The second term involved in D'Alembert's principle can be written as 
+\[
+    \sum_i \dot{\vec{p_i}}\cdot\delta \vec{r_i}=\sum_i m_i\ddot{\vec{r_i}}\cdot\delta \vec{r_i}=\sum_{i,j} m_i\ddot{\vec{r_i}}\cdot \frac{\partial \vec{r_i}}{\partial q_j} \delta q_j
+\]
+Now,
+\[
+    \sum_i m_i\ddot{\vec{r_i}}=\sum_i\left[ \frac{d}{dt}\left( m_i\dot{r_i}\frac{\partial \vec{r_i}}{\partial q_j} \right)-m_i\dot{\vec{r_i}}\cdot\frac{d}{dt}\left( \frac{\partial \vec{r_i}}{\partial q_j} \right) \right]
+\]
+In the last term we can interchange the differentiation with respect to \(t\) and \(q_j\)
+\[
+    \frac{d}{dt} \left( \frac{\partial \vec{r_i}}{\partial q_j} \right)=
+    \frac{\partial \dot{\vec{r_i}}}{\partial q_j}=
+    \sum_k \frac{\partial^2 \vec{r_i}}{\partial q_j \partial q_k}\dot{q_k}+\frac{\partial^2\vec{r_i}}{\partial q_j \partial t}=\frac{\partial \vec{v_i}}{\partial q_j}
+\]
+Also \(\frac{\partial \vec{v_i}}{\partial \dot{q_j}}=\frac{\partial \vec{r_i}}{\partial q_j}\) Replacing we get
+\[
+    \sum_i m_i\ddot{\vec{r_i}}=\sum_i\left[\frac{d}{dt}\left( m_i\dot{\vec{r_i}}\frac{\partial \vec{v_i}}{\partial \dot{q_j}} \right)-m_i\dot{\vec{r_i}}\frac{d}{dt}\left( \frac{\partial \vec{v_i}}{\partial q_j} \right)\right]
+\]
+Expanding the second term of \eqref{eqn:alem1} we get
+\[
+    \sum_j \left\{ \frac{d}{dt}\left[ \frac{\partial}{\partial \dot{q_j}}\left( \sum_i \frac{1}{2}m_iv_i^2 \right) \right]-\frac{\partial}{\partial q_j}\left( \sum_i \frac{1}{2}m_iv_i^2 \right)-Q_j \right\}\delta q_j
+\]
+Here \(\frac{1}{2} m_iv_i^2\) is the system kinetic energy \(T\). So D'Alembert's principle becomes 
+\begin{equation}
+    \sum \left\{ \left[ \frac{d}{dt}\frac{\partial T}{\partial \dot{q_j}}-\frac{\partial T}{\partial q_j} \right]-Q_j \right\}\delta q_j=0
+    \label{eq:alem11}
+\end{equation}
+Any virtual displacement \(\delta q_j\) is independent of \(\delta q_k\) and therefore the only way hold \eqref{eq:alem11} is for the individual coefficients to vanish:
+\begin{equation}
+    \frac{d}{dt} \left(\frac{\partial T}{\partial \dot{q_j}}\right)-\frac{\partial T}{\partial q_j} -Q_j =0
+    \label{eq:alem2}
+\end{equation}
+When the forces are derivable from a scalar potential function \(V\),
+\[
+    \vec{F_i}=-\nabla_i V
+\]
+Then the generalized forces can be written as 
+\[
+    Q_j=\sum_i \vec{F_i}\cdot\frac{\partial \vec{r_i}}{\partial q_j}=-\sum_i \nabla_i V\cdot\frac{\partial \vec{r_i}}{\partial q_j}
+\]
+Which is exactly the same expression for the partial derivative of a function \(-V(\vec{r_1},\vec{r_2},\dots,\vec{r_N},t)\) with respect to \(q_j\)
+\[
+    Q_j=-\frac{\partial V}{\partial q_i}
+\]
+Equation \eqref{eq:alem2} can be written as 
+\[
+    \frac{d}{dt}\left( \frac{\partial T}{\partial \dot{q_j}} \right)-\frac{\partial (T-V)}{\partial q_j}=0
+\]
+The potential \(V\) does not depend on the generalized velocities. Hence, we can include a term in \(V\) in the partial derivative with respect to \(\dot{q_j}\):
+\[
+    \frac{d}{dt}\left( \frac{\partial (T-V)}{\partial \dot{q_j}} \right)-\frac{\partial (T-V)}{\partial q_j}=0
+\]
+Defining a new function, the Lagrangian \(L\) as \(L=T-V\),\\
+The equation becomes
+\[
+    \frac{d}{dt}\frac{\partial L}{\partial \dot{q_j}}-\frac{\partial L}{\partial q_j}=0
+\]
+These expressions are referred to as ``Lagrange's equation''.
+\section{Principle of Least Action}
+In mechanics the quantity
+\[A=\int_{t_1}^{t_2}p_j\,\dot{q_j}\,dt \]
+is defined as action. The principle of least action for conservative system is then expressed as 
+\[\Delta \int_{t_1}^{t_2}p_j\,\dot{q_j}\,dt=0 \]
+where \(\Delta\) is the variation.\\
+\begin{figure}[H]
+    \centering
+    Insert fig here
+\end{figure}
+In \(\delta\) variation we compared all conceivable path connecting two given points \(A\) and \(B\) at two time \(t_1\) and \(t_2\) in such a way that the system must travel from one end point \(A\) to another end point \(B\) in the same time for all the path compared. System points are speeded up or slowed down to make the total travel time same along every path and energy may or may not be conserved along the path. In \(\Delta\) variation we will restrict the condition so that there is no violation of the conservation of energy in comparing all path but relax the condition that all path take the same time.
+\begin{proof}
+    We know,
+    \begin{align}
+        A&=\int_{t_1}^{t_2}p_j\,\dot{q_j}\,dt\notag\\
+        &=\int_{t_1}^{t_2} (L+H)\,dt\notag\\
+        &=\int_{t_1}^{t_2}L\,dt+H(t_2-t_1)\qquad \text{[\(\because\,H\) is conserved]}\label{eq:a1}
+    \end{align}
+    Now,
+    \begin{align}
+        \Delta A&=\Delta \int_{t_1}^{t_2}L\,dt+H\,\Delta(t_2-t_1)\notag\\
+        &=\Delta \int_{t_1}^{t_2}L\,dt+H\,\Delta t\big|_{t_1}^{t_2}\label{eq:a2}
+    \end{align}
+    Now we need to solve the integral \(\Delta \int_{t_1}^{t_2}L\,dt\). Since, \(t_1\) and \(t_2\) limits are also subject to change in this variation, \(\Delta\) cannot be taken inside the integral.\\
+    Let
+    \[\int_{t_1}^{t_2}L\,dt=I\qquad\text{So,}\qquad \dot{I}=L\]
+    Now,
+    \begin{align}
+        \Delta I&=\delta I+\dot{I}\,\Delta t\notag\\
+        \Delta \int_{t_1}^{t_2}L\,dt&=\delta \int_{t_1}^{t_2}L\,dt+L\,\Delta t\big|_{t_1}^{t_2}\label{eq:a3}
+    \end{align}
+    From \eqref{eq:a3} and \eqref{eq:a2} we get,
+    \begin{equation}
+        \Delta A=\delta \int_{t_1}^{t_2}L\,dt+L\,\Delta t\big|_{t_1}^{t_2}+H\,\Delta t\big|_{t_1}^{t_2}\label{eq:a4}
+    \end{equation}
+    \(\delta \int_{t_1}^{t_2} L \,dt\) cannot be zero in consequence of Hamilton's principle. Hamilton's principle requires that \(\delta q_j=0\) at the end points of the path but in this variation \(\Delta q_j=0\) at the end points not \(\delta q_j\). Therefore, the integral will not vanish. Using the nature of \(\delta\) variation the integral can be expressed as,
+    \begin{align*}
+        \delta \int_{t_1}^{t_2}L\,dt&=\int_{t_1}^{t_2}\sum_j \left(\frac{\partial L}{\partial q_j}\delta q_j+\frac{\partial L}{\partial \dot{q_j}}\delta \dot{q_j}\right) \,dt\\
+        &=\int_{t_1}^{t_2}\sum_j \left[\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q_j}}\right)\delta q_j+\frac{\partial L}{\partial \dot{q_j}}\frac{d}{dt}\left(\delta {q_j}\right)\right] \,dt
+    \end{align*}
+    From Lagrange's equation of motion \(\dfrac{\partial L}{\partial q_j}=\dfrac{d}{dt}\left(\dfrac{\partial L}{\partial \dot{q_j}}\right)\)\\
+    Thus,
+    \[\delta \int_{t_1}^{t_2}L\,dt=\int_{t_1}^{t_2}\sum_j \left[\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q_j}} \delta q_j\right)\right] \,dt\]
+    Putting \(\delta q_j=\Delta q_j-\dot{q_j}\Delta t\) we get,
+    
+\end{proof}
+\end{document}

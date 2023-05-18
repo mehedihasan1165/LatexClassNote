@@ -1,0 +1,64 @@
+ \documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\newtheorem{definition}{Definition}[section] 
+\title{Differential Sheets}
+\author{Atif Mohammad}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage{centernot}
+\usepackage{gensymb}
+\usepackage{tikz}
+\newpage
+\newtheorem{theorem}{Theorem}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+\tableofcontents
+\maketitle
+\section{Homogeneous Differential Equation}
+Any differential equation of the form\\
+$\frac{dy}{dx}=\frac{\displaystyle f(x,y)}{g(x,y)}$\\
+in which $f(x,y)$ and $g(x,y)$ are homogeneous functions of x and y of the same degree is known as homogeneous differential equation of first order.
+\subsection{Example of Homogeneous Functions}
+\begin{itemize}
+\item $f_1(x,y)=ax+by$
+\item $f_2(x,y)=ax^2+bxy+cy^2$
+\item $f_3(x,y)=ax^3+bx^2y+cxy^2+dy^3$
+\item $f_4(x,y)=ax^4+bx^3y+c^2x^2y^2+dxy^3+cy^4$
+\end{itemize}
+are all homogeneous functions of x,y of degree 1,2,3,4 respectively.\\
+Where as
+\begin{itemize}
+\item $g_1(x,y)=ax+by+c$
+\item $g_2(x,y)=ax^2+bxy+cy^2+d$
+\item $g_3(x,y)=ax^3+bx^2y+cx^2y+dy^3+c$
+\end{itemize}
+are not homogeneous functions of x,y.
+\subsection{Equations reducible to Homogeneous equations}
+$\frac{dy}{dx}=\frac{\displaystyle ax+by+c}{\displaystyle a'x+b'y+c}$ where $\frac{\displaystyle a}{\displaystyle a'}\neq \frac{\displaystyle b}{\displaystyle b'}$\\
+can be solved by reducing it to homogeneous form using the transformations $x=X+h, y=Y+k$ where h and k are constant to be determined.\\
+When we put $x=X+h, y=Y+k$ then $dx=dX, dy=dY$, Hence, $\frac{dy}{dx}=\frac{dY}{dX}$\\
+The given equation reduced to \\
+$\frac{dY}{dX}=\frac{\displaystyle a(x+h)+b(y+k)+c}{\displaystyle a'(X+h)+b'(Y+k)+c'}$\\
+$i.e \frac{dY}{dX}=\frac{\displaystyle aX+bY+(ah+bk+c)}{\displaystyle a'X+b'Y+(a'h+b'k+c')}$\\
+We choose h and k such that\\
+$ah+bk+c=0$ and $a'h+b'k+c'=0$\\
+By solving this equation for h and k we get\\
+$h=\frac{\displaystyle bc'-b'c}{\displaystyle ab'-a'b}$ and $k=\frac{\displaystyle a'c-ac'}{\displaystyle ab'-a'b}$\\
+$\therefore$ when $\frac{\displaystyle a}{\displaystyle a'}\neq\frac{\displaystyle b}{\displaystyle b'}$ when $ab'-a'b\neq 0$ for these values of h and k, the given equation reduce to $\frac{dY}{dX}=\frac{\displaystyle aX+bY}{\displaystyle a'X+b'Y}$\\
+This is homogeneous and can be solved by putting $Y=VX$ and in the solution replace $X=x-h$ and $Y=y-k$, to get the solution of the given equation.\\
+\textbf{Example:}Solve the following equations\\ \\
+$\frac{dy}{dx}=\frac{\displaystyle x+2y-3}{\displaystyle 2x+y-3}$
+\underline{Solution:}
+Put $x=X+h$ and $y=y+k$\\
+$\frac{dY}{dX}=\frac{\displaystyle X+2Y+h+2k-3}{\displaystyle 2X+Y+2h+k-3}$\\
+put $h+2k-3=0$ and $2h+k-3=0$\\
+Solving these two equation simultaneously we get $h=1$ and $k=1$\\
+$\frac{dY}{dX}=\frac{\displaystyle X+2Y}{2X+Y}$\\
+put $Y+VX$ $\therefore v+\frac{dv}{dx}=\frac{X+2vx}{2X+VX}$\\
+$i.e V+X\frac{dV}{dX}=\frac{\displaystyle 1+2V}{2+V}$\\
+$x\frac{dV}{dX}=\frac{\displaystyle 1+2V}{\displaystyle 2+V}-V=\frac{\displaystyle 1-V^2}{\displaystyle 2+V}$
+
+\end{document}

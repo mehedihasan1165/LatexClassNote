@@ -1,0 +1,49 @@
+\documentclass[12pt,oneside,a4paper]{book}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx,float}
+\usepackage{enumitem}
+\usepackage[cm]{fullpage}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+\theoremstyle{remark}
+\newtheorem* {rem}{Remark}
+
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}[section]
+\newtheorem{defn}{Definition}
+\newtheorem*{ex}{Example}
+\newtheorem*{soln}{Solution}
+
+% \newcommand{\ptoq}{p \to q}
+\newcommand{\px}{P(x)}
+\newcommand{\s}{\space}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\begin{document}
+\title{Discrete Math}
+\author{Mehedi Hasan}
+\maketitle
+\newpage
+\section*{Preface}
+This is a compilation of lecture notes with some books and my own thoughts. This document is not a holy text. So, if there is a mistake, solve it by your own judgement.
+\pagenumbering{roman}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\part{Note}
+    \input{logic.tex}
+    \input{graph.tex}
+\end{document}

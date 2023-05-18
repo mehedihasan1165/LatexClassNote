@@ -1,0 +1,91 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\section{First Order Quasi-Linear Equations and Characteristics}
+Consider the equation
+\begin{equation}
+    a\frac{\partial U}{\partial x}+b\frac{\partial U}{\partial y}=c\label{eq:hypa1}
+\end{equation}
+where \(a\), \(b\) and \(c\) are, in general functions of \(x\), \(y\) and \(U\) but not \(\frac{\partial U}{\partial x}\) and \(\frac{\partial U}{\partial y}\). Such equations are said to be quasi-linear first order partial differential equation.
+
+If we consider \(p=\frac{\partial U}{\partial x}\) and \(q=\frac{\partial U}{ \partial y}\), then \eqref{eq:hypa1} can be written as
+\begin{equation}
+    ap+bq=c\label{eq:hypa2}
+\end{equation}
+If we know the solution values of \(U\) of equation \eqref{eq:hypa2} at every point on a curve \(c\) in the \(xy-\)plane, where \(c\) does not coincide with the curve \(\Gamma\) on which initial values of \(U\) are specified. Then we can determine the values of \(p\) and \(q\) on \(c\) from the values of \(U\) on \(c\) so that they satisfy equation \eqref{eq:hypa2}.
+
+Then in directions tangential to \(c\) from points on \(c\), we shall automatically satisfy the differential relationship
+\begin{align}
+    &\D U=\frac{\partial U}{\partial x}\dx+\frac{\partial U}{\partial y}\dy\notag\\
+    \Rightarrow\;\;&\D U=p\dx+q\dy\label{eq:hypa3}
+\end{align}
+where \(\ddx{y}\)  is the slope of the tangent to \(c\) at the point \(P(x,y)\) on \(c\).
+
+Eliminating \(p\) from \eqref{eq:hypa3} by \eqref{eq:hypa2}, we obtain
+\begin{align}
+    &\D U=\frac{c-bq}{a}\dx+q\dy\notag\\
+    \Rightarrow\;\;&ad U=c\dx-bq\dx+q\dy\notag\\
+    \Rightarrow\;\;&c\dx-ad U+q(a\dy-b\dx)=0\label{eq:hypa4}
+\end{align}
+This equation is explicitly independent of  \(p\) because the coefficient \(a\), \(b\) and \(c\) are functions of \(x \), \(y\) and \(U\) only. It can be made independent of \(q\) by choosing the curve \(c\) so that its solope \(\ddx{y} \) satisfy the equation
+\begin{equation}
+    a\dy-b\dx=0\label{eq:hypa5}
+\end{equation}
+Then equation \eqref{eq:hypa4} becomes
+\begin{equation}
+    c\dx-adU=0\label{eq:hypa6}
+\end{equation}
+Equation \eqref{eq:hypa5} is a differential equation for the curve \(c\) and equation \eqref{eq:hypa6} is a differential equation for the solution values of \(U\) along \(c\). The curve \(c\) is called a characteristic curve or simply characteristic.
+
+From \eqref{eq:hypa5} and \eqref{eq:hypa6}, we can write
+\begin{equation}
+    \frac{\dx}{ a}=\frac{\dy}{b}=\frac{\D u}{c}\label{eq:hypa7}
+\end{equation}
+The equation \eqref{eq:hypa7} shows that \(U\) may be found from either the equation \(\D U=(c/a)\dx\) or the equation \(\D u=(c/b)\dy\).
+\begin{ex}
+    Consider the equation
+    \[y\frac{\partial U}{\partial x}+\frac{\partial U}{\partial y}=2\]
+    where \(U\) is known along the initial segment \(\Gamma\) defined by \(y=0,\;0\leq x\leq 1\). Find the characteristic and the solution along the characteristic.
+\end{ex}
+\begin{soln}
+    We have
+    \begin{equation}
+        y\frac{\partial U}{\partial x}+\frac{\partial U}{\partial y}=2
+        \label{eq:hypa8}
+    \end{equation}
+    Compairing \eqref{eq:hypa8} with \eqref{eq:hypa1}, we have \(a=y\), \(b=1\), \(c=2\). Then,
+    \begin{align}
+        &\frac{\dx}{ a}=\frac{\dy}{b}=\frac{\D u}{c}\notag\\
+        \Rightarrow\;\;&\frac{\dx}{ y}=\frac{\dy}{1}=\frac{\D u}{2}\label{eq:hypa9}
+    \end{align}
+    The differential equation of the family of characteristic curve is 
+    \begin{align}
+        &\frac{\dx}{y}=\frac{\dy}{1}\notag\\
+        &x=\frac{y^2}{2}+A\label{eq:hypa10}
+    \end{align}
+    Where the parameter \(A\) is a constant for each characteristic. FOr the characteristic through \(R(x_R,0)\), from \eqref{eq:hypa10}, \(A=x_R\). So the equation of this particular characteristic is
+    \begin{align}
+        &x=\frac{y^2}{2}+x_R\\
+        &y^2=2(x-x_R)\label{eq:hypa11}
+    \end{align}
+    The solution along the characteristic curve is given by 
+    \begin{align}
+        &\frac{\dy}{1}=\frac{\D u}{2}\notag\\
+        \Rightarrow\;\;&U=2y+B\label{eq:hypa12}
+    \end{align}
+    where \(B\) is constant along a particular characteristic. If \(U=U_R\) at \(R(x_R,0)\), then \(B=U_R\) and hence the solution along the characteristic \(y^2=2(x-x_R)\) is \(U=2y+U_R\).
+\end{soln}
+\begin{note}
+    Since the initial values for \(U\) are known only on the segment of \(\Gamma\), where \(0\leq x_R\leq 1\), it follows that the solution is defined only in the region bounded by and including the terminal characteristics \(y^2=2x\) and \(y^2=2(x-1)\). In this region the solution is clearly unique and outside this region the solution is undefined.
+\end{note}
+H.W.
+\begin{enumerate}
+    \item G.D Smith page 220
+    \item G.D Smith page 221
+\end{enumerate}
+% \begin{note}
+%     \[au_x+bu_y=c;\quad x,y\to \text{ independent variable},\quad u\to \text{ dependent variable},\quad u=u(x,y)\]
+% \end{note}
+\end{document}

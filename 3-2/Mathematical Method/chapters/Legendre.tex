@@ -1,0 +1,327 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Legendre Function}
+\section{Legendre Function}
+The differential equation $ (1-x)^2\ddxn{y}{2}-2x\ddx{y}+n(n+1)y=0 $ is known as Legendre's differential equation; where $ n $ is a constant (real number). But in most applications only integral values of $ n $ are required.
+
+Any solution of the Legendre's equation is called a Legendre function.
+
+\section{Rodrigues' Formula of Legendre Polynomial}
+We have obtained the Legendre polynomials as solutions of the Legendre's equation. There is another way of obtaining $ P_n(x) $, which may be deduced directly from Legendre's differential equation without solving it. According  to this formula $ P_n(x) $ is given by,
+\[
+    P_n(x)=\frac{1}{2^n\,n!}\ddxn{}{n}\left(x^2-1\right)^n
+\]
+This is Rodrigues' formula.
+\begin{proof}
+    Let,\\
+    \indent $ y=\left(x^2-1\right)^n $\\
+    \indent $ \therefore y_1=2nx\left(x^2-1\right)^{n-1} $
+    \begin{align*}
+        \therefore& y_1=2nx\left(x^2-1\right)^{n-1}\\
+        \Rightarrow & y_1 \left(x^2-1\right)=2nxy\\
+        \Rightarrow & y_2 \left(x^2-1\right)+2xy_1=2nxy_1+2ny\\
+        \Rightarrow & y_2 \left(x^2-1\right)+2(n-1)xy_1-2nx=0\\
+        \intertext{Now differentiating $ n $ times with respect to $ x $, we get,}
+        \Rightarrow & y_{n+2} \left(x^2-1\right)+ny_{n+2-1}\cdot 2x+ {}^{n}C_2 y_{n+2-2}\cdot 2-2(n-1)xy_{n+1}-2n(n-1)y_n-2ny_n=0
+    \end{align*}
+    \begin{equation}
+        \text{i.e., }\qquad y_{n+2} \left(x^2-1\right)+2xy_{n+1}-n(n+1)y_n=0
+        \label{eq:rodriproof}
+    \end{equation}
+    Put $ \begin{aligned}[t]
+        y_n&=Z\\
+        \therefore y_{n+1}&=\ddx{Z},\qquad y_{n+2}=\ddxn{Z}{2}
+    \end{aligned} $\\
+    Substituting these values in \eqref{eq:rodriproof} we get,
+    \begin{align*}
+        \left(x^2-1\right)\ddxn{Z}{2}+2x\ddx{Z}-n(n+1)y_n &=0\\
+        \Rightarrow \left(x^2-1\right)\ddxn{Z}{2}-2x\ddx{Z}+n(n+1)y_n &=0
+    \end{align*}
+    This is a Legendre's differential equation of order $ n $.\\
+    But since $ Z=y_n=\ddxn{}{n}\left\{\left(x^2-1\right)^n\right\} $, $ Z $ is a polynomial of degree $ n $ and since Legendre's equation has one and only one distinct series solution of the form $ P_n(x) $, it follows that $ P_n(x) $ is a multiple of $ Z $.\\
+    Hence,
+    \[ 
+        P_n(x)=c\cdot Z=c\ddxn{}{n}\left\{\left(x^2-1\right)^n\right\} \quad \text{ [$ c $ is a constant]}
+    \]
+    \begin{align*}
+        \text{or,} \sum_{r=0}^{N} (-1)^r \frac{1}{2^n\,r!}\frac{(2n-2r)!}{(n-r)!(n-2r)!}x^{n-2r}&=c\ddxn{}{n}\left[x^{2n}-nx^{2(n-1)}+\frac{n(n-1)}{2!}x^{2(n-2)}+\dots \right]\\
+        &= c\left[\frac{(2n)!}{n!}x^n-\frac{n(2n-2)!}{(n-2)!}x^{n-2}+\dots\right]
+    \end{align*}
+    Equating the coefficient of $ x^n $ on both sides,
+    \[
+        \frac{2n!}{2^n\,n!\,n!}=c\frac{(2n)!}{n!}\qquad\text{[Putting $ r=0 $]}
+    \]
+    \[
+        \text{ie., } \qquad c=\frac{1}{2^n\,n!}
+    \]
+    \[
+        \therefore P_n(x)=c\cdot Z=\frac{2}{2^n\,n!}\ddxn{}{n}\left(x^2-1\right)^n
+    \]
+    \blfootnote{Another form to find the value of $ c $ - Rajput. P-654}
+    \blfootnote{Integral form - Rajput. P-654}
+\end{proof}
+% \newpage
+\section{Generating Function for $ P_n(x) $}
+Legendre polynomial $ P_n(x) $ is the coefficient if $ h^n $ in $ \left(1-2xh+h^2\right)^{-\frac{1}{2}} $ that is
+\[
+    \left(1-2xh+h^2\right)^{-\frac{1}{2}} =\sum_{n=0}^\infty P_n(x)h^n
+\]
+\begin{proof}
+    The function $ \left(1-2xh+h^2\right)^{-\frac{1}{2}} $ can be replaced by using binomial theorem as 
+    \begin{align}
+        \left(1-2xh+h^2\right)^{-\frac{1}{2}} &=\left\{1-h(2x-h)\right\}^{-\frac{1}{2}}\notag\\
+        &=1+\frac{1}{2}h(2x-h)+\frac{\left(-\frac{1}{2}\right)(\frac{-3}{2})}{2!}h^2(2x-h)^2+\frac{\left(-\frac{1}{2}\right)\left(\frac{-3}{2}\right)\left(\frac{-5}{2}\right)}{3!}h^3(2x-h)^3+\dots\notag\\
+        &=1+\frac{1}{2}h(2x-h)+\frac{3}{4\cdot2}h^2\left(4x^2-4xh+h^2\right)+\frac{15}{8\cdot 6}h^3\left(8x^3-12x^2h+6xh^2-h^3\right)+\dots\notag\\
+        &=1+xh-\frac{h^2}{2}+\frac{3}{2}x^2h^2-\frac{3}{2}xh^3+\frac{3}{8}h^4+\frac{5}{2}x^3h^3+\dots\notag\\
+        &=1+xh+\left(\frac{3}{2}x^2-\frac{1}{2} \right)h^2+\left(\frac{5}{2}x^3-\frac{3}{2}x\right)h^3+\dots \label{eq:legendregen1}
+    \end{align}
+    Again, we have,
+    \[
+        P_n(x)=\frac{1}{2^n\,n!}\ddxn{}{n}\left(x^2-1\right)^n
+    \]
+    Putting $ n=0,1,2,3,\dots $
+    \begin{align*}
+        P_0(x)&=1\\
+        &\\
+        P_1(x)&=\frac{1}{2}2x=x\\
+        &\\
+        P_2(x)&=\frac{1}{4\cdot 2}\ddxn{}{2}\left(x^2-1\right)^2\\
+        &=\frac{1}{8}\ddx{\left\{2\left(x^2-1\right)2x\right\}}\\
+        &=\frac{1}{2}\ddx{\left(x^3-x\right)}\\
+        &=\frac{1}{2}\left(3x^2-1\right)\\
+    \end{align*}\begin{align*}
+        P_3(x)&=\frac{1}{8\cdot 6}\ddxn{}{3}\left(x^2-1\right)^3\\
+        &=\frac{1}{8\cdot 6}\ddxn{}{3}[x^6-3x^4+3x^2-1]\\
+        &=\frac{1}{8\cdot 6}\ddxn{}{2}\left(6x^5-12x^3+6x\right)\\
+        &=\frac{1}{8\cdot 6}\left(6\cdot5\cdot4x^3-12\cdot3\cdot2x\right)\\
+        &=\left(\frac{5}{2}x^3-\frac{3}{2}x\right)
+    \end{align*}
+    So from \eqref{eq:legendregen1} we get,
+    \begin{align*}
+        \left(1-2xh+h^2\right)^{-\frac{1}{2}}&=P_0(x)+P_1(x)h+P_2(x)h^2+P_3(x)h^3+\dots\\
+        &=\sum_{n=0}^{\infty}P_n(x)h^n
+    \end{align*}
+    Thus by expanding $ \left(1-2xh+h^2\right)^{-\frac{1}{2}} $, we can obtain the Legendre's polynomials of different order as the coefficient of corresponding  power of $ h $.\\
+    This is why $ \left(1-2xh+h^2\right)^{-\frac{1}{2}} $ is known as the generating function if $ P_n(x) $.
+\end{proof}
+
+\section{Recurrence Relation for $ P_n(x) $}
+
+\subsection{First Relation $ (n+1)P_{n+1}(x)-(2n+1)xP_n(x)+nP_{n-1}(x)=0 $}
+We know,
+\[
+    \left(1-2xh+h^2\right)^{-\frac{1}{2}}=\sum_{n=0}^{\infty}P_n(x)h^n
+\]
+Now differentiating with respect to $ h $ we have 
+\begin{align*}
+    &(x-h)\left(1-2xh+h^2\right)^{-\frac{3}{2}}=h\sum_{n=0}^{\infty}P_n(x)h^{n-1}\\
+    \Rightarrow&(x-h)\left(1-2xh+h^2\right)^{-\frac{1}{2}}=h\left(1-2xh+h^2\right)\sum_{n=0}^{\infty}P_n(x)h^{n-1}\\
+    \Rightarrow& (x-h)\sum P_n(x)h^n=\sum\left[nP_n(x)h^{n-1}-2hxP_n(x)h^n+nP_nh^{n+1}\right]\\
+    \Rightarrow &x\sum P_n(x)h^n-\sum P_n(x) h^{n+1}=\sum\left[nP_n(x)h^{n-1}\dots\right]
+\end{align*}
+Now equating the coefficient of $ h^n $ from both sides,
+\begin{align*}
+    &xP_n(x)-P_{n-1}(x)=(n+1)P_{n+1}(X)-2xnP_n(x)+(n-1)P_{n-1}(x)\\
+    \Rightarrow& (n+1)P_{n+1}(x)-(2n+1)xP_n(x)+nP_{n-1}(x)=0\\
+    \intertext{Replacing $ n $ by $ n-1 $, we get}
+    & nP_{n}(x)-(2n-1)xP_{n-1}(x)+(n-1)P_{n-2}(x)=0\\
+\end{align*}
+% \newpage
+The other relations are
+\begin{itemize}
+    \item $ P_n^{'}(x)-2xP_{n-1}^{'}(x)+P_{n-2}^{'}(x)=P_{n-1}(x) $
+    \item $ xP_n^{'}(x)-P_{n-1}^{'}(x)=nP_{n}(x) $
+    \item $ P_n^{'}(x)-xP_{n-1}^{'}(x)=nP_{n-1}(x) $
+    \item $ P_{n+1}^{'}(x)-P_{n-1}^{'}(x)=(2n+1)P_{n}(x) $
+    \item $ \left(x^2-1\right)P_{n}^{'}(x)=n\left\{xP_{n}(x)-P_{n-1}(x)\right\} $
+    \item $ \left(x^2-1\right)P_{n}^{'}(x)=(n+1)\left\{P_{n+1}(x)-xP_{n}(x)\right\} $
+\end{itemize}
+\section{Orthogonal Properties of Legendre Polynomial}
+\begin{prob}
+    Prove that 
+    \[
+        \int_{-1}^1 P_m(x)P_n(x)\dx=
+        \begin{cases}
+            \,\,\,\,0,&\text{ if }m\neq n\\
+            \frac{2}{2n+1},&\text{ if }m= n\\
+        \end{cases}
+    \]
+\end{prob}
+\begin{proof}
+    Since $ P_n(x) $ is a solution of the Legendre's differential equation, we have
+    \begin{align}
+        &(1-x)^2\ddxn{}{2}(P_n(x))-2x\ddx{}(P_n(x))+n(n+1)P_n(x)=0\notag\\
+        \Rightarrow & \ddx{}\left\{ \left(1-x^2\right)\ddx{}(P_n(x))\right\}+n(n+1)P_n(x)=0\notag\\
+        \Rightarrow & \int_{-1}^1 \ddx{}\left\{ \left(1-x^2\right)\ddx{}(P_n(x))\right\}P_m(x)\dx+n(n+1)\int_{-1}^1 P_m(x) P_n(x)\dx=0\notag\\
+        \Rightarrow & \left[ P_m(x)\left(1-x^2\right)\ddx{}(P_n(x)) \right]_{-1}^1-\int_{-1}^1 P_m(x)\left(1-x^2\right)\ddx{}\left( P_n(x) \right)\dx+ n(n+1)\int_{-1}^1 P_m(x) P_n(x)\dx=0\notag\\
+        \Rightarrow & -\int_{-1}^1 \left(1-x^2\right) P_m^{'}(x) P_n^{'}(x)\dx+n(n+1)\int_{-1}^1 P_m(x) P_n(x)\dx=0\label{eq:legenortho1}\\
+        \intertext{Interchanging $ m $ and $ n $ in \eqref{eq:legenortho1}, we get}
+        \Rightarrow & -\int_{-1}^1 \left(1-x^2\right) P_n^{'}(x) P_m^{'}(x)\dx+m(m+1)\int_{-1}^1 P_n(x) P_m(x)\dx=0\label{eq:legenortho2}\\
+        \intertext{Subtracting \eqref{eq:legenortho2} from \eqref{eq:legenortho1},}
+        \Rightarrow & (n-m)(m+n+1)\int_{-1}^1 P_m(x)P_n(x)\dx=0\notag\\
+        \Rightarrow & \left.(n-m)\int_{-1}^1 P_m(x)P_n(x)\dx=0\quad\right\vert m+n+1\neq 0\notag\\
+        \Rightarrow & \int_{-1}^1 P_m(x)P_n(x)\dx=0,\text{ if } m\neq n\notag
+    \end{align}
+    \newpage
+    Again, we have
+    \[
+        P_n(x)=\frac{1}{2^n\, n!}\ddxn{}{n}\left(x^2-1\right)^n
+    \]
+    \[
+        P_m(x)=\frac{1}{2^m\, m!}\ddxn{}{m}\left(x^2-1\right)^m
+    \]
+    \begin{align*}
+        \therefore&\int_{-1}^1 P_m(x)P_n(x)\dx\\
+        &=\frac{1}{2^{m+n}\,m!\,n!}\int_{-1}^1\ddxn{}{m}\left(x^2-1\right)^m\ddxn{}{n}\left(x^2-1\right)^n\dx\\
+        &=\frac{1}{2^{m+n}\,m!\,n!}\left\{\left[\ddxn{}{m}\left(x^2-1\right)^m\ddxn{}{n-1}\left(x^2-1\right)^n\right]_{-1}^1-\int_{-1}^1\ddxn{}{m+1}(x^2-1)^m\ddxn{}{n-1}\left(x^2-1\right)^n\dx\right\}\\
+        &=-\frac{1}{2^{m+n}\,m!\,n!}\int_{-1}^1 \ddxn{}{m+1}\left(x^2-1\right)^m\ddxn{}{n-1}\left(x^2-1\right)^n\dx
+    \end{align*}
+    Continuing this process $ m $ times, we get
+    \[
+        \int_{-1}^1 P_m(x)P_n(x)\dx=\frac{(-1)^m}{2^{m+n}\,m!\,n!}\int_{-1}^1 \ddxn{}{m+m}\left(x^2-1\right)^m\ddxn{}{n-m}\left(x^2-1\right)^n\dx
+    \]
+    If $ m=n $,
+    \blfootnote{$ \ddxn{}{2n}\left(x^2-1\right)^n=(2n)! $}
+    \blfootnote{$ (2n+1)!=(2n+1)(2n)(2n-1)(2n-2)\dots $}
+    \blfootnote{$ \begin{aligned}
+        &\left\{2n(2n-2)(2n-4)\dots \right\}^2\\
+        =&\left[2\left\{n(n-1)(n-2)\dots \right\}\right]^2\\
+        =&\left\{2^n n! \right\}^2
+    \end{aligned}$}
+    \blfootnote{If $ I_n=\int_0^{{}^{\pi}/_2}\cos^n \dx $, then $ I_n=\frac{n-1}{n}I_{n-2} $}
+    \begin{align*}
+        \int_{-1}^1 \left\{P_n(x)\right\}^2\dx&=\frac{(-1)^n}{2^{2n}\,(n!)^2}\int_{-1}^1\left\{ \ddxn{}{2n}\left(x^2-1\right)^n\right\}(x^2-1)^n\dx \\
+        &=(-1)^n\frac{1}{2^{2n}\,(n!)^2}\int_{-1}^1(2n)!\left(x^2-1\right)^n\left(x^2-1\right)^n\dx\\
+        &=\frac{2(-1)^{2n}(2n)!}{2^{2n}\,(n!)^2}\int_{0}^1\left(1-x^2\right)^n\dx\\
+        &=\frac{2(2n)!}{2^{2n}\,(n!)^2}\int_0^{\frac{\pi}{2}}\cos^{2n+1}\theta\D\theta\\
+        &=\frac{2(2n)!}{2^{2n}\,(n!)^2} \frac{2n(2n-2)(2n-4)\dots6\cdot4\cdot2}{(2n+1)(2n-1)(2n-3)\dots 5\cdot3\cdot1}\\
+        &=\frac{2(2n)!}{2^{2n}\,(n!)^2}\frac{\left\{ 2^n\,n!\right\}^2}{(2n+1)!}\\
+        &=\frac{2}{2n+1}
+    \end{align*}
+\end{proof}
+\begin{prob}
+    Show that $ P_n(-x)=(-1)^nP_n(x) $
+\end{prob}
+\begin{soln}
+    we have,
+    \begin{equation}
+        \left(1-2xh+h^2\right)^{-\frac{1}{2}}=\sum_{n=0}^{\infty}P_n(x)h^n\label{eq:prob1.1}
+    \end{equation}
+    Now replacing $ x $ by $ -x $ and $ h $ by $ -h $ in \eqref{eq:prob1.1} we get,
+    \begin{align}
+        \left(1+2xh+h^2\right)^{-\frac{1}{2}}&=\sum_{n=0}^{\infty}P_n(-x)h^n \label{eq:prob1.2}\\
+        \left(1+2xh+h^2\right)^{-\frac{1}{2}}&=(-1)^n\sum_{n=0}^{\infty}P_n(x)h^n \label{eq:prob1.3}
+    \end{align}
+    From \eqref{eq:prob1.2} and \eqref{eq:prob1.3} we get
+    \[
+        \sum P_n(-x)h^n=(-1)^n\sum P_n(x)h^n
+    \]
+    Equating the coefficients of $ h^n $ we get,
+    \[
+        P_N=n(x)=(-1)^nP_n(x)
+    \]
+\end{soln}
+\begin{prob}
+    Prove that 
+    \[
+        \int_{-1}^1 xP_n(x)P_{n-1}(x)\dx=\frac{2n}{4n^2-1}
+    \]
+\end{prob}
+\begin{proof}
+    We have the recurrence relation
+    \begin{align*}
+        &nP_n(x)=(2n-1)xP_{n-1}(x)-(n-1)P_{n-2}(x)\\
+        \Rightarrow & (2n-1)x P_{n-1}(x)=nP_{n}(x)+(n-1)P_{n-2}(x)
+    \end{align*}
+    Multiplying both sides of the above equation by $ P_n(x) $ and then integrating from $ -1 $ to $ 1 $ we get,
+    \begin{equation}
+        (2n-1)\int_{-1}^1 xP_n(x) P_{n-1}(x)\dx=n\int_{-1}^1 \left[P_{n}(x)\right]^2\dx+(n-1)\int_{-1}^1 P_n(x) P_{n-2}(x)\dx\label{eq:prob2.1}
+    \end{equation}
+    From the orthogonal property, we have,
+    \[
+        \int_{-1}^1 P_m(x)P_n(x)\dx=
+        \begin{cases}
+            \,\,\,\,0,&\text{ if }m\neq n\\
+            \frac{2}{2n+1},&\text{ if }m= n\\
+        \end{cases}
+    \]
+    \begin{align*}
+        \therefore & \int_{-1}^1 P_n(x)P_{n-2}(x)\dx=0 \quad\text{ since} n\neq n-2\\
+        \text{ And } & \int_{-1}^1 \left[P_n(x)\right]^2\dx=\frac{2}{2n+1}\\
+    \end{align*}
+    So from \eqref{eq:prob2.1},
+    \begin{align*}
+        &(2n-1)\int_{-1}^1 xP_n(x)P_{n-1}(x)\dx=\frac{2n}{2n+1}\\
+        \therefore & \int_{-1}^1 xP_n(x)P_{n-1}(x)\dx=\frac{2n}{4n^2-1}\\
+    \end{align*}
+\end{proof}
+\begin{prob}
+    Prove that
+    \[
+        P_n(1)=1
+    \]
+\end{prob}
+\begin{proof}
+    If $ x=1 $ then,
+    \begin{align*}
+        & \left(1-2xh+h^2\right)^{-\frac{1}{2}}=\sum_{n=0}^{\infty}P_n(x)h^n\\
+        \Rightarrow & (1-h)^{-1}=\sum_{n=0}^\infty h_nP_n(1)\\
+        \Rightarrow & (1-h)^{-1}=1+hP_1(x)+h^2P_2(1)+\dots+h^nP_n(1)+\dots\\
+        \Rightarrow & 1+h+h^2+h^3+\dots+h^n+\dots=1+hP_1(x)+h^2P_2(1)+\dots+h^nP_n(1)+\dots
+    \end{align*}
+    Equating the coefficients of $ h^n $ from both sides,
+    \[
+        P_n(1)=1
+    \]
+\end{proof}
+\newpage
+\begin{prob}
+    Show that 
+    \[
+        \int_{-1}^1 P_0(x)P_1(x)\dx=0
+    \]
+\end{prob}
+\begin{soln}
+    \[
+        P_n(x)=\frac{1}{2^n\,n!}\ddxn{}{n}\left(x^2-1\right)^n
+    \]
+    \[
+        \therefore P_0(x)=1,\quad P_1(x)=\frac{1}{2\cdot1}\ddx{}\left(x^2-1\right)=x
+    \]
+    \[
+        \int_{-1}^1 P_0(x)P_1(x)\dx=\int_{-1}^1x\dx=\left[ \frac{x^2}{2} \right]_{-1}^1=0
+    \]
+\end{soln}
+\begin{prob}
+    Compute
+    \[
+        \int_{-1}^1\left[ P_2(x) \right]^{\frac{1}{2}}\dx
+    \]
+\end{prob}
+\begin{soln}
+    \[
+        P_2(x)=\frac{1}{2^2\,2!}\ddxn{}{2}\left(x^2-1\right)=\frac{1}{2}\left(3x^2-1\right)
+    \]
+    \begin{align*}
+        \therefore \int_{-1}^1\left\{ \frac{1}{2}\left(3x^2-1\right) \right\}^{\frac{1}{2}}\dx&=\frac{1}{\sqrt{2}}\int_{-1}^1 \sqrt{\left\{ (\sqrt{3}x)^2-1\right\}}\dx\\
+        &=\frac{1}{\sqrt{2}\sqrt{3}}\left[ \frac{\sqrt{3}x\sqrt{3x^2-1}}{2}+\frac{1}{2}\log \left( 3x^2+\sqrt{3x^2-1} \right) \right]_{-1}^1\\
+        &=\frac{1}{\sqrt{6}}\frac{\sqrt{3}\sqrt{3-1}}{2}+\frac{1}{2}\log \left( \sqrt{3}+\sqrt{3-1} \right)+\frac{\sqrt{3}\sqrt{3-1}}{2}-\frac{1}{2}\log\left( -\sqrt{3}+\sqrt{3-1} \right)\\
+        &=\frac{1}{\sqrt{6}}\left\{ \frac{\sqrt{6}}{2}+\frac{1}{2}\log \dots\right\} 
+    \end{align*}
+\end{soln}
+
+\begin{rem}
+    \begin{align*}
+        &\left( 1-2xh+h^2 \right)^{-\frac{1}{2}}=\sum h^nP_n(x)\\
+        \Rightarrow & \left\{ 1-h\left( 2x-h \right)\right\}^{-\frac{1}{2}}=\sum h^nP_n(x)\\
+        \Rightarrow &1+hx+h^2\frac{3x^2-1}{2}+h^3\frac{5x^3-3x}{2}+\dots=P_0(x)+hP_1(x)+h^2P_2(x)+\dots
+    \end{align*}
+    Equating,
+    \[
+        P_0(x)=1,\quad P_1(x)=x,\quad P_2(x)=\frac{3x^2-1}{2}\,\text{ and so on}
+    \]
+\end{rem}
+\end{document}

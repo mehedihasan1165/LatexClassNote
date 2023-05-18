@@ -1,0 +1,160 @@
+%TEO --shell-escape
+\begin{tikzpicture}[declare function={
+    f(\x,\y)=3*\x-\y;
+    g1(\x)=\x*\x;
+    g2(\x)=-\x*\x;
+    g3(\x)=2*\x*\x;
+    g4(\x)=-2*\x*\x;
+    g5(\x)=0;}]
+        
+    \def\xmax{1.5} \def\xmin{-1.5}
+    \def\ymax{1.5} \def\ymin{-1.5}
+    \def\nx{15}  \def\ny{15}
+    \begin{axis}[axis lines=middle,anchor=origin,xmax=2,xmin=-2,ymax=2,ymin=-2,ticks=none,ylabel={$y$},ylabel style={above},xlabel={$x$},xlabel style={right}]
+        \coordinate (O) at (axis cs:0,0);
+        \coordinate (X) at (axis cs:1,0);
+        \coordinate (Y) at (axis cs:0,1);
+        \node at (1.6,1.8) {$c=1$};
+        \node at (.6,1.8) {$c=2$};
+        \node at (.5,-1.8) {$c=-2$};
+        \node at (-1.6,-1.8) {$c=-1$};
+        
+        \draw[black,smooth] plot (\x,{g1(\x)});
+        \draw[black,smooth] plot (\x,{g2(\x)});
+        \draw[black,smooth] plot(\x,{g3(\x)});
+        \draw[black,smooth] plot (\x,{g4(\x)});
+        
+        \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [0:2];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot exp(-1/x);
+    };
+    \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [0:2];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot 2*exp(-1/x);
+    };
+    \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [0:2];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot 3*exp(-1/x);
+    };
+        \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [0:2];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot -exp(-1/x);
+    };
+    \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [0:2];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot -2*exp(-1/x);
+    };
+    \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [0:2];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot -3*exp(-1/x);
+    };
+    \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [-2:0];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot .25*exp(-1/x);
+    };
+    \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [-2:0];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot -.25*exp(-1/x);
+    };
+    \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [-2:0];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot -.5*exp(-1/x);;
+    };
+    \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [-2:0];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot .5*exp(-1/x);;
+    };
+    \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [-2:0];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot -.1*exp(-1/x);;
+    };
+    \draw[blue,thick] plot[raw gnuplot,smooth] function {
+        set xrange [-2:0];
+        set yrange [-4:4];
+        set view 0,0;
+        set isosample 500,500;
+        set cont base;
+        set cntrparam levels incre 0,0.1,0;
+        unset surface;
+        plot .1*exp(-1/x);;
+    };
+    \end{axis}
+    
+    \begin{scope}[x={($(X)-(O)$)}, y={($(Y)-(O)$)}, shift={(O)},thick]
+        \foreach \i in {0,...,\nx}{
+            \draw[-] ({atan(1)}:-0.075) ++ ({-1.2+\i*(2.4/15)},{g1(-1.2+\i*(2.4/15))}) -- ++ ({atan(1)}:0.15);
+            \draw[-] ({atan(-1)}:-0.075) ++ ({-1.2+\i*(2.4/15)},{g2(-1.2+\i*(2.4/15))}) -- ++ ({atan(-1)}:0.15);
+            \draw[-] ({atan(2)}:-0.075) ++ ({-1+\i*(2/15)},{g3(-1+\i*(2/15))}) -- ++ ({atan(2)}:0.15);
+            \draw[-] ({atan(-2)}:-0.075) ++ ({-1+\i*(2/15)},{g4(-1+\i*(2/15))}) -- ++ ({atan(-2)}:0.15);
+            \draw[-] ({90}:-0.075) ++ (0,{(-2+\i*(3.5/15))}) -- ++ ({90}:0.15);
+            \draw[-] ({0}:-0.075) ++ ({-2+\i*(3.5/15)},{g5(-2+\i*(3.5/15))}) -- ++ ({0}:0.15);
+        }
+    \end{scope}
+    
+    \end{tikzpicture}

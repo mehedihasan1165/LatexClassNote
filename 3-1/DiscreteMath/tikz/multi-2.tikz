@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+    \node[circle,draw] (a) {A};
+    \node[circle,draw] (b)[above right=of a] {B};
+    \node[circle,draw] (c)[below right=of a] {C};
+    \node[circle,draw] (d)[below right=of b] {D};
+    \node[circle,draw] (f)[right=of d] {F};
+    \node[circle,draw] (e)[above right=of f] {E};
+    \node[circle,draw] (h)[below right=of f] {H};
+    \path[-](a) edge node {}(b)
+                edge node {}(c)
+            (b) edge node {}(d)
+            (c) edge node {}(d)
+            (d) edge node{} (f)
+            (f) edge node{}(h)
+                edge node{}(e)
+            (e) edge node{}(h);
+\end{tikzpicture}

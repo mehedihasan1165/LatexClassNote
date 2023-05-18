@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+\begin{axis}[axis lines=middle,
+	xmin=-2.5,
+	xmax=2.5,
+	ymin=-2.5,
+	ymax=2.5,
+	ylabel style={above},
+    ylabel=$y$,
+    xlabel style={right},
+	xlabel=$x$,
+	xtick={\empty},
+	ytick={\empty}]
+\draw [domain=-0.99:0.99,thick, densely dashed] plot ({1*(1+(\x)^2)/(1-(\x)^2)},{1*2*(\x)/(1-(\x)^2)});
+\draw [domain=-0.99:0.99,thick, densely dashed] plot ({1*(-1-(\x)^2)/(1-(\x)^2)},{1*(-2)*(\x)/(1-(\x)^2)});
+\addplot[mark=*] coordinates{(-1,0) };
+\addplot[mark=*] coordinates{(1,0)};
+
+\node at (axis cs:-.6,-.3){$(-1,0)$};
+\node at (axis cs:.6,-.3){$(1,0)$};
+\node at (axis cs:.9,1.55){$x^2-y^2=1$};
+\addplot[thick,-latex] coordinates{(1.35,0.9) (.9,1.3)};
+\node at (axis cs:-.9,1.55){$x^2-y^2=1$};
+\addplot[thick,-latex] coordinates{(-1.35,0.9) (-.9,1.3)};
+\node at (axis cs:1.5,0.25){$S$};
+\end{axis}
+\node at (0,4){$x^2-y^2>1$};
+\node at (7,4){$x^2-y^2>1$};
+\end{tikzpicture}

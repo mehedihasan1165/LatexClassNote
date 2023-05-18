@@ -1,0 +1,63 @@
+\documentclass[class=book,crop=false]{standalone}
+\usepackage{../style}
+\begin{document}
+\chapter{Conditional Statement / Decision Making}
+    \section{\code{if} and \code{select}}
+    Often a computer is called upon to perform one set of actions if some condition is met and (optionally) some other set if it is not. This branching or conditional action can be achieved by the use of \code{if} or \code{case} construct.
+    \subsection{The \code{if} construct}
+    There are several forms of \code{if} construct
+    \begin{enumerate}[label=(\roman*)]
+        \item Single statement
+        \begin{lstlisting}[numbers=none,escapechar=\%]
+            if (%logical expression%) ...
+        \end{lstlisting}
+        \item Single block of statements
+        \begin{lstlisting}[numbers=none,escapechar=\%]
+            if (%logical expression%) then
+                %things to be done if true%
+            end if
+        \end{lstlisting}
+        \item Alternative actions
+        \begin{lstlisting}[numbers=none,escapechar=\%]
+            if (%logical expression%) then
+                %things to be done if true%
+            else
+                %things to be done if false%
+            end if
+        \end{lstlisting}
+        \item Several alternatives (there may be several \code{else if}s and there may or may not be an \code{else})
+        \begin{lstlisting}[escapechar=\%]
+            if (%logical expression-1%) then
+                %things to be done if true%
+            else if (%logical expression-2%) then
+                %things to be done if true%
+            else 
+                ...
+            end if
+        \end{lstlisting}
+        (Here line 5 and 6 are optional)\\
+        As with \code{do} loops, \code{if} construct can be nested.
+    \end{enumerate}
+    \subsection{The \code{select} construct}
+    The \code{select} construct is a convenient (and sometimes more readable and/or efficient) alternative to an \code{if ... else if ... else} construct.
+    It allows different actions to be performed depending on the set of outcomes (selector) of a particular expression. 
+    The general form is,
+    \begin{lstlisting}
+        select case (expression)
+            case (selector-1)
+                block-1
+            case (selector-2)
+                block-2
+            case default
+                default block
+        end select
+    \end{lstlisting}
+    (Here line 6 and 7 are optional)\\
+    expression is an \code{integer}, \code{character} or \code{logical expression}. It is often just a variable.\\
+    selector-n is a set of value that expression might take.\\
+    block-n is the set of statements to be executed if the expression lies in selector-n.\\
+    Case default is used if expression does not lie in any other category. It is optional.\\
+    Selectors are lists of non-overlapping \code{integer} or \code{character} outcomes separated by commas. Outcomes can be individual values (e.g. 3,4,5,6) or range (e.g. 3:6).
+    The above things are illustrated by the following program.
+    \lstinputlisting[caption=Program to find vowel\, consonant\, digit or symbol (example of select case)]{keypress.f90}
+    \end{document}

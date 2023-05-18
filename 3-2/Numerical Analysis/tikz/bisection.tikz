@@ -1,0 +1,25 @@
+\begin{tikzpicture}[scale=1.5]
+\begin{axis}[
+	axis lines=middle,
+	ticks=none,
+	xlabel={$x$}, xlabel style=right,
+	ylabel={$y$}, ylabel style=above,
+	xmin=-0.5,xmax=3,
+	ymin=-1.2,ymax=1.5]
+\addplot[black,thick,smooth,samples=100,domain=0.3:2.8]{cos(deg( x))};
+\addplot[black,thick,dashed]coordinates{(0.5,0)(0.5,0.88)};
+\addplot[black,thick,dashed]coordinates{(2.5,0)(2.5,-0.8)};
+\addplot[black,thick,dashed]coordinates{(1.2,0)(1.2,0.36)};
+\addplot[black,thick,dashed]coordinates{(1.9,0)(1.9,-0.33)};
+\addplot[black,thick,dashed]coordinates{(1.38,0)(1.38,.19)};
+\addplot[black,mark=*,only marks]coordinates{(0.5,0.88) (2.5,-.8)};
+\node at (axis cs:0.5,-.15){$b$};
+\node at (axis cs:2.5,.15){$a$};
+\node at (axis cs:1.18,-.15){$x_1$};
+\node at (axis cs:1.42,-.15){$x_2$};
+\node at (axis cs:1.9,.15){$x_0$};
+\node at (axis cs:0.5,1.1){$[b, f(b)]$};
+\node at (axis cs:2.2,-1.0){$[a,f(a)]$};
+\node at (axis cs:-0.15,-0.15){O};
+\end{axis}
+\end{tikzpicture}

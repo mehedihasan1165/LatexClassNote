@@ -1,0 +1,18 @@
+\begin{tikzpicture}[scale=1.5]
+\begin{axis}[
+	axis lines=middle,
+	xtick={1.38,2.25,4}, xticklabels={$x_2$,$x_1$,$x_0$},
+	ytick={}, yticklabels={},
+	xlabel={$x$}, xlabel style=right,
+	ylabel={$y$}, ylabel style=above,
+	xmin=-0.2,xmax=5,
+	ymin=-0.2,ymax=5]
+\addplot[black,very thick,smooth,samples=100,domain=.5:5]{(.5*x-.25)^2};
+\addplot[black,thick,dashed]coordinates{(4,0)(4,3.06)};
+\addplot[black,dashed,thick,domain=2.25:5]{1.75*x-3.94};
+\addplot[black,thick,dashed]coordinates{(2.25,0)(2.25,0.77)};
+\addplot[black,dashed,thick,domain=1.38:5]{0.88*x-1.2};
+\addplot[black,dashed]coordinates{(1.38,0)(1.38,0.19)};
+\addplot[black,mark=*,only marks]coordinates{(4,0) (4,3.06) (2.25,0)(2.25,0.77) (1.38,0) (1.38,0.19)};
+\end{axis}
+\end{tikzpicture}

@@ -1,0 +1,26 @@
+\usetikzlibrary{decorations.markings}
+\begin{tikzpicture}
+\draw[thick] plot [smooth cycle] coordinates 
+			{(1,2) (1.5,0.5) (2.5,0.5) (3.5,1.5) (4.5,0.5) (5.5,0.5) (6.5,2) (6,3.5) (4,4.5) (1.5,3.5)};
+% \draw (1.75,2) circle (.5);
+\node[circle,fill=black,inner sep=0pt,minimum size=5pt, label= left:{$\varphi(x)$}] at (3.5,3.5)(a) {};
+\node[circle,fill=black,inner sep=0pt,minimum size=5pt, label= above:{$x$}] at (5.5,3.25)(b) {};
+
+
+\node[circle,fill=black,inner sep=0pt,minimum size=5pt, label= below:{$\varphi(y)$}] at (3.5,2.5)(c) {};
+\node[circle,fill=black,inner sep=0pt,minimum size=5pt, label= below:{$x$}] at (5.5,1.5)(d) {};
+
+\begin{scope}[thick,decoration={markings,mark=at position 0.5 with {\arrow{stealth}}}]
+	\draw[postaction={decorate}] (b) to[bend right] (a);
+	\draw[postaction={decorate}] (d) to[bend right] (c);
+\end{scope}
+
+\begin{scope}[decoration={markings,mark=at position 0.1 with {\arrow{*}},mark=at position 0.03 with {\arrow{stealth}}}]
+\draw[thick,postaction={decorate}] (1.75,2) circle (.5);
+\end{scope}
+\node at (1.5,2.75) {$\varphi$};
+\node at (2.6,2.3) {$x_{*}$};
+\node at (4,0.5) {$M$};
+% \draw[step=.5,ultra thin] (0,0) grid (7,5);
+% \draw[step=1,very thin] (0,0) grid (7,5);
+\end{tikzpicture}

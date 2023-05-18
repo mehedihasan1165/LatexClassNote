@@ -1,0 +1,53 @@
+\documentclass[class=book,crop=false]{standalone}
+\usepackage{../style}
+\begin{document}
+\chapter{Introduction}
+    \section{History}
+    Fortran (FORmula TRANslation) was the first high-level programming language.
+    It was devised by John Backus in 1953. 
+    The first Fortran compiler was produced in 1957. 
+    Fortran is highly standardized making it extremely portable (able to run on a wide range of platforms).
+    It has passed through a sequence of international standards those underlined below being the most important.
+    \begin{itemize}
+        \item Fortran 66 - original ANSI standard (accepted 1972)
+        \item Fortran 77 - ANSI x3.9-1978 - standard programming
+        \item Fortran 95 - ISO/IEC 1539-1 1997 (minor revision)
+        \item Fortran 2003 - ISO/IEC 1539-1 : 2004 (E) object oriented programming interpretability with C
+        \item Fortran 2008 - ISO/IEC 1539-1 : 2010 - Co array (parallel programming)
+        \item Fortran 2018 - Imminent !
+    \end{itemize}
+    Fortran is widely used in high performance computing (HPC). Where its ability to run code in parallel on a large number of process makes it popular for computationability demanding tasks a science and engineering.
+    \section{Source Code and Executable Code}
+    In all high-level languages (Fortran, C++, Java, Python, \dots ) programmes are written in source code.
+
+    This is a human readable set of instructions that can be created or modified on any computer with any text editor. File types identifies the programming language. eg. Fortran file has file types .f90 or .f95.
+    \section{Compiler}
+    The job of compiler is to turn source code into machine readable executable code under windows, executable files have file type .exe.\\
+
+    Producing executable code is actually a two-stage process.
+    \begin{itemize}
+        \item compiling converts each individual source file into object code.
+        \item object code linking combines all the object files with additional library routine to create an executable program.
+    \end{itemize}
+    \section{Fortran Compiler}
+    \begin{enumerate}
+        \item nagfor
+        \item IFORT (Intel Fortran Compiler)
+        \item GNU Fortran (gfortran)
+        \item Silverfrost FTN95
+    \end{enumerate}
+    \section{Creating and Compiling Fortran Code}
+    You may create, edit, compile and run a Fortran program either 
+    \begin{itemize}
+        \item From a command line
+        \item in an Integrated Development Environment (IDE)
+    \end{itemize}
+    You can create Fortran source code with any text editor. eg. Notepad.
+    \section{Some Example Code}
+    \subsection{Hello World}
+    \lstinputlisting[caption= Hello world in Fortran]{hello.f90}
+    \subsection{Quadratic Equation Solve}
+    The well-known solutions of the quadratic equation $ Ax^2+Bx+C=0 $ are $ x=\frac{\displaystyle-B\pm\sqrt{ B^2-4AC}}{\displaystyle 2A} $
+    The program might look like the following:
+    \lstinputlisting[caption=Quadratic Solver]{quadratic.f90}
+    \end{document}

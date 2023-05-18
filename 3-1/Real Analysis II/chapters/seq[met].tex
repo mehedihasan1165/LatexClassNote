@@ -1,0 +1,272 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Sequence in Metric Space}
+\section[Sequence of Real Numbers]{Sequence of Real Numbers\footnote{Marsden. P.36}}
+A sequence of real numbers in $ \R $ is simply a function $ f:\N\to\R $ which us usually defined by $ f(n)=x_n $ and arranged in a particular order such as $ x_1,x_2,x_3,\dots,x_n,\dots $.
+
+For example, the sequence $ 1,\frac{1}{2},\frac{1}{3},\frac{1}{4},\dots $ can be represented as $ x_n=\frac{1}{n} $, for $ n=1,2,3,\dots $.
+
+\section{Convergent Sequence}
+A sequence $ x_n $ in $ \R  $ is said to converge to a limit $ x\in \R $ if for every $ \epsilon>0 $ there is an integer $ N $ such that $ \abs{x_n-x}<\epsilon $, whenever $ n\geq N $.
+
+In this case we write $ x_n\to x $ as $ n\to \infty $ or $ \displaystyle \lim_{n\to \infty}x_n=x $.
+\begin{note}
+    $ N:=N(\epsilon) $, often smaller $ \epsilon  $ may require larger $ N $.
+\end{note}
+\section{Sequence of points or Vectors in Metric Spaces}
+A sequence of points in a metric space $ M:=(M,d) $ is a function $ f:\N\to M $, usually defined by $ f(n)=x_k $ and arranged in a definite order such as $ x_1,x_2,x_3,\dots,x_n,\dots $.
+\section{Convergent Sequence in a Metric Space}
+A sequence $ x_k $ in a metric space $ (M,d) $ converges to $ x\in M $ if for every given $ \epsilon>0 $ there is a natural number $ N $ such that $ n\geq N $ implies $ d(x_k) $.
+\section{Convergent Sequence in Normed Space $ \R^n $}
+A sequence $ v_k $ of vector converges to the vector $ v\in\R^n $ if for every given $ \varepsilon>0 $, there exists such that $ d(v_k,v)=\norm{v_k-v}<\varepsilon $ whenever $ k\geq N $.
+\section{Convergent Sequence in Arbitrary Normed Space $ V $}
+$ v_k\in V \to v$, $ \norm{v_k-v}\to 0  $ as $ k\to \infty $.
+
+If  $ v,v_k\in \R^n $, we write $ v=(v^1,v^2,\dots,v^n) $, $ v_k=(v_k^1,v_k^2,\dots,v_k^n) $
+\begin{thm}
+    $ v_k\to v $ in $ \R^n $ if and only if each sequence of coordinates converges to the corresponding coordinate of $ v $ as a sequence in $ \R $. That is,
+    \[
+        \lim_{k\to \infty}v_k=v\text{ in }\R^n \text{ if and only if }\lim_{k\to \infty}v^i=v \text{ in }\R\text{ for each }i=1,2,\dots,n
+    \]
+    or,
+    \[
+        \lim_{k\to\infty} \left( v_k^1,v_k^2,\dots,v_k^n \right)=\left( \lim_{k\to\infty}v_k^1,\lim_{k\to\infty} v_k^2,\dots,\lim_{k\to\infty} v_k^n \right)
+    \]
+\end{thm}
+\begin{prob}
+    Test the convergence of the sequences in $ \R^2 $
+    \begin{enumerate}
+        \item $ v_k=(\sfrac{1}{2},\sfrac{1}{k^2}) $
+        \item $ v_n=\left( \sfrac{(\sin n)^n}{n},\sfrac{1}{n^2} \right) $
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    \hfill
+    \begin{enumerate}
+        \item Here the component sequences $ \frac{1}{k} $ and $ \frac{1}{k^2} $ each converge to 0. Hence, the vector $ v_k\to0,\;0=(0,0)\in\R^2 $.
+        \item Use sandwich theorem $ \left( v_n\to (0,0) \right) $\\
+        Here,
+        \[
+            \abs{\frac{(\sin n)^n}{n}}=\frac{\abs{\sin n}^n}{n}\leq \frac{1}{n} \Rightarrow -\frac{1}{n}\leq \frac{(\sin n)^n}{n}\leq \frac{1}{n}
+        \]
+        Hence, by sandwich theorem, 
+        \[
+            \lim_{n\to \infty}-\frac{1}{n}=0=\lim_{n\to \infty}\frac{1}{n} 
+        \]
+        Therefore 
+        \[ 
+            \lim_{n\to \infty}\frac{(\sin n)^n}{n}=0 
+        \]
+        Again 
+        \[
+             \lim_{n\to\infty}\frac{1}{n^2}=0 
+        \]
+        Therefore, $v_n\to (0,0)$
+    \end{enumerate}
+\end{soln}
+\begin{thm}
+    A set $ A\subset M $ is closed $ \Leftrightarrow $ for every sequence $ x_k\in A $ converges to a point $ x\in A $.
+\end{thm}
+\begin{prob}
+    Let $ x_n\in \R^m $ be a convergent sequence with $ \norm{x_n}\leq 1 $ for all $ n $. Show that $ x $ also satisfies $ \norm{x}\leq 1 $. If $ \norm{x_n}< 1 $, then must we have $ \norm{x}<1 $?
+\end{prob}
+\begin{soln}
+    The unit ball $ B=\set{y\in\R^m \mid \norm{y}\leq 1} $ is closed. Let $ x_n \in B$, and $ x_n\to x \Rightarrow x\in B $ as $ B $ is closed, by the above theorem. This is not true if $ \leq $ is replaced by $ < $; for example, on $ \R $ consider $ x_n=1-\sfrac{1}{n} $.
+\end{soln}
+\section{Cauchy Sequence}
+Let $ (M,d) $ be a metric space. A \emph{Cauchy sequence} is a sequence $ x_k\in M $ such that for all $ \varepsilon >0 $, there is an $ N\in\N $ such that in $ n \geq N    $ implies $ d(x_m,x_n)<\varepsilon $.
+\section{Complete Metric Space}
+The metric space $ M $ is called \emph{complete} if and only if every Cauchy sequence in $ M $ converges to a point in $ M $.
+
+In Normed space, such as $ \R^n $, a sequence $ v_k $ is Cauchy sequence if for every $ \varepsilon >0 $ there us an $ N $ such that $ \norm{v_k-v_j}<\varepsilon $ whenever $ j,k \geq N$.
+\section{Bounded Sequence}
+A sequence $ x_k $ in a normed space is \emph{bounded} if there is a number $ M^{'}>0 $ such that $ \norm{x_k}\leq M $ for every $ k $.
+
+In a metric space we require that there be a point $ x_c $ such that $ d(x_k,x_c)\leq M^{'} $ for every $ k $.
+
+\begin{thm}
+    A convergent sequence in a normed or metric space is bounded.
+\end{thm}
+
+\begin{thm}
+    \hfill
+    \begin{enumerate}[label=(\roman*)]
+        \item Every convergent sequence in a metric space is a Cauchy sequence.
+        \item A Cauchy sequence in a metric space is bounded.
+        \item If a subsequence of a Cauchy sequence converges to $ x $, then the sequence converges to $ x $.
+    \end{enumerate}
+\end{thm}
+\begin{thm}
+    A sequence $ x_k \in \R^n $ converges to a point in $ \R^n $ if and only if it is a Cauchy sequence.
+\end{thm}
+
+\begin{prob}[2.8.8 - P.125, Marsden]
+    Let $ (M,d) $ be a complete metric space and $ B\subset M $ a closed subset. Show that $ B $ is complete as well.
+\end{prob}
+\begin{prob}
+    Determine whether the series $ \displaystyle \sum_{n=1}^\infty \left( \frac{(\sin n)^n}{n^2},\frac{1}{n^2} \right) $ converges.
+\end{prob}
+\begin{soln}
+    The first component series $ \sum_{n=1}^\infty \frac{(\sin n)^n}{n^2} $ is absolutely convergent and hence convergent.\\
+    For absolutely convergence, $ \sum_{n=1}^\infty\abs{\frac{(\sin n)^n}{n^2}} \leq \sum_{n=1}^\infty \frac{1}{n^2} $, by comparison theorem/test. Since $ \sum \frac{1}{n^2} $ is convergent, so $ \sum \abs{\frac{(\sin n)^n}{n^2}} $ is convergent and hence $ \sum_{n=1}^\infty\frac{(\sin n)^n}{n^2} $ is convergent.\\
+    The second component series $ \sum_{n=1}^\infty\frac{1}{n^2} $ converges, according to p-series test.\\
+    Therefore, $ \displaystyle \sum_{n=1}^\infty \left( \frac{(\sin n)^n}{n^2},\frac{1}{n^2} \right) $ is convergent series in $ \R^2 $.
+\end{soln}
+\section{Series of Real Numbers and Vectors}
+\begin{defn}
+    Let $ V $ be a normed space. A series $ \sum_{k=1}^\infty x_k$, where $ x_k \in V$, is said to converge to $ x\in V $ if the sequence of partial sums $ s_k =\sum_{i=1}^k x_i $ converges to $ x\in V $, and if so we write $ \sum_{k=1}^\infty x_k=x $ or simply $ \sum x_k=x $.
+\end{defn}
+\begin{thm}
+    $ \sum x_k=x $ is equivalent to corresponding component series converging to components of $ x $.
+\end{thm}
+\section{Cauchy Criterion for Series of Vectors}
+Let $ V $ be a complete normed space (such as $ \R^n $). A series $ \sum x_k $ in $ V $ converges if and only if for every $ \varepsilon >0 $, there is an $ N $ such that $ k\geq N $ implies
+\[
+    \norm{x_k+x_{k+1}+\dots+x_{k+p}}<\varepsilon \qquad \text{ for } p=0,1,2,\dots
+\]
+\section{Absolutely Convergent Series}
+A series $ \sum x_k $ is said to be \emph{absolutely convergent} if and only if the real series $ \sum \norm{x_k} $ converges.
+
+\section{Conditionally Convergent Series}
+A series that is converged but not absolute convergent is said to be conditionally convergent.
+\begin{ex}
+    \hfill
+    \begin{enumerate}
+        \item If a series of non-negative real numbers is convergent, then it is obviously absolutely convergent.
+        \item The series $ \sum \frac{(-1)^n}{n^3} $ is \emph{absolutely convergent} because $ \sum \abs{\frac{(-1)^n}{n^3}}=\sum \frac{1}{n^3} $ is convergent.
+        \item The series $ \sum \frac{(-1)^{n-1}}{n} $ is convergent (by Leibniz alternating test) but not absolutely convergent because the harmonic series $ \sum \abs{\frac{(-1)^{n-1}}{n}}=\sum \frac{1}{n}  $ is divergent. So,  $ \sum \frac{(-1)^{n-1}}{n} $ is \emph{conditionally convergent}.
+    \end{enumerate}
+\end{ex}
+\begin{thm}
+    In a complete normed space, if $ \sum x_k $ converges absolutely, then $ \sum x_k $ converges.
+\end{thm}
+\subsection{P-series Test}
+$ \sum_{n=1}^\infty \frac{1}{n^p} $ converges if $ p>1 $ and diverges if $ p\leq 1 $.
+\section{Geometric Series}
+The series $ \sum_{n=0}^\infty r^n $ converges to $ \frac{1}{1-r} $ if $ \abs{r}<1 $ and diverges if $ \abs{r}\geq 1 $.
+\begin{prob}
+    Let $ x_n=\left( \frac{1}{n^2},\frac{1}{n} \right) $. Does $ \sum x_n $ converge?
+\end{prob}
+\begin{soln}
+    No, because the harmonic series $ \sum \frac{1}{n} $ diverges even though the $ p=2 $ series $ \sum \frac{1}{n^2} $ converges.
+\end{soln}
+\begin{prob}
+    Let $ \norm{x_n}  \leq \frac{1}{2^n} $; prove that $ \sum x_n $ converges and $ \norm{\sum_{n=0}^\infty x_n}\leq 2 $.
+\end{prob}
+\begin{soln}
+    \[
+        \sum_{n=0}^\infty \norm{x_n}\leq \sum_{n=0}^\infty \frac{1}{2^n}=\frac{1}{1-\sfrac{1}{2}}=2\qquad \text{ (Geometric series } \sum \frac{1}{2^n} \text{ is convergent)}
+    \]
+    By comparison theorem with the convergent geometric series $ \sum \sfrac{1}{2^n} $, the series $ \sum x_n $ is absolutely convergent and hence is convergent.\\
+    Again the partial sums satisfy
+    \[
+        \norm{s_n}=\norm{\sum_{k=0}^n x_k}\leq \sum_{k=0}^n \norm{x_k} \leq \sum_{k=0}^n \frac{1}{2^n}=2
+    \]
+    Let $ B=\set{y\in\R^n\mid \norm{y}\leq 2} $. Clearly $ B $ is closed. If $ s_n\in B $ and $ s_n\to s $, then $ s\in B $ as $ B $ is closed.\\
+    Hence, $ \norm{s}\leq 2 $.
+\end{soln}
+\begin{prob}
+    Test for convergence: $ \sum_{n=1}^\infty \frac{n}{3^n} $
+\end{prob}
+\begin{soln}
+    The ratio test is applicable: $ \abs{\frac{a_{n+1}}{a_n}}=\frac{n+1}{3\cdot 3^n}\cdot \frac{3^n}{n}=\frac{1}{3}\cdot\frac{n+1}{n}\to \frac{1}{3}      $ and so the series converges.
+\end{soln}
+\begin{prob}
+    Determine whether the series $ \sum_{n=1}^\infty \frac{n}{n^2+1} $ converges.
+\end{prob}
+\begin{soln}
+    Observe that $ \frac{n}{n^2+1}\geq \frac{n}{n^2+n^2}=\frac{1}{2^n} $, and so by comparison with divergent series $ \frac{1}{2}\sum \frac{1}{n} $, we get divergence.
+\end{soln}
+\section{Sequence in Metric Space}
+\begin{defn}
+    Let $ (M,d) $ be a metric space, and $ \seq{x_n} $ a sequence of points in $ M $. We say that $ \seq{x_n} $ converges to a point $ x\in M $, written $ \lim_{k\to \infty}x_k=x  $ or $ x_k\to x $ as $ k\to\infty $.
+\end{defn}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{seqMet.tikz}
+\end{figure}
+Provided that for every open set $ U $ containing $ x $, there us an integer $ N $ such that $ x_k\in U $ whenever $ k\geq N $.\\
+This definition coincides with the usual $ \varepsilon-\delta $ definition as the next theorem shows.
+\begin{prop}
+    A sequence $ \seq{x_k} $ in $ M $ converges to $ x\in M $ if and on;y if for every $ \varepsilon>0 $ there is an $ N $ such that $ k\geq N $ implies $ d(x,x_k)<\varepsilon $.
+\end{prop}
+
+
+Thus, a sequence $ \seq{v_k} $ of points in $ \R^n $ converges to $ v\in\R^n $ if for every $ \varepsilon>0 $ there is an $ N\in\N $ such that $ d(v,v_k)=\norm{v_k-v}<\varepsilon $ whenever $ k\geq N $.
+\begin{defn}
+    Let $ (M,d) $ be a metric space. A Cauchy sequence is a sequence $ \seq{x_k} $ in $ M $ such that for all $ \varepsilon>0 $, there is an $ N $ such that $ k,l\geq N $ implies $ d(x_k,x_l) <\varepsilon$. The space $ M $ is called \emph{complete} if and only if every Cauchy sequence in $ M $ converges to a point in $ M $.
+\end{defn}    
+
+In a normed space, such as $ \R^n $, a sequence $ v_k $ is a Cauchy sequence if for every $ \varepsilon>0 $ there is an $ N $ such that $ \norm{v_k-v_j}<\varepsilon $ whenever $ k,j\geq N $.
+\begin{defn}
+    A sequence $ \seq{x_k} $ in a normed space is bounded if there is a number $ M $ such that $ \norm{x_k}\leq M \forall k $. In a metric space, we require that there be a point $ x_0 $ such that $ d(x_k,x_0)\leq M $ for all $ k $.
+\end{defn}
+\begin{thm}
+    \begin{enumerate}[label=(\roman*)]
+        \item Every convergent sequence in a metric space is a Cauchy sequence.
+        \item A Cauchy sequence in a metric space is bounded.
+        \item [x] If a subsequence of a Cauchy sequence converges to $ x $ then the sequence converges to $ x $.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    \emph{H.W.}
+\end{proof}
+\begin{ex}
+    $ \R $ is a complete metric space. An example of an incomplete metric space is the set of rational numbers with $ d(x,y)=\abs{x-y} $.\\
+    Another example is $ \R\mid\set{0} $ with the same metric.
+\end{ex}
+\begin{thm}[Completeness of the metric space $ \R^n $]
+    A sequence $ \seq{x_k} $ in $ \R^n $ converges to a point in $ \R^n $ if and only if it is a Cauchy sequence.
+\end{thm}
+\begin{proof}
+    If $ x_k $ converges to $ x $, then for $ \varepsilon> 0$, choose $ N $ so that $ k\geq N $ implies $ \norm{x_k-x}<\sfrac{\varepsilon}{2} $. Then, for $ k,l\geq N $, $ \norm{x_k-x_l}=\norm{(x_k-x)+(x-x_l)}\leq \norm{x_k-x}+\norm{x-x_l}<\sfrac{\varepsilon}{2}+\sfrac{\varepsilon}{2}=\varepsilon  $, by the triangle inequality. Thus, $ \seq{x_k} $ is a Cauchy sequence.\\
+    
+    Conversely, suppose $ \seq{x_k} $ is a Cauchy sequence. Since $ \abs{x_k^i-x_l^i} \leq \norm{x_k-x_l}$, the components are also Cauchy sequence on the real line. By the completeness of $ \R $, $ x_k^i $ converges to, say, $ x^i $.
+    
+    Therefore, $ \seq{x_k} $ converges to $ x=\left( x^1,x^2,\dots,x^n \right) $.
+\end{proof}
+\section{Contraction Mapping}
+A function $ \varphi:(M,d)\to (M,d) $ is called a contraction mapping if there exists a number $ k(0<k<1) $ such that
+\[
+    d(\varphi(x),\varphi(y))\leq k d(x,y)\qquad \text{ for all }x,y\in M
+    \]
+A point $ x_k $ is said to be a fixed point of $ \varphi $ if $ \varphi(x_k)=x_k $.
+\section{Contraction Mapping Principle (Banach Fixed Point Theorem)}
+Let $ \varphi $ be a contraction mapping on a complete metric space $ M $. Then there is a unique fixed point for $ \varphi $. In fact, if $ x_0 $ is any point in $ M $, and we define $ x_1=\varphi(x_0) $, $ x_2=\varphi(x_2),\dots, x_{n+1}=\varphi(x_n),\dots $, then $ \lim_{n\to \infty} x_n=x_{*} $.
+
+Intuitively, $ \varphi $ is shrinking distances, and so as $ \varphi $ iterates, points bunch up.
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{banach.tikz}
+    \caption{A contraction shrinks distances between points}
+\end{figure}
+\begin{proof}
+    First we show the existence of a fixed point, then its uniqueness. Let $ x_0\in M $ and $ x_1,x_2,x_3,\dots  $ be as in the theorem. If $ x_1=x_0 $, $ \varphi(x_0)=x_0 $ and so $ x_0 $ is fixed. If not, then $ d(x_1,x_0) $ is not $ 0 $, and we start by showing that the points $ \set{x_n} $ form a Cauchy sequence in $ M $.\\
+    To show this, we write 
+    \begin{align*}
+        d(x_2,x_1) &=d\left( \varphi(x_1),\varphi(x_0) \right)\leq k\, d(x_1,x_0)\\
+        d(x_3,x_2) &=d\left( \varphi(x_2),\varphi(x_1) \right)\leq k\, d(x_2,x_1)\leq k^2\, d(x_1,x_0);
+    \end{align*}
+    inductively, $ d(x_{n+1},x_n) \leq k^n\, d(x_1,x_0)$.\\
+    Also,
+    \[
+        d\left( x_{n+p},x_n \right)\leq d\left( x_{n+p},x_{n+p-1} \right)+d\left( x_{n+p-1},x_{n+p-2} \right)+\dots+d\left( x_{n+1},x_n \right)
+    \]
+    by the triangle inequality, and so
+    \[
+        d\left( x_{n+p},x_n \right)\leq \left( k^{n+p-1}+k^{n+p-2}+\dots+k^n \right)D(x_1,x_0)
+    \]
+    But the geometric series $ \sum_{i=0}^\infty k^i $ converges, since $ 0\leq k<1 $, and so it satisfies the Cauchy criterion for the series: given $ \varepsilon>0 $, there is an $ N $ such that $ k^{n+p-1}+\dots+k^n<\frac{\varepsilon}{d(x_1,x_0)} $ if $ n\geq N $ and $ p $ is arbitrary. Hence, $  d\left( x_{n+p},x_n \right)<\varepsilon $ if $ n\geq N $ with $ p $ arbitrary, and so $ \set{x_n} $ is a Cauchy sequence.
+
+    By completeness of $ M $, $ \lim_{n\to\infty}x_n $ exists in $ M $. Call this limit $ x_* $; i.e., $ x_*=\lim_{n\to\infty} x_n $.\\
+    We now show that $ \varphi $ is (uniformly) continuous. Given $ \varepsilon>0 $, let $ \delta=\sfrac{\epsilon}{k} $. Then $ d(x,y)<\delta\Rightarrow d(\varphi(x),\varphi(y))\leq k\, d(x,y)< k\,\delta=\varepsilon$.\\
+    Consider, $ x_{n+1}=\varphi(x_n);\;x_{n+1}\to x_* $, and by the continuity of $ \varphi $, $ \varphi(x_n)\to\varphi(x_*) $. Thus, $ x_*=\varphi(x_*) $, so $ x_* $ is fixed.
+
+    Finally, we prove the uniqueness of the fixed point $ x_* $. Let $ y_* $ be another point, i.e., $ \varphi(y_*)=y_* $. Then
+    \[
+        d\left(x_*,y_*\right)=d\left( \varphi(x_*),\varphi(y_*) \right)\leq k\,d\left( x_*,y_* \right)\quad \text{ i.e., } (1-k) d\left( x_*,y_* \right)\leq 0
+    \]
+    By $ k<1 $, and so $ (1-k)>0 $, implying $ d(x_*,y_*)=0 $, i.e., $ x_*=y_* $, and thus the fixed point is unique.
+\end{proof}
+\end{document}

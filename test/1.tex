@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm,graphicx,enumitem,float,wrapfig}
+\usepackage{fullpage}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}[section]
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}{Example}[section]
+\newtheorem*{soln}{Solution}
+\begin{document}
+\textbf{[SADT2]}
+\begin{proof}
+    Suppose \(f\) has (at least) two fixed point \(a\) and \(b\). Then by definition of a fixed point, \(f(a)=a\) and \(f(b)=b\).\\
+    By the mean value theorem, there is a \(c\) in \((a,b)\) such that
+    \[\frac{f(b)-f(a)}{b-a}=f'(c)\]
+    Now, 
+    \[\frac{b-a}{b-a}=f'(c)\]
+    So,\[1=f'(c)\]
+    That is, \(f'(c)=1\) However, by assumption, \(f(x)\neq 1\) for all real number \(x\). So, this is a contradiction.\\
+    Hence, \(f\) has at most one fixed point.
+\end{proof}
+\textbf{[FAB4]} Here, \(f(x)=x^2-5x+6\). \(f(x)\) is a polynomial function, so it is continuous everywhere and has derivatives.\\
+Now, \(f'(x)=2x-5\). By setting \(f'(x)=0\) we get \(x=2.5\). Now we need to test for \((-\infty, 2.5)\) and \((2.5,\infty)\). \\
+For \(a=2,\, f'(a)=-1<0\) and \(b=3,\,f(b)=1>0\).\\
+So, \(f(x)\) has a relative minimum at \(x=2.5\).\\
+
+\textbf{[NAS1]} We know, \(L(x)=f(a)+f'(a)(x-a)\)\\
+Given, \[f(x)=5-x^2\]\\
+Now, \[f'(x)=-2x\]
+Again, \[f(2)=1\qquad f'(2)=-4\]
+So,
+\begin{align*}
+    L(x)&=f(a)+f'(a)(x-a)\\
+    &=1-4(x-2)\\
+    &=9-4x
+\end{align*}
+\end{document}

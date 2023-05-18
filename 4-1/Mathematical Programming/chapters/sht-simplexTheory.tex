@@ -1,0 +1,93 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Theory of Simplex Method}
+Simplex method, also called simplex technique or simplex algorithm was developed by
+G.B. Dantzig, an American mathematician in 1974. It has the advantage of being
+universal, i.e., any linear model for which the solution exists, can be solved by it.
+In principle, it consists of starting with a certain solution of which all that we know is that it is feasible, i.e., it satisfies the non-negativity conditions
+\((x_j \geq 0, j=1,2,3,\dots, n)\). We, then, improve upon this solution at consecutive stage, until, after a certain finite number of stages, we arrive at the optimal solution.\\
+The simplex method provides an algorithm which consists in moving from one vertex
+of the region of feasible solutions to another in such a manner that the value of the
+objective function at the succeeding vertex is less (or more as the case may be) than at the preceding vertex. This procedure of jumping from one vertex to another is then repeated. Since the number of vertices is finite, this method leads to an optimal vertex in a finite number of steps. The basis of the simplex method consists of two fundamental conditions:
+\begin{enumerate}
+    \item The feasibility condition : It ensures that if the starting solution is basic feasible, only basic feasible solutions will be obtained during computation.
+    \item The optimality condition : It guarantees that only better solutions (as
+    compared to the current solution) will be encountered.
+\end{enumerate}
+
+The simplex method or technique is an iterative procedure for solving the linear programming problems. It consists in
+\begin{enumerate}[label=(\roman*)]
+    \item having a basic feasible solution,
+    \item testing whether it is an optimal solution or not, and
+    \item improving the first trial solution by a set of rules, and repeating the
+    sequences till an optimal solution is obtained.
+\end{enumerate}
+\begin{prob}
+    Solve the following L.P.P by simplex method.
+    \begin{maxi*}
+        {}{Z=3x_1+2x_2}{}{}
+        \addConstraint{-x_1+2x_2}{\leq 4}
+        \addConstraint{3x_1+2x_2}{\leq 14}
+        \addConstraint{x_1-x_2}{\leq 3}
+        \addConstraint{x_1,x_2}{\geq 0}
+    \end{maxi*}
+\end{prob}
+\begin{soln}
+    In order to solve the linear programming problem by simplex method, the given problem has to convert into its standard form. For this the inequalities are converted into equations by including the slack variable in the 1st, 2nd and 3rd inner respectively. Since all the variables are non-negative. Thus, the standard L.P.P is as follows:
+    \begin{maxi*}
+        {}{Z=3x_1+2x_2}{}{}
+        \addConstraint{-x_1+2x_2+s_1}{= 4}
+        \addConstraint{3x_1+2x_2+s_2}{= 14}
+        \addConstraint{x_1-x_2+s_3}{= 3}
+        \addConstraint{x_1,x_2,s_1,s_2,s_3}{\geq 0}
+    \end{maxi*}
+    Since all the slack variables are basic variables, we shall start with a basic feasible solution, which we shall get by assuming the profit is zero. This will be when non-basic variables \(x_1=x_2=0\). We get \(s_1=4,\; s_2=14,\;s_3=3\) as the first basic feasible solution. The above information can be put in the form of a simplex matrix tableau-1.\\
+    In these tableaux, \emph{basis} refers to the basic variables in the current basic feasible solution. The values of the basic variables are given under the column \emph{constant.} The symbol \(C_j\) denotes the coefficients of the variables in the objective function while \(C_B\) denotes the coefficients of the basic variables only. \(\bar{C_j}\) denotes the \emph{relative profit}(cost for minimization problem)\emph{coefficient} of the variables given by 
+    \begin{align*}
+        \bar{C_j}&=C_j-\text{[inner product of column \(C_B\) and the column corresponding the \(j-\)th variable in the canonical system]}\\
+        &=C_j-C_BA_j,\text{where \(A_j\) is the \(j-\)th column of the matrix \(A=(a_{ij})\), which is found by the coefficients of the} \\
+        & \quad\text{ basis and non-basis variables of constrains equation.}
+    \end{align*}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{ccccccccc}
+            \toprule
+     &  &  & 3 & 2 & 0 & 0 & 0 &Constant/  \\ \cmidrule(lr){4-8}
+    \multirow{-2}{*}{Tab} & \multirow{-2}{*}{\(C_B\)} & \multirow{-2}{*}{\diagbox{basis}{\(c_j \to\)}} & \(x_1\) & \(x_2\) & \(s_1\) & \(s_2\) & \(s_3\) & Solution \\ \midrule
+    \multirow{4}[3]{*}{I} & 0     & $ s_1 $ & -1    & 2     & 1     & 0     & 0     & 4 \\
+          & 0     & $ s_2 $ & 3     & 2     & 0     & 1     & 0     & 14 \\
+          & 0     & $ s_3 $ & 1     & -1    & 0     & 0     & 1     & 3 \\
+\cmidrule{2-9}          & \multicolumn{2}{c}{$ \bar{c_j} $ row} & 3     & 2     & 0     & 0     & 0     & Z=0 \\
+    \midrule
+    \multirow{4}[4]{*}{II} & 0     & $s_1$ & 0     & 1     & 1     & 0     & 1     & 7 \\
+          & 0     & $s_2$ & 0     & 5     & 0     & 1     & -3    & 5 \\
+          & 3     & $x_1$ & 1     & -1    & 0     & 0     & 1     & 3 \\
+\cmidrule{2-9}          & \multicolumn{2}{c}{$ \bar{c_j} $ row} & 0     & 5     & 0     & 0     & -3    & Z=9 \\
+    \midrule
+    \multirow{4}[4]{*}{III} & 0     & $s_1$ & 0     & 0     & 1     & -1/5  & 8/5   & 6 \\
+          & 2     & $ x_2$ & 0     & 1     & 0     & 1/5   & -3/5  & 1 \\
+          & 3     & $x_1$ & 1     & 0     & 0     & 1/5   & 2/5   & 4 \\
+\cmidrule{2-9}          & \multicolumn{2}{c}{$ \bar{c_j} $ row} & 0     & 0     & 0     & -1    & 0     & Z=14 \\
+    \midrule
+    \multirow{4}[4]{*}{IV} & 0     & $s_3$ & 0     & 0     & 5/8   & -1/8  & 1     & 15/4 \\
+          & 2     & $ x_2$ & 0     & 1     & 3/8   & 1/8   & 0     & 13/4 \\
+          & 3     & $x_1$ & 1     & 0     & -1/4  & 1/4   & 0     & 5/2 \\
+\cmidrule{2-9}          & \multicolumn{2}{c}{$ \bar{c_j} $ row} & 0     & 0     & 0     & -1    & 0     & Z=14 \\
+    \bottomrule
+        \end{tabular}
+    \end{table}
+    In tableau-I, the non-basic variable \(x_1\) has the largest relative profit in the \(\bar{C_j}\)-row. Hence \(x_1\) enters into basic. Considering 1st (the column corresponding \(x_1\)) as the \emph{pivot column}, we take the ratios of the positive entries to the constant column (otherwise set to \(\infty\)). The ratios are \(14/3,\,3/1\). By the minimum ratio rule (here, minimum ratio is 3), 3rd row is the \emph{pivot row} and \(a_{31}=1\) is the \emph{pivot element}. The pivot element \(a_{31}=1\) in the tab-I denotes the non-basic variable \(x_1\) enters into the basis and the basic variable \(s_3\) leaves the basis in tab-II. By using the pivot operations, we prepare tab-II.\\
+
+    Since tab-II is not optimal (because \(\bar{C_2}>0\)), proceeding the above way in tab-II, the column under \(x_2\) is pivot column and by the minimum ratio rule \(x_2\) enters into the basis and \(s_2\) leaves the basis. By using the pivot operations, we prepare tab-III.\\
+
+    In tab-III, none of coefficients in \(\bar{C_j}\)-row are positive, so tab-III is optimal. Thus, the solution \((x_1,x_2)=(4,1)\) is the optimal solution. The optimal value is \(Z_{\text{max}}=14\).\\
+
+    In tab-III, the non-basic variable \(s_3\), has a relative profit of zero. This means that any increase in \(s_3\) will produce no change in the objective function value. In other words, \(s_3\) can be made a basic variable and the resulting basic feasible solution will also have \(Z\) is 14. To find the other solution, consider the pivot column under \(s_3\). By the minimum ratio rule 1st row is the pivot row and \(a_{15}=\frac{8}{5}\) is the pivot element in tab-III. Since \(s_3\) us a basic variable, enters into the basis and \(s_1\) leaves the basis. Using the pivot operation we form the table-IV. Tab-IV is optimal and the optimal solution is \((x_1,x_2)=\left( \frac{5}{2},\frac{13}{4} \right)\). The optimal value is \(Z_{\text{max}}=14\).\\
+
+    Now, we know that the set of all feasible solution is convex, it follows from the optimal solution that all points on the line joining the points \((4,1)\) and \(\left( \frac{5}{2},\frac{13}{4} \right)\) are optimal solution of the L.P.P. with optimal solution is 
+    \[\set{(x_1,x_2)=\lambda (4,1)+(1-\lambda)\left( \frac{5}{2},\frac{13}{4} \right),\;0\leq \lambda \leq1}\]
+\end{soln}
+\end{document}

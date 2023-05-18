@@ -1,0 +1,178 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Hyperbolic Equations}
+\section{Hyperbolic Partial differential equation}
+We consider the boundary value problem defined by
+\begin{equation}
+    u_{tt}-u_{xx}=0,\quad 0<x<l
+    \label{eq:hyp1}
+\end{equation}
+\begin{equation}
+    \begin{rcases}
+        \displaystyle u(x,0)=f(x)\quad\\
+        \displaystyle u_t(x,0)=\phi(x)    
+    \end{rcases} 0\leq x\leq l
+    \label{eq:hyp2}
+\end{equation}
+\begin{equation}
+    \begin{rcases}
+        \displaystyle u(0,t)=\Psi_1(t)\quad\\
+        \displaystyle u(l,t)=\Psi_2(t)    
+    \end{rcases} 0\leq x\leq T
+    \label{eq:hyp3}
+\end{equation}
+which models the transverse vibration of a stretched string.
+
+We use the following difference(central-difference) approximations for the derivatives with \(x_i=ih\) for each \(i=0,1,\dots,m\) and \(t_j=jk\) for each \(j=0,1,2,\dots\)
+\begin{equation}
+    u_{xx}=\frac{1}{h^2}\left[ u_{i-1,j}-2u_{i,j}+u_{i+1,j} \right]+O(h^2) \label{eq:hyp4}
+\end{equation}
+and
+\begin{equation}
+    u_{tt}=\frac{1}{k^2}\left[ u_{i,j-1}-2u_{i,j}+u_{i,j+1} \right]+O(k^2) \label{eq:hyp5}
+\end{equation}
+Further, \(u_t(x,t)\) is approximated as follows:
+\begin{equation}
+    u_t(x,t)=\frac{u_{i,j+1}-u_{i,j-1}}{2k}+O(k^2) \label{eq:hyp6}
+\end{equation}
+substituting \eqref{eq:hyp4} and \eqref{eq:hyp5} in \eqref{eq:hyp1}, we obtain,
+\[
+    \frac{1}{k^2}\left[ u_{i,j-1}-2u_{i,j}+u_{i,j+1} \right]=\frac{1}{h^2}\left[ u_{i-1,j}-2u_{i,j}+u_{i+1,j} \right]
+\]
+Putting \(\alpha=k/h\) in the above equation and rearrange the terms, we get
+\begin{equation}
+    u_{i,j+1}=-u_{i,j-1}+\alpha^2(u_{i-1,j}+u_{i+1,j})+2(1-\alpha^2)u_{i,j} \label{eq:hyp7}
+\end{equation}
+for each \(i=1,2,\dots,m-1\) and \(j=1,2,3,\dots\)
+
+
+Which shows that the function values at the \(j\)th and \((j-1)\)th time levels are required in order to determine those at the \((j+1)\)th time level. Such difference schemes are called three level explicit difference schemes.
+\begin{note}
+    Formula \eqref{eq:hyp7} holds good if \(\alpha<1\), which is the condition for stability.
+\end{note}
+
+The boundary conditions gives
+\begin{equation}
+    \begin{rcases}
+        \displaystyle u_{0,j}=\Psi_1(t_j)\quad\\
+        \displaystyle u_{m,t}=\Psi_2(t_j)    
+    \end{rcases}
+    \label{eq:hyp8}
+\end{equation}
+for each \(j=1,2,3,\dots\) and the initial condition implies that
+\begin{equation}
+    u_{i,0}=f(x_i)\quad \text{ for each} i=1,2,\dots,m-1
+    \label{eq:hyp9}
+\end{equation}
+Writing this set of equations in matrix form gives
+\begin{equation}
+    \begin{bmatrix}
+        u_{1,j+1}\\u_{2,j+1}\\\vdots\\u_{m-1,j+1}
+    \end{bmatrix}=
+    \begin{bmatrix}
+        2(1-\alpha^2)& \alpha^2 & 0& \dots &0\\
+        \alpha^2& 2(1-\alpha^2) & \alpha^2 & \ddots &0\\
+        0& \ddots & \ddots & \ddots & \vdots\\
+        \vdots& \ddots & \ddots & \ddots & \vdots\\
+        0& \dots & 0 & \alpha^2 & 2(1-\alpha^2)\\
+    \end{bmatrix}
+    \begin{bmatrix}
+        u_{1,j}\\u_{2,j}\\\vdots\\u_{m-1,j}
+    \end{bmatrix}-
+    \begin{bmatrix}
+        u_{1,j-1}\\u_{2,j-1}\\\vdots\\u_{m,j-1}
+    \end{bmatrix}
+    \label{eq:hyp10}
+\end{equation}
+\begin{ex}
+    Solve the equation \(\frac{\partial^2 u}{\partial t^2}=\frac{\partial^2 u}{\partial x^2}\) subject to the following conditions
+    \[
+        \begin{rcases}
+            \displaystyle u(0,t)=0\quad\\
+            \displaystyle u(1,t)=0    
+        \end{rcases}\quad (t>0)
+    \]
+    and
+    \[
+        \begin{rcases}
+            \displaystyle u_t(x,0)=0\quad\\
+            \displaystyle u(x,0)=\sin^3 \pi x    
+        \end{rcases}\quad \text{ for all }x \text{ in } 0\leq x\leq 1.
+    \]
+\end{ex}
+\begin{note}
+    Exact solution
+    \[u(x,t)=\frac{3}{4}\sin \pi x\cos \pi t-\frac{1}{4}\sin 3\pi x\cos 3\pi t\]
+\end{note}
+\begin{soln}
+    We use the explicit formula given by \eqref{eq:hyp7}, viz,
+    \begin{equation}
+        u_{i,j+1}=-u_{i,j-1}+\alpha^2(u_{i-1,j}+u_{i+1,j})+2(1-\alpha^2)u_{i,j}\label{eq:hyp11} \quad\text{ where } \alpha=h/k<1
+    \end{equation}
+    Let \(h=0.25\) and \(k=0.2\). Hence, \(\alpha=0.8\), so that the stability condition is satisfied. Let \(u_{i,j}=u(ih,jk)\), so that the boundary conditions become
+    \begin{equation}
+        u_{0,j}=0\qquad u_{4,j}=0 \label{eq:hyp12}
+    \end{equation}
+    \begin{equation}
+        u_{i,0}=\sin^3 \pi i h \quad i=1,2,3 \label{eq:hyp13}
+    \end{equation}
+    and from
+    \begin{align}
+        &u_t(x,t)=\frac{u_{i,j+1}-u_{i,j-1}}{2k}\notag\\
+        \Rightarrow\;\;&\frac{u_{i,j+1}-u_{i,j-1}}{2k}=0\notag\\
+        \Rightarrow\;\;&u_{i,j+1}-u_{i,j-1}=0\notag\\
+        \intertext{for \(j=0\), \(u_{i,1}-U_{i,-1}=0\)}
+        \Rightarrow\;\;&u_{i,1}=u_{i,-1}\label{eq:hyp14}
+    \end{align}
+    substituting the value of \(\alpha=0.8\) equation \eqref{eq:hyp11} becomes
+    \begin{equation}
+        u_{i,j+1}=-u_{i,j-1}+0.64(u_{i-1,j}+u_{i+1,j})+2(0.36)u_{i,j}\label{eq:hyp15}
+    \end{equation}
+    At the 1st step, \(j=0\), we have from \eqref{eq:hyp16}
+    \begin{align}
+        &u_{i,1}=-u_{i,-1}+0.64(u_{i-1,0}+u_{i+1,0})+2(0.36)u_{i,0}\label{eq:hyp16}\\
+        \Rightarrow\;\;&2u_{i,1}=0.64(u_{i-1,0}+u_{i+1,0})+2(0.36)u_{i,0}\notag\quad[\because u_{i,1}=u_{i,-1}]\\
+        \Rightarrow\;\;&u_{i,1}=0.32(u_{i-1,0}+u_{i+1,0})+(0.36)u_{i,0}\label{eq:hyp17}
+    \end{align}
+    For \(i=1\),
+    \begin{align*}
+        &u_{1,1}=0.32(u_{0,0}+u_{2,0})+0.36u_{1,0}\\
+        \Rightarrow\;\;&u_{1,1}=0.32(0+1)+0.36\times 0.3537 [\because u_{i,0}=\sin^3\pi i h \text{ so, } u_{1,0}=\sin^3\pi (0.25)\text{ and }u_{2,0}=\sin^3 2\pi (0.25)=1]\\
+        \Rightarrow\;\;&u_{1,1}=0.4473
+    \end{align*}
+    The exact value \(u(0.25,0.2)=0.4838\)\\
+    Again, for \(i=2\),
+    \begin{align*}
+        u_{2,1}&=0.32(u_{1,0}+u_{3,0})+0.36u_{2,0}\\
+        &=0.32(0.3537+0.3537)+0.36(1)\\
+        &=0.5867
+    \end{align*}
+    Exact value \(= 0.5296\)\\
+    Finally, 
+    \begin{align*}
+        u_{3,1}&=0.32(1+1)+0.36\times(0.3537)\\
+        &=0.4473
+    \end{align*}
+    Exact value \(=0.4838\)\\
+    The computations can be continued for \(j=1,2,3\)
+\end{soln}
+H.W.
+\begin{enumerate}
+    \item(**) \begin{align*}
+        &\frac{\partial^2 u}{\partial t^2}-4\frac{\partial^2 u}{\partial x^2}=0;\quad 0<x<1, \;\;0<t\\
+        &u(0,t)=u(1,t)=0 \quad \text{ for } 0<t\\
+        &u(x,0)=\sin\pi x \quad 0\leq x\leq 1\\
+        &u_t(x,0)=0 \quad 0\leq x\leq 1
+    \end{align*}
+    \item \begin{align*}
+        &u_{tt}-u_{xx}=0;\quad 0<x<1\\
+        &u(0,t)=u(1,t)=0 \quad\\
+        &u(x,0)=x-x^2 \\
+        &u_t(x,0)=0
+    \end{align*}
+    take \(h=0.25\) and \(k=0.2\).
+\end{enumerate}
+\end{document}

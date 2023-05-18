@@ -1,0 +1,33 @@
+\ProvidesPackage{style}
+\RequirePackage{amsmath,amsthm,amssymb}
+\RequirePackage{graphicx,float}
+\RequirePackage{enumitem}
+\RequirePackage[cm]{fullpage}
+\RequirePackage{hyperref}
+\RequirePackage{lmodern}
+\RequirePackage[english]{babel}
+\RequirePackage{background}
+\RequirePackage[object=vectorian]{pgfornament} 
+\RequirePackage{calligra}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+\theoremstyle{remark}
+\newtheorem* {rem}{Remark}
+\graphicspath{ {./img/} }
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}[section]
+\newtheorem{defn}{Definition}
+\newtheorem*{ex}{Example}
+\newtheorem*{soln}{Solution}
+
+% add shorthand here
+\newcommand{\s}{\space}
+\newcommand{\set}[1]{\left\{#1\right\}}

@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+    \matrix [matrix of math nodes,left delimiter={[},right delimiter={]},row sep=0.1cm,column sep=0.1cm] (m) {
+          -4 & 3 \\
+          -3 & -7 \\
+          };
+          \node[below=.4 cm] at (m-2-1) (a) {$(-3)$};
+          \node[below=.4 cm] at (m-2-2) {$3$};
+          \node[above=1 cm] at (m-1-2.west) {Player $B$};
+      
+          \node[right=1.25 cm] at (m-1-2) (b){$(-4)$};
+          \node[right=1.25 cm] at (m-2-2) {$-7$};
+          
+          \node[left=0.5 cm of a]  {Column Maxima:};
+          \node[above=0.25 cm of b]  {Row Minima:};
+          \node[left=1.5 cm] at (m-2-1) {Player $A$};
+          \node at (6.2,0.2) {No saddle point exists.};
+          \draw[decorate, decoration={brace, amplitude=5pt}] (3.75,2)--(3.75,-1.5); 
+    \end{tikzpicture}

@@ -1,0 +1,382 @@
+\documentclass[12pt,class=book,crop=false]{standalone}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Solution of System of Linear Equations}
+\section{Solutions of system of linear equations}
+Consider the following system of linear equations
+\begin{equation}
+    \left.\begin{aligned}
+        a_{11}x_1+a_{12}x_2+\dots+a_{1n}x_n & =b_1 \\
+        a_{21}x_1+a_{22}x_2+\dots+a_{2n}x_n & =b_2 \\
+        a_{31}x_1+a_{32}x_2+\dots+a_{3n}x_n & =b_3
+    \end{aligned}\,\right\}\label{eq:sys}
+\end{equation}
+Let the coefficient matrix
+\[
+    A=\begin{pmatrix}
+        a_{11} & a_{12} & \dots  & a_{1n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \dots  & a_{nn}
+    \end{pmatrix},
+    \quad B=\begin{pmatrix}
+        b_1    \\
+        \vdots \\
+        b_n
+    \end{pmatrix},
+    \quad X=\begin{pmatrix}
+        x_1    \\
+        \vdots \\
+        x_n
+    \end{pmatrix}
+\]
+then the system (\ref{eq:sys}) reduces to \( AX=B \). To find the solution of \( AX=B \,\Rightarrow X=A^{-1}B \), there are two method solving the system (\ref{eq:sys}) namely (i) Direct method and (ii) Iteration method.\\
+Direct or Gauss-Elimination method is used when the coefficient matrix \( A \) is a dense matrix and the iteration method is used when the coefficient matrix \( A \) is large ans sparse.
+\section{Gauss-Elimination Method}
+In this method, we use \( k \)th equation to eliminate \( x_k \) from equations \( (K+1),(K+2),\dots,n \) during the \( k \)th step \( (K=1,2,\dots, n) \).
+
+By this process the system is reduced to an upper triangular form. This is possible only if at the beginning of the \( k \)th step the coefficient \( a_{kk} \neq 0\). Otherwise, straight forward reduction does not work. Then rearrangement is necessary.
+
+Thus in an \( n\times m \) matrix, the value of the element and its position is hence important.
+\begin{ex}
+    Solve the system of equations:
+    \begin{align}
+        x_1+x_2+x_3   & = 1 \label{eq:ex1.1} \\
+        x_1+x_2+2x_3  & = 2 \label{eq:ex1.2} \\
+        x_1+2x_2+2x_3 & = 1 \label{eq:ex1.3}
+    \end{align}
+    \begin{align}
+        x_1+x_2+x_3                                              & = 1 \label{eq:ex1.1d} \\
+        \text{\eqref{eq:ex1.2}-\eqref{eq:ex1.1}}\qquad\qquad x_3 & = 1 \label{eq:ex1.2d} \\
+        \text{\eqref{eq:ex1.3}-\eqref{eq:ex1.1}}\qquad x_2+x_3   & = 0 \label{eq:ex1.3d}
+    \end{align}
+    Since \( a_{22}^{'} =0 \), rearrangement is necessary \eqref{eq:ex1.2d}\( \longleftrightarrow \)\eqref{eq:ex1.3d}
+    \begin{align}
+        x_1+x_2+x_3 & = 1 \label{eq:ex1.1dd} \\
+        x_2+x_3     & = 0 \label{eq:ex1.2dd} \\
+        x_3         & = 1 \label{eq:ex1.3dd}
+    \end{align}
+    Back substitution starts
+    \begin{align*}
+        \eqref{eq:ex1.3dd} \Rightarrow & x_3=1           \\
+        \eqref{eq:ex1.2dd} \Rightarrow & x_2=-x_3=-1     \\
+        \eqref{eq:ex1.1dd} \Rightarrow & x_1=1-x_3-x_2=1
+    \end{align*}
+    So the solutions is \( x=\begin{pmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{pmatrix} =\begin{pmatrix*}[r]
+            1  \\
+            -1 \\
+            1
+        \end{pmatrix*} \)
+\end{ex}
+\begin{ex}
+    Solve the system
+    \[x_2,x_3=1,\,x_1+x_3=1,\,x_1+x_2=1\]
+\end{ex}
+\begin{ex}
+    Solve the system of equations:
+    \begin{align}
+        x_1+x_2+x_3        & = 1 \label{eq:ex3.1} \\
+        x_1+1.0001x_2+2x_3 & = 2 \label{eq:ex3.2} \\
+        x_1+2x_2+2x_3      & = 1 \label{eq:ex3.3}
+    \end{align}
+    \begin{align}
+        x_1+x_2+x_3                                                   & = 1 \label{eq:ex3.1d} \\
+        \text{\eqref{eq:ex3.2}-\eqref{eq:ex3.1}}\quad 0.0001x_2+x_3   & = 1 \label{eq:ex3.2d} \\
+        \text{\eqref{eq:ex3.3}-\eqref{eq:ex3.1}}\qquad \qquad x_2+x_3 & = 0 \label{eq:ex3.3d}
+    \end{align}
+    \begin{align}
+        x_1+x_2+x_3                                                                      & = 1 \label{eq:ex3.1dd}      \\
+        0.0001x_2+x_3                                                                    & = 0 \label{eq:ex3.2dd}      \\
+        \text{\( 10\,000\times \) \eqref{eq:ex3.2d}-\eqref{eq:ex3.3d}} \qquad \qquad 9999x_3 & = 100\,000 \label{eq:ex3.3dd}
+    \end{align}
+    By back substitution,
+    \begin{align*}
+        \eqref{eq:ex3.3dd} \Rightarrow & x_3=\frac{10\,000}{9\,999}=1.000\,100\,1\approx 1\text{ (using \( 3 \) significant digit)} \\
+        \eqref{eq:ex3.2dd} \Rightarrow & x_2=\frac{1-1}{0.0001}=0                                                         \\
+        \eqref{eq:ex3.1dd} \Rightarrow & x_1=1-0-1=0
+    \end{align*}
+    So the solutions is \( x=\begin{pmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{pmatrix} =\begin{pmatrix}
+            0 \\
+            0 \\
+            1
+        \end{pmatrix} \)\\
+    \underline{Alternatively}
+    \begin{align}
+        x_1+x_2+x_3        & = 1 \label{eq:ex4.1} \\
+        x_1+1.0001x_2+2x_3 & = 2 \label{eq:ex4.2} \\
+        x_1+2x_2+2x_3      & = 1 \label{eq:ex4.3}
+    \end{align}
+    \begin{align}
+        x_1+x_2+x_3                                                               & = 1 \label{eq:ex4.1d} \\
+        \text{\eqref{eq:ex4.2}-\eqref{eq:ex4.1}}\qquad \qquad 0.000\,1x_2+x_3       & = 1 \label{eq:ex4.2d} \\
+        \text{\eqref{eq:ex4.3}-\eqref{eq:ex4.1}}\qquad\qquad\,\,\, \qquad x_2+x_3 & = 0 \label{eq:ex4.3d}
+    \end{align}
+    Interchanging \eqref{eq:ex4.2d} and \eqref{eq:ex4.3d} we get
+    \begin{align}
+        x_1+x_2+x_3   & = 1 \label{eq:ex4.1dd} \\
+        x_2+x_3       & = 0 \label{eq:ex4.2dd} \\
+        0.000\,1x_2+x_3 & = 1 \label{eq:ex4.3dd}
+    \end{align}
+    \begin{align}
+        x_1+x_2+x_3& = 1 \label{eq:ex4.1ddd} \\
+        x_2+x_3& = 0 \label{eq:ex4.2ddd} \\
+        \text{\eqref{eq:ex4.3dd}-0.000\,1\eqref{eq:ex4.2dd}}\qquad \qquad  0.999\,9x_3 & = 1 \label{eq:ex4.3ddd}
+    \end{align}
+    By back substitution,
+    \begin{align*}
+        \eqref{eq:ex4.3ddd} \Rightarrow & x_3=\frac{1}{0.999\,9}=1.000\,100\,1\approx 1 \\
+        \eqref{eq:ex4.2ddd} \Rightarrow & x_2=-x_3=-1                             \\
+        \eqref{eq:ex4.1ddd} \Rightarrow & x_1=1-(-1)-1=1
+    \end{align*}
+    So the solutions is \( x=\begin{pmatrix}
+            x_1 \\
+            x_2 \\
+            x_3
+        \end{pmatrix} =\begin{pmatrix*}[r]
+            1  \\
+            -1 \\
+            1
+        \end{pmatrix*} \) (correct result)
+\end{ex}
+\begin{rem}
+    In this problem, we see that there are different solution in different way. It is caused by using different pivot equation which is discusses below.
+\end{rem}
+\section{Pivot Strategy}
+If \( a_{kk}^{(k)}=0 \) in the \( k \)th step for some \( k=1,2,\dots,n-1 \) then from the \( k \)th row to the \( n \)th row is searched for the first non-zero entry.
+
+If \( a_{pk}^{(k)}\neq 0 \) for some \( p \), \( k+1\leq p\leq n \), then perform \( E_k \longleftrightarrow E_p \) (interchange) where \( E_k \) is the \( k \)th equation in the system.
+
+If \( a_{pk}^{(k)}= 0 \), \( p=k,k+1,\dots,n \) then the system does not have unique solution and the procedure fails.
+
+So obtaining a zero for the pivot element, necessarily takes a row interchange. But in practice it is often desirable to perform row interchanges involving pivot elements even when they are non-zero.
+\begin{prob}
+    Solve
+    \[
+        \left.\begin{aligned}
+             & E_1: \\
+             & E_2:
+        \end{aligned}\right.
+        \left.\begin{aligned}
+            0.003x_1+29.140x_2 & =59.17 \\
+            5.291x_1-6.130x_2  & =46.78
+        \end{aligned}\right.
+    \]
+    Use \( 4 \) digits arithmetic to find its solution. Exact solution is \( x_1=10.00,\,x_2=1.00 \)
+\end{prob}
+\begin{soln}
+    Use \( a_{11}=0.003\,0  \) as pivot element,\\
+    Find the multiplier \( m=\frac{a_{21}}{a_{11}}=\frac{5.291\,0}{0.003}=1\,763.666\,6\approx1764 \)\\
+    Eliminate \( x_1 \) from \( E_2 \) by \( (E_2-mE_1)\rightarrow E_2^{'} \)
+    \[
+        \left.\begin{aligned}
+             & E_1^{'}: \\
+             & E_2^{'}:
+        \end{aligned}\right.
+        \left.\begin{aligned}
+            0.003x_1+59.140x_2 & =59.17     \\
+            -104\,329x_2         & =-104\,329.1
+        \end{aligned}\right.
+    \]
+    By back substitution,
+    \[
+        x_2=1.000\,000\,959\approx1.001
+    \]
+    \[
+        \therefore E_1=\frac{59.19-59.140\times1.001}{0.003\,0}=-9.7133\approx-10.0
+    \]
+    The large error in the solution of \( x_1 \) resulted from the small error in solving \( x_2 \). The errors magnified \( 20000 \) times in the solution of \( x_1 \). This happened due to division by pivot element \( 0.003\,0 \).
+\end{soln}
+This sort of difficulties arise in choosing the pivot element \( a_{kk}^{(k)} \) (in the \( k \)th step) when they are relatively small, compared to the other entries,
+\( a_{ij}^{(k)}\) for \( k\leq i\leq n \), \( k\leq j\leq n \).
+
+So we choose a new pivot element \( a_{pq}^{(k)} \) (in the \( k \)th step).\\
+
+Pivot Strategies in general are accomplished by selecting a new element for the pivot \( a_{pq}^{(k)} \) and interchanging the \( k \)the row and \( p \)th rows, followed by interchanging \( k \)th and \( p \)th column if necessary.
+
+The simplest way is to choose the element in the same column, that is below the diagonal and has the largest absolute value; that is, we choose \( p \) such that,
+\[
+    a_{pk}^{(k)}=\begin{aligned}[t]
+        \text{max} & \abs{a_{ik}^{(k)}} \\
+        k\leq      & i\leq n
+    \end{aligned}
+\]
+Then perform \( E_k\longleftrightarrow E_p \). In this case no interchange of column is necessary.
+\begin{soln}
+    \[
+        \left.\begin{aligned}
+             & E_1: \\
+             & E_2:
+        \end{aligned}\right.
+        \left.\begin{aligned}
+            0.003x_1+59.140x_2 & =59.17 \\
+            5.291x_1-6.130x_2  & =46.78
+        \end{aligned}\right.
+    \]
+    By the pivot Strategy: Find \(( k=1 )\)
+    \begin{align*}
+        \text{max} \left\{ \abs{a_{11}^{(1)}}, \abs{a_{21}^{(1)}} \right\} & =\text{max} \left\{ \abs{1.003},\abs{5.291}\right\} \\
+                                                                       & =5.291\\
+                                                                       & =a_{21}^{(1)}
+    \end{align*}
+    The operation \( E_2 \longleftrightarrow E_1 \) is performed to give the system
+    \[
+        \left.\begin{aligned}
+            & E_1 \\
+            & E_2:
+        \end{aligned}\right.
+        \left.\begin{aligned}
+            5.291x_1-6.13x_2&=46.78\\
+            0.003x_1+59.140x_2 & =59.17
+        \end{aligned}\right.
+    \]
+    The multiplier for this system is 
+    \[m=\frac{a_{21}^{(1)}}{a_{11}^{(1)}}=\frac{0.003}{5.291}=0.000\,567
+    \]
+    and the operation \( (E_2-mE_1)\rightarrow E_2^{'} \) reduces the system to 
+    \[
+        \left.\begin{aligned}
+             & E_1^{'}: \\
+             & E_2^{'}:
+        \end{aligned}\right.
+        \left.\begin{aligned}
+            5.29 x_1-6.130x_2 & =46.78     \\
+            59.14x_2         & =59.14
+        \end{aligned}\right.
+    \]
+    Then by back substitution \( x_2=1.000 \), \( x_1=10.00 \).\\
+    Which is the correct solution.
+\end{soln}
+This technique is known as maximal-column pivoting or partial pivoting.
+\begin{prob}
+    Solve the following system using \( 4 \) digits arithmetic, once with the \( 1 \)st equation as pivot equation and then \( 2 \)nd equation as pivot equation and then compare the results with exact solution \( x_1=1.00,\, x_2=0.2500  \).
+    \[
+        \left.\begin{aligned}
+            & E_1: \\
+            & E_2:
+        \end{aligned}\right.
+        \left.\begin{aligned}
+            0.1410\times 10^{-2}x_1+0.400\,4\times 10^{-1}x_2& =0.114\,2\times 10^{-1}     \\
+            0.200\,0\times 10^{0}x_1+0.491\,2\times 10^{1}x_2& =0.142\,8\times 10^{1}
+        \end{aligned} \right.
+    \]
+\end{prob}
+\section{Gauss-Seidal Iterative Method}
+An iterative technique here starts with an initial approximation \( X^{(0)} \) of the solution \( X \) and generates a sequence of vectors \( \left\{X^{(k)},k=0,1,2,\dots\right\} \) that converges to \( X \).
+
+In this case first we transform the system \( AX=B \) into an equivalent system of the form \( X=TX+C \) for some \( n\times n \) matrix \( T \) and a vector \( C \) and we suppose
+    \begin{equation}
+        \left.\begin{aligned}
+            &E_1:&x_1&= -\frac{a_{12}}{a_{11}}x_2-\frac{a_{13}}{a_{11}}x_3-\dots-\frac{a_{1n}}{a_{11}}x_n+\frac{b_1}{a_{11}}\\
+            &E_2:&x_2&= -\frac{a_{21}}{a_{22}}x_1-\frac{a_{23}}{a_{22}}x_3-\dots-\frac{a_{2n}}{a_{22}}x_n+\frac{b_2}{a_{22}}\\
+            &E_2:&x_3&= -\frac{a_{31}}{a_{33}}x_1-\frac{a_{32}}{a_{34}}x_4-\dots-\frac{a_{3n}}{a_{33}}x_n+\frac{b_3}{a_{33}}\\
+            &\dots &\dots &\quad \dots\quad \dots\quad \dots\\
+            &E_n:&x_n&= -\frac{a_{na}}{a_{nn}}x_1-\frac{a_{n2}}{a_{nn}}x_2-\dots-\frac{a_{n\cdot n-1}}{a_{nn}}x_{n-1}+\frac{b_n}{a_{nn}}
+        \end{aligned}\quad\right\} \label{eq:star}
+    \end{equation}
+    In this case, it is reasonable to compute \( x_i^{(k)} \) using these most recently calculated values i.e.,
+    \begin{enumerate}
+        \item First substitute \( x_1^{(0)},x_2^{(0)},\dots,x_n^{(0)} \) in the first equation \( E_1 \) in the right-hand side of \eqref{eq:star} and we get the new value \( x_1^{(1)} \).
+        \item Then substitute \( x_1^{(1)},x_2^{(0)},x_3^{(0)}\dots,x_n^{(0)} \) in the second equation \( E_2 \) in the right-hand side of \eqref{eq:star} and we get the new value \( x_2^{(1)} \).
+        \item Then substitute \( x_1^{(1)},x_2^{(1)},x_3^{(0)}\dots,x_n^{(0)} \) in the third equation \( E_3 \) in the right-hand side of \eqref{eq:star} and we get the new value \( x_3^{(1)} \).
+        \item Continuing in this way we put \( x_1^{(1)},x_2^{(1)},\dots,x_n^{(0)} \) in the last equation of \eqref{eq:star}
+    \end{enumerate}
+    Then the first iteration is complete.\\
+    Repeat the entire process till \( (x_1,x_2,\dots,x_n) \) is obtained.\\
+    This method is known as Gauss-Seidal iterative method.
+    \begin{prob}
+        Solve the system
+        \begin{equation}
+            \left.\begin{aligned}
+                10x_1-x_2+2x_3&=6\\
+                -x_1+11x_2-x_3+3x_4&=25\\
+                2x_1-x_2+10x_3-x_4&=-11\\
+                3x_2-x_3+8x_4&=15\\
+            \end{aligned}\quad\right\}\label{eq:star1}
+        \end{equation}
+        using Gauss-Seidal method.
+    \end{prob}
+    \begin{soln}
+        The given system can be written as
+        \[
+            \begin{aligned}
+                &E_1:&x_1&= \frac{1}{10}x_2-\frac{2}{10}x_3+\frac{6}{10}\\
+                &E_2:&x_2&= \frac{1}{11}x_1+\frac{1}{11}x_3-\frac{3}{11}x_4+\frac{25}{11}\\
+                &E_3:&x_3&= -\frac{2}{10}x_1+\frac{1}{10}x_2+\frac{1}{10}x_4-\frac{11}{10}\\
+                &E_4:&x_4&= -\frac{3}{8}x_2+\frac{1}{8}x_3+\frac{15}{8}
+            \end{aligned}
+        \]
+        which is of the form \( X=TX+C \)\\
+        Where,
+        \[
+            T=\begin{pmatrix}
+                0&\frac{1}{10}&\frac{-2}{10}&0\\[.5cm]
+                \frac{1}{11}&0&\frac{1}{11}&\frac{-3}{11}\\[.5cm]
+                \frac{-2}{10}&\frac{1}{10}&0&\frac{1}{10}\\[.5cm]
+                0&\frac{-3}{8}&\frac{1}{8}&0
+            \end{pmatrix}
+        \]
+        and 
+        \[
+            C=\begin{pmatrix*}[r]
+                \frac{6}{10}\\[.5cm]
+                \frac{25}{11}\\[.5cm]
+                -\frac{11}{10}\\[.5cm]
+                \frac{15}{8}
+            \end{pmatrix*}
+        \]
+        Suppose the initial approximation is \( X^{(0)}=\begin{pmatrix}
+            0\\
+            0\\
+            0\\
+            0
+        \end{pmatrix} \)\\
+        from \( X^{(1)}=TX^{(0)}+C\Rightarrow X^{(1)}=
+        \begin{pmatrix*}[r]
+            \frac{6}{10}\\[0.5cm]
+            \frac{25}{11}\\[0.5cm]
+            -\frac{11}{10}\\[0.5cm]
+            \frac{15}{8}
+        \end{pmatrix*} \).\\
+        Similarly, we calculate the other approximation which are shown in the following iteration table
+        \begin{center}
+        \begin{tabular}{cc*{6}{S[table-format=2.4]}}
+            \toprule
+            k\( \rightarrow \)&\( 0 \)&\multicolumn{1}{c}{\( 1 \)}&\multicolumn{1}{c}{\( 2 \)}&\multicolumn{1}{c}{\( 3 \)}&\multicolumn{1}{c}{\( 4 \)}&\multicolumn{1}{c}{\( 5 \)}&\multicolumn{1}{c}{\( 6 \)}\\\midrule
+            \( x_1^{(k)} \)\rule[-1em]{0pt}{1em}&\( 0 \)& 0.6000 & 1.0302 & 1.0066 & 1.0004 & 1.0001 & 1.0000 \\
+            \( x_2^{(k)} \)&\rule[-1em]{0pt}{1em}\( 0 \)& 2.3273 & 2.0370 & 2.0036 & 2.0003 & 2.0000 & 2.0000 \\
+            \( x_3^{(k)} \)\rule[-1em]{0pt}{1em}&\( 0 \)& -0.9873 & -1.0145 &-1.0025 & -1.0003 & -1.0000 & -1.0000 \\
+            \( x_4^{(k)} \)\rule[-1em]{0pt}{1em}&\( 0 \)& 0.8789 & 0.4843 & 0.9984 & 0.9998 & 1.0000 & 1.0000 \\\bottomrule
+        \end{tabular}
+    \end{center}
+        Therefore, the required solution is 
+        \[
+            X=\begin{pmatrix}
+                x_1\\
+                x_2\\
+                x_3\\
+                x_4
+            \end{pmatrix}=\begin{pmatrix*}[r]
+                1\\
+                2\\
+                -1\\
+                1
+            \end{pmatrix*}
+        \]
+    \end{soln}
+    \begin{prob}
+        Solve the following system by Gauss-Seidal method
+        \begin{align*}
+            21x_1+6x_2-x_3&=85\\
+            6x_1+15x_2+2x_3&=72\\
+            x_1+x_2+54x_3&=110
+        \end{align*}
+    \end{prob}
+\end{document}

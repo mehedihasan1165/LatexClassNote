@@ -1,0 +1,4 @@
+\draw (-.5,.5) circle (1cm);
+\draw (.1,.7) node {E};
+\draw (1,1.5) node {F};
+\draw (0,0) circle (2cm);

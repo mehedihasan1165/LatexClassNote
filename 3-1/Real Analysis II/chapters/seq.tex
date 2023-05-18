@@ -1,0 +1,67 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Sequences in Metric spaces}
+\section{Sequences of real numbers}
+A sequence of real numbers in $ \R $ is simply a function $ f:\N\to\R $ which is usually defined by $ f(n)=x_n $ and arranged in a particular order such as $ \xn{x}{,},\dots $.\\
+
+For example, the sequence $ 1,\frac{1}{2},\frac{1}{3},\frac{1}{4},\dots $ can be represented as $ x_n=\frac{1}{n} $ for $ n=1,\,2,\,3,\dots $
+\section{Convergent Sequence}
+A sequence $ x_n $ in $ \R $ is said to be \emph{converged} to a \emph{limit} $ x\in \R $ if for every $ \epsilon>0 $ there is an integer $ N $ such that $ \abs{x_n-x}<\epsilon $ whenever $ n\geq N $. In this case we write $ x_n \to x $ as $ n\to \infty $ or $ \lim_{n \to \infty} x_n=x$
+\begin{note}
+    $ N:=N(\epsilon) $, often smaller $ \epsilon $ may require larger $ N $.
+\end{note}
+\section{Sequences of points or vectors in Metric Spaces}
+A sequence of points in a metric space $ M:=(M,d) $ is a function $ f:\N\to M $, usually defined by $ f(n)=x_k $ and arranged in a definite order such as $ \xn{x}{,},\dots $.
+\section{Convergent sequence in a Metric Space}
+A sequence $ x_k $ in a metric space $ (M, d) $ converges to $ x\in M $ if for every given $ \epsilon>0 $ there is a natural number $ N $ such as $ n\geq N $ implies $ d(x_k,x_n)<\epsilon $
+\section{Convergent sequence in normed space $ \R^n $} 
+A sequence $ v_k $ of vectors in $ \R $ converges to the vector $ v\subset \R^n $ if for every given $ \epsilon>0 $, there exists $ N\in\N $ such that $ d(v_k,v)=\norm{v_k-v}<\epsilon $ whenever $ k\geq N $.
+\section{Convergent sequence in arbitrary normed space $ V $}   
+$ v_k\in V\to v\in V $ if $ \norm{v_k-v}\to 0 $ as $ k\to \infty $.\\
+If $ v,v_k\in \R^n $, we write $ v=(v^1,v^2,\dots,v^n),\,v_k=(v^1_k,v^2_k,\dots,v_k^n) $
+\newpage
+\begin{thm}
+    $ v_k\to v $ in $ \R^n $ if and only if each sequence of coordinates converges to the corresponding coordinate of $ v $ as a sequence in $ \R $. That is,\\
+    $ \lim_{k\to \infty} v_k=v$ in $ \R^n $ if and only if $ \lim_{k\to \infty} v_k^i=v $ in $ \R $ for each $ i=\n{n} $\\
+    or,\[\lim_{k\to \infty} (v_k^1,\dots,v_k^n)= \left(\lim_{k\to \infty}v_k^1,\dots,\lim_{k\to \infty}v_k^n\right)\]
+\end{thm}
+\begin{ex}
+    Test the convergence of the sequences in $ \R^2 $:
+    \begin{enumerate}[label=(\roman*)]
+        \item $ v_k=(1/k,\,1/k^2) $
+        \item $ v_k=\left((\sin n)^n /n,\,1/n^2\right) $
+    \end{enumerate}
+\end{ex}
+\begin{soln}
+    \hfill
+    \begin{enumerate}[label=(\roman*)]
+        \item Here the component sequences $ 1/k $ and $ 1/k^2 $ each converges to 0. Hence, the vectors $ v_k\to0,\, 0=(0,0)\in\R^2$
+        \item Use Sandwich theorem $ \left(v_n\to (0,0)\right) $.\\
+        Here, $ \abs{\frac{(\sin n)^n}{n}}=\frac{\abs{\sin n}^n}{n}\leq \frac{1}{n}\Rightarrow -\frac{1}{n}\leq \frac{(\sin n)^n}{n} \leq \frac{1}{n}$\\
+        Hence by sandwich theorem, $ \lim_{n\to\infty} -\frac{(\sin n)^n}{n}=0=\lim_{n\to\infty}\frac{(\sin n)^n}{n}$, therefore,\\
+        $ \lim_{n\to\infty}\frac{(\sin n)^n}{n}=0 $.\\
+        Again $ \lim_{n\to\infty} \frac{1}{n^2}=0 $\\
+        Therefore, $ v_n\to (0,0) $
+    \end{enumerate}
+\end{soln}
+\begin{thm}
+    A set $ A\subset M $ is closed $ \Leftrightarrow $ for every sequence $ x_k\in A $ converges to a point $ x\in A $.\label{thm:seq}
+\end{thm}
+\begin{ex}
+    Let $ x_n \in \R^m $ be a convergent sequence with $ \norm{x_n}\leq1 $ for all $ n $. Show that the limit $ x $ also satisfies $ \norm{x}\leq1 $. If $ \norm{x_n}<1 $, then must we have $ \norm{x}<1 $? 
+\end{ex}
+\begin{soln}
+    The unit ball $ B=\set{y\in \R^m\mid \norm{y}\leq 1} $ is closed. Let $ x_n\in B $ and $ x_n\to x \Rightarrow x\in B $ as $ B $ is closed, by theorem \ref{thm:seq}. This is not true if $ \leq $ is replaced by $ < $; for example, on $ \R $, consider $ x_n=1-\frac{1}{n} $.
+\end{soln}
+\section{Cauchy sequence}
+Let $ (M,d) $ be a metric space. A \emph{Cauchy sequence} is a sequence $ x_k\in M $ such that for all $ \epsilon>0 $, there is an $ N\in\N $ such that $ m,n\geq N $ implies $ d(x_m,x_n)<\epsilon $.
+\section{Complete Metric Space}
+The metric space $ M $ is called \emph{complete} if and only if every Cauchy sequence in $ M $ converges to a point in $ M $.\\
+
+In normed space, such as $ \R^n $ a sequence $ v_k $ is Cauchy sequence if for every $ \epsilon>0 $ there is an $ N $ such that $ \norm{v_k-v_j}<\epsilon $ whenever $ j,k\geq N $.
+\section{Bounded Sequence} 
+A sequence $ x_k $ in a normed space is bounded if there is a number $ M'>0 $ such that $ \norm{x_k}\leq M $ for every $ k $.\\
+
+In a metric space we require that there be a point $ x_0 $ such that $ d(x_k,x_0)\leq M' $ for all $ k $.
+\end{document}

@@ -1,0 +1,13 @@
+\documentclass[12pt]{article}
+\usepackage{tikz}
+ \usetikzlibrary{hobby}
+\begin{document}
+\begin{tikzpicture}[scale=.5]%, use Hobby shortcut]
+% \draw[use Hobby shortcut]([closed]0,0)..(1,.5);%..(2,0)..(3,.5)..(4,0);
+\draw[step=1,very thin] (0,0)grid (2,2);
+\draw[step=.5,ultra thin] (0,0)grid (2,2);
+\draw [smooth cycle] plot coordinates {(0,0)(6,4)(4,9)(1,7)(3,5) };
+\draw[use Hobby shortcut] ([closed] 0,0) .. (6 ,4) .. (4, 9) .. (1 , 7).. (3 , 5);
+\draw[use Hobby shortcut] ([closed] 0,0) .. (6 ,4) .. (4, 9) .. (1 , 7).. (3 , 3);
+\end{tikzpicture}
+\end{document}

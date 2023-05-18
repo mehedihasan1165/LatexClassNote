@@ -1,0 +1,7 @@
+\begin{tikzpicture}
+    \draw[thick] (-0.5,0)--(5,0);
+    \draw[thick] (0,-4)node[left]{$N_0$}--(0,4)node[left]{$N_0$};
+    \draw[thick,domain=0.6:5,smooth,samples=400] plot (\x, {(.5*\x)^(-1)});
+    \draw[thick,domain=0.6:5,smooth,samples=400] plot (\x, {(-.5*\x)^(-1)});
+    \node at (-0.4,-0.4) {$O$};
+    \end{tikzpicture}

@@ -1,0 +1,220 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{The Topology of Euclidean Space}
+We want to study the basic properties of $ \R^n $ which are important for the notion of a continuous function. We will study open sets, which generalize open intervals on $ \R $, and closed sets, which generalize closed intervals. The study of open and closed sets constitutes the begging of topology.
+\section{Open Sets}
+\begin{defn}
+    Let $ (M,d) $ be a metric space. For each fixed $ x\in M $ and $ \varepsilon>0  $, the set $ D(x,\varepsilon)=\set{y\in M\mid d(x,y)<\varepsilon} $ is called the $ \varepsilon $-disk about $ x $ (also called the $ \varepsilon $-neighbourhood or $ \varepsilon $-ball about $ x $).
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{ediskR1.tikz}
+        \hspace{2cm}
+        \import{../tikz/}{ediskR2.tikz}
+        \caption{The $ \varepsilon $-disk}
+    \end{figure}
+\end{defn}
+A set $ A\subset M $ is said to be open if for each $ x\in A $, there exists an $ \varepsilon>0 $ such that $ D(x,\varepsilon)\subset A  $. A neighborhood of a point in $ M $ is an open set containing that point.
+\begin{note}
+    The empty set $ \varnothing $ and the whole space $ M $ are open. It is important to realize that the $ \varepsilon $ required in the definition of an open set may depend on $ x $. For example, the unit square in $ \R^2 $ not including the ``boundary'' is open, bur the $ \varepsilon $-neighborhood get smaller as we approach the boundary. However, the $ \varepsilon $-neighborhood cannot be zero for any $ x $.
+\end{note}
+    \begin{figure}[H]
+        \centering
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \import{../tikz/}{unitSqOpen.tikz}
+            \caption{An open set}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \import{../tikz/}{nonOpen.tikz}
+            \caption{A non open set}
+        \end{minipage}
+    \end{figure}
+\newpage
+\begin{thm}
+    In a metric space $ M $, each $ \varepsilon $-disk $ D(x,\varepsilon) $ is open.
+\end{thm}
+% \begin{wrapfigure}[8]{r}{7cm}
+%     \centering
+%     \import{../tikz/}{e-diskOpen.tikz}
+% \end{wrapfigure}
+\begin{proof}
+    Assume $ D_\varepsilon(x)\equiv D(x,\varepsilon) $
+    \begin{figure}[H]%{r}{7cm}
+        \centering
+        \vspace{-30pt}
+        \import{../tikz/}{e-diskOpen.tikz}
+        \vspace{-30pt}
+    \end{figure}
+    Consider $ r> 0 $ such that $ r+d(y,x)<\varepsilon $.\\
+    Now let $ z\in N_r(y) $ then $ d(y,z)<r $\\
+    So,
+    \begin{align*}
+        d(x,z)& \leq d(x,y)+d(y,z)\\
+        & < r+ d(x,y)<\varepsilon\\
+        \Rightarrow z\in D_\varepsilon(x)& 
+    \end{align*}
+    Hence $ N_r(y)\subset D_\varepsilon(x) $ showing that $ D_\varepsilon(x) $ is open in $ M $.
+\end{proof}
+\begin{figure}[H]
+        \centering
+        \import{../tikz/}{e-diskOpen2.tikz}
+\end{figure}
+\newpage
+\begin{thm}
+    In a metric space $ M $, each $ \varepsilon $-disk (or $ \varepsilon $-neighborhood or neighborhood of $ x\in M $) $ D_\varepsilon(x) $ is open.
+\end{thm}
+\begin{proof}
+    Choose $ y\in D_\varepsilon(x) $. We must produce an $ \varepsilon' $ such that $ D_{\varepsilon'}(y)\subset D_\varepsilon(x) $.
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{e-diskOpen3.tikz}
+    \end{figure}
+    The figure suggests that we try $ \varepsilon'=\varepsilon-d(x,y) $, which is strictly positive, since $ d(x,y)<\varepsilon $. With this choice (which depends on $ y $), we shall show that $ D_{\varepsilon'}(y)\subset D_\varepsilon(x) $. Let $ z\in D_{\varepsilon'}(y) $, so that $ d(z,y)<\varepsilon' $. We need to prove that $ d(z,x)<\varepsilon $. But, by the triangle inequality, $ d(z,x)\leq d(z,y)+d(y,x)<\varepsilon'+d(y,x)=\varepsilon $.
+\end{proof}
+\begin{thm}\label{thm:2}
+    In a metric space $ (M,d) $,
+    \begin{enumerate}[label=(\roman*)]
+        \item both $ \varnothing $ and $ X $ are open
+        \item any union of open sets is open \label{enum:thm2.2}
+        \item any intersection of finite number of open sets is open.\label{enum:thm2.3}
+    \end{enumerate}
+\end{thm}
+
+To appreciate the difference between assertions (\ref{enum:thm2.2}) and (\ref{enum:thm2.3}), note that the intersection of an arbitrary family of open sets need not be open. For example, in $ \R^1 $, a single point (which is not an open set) is the intersection of the collection of all open intervals containing it. $ [G_k=\set{\left( -\frac{1}{k},\frac{1}{k} \right): k \in \N} $ Take $ \bigcap\limits_1^{\infty}G_k=\set{0} $, a single point set which is not an open set]
+\begin{note}
+    A set with a specified collection of subsets (called, by definition, open sets) obeying the rules in Theorem (\ref{thm:2}) above, and containing the empty set and the whole space is called a \emph{TOPOLOGICAL SPACE}.
+\end{note}
+\begin{proof}
+    \hfill
+    \begin{enumerate}[label=(\roman*)]
+        \item Since there are no points in $ \varnothing $, each point in $ \varnothing $ is the center of an $ \varepsilon $-disk contained in $ \varnothing $. For any $ x\in M $, every $ \varepsilon $-neighbourhood $ D_\varepsilon(x) $ is contained in $ M $.
+        \item Consider a family of open sets $ \set{G_\alpha :\alpha\in \N} $ with $ \bigcup_{\alpha=1}^\infty G_\alpha=A $. Let $ x\in A $, then $ x\in G_\alpha $ for same $ \alpha\in \N $. Hence, since $ G_\alpha $ is open, $ D_\varepsilon(x)\subset G_\alpha\subset A $ for some $ \varepsilon>0 $, proving that $ A $ is open.
+        \item It satisfies to prove that the intersection of two open sets is open, since we can use induction to get the general result by writing $ G_1\cap G_2\cap \dots\cap G_n=(G_1\cap G_2\cap \dots\cap G_{n-1})\cap G_n $.
+        
+        Let $ A $ and $ B $ be open and $ C =A\cap B $; if $ C=\varnothing $, $ C $ is open, by (i). Therefore, suppose $ x\in C $. Since $ A $ and $ B $ are open, there exist $ \varepsilon,\varepsilon'>0 $ such that $ D_\varepsilon(x)\subset A $ and $ D_{\varepsilon'}(x)\subset B$.\\
+        Let $ \varepsilon'' $ be the smaller of $ \varepsilon $ and $ \varepsilon' $. Then $ D_{\varepsilon''}(x)\subset D_\varepsilon(x) $ and so $ D_{\varepsilon''}(x)\subset A  $; and similarly, $ D_{\varepsilon''}(x)\subset B $, and so $ D_{\varepsilon''}(x)\subset A\cap B=C $, as required.
+    \end{enumerate}
+\end{proof}
+\begin{prob}
+    Let $ A\subset \R^n $ be open and $ B\subset \R^n $. Define $ A+b=\set{x+y\in \R^n\mid x\in A \text{ and }y\in B} $. Prove that $ A+B $ is open.
+\end{prob}
+\begin{proof}
+    Let $ w\in A+B $. There are points $ x\in A $ and $ y\in B $ with $ w=x+y $. Since $ A $ is open, there is an $ \varepsilon>0 $ such that $ D_{\varepsilon}(x)\subset A $. We claim that $ D_{\varepsilon}(w)\subset A+B $. Suppose $ z\in D_{\varepsilon}(w) $, then $ d(w,z)=\norm{w-z}<\varepsilon $. But $ \varepsilon>\norm{z-w}=\norm{z-(x+y)}=\norm{(z-y)-x}=d(x,z-y)$, so $ z-y\in D_{\varepsilon}(x)\subset A $. Since $ y\in B $, this forces $ z=(z-y)+y $ to be in $ A+B $. Thus, $ D_{\varepsilon}(w) \subset A+B $ and hence $ A+B $ is an open set.
+\end{proof}
+\section{Interior of a Set}
+\begin{defn}
+    Let $ M $ be a metric space and $ A\subset M $. A point $ x\in A $ is called an interior point of $ A $ if there is an open set $ U $ such that $ x\in U\subset A $. The interior of $ A $ is the collection of all interior points of $ A $ and is denoted $ \inte(A) $. The set might be empty.
+\end{defn}
+
+Equivalently, $ x $ is an interior point of $ A $ if there is an $ \varepsilon>0 $ such that $ D_{\varepsilon}(x)\subset A $.
+\begin{ex}
+    \hfill
+    \begin{enumerate}
+        \item The interior of a single point in $ \R^n $ is empty.
+        \item The interior of the unit disk in $ \R^2 $, including its boundary, is the unit disk without its boundary. 
+    \end{enumerate}
+\end{ex}
+The interior of $ A $ also can be described as the union of all open subsets of $ A $. Thus, by theorem (\ref{thm:2}), $ \inte(A) $ is open. Hence, $\inte (A) $ is the largest open subset of $ A $. If there are no open subsets of $ A $, then $\inte (A)=\varnothing $. Also, it is evident that $ A $ is open if and only if $ \inte(A)=A $.
+\begin{prob}
+    Let $ S=\set{(x,y)\in\R^2\mid 0<x\leq 1 } $. Find $ \inte(S) $.
+\end{prob}
+\begin{soln}
+    To determine the interior points, we locate points about with it is possible to draw an $ \varepsilon $-disk entirely contained in $ S $. Notice that there are points $ (x,y) $ where $ 0<x<1 $. Thus, $ \inte(S)=\set{(x,y)\mid 0<x<1} $.
+\end{soln}
+\section{Closed Sets}
+\begin{defn}
+    A set $ B $ in a metric space $ M $ is said to be closed if its complement (that is, the set $ M\setminus B $) is open.
+\end{defn}
+
+For example, a single point in $ \R^n $ is a closed set. The set in $ \R^2 $ containing of the unit disk with its boundary is closed. Roughly speaking, a set is closed if it contains its ``boundary points''.
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{closed.tikz}
+    \caption{Closed sets}
+\end{figure}
+
+
+It is possible to have a set that is neither open nor closed. For example, in $ \R^1 $, a half-open interval $ (0,1] $ is neither open nor closed. Thus, even if we know that $ A $ is not open, we \emph{cannot} conclude that it is closed or not closed.\newpage
+\begin{thm}
+    In a metric space $ (M,d) $
+    \begin{enumerate}[label=(\roman*)]
+        \item The whole space $ M $ and the empty set $ \varnothing $ are closed.
+        \item The union of a finite number of closed subsets is closed.
+        \item The intersection of an arbitrary collection of closed subsets is closed.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    Use defn and theorem (\ref{thm:2})
+\end{proof}
+\begin{note}
+    Let, $ I_n=[-n,n] $, then $ \bigcup_{n=1}^\infty[-n,n]=[-1,1]\cup [-2,2]\cup[-3,3]\cup \dots = (-\infty,\infty)=\R$,open.\\ This suggests that union of arbitrary collection of closed sets is not closed.
+\end{note}
+\section{Accumulation Point}
+\begin{defn}
+    A point $ x  $ in a metric space $ M $ is said to be an accumulation point of a set $ A\subset M $ if every open set $ U $ containing $ x $ contains same points of $ A $ other than $ x $.
+\end{defn}
+
+Equivalently, $ x\in M $ is an accumulation point of $ A\subset M   $ if for every $ \varepsilon>0 $, the $ \varepsilon $-disk $ D_{\varepsilon}(x) $ contains same points of $ y $ of $ A $ with $ y\neq x $. For example, in $ \R^1 $, a set consisting of a single point has no accumulation points and the open interval $ (0,1) $ has all points of $ [0,1] $ as accumulation points.
+\begin{thm}
+    The set $ A\subset M $ is closed if and only if the accumulation point of $ A $ belong to $ A $.
+\end{thm}
+\begin{proof}
+    First, suppose $ A $ is closed. Then $ M\setminus A $ is open. Thus, if $ x\in M\setminus A $, there is an $ \varepsilon>0 $ such that $ D_{\varepsilon}(x)\subset M\setminus A $; i.e., $ D_{\varepsilon}(x)\cap A=\varnothing $. Thus, $ x $ is not an accumulation point, and so $ A $ contains all its accumulation points.
+
+    Conversely, suppose $ A $ contains all its accumulation points. Let $ x\in M\setminus A $. Since $ x $ is not an accumulation point and $ x\notin A $, there is an $ \varepsilon>0 $ such that $ D_{\varepsilon}(x)\cap A=\varnothing $; i.e., $ D_{\varepsilon}(x)\subset M\setminus A $.
+
+    Hence, $ M\setminus A $ is open, and so $ A $ is closed.
+\end{proof}
+\begin{prob}
+    Let $ S=\set{x\in R\mid x\in [0,1]} $ and $ x $ is rational. Find the accumulation points of $ S $.
+\end{prob}
+\begin{soln}
+    The set of accumulation points consists of all points in $ [0,1] $. Indeed, let $ y\in [0,1] $ and $ D_{\varepsilon}(y)=(y-\varepsilon,y+\varepsilon) $ be a neighborhood of $ y $. We can find rational points in $ (0,1) $ arbitrary close to $ y $ (other than $ y $) and in particular in $ D_{\varepsilon}(y) $. Hence, $ y $ is an accumulation point. Any point $ y\notin [0,1] $ is not an accumulation point, because $ y $ has an $  \varepsilon$-disk containing it that does not meet $ [0,1] $.
+\end{soln}
+\section{Closure of a Set}
+\begin{defn}
+    Let $ (M,d) $ be a metric space, and $ A\subset M $. The closure of $ A $ denoted $ \cl(A) $, is defined to be the intersection of all closed sets containing $ A $.
+\end{defn}
+
+Since, the intersection of any family of closed sets is closed. $ \cl(A) $ is closed; it is also clear that $ A $ is closed if and only if $ \cl(A)=A $. For example, on $ \R^1 $, $ \cl((0,1))=[0,1] $. The connection between closure and accumulation points is the following:
+\begin{thm}
+    For $ A\subset M $, $ \cl(A) $ consists of $ A $ plus the accumulation points of $ A $. That is, $ \cl(A)=A\cup \{\text{ accumulation points of } A\} $.
+\end{thm} 
+\begin{prob}
+    Find the closure of $ A=[0,1)\cup \set{2} $ in $ \R $.
+\end{prob}
+\begin{soln}
+    The accumulation point of $ A $ are $ [0,1] $, and so the closure is $ [0,1]\cup \set{2} $. This is clearly the smallest closed set we could find containing $ A $.
+\end{soln}
+\section{Boundary of a Set}
+\begin{defn}
+    For a given set $ A $ in a metric space $ (M,d) $, the boundary is defined to be the set bd$ (A)=\cl(A)\cap\cl(M\setminus A) $. Sometimes the notation $ \delta A=\text{bd}(A)$ is used.
+\end{defn}
+
+Since the intersection of two closed sets is again a closed set,  bd$ (A) $ is a closed set. Also note that $ \text{bd}(A)=\text{bd}(M\setminus A) $.
+\begin{prop}
+    Let $ A\subset M $. Then $ x\in\text{bd}(A) $ if and only if for every $ \varepsilon >0$, $ D_{\varepsilon}(x) $ contains point of $ A $ and of $ M\setminus A $ (these points might include the points $ x $ itself).
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{boundary.tikz}
+    \end{figure}
+\end{prop}
+\begin{prob}
+    Let $ A=\set{x\in\R\mid x\in[0,1]\text{ and }x \text{ is rational}} $. Find bd$ (A) $.
+\end{prob}
+\begin{soln}
+    bd$ (A)=[0,1] $, since, for any $ \varepsilon>0 $ and $ x\in [0,1] $, $ D_{\varepsilon}(x)=(x-\varepsilon,x+\varepsilon) $ contains both rational and irrational points. One can also verify that bd$ (A)=[0,1] $ using the original definition of bd$ (A) $.
+\end{soln}
+\begin{prob}
+    Let $ S=\set{(x,y)\in\R^2 \mid x^2-y^2>1} $. Find bd$ (S) $.
+\end{prob}
+\begin{soln}
+    Clearly, bd$ (S) $ consists of the hyperbola $ x^2-y^2=1 $.
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{hyper.tikz}
+    \end{figure}
+\end{soln}
+\end{document}

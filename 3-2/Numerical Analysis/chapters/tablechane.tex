@@ -1,0 +1,634 @@
+\documentclass[12pt,class=book,crop=false]{standalone}
+\usepackage{../style}
+\usepackage{multirow}
+% \usepackage{booktabs}
+\usepackage{siunitx} % Required for alignment
+% \sisetup{
+    % table-number-alignment = center
+%   round-mode          = places, % Rounds numbers
+%   round-precision     = 2, % to 2 places
+% }
+\begin{document}
+\begin{center}
+    \begin{tabular}{cl}
+        \toprule
+        \( n= \) iteration & \multicolumn{1}{c}{\( x_n  \) (upto \( 8 \)D)} \\\midrule
+                           & \( x_0 = 1.5\)                                 \\
+        \(0\)              & \( x_1 = 1.373\,333\,333\)                     \\
+        \( 1 \)            & \(x_2= 1.365\,262\,015  \)                     \\
+        \( 2 \)            & \(x_3= 1.365\,230\,014  \)                     \\
+        \( 3 \)            & \( x_4= 1.365\,230\,013 \)                     \\\bottomrule
+    \end{tabular}
+\end{center}
+\begin{center}
+    \begin{tabular}{cr@{ = }S[table-format=1.9]}
+        \toprule
+        \( n= \) iteration & \multicolumn{2}{c}{\( x_n  \) (upto \( 5 \)D)}               \\\midrule
+                           & \(x_0\)                                        & 1.5         \\
+        \(0\)              & \(x_1\)                                        & 1.533333333 \\
+        \( 1 \)            & \(x_2\)                                        & 1.532090643 \\
+        \( 2 \)            & \(x_3\)                                        & 1.532088886 \\
+        \( 3 \)            & \(x_4\)                                        & 1.532088886 \\\bottomrule
+    \end{tabular}
+\end{center}
+\centering
+\begin{tabular}{SS}
+    \toprule
+    \multicolumn{1}{c}{\( x \)} & \multicolumn{1}{c}{\( e^{-x} \)} \\\midrule
+    0                           & 1                                \\
+    1                           & 0.36787                          \\
+    2                           & 0.13533                          \\
+    3                           & 0.04978                          \\
+    -1                          & 2.71820                          \\
+    -2                          & 7.38900                          \\\bottomrule
+\end{tabular}
+\begin{center}
+    \begin{tabular}{cr@{ = }S[table-format=1.9]}
+        \toprule
+        \( n= \) iteration & \multicolumn{2}{c}{\( x_n  \) (within \( 10^{-5} \))}               \\\midrule
+                           & \(x_0\)                                               & 0.79        \\
+        \( 0 \)            & \(x_1\)                                               & 0.73962755  \\
+        \( 1 \)            & \(x_2\)                                               & 0.739085198 \\
+        \( 2 \)            & \(x_3\)                                               & 0.739085133 \\\bottomrule
+    \end{tabular}
+\end{center}
+\begin{center}
+    \begin{tabular}{cr@{ = }Sr@{ = }S}
+        \toprule
+        \(i\) & \multicolumn{2}{c}{\(  x_i \)} & \multicolumn{2}{c}{\(  f(x)=\frac{1}{x} \)}                       \\\midrule
+        \(0\) & \(  x_0\)                      & 2                                           & \(  f(x_0)\) & 0.5  \\
+        \(1\) & \(  x_1\)                      & 2.5                                         & \(  f(x_1)\) & 0.4  \\
+        \(2\) & \(  x_2\)                      & 4                                           & \(  f(x_2)\) & 0.25 \\\bottomrule
+    \end{tabular}
+\end{center}
+\begin{center}
+    \begin{tabular}{cS[table-format=2.4]}
+        \toprule
+        \(  x \)    & \multicolumn{1}{c}{\(  f(x) \)} \\\midrule
+        \(  1.00 \) & 0.1924                          \\
+        \(  1.05 \) & 0.2414                          \\
+        \(  1.10 \) & 0.2933                          \\
+        \(  1.15 \) & 0.3492                          \\\bottomrule
+    \end{tabular}
+\end{center}
+\begin{center}
+    \begin{tabular}{cS[table-format=3.5]}
+        \toprule
+        \(  x \)   & \multicolumn{1}{c}{\(  f(x) \)} \\\midrule
+        \(  1.0 \) & 1.00000                         \\
+        \(  1.1 \) & 1.23368                         \\
+        \(  1.2 \) & 1.55271                         \\
+        \(  1.3 \) & 1.49372                         \\
+        \(  1.4 \) & 2.61170                         \\\bottomrule
+    \end{tabular}
+\end{center}
+\begin{center}
+    \begin{tabular}{cS[table-format=3.5]}
+        \toprule
+        \(  x \)   & \multicolumn{1}{c}{\(  f(x) \)} \\\midrule
+        \(  0.0 \) & 1.0                             \\
+        \(  0.5 \) & 1.64872                         \\
+        \(  1.0 \) & 2.71858                         \\
+        \(  2.0 \) & 7.38906                         \\\bottomrule
+    \end{tabular}
+\end{center}
+\begin{center}
+    \begin{tabular}{cr@{ = }S[table-format=2.6]}
+        \toprule
+        \(  x_i \)     & \multicolumn{2}{c}{\(  f(x_i) \)}            \\\midrule
+        \(  x_0=1.2 \) & \(  f(x_0)\)                      & 0.079181 \\
+        \(  x_1=1.4 \) & \(  f(x_1)\)                      & 0.146128 \\
+        \(  x_2=1.6 \) & \(  f(x_2)\)                      & 0.204120 \\
+        \(  x_3=1.8 \) & \(  f(x_3)\)                      & 0.255273 \\\bottomrule
+    \end{tabular}
+\end{center}
+\begin{table}[h]
+    % \resizebox{10pt\textwidth}{!}{%
+    \footnotesize
+    \begin{tabular}{|c|p{2.5cm}|p{3cm}|c|c|}
+        \hline
+                                            & {Zeroth \newline divided \newline difference} & {First \newline divided difference} & Second divided difference         & Third divided difference            \\\hline
+        \(  x_i \)                          & \(  f(x_i)=f[x_i] \)                          & {\( \begin{aligned}         & f[x_i,x_{i+1}]                        \\
+                      = & \frac{f[x_i]-f[x_{i+1}]}{x_i-x_{i+1}}\end{aligned} \)}  & {\( \begin{aligned}
+                      & f[x_i,x_{i+1},x_{i+2}]                                \\
+                    = & \frac{f[x_i,x_{i+1}]-f[x_{i+1},x_{i+2}]}{x_i-x_{i+2}}
+                \end{aligned}\)} & {\(  \begin{aligned}           & f[x_i,x_{i+1},x_{i+2},x_{i+3}]                                        \\
+                        = & \frac{f[x_i,x_{i+1},x_{i+2}]-f[x_{i+1},x_{i+2},x_{i+3}]}{x_i-x_{i+3}}\end{aligned} \)} \\\hline
+        {\(  \begin{aligned}
+                 & x_0=1.2 \\
+                 &         \\
+                 &         \\
+                 & x_1=1.4 \\
+                 &         \\
+                 &         \\
+                 & x_2=1.6 \\
+                 &         \\
+                 &         \\
+                 & x_3=1.8
+            \end{aligned} \)} & \(  {\begin{aligned}
+                    f[x_0] & =0.079181 \\
+                           &           \\& \\
+                    f[x_1] & =0.146128 \\
+                           &           \\& \\
+                    f[x_2] & =0.204120 \\
+                           &           \\& \\
+                    f[x_3] & =0.255273
+                \end{aligned}} \)           & {\(
+                \begin{aligned}
+                      & f[x_0,x_1]                    \\
+                    = & \frac{f[x_0]-f[x_1]}{x_0-x_1} \\
+                    % =&\frac{0.079181-0.146128}{1.2-1.4}\\
+                    = & 0.334735                      \\
+                      &                               \\
+                      & f[x_1,x_2]                    \\
+                    = & \frac{f[x_1]-f[x_2]}{x_1-x_2} \\
+                    % =&\frac{0.146128-0.204120}{1.4-1.6}\\
+                    = & 0.28996                       \\
+                      &                               \\
+                      & f[x_2,x_3]                    \\
+                    = & \frac{f[x_2]-f[x_3]}{x_2-x_3} \\
+                    % =&\frac{0.204120-0.255273}{1.6-1.8}\\
+                    = & 0.255765                      \\
+                \end{aligned}
+        \)}                                 & {\(  \begin{aligned}
+                      & f[x_0,x_1,x_2]                        \\
+                    = & \frac{f[x_0,x_1]-f[x_1,x_2]}{x_0-x_2} \\
+                    = & -0.1119375                            \\
+                      &                                       \\
+                      & f[x_1,x_2,x_3]                        \\
+                    = & \frac{f[x_1,x_2]-f[x_2,x_3]}{x_1-x_3} \\
+                    = & -0.0854875                            \\
+                \end{aligned} \)}           & {\(  \begin{aligned}
+                      & f[x_0,x_1,x_2,x_3]                            \\
+                    = & \frac{f[x_0,x_1,x_2]-f[x_1,x_2,x_3]}{x_0-x_3} \\
+                    = & 0.044083333
+                \end{aligned} \)}                                                                           \\\hline
+    \end{tabular}%}
+\end{table}
+\begin{table}[h]
+    \footnotesize
+    \everymath{\displaystyle}
+    \begin{tabular}{ccccc}
+        \toprule
+                                            & \begin{tabular}[c]{@{}l@{}}Zeroth\\ Divided\\ Difference\end{tabular}            & \begin{tabular}[c]{@{}l@{}}First\\ Divided\\ Difference\end{tabular}                 & Second divided difference                                  & Third divided difference                                                   \\
+
+        \multirow{2}{*}{$ x_i $}            & \multirow[c]{2}{*}{\(f(x_i)=f[x_i]\)} & $ f[x_i,x_{i+1} ]$                         & $ f[x_i,x_{i+1},x_{i+2}] $                                 & $ f[x_i,x_{i+1},x_{i+2},x_{i+3}] $                                         \\
+                                            &                                       & $ =\frac{f[x_i]-f[x_{i+1}]}{x_i-x_{i+1}} $ & $ =\frac{f[x_i,x_{i+1}]-f[x_{i+1},x_{i+2}]}{x_i-x_{i+2}} $ & $ =\frac{f[x_i,x_{i+1},x_{i+2}]-f[x_{i+1},x_{i+2},x_{i+3}]}{x_i-x_{i+3}} $ \\\midrule
+        {\(  \begin{aligned}
+                 & x_0=1.2 \\
+                 &         \\
+                 &         \\
+                 & x_1=1.4 \\
+                 &         \\
+                 &         \\
+                 & x_2=1.6 \\
+                 &         \\
+                 &         \\
+                 & x_3=1.8
+            \end{aligned} \)} & \(  {\begin{aligned}
+                    f[x_0] & =0.079181 \\
+                           &           \\& \\
+                    f[x_1] & =0.146128 \\
+                           &           \\& \\
+                    f[x_2] & =0.204120 \\
+                           &           \\& \\
+                    f[x_3] & =0.255273
+                \end{aligned}} \)   & {\(
+                \begin{aligned}
+                      & f[x_0,x_1]                    \\
+                    = & \frac{f[x_0]-f[x_1]}{x_0-x_1} \\
+                    % =&\frac{0.079181-0.146128}{1.2-1.4}\\
+                    = & 0.334735                      \\
+                      &                               \\
+                      & f[x_1,x_2]                    \\
+                    = & \frac{f[x_1]-f[x_2]}{x_1-x_2} \\
+                    % =&\frac{0.146128-0.204120}{1.4-1.6}\\
+                    = & 0.28996                       \\
+                      &                               \\
+                      & f[x_2,x_3]                    \\
+                    = & \frac{f[x_2]-f[x_3]}{x_2-x_3} \\
+                    % =&\frac{0.204120-0.255273}{1.6-1.8}\\
+                    = & 0.255765                      \\
+                \end{aligned}
+        \)}                                 & {\(  \begin{aligned}
+                      & f[x_0,x_1,x_2]                        \\
+                    = & \frac{f[x_0,x_1]-f[x_1,x_2]}{x_0-x_2} \\
+                    = & -0.1119375                            \\
+                      &                                       \\
+                      & f[x_1,x_2,x_3]                        \\
+                    = & \frac{f[x_1,x_2]-f[x_2,x_3]}{x_1-x_3} \\
+                    = & -0.0854875                            \\
+                \end{aligned} \)}   & {\(  \begin{aligned}
+                      & f[x_0,x_1,x_2,x_3]                            \\
+                    = & \frac{f[x_0,x_1,x_2]-f[x_1,x_2,x_3]}{x_0-x_3} \\
+                    = & 0.044083333
+                \end{aligned} \)}                                                                                                                                                  \\\hline
+    \end{tabular}%}
+\end{table}
+\begin{center}
+    \begin{tabular}{r@{ = }S[table-format=1.3]r@{ = }S[table-format=1.4]}
+        \toprule
+        \multicolumn{2}{c}{\(  x_i \)} & \multicolumn{2}{c}{\(  f(x_i) \)}                         \\\midrule
+        \(  x_0\)                      & 1.05                              & \(  f(x_0)\) & 1.7433 \\
+        \(  x_1 \)                     & 1.20                              & \(  f(x_1)\) & 2.5722 \\
+        \(  x_2 \)                     & 1.30                              & \(  f(x_2)\) & 3.6021 \\
+        \(  x_3 \)                     & 1.43                              & \(  f(x_3)\) & 8.2381 \\\bottomrule
+    \end{tabular}
+\end{center}
+\begin{table}[h]
+    \footnotesize
+    \everymath{\displaystyle}
+    \begin{tabular}{ccccc}
+        \toprule
+                                            & \begin{tabular}[c]{@{}l@{}}Zeroth divided\\ difference\end{tabular}
+                                            & \begin{tabular}[c]{@{}l@{}}First divided\\ difference\end{tabular}
+                                            & Second divided difference             & Third divided difference                                                                                                                                                                                   \\
+        \multirow[b]{2}{*}{$ x_i $}         & \multirow[b]{2}{*}{\(f(x_i)=f[x_i]\)} & $ f[x_i,x_{i+1} ]$ \rule[-1em]{0pt}{1em}                        & \multicolumn{1}{l}{\hspace*{1em}$ f[x_i,x_{i+1},x_{i+2}] $} & \multicolumn{1}{l}{\hspace*{1em}$ f[x_i,x_{i+1},x_{i+2},x_{i+3}] $}        \\
+                                            &                                       & $ =\frac{f[x_i]-f[x_{i+1}]}{x_i-x_{i+1}} $\rule[-1em]{0pt}{1em} & $ =\frac{f[x_i,x_{i+1}]-f[x_{i+1},x_{i+2}]}{x_i-x_{i+2}} $  & $ =\frac{f[x_i,x_{i+1},x_{i+2}]-f[x_{i+1},x_{i+2},x_{i+3}]}{x_i-x_{i+3}} $ \\\midrule
+        {\(  \begin{aligned}
+                 & x_0=1.2 \\
+                 &         \\
+                 &         \\
+                 & x_1=1.4 \\
+                 &         \\
+                 &         \\
+                 & x_2=1.6 \\
+                 &         \\
+                 &         \\
+                 & x_3=1.8
+            \end{aligned} \)} & \(  {\begin{aligned}
+                    f[x_0] & =0.079181 \\
+                           &           \\& \\
+                    f[x_1] & =0.146128 \\
+                           &           \\& \\
+                    f[x_2] & =0.204120 \\
+                           &           \\& \\
+                    f[x_3] & =0.255273
+                \end{aligned}} \)   & {\(
+                \begin{aligned}
+                      & f[x_0,x_1]                    \\
+                    = & \frac{f[x_0]-f[x_1]}{x_0-x_1} \\
+                    % =&\frac{0.079181-0.146128}{1.2-1.4}\\
+                    = & 0.334735                      \\
+                      &                               \\
+                      & f[x_1,x_2]                    \\
+                    = & \frac{f[x_1]-f[x_2]}{x_1-x_2} \\
+                    % =&\frac{0.146128-0.204120}{1.4-1.6}\\
+                    = & 0.28996                       \\
+                      &                               \\
+                      & f[x_2,x_3]                    \\
+                    = & \frac{f[x_2]-f[x_3]}{x_2-x_3} \\
+                    % =&\frac{0.204120-0.255273}{1.6-1.8}\\
+                    = & 0.255765                      \\
+                \end{aligned}
+        \)}                                 & {\(  \begin{aligned}
+                      & f[x_0,x_1,x_2]                        \\
+                    = & \frac{f[x_0,x_1]-f[x_1,x_2]}{x_0-x_2} \\
+                    = & -0.1119375                            \\
+                      &                                       \\
+                      & f[x_1,x_2,x_3]                        \\
+                    = & \frac{f[x_1,x_2]-f[x_2,x_3]}{x_1-x_3} \\
+                    = & -0.0854875                            \\
+                \end{aligned} \)}   & {\(  \begin{aligned}
+                      & f[x_0,x_1,x_2,x_3]                            \\
+                    = & \frac{f[x_0,x_1,x_2]-f[x_1,x_2,x_3]}{x_0-x_3} \\
+                    = & 0.044083333
+                \end{aligned} \)}                                                                                                                                                                        \\\bottomrule
+    \end{tabular}%}
+\end{table}
+\begin{center}
+    \begin{tabular}{cc}
+        \toprule
+        Marks         & No. of students \\\midrule
+        \( 30 - 40 \) & \( 31 \)        \\
+        \( 40 - 50 \) & \( 42 \)        \\
+        \( 50 - 60 \) & \( 51 \)        \\
+        \( 60 - 70 \) & \( 35 \)        \\
+        \( 70 - 80 \) & \( 31 \)        \\\bottomrule
+    \end{tabular}
+\end{center}
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        \( x \)                            & \( f(x) \)                         & \( \Delta f(x) \)                 & \( \Delta^2 f(x) \)                & \( \Delta^3 f(x) \)              & \( \Delta^4 f(x) \)               & \( \Delta^5 f(x) \) \\\hline
+        \( {\begin{aligned}
+                     &    \\
+                     & 40 \\
+                     & 50 \\
+                     & 60 \\
+                     & 70 \\
+                     & 80 \\
+                     &    \\
+                \end{aligned}} \) & \( {\begin{aligned}
+                     &     \\
+                     & 31  \\
+                     & 73  \\
+                     & 124 \\
+                     & 159 \\
+                     & 190 \\
+                     &     \\
+                \end{aligned}} \) & \( {\begin{aligned}
+                     &    \\
+                     &    \\
+                     & 42 \\
+                     & 51 \\
+                     & 35 \\
+                     & 31 \\
+                     &    \\
+                \end{aligned}}\) & \( {\begin{aligned}
+                      &    \\
+                      &    \\
+                      & 9  \\
+                    - & 16 \\
+                    - & 4  \\
+                      &    \\
+                      &    \\
+                \end{aligned}} \) & \({\begin{aligned}
+                      &    \\
+                      &    \\
+                    - & 25 \\
+                      & 12 \\
+                      &    \\
+                      &    \\
+                      &    \\
+                \end{aligned}}\) & \( {\begin{aligned}
+                     &    \\
+                     &    \\
+                     &    \\
+                     & 37 \\
+                     &    \\
+                     &    \\
+                     &    \\
+                \end{aligned}}\) &                     \\\hline
+    \end{tabular}
+\end{center}
+\begin{center}
+    %     \begin{tabular}{cS[table-format=1.5]S[table-format=1.5]S[table-format=1.5]S[table-format=1.5]}
+    %         \toprule
+    %         Age \( x \) & \multicolumn{1}{c}{Premium \( f(x) \)} & \multicolumn{1}{c}{\( \Delta f(x) \)}   & \multicolumn{1}{c}{\( \Delta^2 f(x) \)}  &\multicolumn{1}{c}{ \( \Delta^3 f(x) \)}\\ \midrule
+    %         20 & 0.01427 &         &         &          &        &         \\
+    %    &         & 0.00155 &         &          &        &         \\
+    % 24 & 0.01581 &         & 0.0037  &          &        &         \\
+    %    &         & 0.00191 &         & -0.00004 &        &         \\
+    % 28 & 0.01772 &         & 0.00033 &          &        &         \\
+    %    &         & 0.00224 &         &          &        &         \\
+    % 32 & 0.01996 &         &         &          &        &         \\ \bottomrule
+    %     \end{tabular}
+\end{center}
+\begin{tabular}{cc}
+    \toprule
+    Year       & Population (in thousands) \\\midrule
+    \( 1911 \) & \( 12 \)                  \\
+    \( 1921 \) & \( 15 \)                  \\
+    \( 1931 \) & \( 20 \)                  \\
+    \( 1941 \) & \( 27 \)                  \\
+    \( 1951 \) & \( 39 \)                  \\
+    \( 1961 \) & \( 52 \)                  \\\bottomrule
+\end{tabular}
+\begin{tabular}{cS[table-format=1.5]}
+    \toprule
+    Age \(  (x) \) & \multicolumn{1}{c}{Premium \(  f(x) \)} \\\midrule
+    \(  20 \)      & 0.01427                                 \\
+    \(  24 \)      & 0.1581                                  \\
+    \(  28 \)      & 0.01772                                 \\
+    \(  32 \)      & 0.01996                                 \\\bottomrule
+\end{tabular}
+\begin{tabular}{cS[table-format=1.5]S[table-format=1.5]S[table-format=2.5]S[table-format=2.5]}
+    \toprule
+    Age \( x \) & \multicolumn{1}{c}{Premium \( f(x) \)} & \multicolumn{1}{c}{\( \Delta f(x) \)} & \multicolumn{1}{c}{\( \Delta^2 f(x) \)} & \multicolumn{1}{c}{ \( \Delta^3 f(x) \)} \\ \midrule
+    20          & 0.01427                                &                                       &                                         &                                          \\
+                &                                        & 0.00155                               &                                         &                                          \\
+    24          & 0.01581                                &                                       & 0.0037                                  &                                          \\
+                &                                        & 0.00191                               &                                         & -0.00004                                 \\
+    28          & 0.01772                                &                                       & 0.00033                                 &                                          \\
+                &                                        & 0.00224                               &                                         &                                          \\
+    32          & 0.01996                                &                                       &                                         &                                          \\ \bottomrule
+\end{tabular}
+\begin{center}
+    % \everymath{\displaystyle}
+    \begin{tabular}{cc*{6}{S[table-format=2.4]}}
+        \toprule
+        k\( \rightarrow \)                   & \( 0 \)                      & \multicolumn{1}{c}{\( 1 \)} & \multicolumn{1}{c}{\( 2 \)} & \multicolumn{1}{c}{\( 3 \)} & \multicolumn{1}{c}{\( 4 \)} & \multicolumn{1}{c}{\( 5 \)} & \multicolumn{1}{c}{\( 6 \)} \\\midrule
+        \( x_1^{(k)} \)\rule[-1em]{0pt}{1em} & \( 0 \)                      & 0.6000                      & 1.0302                      & 1.0066                      & 1.0004                      & 1.0001                      & 1.0000                      \\
+        \( x_2^{(k)} \)                      & \rule[-1em]{0pt}{1em}\( 0 \) & 2.3273                      & 2.0370                      & 2.0036                      & 2.0003                      & 2.0000                      & 2.0000                      \\
+        \( x_3^{(k)} \)\rule[-1em]{0pt}{1em} & \( 0 \)                      & -0.9873                     & -1.0145                     & -1.0025                     & -1.0003                     & -1.0000                     & -1.0000                     \\
+        \( x_4^{(k)} \)\rule[-1em]{0pt}{1em} & \( 0 \)                      & 0.8789                      & 0.4843                      & 0.9984                      & 0.9998                      & 1.0000                      & 1.0000                      \\\bottomrule
+    \end{tabular}
+\end{center}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        Operation    & \multicolumn{3}{c|}{Coefficient of} & R.H.S.     & Eq. \#     & Check Sum                        \\
+        \cline{2-4}
+                     & $ x $                               & $ y $      & $ z $      &             &           &        \\\hline
+                     & $ 16 $                              & $ 5 $      & $ 7 $      & $ 29 $      & $ Eq1 $   & 57     \\
+                     & $ 5 $                               & $ 12 $     & $ 9 $      & $ 5 $       & $ Eq2 $   & 31     \\
+                     & $ 8 $                               & $ 11 $     & $ 20 $     & $ 35 $      & $ Eq3 $   & 74     \\\hline
+        Eq 1/16      & $ 1 $                               & $ 0.3125 $ & $ 0.4375 $ & $ 1.8125 $  & $ Eq4* $  & 3.5625 \\
+        Eq 2/5       & $ 1 $                               & $ 2.4000 $ & $ 1.8000 $ & $ 1.000 $   & $ Eq5 $   & 6.2000 \\
+        Eq 3/8       & $ 1 $                               & $ 1.3750 $ & $ 2.5000 $ & $ 4.3750 $  & $ Eq6 $   & 9.2500 \\\hline
+        Eq 5 - Eq 4  &                                     & $ 2.0875 $ & $ 1.3625 $ & $ -0.8125 $ & $ Eq7 $   & 2.6375 \\
+        Eq 6 - Eq 4  &                                     & $ 1.0625 $ & $ 2.0625 $ & $ 2.5625 $  & $ Eq8 $   & 5.6875 \\\hline
+        Eq 7/2.0875  &                                     & $ 1 $      & $ 0.6527 $ & $ -0.3892 $ & $ Eq9* $  & 1.2635 \\
+        Eq 8/1.0625  &                                     & $ 1 $      & $ 1.9412 $ & $ 2.4118 $  & $ Eq10 $  & 5.3530 \\\hline
+        Eq 10 - Eq 9 &                                     &            & $ 1.2885 $ & $ 2.8010 $  & $ Eq11* $ & 4.0895 \\\hline
+    \end{tabular}
+\end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cS[table-format=2.4]*{3}{S[table-format=3.4]}cS[table-format=3.4]}
+        \toprule
+                                      & \multicolumn{3}{c}{Coefficient of} &         &         &                                                                                        \\\cmidrule(lr){2-4}
+        \multicolumn{1}{c}{Operation} & $ x $                              & $ y $   & $ z $   & \multicolumn{1}{c}{R.H.S} & \multicolumn{1}{c}{Eq. \#} & \multicolumn{1}{c}{Check sum} \\\midrule
+                                      & 16.0000                            & 5.0000  & 7.0000  & 29.0000                   & Eq1                        & 57.0000                       \\
+                                      & 5.0000                             & 12.0000 & 9.0000  & 5.0000                    & Eq2                        & 31.0000                       \\
+                                      & 8.0000                             & 11.0000 & 20.0000 & 35.0000                   & Eq3                        & 74.0000                       \\\midrule
+        Eq 1/16                       & 1.0000                             & 0.3125  & 0.4375  & 1.8125                    & Eq4*                       & 3.5625                        \\
+        Eq 2/5                        & 1.0000                             & 2.4000  & 1.8000  & 1.0000                    & Eq5                        & 6.2000                        \\
+        Eq 3/8                        & 1.0000                             & 1.3750  & 2.5000  & 4.3750                    & Eq6                        & 9.2500                        \\\midrule
+        Eq 5 - Eq 4                   &                                    & 2.0875  & 1.3625  & -0.8125                   & Eq7                        & 2.6375                        \\
+        Eq 6 - Eq 4                   &                                    & 1.0625  & 2.0625  & 2.5625                    & Eq8                        & 5.6875                        \\\midrule
+        Eq 7/2.0875                   &                                    & 1.0000  & 0.6527  & -0.3892                   & Eq9*                       & 1.2635                        \\
+        Eq 8/1.0625                   &                                    & 1.0000  & 1.9412  & 2.4118                    & Eq10                       & 5.3530                        \\\midrule
+        Eq 10 - Eq 9                  &                                    &         & 1.2885  & 2.8010                    & Eq11*                      & 4.0895                        \\\bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cS[table-format=2.4]*{3}{S[table-format=3.4]}cS[table-format=3.4]}
+        \toprule
+                                      & \multicolumn{3}{c}{Coefficient of} &         &         &                                                                                        \\\cmidrule(lr){2-4}
+        \multicolumn{1}{c}{Operation} & $ x $                              & $ y $   & $ z $   & \multicolumn{1}{c}{R.H.S} & \multicolumn{1}{c}{Eq. \#} & \multicolumn{1}{c}{Check sum} \\\midrule
+                                      & 5.0000                             & 12.0000 & 9.0000  & 5.0000                    & Eq1                        & 31.0000                       \\
+                                      & 8.0000                             & 11.0000 & 20.0000 & 35.0000                   & Eq2                        & 74.0000                       \\
+                                      & 16.0000                            & 5.0000  & 7.0000  & 29.0000                   & Eq3                        & 57.0000                       \\\midrule
+        Eq 2/20                       & 0.4000                             & 0.5500  & 1.0000  & 1.7500                    & Eq4*                       & 3.7000                        \\
+        Eq 3/7                        & 0.2857                             & 0.7143  & 1.0000  & 4.1429                    & Eq5                        & 8.1429                        \\
+        Eq 1/9                        & 0.5556                             & 1.3333  & 1.0000  & 0.5556                    & Eq6                        & 3.4445                        \\\midrule
+        Eq 5 - Eq 4                   & 1.8857                             & 0.1643  & 0.0000  & 2.3929                    & Eq7                        & 4.4429                        \\
+        Eq 6 - Eq 4                   & 0.1556                             & 0.7833  & 0.0000  & -1.1944                   & Eq8                        & -0.2555                       \\\midrule
+        Eq 7/1.8857                   & 1.0000                             & 0.0871  & 0.0000  & 1.2690                    & Eq9*                       & 2.3561                        \\
+        Eq 8/0.1556                   & 1.0000                             & 5.0341  & 0.0000  & -7.6761                   & Eq10                       & -1.6420                       \\\midrule
+        Eq 10 - Eq 9                  & 0.0000                             & 4.9470  & 0.0000  & -8.9451                   & Eq11*                      & -3.9981                       \\\bottomrule
+    \end{tabular}
+\end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c*{3}{S[table-format=2.4]}}
+        \toprule
+              & \multicolumn{1}{c}{Using Maxima} & \multicolumn{1}{c}{with Partial Pivoting} & \multicolumn{1}{c}{with Total Pivoting} \\\midrule
+        $ x $ & 1.4265                           & 1.4264                                    & 1.4265                                  \\
+        $ y $ & -1.8081                          & -1.8080                                   & -1.8082                                 \\
+        $ z $ & 2.1739                           & 2.1738                                    & 2.1739                                  \\\bottomrule
+    \end{tabular}
+\end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc*{4}{S[table-format=2.2]}c*{3}{S[table-format=2.2]}}
+        \toprule
+        $ n $   & 0 & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4} & $ \dots $ & \multicolumn{1}{c}{9} & \multicolumn{1}{c}{10} & \multicolumn{1}{c}{11} \\\midrule
+        $ x_n $ & 0 & 1. 67                 & 1.81                  & 2.48                  & 2.33                  & $ \dots $ & 2.29                  & 2.29                   & 2.29                   \\
+        $ y_n $ & 0 & 2.71                  & 2.10                  & 1.78                  & 1.52                  & $ \dots $ & 1.62                  & 1.61                   & 1.61                   \\
+        $ z_n $ & 0 & 0.73                  & -1.11                 & -0.89                 & -0.98                 & $ \dots $ & -0.84                 & -0.84                  & 0.84                   \\\bottomrule
+    \end{tabular}
+    \caption{Successive iterates of solution (Jacobi Method)}
+\end{table}
+\begin{tabular}{cS[table-format=2.4]}
+    \toprule
+    $ x $ & \multicolumn{1}{c}{$ f(x) $} \\\midrule
+    0.8   & 1.5505                       \\
+    0.9   & 1.5289                       \\
+    1.0   & 1.4687                       \\
+    1.1   & 1.3627                       \\
+    1.2   & 1.2031                       \\\bottomrule
+\end{tabular}
+\begin{tabular}{S[table-format=2.1]S[table-format=2.3]}
+    \toprule
+    \multicolumn{1}{c}{$ t $} & \multicolumn{1}{c}{$ D(t) $} \\\midrule
+    8.0                       & 17.453                       \\
+    9.0                       & 21.460                       \\
+    10.0                      & 25.752                       \\
+    11.0                      & 30.301                       \\
+    12.0                      & 35.084                       \\\bottomrule
+\end{tabular}
+\begin{tabular}{S[table-format=2.1]S[table-format=2.3]}
+    \toprule
+    \multicolumn{1}{c}{$ t $} & \multicolumn{1}{c}{$ D(t) $} \\\midrule
+    8.0                       & 17.453                       \\
+    9.0                       & 21.460                       \\
+    10.0                      & 25.752                       \\
+    11.0                      & 30.301                       \\
+    12.0                      & 35.084                       \\\bottomrule
+\end{tabular}
+\begin{table}
+    \begin{minipage}[c]{0.48\linewidth}
+        \centering
+        \begin{enumerate}[label=(a)]
+            \item \hfill
+                  \begin{tabular}{cS[table-format=1.3]}
+                      \toprule
+                      $ x $ & \multicolumn{1}{c}{$ f(x) $} \\\midrule
+                      0.7   & 1.297                        \\
+                      0.8   & 1.597                        \\
+                      1.0   & 2.287                        \\
+                      1.2   & 3.094                        \\
+                      1.3   & 3.536                        \\\bottomrule
+                  \end{tabular}
+        \end{enumerate}
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.48\linewidth}
+        \centering
+        \begin{enumerate}[label=(b)]
+            \item \hfill
+                  \begin{tabular}{cS[table-format=1.3]}
+                      \toprule
+                      $ x $ & \multicolumn{1}{c}{$ f(x) $} \\\midrule
+                      0.7   &
+                      1.297                                \\
+                      0.9   &
+                      1.927                                \\
+                      1.0   &
+                      2.287                                \\
+                      1.1   &
+                      2.677                                \\
+                      1.3   &
+                      3.536                                \\\bottomrule
+                  \end{tabular}
+        \end{enumerate}
+    \end{minipage}
+\end{table}
+\begin{enumerate}
+    \item \hfill
+          \begin{table}[H]
+              \centering
+              \begin{tabular}{cS[table-format=1.3]}
+                  \toprule
+                  $ x $ & \multicolumn{1}{c}{$ f(x) $} \\\midrule
+                  0.7   & 1.297                        \\
+                  0.8   & 1.597                        \\
+                  1.0   & 2.287                        \\
+                  1.2   & 3.094                        \\
+                  1.3   & 3.536                        \\\bottomrule
+              \end{tabular}
+          \end{table}
+    \item \hfill
+          \begin{table}[H]
+              \centering
+              \begin{tabular}{cS[table-format=1.3]}
+                  \toprule
+                  $ x $ & \multicolumn{1}{c}{$ f(x) $} \\\midrule
+                  0.7   &
+                  1.297                                \\
+                  0.9   &
+                  1.927                                \\
+                  1.0   &
+                  2.287                                \\
+                  1.1   &
+                  2.677                                \\
+                  1.3   &
+                  3.536                                \\\bottomrule
+              \end{tabular}
+          \end{table}
+\end{enumerate}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{r@{ = }S[table-format=1.2]r@{ = }S[table-format=1.7]}
+        \toprule
+        \multicolumn{2}{c}{$ x $}          & \multicolumn{2}{c}{$ y=f(x)=\ln x $  } \\\midrule
+        $ x_0$& 4.0 & $y_0$ &1.3862944  \\
+        $ x_0+h$&4.2   & $ y_1$& 1.4350845 \\
+        $ x_0+2h$&4.4  & $ y_2$& 1.4816045 \\
+        $ x_0+3h$&4.6  & $ y_3$& 1.5260563 \\
+        $ x_0+4h$&4.8  & $ y_4$& 1.5686159 \\
+        $ x_0+5h$&5.0  & $ y_5$& 1.6094379 \\
+        $ x_0+6h$&5.2  & $ y_6$& 1.6486586  \\\bottomrule
+    \end{tabular}
+\end{table}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\multicolumn{1}{c}{Description of the strategy}&\multicolumn{1}{c}{ Equations involving $ M_0 $ and $ M_n $ }\\\midrule
+		
+        Natural cubic spline ``a relaxed curve'': & \multicolumn{1}{c}{$ M_0=0,$}\\
+		$ S^{'}(x_0) $ and $ S^{''}(x_n )$. & \multicolumn{1}{c}{$M_n=0 $ }\\%\midrule
+		&\\
+        Clamped cubic spline:& \\
+		specify $ S^{'} (x_0) = A $ and $ S^{'} (x_n) = B $. & $\displaystyle 2M_0+M_1 =\frac{6}{h_0}\left[ \frac{\Delta y_0}{h_0}-A \right]$\\
+					& $\displaystyle M_n+2M_{n-1} =\frac{6}{h_{n-1}}6\left[ B-\frac{\Delta y_{n-1}}{h_{n-1}} \right] $      \\%\midrule
+		& \\
+        Extrapolated cubic spline:& \\
+		$ M_0 $ as linear extrapolation from & \\
+		$ M_1 $ and $ M_2 $ :$ \frac{M_1-M_0}{h_0}=\frac{M_2-M_1}{h_1} $ & $\displaystyle M_0 =M_1-\frac{h_0 (M_2-M_1)}{h_1}$\\
+		$ M_n $ as linear extrapolation from & \\
+		$ M_{n-1} $ and $ M_{n-2} $: & $\displaystyle M_n  =M_{n-1}-\frac{h_{n-1}(M_{n-1}-M_{n-2})}{h_{n-2}}$\\
+		$\displaystyle \frac{M_n-M_{n-1}}{h_{n-1}}=\frac{M_{n-1}-M_{n-2}}{h_{n-2}} $ & \\%\midrule
+		& \\
+        Parabolically terminated spline & \\
+		($ S^{''}(x) $ is constant near the end points)&\multicolumn{1}{c}{ $ M_0=M_1,\quad M_n=M_{n-1} $}\\\bottomrule
+	\end{tabular}
+\end{table}
+\end{document}

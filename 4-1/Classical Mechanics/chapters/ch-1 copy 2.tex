@@ -1,0 +1,682 @@
+% \documentclass[../main-sheet.tex]{subfiles}
+\documentclass[12pt]{article}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\newcommand{\inttt}{\int_{t_1}^{t_2}}
+\newcommand{\parr}[2]{\frac{\partial \,#1}{\partial \,#2}}
+\begin{document}
+\begin{prob}{1}
+    Define degrees of freedom, constraints, holonomic, non holonomic constraints, generalized coordinates, cyclic coordinates and Routhian function with example.
+\end{prob}
+\begin{soln}
+    Degrees of freedom: The degrees of freedom of a mechanical system is the minimum number of independent coordinates required to completely describe its motion.\\
+
+
+    {[* 
+    A system of \(N\) particle, free from constraints has \(3N\) independent coordinates, or \emph{degrees of freedom}. If there exists holonomic constraints expressed as \(k\) equations of the form \(f(\vec{r_1},\vec{r_2},\dots,t)=0\) then we can use these equations to eliminate \(k\) from \(3N\) coordinates, and left with \(3N-k\) independent coordinates, and the system is said to have \(3N-k\) degrees of freedom.*]}\\
+
+
+    Constraints: The restrictions or conditions imposed on the motion of a particle or system of particle are known as constraints. Hence, constraints limit the motion of a particle or system of particles.\\
+    Example: A system of particle of a rigid body, where the constraints on the motions of the particles keep the distances unchanged. The beads of an abacus are constrained to one-dimensional motion by the supporting wires.\\
+
+    Holonomic constraint: If the conditions of constraint can be expressed as equations connecting the coordinates of the particles (and possibly time) having the form
+    \[f(\vec{r}_1,\vec{r}_2,\dots,\vec{r}_n,t)=0\]
+    (where \(\vec{r}_1,\vec{r}_2,\dots,\vec{r}_n\) are position vector and \(t\) is time) then the constraints are said to be holonomic.\\
+    Example: A rigid body, where the constraints are expressed by the equations of the form
+    \[(r_i - r_j)^2 - c_{ij}^2=0\]
+    
+    Non Holnomic constraint: Constraints are said to be nonholonomic if constraints imposed on the
+    motion of the system can not be expressed in the form of mathematical equality
+    \[f(\vec{r}_1,\vec{r}_2,\dots,\vec{r}_n,t)=0\]
+    (where \(\vec{r}_1,\vec{r}_2,\dots,\vec{r}_n\) are position vector and \(t\) is time) then the constraints are said to be holonomic.\\
+    Example: A particle placed on the surface of a sphere is also non holonomic, for it can be expressed as an inequality
+    \[r^2-a^2\geq 0 \qquad\text{ Where \(a\) is the radius of sphere}\]
+    
+    Generalized coordinates: Generalized coordinates are a set of parameters that completely specify the configuration of a physical system at each point in time. Generalized coordinates are used to derive the equations of motion for the system, which determine how the coordinates change as functions of time.\\
+
+    cyclic coordinates: We have shown that Lagrangian \(L\) is a function of generalized coordinate \(q_j\), generalized velocity \(\dot{q}_j\) and time \(t\). Now if the Lagrangian of a system does not contain a particular coordinates \(q_k\), then obviously for such a system \(\frac{\partial L}{\partial q_k}=0\), such coordinate is referred to as cyclic or ignorable coordinate.\\
+
+    Routhian function: First, we carry out a mathematical transformation from the \(q,\dot{q}\) basis to the \(q,p\) basis only for those coordinates that are cyclic, obtaining their equations of motion in the Hamiltonian form, while the remaining coordinates are governed by Lagrange equations. If the cyclic coordinates are labeled \(q_{s+1},\dots,q_n\), then a new function \(R\) is defined as
+    \[R(q_1,\dots,q_n;\dot{q}_1,\dots,\dot{q}_s;p_{s+1},\dots,p_n;t)=\sum_{i=s+1}^n p_i\dot{q}_i-L\]
+    then this function \(R\) is called a Routhian function.
+\end{soln}
+% Define
+% \begin{itemize}
+%     \item Generalized coordinates
+%     \item Constraints
+%     \item Holonomic Constraints
+%     \item NonHolnomic Constraints
+%     \item  Degrees of freedom
+% \end{itemize}
+% * Explain D' Alembert's principle and derive Lagrange's equation from D'Alembert's principle.
+% \section{Degrees of Freedom}
+% A system of \(N\) particle, free from constraints has \(3N\) independent coordinates, or \emph{degrees of freedom}. If there exists holonomic constraints expressed as \(k\) equations of the form \(f(\vec{r_1},\vec{r_2},\dots,t)=0\) then we can use these equations to eliminate \(k\) from \(3N\) coordinates, and left with \(3N-k\) independent coordinates, and the system is said to have \(3N-k\) degrees of freedom.
+% \section{D'Alembert's Principle}
+% D'Alembert's principle involves the general motion of the system. Consider the motion of an \(N-\)particle system. Let the force acting on \(i\)th particle be \(\vec{F_i}\). Then the equation of motion is,
+% \[
+%     \vec{F_i}=\dot{\vec{p_i}}\quad \Rightarrow \vec{F_i}-\dot{\vec{p_i}}=0
+% \]
+% Which states that the particles in the system will be in equilibrium under a force equal to the actual forces plus a ``reversed effective force'' \(-\dot{\vec{p_i}}\). Adding virtual displacement \(\delta \vec{r_i}\) we get
+% \begin{equation}
+%     \sum_i (\vec{F_i}-\dot{\vec{p_i}})\cdot \delta\vec{r_i}=0\label{eqn:alem1}
+% \end{equation}
+% Now let us decompose \(\vec{F_i} \) into applied force \(\vec{F_i}^{(a)}\), and the force of the constraint, \(\vec{f_i}\), i.e., \(\vec{F_i}=\vec{F_i}^{(a)}+\vec{f_i}\). So \eqref{eqn:alem1} becomes,
+% \[
+%     \sum_i (\vec{F_i}^{(a)}-\dot{\vec{p_i}})\cdot\delta\vec{r_i}+\sum_i\vec{f_i}\cdot\delta\vec{r_i}=0
+% \]
+% By restricting ourselves to systems for which the virtual work of the forces of constraints vanishes, i.e., \(\sum_i\vec{f_i}\cdot\delta\vec{r_i}=0\) and we therefore obtain
+% \[
+%     \sum_i (\vec{F_i}^{(a)}-\dot{\vec{p_i}})\cdot\delta\vec{r_i}=0
+% \]
+% This is the D'Alembert's principle.
+\begin{prob}{2}
+    Discuss the techniques of calculus of variations with respect to following examples; use graph if necessary
+    \begin{enumerate}[label=(\roman*)]
+        \item shortest distance between two points in a plane
+        \item minimum surface of revolution
+        \item The Brachistochrone problem
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    i. Shortest distance between two points in a plane: An element of length in a plane is \(\D s=\sqrt{\D x^2+\D y^2}\) and the total length if any curve going between points 1 and 2 is 
+    \[I=\int_1^2 \D s=\int_{x_1}^{x^2}\sqrt{1+\left(\frac{\D y}{\D x}\right)^2}\D x\]
+    The condition that the curve be the shortest path is that \(I\) be a minimum. This is an extremum problem with \(f=\sqrt{1+\dot{y}^2}\).\\
+    {[* Alternatively, for this curve to be shortest, \(\delta I=0\), i.e., the equation \(\frac{\partial f}{\partial y}-\frac{\D }{\D x}(\frac{\partial f}{\partial \dot{y}})=0\) must be satisfied where \(f=\sqrt{1+\dot{y}^2}\) *]}
+    \[\frac{\partial f}{\partial y}=0,\qquad \frac{\partial f}{\partial \dot{y}}=\frac{\dot{y}}{\sqrt{1+\dot{y}^2}}\]
+    Now,
+    \begin{align*}
+        &\frac{\partial f}{\partial y}-\frac{\D }{\D x}\left(\frac{\partial f}{\partial \dot{y}}\right)=0\\
+        \Rightarrow\; &\frac{\D }{\dx}\left(\frac{\dot{y}}{\sqrt{1+\dot{y}^2}}\right)=0\\
+        \Rightarrow\; &\frac{\dot{y}}{\sqrt{1+\dot{y}^2}}=c
+    \end{align*}
+    This solution can be valid only if \(\dot{y}=a\) where \(a\) is a constant related to \(c\) by \(a=\frac{c}{\sqrt{1-c^2}}\). But this is the equation of straight line, \(y=ax+b\) where \(b\) is another constant of integration.\\
+
+
+    ii. Minimum surface of revolution: Suppose we form a surface of revolution by taking some curve passing between two fixed end points \((x_1,y_1)\) and \((x_2,y_2)\) defining the \(xy\) plane, and revolving it about \(y\) axis. The problem then is to find that curve for which the surface area is minimum. The area of a strip of the surface is \(2\pi x\D s=2\pi x\sqrt{1+\dot{y}^2}\dx\), and the total area is \(2\pi \int_1^2 x\sqrt{1+\dot{y}^2}\dx\).\\
+    The extremum of the problem is
+    \begin{equation}
+        \frac{\partial f}{\partial y}-\frac{\D}{\dx}\left( \frac{\partial f}{\partial \dot{y}} \right)=0\label{eq:2.2.1}
+    \end{equation}
+    where \(f=x\sqrt{1+\dot{y}^2}\) and \(\frac{\partial f}{\partial y}=0\), \(\frac{\partial f}{\partial \dot{y}}=\frac{x\dot{y}}{\sqrt{1+\dot{y}^2}}\).\\
+     Equation \eqref{eq:2.2.1} becomes
+     \begin{align*}
+        & \frac{\D}{\dx}\left( \frac{x\dot{y}}{\sqrt{1+\dot{y}^2}} \right)=0\\
+        \Rightarrow & \frac{x\dot{y}}{\sqrt{1+\dot{y}^2}}=a
+     \end{align*}
+     where \(a\) is some constant of integration clearly smaller than the minimum value of \(x\). Squaring and factoring terms, we have 
+     \[\dot{y}^2(x^2-a^2)=a^2\]
+     Solving,
+     \[\frac{\dy}{\dx}=\frac{a}{\sqrt{x^2-a^2}}\]
+     The general solution of this differential equation is
+     \begin{align*}
+        y&=a\int \frac{\dx}{\sqrt{x^2-a^2}}+b\\
+        \Rightarrow y&=a \cosh^{-1} \frac{x}{a}+b\\
+        \Rightarrow x&=a \cosh^{-1} \frac{y-b}{a}
+     \end{align*}
+     which is the equation of catenary.\\
+
+     iii. The Brachistochrone problem: This problem is to find the curve joining two points, along which a particle falling from rest under the influence of gravity travels from higher to the lower point in the least time.
+
+     If \(v\) is the speed along the curve, then the time to fall an arc length \(\D s\) is \(\frac{\D s}{v}\) and the problem is to find a minimum of the integral \[t_{12}=\int_1^2 \frac{\D s}{v}\]
+     If \(y\) is measured down from initial point of release, the conservation theorem for the energy of the particle can be written as 
+     \begin{align*}
+        &\frac{1}{2}mv^2=mgx\\
+        \Rightarrow & v=\sqrt{2gx}
+     \end{align*}
+     Then the expression for \(t_{12}\) becomes
+     \[t_{12}=\int_1^2 \frac{\sqrt{1+\dot{y}^2}}{\sqrt{2gx}}\dx \]
+     The extremum of this problem is 
+     \[\frac{\partial f}{\partial y}-\frac{\D}{\dx}\left( \frac{\partial f}{\partial \dot{y}} \right)=0\]
+     where \(f=\frac{\sqrt{1+\dot{y}^2}}{\sqrt{2gx}}\) and \(\frac{\partial f}{\partial y}=0\), \(\frac{\partial f}{\partial \dot{y}}=\frac{\dot{y}}{\sqrt{2gx}\sqrt{1+\dot{y}^2}}\)
+     So the equation becomes,
+     \begin{align*}
+        &\frac{\D}{\dx}\left( \frac{\dot{y}}{\sqrt{2gx}\sqrt{1+\dot{y}^2}} \right)=0\\
+        \Rightarrow & \frac{\dot{y}}{\sqrt{2gx}\sqrt{1+\dot{y}^2}}=c \qquad [\text{ where \(c\) is constant}]
+     \end{align*}
+     Rearranging,
+     \begin{align*}
+        & \frac{\dot{y}^2}{c}=x(1+\dot{y}^2)\\
+        \Rightarrow & \dot{y}^2 \left( \frac{1}{c}-x \right)=x\\
+        \Rightarrow & \dot{y}=\frac{x}{(\frac{x}{c}-x^2)^{1/2}} \qquad \text{ let } \frac{1}{c}=2a
+     \end{align*}
+    So integrating \(y=a \cos^{-1}(1-\frac{x}{a})-(2ax-x^2)^{1/2}+c\)\\
+    where \(c\) is constant of integration.
+\end{soln}
+\begin{prob}{3. i}
+    Discuss concept of canonical transformation mathematically.
+\end{prob}
+\begin{soln}
+    In several problems, we may need to change one set of position and momentum coordinates to another set of positions and momentum coordinates. Let \(q_i, p_i\)  are the old position and momentum coordinates and \(Q_i,P_i\) are the new position and momentum coordinates. These coordinates are releted to each other by the following equations
+    \begin{align*}
+        Q_i&=Q_i(q_i,p_i,t)=Q_i(q_1,q_2,\dots,q_n,p_1,p_2,\dots,p_n,t)\\
+        P_i&=P_i(q_i,p_i,t)=P_i(q_1,q_2,\dots,q_n,p_1,p_2,\dots,p_n,t)
+    \end{align*}
+    Canonical transformation are also called transformation of phase space. Since phase space provides information about position coordinates as well as generalized momenta.
+
+    These transformations are characterized by the property that they have Lagrange's and Hamiltonian equation of motions unchanged.
+    \begin{center}
+        \begin{tabular}{p{5cm}|p{5cm}}
+            {\begin{align*}
+                &L=L(q_i,\dot{q}_i,t)\\
+                &H=H(q_i,p_i,t)\\
+                &\frac{\D}{\D t}\left( \frac{\partial L}{\partial \dot{q}_i} \right)-\frac{\partial L}{\partial q_i}=0\\
+                &H=\sum p_i\dot{q}_i-L\\
+                &\dot{p}_i=\frac{-\partial H}{\partial q_i}\qquad\dot{q}_i=\frac{\partial H}{\partial p_i}
+            \end{align*}}&{\begin{align*}
+                &L'=L'(Q_i,\dot{Q}_i,t)\\
+                &K=K(Q_i,P_i,t)\\
+                &\frac{\D}{\D t}\left( \frac{\partial L'}{\partial \dot{Q}_i} \right)-\frac{\partial L'}{\partial Q_i}=0\\
+                &K=\sum P_i\dot{Q}_i-L'\\
+                &\dot{P}_i=\frac{-\partial K}{\partial Q_i}\qquad\dot{Q}_i=\frac{\partial K}{\partial P_i}
+            \end{align*}}
+        \end{tabular}
+    \end{center}
+    Here, \(K\) is modified Hamiltonian function, it is also called Kamiltonian. As \(q_i,p_i\) are already canonical, so they satisfy Hamilton's variational principle.
+    \begin{equation}
+        \delta \int_{t_1}^{t_2} L \D t=0\qquad \Rightarrow\delta \int_{t_1}^{t_2} \left( \sum p_i\dot{q}_i-H \right) \D t=0 \label{eq:3.1.1}
+    \end{equation}
+    For \(Q_i\) and \(P_i\) to be canonical, they must satisfy Hamilton's variational principle. i.e.,
+    \begin{equation}
+        \delta \int_{t_1}^{t_2} L' \D t=0\qquad \Rightarrow\delta \int_{t_1}^{t_2} \left( \sum P_i\dot{Q}_i-K \right) \D t=0 \label{eq:3.1.2}
+    \end{equation}
+    Equation \eqref{eq:3.1.1} and \eqref{eq:3.1.2} does not mean that integrand of both integrals are equal. Equation \eqref{eq:3.1.1} and \eqref{eq:3.1.2} are satisfied if their integrand are connected by a relation
+    \[\left[ \sum p_i\dot{q}_i-H \right]-\left[ \sum P_i\dot{Q}_i-K \right]=\frac{\D f}{\D t}\]
+\end{soln}
+\begin{prob}{3. ii}
+    Analyze the four forms of generating function elaborately. Also explain the concept of \((4n+1)\) variable.
+\end{prob}
+\begin{soln}
+    From canonical transformation,
+    \begin{equation}
+        \left[ \sum p_j\dot{q}_j-H \right]-\left[ \sum P_j\dot{Q}_j-K \right]=\frac{\D f}{\D t} \label{eq:3.2.5}
+    \end{equation}
+    The first bracket of \eqref{eq:3.2.5} is regarded as a function of \(q_j,p_j\) and \(t\), the second as a function of \(Q_j,P_j\) and \(t\). But however the two sets of variables are connected by the \(2n\) transformation equation and thus out of \(4n\) variables, besides \(t\) only \(2n\) are independent. Now \(F\) is a function of both old and new sets of coordinates and therefore out of \(2n\) variables, \(n\) should be taken from new and \(n\) form old set. i.e., one variable should be out of \(p_j\) and \(q_j\) and others should be from \(Q_j\), \(P_j\) set. Thus, four forms of function \(F\) are possible:
+    \[
+        F_1(q,Q,t),\quad F_2(q,P,t),\quad F_3(p,Q,t),\quad F_4(p,P,t)
+    \]
+    \textbf{First form} \(F_1(q,Q,t)\): For this case we can write equation \eqref{eq:3.2.5} as
+    \begin{equation}
+        \sum p_j\dot{q}_j-H =\sum P_j\dot{Q}_j-K+\frac{\D f}{\D t}(q,Q,t) \label{eq:3.2.6}
+    \end{equation} 
+    Now \(F_1=F_1(q,Q,t)\) so that its total time derivative is
+    \[\frac{\D F_1}{\D t}=\sum \frac{\partial F_1}{\partial q_j}\dot{q}_j+\sum \frac{\partial F_1}{\partial Q_j}\dot{Q}_j+\sum \frac{\partial F_1}{\partial t}\]
+    putting this in \eqref{eq:3.2.6} we get
+    \begin{align*}
+        &\sum p_j\dot{q}_j-H =\sum P_j\dot{Q}_j-K+\sum \frac{\partial F_1}{\partial q_j}\dot{q}_j+\sum \frac{\partial F_1}{\partial Q_j}\dot{Q}_j+\sum \frac{\partial F_1}{\partial t}\\
+        \Rightarrow& \sum \left( \frac{\partial F_1}{\partial q_j}-p_j \right)\dot{q}_j+\sum \left( P_j+\frac{\partial F_1}{\partial Q_j} \right)\dot{Q}_j-K+H+\frac{\partial F_1}{\partial t}=0
+    \end{align*}
+    Since \(q_j\) and \(Q_j\) are to be treated as independent variable this equation can hold if the coefficients of \(q_j\) and \(Q_j\) separately vanish, i.e.,
+    \begin{align*}
+        p_j&=\frac{\partial F_1}{\partial q_j}(q,Q,t)\\
+        P_j&=-\frac{\partial F_1}{\partial Q_j}(q,Q,t)\\
+        K&=H+\frac{\partial F_1}{\partial t}(q,Q,t)
+    \end{align*}
+    \textbf{Second form} \(F_2(q,P,t)\): \(F_2\) can be obtained from \(F_1(q,Q,t)\) by Legendre transformation. Since \(P_j=-\frac{\partial F_1}{\partial Q_j}\)
+    \begin{equation}
+        F_2(q_j,P_j,t)=F_1(q_j,Q_j,t)+\sum P_j{Q}_j \label{eq:3.2.13}
+    \end{equation}
+    putting from \eqref{eq:3.2.13} the value of \(F_1\) in \eqref{eq:3.2.6} we get,
+    \begin{align*}
+        & \sum p_j\dot{q}_j-H =\sum P_j\dot{Q}_j-K+\frac{\D }{\D t}\left\{ F_1(q_j,Q_j,t)+\sum P_j{Q}_j \right\}\\
+        \Rightarrow & \sum p_j\dot{q}_j-H =\sum P_j\dot{Q}_j-K+  \sum \frac{\partial F_2}{\partial q_j}\dot{q}_j+\sum \frac{\partial F_2}{\partial P_j}\dot{P}_j+\sum \frac{\partial F_2}{\partial t}-\sum \dot{P}_jQ_j-\sum P_j\dot{Q}_j\\
+        \Rightarrow & \sum p_j\dot{q}_j-H =-\sum \dot{P}_j{Q}_j-K+  \sum \frac{\partial F_2}{\partial q_j}\dot{q}_j+\sum \frac{\partial F_2}{\partial P_j}\dot{P}_j+\sum \frac{\partial F_2}{\partial t}\\
+        \Rightarrow&\sum \left( \frac{\partial F_2}{\partial q_j} \right)\dot{q}_j+\sum \left( \frac{\partial F_2}{\partial P_j} \right)\dot{P}_j+H+\frac{\partial F_2}{\partial t}-K=0
+    \end{align*}
+    Since \(q_j\) and \(P_j\) are independent variables, this equation can be satisfied only when
+    \begin{align*}
+        p_j&=\frac{\partial F_2}{\partial q_j}(q,P,t)\\
+        Q_j&=\frac{\partial F_2}{\partial P_j}(q,P,t)\\
+        K&=H+\frac{\partial F_2}{\partial t}(q,P,t)
+    \end{align*}
+    \textbf{Third form} \(F_3(p,Q,t)\):  \(F_3\) can be obtained from \(F_1(q,Q,t)\) by Legendre transformation. Since \(p_j=\frac{\partial F_1}{\partial q_j}\)
+    \begin{align*}
+        F_3(p,Q,t)&=F_1(q,Q,t)-\sum p_jq_j\\
+        \Rightarrow F_1(q,Q,t)&=F_3(p,Q,t)+\sum p_jq_j\\
+    \end{align*}
+    Equation \eqref{eq:3.2.6} therefore appears as
+    \[-\sum \dot{p}_jq_j-H=\sum P_j\dot{Q}_j-K+\frac{\D}{\D t}F_3(p,Q,t)\]
+    which on further simplification and on equating coefficients yields
+    \begin{align*}
+        q_j&=-\frac{\partial F_3}{\partial p_j}(p,Q,t)\\
+        P_j&=-\frac{\partial F_3}{\partial Q_j}(p,Q,t)\\
+        K&=H+\frac{\partial F_3}{\partial t}(p,Q,t)
+    \end{align*}
+    \textbf{Fourth form} \(F_4(p,P,t)\):  \(F_4\) can be obtained from \(F_1(q,Q,t)\) by Legendre transformation.
+    \[F_4(p,P,t)=F_1(q,Q,t)+\sum P_jQ_j-\sum p_jq_j\]
+    Equation \eqref{eq:3.2.6} therefore reduces to
+    \[-\sum \dot{p}_jq_j-H=-\sum \dot{P}_j{Q}_j-K+\frac{\D}{\D t}F_4(p,P,t)\]
+    which on further simplification and on equating coefficients yields
+    \begin{align*}
+        q_j&=-\frac{\partial F_4}{\partial p_j}(p,P,t)\\
+        Q_j&=-\frac{\partial F_3}{\partial P_j}(p,P,t)\\
+        K&=H+\frac{\partial F_4}{\partial t}(p,P,t)
+    \end{align*}
+\end{soln}
+\begin{prob}{4. i}
+    Derive Lagrange's equation of motion from D'Alembert's principle.
+\end{prob}
+\begin{soln}
+From D'Alembert's principle we get 
+\begin{equation}
+    \sum_i \left( \vec{F_i}-\dot{\vec{p}} \right)\cdot\delta \vec{r_i}=0\label{eq:lag1}
+\end{equation}
+The virtual displacement \(\delta \vec{r_i}\) are not independent. We need to change these by generalized coordinates which are independent.
+
+Consider a system with \(N-\)particle at \(\vec{r_1},\vec{r_2},\dots,\vec{r_N}\) having \(k\) equations of holonomic constraints. The system will have \(n=3N-k\) generalized coordinates \(q_1,q_2,\dots,q_n\). The transformation equations from the \(r\) variables to the \(q\) variables are given by \(\vec{r_i}=\vec{r_i}(q_1,q_2,\dots,q_n,t)\). Thus, \(\vec{v_i}\) is expressed in terms of the \(\dot{q_k}\) by the formula 
+\[
+    \vec{v_i}=\frac{d\vec{r_i}}{dt}=\sum_k\frac{\partial \vec{r_i}}{\partial q_k}\dot{q_k}+\frac{\partial \vec{r_i}}{\partial t}
+    \]
+    Similarly the arbitrary virtual displacement \(\delta \vec{r_i}\) can be connected with virtual displacement \(\delta q_i\) by 
+    \[
+        \delta \vec{r_i}=\sum_j \frac{\partial \vec{r_i}}{\partial q_j}\delta q_j
+        \]
+        In terms of the generalized coordinates, the virtual work of \(\vec{F_i}\) becomes 
+        \[
+            \sum_i \vec{F_j}\cdot \delta \vec{r_i}=\sum_{i,j} \vec{F_i}\cdot\frac{\partial \vec{r_i}}{\partial q_j}\delta q_j=\sum_j Q_j \delta q_j
+            \]
+            Where \(Q_j\) are the components of the generalized force, defined as
+\[
+    Q_j=\sum_i \vec{F_i}\cdot \frac{\partial\vec{r_i}}{\partial q_j}
+    \]
+The second term involved in D'Alembert's principle can be written as 
+\[
+    \sum_i \dot{\vec{p_i}}\cdot\delta \vec{r_i}=\sum_i m_i\ddot{\vec{r_i}}\cdot\delta \vec{r_i}=\sum_{i,j} m_i\ddot{\vec{r_i}}\cdot \frac{\partial \vec{r_i}}{\partial q_j} \delta q_j
+\]
+Now,
+\[
+    \sum_i m_i\ddot{\vec{r_i}}=\sum_i\left[ \frac{d}{dt}\left( m_i\dot{r_i}\frac{\partial \vec{r_i}}{\partial q_j} \right)-m_i\dot{\vec{r_i}}\cdot\frac{d}{dt}\left( \frac{\partial \vec{r_i}}{\partial q_j} \right) \right]
+    \]
+    In the last term we can interchange the differentiation with respect to \(t\) and \(q_j\)
+    \[
+        \frac{d}{dt} \left( \frac{\partial \vec{r_i}}{\partial q_j} \right)=
+        \frac{\partial \dot{\vec{r_i}}}{\partial q_j}=
+    \sum_k \frac{\partial^2 \vec{r_i}}{\partial q_j \partial q_k}\dot{q_k}+\frac{\partial^2\vec{r_i}}{\partial q_j \partial t}=\frac{\partial \vec{v_i}}{\partial q_j}
+    \]
+    Also \(\frac{\partial \vec{v_i}}{\partial \dot{q_j}}=\frac{\partial \vec{r_i}}{\partial q_j}\) Replacing we get
+    \[
+        \sum_i m_i\ddot{\vec{r_i}}=\sum_i\left[\frac{d}{dt}\left( m_i\dot{\vec{r_i}}\frac{\partial \vec{v_i}}{\partial \dot{q_j}} \right)-m_i\dot{\vec{r_i}}\frac{d}{dt}\left( \frac{\partial \vec{v_i}}{\partial q_j} \right)\right]
+        \]
+        Expanding the second term of \eqref{eqn:alem1} we get
+        \[
+            \sum_j \left\{ \frac{d}{dt}\left[ \frac{\partial}{\partial \dot{q_j}}\left( \sum_i \frac{1}{2}m_iv_i^2 \right) \right]-\frac{\partial}{\partial q_j}\left( \sum_i \frac{1}{2}m_iv_i^2 \right)-Q_j \right\}\delta q_j
+\]
+Here \(\frac{1}{2} m_iv_i^2\) is the system kinetic energy \(T\). So D'Alembert's principle becomes 
+\begin{equation}
+    \sum \left\{ \left[ \frac{d}{dt}\frac{\partial T}{\partial \dot{q_j}}-\frac{\partial T}{\partial q_j} \right]-Q_j \right\}\delta q_j=0
+    \label{eq:alem11}
+\end{equation}
+Any virtual displacement \(\delta q_j\) is independent of \(\delta q_k\) and therefore the only way hold \eqref{eq:alem11} is for the individual coefficients to vanish:
+\begin{equation}
+    \frac{d}{dt} \left(\frac{\partial T}{\partial \dot{q_j}}\right)-\frac{\partial T}{\partial q_j} -Q_j =0
+    \label{eq:alem2}
+\end{equation}
+When the forces are derivable from a scalar potential function \(V\),
+\[
+    \vec{F_i}=-\nabla_i V
+    \]
+    Then the generalized forces can be written as 
+    \[
+        Q_j=\sum_i \vec{F_i}\cdot\frac{\partial \vec{r_i}}{\partial q_j}=-\sum_i \nabla_i V\cdot\frac{\partial \vec{r_i}}{\partial q_j}
+        \]
+        Which is exactly the same expression for the partial derivative of a function \(-V(\vec{r_1},\vec{r_2},\dots,\vec{r_N},t)\) with respect to \(q_j\)
+        \[
+    Q_j=-\frac{\partial V}{\partial q_i}
+\]
+Equation \eqref{eq:alem2} can be written as 
+\[
+    \frac{d}{dt}\left( \frac{\partial T}{\partial \dot{q_j}} \right)-\frac{\partial (T-V)}{\partial q_j}=0
+\]
+The potential \(V\) does not depend on the generalized velocities. Hence, we can include a term in \(V\) in the partial derivative with respect to \(\dot{q_j}\):
+\[
+    \frac{d}{dt}\left( \frac{\partial (T-V)}{\partial \dot{q_j}} \right)-\frac{\partial (T-V)}{\partial q_j}=0
+\]
+Defining a new function, the Lagrangian \(L\) as \(L=T-V\),\\
+The equation becomes
+\[
+    \frac{d}{dt}\frac{\partial L}{\partial \dot{q_j}}-\frac{\partial L}{\partial q_j}=0
+\]
+These expressions are referred to as ``Lagrange's equation''.
+\end{soln}
+% \section{Principle of Least Action}
+% In mechanics the quantity
+% \[A=\int_{t_1}^{t_2}p_j\,\dot{q_j}\,dt \]
+% is defined as action. The principle of least action for conservative system is then expressed as 
+% \[\Delta \int_{t_1}^{t_2}p_j\,\dot{q_j}\,dt=0 \]
+% where \(\Delta\) is the variation.\\
+% \begin{figure}[H]
+%     \centering
+%     Insert fig here
+% \end{figure}
+% In \(\delta\) variation we compared all conceivable path connecting two given points \(A\) and \(B\) at two time \(t_1\) and \(t_2\) in such a way that the system must travel from one end point \(A\) to another end point \(B\) in the same time for all the path compared. System points are speeded up or slowed down to make the total travel time same along every path and energy may or may not be conserved along the path. In \(\Delta\) variation we will restrict the condition so that there is no violation of the conservation of energy in comparing all path but relax the condition that all path take the same time.
+% \begin{proof}
+%     We know,
+%     \begin{align}
+%         A&=\int_{t_1}^{t_2}p_j\,\dot{q_j}\,dt\notag\\
+%         &=\int_{t_1}^{t_2} (L+H)\,dt\notag\\
+%         &=\int_{t_1}^{t_2}L\,dt+H(t_2-t_1)\qquad \text{[\(\because\,H\) is conserved]}\label{eq:a1}
+%     \end{align}
+%     Now,
+%     \begin{align}
+%         \Delta A&=\Delta \int_{t_1}^{t_2}L\,dt+H\,\Delta(t_2-t_1)\notag\\
+%         &=\Delta \int_{t_1}^{t_2}L\,dt+H\,\Delta t\big|_{t_1}^{t_2}\label{eq:a2}
+%     \end{align}
+%     Now we need to solve the integral \(\Delta \int_{t_1}^{t_2}L\,dt\). Since, \(t_1\) and \(t_2\) limits are also subject to change in this variation, \(\Delta\) cannot be taken inside the integral.\\
+%     Let
+%     \[\int_{t_1}^{t_2}L\,dt=I\qquad\text{So,}\qquad \dot{I}=L\]
+%     Now,
+%     \begin{align}
+%         \Delta I&=\delta I+\dot{I}\,\Delta t\notag\\
+%         \Delta \int_{t_1}^{t_2}L\,dt&=\delta \int_{t_1}^{t_2}L\,dt+L\,\Delta t\big|_{t_1}^{t_2}\label{eq:a3}
+%     \end{align}
+%     From \eqref{eq:a3} and \eqref{eq:a2} we get,
+%     \begin{equation}
+%         \Delta A=\delta \int_{t_1}^{t_2}L\,dt+L\,\Delta t\big|_{t_1}^{t_2}+H\,\Delta t\big|_{t_1}^{t_2}\label{eq:a4}
+%     \end{equation}
+%     \(\delta \int_{t_1}^{t_2} L \,dt\) cannot be zero in consequence of Hamilton's principle. Hamilton's principle requires that \(\delta q_j=0\) at the end points of the path but in this variation \(\Delta q_j=0\) at the end points not \(\delta q_j\). Therefore, the integral will not vanish. Using the nature of \(\delta\) variation the integral can be expressed as,
+%     \begin{align*}
+%         \delta \int_{t_1}^{t_2}L\,dt&=\int_{t_1}^{t_2}\sum_j \left(\frac{\partial L}{\partial q_j}\delta q_j+\frac{\partial L}{\partial \dot{q_j}}\delta \dot{q_j}\right) \,dt\\
+%         &=\int_{t_1}^{t_2}\sum_j \left[\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q_j}}\right)\delta q_j+\frac{\partial L}{\partial \dot{q_j}}\frac{d}{dt}\left(\delta {q_j}\right)\right] \,dt
+%     \end{align*}
+%     From Lagrange's equation of motion \(\dfrac{\partial L}{\partial q_j}=\dfrac{d}{dt}\left(\dfrac{\partial L}{\partial \dot{q_j}}\right)\)\\
+%     Thus,
+%     \[\delta \int_{t_1}^{t_2}L\,dt=\int_{t_1}^{t_2}\sum_j \left[\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q_j}} \delta q_j\right)\right] \,dt\]
+%     Putting \(\delta q_j=\Delta q_j-\dot{q_j}\Delta t\) we get,
+    
+% \end{proof}
+\begin{prob}{4. ii}
+    What are the three important qualifications to obtain the principle of least action? Explain using mathematical notions.
+\end{prob}
+\begin{soln}
+    To obtain the principle of least action, the three important qualifications are:
+    \begin{enumerate}
+        \item Only systems are considered for which \(L\), and therefore \(H\), are not explicit functions of time, and in consequence \(H\) is conserved.
+        \item The variation is such that \(H\) is conserved on the varied path as well as on actual path.
+        \item The varied paths are further limited by requiring that \(\Delta q_i\) vanish at the end points (but not \(\Delta t\)).
+    \end{enumerate}
+\end{soln}
+\begin{prob}{4. iii}
+    State and prove principle of least action.
+\end{prob}
+\begin{soln}
+    In mechanics the quantity \(A=\int_{t_1}^{t_2}p_j \dot{q}_j \D t\) is defined as action. The principle of least action for conservative system is then expressed as \(\Delta \int_{t_1}^{t_2}p_j \dot{q}_j \D t=0\) where \(\Delta\) is the variation.\\
+    In \(\delta\) variation we compared all conceivable path connecting two given points \(A\) and \(B\) at two time \(t_1 \) and \(t_2\) in such a way that the system must travel from one end point \(A\) to another end point \(B\) in the same time for all the path compared. System points are speeded up or slowed down to make the total travel time same along the path. In the \(\Delta-\)variation we will restrict the condition that there is no violation of the conservation of energy in comparing all paths but relax the condition that all path take the same time.
+    \begin{proof}
+        We know, action
+        \begin{align}
+            A&= \int_{t_1}^{t^2} p_j \dot{q}_j \D t\notag\\
+            &= \int_{t_1}^{t^2} (L+H) \D t\notag\\
+            &= \int_{t_1}^{t^2} L \D t+H(t_2-t_1)\quad[\because H \text{ is conserved.}] \label{eq:4.3.1}\\
+            \intertext{Now,}
+            \Delta A&= \Delta\int_{t_1}^{t^2} L \D t+H\Delta(t_2-t_1)\notag\\
+            &= \Delta\int_{t_1}^{t^2} L \D t+H\Delta t\big\vert_{t_1}^{t_2} \label{eq:4.3.2}
+        \end{align}
+        Now we need to solve the integral \(\Delta\int_{t_1}^{t^2} L \D t\). Since \(t_1\) and \(t_2\) limits are also subject to change in this variation, \(\Delta\) cannot be taken inside the integral. Let \(\Delta\int_{t_1}^{t^2} L \D t=I\) so, \(\dot{I}=L\).\\
+        Now, 
+        \begin{align}
+            \Delta I&= \delta I+\dot{I} \Delta t\notag\\
+            \Delta\int_{t_1}^{t^2} L \D t&= \delta \int_{t_1}^{t^2} L \D t+L\Delta t\big\vert_{t_1}^{t_2}\label{eq:4.3.3}
+        \end{align}
+        From \eqref{eq:4.3.3} and \eqref{eq:4.3.2} we get
+        \begin{equation}
+            \Delta A =\delta \int_{t_1}^{t_2} L \D t+L\Delta t\big\vert_{t_1}^{t_2}+H\Delta t\big\vert_{t_1}^{t_2} \label{eq:4.3.4}
+        \end{equation}
+        \(\delta \int_{t_1}^{t_2}L \D t\) can not be zero in consequence of Hamilton's principle. Hamilton's principle requires that \(\delta q_j=0\) at the end points of the path but in this variation \(\Delta q_j=0\) at the end point not \(\delta q_j\). Therefore, the integral will not vanish. Using the nature of \(\delta-\)variation the integral can be expressed as
+        \begin{align*}
+            \delta \int_{t_1}^{t_2} L \D t&=\inttt \sum \left(\frac{\partial L}{\partial q_j}\delta q_j+\frac{\partial L}{\partial \dot{q}_j}\delta \dot{q}_j\right)\D t\\
+            &=\inttt \sum \left[\frac{\D}{\D t}\left(\frac{\partial L}{\partial \dot{q}_j}\right)\delta q_j+\frac{\partial L}{\partial \dot{q}_j}\frac{\D}{\D t}\left(\delta q_j\right)\right]\D t
+        \end{align*}
+        after putting \(\frac{\partial L}{\partial q_j}=\frac{\D}{\D t}\left(\frac{\partial L}{\partial \dot{q}_j}\right)\) from Lagrange's equation of motion.\\
+        Thus,
+        \[\delta \inttt L\D t=\inttt \sum_j \left[\frac{\D}{\D t}\left(\frac{\partial l}{\partial \dot{q}_j}\right)\right]\D t\]
+        putting \(\delta q_j =\Delta q_j-\dot{q}_j \Delta t\) we get,
+        \begin{align*}
+            \delta \inttt l \D t&= \inttt \sum \left[\frac{\D }{\D t}\frac{\partial L}{\partial \dot{q}_j}\Delta q_j -\frac{\partial L}{\partial q_j}\dot{q}_j \Delta t\right]\D t\\
+            &=\sum \left(\frac{\partial L}{\partial \dot{q}_j}\Delta q_j -\frac{\partial L}{\partial \dot{q}_j}\dot{q}_j \Delta t\right)_{t1}^{t_2}
+        \end{align*}
+        At end point \(\Delta q_j=0\) so,
+        \begin{align*}
+            \delta \inttt L \D t&=-\sum \frac{\partial L}{\partial \dot{q}_j}\dot{q}_j \Delta t\big\vert_{t_1}^{t_2}\\
+            &=-\sum p_j\dot{q}_j \Delta t\big\vert_{t_1}^{t_2}
+        \end{align*}
+        From \eqref{eq:4.3.4},
+        \begin{align*}
+            \Delta A&=-\sum p_j \dot{q}_j\Delta t\big\vert_{t_1}^{t_2}+L\Delta t\big\vert_{t_1}^{t_2}+H\Delta t\big\vert_{t_1}^{t_2}\\
+            &=(H+L-p_j\dot{q}_j)\Delta t\big\vert_{t_1}^{t_2}\\
+            &=0\qquad [\because H=\sum_j p_j\dot{q}_j -L]
+        \end{align*}
+        Thus, \[\Delta A=\Delta \inttt \sum p_j \dot{q}_j\D t=0\]
+        Which proves the principle of least action. 
+    \end{proof} 
+\end{soln}
+\begin{prob}{5. i}
+    Derive Hamilton's principle from D'Alembert's principle.
+\end{prob}
+\begin{soln}
+    D'Alembert's principle is
+    \begin{align}
+        &\sum (\vec{F_i}-\dot{\vec{p_i}})\delta \vec{r_i}=0\notag\\
+        \Rightarrow& \sum \dot{\vec{p}}_i.\delta \vec{r}_i=\sum \vec{F}_i.\delta \vec{r}_i \label{eq:5.1.1}
+    \end{align}
+    Left-hand term
+    \begin{align}
+        \dot{\vec{p}}_i.\delta \vec{r}_i&=m_i\ddot{\vec{r}}_i.\delta\vec{r}_i\notag\\
+        &=\frac{\D}{\D t}\left( m_i\frac{\D\vec{r}_i}{\D t} \right).\delta\vec{r}_i\notag\\
+        &=\frac{\D}{\D t}\left( m_i\frac{\D\vec{r}_i}{\D t}.\delta\vec{r}_i \right)-m_i\frac{\D\vec{r}_i}{\D t}.\frac{\D}{\D t}\left( \delta \vec{r}_i \right)\label{eq:5.1.2}
+    \end{align}
+    We know that \(\delta\) can be interpreted as an operator which produces a small change in \(\vec{r}_i\). It can be treated like differential operator; both \(\delta,\D\) operators can commute. i.e., \(\delta(\dx)=\D(\delta x)\). So,
+    \(\delta \frac{\D\vec{r}_i}{\D t}=\frac{\D}{\D t}\left( \delta\vec{r}_i \right)\).\\
+    From \eqref{eq:5.1.2}
+    \begin{align*}
+        \dot{\vec{p}}_i.\delta \vec{r_i}&=\frac{\D}{\D t}\left( m_i\frac{\D\vec{r}_i}{\D t}.\delta\vec{r}_i \right)-m_i\frac{\D\vec{r}_i}{\D t}.\delta\left(  \frac{\D\vec{r}_i}{\D t} \right)\\
+        &=\frac{\D}{\D t}\left( m_i\frac{\D\vec{r}_i}{\D t}.\delta\vec{r}_i \right)-\delta \left[ \frac{1}{2}m_i \left( \frac{\D\vec{r}_i}{\D t} \right)^2\right]\\
+        &=\frac{\D}{\D t}\left( m_i\frac{\D\vec{r}_i}{\D t}.\delta\vec{r}_i \right)-\delta \left[ \frac{1}{2}m_i {v_i}^2\right]
+    \end{align*}
+    Putting this in \eqref{eq:5.1.1} we get,
+    \[
+        \frac{\D}{\D t}\left[ \sum \left( m_i \frac{\D\vec{r}_i}{\D t} \right).\delta \vec{r}_i \right]=\delta \sum \frac{1}{2}m_i {v_i}^2+\sum \vec{F}_i.\delta \vec{r}_i
+    \]
+    Here \(\sum \frac{1}{2}m_i {v_i}^2\) is the kinetic energy \(T\) of the system of particle and if the forces are conservative, \(\sum \vec{F}_i.\delta \vec{r}_i=-\delta v\), where \(v\) is the potential energy. Thus, right-hand side of above equation is \(\delta(T-V)\).\\
+    Hence,
+    \[\frac{\D}{\D t}\left[ \sum m_i\frac{\D\vec{r}_i}{\D t}.\delta \vec{r}_i \right]=\delta(T-V)\]
+    integrating above equation with respect to time from initial instant \(t_1\) to final instant \(t_2\) of the motion we get,
+    \begin{equation}
+        \left( \sum m_i \frac{\D\vec{r}_i}{\D t}.\delta \vec{r}_i \right)\bigg\vert_{t_1}^{t_2}=\int_{t_1}^{t^2}\delta (T-V)\D t \label{eq:5.1.3}
+    \end{equation}
+    But,
+    \begin{align*}
+        \delta\left[ (T-V)\D t \right]&=\delta(T-V)\D t+(T-V)\delta(\D t)\\
+        &=\delta(T-V)\D t\qquad \text{ Since }\delta(\D t)=\D(\delta t)=0
+    \end{align*}
+    Thus,
+    \[\int_{t_1}^{t_2}\delta(T-V) \D t=\delta \int_{t_1}^{t_2}(T-V)\D t\]
+    From \eqref{eq:5.1.3}
+    \[\left( \sum m_i \frac{\D\vec{r}_i}{\D t}.\delta \vec{r}_i \right)\bigg\vert_{t_1}^{t_2}=\delta \int_{t_1}^{t_2}(T-V)\D t\]
+    From Hamilton's principle we consider the motion of the system. In \(\delta-\)variation process we account for all paths whether dynamic or varied with a condition that all paths have the same termini. It means that \(\delta \vec{r}_i=0\) at two ends of the path of every particle. Thus, left-hand side of the equation is zero and we get,
+    \[\delta \int_{t_1}^{t_2}(T-V)\D t=0\]
+    which is Hamilton's principle. Putting \(L=T-V\) we get the form
+    \[\delta \int_{t_1}^{t_2}L\D t=0\]
+\end{soln}
+\begin{prob}{5. ii}
+    Show the deduction of Newton's second law from Hamilton's principle.
+\end{prob}
+\begin{soln}
+    Suppose a particle of mass \(m\) at the position \(\vec{r}=\vec{r}(x,y,z)\) is moving under the action of a field of force \(\vec{F}\). The kinetic energy of the particle is \(T=\frac{1}{2}m\vert\;\dot\vec{r}^2\vert\) and the variation of work done is \(\delta W=\vec{F}.\delta\vec{r}=-\delta V\).\\
+    Now from Hamilton's principle,
+    \begin{align*}
+        0&=\delta\int_{t_1}^{t_2}(T-V)\D t=\int_{t_1}^{t_2}(\delta T-\delta V)\D t\\
+        &=\int_{t_1}^{t_2} (m\dot{\vec{r}}.\delta \vec{r}+\vec{F}.\delta\dot{\vec{r}})\D t\\
+        &=\int_{t_1}^{t_2} m\dot{\vec{r}}.\delta \vec{r}\D t+\int_{t_1}^{t_2}\vec{F}.\delta\dot{\vec{r}}\D t
+    \end{align*}
+    Integrating the first term on Right-hand side by parts we get,
+    \begin{align*}
+        0&=m\dot{\vec{r}}.\delta \vec{r}\;\big\vert_{t_1}^{t_2}-\int_{t_1}^{t_2}m\ddot{\vec{r}}.\delta \vec{r}\D t+\int_{t_1}^{t_2} \vec{F}.\delta\vec{r}\D t\\
+        &=-\int_{t_1}^{t_2} \left( m\ddot{\vec{r}}-\vec{F} \right).\delta \vec{r}\D t
+    \end{align*}
+    Because \(\delta \vec{r}\) vanishes at end points. The above equation is true for every virtual displacement \(\delta \vec{r}\) and hence the integrand must vanish. That is \(m\ddot{\vec{r}}=\vec{F}\) which is the Newton's second law of motion.
+\end{soln}
+\begin{prob}{5. iii}
+    Find the equation for simple harmonic motion of a simple pendulum using Lagrange's equation.
+\end{prob}
+\begin{soln}
+    In the figure, the angle \(\theta\) between rest position and deflected position is chosen as generalized coordinate. If the string is of length \(l\), then kinetic energy is
+    \[
+        T=\frac{1}{2}mv^2=\frac{1}{2}m \left( l\dot{\theta} \right)^2=\frac{1}{2}m l^2\dot{\theta}^2
+    \]
+    where \(m\) is the mass of the bob. In coming from position \(B\) to \(A\) the mass has fallen freely through a vertical distance \(CA\). Thus potential energy is
+    \[
+        V=mg(OA-OC)=mg(l-l\cos \theta)=mgl(1-\cos \theta)
+    \]
+    where the reference level or zero level of potential energy has been taken at a distance \(l\) below the point of suspension.\\
+    Thus, Lagrangian is 
+    \[L=T-V=\frac{1}{2}ml^2\dot{{\vec{\theta}}}^2-mgl(1-\cos \theta)\]
+    So, \(\displaystyle\frac{\partial L}{\partial \dot{\theta}}=ml^2\dot{\theta}\) and \(\displaystyle \frac{\partial L}{\partial \theta}=-mgl\;\sin\theta\)\\
+    Putting in Lagrange's equation,
+    \begin{align*}
+        &\frac{\D}{\D t}\left( \frac{\partial L}{\partial \dot{\theta}} \right)-\frac{\partial L}{\partial \theta }=0\\
+        \Rightarrow &\frac{\D}{\D t}\left( ml^2\dot{\theta} \right)+mgl\;\sin\theta=0\\
+        \Rightarrow & ml^2\ddot{\theta}+mgl\;\sin\theta=0\\
+        \Rightarrow & \ddot{\theta}+\frac{g}{l}\;\sin\theta=0
+    \end{align*}
+    If the amplitude of the motion is small enough, that is \(\sin \theta=\theta\) then\[\ddot{\theta}+\frac{g}{l}\theta=0\]
+    which is the equation for angular simple harmonic motion with period \(T=2\pi\sqrt{\frac{l}{g}}\)
+\end{soln}
+\begin{prob}{6. i}
+    Discuss the physical significance of Hamilton's principle elaborately.
+\end{prob}
+\begin{soln}
+    Hamiltonian \(H\) possesses the dimensions of energy but in all circumstances it is not equal to the energy \(E\). Restriction for the equality, i.e., \(E=H\) are:
+    \begin{enumerate}[label=(\roman*)]
+        \item The system be conservative one, i.e., potential energy is coordinate dependent and not velocity dependent, and
+        \item Coordinate transformation equation be independent of time,  so that \(\sum p_j\dot{q}_j=2T\) 
+    \end{enumerate}
+    Let us first write \(H=H(q_j,p_j,t)\) so that its total time derivative will be
+    \[\frac{\D H}{\D t}=\sum \frac{\partial H}{\partial q_j}\dot{q}_j+\sum \frac{\partial H}{\partial p_j}\dot{p}_j+\sum \frac{\partial H}{\partial t}\]
+    From Hamilton's canonical equations of motion we know,
+    \[\dot{q}_j=\frac{\partial H}{\partial p_j},\quad\dot{p}_j=-\frac{\partial H}{\partial q_j}\;\Rightarrow\frac{\partial H}{\partial q_j}=-\dot{p}_j\]
+    Therefore,
+    \begin{align*}
+        \frac{\D H}{\D t}&=-\sum \dot{p}_j\dot{q}_j+\sum \dot{q}_j\dot{p}_j+\frac{\partial H}{\partial t}\\
+        &=\frac{\partial H}{\partial t}
+    \end{align*}
+    But \(\frac{\partial H}{\partial t}=-\frac{\partial L}{\partial t}\)\\
+    If \(L\) does not involve time then \(\frac{\partial L}{\partial t}=0\), so that \(\frac{\partial H}{\partial t}=0\), i.e., \(\frac{\D H}{\D t}=0\).\\
+    This means that \(t\) will also not appear in \(H\), i.e., \(t\) is cyclic in Hamiltonian for it to be a constant of motion.
+\end{soln}
+\begin{prob}{6. ii}
+    Show the deduction of canonical equation from a variation principle.
+\end{prob}
+\begin{soln}
+    Hamilton's principle
+    \begin{equation}
+        \delta I\equiv\delta \int_{t_1}^{t^2} L \D t\label{eq:6.2.1}
+    \end{equation}
+    The first modification is that the integral must be evaluated over the trajectory of the system point in phase space, and the varied paths
+must be in the neighborhood of this phase space trajectory. In the spirit of the
+Hamiltonian formulation, both \(q\) and \(p\) must be treated as independent coordinates of phase space, to be varied independently. The integrand in the
+action integral, equation \eqref{eq:6.2.1}, must be expressed as a function of both \(q\) and \(p\), and
+their time derivatives, so the equation then appears as
+\begin{equation}
+    \delta I=\delta \int_{t_1}^{t_2}\left( p_j\dot{q}_j-H(q,p,t) \right)\D t=0\label{eq:6.2.2} 
+\end{equation}
+Equation \eqref{eq:6.2.2} is referred to as the modified Hamilton's principle. The modified Hamilton's principle is exactly of the form of the variational problem in a space of \(2n\) dimensions with
+\[\delta I=\delta \int_{t_1}^{t^2}f(q,\dot{q},p,\dot{p},t)\D t=0\]
+for which the \(2n\) Euler-Lagrange equations are
+\begin{equation}
+    \frac{\D}{\D t}\left( \frac{\partial f}{\partial \dot{q}_j} \right)-\frac{\partial f}{\partial q_j}=0\qquad j=1,\dots,n \label{eq:6.2.3}
+\end{equation}
+\begin{equation}
+    \frac{\D}{\D t}\left( \frac{\partial f}{\partial \dot{p}_j} \right)-\frac{\partial f}{\partial p_j}=0\qquad j=1,\dots,n \label{eq:6.2.4}
+\end{equation}
+The integrand \(f\) in equation \eqref{eq:6.2.2} contains \(\dot{q}_j\) only through \(p_j\dot{q}_j\) term, and \(q_j\) only in \(H\). Hence, equation \eqref{eq:6.2.3} lead to
+\[\dot{p}_j+\frac{\partial H}{\partial q_j}=0\]
+On the other hand, there is no explicit dependence of the integrand in equation \eqref{eq:6.2.2} on \(\dot{p}_j\). Hence, equation \eqref{eq:6.2.4} lead to
+\[\dot{q}_j-\frac{\partial H}{\partial p_j}=0\]
+These are the canonical equation.
+\end{soln}
+\begin{prob}{6. iii}
+    Show that the transformation \(Q=\sqrt{2q} \;e^a\;\cos p\), \(P=\sqrt{2q} \;e^{-a}\;\sin p\) is a canonical transformation.
+\end{prob}
+\begin{soln}
+    We can find that
+    \[\D Q=(2q)^{-\frac{1}{2}}e^a\cos p\D q-(2q)^{\frac{1}{2}}e^a\sin p\D p\]
+    So that
+    \begin{align*}
+        P\D Q-p\D q&=\sin p\left[ \cos p \D q-2q \sin p \D p \right]-p\D q\\
+        &=(\sin p \,\cos p-p)\D q-2q\sin^2 p\D p\\
+        &=\left(\frac{1}{2}\sin 2p-p\right)\D q-2q\sin^2 p\D p\\
+        &=\frac{\partial }{\partial q}\left(\frac{1}{2} q \sin 2p-pq\right)\D q+\frac{\partial }{\partial p}\left( \frac{1}{2}q\sin 2p-pq \right)\D p\\
+        &=\frac{\partial F}{\partial q}\D q+\frac{\partial F}{\partial p}\D p\\
+        &=\D F
+    \end{align*}
+    which shows that the right-hand side is an exact differential of the function
+    \[F=\left(\frac{1}{2} q \sin 2p-pq\right)\]
+    and hence the transformation is canonical.
+\end{soln}
+\begin{prob}{7. a}
+    Define Poisson brackets and Lagrange's brackets.
+\end{prob}
+\begin{soln}
+    Poisson bracket: Let \(F\) be any dynamical variable of a system. Suppose \(F\) is function of conjugate variables \(q_j\) and \(p_j\) and \(t\); then
+    \begin{align*}
+        \frac{\D F}{\D t}=\frac{\D F}{\D t}(q_j,p_j,t)&=\sum \frac{\partial F}{\partial q_j}\dot{q}_j+\sum \frac{\partial F}{\partial p_j}\dot{p}_j+\frac{\partial F}{\partial t}\\
+        &=\sum\left( \frac{\partial F}{\partial q_j}\frac{\partial H}{\partial p_j}-\frac{\partial F}{\partial p_j} \frac{\partial H}{\partial q_j}\right)+\frac{\partial F}{\partial t}
+    \end{align*}
+    on using Hamilton's canonical equations of motion.
+
+    The first bracketed term is called Poisson Bracket of \(F\) with \(H\). In general, if \(X\) and \(Y\) are two dynamical variables then their Poisson bracket is defined as
+    \[[X,Y]_{q,p}=\sum\left( \frac{\partial X}{\partial q_j}\frac{\partial Y}{\partial p_j}-\frac{\partial X}{\partial p_j} \frac{\partial Y}{\partial q_j}\right)\]
+
+
+    Lagrange's Bracket: Lagrange's bracket of \(\left\{ u,v \right\}\) with respect to the basis \((q_j,p_j)\) is defined as
+    \[\left\{ u,v \right\}_{q,p}=\sum\left( \frac{\partial q_j}{\partial u}\frac{\partial p_j}{\partial v}-\frac{\partial p_j}{\partial u} \frac{\partial q_j}{\partial v}\right)\]
+\end{soln}
+\begin{prob}{7. ii}
+    Find the relation between Lagrange and Poisson brackets.
+\end{prob}
+\begin{soln}
+    We shall show that
+    \[\sum_{l=1}^{2n} \{u_l,u_i\}[u_l,u_j]=\delta_{ij}\]
+    where \(\{u_l,u_i\}\) is Lagrange, while \([u_l,u_j]\) is Poisson bracket. Now,
+    \begin{equation}
+        \sum_{l=1}^{2n} \{u_l,u_i\}[u_l,u_j]=\sum_{l=1}^{2n} \left\{ 
+            \sum_{k=1}^{n} \left( \frac{\partial q_k}{\partial u_l}\frac{\partial p_k}{\partial u_i}-\frac{\partial p_k}{\partial u_l} \frac{\partial q_k}{\partial u_i}\right)
+            \sum_{m=1}^n \left( \frac{\partial u_l}{\partial q_m}\frac{\partial u_j}{\partial p_m}-\frac{\partial u_l}{\partial p_m} \frac{\partial u_j}{\partial q_m}\right)
+            \right\}\label{eq:7.2.1}
+        \end{equation}
+    The first of the four terms on right-hand side that shall be obtained on multiplication on
+    \begin{align*}
+        \sum_{k,m=1}^n\parr{p_k}{u_i}\parr{u_j}{u_i}\sum_{l=1}^{2n}\parr{q_k}{u_l}\parr{u_l}{q_m}&=\sum_{k,m} \parr{p_k}{u_i}\parr{u_j}{p_m}\cdot\parr{q_k}{q_m}\\
+        &=\sum_{k,m} \parr{p_k}{u_i}\parr{u_j}{p_m}\cdot\delta_{km}
+    \end{align*}
+    But \(\delta_{km}\) is also expressed as \(\delta_{km}=\parr{p_m}{p_k}\)\\
+    So that
+    \begin{align}
+        \sum_{k,m=1}^n\parr{p_k}{u_i}\parr{u_j}{u_i}\sum_{l=1}^{2n}\parr{q_k}{u_l}\parr{u_l}{q_m}&=\sum_{k,m} \parr{p_k}{u_i}\parr{u_j}{p_m}\cdot\parr{p_m}{p_k}\notag\\
+        &=\sum_{k} \parr{p_k}{u_i}\parr{u_j}{p_k}\label{eq:7.2.2}
+    \end{align}
+    The last of the four terms will be
+    \begin{align}
+    \sum_{k,m=1}^{n}\parr{q_k}{u_i}\parr{u_j}{q_m}\cdot\sum_{l=1}^{2n}\parr{p_k}{u_l}\parr{u_l}{p_m}&=\sum_{k,m}\parr{q_k}{u_i}\parr{u_j}{q_m}\cdot\parr{p_k}{p_m}\notag\\
+    &=\sum_{k,m}\parr{q_k}{u_i}\parr{u_j}{q_m}\cdot\delta{km}\notag\\
+    &=\sum_{k,m}\parr{q_k}{u_i}\parr{u_j}{q_m}\cdot\parr{q_m}{q_k}\notag\\
+    &=\sum_{k}\parr{q_k}{u_i}\parr{u_j}{q_k}\label{eq:7.2.3}
+    \end{align}
+    The rest terms are zero which can be seen as follows: The second term is 
+    \[-\sum_{k,m}^n\parr{p_k}{u_i}\parr{u_j}{q_m}\sum_{l=1}^{2n}\parr{q_k}{u_l}\parr{u_l}{p_m}\]
+    which is zero since the factor
+    \[\sum_{l=1}^{2n}\parr{q_k}{u_l}\parr{u_l}{p_m}=\parr{q_k}{p_m}=0 \]
+    Similarly the third term will be zero and hence right-hand side of equation \eqref{eq:7.2.1} from  \eqref{eq:7.2.2} and \eqref{eq:7.2.3} is
+    \begin{align*}
+        \sum_k \parr{p_k}{u_i}\parr{q_k}{u_i}+\sum_k \parr{q_k}{u_i}\parr{u_j}{q_k}&=\sum_k \left( \parr{u_j}{p_k}\parr{u_j}{q_k}\parr{q_k}{u_i} \right)\\
+        &=\parr{u_j}{u_i}(q_k,p_k)\\
+        &=\parr{u_j}{u_i}=\delta_{ij}8
+    \end{align*}
+    Therefore,
+    \[\sum_{l=1}^{2n} \{u_l,u_i\}[u_l,u_j]=\delta_{ij}\]
+    which sets a relation between Lagrange and Poisson brackets.
+\end{soln}
+\begin{prob}{7. iii}
+    Use Jacobi's form of principle of least action to obtain the equation of orbit for the Kepler's problem.
+\end{prob}
+\end{document}

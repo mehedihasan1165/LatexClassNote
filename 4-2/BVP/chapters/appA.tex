@@ -1,0 +1,96 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Calculations}\label{app}
+\section{Calculations of Mid-point Method}
+\[
+    w_{i+1}=w_i+hf\left( t_i+\frac{h}{2},\,w_i+\frac{h}{2}f(t_i,w_i) \right)
+\]
+Here \(t_i=0.2i\), \(h=0.2\), \(N=10\), \(f(t_i,\,w_i)=w_i-t_i^2+1\)
+\begin{align*}
+    w_{i+1}&=w_i+\frac{h}{2}f(t_i,w_i)\\
+    &=w_i+\frac{0.2}{2}\left[w_i-0.04i^2+1\right]\\
+    &=w_i+0.1w_i-0.004i^2+0.1\\
+    &=1.1w_i-0.004i^2+0.1
+\end{align*}
+Again,
+\[
+    \left( t_i+\frac{h}{2} \right)=0.2i+0.1
+\]
+\begin{align*}
+    \therefore \; w_{i+1}&=w_i+0.2 f\left( t_i+\frac{h}{2},w_i+\frac{h}{2}f(t_i,w_i) \right)\\
+    &=w_i+0.2 f\left( 0.2i+0.1,\, 1.1w_i-0.004i^2+0.1 \right)\\
+    &=w_i+0.2 \left[ 1.1w_i-0.004i^2+0.1-(0.2i+0.1)^2+1 \right]\\
+    &=w_i+0.22w_i-0.0008i^2+0.02-0.2(0.04i^2+0.04i+0.01)+0.2 \\
+    &=1.22w_i-0.0008i^2+1.02-0.008i^2-0.008i+0.002 \\
+    &=1.22w_i-0.0088i^2-0.008i+0.218
+\end{align*}
+\section{Modified Euler's Method}
+\begin{equation}
+    y_{i+1}^{(n+1)}=y_i+\frac{1}{2}h\left[ f(x_i,y_i)+f(x_{i+1},y_{i+1}^{(n)}) \right]
+    \label{eq:appEuler1}
+\end{equation}
+where
+\begin{equation}
+    y_{i+1}^{(n)}=y_i+hf(x_i,y_i) \quad i=0,1,2,\dots,N-2;\quad n=0,1,2,\dots \label{eq:appEuler2}
+\end{equation}
+\emph{For \(i=0\)}
+\begin{equation}
+    y_1^{(n+1)}=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_{1},y_{1}^{(n)}) \right]
+    \label{eq:appEuler3}
+\end{equation}
+and 
+\begin{equation}
+    y_{1}^{(n)}=y_0+hf(x_0,y_0);\qquad n=0,1,2,\dots \label{eq:appEuler4}
+\end{equation}
+Let \(n=0\), then from \eqref{eq:appEuler3} and \eqref{eq:appEuler4} we have
+\begin{equation}
+    y_1^{(1)}=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_{1},y_{1}^{(0)}) \right]
+    \label{eq:appEuler5}
+\end{equation}
+and 
+\begin{equation}
+    y_{1}^{(0)}=y_0+hf(x_0,y_0) \label{eq:appEuler6}
+\end{equation}
+Using \eqref{eq:appEuler6} in \eqref{eq:appEuler5}, \(y_1^{(1)}\) can be evaluated.\\
+Let \(n=1\), then from \eqref{eq:appEuler3}, we have
+\begin{equation}
+    y_1^{(2)}=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_{1},y_{1}^{(1)}) \right]
+    \label{eq:appEuler7}
+\end{equation}
+Let \(n=2\), then from \eqref{eq:appEuler3}, we have
+\begin{equation}
+    y_1^{(3)}=y_0+\frac{h}{2}\left[ f(x_0,y_0)+f(x_{1},y_{1}^{(2)}) \right]
+    \label{eq:appEuler8}
+\end{equation}
+Similarly, \(y_1^{(4)}\), \(y_1^{(5)}, \dots\) etc. can be evaluated until we reach the desired accuracy.
+
+\emph{For \(i=1\)}, we have from \eqref{eq:appEuler1},
+\begin{equation}
+    y_2^{(n+1)}=y_1+\frac{h}{2}\left[ f(x_1,y_1)+f(x_{2},y_{2}^{(n)}) \right]
+    \label{eq:appEuler9}
+\end{equation}
+and 
+\begin{equation}
+    y_{2}^{(n)}=y_1+hf(x_1,y_1);\qquad n=0,1,2,\dots \label{eq:appEuler10}
+\end{equation}
+For \(n=0\), we have from \eqref{eq:appEuler10},
+\begin{equation}
+    y_2^{(1)}=y_1+\frac{h}{2}\left[ f(x_1,y_1)+f(x_{2},y_{2}^{(0)}) \right]
+    \label{eq:appEuler11}
+\end{equation}
+where 
+\begin{equation}
+    y_{2}^{(0)}=y_1+hf(x_1,y_1) \label{eq:appEuler12}
+\end{equation}
+By \eqref{eq:appEuler12}, \(y_2^{(1)}\) is known from \eqref{eq:appEuler11}.\\
+For \(n=1\), from \eqref{eq:appEuler10},
+\begin{equation}
+    y_2^{(2)}=y_1+\frac{h}{2}\left[ f(x_1,y_1)+f(x_{2},y_{2}^{(1)}) \right]
+    \label{eq:appEuler13}
+\end{equation}
+\(y_2^{(1)}\) is known from \eqref{eq:appEuler11}.
+Similarly, \(y_2^{(3)}\), \(y_2^{(4)}, \dots\) etc. can be calculated.
+\end{document}

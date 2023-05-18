@@ -1,0 +1,168 @@
+% For inner product symbol use \seq{} it was decleared first as a symbol for sequence
+\documentclass[../main-sheet.tex]{subfiles}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{Continuous Mappings on Metric Spaces}
+\begin{defn}
+    Let $ (M,d) $ and $ (N,\rho) $ be two metric spaces, $ A\subset M $, and $ f:A\to N $ be a mapping. Suppose that $ x_0 $ is an accumulation point of $ A $. We say that $ b\in N $ is \emph{the limit of $ f $ at $ x_0$,} written $ \lim_{x\to x_0}f(x)=b $, if given any $ \epsilon>0 $ there exists $ \delta >0 $ (possibly depending on $ f $, $ x_0 $, and $ \epsilon $) such that for all $ x\in A $ satisfying $ x\neq x_0 $ and $ d(x_0,x)<\delta $, we have $ \rho\left( f(x),b \right)<\epsilon $.
+
+    Intuitively, this says that as $ x $ approached $ x_0 $, $ f(x) $ approaches $ b $. We also write $ f(x)\longrightarrow b $ as $ x\longrightarrow x_0 $.
+\end{defn}
+\begin{defn}
+    Let $ (M,d) $ and $ (N,\rho) $ be two metric spaces and $ a\subset M $ and $ f:A\to N $ be a mapping. We say that $ f $ is continuous at $ x_0 $ in its domain if and only if for all $ \epsilon>0 $, there is a $ \delta>0 $ such that for all $ x\in A $, $ d(x,x_0)<\delta $ implies $ \rho\left( f(x),f(x_0) \right)<\epsilon $.
+\end{defn}
+\begin{note}
+    A function $ f:A\subset\R^n\to\R^m $ is continuous at $ x_0\in A $ if and only if for all $ \epsilon>0 $ there is a $ \delta>0 $ such that for all $ x\in A $ with $ \norm{x-x_0}<\delta $, we have $ \norm{f(x)-f(x_0)}<\epsilon $.
+\end{note}
+\begin{ex}[HW]
+    Let $ f:\R^n\to\R^n $ be the identity function $ x\mapsto x $. Show that $ f $ is continuous.
+\end{ex}
+\begin{ex}
+    Let $ f:(0,\infty)\to \R $, $ x\mapsto \frac{1}{x} $, show that $ f $ is continuous.
+\end{ex}
+\begin{soln}
+    Fix $ x_0 \in (0,\infty)$, that is, fix $ x_0>0 $. To determine how to choose $ \delta $, we examine the expression
+    \[
+        \abs{f(x)-f(x_0)}=\abs{\frac{1}{x}-\frac{1}{x_0}}=\frac{\abs{x_0-x}}{\abs{x\,x_0}}
+    \]
+    \begin{figure}[H]
+        \centering
+        \import{../tikz/}{fConts.tikz}
+    \end{figure}
+    If $ \abs{x-x_0}<\delta $, then we would get
+    \[
+        \abs{f(x)-f(x_0)}<\frac{\delta}{\abs{x\,x_0}}=\frac{\delta}{x\,x_0}
+    \]
+    If $ \delta<\frac{x_0}{2} $, then $ x>\frac{x_0}{2} $ and so $ \frac{\delta}{x\,x_0}<\frac{2\delta}{x_0^2} $. Thus, given $ \epsilon >0 $, choose $ \delta=\text{min}\left( \frac{x_0}{2},\frac{\epsilon x_0^2}{2} \right) $. Then $ \abs{f(x)-f(x_0)}<\epsilon $ if $ \abs{x-x_0}<\delta $, and so $ f $ is continuous.
+\end{soln}
+\begin{thm}
+    Suppose that $ (M,d) $ and $ (N,p) $ are two metric spaces, $ f:M\to N $ is continuous and $ K\subset M $ is connected. Then $ f(K) $ is connected. Similarly, if $ K $ is path-connected, so is $ f(K) $.
+\end{thm}
+\begin{proof}
+    Suppose $ f(k) $ is not connected. By definition, we can write $ f(K)\subset U\cup V $, when $ U\cap V\cap f(K)=\varnothing $, $ U\cap f(K)\neq \varnothing $, $ V\cap f(K)\neq \varnothing $, and $ U,V $ are open sets. Now, $ f^{-1}(U)=U'\cap K $ for some open set $ U' $, and similarly, $ f^{-1}(V)=V'\cap K $ for some open set $ V' $. From the conditions on $ U, V $, we see that $ U'\cap V'\cap K=\varnothing $, $ K\subset U'\cup V' $, $ U'\cap K\neq \varnothing $, and $ V'\cap K\neq \varnothing $. Thus, $ K $ is not connected, which proves the first assertion.
+\end{proof}
+\section{The Boundedness of Continuous Functions on Compact Sets}
+\begin{thm}[Maximum-Minimum Theorem (Boundedness Theorem)]
+    Let $ (M,d) $ be a metric space, let $ A\subset M $, and let $ f:A\to\R $ be continuous. Let $ K\subset A $ be a compact set. Then $ f $ is bounded on $ K $; that is, $ B=\set{f(x)\mid x\in K}\subset \R $ is a bounded set. Furthermore, there exists points $ x_0,x_1\in K $ such that $ f(x_0)=\inf(B) $ and $ f(x_1)=\sup(B) $. We call $ \sup(B) $ the (absolute) maximum of $ f $ on $ K $ and $ \inf B $ the (absolute) minimum of $ f $ on $ K $.
+\end{thm}
+\begin{proof}
+    First, $ B $ is bounded, for $ B=f(K) $ is compact, since the continuous image of a compact set is compact. Therefore, it is closed and bounded, by the definition of compactness. Second, we want to produce an $ x_1 $ such that $ x_1\in K $ and $ f(x_1)=\sup B $. Now, since $ B $ is closed, $ \sup B\in B=f(k) $. Thus, $ \sup B=f(x_1) $ for some $ x_1\in K $. The case of $ \inf B $ is similar.
+\end{proof}
+To appreciate the result, let us consider what can happen on a non-compact set:
+\begin{note}
+    First, \emph{a continuous function need not be bounded}. Consider the function $ f(x)=\frac{1}{x} $ on $ (0,1) $. As $ x  $ gets closer to 0, the function becomes arbitrarily large, but $ f $ is nevertheless continuous.
+\end{note}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \import{../tikz/}{unboundedCont.tikz}
+        \caption{An unbounded continuous function}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \import{../tikz/}{noMax.tikz}
+        \caption{A function with no maximum}
+    \end{minipage}
+\end{figure}
+\begin{note}
+    Second, \emph{if a function is bounded and continuous, it might not assume its maximum at any points of its domain}.\\
+    Let $ f(x)=x $ on $ [0,1) $. This function never attain a maximum value, because even though there are an infinite number of points as near to 1 as we please, there is no point $ x $ for which $ f(x)=1 $.
+\end{note}
+\begin{prob}
+    Give an example of an unbounded discontinuous function on a compact set.
+\end{prob}
+\begin{soln}
+    Let $ f:[0,1]\to\R $ defined by $ f(x)=\frac{1}{x} $ if $ x>0 $ and $ f(0)=0 $. Clearly, this function exhibits the same unboundedness property as does $ \frac{1}{x} $ on $ (0,1] $
+\end{soln}
+\begin{prob}
+    Verify the Maximum-Minimum theorem for $ f(x)=\frac{x}{x^2+1} $ on $ [0,1] $
+\end{prob}
+\begin{soln}
+    $ f(0)=0 $, $ f(1)=\frac{1}{2} $. We shall verify explicitly that, the maximum is at $ x=1 $, and the minimum is at $ x=0 $. First, as $ 0\leq x\leq 1 $, so $ \frac{x}{x^2+1} \geq 0 $, since $ x\geq $, $ x^2+1\geq 1 $, so that $ f(x)\geq f(0) $ for $ 0\leq x\leq 1 $. Thus, 0 is the minimum. Next, note that $ 0\leq (x-1)^2=x^2-2x+1 $, so that $ x^2+1\geq 2x $, and hence for $ x\neq 0 $, $ \frac{x}{x^2+1}\leq\frac{x}{2x}=\frac{1}{2} $ so that $ f(x)\leq f(1)=\frac{1}{2} $ and thus $ x=1  $ is the maximum point.
+\end{soln}
+\begin{prob}
+    Verify the Maximum-Minimum theorem for $ f(x)=x^3-x $ on $ [-1,1] $
+\end{prob}
+\section{The Intermediate Value Theorem (IMVT)}
+From the context of elementary calculus, it states that a continuous function on an interval assumes all values between any two given elements of its range (Fig \ref{fig:imvt-1} below). This theorem is not true for the case of a discontinuous function (Fig \ref{fig:imvt-2} below). Also, this is not true when the function is continuous the domain is not connected (Fig \ref{fig:imvt-3} below). Therefore, the crucial assumptions for this theorem to hold for a function $ f $ be \emph{continuous} and the domain of definition be \emph{connected.}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \import{../tikz/}{IMVT-1.tikz}
+        \caption{IMVT}
+        \label{fig:imvt-1}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \import{../tikz/}{IMVT-2.tikz}
+        \caption{IMVT}
+        \label{fig:imvt-2}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \import{../tikz/}{IMVT-3.tikz}
+        \caption{Continuous function with disconnected domain}
+        \label{fig:imvt-3}
+    \end{minipage}
+\end{figure}
+\subsection{Intermediate Value Theorem} Suppose $ M $ is a metric space, $ A\subset M $, and $ f:A\to\R  $ is continuous. Suppose that $ K\subset A $ is connected and $ x,y\in K $. For every number $ c\in\R $ such that $ f(x)<c<f(y) $, there exists a point $ z\in K $ such that $ f(z)=c $.
+\begin{proof}
+    Suppose no such $ z $ exists. Let $ U=(-\infty,c) $ and $ V=(c,\infty) $. Clearly, $ U $ and $ V $ are open sets. Since $ f $ is continuous, we have $ f^{-1}(U)=U_0\cap K $ an open set $ U_0 $, and similarly, $ f^{-1}(V)=V_0\cap K $ an open set $ V_0 $ (by the following theorem). By the definition if $ U $ and $ V $, we have $ U_0\cap V_0\cap K=\varnothing $, and by the assumption  that $ \set{z\in K\mid f(z)=c}=\varnothing $. We have $ U_0\cap V_0 \supset K$. Also, $ U_0 \cap K\neq \varnothing $, since $ x\in U $; and $ V_0\cap K\neq \varnothing $, since $ y\in V $. Hence, $ K $ is not connected, a contradiction.
+\end{proof}
+\begin{thm}
+    Let $ f:A\subset M \to N $ be a mapping. Then the following assumptions are equivalent:
+    \begin{enumerate}[label=(\roman*)]
+        \item $ f $ is continuous on $ A $
+        \item For each convergent sequence $ x_k \to x_0 $ in $ A $, we have $ f(x_k)\to f(x_0) $
+        \item For each open set $ U  $ in $ N $, $ f^{-1}(U)\subset A $ is open relative to $ A $; i.e., $ f^{-1}(U) =U_0 \cap A $ for some open set $ U_0 $
+        \item For each closed set $ F\subset N  $, $ f^{-1}(F)\subset A $ is closed relative to $ A $; i.e., $ f^{-1}(F) =F_0 \cap A $ for some closed set $ F_0 $
+    \end{enumerate}
+\end{thm}
+\begin{prob}
+    Let $ f(x) $ be a cubic polynomial. Show that $ f $ has a (real) root $ x_0 $ (i.e., $ f(x_0)=0 $).
+\end{prob}
+\begin{soln}
+    We can write $ f(x)=ax^3+bx^2+cx+d $, where $ a\neq 0 $. Suppose that $ a>0 $. For $ x $ large and positive, $ ax^3 $ is large (and positive) and will be bigger than the other terms, so that $ f(x)> 0$ if $ x $ is large. To see it exactly, note that $ ax^3+bx^2+cx+d=ax^3\left( 1+\frac{b}{ax}+\frac{c}{ax^2}+\frac{d}{ax^3} \right)  $ and the factor in parentheses tends to $ 1 $ as $ x\to \infty $. Similarly, $ f(x)<0 $ if $ x $ is large and negative. Hence, we can apply the Intermediate value with $ K=\R $ to conclude the existence of a point $ x_0 $ where $ f(x_0)=0 $.
+\end{soln}
+\begin{prob}
+    Let $ f:[1,2]\to[0,3] $ be a continuous function satisfying $ f(1)=0 $ and $ f(2)=3 $. Show that $ f $ has a fixed point. That is, show that there us a point $ x_0 \in [1,2] $ such that $ f(x_0)=x_0 $.
+\end{prob}
+\begin{soln}
+    Let $ g(x)=f(x)-x $. Then $ g $ is continuous, $ g(1)=f(1)-1=-1$ and $ g(2)=f(2)-2=3-2=1 $. Hence, by the Intermediate value theorem $ g $ must vanish at some $ x_0\in[1,2] $, and this $ x_0 $ is a fixed point for $ f(x) $.
+\end{soln}
+\section{Uniform Continuity}
+\begin{defn}
+    Let $ (M,d) $ and $ (N,\rho) $ be metric spaces, $ A\subset M,\; f :A\to N $, and $ B\subset A $. We say that $ f $ is \emph{uniformly continuous on the set $ B $} if for every $ \epsilon>0 $ there is a $ \delta>0 $ such that $ x,y\in B $ and $ d(x,y)<\delta $ imply $ \rho(f(x),f(y))<\epsilon $.
+\end{defn}
+
+The definition is similar to that of continuity, except that here we are required to chose $ \delta  $ to work for all $ x,y $ once $ \epsilon  $ is given. For continuity, we were required only to choose a $ \delta  $ once we were given $ \epsilon>0 $ and a particular $ x_0 $. Clearly, if $ f $ is uniformly continuous, then $ f $ is continuous.\\
+
+For example, consider $ f:\R\to \R $, $ f(x)=x^2 $. Then $ f  $ is certainly continuous, but it is not uniformly continuous. Indeed, for $ \epsilon>0 $ and $ x_0>0 $ given, the $ \delta> 0 $ we need is at least as small as $ \epsilon/(x_0) $ (WHY?), and so if we choose $ x_0 $ large, $ \delta $ must get smaller; i.e., no single $ \delta $ will do for all $ x>0 $. The phenomenon cannot happen on compact sets, as the next theorem shows:
+\begin{thm}[Uniform Continuity Theorem]
+    Let $ f:A\subset M\to N $ be continuous and let $ K\subset A $ be compact set. Then $ f $ is uniformly continuous.
+\end{thm}
+\begin{proof}
+    Given $ \epsilon>0 $ and $ x\in K $, choose $ \delta_x $ such that $ d(x,y)<\delta_x $ implies $ \rho(f(x),f(y))<\frac{\epsilon}{2} $. The sets $ D(x,\frac{\delta_x}{2}) $ cover $ K $ and are open. Therefore, there is a fine covering, say, $ D(x_1,\frac{\delta_{x_1}}{2}),D(x_2,\frac{\delta_{x_2}}{2}),\dots,D(x_N,\frac{\delta_{x_N}}{2}) $. Let $ \delta= $ minimum $ \frac{\delta_{x_1}}{2},\frac{\delta_{x_2}}{2},\dots,\frac{\delta_{x_N}}{2} $. If $ d(x,y)<\delta $, then there is an $ x_i $ such that $ d(x_i,y) \leq d(x,x_i)+d(x_i,y)$. Thus, by the choice of $ \delta $, $ \rho(f(x),f(y))\leq \rho(f(x),f(x_i))+\rho(f(x_i),f(y))<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon $.
+\end{proof}
+\begin{prob}
+    Let $ f:(0,1]\to\R $ be defined by $ f(x)=\frac{1}{x} $. Show that $ f $ is uniformly continuous on $ [a,1] $ for $ a>0 $.
+\end{prob}
+\begin{soln}
+    Since $ [a,1] $ is a compact subset of $ (0,1] $ where $ a>0 $ and $ f $ is continuous on $ (0,1] $, and therefore, by the uniform continuity theorem, we conclude that $ f $ is uniformly continuous in $ [a,1] $.
+\end{soln}
+\begin{prob}
+    Let $ f:(a,b)\to \R $ be differentiable and suppose that there is a constant $ M>0 $ such that $ \abs{f'(x)}\leq M  $ for all $ x\in (a,b) $. Here $ a $ and $ b $ may be $ \pm \infty $. Show that $ f $ is uniformly continuous on $ (a,b) $.
+\end{prob}
+\begin{soln}
+    The definition of uniform continuity asks us to estimate the difference $ \abs{f(x)-f(y)} $ in terms of $ \abs{x-y} $. This suggests using the mean value theorem.
+    
+    Indeed, $ f(x)-f(y)=f'(x_0)(x-y) $ for some $ x_0 $ between $ x $ and $ y $. Hence, $ \abs{f(x)-f(y)} \leq M\abs{x-y} $; a mapping with this property is called \emph{Lipschitz}.
+
+    Given $ \epsilon>0 $, choose $ \delta=\frac{\epsilon}{M } $. Then $ \abs{x-y}  $ implies $ \abs{f(x)-f(y)}<M\cdot \frac{\epsilon}{M}=\epsilon $. Hence, $ f $ is uniformly continuous on $ (a,b) $.
+\end{soln}
+\begin{prob}
+    Show that $ \sin x:\R \to\R $ is uniformly continuous.
+\end{prob}
+\end{document}

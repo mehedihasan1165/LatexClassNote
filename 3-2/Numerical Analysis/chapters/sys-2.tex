@@ -1,0 +1,1085 @@
+\documentclass[12pt,class=book,crop=false]{standalone}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\begin{document}
+\chapter{System of Linear Equations}
+\section{Introduction}
+System of linear equations occur in a variety of applications in the fields like elasticity, electrical engineering, statistical analysis. The techniques and methods for solving system of linear equations belong to two categories: direct and iterative methods.\\
+Some of the direct methods are Gauss elimination method, matrix inverse method, LU factorization and Cholesky method. Elimination approach reduces the given system of equations to a form from which the solution can be obtained by simple substitution. Since calculators and computers have some limit to the number of digits for their use. This may lead to round off errors and produces poorer results. It will be assumed that readers are familiar with some of the direct methods suitable for small systems. Handling of large systems are also time-consuming.\\
+Iterative methods provide an alternative to the direct methods for solving system of linear equations. This method involves assumptions of some initial values which are then refined repeatedly till they reach some accepted range of accuracy.\\
+In this chapter we shall consider Gauss elimination method and iterative methods suitable for numerical calculations.
+\section{Linear System of Equations}
+Consider a system of $ n $ linear equations in the $ n $ unknowns $ x_1,x_2,\dots,x_n $
+\begin{equation}
+    \label{eq:1}
+    \left.\begin{aligned}
+         & E_1: \\
+         & E_2: \\
+         &      \\
+         & E_n: \\
+    \end{aligned}\right.
+    \left.\begin{aligned}
+        a_{11} x_1+a_{12} x_2+\dots+a_{1n} x_n & =b_1   \\
+        a_{21} x_1+a_{22} x_2+\dots+a_{2n}x_n  & =b_2   \\
+        \dots\quad\dots\quad\dots              & =\dots \\
+        a_{n1} x_1+a_{n2} x_2+\dots+a_{nn} x_n & =b_n
+    \end{aligned}
+    \right.
+\end{equation}
+Where $ a_{ij},b_i\in \R $\\
+Exactly one of the following three cases must occur:
+\begin{enumerate}[label={(\alph*)}]
+    \item The system has a unique solution.
+    \item The system has no solution.
+    \item The system has an infinite number of solutions.
+\end{enumerate}
+In matrix notation, we can write the system as
+\begin{equation}
+    \label{eq:2}
+    AX=B
+\end{equation}
+where
+\begin{align*}
+    A & =\begin{bmatrix}
+        a_{11} & a_{12} & \dots  & a_{1n} \\
+        a_{21} & a_{22} & \dots  & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \dots  & a_{nn}
+    \end{bmatrix}=(a_{ij}) \\
+    X & =\begin{bmatrix}
+        x_1 & x_2 & \dots & x_n
+    \end{bmatrix}^\top     \\
+    B & =\begin{bmatrix}
+        b_1 & b_2 & \dots & b_n
+    \end{bmatrix}^\top
+\end{align*}
+The solution of the system exists and is unique if $\abs{A}\neq0 $.\\
+The solution \eqref{eq:2} may then be written as
+\[
+    X=A^{-1} B
+\]
+where $ A^{-1} $ is the inverse of $ A $.
+\section{Method of Elimination}
+\emph{Equivalent Systems:} Two systems of equations are called equivalent if and only if they have the same solution set.\\
+
+\emph{Elementary Transformations:} A system of equations is transformed into an equivalent system if the following elementary operations are applied on the system:
+\begin{enumerate}
+    \item two equations are interchanged
+    \item an equation is multiplied by a non-zero constant
+    \item an equation is replaced by the sum of that equation and a multiple of any other equation.
+\end{enumerate}
+\emph{Gaussian Elimination}\\
+
+
+The process which eliminates an unknown from succeeding equations using elementary operations is known as Gaussian elimination.\\
+The equation which is used to eliminate an unknown from the succeeding equations is known as the \emph{pivotal equation}. The coefficient of the eliminated variable in a pivotal equation is known as the \emph{pivot}. If the pivot is zero, it cannot be used to eliminate the variable from the other equations. However, we can continue the elimination process by interchanging the equation with a nonzero pivot.\\
+
+\emph{Solution of a Linear System}\\
+
+
+A systematic procedure for solving a linear system is to reduce a system that is easier to solve. One such system is the echelon form. The \emph{back substitution} is then used to solve the system in reverse order.\\
+
+A system is in \emph{echelon form} or \emph{upper triangular form} if
+\begin{enumerate}[label={(\roman*)}]
+    \item all equations containing nonzero terms are above any equation with zeros only.
+    \item The first nonzero term in every equation occurs to the right of the first nonzero term in the equation above it.
+\end{enumerate}
+
+\section{Pivotal Elimination Method}
+Computers and calculators use fixed number of digits in its calculation and we may need to round the numbers. This introduces error in the calculations. Also, when two nearly equal numbers are subtracted, the accuracy in the calculation is lost. To reduce the propagation of errors, pivoting strategy is to be used.
+
+\subsection{Partial Pivoting (Partial Column Pivoting)}
+In partial pivoting, at any time we use the maximum magnitude of coefficient of the eliminating variable as the pivot. The process is continued for resulting subsystems.  Pivotal equation is divided throughout by the pivot to reduce to build up large coefficients when solving a system. The method is illustrated with an example.
+\begin{ex}
+    Solve the following linear system by the Gaussian elimination with partial pivoting, giving your answers to 3 decimal places.
+    $5x+12y+9z=5, 8x+11y+20z=35, 16x+5y+7z=29$\\
+
+    Taking first equation as the pivotal equation we can write the system as
+    % \begin{table}[H]
+    %     \centering
+    %     \begin{tabular}{|c|c|c|c|c|c|c|}
+    %         \hline
+    %         Operation    & \multicolumn{3}{c|}{Coefficient of} & R.H.S.     & Eq. \#     & Check Sum                        \\
+    %         \cline{2-4}
+    %                      & $ x $                               & $ y $      & $ z $      &             &           &        \\\hline
+    %                      & $ 16 $                              & $ 5 $      & $ 7 $      & $ 29 $      & $ Eq1 $   & 57     \\
+    %                      & $ 5 $                               & $ 12 $     & $ 9 $      & $ 5 $       & $ Eq2 $   & 31     \\
+    %                      & $ 8 $                               & $ 11 $     & $ 20 $     & $ 35 $      & $ Eq3 $   & 74     \\\hline
+    %         Eq 1/16      & $ 1 $                               & $ 0.3125 $ & $ 0.4375 $ & $ 1.8125 $  & $ Eq4* $  & 3.5625 \\
+    %         Eq 2/5       & $ 1 $                               & $ 2.4000 $ & $ 1.8000 $ & $ 1.000 $   & $ Eq5 $   & 6.2000 \\
+    %         Eq 3/8       & $ 1 $                               & $ 1.3750 $ & $ 2.5000 $ & $ 4.3750 $  & $ Eq6 $   & 9.2500 \\\hline
+    %         Eq 5 - Eq 4  &                                     & $ 2.0875 $ & $ 1.3625 $ & $ -0.8125 $ & $ Eq7 $   & 2.6375 \\
+    %         Eq 6 - Eq 4  &                                     & $ 1.0625 $ & $ 2.0625 $ & $ 2.5625 $  & $ Eq8 $   & 5.6875 \\\hline
+    %         Eq 7/2.0875  &                                     & $ 1 $      & $ 0.6527 $ & $ -0.3892 $ & $ Eq9* $  & 1.2635 \\
+    %         Eq 8/1.0625  &                                     & $ 1 $      & $ 1.9412 $ & $ 2.4118 $  & $ Eq10 $  & 5.3530 \\\hline
+    %         Eq 10 - Eq 9 &                                     &            & $ 1.2885 $ & $ 2.8010 $  & $ Eq11* $ & 4.0895 \\\hline
+    %     \end{tabular}
+    % \end{table}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cS[table-format=2.4]*{3}{S[table-format=3.4]}cS[table-format=3.4]}
+            \toprule
+             & \multicolumn{3}{c}{Coefficient of} &&& \\\cmidrule(lr){2-4}
+             \multicolumn{1}{c}{Operation} & $ x $& $ y $& $ z $& \multicolumn{1}{c}{R.H.S} & \multicolumn{1}{c}{Eq. \#} & \multicolumn{1}{c}{Check sum} \\\midrule
+                         & 16.0000& 5.0000&  7.0000 &29.0000 & Eq1 & 57.0000     \\
+                         &  5.0000&  12.0000&9.0000&  5.0000&  Eq2    & 31.0000     \\
+                         &  8.0000 &  11.0000 &  20.0000 &  35.0000&  Eq3    & 74.0000\\\midrule
+            Eq 1/16 &  1.0000&  0.3125  &  0.4375  &  1.8125   &  Eq4*   & 3.5625 \\
+            Eq 2/5       &  1.0000&  2.4000  &  1.8000  &  1.0000    &  Eq5    & 6.2000 \\
+            Eq 3/8 &  1.0000 &  1.3750  &  2.5000  &  4.3750   &  Eq6    & 9.2500 \\\midrule
+            Eq 5 - Eq 4  & &  2.0875  &  1.3625  &  -0.8125  &  Eq7    & 2.6375 \\
+            Eq 6 - Eq 4  & &  1.0625  &  2.0625  &  2.5625   &  Eq8    & 5.6875 \\\midrule
+            Eq 7/2.0875  &&  1.0000 &  0.6527  &  -0.3892  &  Eq9*   & 1.2635 \\
+            Eq 8/1.0625  & &  1.0000    &  1.9412  &  2.4118   &  Eq10   & 5.3530 \\\midrule
+            Eq 10 - Eq 9 & &  &  1.2885  &  2.8010   &  Eq11*  & 4.0895 \\\bottomrule
+        \end{tabular}
+    \end{table}
+    Solution of the system is obtained by the back substitution as follows:
+    \begin{align*}
+        z & =2.8010/1.2885=2.1738                                    \\
+        y & =-0.3892-0.6527\times 2.1738=-1.8080                     \\
+        x & =1.8124-0.3125\times(-1.8080)-0.4375\times 2.1738=1.4264
+    \end{align*}
+    To check the calculations an extra column headed by \emph{check sum} is included which is the sum of the numbers in the row. It is also worked out in exactly the same way as the other numbers in the line.
+\end{ex}
+\subsection{Total Pivoting}
+
+Partial pivoting is adequate for most of the simultaneous equations which arise in practice. But we may encounter sets of equations where wrong or incorrect solutions may occur. To improve the calculation in such cases total pivoting is used. In total pivoting, maximum magnitude of the coefficients is used for the pivot in each case.
+\begin{ex}
+    Solve the system of equation from previous example using total pivoting.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cS[table-format=2.4]*{3}{S[table-format=3.4]}cS[table-format=3.4]}
+            \toprule
+             & \multicolumn{3}{c}{Coefficient of} &&& \\\cmidrule(lr){2-4}
+             \multicolumn{1}{c}{Operation} & $ x $& $ y $& $ z $& \multicolumn{1}{c}{R.H.S} & \multicolumn{1}{c}{Eq. \#} & \multicolumn{1}{c}{Check sum} \\\midrule
+             &  5.0000&  12.0000&  9.0000&  5.0000&  Eq1    & 31.0000\\
+            &  8.0000&  11.0000&  20.0000  &  35.0000&  Eq2    & 74.0000\\
+             &  16.0000&  5.0000&  7.0000&  29.0000&  Eq3    & 57.0000\\\midrule
+            Eq 2/20      &  0.4000 &  0.5500  &  1.0000   &  1.7500   &  Eq4*   & 3.7000  \\
+            Eq 3/7       &  0.2857 &  0.7143  &  1.0000   &  4.1429   &  Eq5    & 8.1429  \\
+            Eq 1/9       &  0.5556 &  1.3333  &  1.0000   &  0.5556   &  Eq6    & 3.4445  \\\midrule
+            Eq 5 - Eq 4  & 1.8857 &  0.1643  &  0.0000   &  2.3929   &  Eq7    & 4.4429  \\
+            Eq 6 - Eq 4  & 0.1556 &  0.7833  &  0.0000   &  -1.1944  &  Eq8    & -0.2555 \\\midrule
+            Eq 7/1.8857  & 1.0000 &  0.0871  &  0.0000   &  1.2690   &  Eq9*   & 2.3561  \\
+            Eq 8/0.1556  & 1.0000 &  5.0341  &  0.0000  &  -7.6761  &  Eq10   & -1.6420 \\\midrule
+            Eq 10 - Eq 9 & 0.0000 & 4.9470     &  0.0000   &  -8.9451  &  Eq11*  & -3.9981 \\\bottomrule
+        \end{tabular}
+    \end{table}
+    Solution of the system is
+    \begin{align*}
+        y & =\frac{-8.9451}{4.94470}=-1.8082                                      \\
+        x & =1.2690-0.0871\times\left( -1.8082 \right)=1.4265                     \\
+        z & =1.7500-0.4000\times 1.4265-0.5500\times\left( -1.8042 \right)=2.1739
+    \end{align*}
+\end{ex}
+Solutions of the system are summarized below for comparison
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c*{3}{S[table-format=2.4]}}
+        \toprule
+              & \multicolumn{1}{c}{Using Maxima} & \multicolumn{1}{c}{with Partial Pivoting} & \multicolumn{1}{c}{with Total Pivoting} \\\midrule
+        $ x $ & 1.4265       & 1.4264 &  1.4265 \\
+        $ y $ & -1.8081      &  -1.8080 &  -1.8082 \\
+        $ z $ & 2.1739       &  2.1738 &  2.1739 \\\bottomrule
+    \end{tabular}
+\end{table}
+\section{Solution by Triangular Factorization}
+
+In Gaussian elimination process, a linear system is reduced to an upper-triangular system and then solved by backward substitution. The linear system $ A X = B $ can effectively be solved by expressing the coefficient matrix $ A $ as the product of a lower-triangular matrix $ L $ and an upper-triangular matrix $ U $ :
+\[
+    A=LU
+\]
+When this is possible we say that $ A $ has an LU-decomposition. In this case the equation can be written as
+\[
+    LUX=B
+\]
+and the solution can be obtained by defining $ Y = U X $ and then solving the two systems
+\begin{enumerate}[label={(\roman*)}]
+    \item $ LY=B $ for $ Y $, and
+    \item $ UX=Y $ for $ X $.
+\end{enumerate}
+LU-decomposition of a non-singular matrix (when it exists) is not unique.\\
+For example,
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cccc}
+        $ A $                          &   & $ L $                          & $ U $                          \\
+        $ \begin{pmatrix*}[r]
+                2 & 0 & -2\\
+                2 & 1 & -3\\
+                4 & -1 & 5\\
+            \end{pmatrix*} $ & = & $ \begin{pmatrix*}[r]
+                1 & 0 & 0\\
+                1 & 2 & 0\\
+                2 & -2 & 1\\
+            \end{pmatrix*} $ & $ \begin{pmatrix*}[r]
+                0 & 0 & -2\\
+                0 & \frac{1}{2} & -\frac{1}{2}\\
+                0 & 0 & 8\\
+            \end{pmatrix*} $ \\
+                                       & = & $ \begin{pmatrix*}[r]
+                2 & 0 & 0\\
+                2 & 1 & 0\\
+                4 & -1 & 8\\
+            \end{pmatrix*} $ & $ \begin{pmatrix*}[r]
+                1 & 0 & -1\\
+                0 & 1 & -1\\
+                0 & 0 & 1\\
+            \end{pmatrix*} $ \\
+                                       & = & $ \begin{pmatrix*}[r]
+                1 & 0 & 0\\
+                1 & 1 & 0\\
+                2 & -1 & 1\\
+            \end{pmatrix*} $ & $ \begin{pmatrix*}[r]
+                2 & 0 & -2\\
+                0 & 1 & -1\\
+                0 & 0 & 8\\
+            \end{pmatrix*} $ \\
+                                       &   & and so on                      &
+    \end{tabular}
+\end{table}
+It can be shown that the non-singular matrix $ B=\begin{pmatrix*}[r]
+        1&2&3\\
+        2&4&1\\
+        -1&0&2\\
+    \end{pmatrix*} $ cannot be decomposed into LU form.\\
+But by interchanging 2nd and 3rd row the resulting matrix can be factored as follows:
+\[
+    \begin{pmatrix*}[r]
+        1&2&3\\
+        -1&0&2\\
+        2&4&1
+    \end{pmatrix*}=
+    \begin{pmatrix*}[r]
+        1 & 0 & 0\\
+        -1 & 2 & 0\\
+        2 & 0 & -5
+    \end{pmatrix*}
+    \begin{pmatrix*}[r]
+        1 & 2 & 3\\
+        0 & 1 & \frac{5}{2} \\
+        0 & 0 & 1
+    \end{pmatrix*}
+\]
+To check for the LU-decomposition, we may use the idea of principal minor of the matrix.
+
+\emph{Principal Minor:} The $ r  $th principal minor of a square matrix $ A $ is the determinant of the sub-matrix $ A_r $ formed by the first $ r $ rows and $ r $ columns of $ A $.\\
+Consider the $ n\times n $ matrix
+\[
+    A=\begin{pmatrix}
+        a_{11} & a_{12} & a_{13} & \dots  & a_{1n} \\
+        a_{21} & a_{22} & a_{23} & \dots  & a_{2n} \\
+        a_{31} & a_{32} & a_{33} & \dots  & a_{3n} \\
+        \dots  & \dots  & \dots  & \ddots & \dots  \\
+        a_{n1} & a_{n2} & a_{n3} & \dots  & a_{nn} \\
+    \end{pmatrix}
+\]
+\begin{table}[H]
+    \begin{tabular}{ll}
+        The first principal minor of $ A $ is  & $ \begin{vmatrix}
+                A_1
+            \end{vmatrix}=\begin{vmatrix}
+                a_{11}
+            \end{vmatrix} $ \\
+        The second principal minor of $ A $ is & $ \begin{vmatrix}
+                A_2
+            \end{vmatrix}=\begin{vmatrix}
+                a_{11} & a_{12} \\
+                a_{21} & a_{22}
+            \end{vmatrix} $ \\
+        The third principal minor of $ A $ is  & $ \begin{vmatrix}
+                A_3
+            \end{vmatrix}=\begin{vmatrix}
+                a_{11} & a_{12} & a_{13} \\
+                a_{21} & a_{22} & a_{23} \\
+                a_{31} & a_{32} & a_{33}
+            \end{vmatrix} $ \\
+                                               & and so on.
+    \end{tabular}
+\end{table}
+\begin{thm}
+    Let $ A $ be an invertible $ n\times n $ matrix (non-singular). Then $ A $ has an LU-factorization if and only if all the principal minors $ \begin{vmatrix}
+            A_r
+        \end{vmatrix},\,r=1,2,3,\dots,n $ are non-zero.
+\end{thm}
+In matrix $ A =\begin{pmatrix*}[r]
+        2 & 0& -2\\
+        2 & 1& -3\\
+        4 & -1& 5\\
+    \end{pmatrix*}$, the principal minors are
+\[
+    \begin{vmatrix}
+        A_1
+    \end{vmatrix}=\begin{vmatrix}
+        2
+    \end{vmatrix}=2,\qquad
+    \begin{vmatrix}
+        A_2
+    \end{vmatrix}=\begin{vmatrix}
+        2 & 0 \\
+        2 & 1
+    \end{vmatrix}=2,\qquad
+    \begin{vmatrix}
+        A_3
+    \end{vmatrix}=\begin{vmatrix}
+        2 & 0  & -2 \\
+        2 & 1  & -3 \\
+        4 & -1 & 5
+    \end{vmatrix}=16
+\]
+and hence $ A $ has LU-decomposed.
+In matrix $B=\begin{pmatrix*}[r]
+        1&2&3\\
+        2&4&1\\
+        -1&0&2
+    \end{pmatrix*} $ the principal minors are,
+\[
+    \begin{vmatrix}
+        B_1
+    \end{vmatrix}=\begin{vmatrix}
+        1
+    \end{vmatrix}=1, \qquad
+    \begin{vmatrix}
+        B_2
+    \end{vmatrix}=\begin{vmatrix}
+        1 & 2 \\
+        2 & 4
+    \end{vmatrix}=0
+\]
+are not non-zero and hence $ B $ has no LU-decomposition.
+\subsection{Solution by LU-factorization}
+For unique factorization we may impose conditions on the elements of $ L $ and $ U $. In particular, if all the diagonal elements of $ L $ are $ 1 $, it is called a \emph{Doolittle factorization} and if all the diagonal elements of $ U $ are $ 1 $, then it is called a \emph{Crout factorization}. This may be used for a unique factorization.
+
+\emph{\textbf{Crout's factorization}} method  is explained by the following example:
+\begin{prob}
+    Given that
+    \[
+        A=\begin{pmatrix*}[r]
+            1&2&3\\
+            3&4&11\\
+            5&14&12
+        \end{pmatrix*},\quad
+        B=\begin{pmatrix*}[r]
+            5\\
+            21\\
+            15
+        \end{pmatrix*},\quad
+        X=\begin{pmatrix*}[r]
+            x\\
+            y\\
+            z
+        \end{pmatrix*}
+    \]
+    \begin{enumerate}[label={(\roman*)}]
+        \item Determine a lower triangular matrix $ L $ and an upper triangular matrix $ U $ such that $ L U = A $.
+        \item Use the above factorization to solve the equation $ A X = B $.
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    (i) Let,
+    \begin{align*}
+        A=\begin{pmatrix*}[r]
+            1&2&3\\
+            3&4&11\\
+            5&14&12
+        \end{pmatrix*} & =LU=\begin{pmatrix*}[r]
+            a&0&0\\
+            b&c&0\\
+            d&e&f
+        \end{pmatrix*}\begin{pmatrix*}[r]
+            1&l&m\\
+            0&1&n\\
+            0&0&1
+        \end{pmatrix*} \\
+                                     & =\begin{pmatrix*}[r]
+            a&al&am\\
+            b&bl+c&bm+cn\\
+            d&dl+e&dm+en+f
+        \end{pmatrix*}
+    \end{align*}
+    Equating the corresponding elements of the two matrices we have,
+    \begin{align*}
+         & a=1        &             &                               & \\
+         & b=3        &             &                               & \\
+         & d=5        &             &                               & \\
+         & al=2       & \text{or, } & \quad  l=\frac{2}{1}=2        & \\
+         & am=3       & \text{or, } & \quad m=\frac{3}{1}=2         & \\
+         & bl+c=4     & \text{or, } & \quad c=4-3(2)=-2             & \\
+         & dl+e=14    & \text{or, } & \quad e=14-5(2)=4             & \\
+         & bm+cn=11   & \text{or, } & \quad n=\frac{11-3(3)}{-2}=-1 & \\
+         & dm+en+f=12 & \text{or, } & \quad f=12-5(3)-4(-1)=1       &
+    \end{align*}
+    Thus,
+    \[
+        L=\begin{pmatrix*}[r]
+            1&0&0\\
+            3&-2&0\\
+            5&4&1
+        \end{pmatrix*}\qquad U=\begin{pmatrix*}[r]
+            1&2&3\\
+            0&1&-1\\
+            0&0&1
+        \end{pmatrix*}
+    \]
+    (ii) The equation can be written as
+    \[
+        AX=LUX=LY=B
+    \]
+    Where,
+    \[
+        UX=Y\qquad\text{ and }Y=\begin{pmatrix}
+            y_1 \\
+            y_2 \\
+            y_3
+        \end{pmatrix}
+    \]
+    Consider the solution of
+    \begin{align*}
+                    & LY=B                                                                             \\
+        \Rightarrow & \begin{pmatrix*}[r]
+            1&0&0\\
+            3&-2&0\\
+            5&4&1
+        \end{pmatrix*} \begin{pmatrix}
+            y_1 \\
+            y_2 \\
+            y_3
+        \end{pmatrix}=\begin{pmatrix*}[r]
+            5\\
+            21\\
+            15
+        \end{pmatrix*}
+    \end{align*}
+    Using forward elimination, we have,
+    \[
+        y_1=5,\quad y_2=-3,\quad y_3=2
+    \]
+    Now consider the solution of,
+    \begin{align*}
+                    & UX=Y                                                                            \\
+        \Rightarrow & \begin{pmatrix*}[r]
+            1&2&3\\
+            0&1&-1\\
+            0&0&1
+        \end{pmatrix*}\begin{pmatrix*}[r]
+            x\\
+            y\\
+            z
+        \end{pmatrix*}=\begin{pmatrix*}[r]
+            5\\
+            -3\\
+            2
+        \end{pmatrix*}
+    \end{align*}
+    Using backward elimination, we have
+    \[x=1,\quad y=-1,\quad z=2\]
+    and hence
+    \[
+        X=\begin{pmatrix*}[r]
+            1\\
+            -1\\
+            2
+        \end{pmatrix*}
+    \]
+\end{soln}
+\subsection{Positive Definite}
+\emph{Quadratic Forms:}  A quadratic form $ Q $ in $ n $-unknowns is%\footnote{Shouldn't the be equation $  $}
+\[
+    Q=a_{11}x_1^2+a_{12}x_1x_2+a_{13}x_1x_3+\dots+a_{n,n-1}x_nx_{n-1}+a_{n,n}x_n^n=\sum_{1\leq i,j\leq n}{a_i a_j x_i x_j}
+\]
+may be written in matrix representation as
+\[
+    Q=x^\top Ax
+\]
+where $ x=(x_1,x_2,x_3,\dots,x_n)^\top $ and $ A = \left(a_{ij}\right), $ the $ n\times n $ matrix.\\
+For example, the quadratic form $ x^2-6xy $ can be written as
+\[
+    x^2-6xy=\begin{pmatrix}
+        x & y
+    \end{pmatrix}\begin{pmatrix*}[r]
+        1 & -2\\
+        -4 & 0
+    \end{pmatrix*}\begin{pmatrix*}[r]
+        x\\
+        y
+    \end{pmatrix*}
+\]
+This can also be written as
+\[
+    x^2-6xy=\begin{pmatrix}
+        x & y
+    \end{pmatrix}\begin{pmatrix*}[r]
+        1 & -3\\
+        -3 & 0
+    \end{pmatrix*}\begin{pmatrix*}[r]
+        x\\
+        y
+    \end{pmatrix*}
+\]
+Note that in the second representation the matrix is symmetric.\\
+
+
+\emph{Positive definite:}  A matrix $ A $ is positive definite if its quadratic form is greater than zero for all non-zero vector $ x $,  i.e. $ x^\top Ax > 0. $\\
+
+It is hard to check the positive definiteness using this definition. Direct verification using definition is considered  for the simple cases of $ 2\times 2 $ matrices.
+\begin{ex}
+    Show that the matrix $ A =\begin{pmatrix*}[r]
+            1 & 1\\
+            2 & 3
+        \end{pmatrix*} $ is positive definite but $ B = \begin{pmatrix*}[r]
+            1 & 5\\
+            -1 & 1
+        \end{pmatrix*}$ is not.\\
+
+
+    Consider
+    \begin{align*}
+        x^\top Ax & =\begin{pmatrix}
+            x & y
+        \end{pmatrix}\begin{pmatrix*}[r]
+            1 & 1\\
+            2 & 3
+        \end{pmatrix*}\begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix}= x^2+3xy+3y^2 \\
+                  & = \left(x+\frac{3}{2}y\right)^2+\frac{3}{4}y^2>0 \qquad\text{for all non-zero $ x $.}
+    \end{align*}
+    Thus, $ A $ is positive definite.
+    Principal minors of $ A $ are
+    \[
+        \begin{vmatrix}
+            A_1
+        \end{vmatrix}=\begin{vmatrix}
+            1
+        \end{vmatrix}=1 \quad \text{ and} \begin{vmatrix}
+            A_2
+        \end{vmatrix}=\begin{vmatrix}
+            1 & 1 \\
+            2 & 3
+        \end{vmatrix}=1
+    \]
+    both are positive and non-zero.
+    Now consider
+    \begin{align*}
+        x^\top Bx & =\begin{pmatrix}
+            x & y
+        \end{pmatrix}\begin{pmatrix*}[r]
+            1 & 5\\
+            -1 & 1
+        \end{pmatrix*}\begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix}= x^2+4xy+3y^2 \\
+                  & = \left(x+y\right)^2+2xy=-5 \qquad\text{ for $ x=2 $ and $ y=-1 $.}
+    \end{align*}
+    Thus, $ B $ is not positive definite.
+    Principal minors of $ B $ are
+    \[
+        \begin{vmatrix}
+            B_1
+        \end{vmatrix}=\begin{vmatrix}
+            1
+        \end{vmatrix}=1 \quad \text{ and} \begin{vmatrix}
+            B_2
+        \end{vmatrix}=\begin{vmatrix*}[r]
+            1&5\\
+            -1&1
+        \end{vmatrix*}=6
+    \]
+    both are positive and non-zero.
+    Note that positive values of principal minors does not imply positive definiteness.
+\end{ex}
+\begin{ex}
+    Show that the symmetric matrix $ A=\begin{pmatrix}
+            2 & 1 \\
+            1 & 3
+        \end{pmatrix} $ is positive definite but $ B=\begin{pmatrix}
+            1 & 2 \\
+            2 & 3
+        \end{pmatrix} $ is not.\\
+
+
+    Consider
+    \begin{align*}
+        x^\top Ax & =\begin{pmatrix}
+            x & y
+        \end{pmatrix}\begin{pmatrix*}[r]
+            2 & 1\\
+            1 & 3
+        \end{pmatrix*}\begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix}= 2x^2+2xy+3y^2 \\
+                  & = 2\left(x+\frac{1}{2}y\right)^2+\frac{5}{2}y^2>0 \qquad\text{for all non-zero $ x $.}
+    \end{align*}
+    Thus, $ A $ is positive definite.\\
+    Principal minors of A are
+    \[
+        \begin{vmatrix}
+            A_1
+        \end{vmatrix}=\begin{vmatrix}
+            2
+        \end{vmatrix}=2 \quad \text{ and} \begin{vmatrix}
+            A_2
+        \end{vmatrix}=\begin{vmatrix}
+            2 & 1 \\
+            1 & 3
+        \end{vmatrix}=5
+    \]
+    both are positive and non-zero.\\
+    Now consider
+    \begin{align*}
+        x^\top Bx & =\begin{pmatrix}
+            x & y
+        \end{pmatrix}\begin{pmatrix*}[r]
+            1 & 2\\
+            2 & 3
+        \end{pmatrix*}\begin{pmatrix}
+            x \\
+            y
+        \end{pmatrix}= x^2+4xy+3y^2 \\
+                  & = -1\qquad\text{for $ x=2 $ and $ y=-1 $.}
+    \end{align*}
+    Thus, $ B $ is not positive definite.
+    Principal minors of B are
+    \[
+        \begin{vmatrix}
+            B_1
+        \end{vmatrix}=\begin{vmatrix}
+            1
+        \end{vmatrix}=1 \quad \text{ and} \begin{vmatrix}
+            B_2
+        \end{vmatrix}=\begin{vmatrix}
+            1 & 2 \\
+            2 & 3
+        \end{vmatrix}=-1
+    \]
+    Not that all the principal minors are not positive and hence it is not positive definite.
+\end{ex}
+\begin{rem}
+    Any quadratic form can be represented by a symmetric matrix.
+\end{rem}
+\begin{thm}
+    A symmetric matrix A is positive definite if and only if all its principal minors are strictly positive.
+\end{thm}
+\begin{defn}
+    A symmetric matrix $ A $ and the quadratic form $ x^\top Ax $ are called
+    \begin{table}[H]
+        \begin{tabular}{ll}
+            positive semi-definite & if $ x^\top Ax\geq 0 $ for all $ x $                    \\
+            negative definite      & if  $ x^\top Ax <0 $  for $ {x}\neq{0} $                \\
+            negative semi-definite & if $ x^\top Ax\leq0 $ for all $ x $                     \\
+            indefinite             & if $ x^\top Ax $ has both positive and negative values.
+        \end{tabular}
+    \end{table}
+\end{defn}
+\subsection{Solution by Cholesky Factorization}
+A symmetric positive definite matrix $ A $ may be decomposed into
+\[
+    A=LL^\top
+\]
+This is the Cholesky decomposition.\\
+The solution of a linear system $ AX = B $ with $ A $ symmetric and positive definite can be obtained by first computing the Cholesy decomposition $ A=LL^\top $, then solving  $ LY = B $ for $ Y $ and finally solving $L^\top X=Y$ for $ X $.\\
+In this case the inverse $ {A}^{-1} $ can be obtained as follows:
+\[
+    {A}^{-1}=\left(L L^\top\right)^{-1}=\left(L^\top\right)^{-1}{L}^{-1}=\left({L}^{-1}\right)^\top {L}^{-1}
+\]
+Recall that inverse of a lower triangular matrix is also a lower triangular matrix. This property may be used to find $ {L}^{-1}. $\\
+For a third order lower triangular matrix L, we may write the relation $ {L}{L}^{-1}={I} $ as
+\[
+    \begin{pmatrix*}[r]
+        l_{11}&0&0\\
+        l_{21}&l_{22}& 0\\
+        l_{11}&l_{22}&l_{33}
+    \end{pmatrix*}
+    \begin{pmatrix}
+        b_{11} & 0      & 0      \\
+        b_{21} & b_{22} & 0      \\
+        b_{11} & b_{22} & b_{33}
+    \end{pmatrix}
+    =\begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}
+\]
+Comparing two sides we may then find the unknowns $ b_{ij} $. Then use the relation
+\[
+    {A}^{-1}=\left({L}^{-1}\right)^\top {L}^{-1}
+\]
+to find $ {A}^{-1} $.
+\begin{prob}
+    Solve the following system of equations
+    \[
+        x+3y+5z=10,\quad 3x+13y+23z=46,\quad 5x+23y+45z=94
+    \]
+    by the Cholesky decomposition.\\
+    Find the inverse of the coefficient matrix using Cholesky factor.
+\end{prob}
+\begin{soln}
+    In matrix notation, the equation can be written as
+    \begin{align*}
+                         & AX=B \\
+        \text{or, }\quad &
+        \begin{pmatrix}
+            1 & 3  & 5  \\
+            3 & 13 & 23 \\
+            5 & 23 & 45 \\
+        \end{pmatrix}
+        \begin{pmatrix}
+            x \\
+            y \\
+            z
+        \end{pmatrix}=
+        \begin{pmatrix}
+            10 \\
+            46 \\
+            94
+        \end{pmatrix}
+    \end{align*}
+    Here the matrix $ A $ is symmetric and positive definite. Thus, $ A $ can be factorized into $ \mathbf{A}=\mathbf{L}\mathbf{L}^\top$.
+    \begin{align*}
+        \begin{pmatrix}
+            1 & 3  & 5  \\
+            3 & 13 & 23 \\
+            5 & 23 & 45
+        \end{pmatrix} & =
+        \begin{pmatrix}
+            a & 0 & 0 \\
+            b & d & 0 \\
+            c & e & f
+        \end{pmatrix}
+        \begin{pmatrix}
+            a & b & c \\
+            0 & d & e \\
+            0 & 0 & f
+        \end{pmatrix}                                 \\
+                                    & = \begin{pmatrix}
+            a^2 & ab      & ac          \\
+            ab  & b^2+d^2 & bc+de       \\
+            ac  & bc+de   & c^2+e^2+f^2
+        \end{pmatrix}
+    \end{align*}
+    Equating like elements, we have
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{lcr}
+            $ a^2=1 $          & or, & $ a=1 $ \\
+            $ ab=3	 $           & or, & $ b=3 $ \\
+            $ ac=5 $           & or, & $ c=5 $ \\
+            $ b^2+d^2=13 $     & or, & $ d=2 $ \\
+            $ bc+de=23 $       & or, & $ e=4 $ \\
+            $ c^2+e^2+f^2=45 $ & or, & $ f=2 $
+        \end{tabular}
+    \end{table}
+    Thus,
+    \[
+        \mathbf{L}=
+        \begin{pmatrix}
+            1 & 0 & 0 \\
+            3 & 2 & 0 \\
+            5 & 4 & 2
+        \end{pmatrix}
+    \]
+    The equation can be written as
+    \[
+        \mathbf{L}\mathbf{L}^\top \mathbf{X}=\mathbf{B}\quad \text{or }   \mathbf{LY}=\mathbf{B}\quad  \text{where }   \mathbf{L}^\top \mathbf{X}=\mathbf{Y}
+    \]
+    \[
+        \mathbf{LY}=
+        \begin{pmatrix}
+            1 & 0 & 0 \\
+            3 & 2 & 0 \\
+            5 & 4 & 2
+        \end{pmatrix}
+        \begin{pmatrix}
+            y_1 \\
+            y_2 \\
+            y_3
+        \end{pmatrix}
+        =\mathbf{B}=
+        \begin{pmatrix}
+            10 \\
+            46 \\
+            94
+        \end{pmatrix}
+    \]
+    Using forward elimination, we have
+    \[
+        y_1=10,\qquad  y_2=8,\qquad y_3=6
+    \]
+    Now consider the solution of $ \mathbf{L}^\top \mathbf{X}=\mathbf{Y} $.
+    \[
+        \begin{pmatrix}
+            1 & 3 & 5 \\
+            0 & 2 & 4 \\
+            0 & 0 & 2
+        \end{pmatrix}\begin{pmatrix}
+            x \\
+            y \\
+            z
+        \end{pmatrix}
+        =\begin{pmatrix}
+            10 \\
+            8  \\
+            6
+        \end{pmatrix}
+    \]
+    Using backward elimination, we have
+    \[
+        z=3,\qquad y=-2,\qquad x=1
+    \]
+    Inverse of the matrix $ \mathbf{A} $ can be obtained from the relation  $\mathbf{A}^{-1}=\left(\mathbf{L}^{-1}\right)^\top \mathbf{L}^{-1}$.\\
+    Note that the inverse of a triangular matrix is also a triangular matrix.\\ Thus, we may use the relation
+    \begin{align*}
+                         & \mathbf{L}\mathbf{L}^{-1}=\mathbf{I} \\
+        \text{or, }\quad & \begin{pmatrix}
+            1 & 0 & 0 \\
+            3 & 2 & 0 \\
+            5 & 4 & 2
+        \end{pmatrix}
+        \begin{pmatrix}
+            l & 0 & 0 \\
+            m & p & 0 \\
+            n & q & r
+        \end{pmatrix}
+        =\begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{pmatrix}                            \\
+        \text{or,}\quad  & \begin{pmatrix}
+            l        & 0     & 0  \\
+            3l+2m    & 2p    & 0  \\
+            5l+4m+2n & 4p+2q & 2r
+        \end{pmatrix}
+        =\begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{pmatrix}
+    \end{align*}
+    Equating like elements, we have
+    \begin{table}[H]
+        \renewcommand{\arraystretch}{2}
+        \centering
+        \begin{tabular}{lcr}
+            $ l=1 $           &           &                    \\
+            $ p=\frac{1}{2} $ &           &                    \\
+            $ r=\frac{1}{2} $ &           &                    \\
+            $ 3l+2m=0 $       & \text{or} & $ m=-\frac{3}{2} $ \\
+            $ 5l+4m+2n=0  $   & \text{or} & $ n=\frac{1}{2} $  \\
+            $ 4p+2q=0 $       & \text{or} & $ q=-1 $
+        \end{tabular}
+    \end{table}
+    Thus,
+    \[
+        \mathbf{L}^{-1}=\frac{1}{2}\begin{pmatrix*}[r]
+            2 & 0 & 0\\
+            -3 & 1 & 0\\
+            1 & -2 & 1
+        \end{pmatrix*}
+    \]
+    Using the relation  $\mathbf{A}^{-1}=(\mathbf{L}^{-{1}})^\top \mathbf{L}^{-{1}}$, we have
+    \[
+        \mathbf{A}^{-{1}}=\frac{1}{2}\begin{pmatrix*}[r]
+            2 & -3 & 1\\
+            0 & 1 & -2\\
+            0 & 0 & 1
+        \end{pmatrix*}
+        \times \frac{1}{2}\begin{pmatrix*}[r]
+            2 & 0 & 0\\
+            -3 & 1 & 0\\
+            1 & -2 & 1
+        \end{pmatrix*}
+        =\frac{1}{4}\begin{pmatrix*}[r]
+            14 & -5 & 1\\
+            -5 & 5 & -2\\
+            1 & -2 & 1
+        \end{pmatrix*}
+    \]
+\end{soln}
+\section{Solution of Linear System by Iterative Method}
+
+Iterative method for linear system is similar as the method of fixed-point iteration for an equation in one variable,  To solve a linear system by iteration, we solve each equation for one of the variables, in turn, in terms of the other variables. Starting from an approximation to the solution, if convergent, derive a new sequence of approximations. Repeat the calculations till the required accuracy is obtained.\\
+An iterative method converges, for any choice of the first approximation, if every equation satisfies the condition that the magnitude of the coefficient of solving variable is greater than the sum of the absolute values of the coefficients of the other variables. A system satisfying this condition is called diagonally dominant. A linear system can always be reduced to diagonally dominant form by elementary operations.\\
+
+
+For example in the following system, we have
+\begin{align*}
+    12x-2y+5z=20  & \qquad(E1)  & \left|12\right|>\left|-2\right|+\left|5\right| \\
+    4x+5y+11z=8   & \qquad(E2)  & \left|5\right|<\left|4\right|+\left|11\right|  \\
+    7x+12y+10z=27 & \qquad (E3) & \left|10\right|<\left|7\right|+\left|12\right|
+\end{align*}
+and is not diagonally dominant.
+Rearranging as $ (E1), (E3) -(E2),  (E2), $    we have
+\begin{align*}
+     & 12x-2y+5z=20 & \quad & \left|12\right|>\left|-2\right|+\left|5\right| \\
+     & 3x+7y-z=19   & \quad & \left|7\right|>\left|3\right|+\left|-1\right|  \\
+     & 4x+5y+11z=8  & \quad & \left|11\right|>\left|4\right|+\left|5\right|
+\end{align*}
+The system reduces to diagonally dominant form.\\
+Two commonly used iterative process are discussed below:
+\subsection{Jacobi Iterative Method:}
+
+In this method, a fixed set of values is used to calculate all the variables and then repeated for the  next iteration with the values obtained previously. The  iterative formulas of the above system are
+\begin{align*}
+    x_{n+1} & =\frac{1}{12}\left(20+2y_n-5z_n\right) \\
+    y_{n+1} & =\frac{1}{7}\left(19-3x_n+z_n\right)   \\
+    z_{n+1} & =\frac{1}{11}\left(8-4x_n-5y_n\right)
+\end{align*}
+Starting with initial values
+\[
+    x_0=0,\quad y_0=0,\quad z_0=0
+\]
+we get
+\begin{align*}
+    x_1 & =\frac{1}{12}[20+0+0]=1.67 \\
+    y_1 & =\frac{1}{7}[19+0+0]=2.71  \\
+    z_1 & =\frac{1}{11}[8+0+0]=0.73
+\end{align*}
+Second approximation is
+\begin{align*}
+    x_2 & =\frac{1}{12}[20+2(2.71)-5(0.73)]=1.81 \\
+    y_2 & =\frac{1}{7}[19-3(1.67)+0.73]=2.10     \\
+    z_2 & =\frac{1}{11}[8-4(1.67)-5(2.71)]=-1.11
+\end{align*}
+and so on. Results are summarized below.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc*{4}{S[table-format=2.2]}c*{3}{S[table-format=2.2]}}
+        \toprule
+        $ n $   & 0 & \multicolumn{1}{c}{1}     & \multicolumn{1}{c}{2}     & \multicolumn{1}{c}{3}     & \multicolumn{1}{c}{4}     & $ \dots $ & \multicolumn{1}{c}{9}     & \multicolumn{1}{c}{10}    & \multicolumn{1}{c}{11}   \\\midrule
+        $ x_n $ & 0 & 1. 67 & 1.81  & 2.48  & 2.33  & $ \dots $& 2.29  & 2.29  & 2.29 \\
+        $ y_n $ & 0 & 2.71  & 2.10  & 1.78  & 1.52  &$ \dots $& 1.62  & 1.61  & 1.61 \\
+        $ z_n $ & 0 & 0.73  & -1.11 & -0.89 & -0.98 &$ \dots $& -0.84 & -0.84 & 0.84 \\\bottomrule
+    \end{tabular}
+    \caption{Successive iterates of solution (Jacobi Method)}
+\end{table}
+\subsection{Gauss-Seidel Iterative Method:}
+
+
+In this method, the values of each variable is calculated using the most recent approximations to the values of the other variables. The iterative formulas of the above system are
+\begin{align*}
+    x_{n+1} & =\frac{1}{12}\left(20+2y_n-5z_n\right)        \\
+    y_{n+1} & =\frac{1}{7}\left(19-3x_{n+1}+z_n\right)      \\
+    z_{n+1} & =\frac{1}{11}\left(8-4x_{n+1}-5y_{n+1}\right)
+\end{align*}
+Starting with initial values
+\[x_0=0,\quad y_0=0,\quad z_0=0\]
+we get the solutions as follows:\\
+First approximation:
+\begin{align*}
+    x_1 & =\frac{1}{12}[20+0+0]=1.67          \\
+    y_1 & =\frac{1}{7}[19-3(1.67)+0]=2.00     \\
+    z_1 & =\frac{1}{11}[8-4(1.67)-5(2)]=-0.79
+\end{align*}
+Second approximation:
+\begin{align*}
+    x_2 & =\frac{1}{12}[20+2(2.00)-5(-0.79)]=2.33 \\
+    y_2 & =\frac{1}{7}[19-3(2.33)-0.79]=1.60      \\
+    z_2 & =\frac{1}{11}[8-4(2.33)-5(1.60)]=-0.89
+\end{align*}
+Third approximation:
+\begin{align*}
+    x_3 & =\frac{1}{12}[20+2(1.60)-5(-0.85)]=2.29 \\
+    y_3 & =\frac{1}{7}[19-3(2.29)-0.85]=1.61      \\
+    z_3 & =\frac{1}{11}[8-4(2.29)-5(1.61)]=-0.84
+\end{align*}
+Fourth approximation:
+\begin{align*}
+    x_4 & =\frac{1}{12}[20+2(1.61)-5(-0.84)]=2.29 \\
+    y_4 & =\frac{1}{7}[19-3(2.29)-0.84]=1.61      \\
+    z_4 & =\frac{1}{11}[8-4(2.29)-5(1.61)]=-0.84
+\end{align*}
+which gives the results correct to $ 2 $ decimal point.\\
+It can be observed that the Gauss-Seidel method converges twice as fast as the Jacobi method.
+\section{Exercise}
+\begin{enumerate}
+    \item The linear system
+          \begin{align*}
+               & 0.003x + 71.08y = 71.11  \\
+               & 4.231x -  8.16y  = 34.15
+          \end{align*}
+          has the exact solution $ x = 10 $ and $ y = 1 $.\\
+          Solve the above system using four-digit rounding arithmetic by Gaussian elimination
+          \begin{enumerate}
+              \item without changing the order of equations,
+              \item with partial pivoting,
+              \item by multiplying the first equation by 104,
+              \item with scaled-column pivoting.
+          \end{enumerate}
+          Comment on the results obtained in different cases.
+    \item Solve the following system of equations by the Gauss elimination method with partial pivoting, giving your answers to 2 decimal places.
+          \begin{enumerate}
+              \item $ 15x-8y-4z=26,\qquad 25x-6y+12z=27,\qquad 12x+11y+9z=32 $
+              \item $ 10x+19y+13z=42,\qquad 8x+15y+29z=73,\qquad 28x+12y+9z=9 $
+          \end{enumerate}
+    \item Solve the following system of equations.
+          \begin{enumerate}
+              \item $ x-2y+z=6.7,\qquad x-4y+3z=12.1,\qquad     -2x+5y-6z=-21.2 $
+              \item  $x-2y+2z=8.8,\qquad    x-y+5z=13.9,\qquad        2x-3y+4z=16.1$
+              \item $x-2y+3z=11.4,\qquad    3x-8y+11z=42.4,\qquad      2x-4y+3z=16.8$
+                    \begin{enumerate}
+                        \item by Gaussian elimination,
+                        \item by $ \mathbf{LU} $ factorization method.
+                    \end{enumerate}
+          \end{enumerate}
+    \item Consider a symmetric matrix  $ A =
+              \begin{pmatrix*}[r]
+                  1 & 2 & -1\\
+                  2 & 13 & 1\\
+                  -1 & 1 & 6
+              \end{pmatrix*}
+          $, determine a lower triangular matrix $ \mathbf{L} $ such that $\mathbf{L} \mathbf{L}^\top = \mathbf{A}$.\\
+          Hence, obtain the solution $ X $ of the equation $ A X = \begin{pmatrix}
+                  1 & 13 & 14
+              \end{pmatrix}^\top
+          $.
+    \item Given   $A =\begin{pmatrix*}[r]
+                  1 & 2 & -1\\
+                  2 & 5&1\\
+                  -1&1&14
+              \end{pmatrix*}
+              ,B =\begin{pmatrix*}[r]
+                  6\\
+                  17\\
+                  13
+              \end{pmatrix*}
+              ,   X = \begin{pmatrix*}[r]
+                  x\\
+                  y\\
+                  z
+              \end{pmatrix*}$
+          \begin{enumerate}
+              \item Find the Cholesky factorization of $ A $.
+              \item Solve the equation $ A X = B $ by the Cholesky method.
+              \item Find the inverse of the matrix A by the Cholesky method.
+          \end{enumerate}
+    \item Use three-digit rounding arithmetic to solve the following system by
+          \begin{enumerate}
+              \item Jacobi's iteration method,
+              \item Gauss-Seidel iteration method.
+          \end{enumerate}
+          \[5x-4y+14z=16,\qquad15x-4y+6z=24,\qquad4x+16y+6z=33\]
+          \begin{enumerate}[label={(\roman*)}]
+              \item Without changing the order of the equations.
+              \item By rearranging the system to diagonally dominant form.
+          \end{enumerate}
+    \item Reduce the following system to an equivalent system which is diagonally dominant:
+          \[5x + 18y -6 z = 24,\qquad   11x +10 y  + 15z = -8,\qquad   16x + 7 y - 5 z = 25.\]
+          With the starting values $ x_0 = -1 $,  $ y_0 = 2 $,   $ z_0 = 1 $, use Gauss-Seidel iteration to find  roots correct  to $ 3 $ significant figures.
+    \item Reduce the following system to an equivalent system which is diagonally dominant. Find the solution of the system, correct to $ 2 $ decimal places, using
+          \begin{enumerate}[label={(\roman*)}]
+              \item Jacobi iteration,
+              \item Gauss-Seidel iteration
+          \end{enumerate}
+          \begin{enumerate}
+              \item $2x+y+10z=10,\qquad10x-y+z=-24,\qquad5x+11y+8z=31 $         
+              \item $7x+11y-8z=21,\qquad 3x-7y+5z=6,\qquad 2x-4y-10z=24$
+              \item $8x-7y+2z=7,\qquad 4x+5y-6z=19,\qquad 6x-3y-8z=17$
+          \end{enumerate}
+\end{enumerate}
+\end{document}

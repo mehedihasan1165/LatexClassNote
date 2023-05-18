@@ -1,0 +1,19 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{animate}
+\begin{document}
+    hello there this is first line of document.\\
+    \begin{figure}[h]
+        \centering
+        \includegraphics{1.png}
+        \caption{hel}
+        \label{hel}
+    \end{figure}
+    new line\\
+    \begin{frame}
+        % \frametitle{title}
+    
+        \animategraphics[loop]{12}{0/anim}{00001}{00024}
+    
+    \end{frame}
+\end{document}

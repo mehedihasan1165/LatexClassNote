@@ -1,0 +1,12 @@
+\begin{tikzpicture}[every loop/.style={},scale=1.5]
+        \node[circle,draw] (a)               {A};
+        \node[circle,draw] (b) [below = of a] {B};
+        \node[circle,draw] (c) [right = of b] {C};
+        \node[circle,draw] (d) [right = of a] {D};
+        \path[-](a) edge             node[above] {$ e_1 $} (d)
+                    edge             node[below left,sloped] {$e_2\;$} (c)
+                (b) edge             node[above] {$ e_4 $} (c)
+                    edge             node[below right,sloped]{$\;e_3$} (d)
+                    edge[bend right] node[below] {$ e_5 $} (c)
+                (d) edge[loop right] node[right] {$ e_6 $} ();
+\end{tikzpicture}

@@ -1,0 +1,14 @@
+\begin{tikzpicture}[scale=.75]
+    \begin{axis}[axis lines=middle,thick,
+            xmin=-4, xmax=4,
+            ymin=-4, ymax=4,restrict y to domain=-2.5:2.5,
+            ticks=none]
+        \node at (-.3,-.3) {$O$};
+        \addplot[thick,domain=-2:2,samples=100,transform canvas={rotate around={-50:(0,0)}},decoration = {markings,
+                    mark=at position 0.25 with {\arrowreversed {latex}},mark=at position 0.85 with {\arrow{latex}}  },postaction={decorate}] (x,-x^3+.6*x);
+        \addplot[thick,domain=-2:2,samples=100,transform canvas={rotate around={-50:(0,0)}},decoration = {markings,
+                    mark=at position 0.25 with {\arrowreversed {latex}},mark=at position 0.85 with {\arrow{latex}}  },postaction={decorate}] (x,-2*x^3+.6*x);
+        \addplot[thick,domain=-2:2,samples=100,transform canvas={rotate around={-50:(0,0)}},decoration = {markings,
+                    mark=at position 0.25 with {\arrowreversed {latex}},mark=at position 0.85 with {\arrow{latex}}  },postaction={decorate}] (x,-.5*x^3+.6*x);
+    \end{axis}
+\end{tikzpicture}

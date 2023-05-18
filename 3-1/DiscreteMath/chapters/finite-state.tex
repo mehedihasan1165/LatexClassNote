@@ -1,0 +1,202 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Finite State Machines}
+\section{Finite state machines}
+A finite state machine $ M=(S,I,O,f,g,s_0) $ consists of a finite set $ S $ of states, a finite input alphabet $ I $, a finite output alphabet $ O $, a transition function $ f $ that assigns to each state and input pair a new state, an output function $ g $ that assigns to each state and input pair an output and an initial state $ s_0 $.
+\begin{itemize}
+    \item We can use a state table to represent the values of the transition function $ f $ and the output function $ g $ for all pairs of states and input.
+    \item A state diagram is a directed graph with labeled edges that represents a finite state machine.
+          \begin{table}[H]
+              \begin{minipage}[c]{0.38\linewidth}
+                  \centering
+                  \begin{tabular}{@{}ccccc@{}}
+                      \toprule
+                              & \multicolumn{2}{c}{f}     & \multicolumn{2}{c}{g}             \\ \cmidrule(l){2-5}
+                              & \multicolumn{2}{c}{Input} & \multicolumn{2}{c}{Input}         \\ \cmidrule(l){2-5}
+                      State   & 0                         & 1                         & 0 & 1 \\ \midrule
+                      $ s_0 $ & $ s_1 $                   & $ s_0 $                   & 1 & 0 \\
+                      $ s_1 $ & $ s_3 $                   & $ s_0 $                   & 1 & 1 \\
+                      $ s_2 $ & $ s_1 $                   & $ s_2 $                   & 0 & 1 \\
+                      $ s_3 $ & $ s_2 $                   & $ s_1 $                   & 0 & 0 \\ \bottomrule
+                  \end{tabular}
+              \end{minipage}\hfill
+              \begin{minipage}[c]{0.58\linewidth}
+                  \centering
+                  \import{../tikz/}{fsm-1.tikz}
+                  %   \caption{$ G_2 $}
+                  %   \label{fig:graph2}
+              \end{minipage}
+          \end{table}
+        %   \newpage
+          \begin{table}[H]
+              \begin{minipage}[c]{0.58\textwidth}
+                  \centering
+                  \import{../tikz/}{fsm-2.tikz}
+                  %   \caption{$ G_2 $}
+                  %   \label{fig:graph2}
+              \end{minipage}\hfill
+              \begin{minipage}[c]{0.38\textwidth}
+                  \centering
+                  \begin{tabular}{@{}ccccc@{}}
+                      \toprule
+                              & \multicolumn{2}{c}{f}     & \multicolumn{2}{c}{g}             \\ \cmidrule(l){2-5}
+                              & \multicolumn{2}{c}{Input} & \multicolumn{2}{c}{Input}         \\ \cmidrule(l){2-5}
+                      State   & 0                         & 1                         & 0 & 1 \\ \midrule
+                      $ s_0 $ & $ s_1 $                   & $ s_3 $                   & 1 & 0 \\
+                      $ s_1 $ & $ s_1 $                   & $ s_2 $                   & 1 & 1 \\
+                      $ s_2 $ & $ s_3 $                   & $ s_4 $                   & 0 & 0 \\
+                      $ s_3 $ & $ s_1 $                   & $ s_0 $                   & 0 & 0 \\
+                      $ s_4 $ & $ s_3 $                   & $ s_4 $                   & 0 & 0 \\ \bottomrule
+                  \end{tabular}
+              \end{minipage}
+          \end{table}
+    \item If the input string is $ 101011 $, the output string is $ 001000 $.
+    \item Let $ M=(S,I,O,f,g,s_0) $ be a finite state machine and $ L\subseteq I^{*} $ (the set of all input string over $ I $). We say that $ M $ recognizes (or accepts) $ L $ if an input string $ x $ belongs to $ L $ if and only if the last output bit produced by $ M $ when given $ x $ as input as a $ 1 $.
+          \begin{figure}[H]
+              \centering
+              \import{../tikz/}{fsm-3.tikz}
+              \caption{A finite state machine for binary addition}
+          \end{figure}
+\end{itemize}
+\section{Finite state machines with no output}
+A finite state automaton $ M=(S,I,f,s_0,F) $ consists of a finite set $ S $ of states, a finite input alphabet $ I $, a transition function $ f $ that assigns a next state to every pair of state and input (so that $ f:S\times I\to S $), an initial or state $ s_0 $ and a subset $ F $ if $ S $ consisting of final (or accepting states).
+\begin{table}[H]
+    \begin{minipage}[c]{0.38\linewidth}
+        \centering
+        \begin{tabular}{@{}llr@{}}
+            \toprule
+                    & \multicolumn{2}{c}{f}               \\ \cmidrule(l){2-3}
+                    & \multicolumn{2}{c}{Input}           \\
+            State   & 0                         & 1       \\ \midrule
+            $s_0$   & $ s_0 $                   & $ s_1 $ \\
+            $ s_1 $ & $ s_0 $                   & $ s_2 $ \\
+            $ s_2 $ & $ s_0 $                   & $ s_0 $ \\
+            $ s_3 $ & $ s_2 $                   & $ s_1 $ \\ \bottomrule
+        \end{tabular}
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.58\linewidth}
+        \centering
+        \import{../tikz/}{fsmo-1.tikz}
+    \end{minipage}
+\end{table}
+$ M=(S,I,f,s_0,F) $, $ S=\set{s_0,s_1,s_2,s_3} $, $ I=\set{0,1} $, $ F=\set{s_0,s_3} $ and $ f $ is given in the table.
+\begin{itemize}
+    \item A string $ x $ is said to be recognized or accepted by the machine $ M=(S,I,f,s_0,F) $ if it takes the initial state $ s_0 $ to a final state, that is, $ f(s_0,x) $ is a state in $ F $.
+    \item The language recognized or accepted by the machine $ M $, denoted by $ L(M) $, is the set of all strings that are recognized by $ M $.
+    \item Two finite state automata are called equivalent if they recognize the same language.
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{fsm-lm1.tikz}
+    \caption{$ M_1 $}
+\end{figure}
+\[L\left( M_1 \right)=\set{1^n\mid n=0,1,2,\dots}\]
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{fsm-lm2.tikz}
+    \caption{$ M_2 $}
+\end{figure}
+\[L\left( M_2 \right)=\set{1,01}\]
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{fsm-lm3.tikz}
+    \caption{$ M_3 $}
+\end{figure}
+\[L\left( M_3 \right)=\set{0^n,\,0^n10x\mid n=0,1,2,\dots \text{ and $ x $ is any string}}\]
+\begin{prob}
+    Construct deterministic finite set automata that recognize each of these languages:
+    \begin{enumerate}[label=(\alph*)]
+        \item The set of bit strings that begin with two $ 0 $'s.
+        \item The set of bit strings that contains two consecutive $ 0 $'s.
+        \item The set of bit strings that do not contain two consecutive $ 0 $'s.
+        \item The set of bit strings that end with two consecutive $ 0 $'s.
+        \item The set of bit strings that contains at least two $ 0 $'s.
+    \end{enumerate}
+\end{prob}
+\begin{soln}\hfill
+    \begin{enumerate}[label=(\alph*)]
+        \item \begin{minipage}[c]{.9\textwidth}
+            \centering
+            \import{../tikz/}{fsm-prob1.1.tikz}
+        \end{minipage}
+        \item \begin{minipage}[c]{.9\textwidth}
+            \centering
+            \import{../tikz/}{fsm-prob1.2.tikz}
+        \end{minipage}
+        \item \begin{minipage}[c]{.9\textwidth}
+            \centering
+            \import{../tikz/}{fsm-prob1.3.tikz}
+        \end{minipage}
+        \item \begin{minipage}[c]{.9\textwidth}
+            \centering
+            \import{../tikz/}{fsm-prob1.4.tikz}
+        \end{minipage}
+        \item \begin{minipage}[c]{.9\textwidth}
+            \centering
+            \import{../tikz/}{fsm-prob1.5.tikz}
+        \end{minipage}
+    \end{enumerate}
+\end{soln}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{fsm-m0.tikz}
+    \caption{$ M_0 $}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{fsm-m1.tikz}
+    \caption{$ M_1 $}
+\end{figure}
+\begin{prob}
+    Show that $ M_0 $ and $ M_1 $ are equivalent.
+\end{prob}
+\begin{soln}
+    For a string $ x $ to be recognized by $ M_0 $, $ x $ must take us from $ s_0 $ to the final state $ s_1 $ or the final state $ s_4 $.
+
+    The only string that takes us from $ s_0 $ to $ s_1 $ is the string $ 1 $.
+
+    The strings that take us from $ s_0 $ to $ s_4 $ are those strings that begin with a $ 0 $, which takes us from $ s_0 $ to $ s_2 $, followed by zero or more additional zero which keep the machine in state $ s_2 $ followed by a $ 1 $, which takes us from $ s_2 $ to the final state $ s_4 $.
+\end{soln}
+\underline{H.W.} Nondeterministic finite state automata
+\begin{table}[H]
+    \begin{minipage}[c]{0.58\linewidth}
+        \centering
+        \import{../tikz/}{fsm-nh1.tikz}
+    \end{minipage}
+    \begin{minipage}[c]{0.38\linewidth}
+        \centering
+        \begin{tabular}{@{}cll@{}}
+            \toprule
+                    & \multicolumn{2}{c}{f}               \\ \cmidrule(l){2-3}
+                    & \multicolumn{2}{c}{Input}           \\
+            State   &\multicolumn{1}{c}{0} & \multicolumn{1}{c}{1}       \\ \midrule
+            $s_0$   & $ s_0 $, $ s_2 $          & $ s_1 $ \\
+            $ s_1 $ & $ s_3 $                   & $ s_4 $ \\
+            $ s_2 $ &                           & $ s_4 $ \\
+            $ s_3 $ & $ s_3 $                   &         \\
+            $ s_4 $ & $ s_3 $                   & $ s_3 $ \\ \bottomrule
+        \end{tabular}
+    \end{minipage}
+\end{table}
+\begin{table}[H]
+    \begin{minipage}[c]{0.58\linewidth}
+        \centering
+        \import{../tikz/}{fsm-nh2.tikz}
+    \end{minipage}
+    \begin{minipage}[c]{0.38\linewidth}
+        \centering
+        \begin{tabular}{@{}cll@{}}
+            \toprule
+                    & \multicolumn{2}{c}{f}               \\ \cmidrule(l){2-3}
+                    & \multicolumn{2}{c}{Input}           \\
+            State   & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{1}       \\ \midrule
+            $s_0$   & $ s_0 $, $ s_1 $          & $ s_3 $ \\
+            $ s_1 $ & $ s_0 $                   & $ s_1 $, $ s_3 $ \\
+            $ s_2 $ &                           & $ s_0 $, $ s_2 $ \\
+            $ s_3 $ & $ s_0 $, $ s_1 $, $ s_2 $                   & $ s_1 $ \\ \bottomrule
+        \end{tabular}
+    \end{minipage}
+\end{table}
+\end{document}

@@ -1,0 +1,97 @@
+\documentclass[12pt]{article}
+\usepackage{float,amsmath,amsthm,amssymb}%,booktabs}
+\usepackage[cm]{fullpage}
+\usepackage{hyperref}
+\usepackage{array}
+% \usepackage{booktabs}
+\newcommand{\lap}[1]{\mathcal{L}\left\{ #1\right\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcolumntype{L}{>{$}l<{$}}
+\newcolumntype{C}{>{$\displaystyle}c<{$}}
+\newcolumntype{A}{>{$\displaystyle \rule{0pt}{2em}\rule[-1.5em]{0pt}{1em}}c<{$}}
+\begin{document}
+
+% \href{http://google.com}{Google}
+% \begin{table}[H]
+% \centering
+% \begingroup
+% \renewcommand{\arraystretch}{1.8}
+% \begin{tabular}{|l|l|}
+% \hline
+% \multicolumn{1}{|c|}{Description of the strategy} & \multicolumn{1}{c|}{Equations involving $M_0$ and $M_n$} \\ \hline
+% \begin{tabular}[c]{@{}l@{}}
+%     Natural cubic spline ``a relaxed curve'':\\ 
+%     $S'(x_0)$ and $S''(x_n)$.
+% \end{tabular}& 
+% \begin{tabular}[c]{@{}l@{}}
+%     $\begin{aligned}[t]
+%         2M_0+M_1&=\frac{6}{h_0}\left[\frac{\Delta y_0}{h_0}-A\right]\\
+%         M_n+M_{n-1}&=\frac{6}{h_{n-1}}6\left[6-\frac{\Delta y_n-1}{h_{n-1}}\right]
+%     \end{aligned}$
+% \end{tabular} \\ \hline
+% \begin{tabular}[c]{@{}l@{}}
+%     Extrapolated cubic spline:\\
+%     $M_0$ as linear extrapolation form\\
+%     $M_1$ and $M_2$ : $\frac{M_1-M_2}{h_0}-\frac{M_2-M_1}{h_1}$\\
+%     $M_n$ as linear extrapolation form\\
+%     $M_{n-1}$ and $M_{n-2}$:\\
+%     $\displaystyle \frac{M_n-M_{n-1}}{h_{n-1}}-\frac{M_{n-1}-M_{n-2}}{h_{n-2}}$
+% \end{tabular} &
+% \begin{tabular}[c]{@{}l@{}}
+%     $\begin{aligned}[t]
+%         M_0-M_1&=\frac{h_0(M_2-M_1)}{h_1}\\ 
+%         M_n-M_{n-1}&=\frac{h_{n-1}(M_{n-1}-M_{n-2})}{h_{n-2}}
+%     \end{aligned}$
+% \end{tabular}\\ \hline
+% \begin{tabular}[c]{@{}l@{}}
+%     Parabolically terminated spline:\\ 
+%     ($S''(x)$ is constant near the end points)
+% \end{tabular}& 
+%     $\displaystyle M_0=M_1,\quad M_n=M_{n-1}$\\ \hline
+% \end{tabular}
+% \endgroup
+% \end{table}
+% \begin{table}[H]
+%     \centering
+%     % \begingroup
+%     % \setlength{\tabcolsep}{10pt}
+%     % \renewcommand{\arraystretch}{1.9}
+%     \begin{tabular}{@{}cc@{}}
+%         \toprule
+%         \[ \mathbf{F(t)} \] & \[ \mathbf{\lap{F(t)}=f(s)} \]                                      \\\midrule
+%         \[ 1 \]             & \[ \frac{1}{s}\qquad s>0 \]                                         \\%\midrule
+%         \[ t \]             & \[ \frac{1}{s^2}\qquad s>0 \]                                       \\%\midrule
+%         % \begin{tabular}[c]{@{}l@{}}$t^n$\\ $n=0,1,2,\dots$\end{tabular}&\begin{tabular}[c]{@{}l@{}}$\displaystyle \frac{n!}{s^{n+1}}\qquad s>0 $\\ Note. Factorial $n=n!=1\cdot2\dots n $ Also, by definition $ 0!=1 $\end{tabular}\\
+%         \[ t^n \]           & \[ \frac{n!}{s^{n+1}}\qquad s>0 \]                                  \\
+%         \[ n=0,1,2,\dots \] & Note. Factorial $n=n!=1\cdot2\dots n $ Also, by definition $ 0!=1 $ \\%\midrule
+%         \[ e^{at} \]        & \[ \frac{1}{s-a}\qquad s>a \]                                       \\%\midrule
+%         \[ \sin at \]       & \[ \frac{a}{s^2+a^2}\qquad s>0 \]                                   \\%\midrule
+%         \[ \cos at \]       & \[ \frac{s}{s^2+a^2}\qquad s>0 \]                                   \\%\midrule
+%         \[ \sinh at \]      & \[ \frac{a}{s^2-a^2}\qquad s>\abs{a} \]                             \\%\midrule
+%         \[ \cosh at \]      & \[\frac{s}{s^2-a^2}\qquad s>\abs{a} \]                              \\\bottomrule
+%     \end{tabular}
+%     % \endgroup
+% \end{table}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|A|A|}
+        \hline
+        \mathbf{F(t)} & \mathbf{\lap{F(t)}=f(s)}          \\\hline
+        1             & \frac{1}{s}\qquad s>0             \\\hline
+        t             & \frac{1}{s^2}\qquad s>0           \\\hline
+        \begin{tabular}[c]{c}
+            $t^n$ \\
+            $n=0,1,2,\dots$
+        \end{tabular}
+                      & \begin{tabular}[c]{c}
+            $\displaystyle\rule{0pt}{2em}\rule[-1em]{0pt}{1em} \frac{n!}{s^{n+1}}\qquad s>0 $ \\
+            Note. Factorial $n=n!=1\cdot2\dots n $ Also, by definition $ 0!=1 $
+        \end{tabular}         \\\hline
+        e^{at}        & \frac{1}{s-a}\qquad s>a           \\\hline
+        \sin at       & \frac{a}{s^2+a^2}\qquad s>0       \\\hline
+        \cos at       & \frac{s}{s^2+a^2}\qquad s>0       \\\hline
+        \sinh at      & \frac{a}{s^2-a^2}\qquad s>\abs{a} \\\hline
+        \cosh at      & \frac{s}{s^2-a^2}\qquad s>\abs{a} \\\hline
+    \end{tabular}
+\end{table}
+\end{document}

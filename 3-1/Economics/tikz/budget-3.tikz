@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+    \begin{axis}[
+            axis x line = middle,
+            axis y line = middle,
+            xmin=0, xmax=10,
+            xlabel style=right,
+            xlabel=$ X $,
+            xtick={7},
+            xticklabels={50},
+            ymin=0, ymax=10,
+            ylabel style=above,
+            ylabel=$ Y $,
+            ytick={4},
+            yticklabels={13.33}
+        ]
+        \addplot [thick,black]coordinates {(0,4)(7,0)};
+        \addplot [thick,black,->]coordinates {(3,2.5)(4,4)};
+        \node at (axis cs:5.5,4.5) {Budget constraint};
+    \end{axis}
+    \draw(5,-1) node {Quantity of good $ X $};
+    \draw(3,-1.5) node {Figure 3};
+    \draw(-1.5,3) node[rotate=90] {Quantity of good $ Y $};
+    \draw(-.25,-.25) node {O};
+\end{tikzpicture}

@@ -1,0 +1,121 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Newton's Method For Non-Linear Systems of Equations}
+\section{Newton's Method}
+\[
+    \mathbf{x}^{(k)}=\mathbf{G}\left( \mathbf{x}^{(k-1)} \right)=\mathbf{x}^{(k-1)}-J\left( \mathbf{x}^{(k-1)} \right)^{-1}\mathbf{F}\left( \mathbf{x}^{(k-1)} \right)
+\]
+where
+\[
+    J(\mathbf{x}^{(k)})=\begin{bmatrix}
+        \frac{\partial f_1(\mathbf{x})}{\partial x_1} & \frac{\partial f_1(\mathbf{x})}{\partial x_2} &\dots&\frac{\partial f_1(\mathbf{x})}{\partial x_n} \\[3pt]
+        \frac{\partial f_2(\mathbf{x})}{\partial x_1} & \frac{\partial f_2(\mathbf{x})}{\partial x_2} &\dots&\frac{\partial f_2(\mathbf{x})}{\partial x_n} \\[3pt]
+        \vdots & \vdots & \ddots & \vdots\\
+        \frac{\partial f_n(\mathbf{x})}{\partial x_1} & \frac{\partial f_n(\mathbf{x})}{\partial x_2} &\dots&\frac{\partial f_n(\mathbf{x})}{\partial x_n} \\
+    \end{bmatrix}
+\]
+\[
+    \mathbf{G}\left( \mathbf{x} \right)=\mathbf{x}-J\left( \mathbf{x}\right)^{-1}\mathbf{F}\left( \mathbf{x} \right)
+\]
+\begin{ex}
+    \begin{align*}
+        &3x_1-\cos(x_2x_3)-\frac{1}{2}=0\\
+        &{x_1}^2-81(x_2+0.1)^2+\sin x_3+1.06=0\\
+        &e^{-x_1x_2}+20x_3+\frac{10\pi -3}{3}=0
+    \end{align*}
+    So,
+    \[
+        J(x_1,x_2,x_3)=\begin{bmatrix}
+            3 & x_3 \sin x_2x_3 & x_2 \sin x_2 x_3\\
+            2x_1 & -162(x_2+0.1) & \cos x_3\\
+            -x_2e^{-x_1x_2} & -x_1e^{-x_1x_2} & 20
+        \end{bmatrix}
+        \quad\text{ and }\quad \begin{bmatrix}
+            x_1^{(k)}\\
+            x_2^{(k)}\\
+            x_3^{(k)}
+        \end{bmatrix}=\begin{bmatrix}
+            x_1^{(k-1)}\\
+            x_2^{(k-1)}\\
+            x_3^{(k-1)}
+        \end{bmatrix}+\begin{bmatrix}
+            y_1^{(k-1)}\\
+            y_2^{(k-1)}\\
+            y_3^{(k-1)}
+        \end{bmatrix}
+    \]
+    where 
+    \[
+        \begin{bmatrix}
+            y_1^{(k-1)}\\
+            y_2^{(k-1)}\\
+            y_3^{(k-1)}
+        \end{bmatrix}=-\left( J\left( x_1^{(k-1)},x_2^{(k-1)},x_3^{(k-1)} \right) \right)^{-1}\mathbf{F}\left( x_1^{(k-1)},x_2^{(k-1)},x_3^{(k-1)} \right)
+    \]
+    Thus at the \(k\)th step, the linear system \(J\left( \mathbf{x}^{(k-1)} \right)\mathbf{y}^{(k-1)}=-\mathbf{F}\left( \mathbf{x}^{(k-1)} \right)\) must be solved, where,
+    \[
+        J(\mathbf{x}^{(k-1)})=\begin{bmatrix}
+            3 & x_3^{(k-1)} \sin x_2^{(k-1)}x_3^{(k-1)} & x_2^{(k-1)} \sin x_2^{(k-1)} x_3^{(k-1)}\\
+            2x_1^{(k-1)} & -162(x_2^{(k-1)}+0.1) & \cos x_3^{(k-1)}\\
+            -x_2^{(k-1)}e^{-x_1^{(k-1)}x_2^{(k-1)}} & -x_1^{(k-1)}e^{-x_1^{(k-1)}x_2^{(k-1)}} & 20
+        \end{bmatrix},\qquad
+        \mathbf{y}^{(k-1)}=\begin{bmatrix}
+            y_1^{(k-1)}\\
+            y_2^{(k-1)}\\
+            y_3^{(k-1)}
+        \end{bmatrix}\]
+        and\[
+        \mathbf{F}\left( x^{(k-1)} \right)=\begin{bmatrix}
+            3x_1^{(k-1)}-\cos\left(x_2^{(k-1)}x_3^{(k-1)}\right)-\frac{1}{2}\\
+        \left(x_1^{(k-1)}\right)^2-81\left(x_2^{(k-1)}+0.1\right)^2+\sin x_3^{(k-1)}+1.06\\
+        e^{-x_1^{(k-1)}x_2^{(k-1)}}+20x_3^{(k-1)}+\frac{10\pi -3}{3}
+        \end{bmatrix}
+    \]
+    Let the initial approximation be \(\mathbf{x}^{(0)}=(0.1,0.1,-0.1)^t\). The results using this iterative procedure are shown in the table below.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{clllc}
+            \toprule
+            \(k\) & \multicolumn{1}{c}{\(x_1^{(k)}\)} & \multicolumn{1}{c}{\(x_2^{(k)}\)} & \multicolumn{1}{c}{\(x_3^{(k)}\)} & \(\left\|\mathbf{x}^{(k)}-\mathbf{x}^{(k-1)}\right\|_\infty\)\\\midrule
+            0 & 0.10000000 & 0.10000000 & -0.10000000 & \\
+            1 & 0.50003702 & 0.01946686 & -0.52152047 & 0.422 \\
+            2 & 0.50004593 & 0.00158859 & -0.52355711 & \(1.79\times 10^{-2}\) \\
+            3 & 0.50000034 & 0.00001244 & -0.52359845 & \(1.58\times 10^{-3}\) \\
+            4 & 0.50000000 & 0.00000000 & -0.52359877 & \(1.24\times 10^{-5}\) \\
+            5 & 0.50000000 & 0.00000000 & -0.52359877 & 0 \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+\end{ex}
+Newton's method can converges very rapidly with comparison of fixed point iteration.
+\begin{prob}
+    Use Newton's and Quasi-Newton's method to find a solution to the following non-linear systems with the given initial approximation. Iterate until \(\left\|\mathbf{x}^{(k)}-\mathbf{x}^{(k-1)}\right\|_\infty<10^{-6}\)
+    \begin{enumerate}
+        \item \begin{align*}
+            &3x_1^2-x_2^2=0\\
+            &3x_1x_2^2-x_1^3-1=0\\
+            &\mathbf{x}^{(0)}=(1,1)^t
+        \end{align*}
+        \item \begin{align*}
+            &\log \left( x_1^2+x_2^2 \right)-\sin(x_1x_2)=\log 2+\log \pi\\
+            &e^{x_1-x_2}+\cos (x_1x_2)=0\\
+            &\mathbf{x}^{(0)}=(2,2)^t
+        \end{align*}
+        \item \begin{align*}
+            &x_1^2+x_2-37=0\\
+            &x_1-x_2^2-5=0\\
+            &x_1+x_2+x_3-3=0\\
+            &\mathbf{x}^{(0)}=(0,0,0)^t
+        \end{align*}
+        \item \begin{align*}
+            &x^2-y^2=4\\
+            &x^2+y^2=16\\
+            &\mathbf{x}^{(0)}=(2\sqrt{2},2\sqrt{2})^t
+        \end{align*}
+    \end{enumerate}
+    See book of Sastry for problem 4.
+\end{prob}
+\end{document}
