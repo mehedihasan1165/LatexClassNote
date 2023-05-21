@@ -1,0 +1,80 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{General Relativity}
+\begin{prob}
+    Write down the principle of general relativity.
+\end{prob}
+\begin{soln}
+    Principle of general relativity:
+    \begin{enumerate}
+        \item \underline{Principle of equivalence}: The principle of equivalence which necessarily leads to the introduction of a curved space time.\\
+        In other words - The inertial mass and gravitational mass are same.
+        \item \underline{Principle of covariance}: The principle of covariance in the following form: The equations describing the laws of physics should have the same form in all coordinate system, or, the equations that describe the laws of physics should have tensorial form, since tensors are covariant quantities.
+    \end{enumerate}
+\end{soln}
+\begin{prob}
+    Show that in General Relativity the space time metric has form \(\D s^2=g_{\mu\nu}\D x^\mu\D x^\nu\), where \(g_{\mu\nu}\) is a gravitational potential.
+\end{prob}
+\begin{soln}
+The special relativistic line element or proper time is given by
+\begin{align}
+    \D s^2&=\eta_{\mu\nu}\D x^\mu\D x^\nu\notag\\
+    &=c^2\D t^2-\D x^2-\D y^2-\D z^2\notag\\
+    &=-c^2\D t^2+\D x^2+\D y^2+\D z^2\label{eq:1.1}
+\end{align}
+where, \(\eta_{\mu\nu}\) (metric tensor) is the flat space Minkowskian metric which is given by
+\begin{equation}
+    \eta_{\mu\nu}=\begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1 \\
+    \end{pmatrix}
+    \label{eq:1.2}
+\end{equation}
+where we have used natural units: \(c = 1\).
+
+
+The form of the special relativistic proper time does not change if one goes from one inertial system of coordinates into another by means of Lorentz transformation.
+
+
+Suppose that we from inertial system into a uniformly rotating (i.e. non- inertial) coordinate system. If the rotation b around the \(z\)-axis, then the
+transformation equations are
+\begin{equation}
+    \begin{rcases}
+        x &= x' \cos \omega t - y'\sin \omega t\\
+        y &= x' \sin \omega t + y' \cos \omega t\\
+        z &= z'
+    \end{rcases}\label{eq:1.3}
+\end{equation}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{axes.tikz}
+\end{figure}
+where  \(\omega\) is the angular velocity of the rotation between the original and the new non-inertial coordinate system.
+Using \eqref{eq:1.3} in \eqref{eq:1.1}, we get
+\begin{equation}
+    \D s^2=\left[ c^2-\omega^2(x'^2+y'^2) \right]\D t^2+2\omega (y'\D x'-x'\D y')\D t-(\D x'^2+\D y'^2+\D z'^2)\label{eq:1.4}
+\end{equation}
+which is different from Minkowski form \eqref{eq:1.1}.
+
+
+In general, when non-inertial coordinate systems are used, then the line element will have the expression
+\begin{equation}
+    \D s^2=g_{\mu\nu}\D x^\mu\D x^\nu\label{eq:1.5}
+\end{equation}
+where \(g_{\mu\nu}\) are the functions of space and time with \(g_{\mu\nu}=g_{\nu\mu}\). Here \(x^0 = ct\), \(x^1 = x\), \(x^2 = y\), \(x^3 = z\).
+We can use non-cartesian coordinate and in that case the coordinate \(x^1\), \(x^2\), \(x^3\) describe curvilinear coordinates.
+The functions \(g_{\mu\nu}\) are called the (components of the) metric fields of forces.\\
+Since non-inertial fields of forces are equivalent to gravitational fields, the space tine  metric  in  general  relativity  has  the	more general form given by \eqref{eq:1.5}
+\[\D s^2=g_{\mu\nu}\D x^\mu\D x^\nu,\]
+where \(g_{\mu\nu}\) represents the gravitational potential (i.e. field).\\
+Using tensor transformation, we can show that
+\[g_{\mu\nu}(x)\D x^{-\mu}\D x^{-\nu}=g_{\mu\nu}(x)\D x^{\mu}\D x^\nu=\D s^2\]
+Hence, the form \eqref{eq:1.5} of the metric is based on the principle of equivalence and principle of covariance.
+\end{soln}
+\end{document}

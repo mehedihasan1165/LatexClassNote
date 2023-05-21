@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+    \draw[thick,-latex] (0,0)--(0,5)node[above right]{$z,\,z'$};
+    \draw[thick,-latex] (0,0)--(5,0)node[right]{$y$};
+    \draw[thick,-latex] (0,0)--(-1.5,-3.5)node[right]{$x'$};
+    
+    \draw[thick,-latex] (0,0)--(4.5,2)node[right]{$y'$};
+    \draw[thick,-latex] (0,0)--(-2,4.5) node[above] {$ict=x^0$};
+    \draw[thick,-latex] (0,0)--(-2.5,-2.5)node[left]{$x$};
+    
+    \draw (2,0) coordinate (A) -- (0,0) coordinate (B)
+                -- (4.5,2) coordinate (C)
+                pic [draw,thick,angle radius=1.5cm] {angle = A--B--C};
+    \draw (-1.5,-3.5) coordinate (D) -- (0,0) coordinate (B)
+                -- (-2.5,-2.5) coordinate (E)
+                pic [draw,thick,angle radius=1.5cm] {angle = E--B--D};
+    \node at (2.5,0.5) {$\omega t=\theta$};
+    \node[rotate=45] at (-1.2,-1.8) {$\omega t$};
+    \end{tikzpicture}
