@@ -77,4 +77,62 @@ Using tensor transformation, we can show that
 \[g_{\mu\nu}(x)\D x^{-\mu}\D x^{-\nu}=g_{\mu\nu}(x)\D x^{\mu}\D x^\nu=\D s^2\]
 Hence, the form \eqref{eq:1.5} of the metric is based on the principle of equivalence and principle of covariance.
 \end{soln}
+\begin{prob}
+    Define free particle's path. Obtain the equation of straight line from gravitational field.
+\end{prob}
+\begin{soln}
+    \underline{Free particle's path}: Free particle's path is described by geodesics, where geodesics is the curvature of extremal length.\\
+    \underline{Geodesic equations}: The geodesic equation is
+    \[
+        \frac{\D^2 x^\mu}{\D s^2}+\Gamma^\mu_{\nu\sigma}\frac{\D s^\nu}{\D s}\frac{\D s^\sigma}{\D s}=0,
+        \]
+        where \(\Gamma^\mu_{\nu\sigma}\) the Christoffel symbol is defined as
+        \begin{align*}
+            \Gamma^\mu_{\nu\sigma}&=\frac{1}{2}\left[ \frac{\partial g^{\mu\sigma}}{\partial x^\nu}+\fp{g^{\mu\sigma}}{x^\nu}-\fp{g^{\nu\sigma}}{x^\mu} \right]\\
+            &=\frac{1}{2}g^{\mu\lambda}\left[ \partial_\nu g_{\lambda\sigma}+\partial_\sigma{g_{\lambda\nu}}-\partial_\lambda{g_{\nu\sigma}} \right]
+        \end{align*} 
+        where \(\partial_\nu=\fp{}{x^\nu}\) and \(g_{\mu\nu}\) is the metric tensor and \(x = x^\mu= (x^0, x^1, x^2, x^3)\).
+
+
+\underline{No gravitational field}: We know \(g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}\)
+
+If there is no gravitational force, then equation \eqref{eq:1.1} becomes \(g_{\mu\nu}=\eta_{\mu\nu}\), which is a constant. When
+\[
+    \eta_{\mu\nu}=
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & -1 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1 \\
+\end{pmatrix}
+\]
+then, \(\Gamma^\mu_{\nu\sigma}=0\).\\
+Then from the geodesic equation, we get\footnote{We know, proper time \begin{align*}
+    & \D \tau^2=\frac{\D s^2}{c^2}\\
+    \Rightarrow\;& \D s^2={c^2}\D \tau^2
+\end{align*}}
+\[\frac{\D^2 x^\mu}{\D s^2}=0\quad \Rightarrow\;\frac{\D^2 x^\mu}{\D \tau^2}=0\]
+Integrating in, we get \(\ddx{x^\mu}=A\) where \(A\) is a constant of integration.\\ 
+Again integrating, we get
+\[x^\mu = A\tau + B,\]
+where \(B\) is a constant of integration, which represents a straight line.
+\end{soln}
+\begin{itemize}
+    \item If the gravitational field is small, then \(g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}\) is small. When no gravitational force, then \(h_{\mu\nu}=0\)
+\end{itemize}
+\begin{prob}
+    Show that Newtonian equation of motion as an approximation of geodesic equation.\\
+    \emph{Or}, Geodesic equations are reducible to Newtonian equations of motion in one of weak static field.\\
+    \emph{Or}, To discuss the motion of a free particle in case of a weak static field.\\
+    \emph{Or}, Prove that \(g_{00}= 1+ \frac{2\varphi}{c^2}= 1+ 2\varphi\)
+    \emph{or},
+    \(g_{00}= -1- 2\varphi\)
+\end{prob}
+\begin{soln}
+    Consider the motion of a test particle in case of a weak static field. The motion of a test particle is governed by geodesic equations as given below
+    \begin{equation}
+        \frac{\D^2 x^\alpha}{\D s^2}+ \Gamma^\alpha_{\mu\nu}\frac{\D x^\mu}{\D s}\frac{\D x^\nu}{\D s}=0
+        \label{eq:2.1}
+    \end{equation}
+\end{soln}
 \end{document}

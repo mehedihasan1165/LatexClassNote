@@ -32,3 +32,5 @@ original_docs/
 *.synctex.gz(busy)
 *.synctex.gz(busy)*
 *.pdfsync
+
+temp

@@ -1,0 +1,457 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Group Action and Sylow Theorems}
+\begin{defn}
+    Let \(G\) be a multiplicative group and \(X\) be any non-empty set. A \emph{group action} of \(G\) on \(X\) is any mapping \((a, x) \to ax\) of \(G \times X\) into \(X\) satisfying the conditions
+    \begin{enumerate}[label=(\roman*)]
+        \item \(a( bx ) = (ab )x\) for all \(a,b \in G\) and \(x \in X\), and
+        \item \(ex = x\) for all \(x \in X\).
+    \end{enumerate}
+    The mapping is called the action of \(G\) on \(X\) and the set \(X\) is known as \(G-\)set. Some authors call it as \emph{transformation group}.
+\end{defn}
+\begin{ex}\hfill
+    \begin{enumerate}[label=(\roman*)]
+        \item Let \(X = G\); each of the mappings \((a, x) \to ax\) and \((a, x) \to xa\) (where \(ax\) and \(xa\) are the products of \(a\) with \(x\), and of \(x\) with \(a\) in the group \(G\)) is a group action.
+        \item Let \(X = G\); the mapping \((a, x) \to axa^{-1}\) is a group action.
+        \item Let \(X\) be the set of all left cosets of a given subgroup \(H\) of \(G\); then \((a, xH) \to (ax)H\) is a group action.
+        \item Let \(G\) be a group and \(H\) be a normal subgroup of \(G \). Then the set \(X\) of all left cosets of \(H\) in \(G\) is a \(G\)-set if we define the mapping \((a, xH) \to (ax)H\) as the group action.
+    \end{enumerate}
+    \end{ex}
+\begin{proof}
+    Please see Bhattacharjee, Jain \& Nagpaul [p. 108]for the proofs.
+\end{proof}
+\begin{defn}
+    Given any group action \((a, x) \to ax\) of \(G\) on \(X \), we define a binary
+    relation ``\(\sim\)" on \(X\) as follows:
+    \[x \sim y \Leftrightarrow \text{ there exists } a  \in G \text{ such that } y = ax.\]
+\end{defn}
+\begin{ex}
+    The relation (just defined above) is an equivalence relation.
+\end{ex}
+\begin{proof}
+    The easy proof is left to the reader.
+\end{proof}
+\begin{defn}
+    The equivalence class of \(x \in X \), denoted by \(\tilde{x}\), for which \(\tilde{x} = \{ax: a \in G\}\), is called the orbit of \(x\).
+\end{defn}
+\begin{defn}
+    The number \(\abs{\tilde{x}}\) of elements in the orbit \(\tilde{x}\) of \(x \in X\) is called the \emph{length of the orbit} of \(x\).
+\end{defn}
+\begin{defn}
+    The set \(G_x = \set{a \in G : ax = x}\) is called the \emph{stabilizer} of \(x \in X\) in the group \(G\) (or sometimes, it is also known as the \emph{isotropy group} of \(x \in X\) in \(G\)).
+\end{defn}
+\begin{ex}
+    For any \(x \in X\), \(G_x\) is a subgroup of \(G\).
+\end{ex}
+\begin{proof}
+    The easy proof is left to the reader.
+\end{proof}
+\begin{note}
+    When \(G\) acts on itself by conjugation, \((a, x) \to axa^{-1}\), the stabilizer of \(x \in G\) is the normalizer of \(x\) in \(G\).
+\end{note}
+\begin{ex}
+    If \(y = ax\), then \(G_y = aG_x a^{-1}\).
+\end{ex}
+\begin{proof}
+    \begin{align*}
+        b \in G_y & \Leftrightarrow by = y\\
+        &\Leftrightarrow b( ax ) = ax\\
+        &\Leftrightarrow a^{-1}(b (ax)) = a^{-1}(ax)\\
+        &\Leftrightarrow (a^{-1}ba) x = (a^{-1}a)x = ex = x\\
+        &\Leftrightarrow a^{-1}ba \in G_x\\
+        &\Leftrightarrow b \in aG_xa^{-1}
+    \end{align*}
+\end{proof}
+\begin{thm}
+    For any \(x \in X \), \(\abs{\tilde{x}}\) (the length of the orbit of \(x\)) is equal to the index of the stabilizer of \(x\) in \(G\). In symbols, \(\abs{\tilde{x}}= [G: G_x]\).
+\end{thm}
+\begin{proof}
+    Let \(Y\) be the set of all left cosets of \(G_x\) in \(G\).\\
+    That is, \(Y = \set{aG_x: a \in G}\).\\
+    Define \(f: \tilde{x} \to Y \) by setting \(f(ax) = aG_x\).\\
+    Recall that \(\tilde{x} = {ax: a \in G}\).\\
+    We have
+    \begin{align*}
+        &ax = bx\\
+        \Leftrightarrow\;& (a^{-1}b)x = x\\
+        \Leftrightarrow\;& a^{-1} b \in G_x\\
+        \Leftrightarrow\;& aG_x = bG_x.
+    \end{align*}
+    So, \(f\) is not only well-defined, it is also injective.\\
+    \(f\) is clearly surjective.\\
+    Hence, \(\abs{\tilde{x}} = \abs{Y}\),\\
+    that is \(\abs{\tilde{x}} = [G: G_x]\).\\
+    This completes the proof. .
+\end{proof}
+\emph{When \(G\) acts on itself by conjugation, \(\abs{\tilde{x}}\) is the conjugacy class of \(x \in G\) and \(G_x\) is the normalizer of \(x\) in \(G\).}
+\begin{thm}
+    Let \(G\) be a group and let \(X\) be a set.
+    \begin{enumerate}[label=(\roman*)]
+        \item If \(X\) is a \(G-\)set, then the action of \(G\) on \(X\) induces a homomorphism \(\varphi : G\to S_x\)
+        \item Any homomorphism \(\varphi : G\to S_x\) induces an action of \(G\) onto \(X\).
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+        \item We define \(\varphi : G\to S_x\) by \((\varphi(a))(x) = ax\), \(a \in G \), \(x \in X \).\\
+        Clearly, \(\varphi(a) \in S_x\), \(a \in G\).\\
+        Let \(a, b \in G\).\\
+        Then we have
+        \begin{align*}
+            &( \varphi(ab))(x) = (ab )x = a (bx)\\
+            =& a ((\varphi(b))(x)) = (\varphi(a)) (( \varphi(b))(x))\\
+            =& (\varphi(a) \varphi(b))(x) \text{ for all } x \in X.
+        \end{align*}
+        Hence \(\varphi(ab) = \varphi(a ) \varphi( b )\).
+        \item We define \((a, x) \to (\varphi(a))(x)\); that is \(ax = (\varphi(a))(x)\).\\
+        Then we have
+        \begin{align*}
+            &( ab )x = (\varphi(ab))(x) = ( \varphi(a) \varphi(b))(x)\\
+            =& \varphi ( a )( \varphi( b )(x) ) = (\varphi( a)(bx ) = a( bx ).
+        \end{align*}
+        Also, \(ex = ( \varphi(e))(x) = x\).\\
+        Hence, \(X\) is a \(G -\)set.
+    \end{enumerate}
+\end{proof}
+Our purpose is here to prove the celebrated Sylow Theorems using group actions.\\
+We need a number-theoretic result here.\\
+\begin{thm}
+    Suppose \(n = p^rm\), where \(p\) is prime, \(r \geq 1\), \(m \geq 1\) and \(p\) does not divide \(m\). Let \(s\) be an integer with \(0 \leq s \leq r\). Then \(\binom{n}{p^s} = p^{r-s}mt\), where \(p\) does not divide \(t\).
+\end{thm}
+\begin{proof}
+    For \(n \geq 1\) and \(1 \leq r \leq n\), we have
+    \[
+        \binom{n}{r}=\frac{n!}{r!(n-r)!}=\frac{n}{r}\;\frac{(n-1)!}{(r-1)!((n-1)-(r-1))!}=\frac{n}{r}\binom{n-1}{r-1}.
+    \]
+    Now,\(\binom{n-1}{r-1}=\frac{(n-1)(n-2)\dots(n-r+1)}{(r-1)(r-2)\dots2\cdot1}\), because \((n - 1) - (r - 1) = n - r\).\\
+    Therefore \(\binom{n}{p^s}=\frac{p^rm}{p^s}\binom{n-1}{p^s-1}=p^{r-s}mt\), where \(t = \binom{n-1}{p^s-1}=\frac{\prod_{i=1}^{p^s-1}(mp^r-1)}{\prod_{i=1}^{p^s-1}(p^s-1)}\)\\
+    If \(1 \leq i \leq p^s - 1\) and \(p \,|\, i\), then let \(i = p^{u_i}.t_i \), where \(i \leq u_i \leq s\) and \(p\) does not divide \(t_i\).\\
+    If \(p\) does not divide \(i\), then \(i =p_{u_i}. t_i\), where \(u_i = 0\), so \(t_i = i\) and does not divide \(t_i\).\\
+    So, in either case, \(\frac{mp^r-i}{p^s-i}=\frac{mp^{r}-p^{u_i\cdot t_i}}{p^s-p^{u_i\cdot t_i}}=\frac{mp^{r-u_i}-t_i}{p^{s-u_i}- t_i}\).\\
+    Neither the numerator nor the denominator of the fraction on the extreme right is
+    divisible by \(p\); so \(\frac{\prod_{i=1}^{p^s-1}mp^{r-u_i}-t_i}{\prod_{i=1}^{p^{s-1}}p^{s-u_i}- t_i}\) is not divisible by p.
+    \end{proof}
+    \begin{cor}
+        \(p^{r-s+ l}\) does not divide \(\binom{n}{p^s}\).
+    \end{cor}
+\begin{cor}\label{cor:10.2}
+    If \(T\) is any subgroup of the group \(G\) of order \(p^s\) and \(a \in G\), then the stabilizer of \(S = Ta \in X\) is \(T\), and the orbit length \(\abs{\bar{S}}\) is equal to \(p^{r-s}m\); as such it is not divisible by \(p^{r-s+1}\).
+\end{cor}
+\begin{proof}
+    The stabilizer of \(S\) contains \(T \), because
+    \[ bS = (bT)a = Ta = S \text{ for every  } b \in T.\]
+    On the other hand, the stabilizer of \(S\) is contained in \(T \), for
+    \[b \in G_s \;\;\Rightarrow b( ea ) = ba \in S = Ta,\; \text{ since } ea \in Ta = S ,\]
+    which then implies \(b \in T\).\\
+    Hence the stabilizer of \(S\) is precisely \(T\).\\
+    So the orbit pf \(S\) has length \([G: T ] = p^{ r-s}m\); this number is not divisible by \(p^{r-s + 1}\)
+\end{proof}
+\begin{cor}\label{cor:10.3}
+    \(t \equiv 1 (\mod p)\).
+\end{cor}
+\begin{proof}[NOTDONE]
+    Multiplying out the factors in the numerator and those in the denominator of the
+    last obtained expression for \(t\), we get
+    \[t=\frac{\lambda p+v}{\mu p+v}\]
+    % where \(v=(-1)^{p^s-1}\). does not divide nf^1tt, because p does not divide tt
+    % So, p does not divide v.
+    % Now, t =
+    % ••
+    % r
+    % Ap+v
+    % implies u(t - 1) = p(A - tp)
+    % \Rightarrow v I i)
+    % \Rightarrow p j (t - 1), because pdoes not divide v.
+    % PP+v
+    % i ?•
+    % - i
+    % :
+    % ;
+    % t:
+    % i
+    % .V
+    % Hence t = 1(mod p).
+\end{proof}
+    \section{Sylow's First Theorem}
+    \begin{thm}
+        A finite group \(G\) has at least one subgroup of every prime power order
+        dividing \(\abs{G}\). That means, if \(\abs{G} = p^rm\), where \(p\) is prime, \(r\geq 1\) and \(p\) does not divide \(m\), then \(G\) has a subgroup of order \(p^s\) for every \(s=1,2,\dots,r\).
+    \end{thm}
+    \begin{note}
+        Sylow's first theorem is a far-reaching generalization of Cauchy's theorem.
+    \end{note}
+    \begin{proof}
+        Let \(X\) be the set of all subsets of \(G\) having \(p^s\) elements; our aim is to prove that at
+        least one of these subsets is a subgroup of \(G\).\\
+        Clearly, \(X\) has \(\binom{n}{p^s}\) elements.\\
+        Let \(G\) act on \(X\) in the obvious manner; for \(a \in G\) and \(S \in X \); \(aS = \set{ax: x \in S}\).
+        Since \(\abs{aS}=\abs{S}\), \(a( bS ) = ( ab )S\) and \(eS = S\),
+        therefore the mapping \((a, S) \to aS\) is a group action on \(X\).\\
+        \textbf{Claim.} There exists an orbit whose length is not divisible by \(p^{r-s+1}\).\\
+
+
+        For, if every orbit had length divisible by \(p\), then \(p^{r-s+1}\) would divide \(\abs{X}\),
+        because \(\abs{X}\) is the sum of the lengths of all the distinct orbits,
+        but \(p^{r-s+1}\) does not divide \(\binom{n}{p^s}=\abs{X}\).\\
+        So, this claim is proved.
+
+
+        Take an orbit \(\bar{S}\) whose length is not divisible by \(p^{r-s+1}\)
+        Since \(\abs{\bar{S}}= [G : G_s]\) divides \(\abs{G} = p^rm\), we have
+        \[\abs{\bar{S}} \leq p^{r-s}m,\]
+        because the highest power of \(p\) dividing \(\abs{\bar{S}}\) is \(\leq r -s\).\\
+        Hence, \(\abs{G_s}=\frac{\abs{G}}{[G:G_s]}\geq \frac{p^rm}{p^{r-s}m}=p^s\).\\
+        Next we show that \(\abs{G_s} \leq p^s\), thus establishing \(\abs{G_s}= p^s\).\\
+        Take \(a \in S\); for every \(b \in G_s\). We have \(bS = S\).\\
+        So, \(ba \in S\).\\
+        Therefore, \(\begin{aligned}[t]
+            &(G_s)a \subseteq S\\
+            \Rightarrow\,&\abs{(G_s)a} \leq \abs{S}.
+        \end{aligned}\)\\
+        But \(\abs{(G_s)a} = \abs{G_sa} = \abs{G_s}\) and \(\abs{S} = p^s\);
+         and hence \(\abs{G_s} \leq p^s\) is established.\\
+        
+        Since \(G_s\) is a subgroup of \(G\), Sylow's first theorem stands proved.
+    \end{proof}
+\begin{defn}
+    A Sylow \(p-\)subgroup of \(G\) is any subgroup of \(G\) of order \(p^r\), where \(p^r\) \((r \geq 1)\) is the highest power of \(p\) dividing \(\abs{G}\).
+\end{defn}
+\begin{cor}
+For every prime \(p\) dividing the order of a finite group \(G\), there exists at
+least one Sylow \(p-\)subgroup of \(G\).
+\end{cor}
+\begin{cor}\label{cor:10.5}
+If the length of the orbit of \(S \in X\) is not divisible by \(p^{r-s}m\), then \(S=Ta\)
+holds for some subgroup \(T\) of \(G\) of order \(p^s\) and any \(a \in S\).
+\end{cor}
+The proof of the last theorem reveals that \(T = G_s\) is a subgroup of order \(p^s\) and \(Ta\subseteq S\)
+holds for any \(a \in S\). Since \(\abs{Ta}=\abs{T}=p^s=\abs{S}\), it follows that \(S=Ta\).
+
+
+If \(P\) is any Sylow \(p-\)subgroup of \(G \), then \(a^{-1}Pa\) is a Sylow \(p-\)subgroup of \(G\) for every
+\(a \in G \), because \(\abs{a^{-1} Pa} = \abs{P}\).
+Sylow's second theorem asserts that any two Sylow \(p-\)subgroups are conjugate in \(G\).
+\section{Sylow's Second Theorem}
+\begin{thm}
+    Suppose \(P\) is any Sylow \(p-\)subgroup of \(G\); \(H\) is any subgroup of \(G\) of order \(p^s\), \(0\leq s\leq r\), where \(r\) is the highest power of \(p\) dividing \(\abs{G}\). Then \(H\) is a subgroup of a Sylow \(p-\)subgroup of \(G\) which is conjugate to \(P\).
+\end{thm}
+\begin{proof}
+    Let \(X\) be the set of all right cosets of \(P\) in \(G \);\\
+    so \(\abs{X} = [G: P] = \frac{p^r m}{p^r}= m\).\\
+    Let \(H\) act on \(X\) in the manner:
+    \[(b, Pa) \to P(ab).\]
+    Since \(((Pa)fa)c = (Pa)(bc)\) and \((Pa)e = Pa\),
+    the mapping \((b, Pa) \to P(ab)\) is a group action.
+
+
+    \textbf{Claim.} There is at least one orbit whose length is not divisible by \(p\).
+
+
+    For, if every orbit had length divisible by \(p\), then the sum of lengths of all distinct
+    orbits, which is \(\abs{X}\), would be divisible by \(p\), which is not true.\\
+        Consider an orbit whose length is not divisible by \(p\).\\
+        This length is equal to the index in \(H\) of the stabilizer of any element belong to the
+        orbit; so it is a divisor of \(\abs{H} = p^s\).\\
+        So this length must be 1.\\
+        It follows that
+        \begin{align*}
+            & Pa \in X \text{ belongs to an orbit of length } 1\\
+            \Leftrightarrow\;& (Pa) b = Pa \text{ for every }b\in H\\
+            \Leftrightarrow\;& P(aba^{-1}) = P \text{ for every } b\in H\\
+            \Leftrightarrow\;& aba^{-1} \in P \text{ for every } b \in H\\
+            \Leftrightarrow\;& b \in a^{-1}Pa \text{ for every } b \in H\\
+            \Leftrightarrow\;& H\subseteq a^{-1} Pa.
+        \end{align*}
+        This proves the theorem, because \(a^{-1} Pa\) is
+        a subgroup conjugate to \(P\).
+\end{proof}
+\begin{cor} 
+Any two Sylow \(p-\)subgroups are conjugate.
+\end{cor}
+\begin{proof}
+    If \(P , Q\) are Sylow \(p-\)subgroups, then applying Sylow's second theorem to \(H = Q \),
+    we get
+    \[Q \subseteq a^{-1} Pa\text{ for some  } a \in G .\]
+    Then \(Q = a^{-1}P a\), because \( \abs{a^{-1}Pa} =\abs{P}= \abs{Q}\).
+\end{proof}
+\begin{cor}\label{cor:10.6}
+\(G\) has a normal Sylow \(p-\)subgroup iff \(G\) has only one Sylow \(p-\)subgroup.
+\end{cor}
+\begin{proof}
+    This follows from Corollary \ref{cor:10.6} and the fact that a subgroup is normal if and
+    only if it coincides with each of its conjugate subgroups.
+\end{proof}
+\section{Sylow's Third Theorem}
+\begin{thm}
+    If \(p\) is any prime dividing \(\abs{G}\), then the number of subgroups of order \(p^s\)
+(where \(0 \leq s \leq r \)) is congruent to 1 modulo \(p\).
+\end{thm}
+\begin{proof}
+    Let \(X\) be the set of all subsets of \(G\) having \(p^s\) elements; let \(G\) act on \(X\) in the
+    obvious manner \((a,S) \to aS = \set{ax: x \in S}\).\\
+    If \(T\) is any subgroup of order \(p^s\), then by Corollary \ref{cor:10.2}, every right coset of \(T\) lies in
+    orbit of length \(p^{r-s}m\).\\
+    Conversely, Corollary \ref{cor:10.5} shows that every \(S\in X\) whose orbit length is not divisible
+    by \(p^{r-s+1}\), is a right coset of a subgroup of \(G\) of order \(p^s \); as such \(\abs{\bar{S}}\) is then \( = p^{r-s}m\).\\
+    Let \(\lambda\) be the number of distinct subgroups of order \(p^s\).\\
+
+    So, by the preceding observation, there are precisely \(p^{r-s}m\) sets whose orbit lengths
+    are not divisible by \(p^{r-s+1}\).\\
+
+    Note that for distinct subgroups \(T \), \(T'\) it cannot happen that \(Ta = Ta'\) holds for some
+    \(a,a' \in G\) ; for then \(a' \in Ta\), implies \(Ta = Ta' = T' a' \), whence \(T = T'\) would follow.\\
+    So, there are precisely \(p^{r-s}m\) different \(S\in X\) whose orbits have length not divisible
+    by \(p^{r-s+1}\). The total number of elements in all these orbits is \(p^{r-s}m\lambda\).\\
+
+    The remaining \(p^{r-s}mt-p^{r0s}m\lambda=p^{r-s}m(t-\lambda)\) elements (if any) of \(X\) all have orbit lengths divisible by \(p^{r-s+1}\); so the total number of elements in all these orbits is \(k\cdot p^{r-s+1}\), where \(k\geq 0\) is an integer.\\
+
+
+    Therefore, we have
+    \begin{align*}
+        &p^{r-s} m( t -\lambda) = k\cdot p^{r-s+1}\\
+        \Rightarrow\;& m(t - \lambda) = kp\\
+        \Rightarrow\;& p\,|  m(t - \lambda)\\
+        \Rightarrow\;& p \,| (t - \lambda), \text{ because \(p\) does not divide } m\\ 
+        \Rightarrow\;& \lambda \equiv t (\mod p)\\
+        \Rightarrow\;& \lambda \equiv 1 (\mod p), \text{ because } t\equiv 1 (\mod p); \text{ by Corollary \ref{cor:10.3}}.
+    \end{align*}
+\end{proof}
+    
+    % Corollary 10.8 The number of distinct Sylow p-subgroups divides the p-free part of
+    % |G|.That is, if|G|= prm,where p does not divide m,then A (the number of distinct
+% Sylow p-subgroups of G) divides m.
+% Proof. Let G be a group with |G| = pTm (where p does not divide rri) and A is the
+% number of distinct Sylow p-subgroups of G .
+% If P is any fixed Sylow p-subgroups of G, then any other Sylow p-subgroup of G is a
+% conjugate of G. ; -
+% So, A
+% - [G: Afp ] is the index of the normalizer of P in G .
+% Np contains P, because P is a subgroup.
+% Since|/Vp|divides|G| = prm and is > |P| = pr,
+% it follows that|/VP|= prm', where p does not divide m'.
+% Sc, A = [G: Np] =
+% \Rightarrow Am' = m.
+% A divides m.
+% Thus, not only is the number of distinct Sylow p-subgroups a number of the very
+% special form 1 + kp, k 0, but it is also a divisor of m.
+% Historical Note. Sylow (Ludyig Sylow, 1832-1918) stated and proved his theorems in
+% • the context of permutation groups (1872). Frobenius (1884) proved Sylow’s first
+% theorem for abstract groups, which entailed the derivation of the class equation. The
+% elegant proof given here was published by H. Wielandt in 1959. E. Artin presented the
+% proofs of Sylow’s second and third theorems and that of Theorem 10.5 via group
+% actions in his lectures in the summer of 1961. See S. Chakraborty & M. R. Chowdhury,
+% The Sylow Theorems from Frobenius to Wielandt, GANIT Journal of Bangladesh Math.
+% Society, 25 (2005), 85-108.
+% We use group action to prove an analogue of Sylow’s first and third theorems
+% concerning normal subgroups of p-group due to Frobenius (1895).
+% Theorem 1Q.7 (Frobenius) Every p-group G has normal subgroups of every order
+% dividing|G|, and their number is = 1 (mod p).
+% Proof. Let G be a group with|G 1 = pr, where r > 1is a natural number.
+% By Sylow's first theorem, G has subgroups of every order pk dividing|G| = pr.
+% For any fixed k , l k r, let X be the set of k subgroups of order pk.
+% Let G act on X by conjugation, (a, H ) -^ccHa' 1, a e G a n d W e l
+% Every orbit H has a length which divides |G| = pr;
+
+% so it is either lor a positive multiple of p.
+% Therefore, if there are t > 0 orbits of length 1, then there exists an integer s > 0 such
+% that|*|= t + sp.
+% By Sylov/s third theorem,|*| = l (mod p).
+% Hence t = 1 (mod p).
+% So, there do exist orbits of length 1 and their number is congruent to 1 modulo p.
+% Now, H lies in an orbit of length 1 means in this case: aHa-1 = H for all a G G.
+% So, H is a normal subgroup of G ;
+% this completes the proof of the theorem.
+% I
+% As a final example of the use of group action we give a unified proof of Cauchy's
+% theorem for all finite groups, whether abelian or not.
+% Cauchy's Theorem
+% Theorem 10.8 Let G be a finite group and let p be a prime number dividing|C7|. Then G
+% has an element of order p.
+% Proof. Let* = {(xa, x2, •
+% A p-tuple (xlrx2,... xp) cjf elements of G is in * if and only if the product x^ x2 ...xp
+% equals e.
+% If x1( x2, ..., Xp_ ]_ are any elements of G and
+% X p = (XjX2 ... Xp.O-1
+% i
+% ,**
+% <
+% .!
+% *l\ ! r
+% i
+% •• # xp): x, e C and XiX2 ... xp = e}.
+% ;1I l
+% (0.
+% then (xj,x2,..., xp) is an element of*.
+% Conversely, if (xx,x2,...,xp) e X,then (i) holds.
+% 1I
+% •
+% l
+% Since there are |G| choices fdr each of elements x1,x2,...,xp_1, we conclude:|*| =
+% ICP"1-
+% So, p divides ] X\, because p divides|C|and p > 2.
+% A
+% We now consider the p-cycle a = (1 2 3... p) in the symmetric group Sp and define
+% ( x1 § x2,.•• J* pY = { XY , X 2° V) = (*2.*3t ••• / X p » X\)•
+% yIt
+% * Now (x-,x2,..., X p )a belongs to A',
+% I
+
+% U
+% '
+% xp = e implies xx 1 = x2x3 ... xp so that (x2^3 ••• Xp'^ xi &•
+% Therefore, by iteration of a, we have a group action of the cyclic subgroup ( CT ) of SP
+% because xx x2
+% I
+% .
+% / on
+% u
+% J
+% Now the order of (a) is = p.
+% i
+% Hence, with G = (cr), we have|Xj =
+% Now, we get
+% I
+% x p ) e X (o )
+% \Leftrightarrow (x1, x2, ... , xp) = (x2, ... , Xp, Xi)
+% -t\Rightarrow xx = x2 = = X p.
+% [ x1, X 2 # ••• I I
+% 1
+% Is
+% As pdivides|X |X<c r> J must contain elements besides (e, e, e,..., e).
+% Let (a,a, a,,..a) be such an element of X
+% ^ ), then a ^ e
+% and a.a ... a [ p factors] = a? = e.
+% We have thus proved the existence of an element of order p in G.
+% Remark 10.1 The above proof of Cauchy's Theorem covers both the abelian and non *
+% abelian cases and uses the *principle of group action very effectively. This proof is due
+% to McKay, Another Proof of Cauchy's Group Theorem, American Mathematical
+% Monthly, 76 (1968), 420, where the presentation is too brief to be illuminating. The
+% essence of McKay's proof of Cauchy's Theorehi is to let the cyclic subgroup of the
+% symmetric group Sp generated by the p-cycle a = (12 3...p) act on a naturally chosen
+% subset X of the p-fold Cartesian product of C with itself.
+% •F'
+% i
+% [H
+% H
+% rV
+% ::
+% i r
+% V. i
+% I
+% 1
+% i
+% - t
+% ' /
+% Remark 10.2 During the years 1845*1846, Cauchy contributed extensively to the
+% theory of permutation groups. In course of these investigations, Cauchy proved the
+% theorem under discussion for permutation groups at a time when the concept of an
+% abstract group was yet to be developed. Cauchy's original proof was quite lengthy and
+% difficult (running to over 9 pages). Though Cauchy's theorem has been subsumed by
+% Sylow's first theorem, still it retains its place and importance as a basic result of group
+% theory.
+
+\end{document}
