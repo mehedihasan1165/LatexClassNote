@@ -1,4 +1,6 @@
 original_docs/
+/test/
+test/
 
 *.aux
 *.lof

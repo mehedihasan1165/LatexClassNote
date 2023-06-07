@@ -1,0 +1,155 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Navier-Stokes Equation}
+\begin{prob}
+    Prove that,
+    \[\sigma_{ij}=-P\delta_{ij}+2\mu(e_{ij}-\frac{1}{3}\Delta \delta_{ij}).\]
+    Then derive the Navier-Stokes equation.
+\end{prob}
+\begin{soln}
+    In a fluid at rest there are only normal components of stress on a surface and the stress does not depend on the orientation of the surface. That means, the stress tensor is isotropic or spherically symmetric.
+
+    An isotropic tensor is defined as one whose components do not change under a rotation of the co-ordinate system. The only second order isotropic tensor is the Kronecker Delta
+    \[\delta=\begin{bmatrix}
+        1&0&0\\
+        0&1&0\\
+        0&0&1\\
+    \end{bmatrix}\]
+    So, any isotropic second tensor will be proportional to \(\delta\). Therefore, the stress in a static fluid, being isotropic must be of the form
+    \begin{equation}
+        \sigma_{ij}=-P\delta_{ij}\label{eq:navTensor1}
+    \end{equation}
+    where \(\sigma_{ij}\) is the \(i\)th component of the force per unit area exerted, across a plane surface element normal to the perpendicular direction at position \(\vec{x}\) in the fluid at time \(t\) and the tensor of which it is the general components is the tensor.\\
+    From \eqref{eq:navTensor1} we may say,
+    \begin{align*}
+        \sigma_{ii}&=-P (\delta_{11}+\delta_{22}+\delta_{33})\\
+        &=-P (1+1+1)\\
+        &=-3P
+    \end{align*}
+    \begin{equation}
+        \therefore \; P=-\frac{1}{3}\sigma_{ii} \label{eq:navTensor2}
+    \end{equation}
+    Where \(P\) is the hydrostatic pressure.\\
+    From this we can define the pressure at a point in a moving fluid to be given by \(-\frac{1}{3}\sigma_{ii}\), where \(\sigma_{ij}   \) is the stress tensor.
+
+    Next we get the stress tensor equal to an isotropic part given by \eqref{eq:navTensor1} plus a non-isotropic part denoted by \(d_{ij}\) known as the deviatoric stress tensor, as follows
+    \begin{equation}
+        \sigma_{ij}=-P\delta_{ij}+d_{ij} \label{eq:navTensor3}
+    \end{equation}
+    It can be shown that \(d_{ij}\) must have the following form
+    \begin{equation}
+        d_{ij}=A_{ijkl}\frac{\partial u_k}{\partial x_l}\label{eq:navTensor4}
+    \end{equation}
+    where the coefficient \(A_{ijkl}\) depends on the local state of the fluid but not directly on the velocity distribution and is symmetric in \(i\) and \(j\).\\
+    We have,
+    \[\frac{\partial u_k}{\partial x_l}=e_{kl}+\epsilon_{kl}\]
+    \begin{equation}
+        \begin{rcases}
+            e_{kl}=\frac{1}{2}\left( \frac{\partial u_k}{\partial x_l}+\frac{\partial u_l}{\partial x_k} \right)\\
+            \epsilon_{kl}=\frac{1}{2}\left( \frac{\partial u_k}{\partial x_l}-\frac{\partial u_l}{\partial x_k} \right)\quad
+        \end{rcases}\label{eq:navTensor5}
+    \end{equation}
+    So that \(e_{kl}\) is symmetric and \(\epsilon_{kl}\) is antisymmetric in \(k\) and \(l\).\\
+    The tensor \(\epsilon_{kl}\) has only three independent components and so can be written in the terms of 3 vectors \((\omega_1,\,\omega_2,\,\omega_3)\) as follows:
+    \begin{equation}
+        \epsilon_{kl}=-\frac{1}{2}\epsilon_{klm}\omega_3\quad(\omega\text{ is the vorticity})\label{eq:navTensor6}
+    \end{equation}
+    where \(\epsilon_{klm}\) is the completely antisymmetric 3 tensor.\\
+    Thus, \eqref{eq:navTensor4} becomes,
+    \begin{equation}
+        d_{ij}=A_{ijkl}e_{kl}-\frac{1}{2}A_{ijkl}\epsilon_{klm}\omega_3\label{eq:navTensor7}
+    \end{equation}
+    For a fluid that is isotropic, \(A_{ijkl}\) must be built up from isotropic two tensors of which there is only one's \(\delta_{ij}\).
+
+    Since it is observed that the basic isotropic tensor is the Kronecker delta tensor, and that all isotropic tensors of even order can be written as the sum of products of delta tensors then,
+    \begin{equation}
+        A_{ijkl}=\mu\delta_{ik}\delta_{jl}+\mu'\delta_{il}\delta_{jk}+\mu''\delta_{ij}\delta_{kl}\label{eq:navTensor8}
+    \end{equation}
+    where \(\mu\), \(\mu'\), \(\mu''\) are scalar coefficient and Since \(A_{ijkl}\) is symmetrical in \(i\) and \(j\) we require
+    \[\mu'=\mu.\]
+    It will be observed that \(A_{ijkl}\) is now symmetrical in the indices \(k\) and \(l\) also, and that as a consequence the term containing \(\omega\) drops out of \eqref{eq:navTensor8} giving,
+    \[d_{ij}=2\mu e_{ij}+\mu''\Delta\delta_{ij} \]
+    where \(\Delta\) denotes the rate of expansion,
+    \[\Delta=\frac{\partial u_k}{\partial x_k}=e_{kk}=\vec{\nabla}\cdot\vec{u}  \]
+    Recall that \(d_{ij}\) makes no contribution to the normal stress,
+    \begin{align*}
+        & d_{ii}=2\mu e_{ii}+\left( \mu''\delta_{ii} \right)\Delta=0\\
+        \Rightarrow\;& (2\mu)\Delta+\left( \mu''\delta_{ii} \right)\Delta=0\\
+        \Rightarrow\;& \left( 2\mu+\mu''\delta_{ii} \right)\Delta=0\\
+        \Rightarrow\;& \left( 2\mu+3\mu''\right)\Delta=0\qquad[\delta_{ii}=\delta_{11}+\delta_{22}+\delta_{33}=3 ]\\
+        \intertext{Since, \(\Delta\neq 0\)}
+        \Rightarrow\;& 2\mu+3\mu''=0\\
+        \Rightarrow\;& \mu''=-\frac{2}{3}\mu
+    \end{align*}
+    Thus
+    \begin{equation}
+        d_{ij}=2\mu \left( e_{ij}-\frac{1}{3}\Delta\delta_{ij} \right)\label{eq:navTensor10}
+    \end{equation}
+    Now from \eqref{eq:navTensor3} and \eqref{eq:navTensor10},
+    \[\sigma_{ij}=-P\delta_{ij}+2\mu(e_{ij}-\frac{1}{3}\Delta \delta_{ij})\]
+    \qed
+\newline
+
+    Let \(\vec{u}\) be the fluid velocity at time \(t\) at the position vector \(\vec{x}\), so that \(\vec{u}\) is a function of \(t\) and \(\vec{x}\).\\
+    The components of \(\vec{u}\) are \(u_i=(u_1,u_2,u_3)\), so that each component is a function of \(t\) and \(x\):
+    \[u(t,x_1,x_2,x_3,\dots)\quad\text{etc.}\]
+    Consider a small volume \(v\) in which the velocity components do not vary significantly. The total momentum in this volume is given by
+    \begin{equation}
+        \int_V \rho \D v\cdot\vec{u}
+        \label{eq:navTensor11}
+    \end{equation}
+    It can be shown that the rate of change of this quantity 
+    \[\int \rho \frac{D}{D t}\vec{u}(t,\vec{x})\D v=\int \rho \D v \{\frac{\partial u}{\partial t}+(\vec{u}\cdot \vec{\nabla})\}\]
+    where \(\vec{u}\cdot\vec{\nabla}=(u_1\frac{\partial}{\partial x_1}+u_2\frac{\partial}{\partial x_2}+u_3\frac{\partial}{\partial x_3})\). Which is simply the sum of the products of mass and acceleration for all the elements of the material volume \(V\), can be rewritten as,
+    \[\int_V \rho \D v\cdot\frac{D u_i}{D t}=\frac{\partial u_i}{\partial t}+(\vec{u}\cdot\vec{\nabla})u_i\]
+    A portion of fluid is acted on, in general by both volume and surface forces.
+
+    We denote the vector resultant of the volume forces per unit mass of fluid, by \(\vec{F}\), so that the total volume force on the selected portion of fluid is
+    \[\int F_i \rho \D v\]
+    The \(i-\)th component of the surface on contact force exerted across a surface element of area \(\D s\) and normal \(\vec{n} \) may be represented as \(\sigma_{ij}n_j\,\D s\), where \(\sigma_{ij}\) is the stress tensor and the total surface force exerted on the selected portion of fluid by
+    \begin{align}
+        & \int \sigma_{ij}n_j\,\D s=\int \frac{\partial \sigma_{ij}}{\partial x_j}\D v\notag\\
+        & (\text{Total force = Body force + surface force})\notag\\
+       \Rightarrow\; & \rho \frac{D u_i}{D t}=\rho F_i+\frac{\partial \sigma_{ij}}{\partial x_j}\label{eq:navTensor12}
+    \end{align}
+    This is the equation of the motion for a fluid where the stress tensor \(\sigma_{ij}\) can be written as follows
+    \[\sij =-P\dij+2\mu (e_{ij}-\frac{1}{3}\Delta \dij)\]
+    substituting this into \eqref{eq:navTensor12}, the equation of motion we get,
+    \[\rho \frac{D u_i}{D t}=\rho F_i-\frac{\partial P}{\partial x_i}+\frac{\partial}{\partial x_j}{2\mu(e_{ij}-\frac{1}{3}\Delta \delta_{ij})}\]
+    \[e_{ij}=\frac{1}{2}\left( \frac{\partial u_i}{\partial x_j}+\frac{\partial u_j}{\partial x_i} \right)\quad \text{and  } \quad \Delta =e_{ij}\]
+    \begin{align*}
+        \therefore\,\frac{\partial \left( e_{ij}-\frac{1}{3}\Delta \dij \right)}{\partial x_j}&=\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j\,\partial x_j}+\frac{\partial^2 u_j}{\partial x_j\,\partial x_i} \right)-\left( \frac{1}{3}\cdot\frac{\partial \nabla}{\partial x_j}\dij \right)\\
+        &=\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j\,\partial x_j}+\frac{\partial^2 u_j}{\partial x_j\,\partial x_i} \right)-\left( \frac{1}{3}\cdot\frac{\partial }{\partial x_j}\left( \frac{\partial u_j}{\partial x_j} \right)\dij \right)\\
+        &=\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j\,\partial x_j} \right)+\frac{1}{2}\frac{\partial^2 u_j}{\partial x_j\,\partial x_i}-\frac{1}{3}\frac{\partial^2 u_i}{\partial x_j\,\partial x_i}\\
+        &=\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j\,\partial x_j} \right)+\frac{1}{6}\frac{\partial}{\partial x_j}(\frac{\partial u_i}{\partial x_i})\\
+        &=\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j\,\partial x_j} \right)+\frac{1}{6}\frac{\partial\,\nabla}{\partial x_j}\\
+        &=\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j\,\partial x_j} \right)+\frac{1}{6}\frac{\partial}{\partial x_j}(\vec{\nabla}\cdot\vec{u})
+    \end{align*}
+    For incompressible fluid, \(\vec{\nabla}\cdot\vec{u}=0\),
+    \begin{align*}
+        \frac{\partial }{\partial x_j}\left( e_{ij}-\frac{1}{3}\Delta \dij \right)&=\frac{1}{2}\frac{\partial^2 u_i}{\partial x_j\,\partial x_j}\\
+        &=\frac{1}{2} \frac{\partial^2 u_i}{\partial x_j^2}\\
+        &=\frac{1}{2}\nabla^2u
+    \end{align*}
+    \[\therefore \, \rho \frac{D u_i}{D t}=\rho F_i-\frac{\partial P}{\partial x_i}+2\mu\cdot \frac{1}{2}\nabla^2u_i\]
+    \begin{equation}
+        \begin{aligned}
+            \therefore \, \rho \frac{D u_i}{D t}&=\rho F_i-\frac{\partial P}{\partial x_i}+\mu\nabla^2u_i\\
+            \frac{D u_i}{D x_i}&=0
+        \end{aligned}
+        \label{eq:navTensor13}
+    \end{equation}
+    \(\therefore\) \eqref{eq:navTensor13} is the Navier-Stokes equation in tensor form.\\
+    We may rewrite \eqref{eq:navTensor13} in Lamb vector form,
+    \[\frac{D}{D t}=\frac{\partial }{\partial t}+\vec{u}\cdot \vec{\nabla}\]
+    \begin{align*}
+        &\frac{\partial \vec{u}}{\partial t}+(\vec{u}\cdot \vec{\nabla})\cdot\vec{u}=\vec{F}-\frac{1}{\rho}\left( \frac{\partial P}{\partial x}\vec{i}+\frac{\partial P}{\partial y}\vec{j}+\frac{\partial P}{\partial z}\vec{k} \right)+\nu\nabla^2 \vec{u}\\
+        \Rightarrow\;\;&\frac{\partial \vec{u}}{\partial t}+(\vec{u}\cdot \vec{\nabla})\cdot\vec{u}=\vec{F}-\frac{1}{\rho}\vec{\nabla}P+\nu\nabla^2 \vec{u}\\
+        &\qquad\vec{\nabla}\cdot\vec{u}=0
+    \end{align*}
+\end{soln}  
+\end{document}
