@@ -1,0 +1,448 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Questions}
+\section{General Relativity}
+        \begin{prob}[7]
+            What are Bianchi identities, Einstein tensor and Ricci tensor? Show that the covariant derivatives of Einstein tensor is zero.
+        \end{prob}
+        \begin{soln}
+            \textbf{Bianchi identities}:
+            \[R_{\mn \sigma,\rho}^\lambda+R_{\mu \sigma \rho,\nu}^\lambda+R_{\mu \rho \nu,\sigma}^\lambda=0\]
+            This tensor equation is called Bianchi identities.\\
+            
+            
+            \textbf{Ricci tensor}: Ricci tensor is,
+            \[R_{\alpha\beta}=R_{\mn \sigma}^\lambda=R_{\beta\alpha}\]
+            which is the contraction of \(R_{\alpha \nu\beta}^\mu\) on the first and third indices.\\
+            Other contraction would in principle also be possible. On the first and second, the first and forth etc. But because \(R_{\alpha\beta\mn}\) is antisymmetric on \(\alpha\) and \(\beta\) and on \(\mu\) and \(\nu\), all these contractions either vanish or reduce to \(+=R_{\alpha\beta}\). Therefore, the Ricci tensor is the only contraction of the Riemann tensor.\\
+            
+            \textbf{Einstein tensor}: The Einstein tensor \(G\) is a tensor of order 2 define over Pseudo-Riemannian manifolds.\\
+            In index-free notation it is defined as,
+            \[G=R-\frac{1}{2}gR\]
+            where, \(R\) is the Ricci tensor, \(g\) is the metric tensor and \(R\) is the scalar curvature.\\
+            In component form, the previous equation reads as,
+            \[G_\mn=R_\mn-\frac{1}{2}g_\mn R\]
+            The Einstein tensor is symmetric.\\
+
+            \textbf{The covariant derivatives of Einstein tensor is zero}: From the contracted Bianchi identities, we known that,
+            \[\nabla_l R_m^l-\frac{1}{2}\delta_m^l\nabla_l R=0\]
+            where, \(\delta\) is the Kronecker delta. Since, the mixed Kronecker delta is equivalent to the mixed tensor,
+            \[\delta_m^l=g_m^l\]
+            And since the covariant derivative of the metric tensor is zero (so it can be moved in or out of the scope of any such derivative), then,
+            \[\nabla_l R_m^l-\frac{1}{2}\nabla_l g_m^l R=0\]
+            Factor out the covariant derivative,
+            \[\nabla_l \left(R_m^l-\frac{1}{2} g_m^l R\right)=0\]
+            then, raise the index \(m\) throughout
+            \[\nabla_l \left(R^{lm}-\frac{1}{2} g^{lm} R\right)=0\]
+            The expression in parentheses is the Einstein tensor \(\nabla_l G^{lm}=0\). Which implies the covariant derivative of Einstein tensor is zero.
+        \end{soln}
+        \begin{prob}[7]
+            Define a flat space-time. Show that the vanishing of curvature tensor is a necessary and sufficient condition for a space-time to be flat.
+        \end{prob}
+        \begin{soln}
+            \textbf{Flat space time}: A region of world said to be flat if it is possible to construct it in a Galilean frame of reference. The space time is said to be flat if such coordinate can be found in it for which \(g_\mn\) are constant.\\
+
+            \textbf{Necessary and sufficient condition for the flat space-time}:\\
+            The necessary condition for flat space time is the vanishing of Riemann Christoffel tensor. This condition will also be sufficient if the converse is also true, i.e., if the Riemann Christoffel tensor vanishes the space time must be flat.
+
+            The construction of a uniform vector field by parallel displacement of a vector all over the region is possible if,
+            \begin{equation}
+                R_{\mn\sigma}^\lambda=0\label{eq:p1b.1}
+            \end{equation}
+            Let, \(A_{(\alpha)}^\mu\) be four uniform vector fields given by \(\alpha=1,2,3,4,\dots\) (here, \(\alpha\) is not a tensor suffix). Then equation \eqref{eq:p1b.1} becomes
+            \begin{align}
+                & \left( A_{(\alpha)}^\mu \right)_{,\sigma}=\fp{A_{(\alpha)}^\mu}{x^\sigma}+\Gamma_{\lambda\sigma}^\mu  A_{(\alpha)}^\lambda=0\notag\\
+                \Rightarrow\;& \fp{A_{(\alpha)}^\mu}{x^\sigma}=-\Gamma_{\lambda\sigma}^\mu  A_{(\alpha)}^\lambda\label{eq:1b1.2}
+            \end{align}
+            Now consider the transformation law of coordinates,
+            \[\D x^\mu=A_{(\alpha)}^\mu\D \bar{x}^\alpha (\alpha=1,2,3,4)\]
+            Since, \(\D s^2\) is invariant, we have,
+            \[
+                \D s^2=\overline{g}_{\alpha\beta} \cdot\overline{\D x^\alpha}\cdot\overline{\D x^\beta}=g_{\mn} \cdot \D x^\mu\cdot\D x^\nu\\
+            \]
+            \begin{align*}
+                \D s^2&=\overline{g}_{\alpha\beta} \cdot\overline{\D x^\alpha}\cdot\overline{\D x^\beta}\\
+                &=g_{\mn} \cdot \D x^\mu\cdot\D x^\nu\\
+                &=g_{\mn} A_{(\alpha)}^\mu\overline{\D x^\alpha}A_{(\beta)}^\nu\overline{\D x^\beta}
+            \end{align*}
+            i.e.,\footnote{Comparing this with \(\D s^2\) invariant}
+            \begin{equation}
+                \overline{g}_{\alpha\beta}=g_{\mn} A_{(\alpha)}^\mu A_{(\beta)}^\mu\label{eq:1b.3}
+            \end{equation}
+            Differentiating the above equation with respect to \(x^\sigma\), we get,
+            \begin{align*}
+                \fp{\bar{g}_{\alpha\beta}}{x^\sigma} &= g_{\mn} A_{(\alpha)}^\mu\fp{A_{(\beta)}^\nu}{x^\sigma}+g_{\mn}A_{(\beta)}^\nu\fp{A_{(\alpha)}^\mu}{x^\sigma}+A_{(\alpha)}^\mu A_{(\beta)}^\nu \fp{g_{\mn}}{x^\sigma}\\
+                &=-g_{\mn} A_{(\alpha)}^\mu A_{(\beta)}^\lambda \Gamma_{\lambda\sigma}^\nu - g_{\mn} A_{(\beta)}^\nu A_{(\alpha)}^\lambda \Gamma_{\lambda\sigma}^\mu+A_{(\alpha)}^\mu A_{(\beta)}^\nu \fp{g_\mn}{x^\sigma}\quad[\text{using \eqref{eq:1b1.2}}]
+                \\
+                \intertext{Now changing the dummy suffixes, we get,}
+                &=A_{(\alpha)}^\mu A_{(\beta)}^\nu \left[-g_{\mn} \Gamma_{\nu\sigma}^\lambda-g_{\mn} \Gamma_{\mu\sigma}^\lambda+\fp{g_\mn}{x^\sigma}\right]\\
+                &=A_{(\alpha)}^\mu A_{(\beta)}^\nu \left[-\Gamma_{\mu,\nu\sigma}-\Gamma_{\nu,\mu\sigma}+\fp{g_\mn}{x^\sigma}\right]\\
+                &=A_{(\alpha)}^\mu A_{(\beta)}^\nu \left[-\fp{g_\mn}{x^\sigma}+\fp{g_\mn}{x^\sigma}\right]\\
+                &=0
+            \end{align*}
+            Integrating we get, \(\overline{g}_{\alpha\beta}=C\,(Constant)\), which is constant throughout the region. From definition, it follows that the space-time is flat. Hence, the vanishing of Riemann-Christoffel tensor is necessary and sufficient conditions for flat space-time.
+        \end{soln}
+        \begin{prob}[6]
+            Give an account of Einstein's principle of equivalence. What are observable consequences of General theory of Relativity?/ Discuss that it acts as a bridge to pass from special to general theory of Relativity.
+        \end{prob}
+        \begin{soln}
+            \textbf{Einstein's principle of equivalence}: In the theory of general relativity, the principle of equivalence which necessarily leads to the introduction of a curved space time.\\
+            Simply, the equivalence principle is the equivalence of gravitational and inertial mass, that means inertial and gravitational mass are same.\\
+
+            \textbf{Consequences of General Theory of Relativity}: Some of the consequence of general relativity are:\\
+            \textbf{Gravitational time dilation}: Clocks run slower in deeper gravitational walls.\\
+            \textbf{Precession}: Precession of orbits are in unexpected way in Newton's theory of gravity. (This has been observed in the orbit of Mercury and binary pulsars.)\\
+            \textbf{Light Deflection}: Rays of light bend in the presence of a gravitational field.\\
+            \textbf{Frame-Dragging}: Rotating masses ``drag along'' the spacetime around them.\\
+            \textbf{Metric expansion of space}: The universe is expanding, and the far parts of it are moving away from us faster than the speed of light.\\
+            \textbf{Gravitational Lensing}: The curvature of spacetime means that the path of light is deflected around massive objects. This effect is known as gravitational lensing, and it can affect the shape of an event's light cone allowing light to travel into previously forbidden region.\\
+            \textbf{Black holes}: Black holes occurs when an object becomes so massive that even light can't escape its gravitational wall. We know that super massive black holes reside at the center of most galaxies, including our own. These are millions of times the mass of sun.
+        \end{soln}
+        \begin{prob}[8]
+            Write a short note on the energy momentum tensor \(T^{\mu\nu}\) and discuss the reasons which led Einstein to choose the field equations in the form
+            \[ R_{\mn}-\frac{1}{2}g_\mn R=kT_{\mn}\]
+            or,
+            \[ R_{\mn}-\frac{1}{2}g_\mn R=-8\pi T_{\mn}\]
+            show further that these equations reduce in linear approximation to Newtonian equations \(\nabla^2 \psi=-8\pi\)
+        \end{prob}
+        \begin{soln}
+            \textbf{Energy momentum tensor, \(T^\mn\):} The energy momentum tensor is a tensor quantity in physics that describes the density and flux of energy and momentum in spacetime.\\
+            The stress energy tensor is defined as tensor, \(T^\mn\), of order two that gives the flux of the \(\mu-\)th component of the momentum vector across a surface with constant \(x^\nu\) coordinate.\\
+            In general relativity, the energy momentum tensor is symmetric.\\
+
+            \textbf{Second part}: Field equations in classical mechanics are given by,
+            \begin{equation}
+                \nabla^2\varphi=-4\pi \nu \rho \label{eq:p2b.1}
+            \end{equation}
+            where \(\varphi\), \(\nu\), \(\rho\) stand for gravitational potential, Newtonian constant of gravitation and density of material distribution respectively.\\
+            According to principle of equivalence, \(\varphi\) can be interpreted either as potential function or, metric tensor \(g_\mn\).\\
+            In order to get an analogue of the equation \eqref{eq:p2b.1} in general theory of relativity, \(\varphi\) must be replaced by the metric tensor \(g_{\mn}\). That is to say, we consider \(g_{\mn}\) to be gravitational potential. It follows from \eqref{eq:p2b.1} that, the field equation in general theory of relativity are expressible in terms of second order derivatives of \(g_\mn\). The most appropriate tensor which contains second derivatives is the Ricci tensor \(R_{\mn}\).\\
+
+            Hence, left side of \eqref{eq:p2b.1} will be either \(R_\mn\) or, its linear combination. While describing the relativistic field equations we must keep in mind that the field equations must be invariant under the tensor law of transformation.\\
+            It means that both sides of \eqref{eq:p2b.1} must be expressed in terms of tensor. Hence, \(\rho\) in \eqref{eq:p2b.1} must be replaced by second rank tensors. This tensor is commonly known as energy momentum tensor.\\
+            All the above facts are met in the equation,
+            \begin{equation}
+                R_{\mn}+aRg_{\mn}=-kT_{\mn}\label{eq:p2b.2}
+            \end{equation}
+            where, \(k\) stands for Einstein constant of gravitation and \(k=8\pi\). From \eqref{eq:p2b.2}
+            \begin{align*}
+                & R_\nu^\mu+aRg_\nu^\mu=-kT_\nu^\mu\\
+                \Rightarrow\;& (R_\nu^\mu+aRg_\nu^\mu)_{,\mu}=(-kT_\nu^\mu)_{,\mu}=0\\\intertext{[{for \((-kT_\nu^\mu)_{,\mu}=-kT_{\nu,\mu}^\mu=-k\cdot 0=0\) Since, divergence of energy tensor is zero}]}
+                \Rightarrow\;& a=-\frac{1}{2}
+            \end{align*}
+            \(\therefore\) \eqref{eq:p2b.2} becomes,
+            \[R_{\mn}-\frac{1}{2}Rg_{\mn}=-kT_{\mn}\]
+            Taking cosmological constant \(\Lambda\) into account, we obtain,
+            \begin{equation}
+                R_{\mn}-\frac{1}{2}Rg_{\mn}+\Lambda g_\mn=-kT_{\mn}\label{eq:pb2.3}
+            \end{equation}
+            This is the required field equation in general theory of relativity.\\
+            For \(\Lambda=0\), \eqref{eq:pb2.3} gives,
+            \begin{equation}
+                R_{\mn}-\frac{1}{2}Rg_{\mn}=-kT_{\mn}\label{eq:pb2.4}
+            \end{equation}
+            Multiplying \eqref{eq:pb2.4} by \(g^\mn\), we get,
+            \begin{align*}
+                &R-\frac{1}{2}R\cdot4=-kT\\
+                \Rightarrow\; &R=kT
+            \end{align*}
+            Putting the value of \(R\) in \eqref{eq:pb2.4}, we get,
+            \begin{equation}
+                R_{\mn}-\frac{1}{2}KTg_{\mn}=-kT_{\mn}
+                \label{eq:pb2.5}
+            \end{equation}
+            This is an alternative form of the field equation given by \eqref{eq:pb2.4}.\\
+            For empty space, so that, \(T=0\), then \eqref{eq:pb2.5} gives, 
+            \begin{equation}
+                R_{\mn}=0
+                \label{eq:pb2.6}
+            \end{equation}
+            Thus, the field equation in empty space are given by \eqref{eq:pb2.6}.
+        \end{soln}
+        \begin{prob}
+            State and comment on the basic hypothesis and postulates of the general theory of relativity and discuss how the principle of equivalence and covariance follow from the guiding principle in the development if general relativity.
+        \end{prob}
+        \begin{soln}
+            The special theory of relativity has its origin in the development of electromagnetic while general relativity is the relativistic theory of gravitation. The special theory of relativity only accounts for inertial form of reference in the free space where gravitational effects can be neglected.\\
+            In these systems, the law of inertial holds good and the physical laws retain the same form.\\
+            The special theory of relativity deals with the problems of uniform rectilinear motion. We wish to extend the principle of relativity in such a way that it may hold for non-inertial systems and consequently the theory may explain the non-inertial phenomenon like the phenomenon of gravitation. The extended theory is known as the general theory of relativity.\\
+            The theory of gravitation also deals with non-inertial systems unlike special theory which deals only inertial systems; for this reason, the theory of gravitation is called ``General theory of relativity''.\\
+
+            \textbf{Principle of Covariance}: The generalized principle of relativity states, ``the laws of nature retain their same form in all coordinate systems'', this statement is called the principle of covariance.\\
+            This principle is the foundation of theory of general relativity. According to this principle, we must express all the physical laws of nature by means of equations in the covariant form, which are independent of the coordinate system. This can be done by expressing the laws of nature in the tensor equations because the tensor equations has exactly the same form in the coordinate systems.\\
+
+
+            \textbf{Principle of equivalence}: The principle of equivalence states that the gravitational forces and inertial forces are equivalent and are indistinguishable from each other. It also follows from the principle of equivalence that inertial mass and gravitational mass are equal.
+        \end{soln}
+        \begin{prob}
+            Show that geodesics equations of motion are reducible to Newtonian equations of motion in case of a weak static field.
+        \end{prob}
+        \begin{soln}
+            Consider, the motion of a test particle in case of a weak static field. The motion of a test particle is governed by geodesic equation as given below:
+            \begin{equation}
+                \frac{\D^2 x^\alpha}{\D s^2}+\Gamma_\mn^\alpha \frac{\D x^\mu}{\D s}\cdot \frac{\D x^\nu}{\D s}=0\label{eq:p4b.1}
+            \end{equation}
+            Since the field is static i.e., it does not change with time.\\
+            Hence, velocity component can be taken as,
+            \begin{equation}
+                \frac{\D x^1}{\D s},\,\frac{\D x^2}{\D s},\,\frac{\D x^3}{\D s}=0\quad \text{and}\quad \frac{\D x^0}{\D s}=1\label{eq:p4b.2}
+            \end{equation}
+            Our coordinates are Galilean coordinate, \(x^0=ct\), \(x^1=x\), \(x^2=y\), \(x^3=z\). A weak static field is characterized by taking 
+            \[g_\mn=\eta_\mn+h_\mn\quad\text{such that }g_\mn=0 \text{ for }\mu\neq\nu.\]
+            Here, \(\eta_\mn\) is a metric tensor for Galilean values and \(h_\mn\) is a function of \(x\), \(y\) and \(z\).\\
+            The derivation of the metric from unity is represented through \(h_\mn\). The quantities \(h_\mn\) are taken to be small so that the powers of \(h_\mn\) higher than the first are neglected, we have,
+            \begin{equation}
+                \eta_{11}=\eta_{22}=\eta_{33}=-\eta_{00}=-1,\quad \eta_{\mn}=0=g_\mn(\mu\neq\nu)\label{eq:p4b.3}
+            \end{equation}
+            \(\D s^2 =g_{\mn}\D x^\mu \D x^\nu\) gives,
+            \[1=g_{\mn}\frac{\D x^\mu}{\D s}\frac{\D x^\nu}{\D s}\]
+            By virtue of \eqref{eq:p4b.2} gives,
+            \begin{align*}
+                &1=g_{00}\,c\frac{\D t}{\D s}c\frac{\D t}{\D s}\\
+                \Rightarrow\,&1=(1+h_{00})c^2 \frac{\D t}{\D s} \frac{\D t}{\D s}\\
+                \Rightarrow\,&\D s^2=(1+h_{00})c^2 \D t^2
+            \end{align*}
+            Taking first approximation,
+            \begin{equation}
+                \D s^2=c^2\D t^2\;\;\Rightarrow\;\D s=c\D t \label{eq:p4b.4}
+            \end{equation}
+            By virtue of \eqref{eq:p4b.2}, \eqref{eq:p4b.1} becomes,
+            \begin{align*}
+                & \frac{\D^2 x^\alpha}{\D s^2}+\Gamma_{00}^\alpha \frac{\D x^0}{\D s}\cdot \frac{\D x^0}{\D s}=0\\
+                \Rightarrow\;& \frac{\D^2 x^\alpha}{\D s^2}=-\Gamma_{00}^\alpha \left(\frac{\D x^0}{\D s}\right)^2\\
+                \Rightarrow\;& \frac{\D^2 x^\alpha}{\D s^2}=-\Gamma_{00}^\alpha 1^2\\
+                \Rightarrow\;& \frac{\D^2 x^\alpha}{\D s^2}=-\Gamma_{00}^\alpha\\
+                \Rightarrow\;& -\Gamma_{00}^\alpha=\frac{\D^2 x^\alpha}{\D s^2}\\
+                \Rightarrow\;& -\Gamma_{00}^\alpha=\frac{\D}{\D s}\left(\frac{\D x^\alpha}{\D s}\right)\\
+                \Rightarrow\;& -\Gamma_{00}^\alpha=\frac{\D}{c\D t}\left(\frac{\D x^\alpha}{c \D t}\right)\\
+                \Rightarrow\;& -\Gamma_{00}^\alpha=\frac{1}{c^2}\,\frac{\D^2 x^\alpha}{\D t^2}\,\,[\text{by \eqref{eq:p4b.4}}]\\
+                \Rightarrow\;&\frac{\D^2 x^\alpha}{\D s^2}= -c^2\Gamma_{00}^\alpha
+            \end{align*}
+            It is easy to show that \(\Gamma_{00}^0=0\)\\
+            Hence,
+            \begin{equation}
+                \frac{\D^2 x^\alpha}{\D s^2}= -c^2\Gamma_{00}^\alpha,\,(\alpha=1,2,3)
+                \label{eq:p4b.5}
+            \end{equation}
+            Now,
+            \begin{align*}
+                \Gamma_{00}^0&=g^{\alpha\beta}\Gamma_{00,\beta}^0\\
+                &=g^{\alpha\alpha}\Gamma_{00,\alpha}^0\\
+                &=g^{\alpha\alpha}\frac{1}{2}\left( 2\frac{\partial g_{0\alpha}}{\partial x^\alpha}-\frac{\partial g_{00}}{\partial x^\alpha} \right)\\
+                &=g^{\alpha\alpha}\frac{1}{2}\left( -\frac{\partial g_{00}}{\partial x^\alpha}\right)\;\;\text{[using \eqref{eq:p4b.3}]}\\
+                &=\frac{1}{2g_{\alpha\alpha}}\left[-\frac{\partial}{\partial x^\alpha}\left(1+h_{00}\right)\right]\\
+                &=\frac{1}{2} (-1+h_{\alpha\alpha})^{-1}\left(-\frac{\partial h_{00}}{\partial x^\alpha}\right)\\
+                &=\frac{1}{2} (1-h_{\alpha\alpha})^{-1}\left(\frac{\partial h_{00}}{\partial x^\alpha}\right)\\
+                &=\frac{1}{2}\frac{\partial h_{00}}{\partial x^\alpha}
+            \end{align*}
+            Now \eqref{eq:p4b.5} becomes,
+            \begin{equation}
+                \frac{\D^2 x^\alpha}{\D t^2}= -\frac{c^2}{2}\frac{\partial h_{00}}{\partial x^\alpha},\,(\alpha=1,2,3)
+                \label{eq:p4b.6}
+            \end{equation}
+            Newtonian equations of motions are
+            \begin{equation}
+                \frac{\D^2 x^\alpha}{\D t^2}=-\frac{\partial \varphi}{\partial x^\alpha},\,(\alpha=1,2,3)
+                \label{eq:p4b.7}
+            \end{equation}
+            where \(\varphi\) is potential function.\\
+            The equation \eqref{eq:p4b.6} and \eqref{eq:p4b.7} become identical if
+            \begin{align*}
+                & -\frac{c^2}{2}\frac{\partial h_{00}}{\partial x^\alpha}=-\frac{\partial \varphi}{\partial x^\alpha}\\
+                \therefore\;\;& \frac{\partial h_{00}}{\partial x^\alpha}=\frac{2}{c^2}\frac{\partial \varphi}{\partial x^\alpha}\\
+                \Rightarrow\;\;& \int\frac{\partial h_{00}}{\partial x^\alpha}\D x^\alpha=\frac{2}{c^2}\int\frac{\partial \varphi}{\partial x^\alpha}\D x^\alpha\\
+                \Rightarrow\;\;& \int\D h_{00}=\frac{2}{c^2}\int\D \varphi\\
+                \Rightarrow\;\;& h_{00}=\frac{2\varphi}{c^2}+k_1\\
+                \Rightarrow\;\;& 1+h_{00}=\frac{2\varphi}{c^2}+k_2\\
+                \Rightarrow\;\;& g_{00}=\frac{2\varphi}{c^2}+k
+            \end{align*}
+            Choosing \(\varphi\) such that when \(g_{00}=1\), \(\varphi=0\), so that \(k=1\), then
+            \[g_{00}=1+\frac{2\varphi}{c^2}\]
+            Hence geodesic equations are reducible to Newtonian equations of motion in case of weak static field if
+            \begin{align*}
+                g_{00}&=1+\frac{2\varphi}{c^2}\\
+                g_{00}&=1+2\varphi,\quad \text{if  }c=1.
+            \end{align*}
+        \end{soln}
+    \begin{prob}
+        Derive Schwarzschild interior solution for a spherically symmetric distribution of matter with constant density.
+    \end{prob}
+    \begin{prob}
+        Deduce Einstein's field equations for interior material world in the form
+        \[R_\mn-\frac{1}{2}g_\mn R=-8\pi T_\mn\]
+        explaining the significance of the symbols used. Hence, obtain Poission's equation on approximation for a very weak static field.
+    \end{prob}
+    \begin{prob}
+        Derive Einstein tensor. Prove that the divergence of \(\{R_\nu^\mu-\frac{1}{2}g_\nu^\mu R\}\) is identically zero.
+    \end{prob}
+    \begin{soln}
+        The Bianchi identities are given by,
+        \begin{equation}
+            R_{\mn \sigma,\rho}^\lambda+R_{\mu \sigma \rho,\nu}^\lambda+R_{\mu \rho \nu,\sigma}^\lambda=0
+            \label{eq:einTen1}
+        \end{equation}
+        Using anti-symmetry property in the second term we get,
+        \begin{equation}
+            R_{\mn \sigma,\rho}^\lambda - R_{\mu \rho \sigma ,\nu}^\lambda+R_{\mu \rho \nu,\sigma}^\lambda=0
+            \label{eq:einTen2}
+        \end{equation}
+        contracting with respect to \(\lambda\) to \(\sigma\) we get,
+        \begin{equation}
+            R_{\mn \lambda,\rho}^\lambda - R_{\mu \rho \lambda ,\nu}^\lambda+R_{\mu \rho \nu,\lambda}^\lambda=0
+            \label{eq:einTen3}
+        \end{equation}
+        By definition of Ricci tensor,
+        \[
+            R_{\mn\lambda}^\lambda=R_\mn\qquad\text{ and }\qquad R_{\mu\rho\lambda}^\lambda=R_{\mu\rho}
+            \]
+            So equation \eqref{eq:einTen3} becomes
+            \begin{equation}
+                R_{\mn,\rho} - R_{\mu \rho ,\nu}+R_{\mu \rho \nu,\lambda}^\lambda=0
+                \label{eq:einTen4}
+            \end{equation}
+            Since, derivatives of fundamental tensors are zero, we may write the equation \eqref{eq:einTen4} as,
+            \begin{align*}
+                &g^{\mu \rho} R_{\mn,\rho} - g^{\mu \rho}R_{\mu \rho ,\nu}+g^{\mu \rho}R_{\mu \rho \nu,\lambda}^\lambda=0\\
+                \Rightarrow\;&\left(g^{\mu \rho} R_{\mn}\right)_{,\rho} - \left(g^{\mu \rho}R_{\mu \rho}\right)_{ ,\nu}+\left(g^{\mu \rho}R_{\mu \rho \nu}\right)_{ ,\lambda}^\lambda=0\\
+                \Rightarrow\;&R_{\nu,\rho}^{\rho} - R_{ ,\nu}+R_{\nu,\lambda}^\lambda=0
+            \end{align*}
+            changing the dummy indices \(\rho\) and \(\lambda\) to \(\mu\), we get,
+            \begin{align}
+                &R_{\nu,\rho}^{\mu} - R_{ ,\nu}+R_{\nu,\mu}^\mu=0\notag\\
+                \Rightarrow\;&2R_{\nu,\mu}^{\mu} - R_{ ,\nu}=0\label{eq:einTen5}
+            \end{align}
+            But,
+            \[
+                R_{,\nu}=\fp{R}{x^\nu}=\fp{}{x^\mu}\left( g^\mu_\nu\,R \right)=\left( g^\mu_\nu\,R \right)_{,\mu}
+                \]
+                So \eqref{eq:einTen5} becomes,
+                \begin{align*}
+                    &2R_{\nu,\rho}^{\mu} - \left( g^\mu_\nu\,R \right)_{,\mu}=0\\
+                    \Rightarrow\;&\left(R_{\nu}^{\mu} - \frac{1}{2} g^\mu_\nu\,R \right)_{,\mu}=0\\
+                    \Rightarrow\;&G_{\nu,\mu}^\mu=0
+            \end{align*}
+            where, \(G_{\nu}^\mu=R_{\nu}^{\mu} - \frac{1}{2} g^\mu_\nu\,R\) is called Einstein tensor.\\
+
+
+            \textbf{2nd Part:}
+            \begin{align*}
+                & \text{div }\left( G_{\nu}^\mu \right)=G_{\nu,\mu}^\mu=0\\
+                \Rightarrow\,& \text{div }\left( R_{\nu}^{\mu} - \frac{1}{2} g^\mu_\nu\,R \right)=0
+            \end{align*}
+            Therefore, the divergence of Einstein's tensor is identically zero.
+    \end{soln}
+    \begin{prob}
+        Derive the equation for a planetary orbit and obtain expression for the advance of the perihelion to an orbit.
+    \end{prob}
+    \begin{soln}
+        We are to determine the differential equations of the path of a planet moving round the sun. In comparison to the sun, the planets may be regarded as small free particles, their space-time trajectories are given by geodesic equations.
+        \begin{equation}
+            \frac{\D^2 x^\alpha}{\D s^2}+\Gamma_{ij}^\alpha \frac{\D x^i}{\D s}\cdot \frac{\D x^j}{\D s}=0\label{eq:planet1}
+        \end{equation}
+        The field surrounding the sun may be taken as the field of an isolated particle at rest at the origin. So we consider the line element,
+        \begin{equation}
+            \D s^2=-e^\lambda\D r^2-r^2\left( \D \theta^2+\sin^2\theta\,\D\,\theta^2 \right)+e^2\D\,t^2
+            \label{eq:planet2}
+        \end{equation}
+        with \(\displaystyle e^\nu=e^{-\lambda}=1-\frac{2GM}{r}\).\\
+        We have,
+        \[
+            g_\mn=\begin{pmatrix}
+            -e^\lambda & 0 & 0& 0\\
+            0 & -r^2 & 0& 0\\
+            0& 0 & -r^2 \sin^2\theta & 0\\
+            0& 0 & 0 & e^2
+        \end{pmatrix},g_{\mn}=0\quad\text{ for }\mu\neq \nu
+        \]
+        \[
+            \therefore \,g_\mn=\begin{pmatrix}
+            -e^\lambda & 0 & 0& 0\\
+            0 & -r^{-2} & 0& 0\\
+            0& 0 & \frac{1}{-r^2 \sin^2\theta} & 0\\
+            0& 0 & 0 & e^{-2}
+        \end{pmatrix},g^{\mn}=0\quad\text{ for }\mu\neq \nu
+        \]
+        Our coordinates are \(x^1=r\), \(x^2=\theta\), \(x^3=\varphi\), \(x^4=ct\).\\
+        Non-vanishing Christoffel's symbols are,
+        \[
+            \Gamma_{11}^1=\frac{\lambda '}{2},\;\;
+            \Gamma_{22}^1=-r e^{-\lambda},\;\;
+            \Gamma_{44}^1=\frac{\nu '}{2}e^{\nu-\lambda},\;\;
+            \Gamma_{12}^2=\frac{1}{r},\;\;
+            \Gamma_{23}^3=\cot\,\theta,\;\;
+            \Gamma_{13}^3=\frac{1}{r},\;\;
+            \Gamma_{33}^1=-r \sin^2\,\theta\,e^{-\lambda},\;\;
+            \Gamma_{44}^4=\frac{\nu'}{2},\;\;
+            \Gamma_{33}^2=-\sin\,\theta\,\cos\,\theta
+        \]
+        Here the velocity \(c\) of light is taken to be unit in order to use astronomical units.\\
+        For \(\alpha=1\),
+        \begin{align}
+            &\frac{\D^2 x^1}{\D s^2}+\Gamma_{ij}^1 \frac{\D x^i}{\D s}\cdot \frac{\D x^j}{\D s}=0\notag\\
+            \text{i.e., }&\frac{\D^2 r}{\D s^2}+\Gamma_{11}^1\left( \frac{\dx^1}{\D s} \right)^2+\Gamma_{22}^1\left( \frac{\dx^2}{\D s} \right)^2+\Gamma_{33}^1\left( \frac{\dx^3}{\D s} \right)^2+\Gamma_{44}^1\left( \frac{\dx^4}{\D s} \right)^2=0\notag\\
+            \Rightarrow\;\; & \frac{\D^2 r}{\D s^2}+\frac{\lambda '}{2}\left( \frac{\dx^1}{\D s} \right)^2-r e^{-\lambda}\left( \frac{\dx^2}{\D s} \right)^2-r \sin^2\,\theta\,e^{-\lambda}\left( \frac{\dx^3}{\D s} \right)^2+\frac{\nu '}{2}e^{\nu-\lambda}\left( \frac{\dx^4}{\D s} \right)^2=0
+            \label{eq:planet3}
+        \end{align}
+        For \(\alpha=2\),
+        \begin{align}
+            &\frac{\D^2 x^2}{\D s^2}+\Gamma_{ij}^2 \frac{\D x^i}{\D s}\cdot \frac{\D x^j}{\D s}=0\notag\\
+            \Rightarrow\;\; & \frac{\D^2 \theta}{\D s^2}+\Gamma_{12}^2\frac{\dx^1}{\D s}\frac{\dx^2}{\D s}+\Gamma_{21}^2\frac{\dx^2}{\D s}\frac{\dx^1}{\D s}+\Gamma_{33}^2\left( \frac{\dx^3}{\D s} \right)^2=0\notag\\
+            \Rightarrow\;\; & \frac{\D^2 \theta}{\D s^2}+\frac{2}{r}\frac{\D r}{\D s}\frac{\D \theta}{\D s}-\sin\,\theta\,\cos\,\theta \left( \frac{\D \varphi}{\D s} \right)^2=0
+            \label{eq:planet4}
+        \end{align}
+        For \(\alpha=3\),
+        \begin{align}
+            &\frac{\D^2 x^3}{\D s^2}+\Gamma_{ij}^3 \frac{\D x^i}{\D s}\cdot \frac{\D x^j}{\D s}=0\notag\\
+            \Rightarrow\;\; & \frac{\D^2 \varphi}{\D s^2}+2\Gamma_{13}^3\frac{\dx^1}{\D s}\frac{\dx^3}{\D s}+2\Gamma_{23}^3\frac{\dx^2}{\D s}\frac{\dx^3}{\D s}=0\notag\\
+            \Rightarrow\;\; & \frac{\D^2 \varphi}{\D s^2}+\frac{2}{r}\frac{\D r}{\D s}\frac{\D \varphi}{\D s}-\cot\,\theta\, \frac{\D \theta}{\D s}\frac{\D \varphi}{\D s}=0
+            \label{eq:planet5}
+        \end{align}
+        For \(\alpha=4\),
+        \begin{align}
+            &\frac{\D^2 x^4}{\D s^2}+\Gamma_{ij}^4 \frac{\D x^i}{\D s}\cdot \frac{\D x^j}{\D s}=0\notag\\
+            \Rightarrow\;\; & \frac{\D^2 t}{\D s^2}+2\Gamma_{14}^4\frac{\dx^1}{\D s}\frac{\dx^4}{\D s}=0\notag\\
+            \Rightarrow\;\; & \frac{\D^2 t}{\D s^2}+\nu' \frac{\D r}{\D s}\frac{\D t}{\D s}=0
+            \label{eq:planet6}
+        \end{align}
+        Choosing coordinates such that the planet moves initially in the plane \(\theta=\frac{\pi}{2}\) so that \(\cos\,\theta=0\), \(\sin\,\theta=1\), \(\frac{\D \theta}{\D s}=0\).\\
+        Substituting these values in \eqref{eq:planet3}, \eqref{eq:planet4}, \eqref{eq:planet5} and \eqref{eq:planet6},
+        \begin{align}
+            & \frac{\D^2 r}{\D s^2}+\frac{\lambda '}{2}\left( \frac{\D r}{\D s} \right)^2-r e^{-\lambda}\left( \frac{\D \varphi}{\D s} \right)^2+\frac{\nu '}{2}e^{\nu-\lambda}\left( \frac{\D t}{\D s} \right)^2=0\label{eq:planet7}\\
+            & \frac{\D^2 \theta}{\D s^2}=0\label{eq:planet8}\\
+            & \frac{\D^2 \varphi}{\D s^2}+\frac{2}{r}\frac{\D r}{\D s}\frac{\D \varphi}{\D s}=0\label{eq:planet9}\\
+            & \frac{\D^2 t}{\D s^2}+\nu' \frac{\D r}{\D s}\frac{\D t}{\D s}=0\label{eq:planet10}
+        \end{align}
+        The equation \eqref{eq:planet8} shows that a particle which starts moving in the plane \(\theta=\frac{\pi}{2}\) contains to move in the same plane.\\
+        From \eqref{eq:planet9},
+        \begin{align*}
+            &r^2\dnf{\varphi}{s}{2}+2r\df{r}{s}\df{\varphi}{s}=0\\
+            \Rightarrow\;&\df{}{s}\left( r^2\df{\varphi}{s} \right)=0
+        \end{align*}
+        Integrating this we get,
+        \begin{equation}
+            r^2\df{\varphi}{s}=\text{ constant }=L\qquad[\text{ Some author use \(h\) for }L.]
+            \label{eq:planet11}
+        \end{equation}
+        where \(L= \) constant = orbital angular momentum per unit mass.\\
+        From \eqref{eq:planet10}, we get
+        \begin{align*}
+            &e^2\dnf{t}{s}{2}+e^2\cdot \nu'\cdot\df{r}{s}\cdot\df{t}{s}=0\\
+            \Rightarrow\;&\df{}{s}\left( e^2\df{t}{s} \right)=0
+        \end{align*}
+        Integrating,
+        \begin{equation}
+            e^2\df{t}{s}=\text{ constant }=E
+            \label{eq:planet12}
+        \end{equation}
+        For a massive particle, \(E\) is the energy.\\
+        Along the geodesic
+        \(-g_\mn\df{x^\mu}{\lambda}\df{x^\nu}{\lambda}=\varepsilon\)
+        is a constant.\\
+        For a massive particle
+        \[\lambda=\tau,\quad\varepsilon=-1\quad [\text{metric --- + represents -1}]\]
+    \end{soln}
+\end{document}

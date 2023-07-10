@@ -6,6 +6,122 @@
 \begin{document}
 \chapter{Navier-Stokes Equation}
 \begin{prob}
+    Explaining each term clearly, derive the Navier-Stokes equation for viscous compressible fluid and then deduce the equation in the form 
+    \[\rho \ddt{q}=\rho \,F-\nabla\,P+\mu\nabla^2\,q\]
+    for viscous incompressible fluid. Hence, derive the Lamb's form of these equations.
+\end{prob}
+\begin{soln}
+    Let us consider the motion of a compressible viscous fluid with velocity vector,
+    \[\vec{q}=u\vec{i}+v\vec{j}+w\vec{k}\]
+    The equation of the motion of the flow fluid becomes,
+    \[\rho\ddt{\vec{q}}=\rho\,\vec{F}+\vec{P}\]
+    where, \(\vec{F}=F_x\vec{i}+F_y\vec{j}+F_z\vec{k}\) is the \emph{body force} and \(\vec{P}=P_x\vec{i}+P_y\vec{j}+P_z\vec{k}\) is the \emph{surface force}.\\
+    
+    Let us consider a small parallelopiped of volume \(\D v=\D x\D y\D z\) inside a fluid. The resuting surface force acting on the volume,
+    \begin{align*}
+        \vec{P}&=\left( \pardx{\vec{P}_x}+\pardy{\vec{P}_y}+\pardz{\vec{P}_z} \right)\dx\dy\dz\\
+        &=\left( \pardx{\vec{P}_x}+\pardy{\vec{P}_y}+\pardz{\vec{P}_z} \right)\D v
+    \end{align*}
+    Now, the resultant surface force per unit volume \((\D v=1)\) is,
+    \[
+        \vec{P}=\pardx{\vec{P}_x}+\pardy{\vec{P}_y}+\pardz{\vec{P}_z}
+    \]
+    Now, the quantites \(\vec{P}_x\), \(\vec{P}_y\), \(\vec{P}_z\) are vectors which can be resolved as,
+    \begin{align*}
+        \vec{P}_x&=\sigma_{xx}\,\vec{i}+\sigma_{xy}\,\vec{j}+\sigma_{xz}\,\vec{k}\\
+        \vec{P}_y&=\sigma_{yx}\,\vec{i}+\sigma_{yy}\,\vec{j}+\sigma_{yz}\,\vec{k}\\
+        \vec{P}_z&=\sigma_{zx}\,\vec{i}+\sigma_{zy}\,\vec{j}+\sigma_{zz}\,\vec{k}
+    \end{align*}
+    where \(\sigma_{xx}\), \(\sigma_{yy}\), \(\sigma_{zz}\) are normal stresses and \(\sigma_{xy}\), \(\sigma_{yx}\), \(\sigma_{xz}\), \(\sigma_{zx}\), \(\sigma_{zy}\), \(\sigma_{yz}\) are shearing stresses.
+    \[
+        \therefore \,\vec{P}=
+        \left( \pardx{\sigma_{xx}}+\pardy{\sigma_{yx}}+\pardz{\sigma_{zx}} \right)\vec{i}+
+        \left( \pardx{\sigma_{xy}}+\pardy{\sigma_{yy}}+\pardz{\sigma_{zy}} \right)\vec{j}+
+        \left( \pardx{\sigma_{xz}}+\pardy{\sigma_{yz}}+\pardz{\sigma_{zz}} \right)\vec{k}
+    \]
+    We have the equation of motion,
+    \[\rho\ddt{\vec{q}}=\rho\vec{F}+\vec{P}\]
+\begin{equation}
+    \begin{rcases}
+        \displaystyle\rho\ddt{u}=\rho F_x+\pardx{\sigma_{xx}}+\pardy{\sigma_{yx}}+\pardz{\sigma_{zx}}\\
+        \displaystyle\rho\ddt{u}=\rho F_y+\pardx{\sigma_{xy}}+\pardy{\sigma_{yy}}+\pardz{\sigma_{zy}}\\
+        \displaystyle\rho\ddt{u}=\rho F_z+\pardx{\sigma_{xz}}+\pardy{\sigma_{yz}}+\pardz{\sigma_{zz}}\quad
+    \end{rcases}\label{eq:navier1}
+\end{equation}
+where, \(\ddt{}=\frac{\partial}{\partial\,t}+u\pardx{}+v\pardy{}+w\pardz{}\) is the total derivative with respect to the fluid particle following the motion.\\
+
+
+We know that the stress and rate of strain relation,
+\begin{align*}
+    \sigma_{xx}&=2\mu\pardx{u}-\frac{2\mu}{3}(\vec{\nabla}\cdot\vec{q})-P\\
+    \sigma_{yy}&=2\mu\pardy{v}-\frac{2\mu}{3}(\vec{\nabla}\cdot\vec{q})-P\\
+    \sigma_{zz}&=2\mu\pardz{w}-\frac{2\mu}{3}(\vec{\nabla}\cdot\vec{q})-P\\
+    \sigma_{xy}=\sigma_{yx}&=\mu\left( \pardy{u}+\pardx{v} \right)\\
+    \sigma_{yz}=\sigma_{zy}&=\mu\left( \pardz{v}+\pardy{w} \right)\\
+    \sigma_{zx}=\sigma_{xz}&=\mu\left( \pardz{u}+\pardx{w} \right)
+\end{align*}
+using these we get from \eqref{eq:navier1}
+\begin{equation}
+    \rho\ddt{u}=\rho F_x+\pardx{}\left[ 2\mu\pardx{u}-\frac{2\mu}{3}(\vec{\nabla}\cdot\vec{q})-P \right]+\pardy{}\left[ \mu\left( \pardy{u}+\pardx{v} \right) \right]+\pardz{}\left[ \mu\left( \pardz{u}+\pardx{w} \right) \right]
+    \label{eq:navier2}
+\end{equation}
+\begin{equation}
+    \rho\ddt{v}=\rho F_y+\pardx{}\left[\mu\left( \pardy{u}+\pardx{v} \right)\right]+\pardy{}\left[2\mu\pardy{v}-\frac{2\mu}{3}(\vec{\nabla}\cdot\vec{q})-P\right]+\pardz{}\left[\mu\left( \pardz{v}+\pardy{w} \right)\right]
+    \label{eq:navier3}
+\end{equation}
+\begin{equation}
+    \rho\ddt{w}=\rho F_z+\pardx{}\left[\mu\left( \pardz{u}+\pardx{w} \right)\right]+\pardy{}\left[\mu\left( \pardz{v}+\pardy{w} \right)\right]+\pardz{}\left[2\mu\pardz{w}-\frac{2\mu}{3}(\vec{\nabla}\cdot\vec{q})-P\right]
+    \label{eq:navier4}
+\end{equation}
+Now equation \eqref{eq:navier2} can be written,
+\begin{align*}
+    \rho\ddt{u}&=\rho F_x-\pardx{P}+2\mu\parxn{u}{2}-\frac{2\mu}{3}\pardx{}(\vec{\nabla}\cdot \vec{q})+\mu\pardy{}\left( \pardy{u}+\pardx{v} \right)+\mu\pardz{}\left( \pardz{u}+\pardx{w}  \right)\\
+    &=\rho F_x-\pardx{P}+\mu\left(\parxn{u}{2}+\paryn{u}{2}+\parzn{u}{2}\right) +\mu\pardx{}\left( \pardx{u}+\pardy{v}+\pardz{w} \right)-\frac{2\mu}{3}\pardx{}(\vec{\nabla}\cdot \vec{q})\\
+    &=\rho F_x-\pardx{P}+\mu\left(\parxn{u}{2}+\paryn{u}{2}+\parzn{u}{2}\right) +\mu\pardx{}\left( \pardx{u}+\pardy{v}+\pardz{w} \right)-\frac{2\mu}{3}\pardx{}(\vec{\nabla}\cdot \vec{q})\\
+    &=\rho F_x-\pardx{P}
+    +\mu\frac{1}{3}\pardx{}(\vec{\nabla}\cdot \vec{q})+
+    \mu\left(\parxn{u}{2}+\paryn{u}{2}+\parzn{u}{2}\right)
+\end{align*}
+Similarly,
+\begin{align*}
+    \rho\ddt{v}&=\rho F_y-\pardy{P}+\mu\frac{1}{3}\pardy{}(\vec{\nabla}\cdot \vec{q})+\mu\left(\parxn{v}{2}+\paryn{v}{2}+\parzn{v}{2}\right)\\
+    \rho\ddt{w}&=\rho F_z-\pardz{P}+\mu\frac{1}{3}\pardz{}(\vec{\nabla}\cdot \vec{q})+\mu\left(\parxn{w}{2}+\paryn{w}{2}+\parzn{w}{2}\right)
+\end{align*}
+\newpage
+In general,
+\begin{equation}
+    \rho\ddt{\vec{q}}=\rho \,\vec{F}-\vec{\nabla}{P}+\frac{1}{3}\mu\vec{\nabla}(\vec{\nabla}\cdot \vec{q})+\mu \nabla^2\vec{q}
+    \label{eq:navier5}
+\end{equation}
+where \(\nabla^2=\parxn{}{2}+\paryn{}{2}+\parzn{}{2}\)\\
+
+This is Navier-Stokes equation of motion for viscous compressible fluid.\\
+
+For an incompressible flow, \(\rho=\) constant and the continuity equation is, \(\vec{\nabla}\cdot\vec{q}=0\). Then from \eqref{eq:navier5} we get
+\begin{align*}
+    \rho\ddt{\vec{q}}&=\rho \,\vec{F}-\vec{\nabla}{P}+\mu \nabla^2\vec{q}\\
+    \Rightarrow\;\ddt{\vec{q}}&=\,\vec{F}-\frac{1}{\rho}\vec{\nabla}{P}+\nu \nabla^2\vec{q}\quad[\because\,\frac{\mu}{\rho}=\nu]
+\end{align*}
+This is Navier-Stokes equation for incompressible flow.\\
+
+\emph{Navier-Stokes equation to Lamb's form:} Navier-Stokes equation,
+\begin{align}
+    & \ddt{\vec{q}}=\vec{F}-\frac{1}{\rho}\,\vec{\nabla}P+\nu\,\nabla^2\vec{q}\notag\\
+    \Rightarrow\;\;& \left( \frac{\partial}{\partial\,t}+u\pardx{}+v\pardy{}+w\pardz{} \right)\vec{q}=\vec{F}-\frac{1}{\rho}\,\vec{\nabla}P+\nu\,\nabla^2\vec{q}\notag\\
+    \Rightarrow\;\;& \left( \frac{\partial}{\partial\,t}+\vec{q}\cdot\vec{\nabla}\right)\vec{q}=\vec{F}-\frac{1}{\rho}\,\vec{\nabla}P+\nu\,\nabla^2\vec{q}\label{eq:navVec1}
+\end{align}
+We know,
+\begin{align*}
+    & (\vec{q}\cdot\vec{\nabla})\cdot\vec{q}=\frac{1}{2}\vec{\nabla}q^2-\vec{q}\times (\vec{\nabla}\times\vec{q})\\
+    \Rightarrow\;\;& (\vec{q}\cdot\vec{\nabla})\cdot\vec{q}=\vec{\nabla}\left(\frac{q^2}{2}\right)-\vec{q}\times (\vec{\nabla}\times\vec{q})
+\end{align*}
+From \eqref{eq:navVec1}
+\[
+    \frac{\partial\,\vec{q}}{\partial\,t}+\vec{\nabla}\left(\frac{q^2}{2}\right)-\vec{q}\times (\vec{\nabla}\times\vec{q})=\vec{F}-\frac{1}{\rho}\,\vec{\nabla}P+\nu\,\nabla^2\vec{q}
+\]
+Which is the Navier-Stokes equation in Lamb's form. 
+\end{soln}
+\begin{prob}
     Prove that,
     \[\sigma_{ij}=-P\delta_{ij}+2\mu(e_{ij}-\frac{1}{3}\Delta \delta_{ij}).\]
     Then derive the Navier-Stokes equation.

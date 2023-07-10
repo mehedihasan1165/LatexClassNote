@@ -63,3 +63,4 @@ homomorphisms
 automorphisms
 Conjugacy
 Sylow
+Ricci
