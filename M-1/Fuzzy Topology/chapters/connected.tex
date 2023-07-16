@@ -1,0 +1,98 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Connected Fuzzy Topological Space}
+\begin{defn}[Separated Fuzzy Sets]
+    Let \(\ft\) be a \fts. Then \(A,B\in \fx\) are called separated sets if \(\bar{A}\wedge B=\underbar{0}=A\wedge\bar{B}\).
+\end{defn}
+\begin{lem}
+    Let \(\ft\) be a \fts and \(A\), \(B\), \(C\in \fx\). If \(B\) and \(C\) are separated sets then \(A\wedge B\) and \(A\wedge C\) are separated.
+\end{lem}
+\begin{proof}
+    Since \(B\) and \(C\) are separated, we have, \(\bar{B}\wedge C=\underbar{0}=B\wedge\bar{C}\).\\
+    We have, \(A\wedge B < B\;\;\Rightarrow\, \overline{A\wedge B}< \overline{B}\) and \(A\wedge C <C\).\\
+    This implies, \(\overline{(A\wedge B)}\wedge (A\wedge C)\leq \bar{B}\wedge C=\underline{0}\). Similarly, \((A\wedge B)\wedge \overline{(A\wedge C)}\leq B\wedge \bar{C}=\underline{0}\).\\
+    Hence, \(A\wedge B\) and \(A\wedge C\) are separated.
+\end{proof}
+\begin{defn}[Connected Fuzzy Sets]
+    Let \(\ft\) be a \fts. A fuzzy set \(A\) on \(X\) is called connected if there do not exist \(C,D\in \fx\setminus\set{\underbar{0}}\) such that \(A=C\vee D\).\\
+    Or, A set \(A\) is connected if \(A=B\vee C\) then either \(B=\underbar{0}\) or, \(C=\underbar{0}\).
+\end{defn}
+\begin{thm}
+    Let, \(\ft\) be a \fts\space and \(A\in\fx\). Then the following are equivalent:
+    \begin{enumerate}
+        \item \(A\) is connected.
+        \item \(B\), \(C\in\fx\) are separated, \(A\leq B\vee C\) implies \(A\wedge B=\underbar{0}\) or, \(A\wedge C=\underbar{0}\).
+        \item \(B\), \(C\in\fx\) are separated, \(A\leq B\vee C\) implies \(A\leq B\) or, \(A\leq C\).
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    \((1)\Rightarrow(2)\), Since, \(B\) and \(C\) are separated set. By the above lemma, we have \((A\wedge B)\) and \((A\wedge C)\) are separated. Since, \(A\) is connected and \(A\leq B\vee C\) implies
+    \begin{align*}
+        A&=A\wedge (B\vee C)\\
+        &=(A\wedge B)\vee(A\wedge C)
+    \end{align*}
+    then by definition of connectedness, either \(A\wedge B=\underbar{0}\) or, \(A\wedge C=\underbar{0}\). Hence, \((2)\) holds.\\
+
+    \((2)\Rightarrow(3)\), Suppose, \(A\wedge B=\underbar{0}\), then,
+    \begin{align*}
+        A&=(A\wedge B)\vee (A\wedge C)\\
+        &=\underbar{0} \vee (A\wedge C)\\
+        &=(A\wedge C).
+    \end{align*}
+    So, \(A\leq C\). Similarly, if \(A\wedge C=\underbar{0}\), then we can prove that \(A\leq B\). Thus, \((3)\) holds.\\
+
+    Finally, \((3)\Rightarrow(1)\), Suppose, \((3)\) holds, we need to show that, \(A\) is connected. Let \(B,C\in\fx\) are two separated fuzzy sets such that \(A=B\vee C\).\\
+    We need to prove that, either, \(B=\underbar{0}\) or, \(C=\underbar{0}\). By \((3)\), we have either \(A\leq B\) or, \(A\leq C\). Now if \(A\leq B\) then \(C\wedge A\leq C\wedge B\leq C\wedge\bar{B}\). But since, \(B\), \(C \) are separated sets so, \(C\wedge \bar{B }=\underbar{0}\). \(\therefore\,C\wedge A=\underbar{0}\). Again, \(C\wedge A=C\wedge(B\vee C)=C\). So \(C=\underbar{0}\).\\
+    Now if \(A\leq C \), we can similarly prove that \(B=\underbar{0}\). Thus, \(A \) is connected.
+\end{proof}
+\begin{thm}
+    Let \(\ft\) be a \fts, \(A\in\fx\) is connected such that \(A\leq B\leq\bar{A}\). Show that \(B \) is connected.
+\end{thm}
+\begin{proof}
+    Suppose, \(C \) and \(D \) are two separated fuzzy sets such that, \(B=C\vee D \). To show that, \(B \) is connected we need only to show either, \(C=\underbar{0}\) or, \(D=\underbar{0}\).\\
+    By the lemma, we have \((A\wedge C )\) and \((A\wedge D )\) are separated sets. Let \(F=A\wedge C \), \(G=A\wedge D \). Now
+    \begin{align*}
+        F\vee G&=(A\wedge C)\vee (A\wedge D)\\
+        &=A\vee (C\wedge D)\\
+        &=A\vee B\\
+        &=A
+    \end{align*}
+    Since, \(A \) is connected, we have either \(F=\underbar{0}\) or, \(G=\underbar{0}\).\\
+    Suppose, \(F=\underbar{0}\). Then, \(A=F\vee G =G =A\wedge D    \). This implies, \(A\leq D\). Thus, \(\bar{A }\leq \bar{ D }\). i.e., \(B\leq\bar{A }\leq \bar{D }\).\\
+    Now, \(C\wedge B\leq C\wedge\bar{A }\leq C\wedge \bar{D }=\underbar{0}\). i.e., \begin{align*}
+        &C\wedge B\leq \underbar{0}\\
+        \Rightarrow\,&C\wedge (C\vee D) \leq \underbar{0}\\
+        \Rightarrow\,&C= \underbar{0}\\
+    \end{align*}
+    Similarly, if \(G=\underbar{0}\), then we can show that \(D=\underbar{0}\). Hence, \(B \) is connected.
+\end{proof}
+\begin{defn}[Connected Fuzzy Topological Space]
+    If the fuzzy set \(\underbar{1}\) is connected i.e., there does not exist separated sets \(C, D\in\fx\setminus\{\underbar{0}\}\) such that \(\underbar{1}=C \vee D \), then the \fts \(\ft\) is called a connected \fts.
+\end{defn}
+\begin{thm}[Characterization Theorem]
+    Let \(\ft\) be a \fts. Then the followings are equivalent
+    \begin{enumerate}
+        \item \(\ft\) is connected.
+        \item \(A,B \in \delta\), \(A\vee B=\underbar{1}\), \(A\wedge B=\underbar{0}\), implies \(\underbar{0}\in\set{A,B}\).
+        \item \(A,B \in \delta'\), \(A\vee B=\underbar{1}\), \(A\wedge B=\underbar{0}\), implies \(\underbar{0}\in\set{A,B}\).
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    \((1)\Rightarrow(2)\), Suppose, \((2)\) is false. Then there are \(A, B\in\delta\setminus\{\underbar{0}\}\) such that 
+    \begin{align*}
+        &A\vee B=\underbar{1},\qquad A\wedge B=\underbar{0}\\
+        \Rightarrow\,&A^c\wedge B^c=\underbar{0}, \text{ and }\,\, A^c\vee B^c=\underbar{1}\quad\text{[By De Morgan's Law]}\\
+        \Rightarrow\,&\bar{A}^c\wedge B^c=\underbar{0}, \text{ and }\,\, A^c\wedge \bar{B}^c=\underbar{0}\quad\text{[Since, \(A^c \), \(B^c \) are closed.]}
+    \end{align*}
+    \(\therefore\) We have by definition, \(A^c \) and \(B^c \) are two separated sets. Therefore, we have \(A^c \vee B^c =\underbar{1}\) and \(A^c \), \(B^c \) are two separated sets. Hence, \(\ft\) is disconnected. Hence, \((2)\) is true.\\
+
+    \((2)\Rightarrow(3)\), Let \(A,B\in \delta'\) such that \(A\vee B=\underbar{1}\) and \(A\wedge B=\underbar{0}\). Then by De Morgan's Laws, \(A^c \wedge B^c=\underbar{0}\) and \(A^c\vee B^c=\underbar{1}\). By \((2)\), \(\underbar{0}\in \{A^c,B^c \}\). Hence, \(\underbar{0}\in \{A,B \}\).\\
+
+    \((3)\Rightarrow(1)\), If \(\ft\) is not connected, then there exists non-zero separated sets \(A,B\in \delta'\setminus\{\underbar{0}\}\) such that \(A\vee B=\underbar{1}\), which contradicts \((3)\).\\
+    Hence, \(\ft\) is connected.
+\end{proof}
+\end{document}

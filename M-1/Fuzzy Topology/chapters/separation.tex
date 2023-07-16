@@ -12,13 +12,13 @@
     Let, \(\ft\) be a \fts. Then, \(\ft\) is called a sub \(T_0-\)space, if for every two distinct \(x, y \in X\), there exists \(a\in [0,1]\) such that either \(\exists U\in Q_\delta(x_a)\) with \(y_a \not\propto U\) or, \(\exists V\in Q_\delta(y_a)\) with \(x_a \not\propto V\).
 \end{defn}
 \begin{defn}[\(T_0-\)space]
-    Let, \(\ft\) be a \fts. Then, \(\ft\) is called a \(T_0-\)space, if for every two distinct fuzzy points \(x_a,\& y_b\),  \(\exists U\in Q_\delta(x_a)\) such that \(y_b \not\propto U\) or, \(\exists V\in Q_\delta(y_b)\) with \(x_a \not\propto V\).
+    Let, \(\ft\) be a \fts. Then, \(\ft\) is called a \(T_0-\)space, if for every two distinct fuzzy points \(x_a\) and \( y_b\),  \(\exists U\in Q_\delta(x_a)\) such that \(y_b \not\propto U\) or, \(\exists V\in Q_\delta(y_b)\) with \(x_a \not\propto V\).
 \end{defn}
 \begin{defn}[\(T_1-\)space]
-    Let, \(\ft\) be a \fts. Then, \(\ft\) is called a \(T_1-\)space, if for every two distinct fuzzy points \(x_a,\& y_b\) such that \(x_a\not\leq y_b\) then there exists \(U\in Q_\delta(x_a)\) such that \(y_b \not\propto U\) and, \(\exists V\in Q_\delta(y_b)\) such that \(x_a \not\propto V\).
+    Let, \(\ft\) be a \fts. Then, \(\ft\) is called a \(T_1-\)space, if for every two distinct fuzzy points \(x_a\) and \(y_b\) such that \(x_a\not\leq y_b\) then there exists \(U\in Q_\delta(x_a)\) such that \(y_b \not\propto U\) and, \(\exists V\in Q_\delta(y_b)\) such that \(x_a \not\propto V\).
 \end{defn}
 \begin{defn}[\(T_2-\)space]
-    Let, \(\ft\) be a \fts. Then, \(\ft\) is called a \(T_2-\)space, if for every two distinct fuzzy points \(x_a,\& y_b\) (i.e., \(x_a\neq y_b\)) then there exists \(U\in Q_\delta(x_a)\) and, \(V\in Q_\delta(y_b)\) such that \(U\wedge V=\underbar{0}\).
+    Let, \(\ft\) be a \fts. Then, \(\ft\) is called a \(T_2-\)space, if for every two distinct fuzzy points \(x_a\) and \(y_b\) (i.e., \(x_a\neq y_b\)) then there exists \(U\in Q_\delta(x_a)\) and, \(V\in Q_\delta(y_b)\) such that \(U\wedge V=\underbar{0}\).
 \end{defn}
 \begin{thm}
     Quasi \(T_0\) property is heriditary.\\
@@ -27,9 +27,9 @@
 \begin{proof}
     Suppose, \(\xt\) be a fuzzy topological space which is Quasi \(T_0-\)space. Let \(\langle Y, \mu\rangle\) be the subspace of \(\xt\). We have to prove that, \(\langle Y,\mu\rangle\) be a Q-\(T_0-\)space.\\
 
-    Now, since, \(Y\subseteq X\) so every \(V\in \mu \), \(V=U_{\upharpoonright Y}\) for some \(U\in \delta\). Let \(y_a\) and \(y_b\) be two distinct fuzzy points in \(Y\) such that, \(y_a\neq y_b\). Then as \(Y\subseteq X\), we have \(y_a\) and \(y_b\) are in \(X\) with \(y_a\neq y_b\).
+    Now, since, \(Y\subseteq X\) so every \(V\in \mu \), \(V=U_{\upharpoonright Y}\) for some \(U\in \delta\). Let \(y_a\) and \(y_b\) be two distinct fuzzy points in \(Y\) such that, \(y_a\neq y_b\). Then as \(Y\subseteq X\), we have \(y_a\) and \(y_b\) are in \(X\) with \(y_a\neq y_b\).\\
 
-    Again, since \(\xt\) is a Quasi \(T_0-\)space there exist \(U\in Q_\delta(y_a)\) such that \(y_b\not\propto U\) or, there exist \(V\in Q_\delta(y_b)\) such that \(y_a\not\propto V\). This implies, there is \(U_{\upharpoonright y}\in Q_{\delta\upharpoonright y}(y_a)\) such that \(y_b\not\propto U_{\upharpoonright Y}\) or there is \(V_{\upharpoonright Y} \in Q_{\delta\upharpoonright}(y_b)\) such that \(y_a\not\propto V_{\upharpoonright Y}\).
+    Again, since \(\xt\) is a Quasi \(T_0-\)space there exist \(U\in Q_\delta(y_a)\) such that \(y_b\not\propto U\) or, there exist \(V\in Q_\delta(y_b)\) such that \(y_a\not\propto V\). This implies, there is \(U_{\upharpoonright y}\in Q_{\delta\upharpoonright y}(y_a)\) such that \(y_b\not\propto U_{\upharpoonright Y}\) or there is \(V_{\upharpoonright Y} \in Q_{\delta\upharpoonright}(y_b)\) such that \(y_a\not\propto V_{\upharpoonright Y}\).\\
 
     Thus, by definition of a Q-\(T_0-\)space \(\langle Y, \mu\rangle\) is a Q-\(T_0-\) space.
 \end{proof}
@@ -37,7 +37,7 @@
     Every subspace of a \(T_0-\)space is \(T_0-\)space.
 \end{thm}
 \begin{proof}
-    Let, \(\xt\) be a \fts and \(\langle Y,\mu\rangle\) be a subspace of \(\xt\). Let \(x_a\) and \(y_b\) be two distinct points in \(Y\). Then since, \(Y\subseteq X\), we have, \(x_a\) and \(y_b\) in \(X\) with \(x_a\neq y_b\). Now since \(\xt\) is a fuzzy \(T_0-\)space. We have either there is \(U\in Q_\delta(x_a)\) such that \(y_b\not\propto U\) or, there is \(V\in Q_\delta(y_b)\) such that \(x_a\not\propto V\).\\
+    Let, \(\xt\) be a \fts\s and \(\langle Y,\mu\rangle\) be a subspace of \(\xt\). Let \(x_a\) and \(y_b\) be two distinct points in \(Y\). Then since, \(Y\subseteq X\), we have, \(x_a\) and \(y_b\) in \(X\) with \(x_a\neq y_b\). Now since \(\xt\) is a fuzzy \(T_0-\)space. We have either there is \(U\in Q_\delta(x_a)\) such that \(y_b\not\propto U\) or, there is \(V\in Q_\delta(y_b)\) such that \(x_a\not\propto V\).\\
     Now, \(U_{\upharpoonright Y}\in Q_{\delta\upharpoonright Y}(x_a)\) such that \(y_b\not\propto U_{\upharpoonright Y}\) as \(x_a,\,y_b\in Y\) and \(V_{\upharpoonright Y} \in Q_{\delta \upharpoonright Y}(y_b)\) such that \(x_a\not\propto V_{\upharpoonright Y}\).
     
     Thus, \(\langle Y,\mu\rangle\) is a \(T_0-\)space. 
@@ -59,11 +59,25 @@
     Or, \(\ft\) is a \(T_1-\)space \(\Leftrightarrow\) every fuzzy point in \(\xt\) is closed.
 \end{thm}
 \begin{proof}
-    Suppose \(\ft\) be a \(T_1-\)space. If \(a=0\) then it suffices to take \(B=\underbar{1}\). Suppose, \(a>0\) and \(x_a\) is a fuzzy point. Since, every fuzzy point in a \(T_1-\)space is closed, so, \(x_a\) is a closed set.\\
+    Suppose \(\ft\) be a \(T_1-\)space. If \(a=0\) then it suffices to take \(B=\underbar{1}\).\\
+    Suppose, \(a>0\) and \(x_a\) is a fuzzy point. Since, every fuzzy point in a \(T_1-\)space is closed, so, \(x_a\) is a closed set.\\
     \(\therefore\) We have, \(B=1-x_a\in\delta\) and hence \(B(x)=1-a\) and \(B(y)=1\). if \(y\neq x\).\\
     Conversely, let \(x_a\) be a fuzzy point. Then by hypothesis there exists \(B\in\delta\) such that \(B(x)=1-a\) and \(B(y)=1\) with \(y\neq x\). This implies, \(B=1-x_a\) and hence \(B^c=x_a\) which is closed. Thus, \(B\in\delta\). Hence, \(\ft\) is a \(T_1-\)space.
 \end{proof}
 \begin{defn}[Purely \(T_2-\)space]
     \(\ft\) is called purely \(T_2-\)space if for every two zero-meet fuzzy points \(x_a\) and \(y_b\), \(\exists U\in Q_\delta(x_a)\) and \(V\in Q_\delta(y_b)\) such that \(U\wedge V=\underbar{0}\).
 \end{defn}
+\begin{defn}
+    A \fts \s \(\xt \) is said to be fuzzy regular iff for each \(x\in X \) and each closed  fuzzy set \(U \) with \(U(x)=0\) there exists \(V,W\in\delta\) such that \(V(x)=1\) and \(V\subseteq 1-W \).
+\end{defn}
+\begin{thm}
+    For a \fts \(\ft\) the following statements are equivalent
+    \begin{enumerate}
+        \item \(\xt\) is a fuzzy \(T_0 \)-space.
+        \item For \(x,y\in X \), \(x\neq y \), \(\exists U\in \delta\) such that \(U(x)>0\), \(U(y)=0\) or \(U(y)>0\), \(U(x)=0\).
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    \((1)\Rightarrow(2)\), Suppose \(\xt \) is a fuzzy \(T_0-\)space. Thus, we have \(\overline{x_1(y )}\cap \overline{y_1(x )}<1\).
+\end{proof}
 \end{document}

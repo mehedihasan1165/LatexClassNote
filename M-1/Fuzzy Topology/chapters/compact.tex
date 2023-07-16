@@ -1,0 +1,146 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Compactness}
+\begin{defn}[Cover and \(C-\)compactness]
+    Let \(\ft\) be a \fts\s and \(A\in\fx \). Then, \(\mathcal{A }\subseteq \fx \) is called a cover of \(A \) if \(A\subseteq \vee \mathcal{A }\).
+    \begin{itemize}
+        \item \(\ft\) is called \(C-\)compact if every open cover of \(\ft\) has a finite subcover.
+        \item \(\mathcal{A }\) is called an open cover of \(A \), if \(\mathcal{A }\subseteq \delta\) and if \(\mathcal{A }\) is a cover of \(A \).
+        \item \(\mathcal{B }\subseteq \mathcal{A }\) is called a subcover if \(\mathcal{B }\) is still a cover of \(A \).
+    \end{itemize}
+    In particularly, \(\mathcal{ A }\) is a cover of \(\ft\) if \(\mathcal{ A }\) is a cover of \(\underbar{1}\).
+\end{defn}
+\begin{defn}[\(\alpha-\)cover and \(\alpha-\)compactness]
+    Let \(\ft\) be a \fts\s and \(\alpha\in[0,1)\). Then a family \(\mathcal{A }\subseteq \fx\) is called an \(\alpha-\)cover, if for very \(x\in X \exists A\in\mathcal{A } \ni A(x)>\alpha\).
+    \begin{itemize}
+        \item \(ft\) is called an \(\alpha-\)compact, if for every open \(\alpha-\)cover of \(\ft\) has a finite sub\(-\alpha-\)cover where \(\alpha\in[0,1)\).
+    \end{itemize}
+\end{defn}
+\begin{defn}[Strong Compact]
+    A \fts\s\(\ft\) is called strongly compact if it is \(\alpha-\)compact for every \(\alpha\in[0,1)\).
+\end{defn}
+\begin{defn}[\(\alpha^*-\)cover and \(\alpha^*-\)compactness]
+    Let \(\ft\) be a \fts\s and \(\alpha\in[0,1)\). Then a family \(\mathcal{A }\subseteq\fx\) is called an \(\alpha^*-\)cover, if for every \(x\in X \), there exists \(A\in \mathcal{A }\) such that, \(A(x)\geq \alpha\).
+    \begin{itemize}
+        \item For \(\alpha\in[0,1)\), \(\ft\) is called an \(\alpha^*-\)compact, if for every open \(\alpha^*-\)cover of \(\ft\) has a finite sub \(\alpha^*-\)cover.
+    \end{itemize}
+\end{defn}
+\begin{ex}
+    Given \(X=\{a,b,c \}\), \(\mathcal{A }=\{A,B,C\}\), \(\alpha\in[0,1)\), \(\delta=\{\underbar{0},\underbar{1},A,B,C \}\) where,
+    \begin{align*}
+        A&:\,a\mapsto 0.2,\,\,b\mapsto 0.4,\,\,c\mapsto0.6;\\
+        B&:\,a\mapsto 0.4,\,\,b\mapsto 0.6,\,\,c\mapsto0.8;\\
+        C&:\,a\mapsto 0.6,\,\,b\mapsto 0.8,\,\,c\mapsto0.9;
+    \end{align*}
+    Check whether \(\mathcal{A }\) is \(\alpha-\)compact or, \(\alpha^*-\)compact corresponding to the given value of \(\alpha\).
+\end{ex}
+\begin{soln}\hfill
+    \begin{enumerate}
+        \item Let \(\alpha=0.7\)\\
+        \(a\in X :\alpha=0.7> A(a),\,B(a),C(a)\).\\
+        Hence, for \(\alpha=0.7\), \(\mathcal{A }\) is not an \(\alpha-\)cover.
+        \item Let \(\alpha=0.3\)\\
+        \(a\in X :\alpha=0.3< C(a)=0.6,\,B(a)=0.4\)\\
+        \(b\in X :\alpha=0.3< A(b)=0.4,\,B(b)=0.6,\,C(b)=0.8\)\\
+        \(c\in X :\alpha=0.3< A(c)=0.6,\,B(c)=0.8,\,C(c)=0.9\)\\
+        \(\therefore \) \(\mathcal{A }\) is an \(\alpha-\)compact space for \(a=0.3\).
+        \item Let \(\alpha=0.6\)\\
+        For, \(a\in X :\alpha=0.6=C(a)\)\\
+        For, \(b\in X :\alpha=0.6= B(b),\,\alpha=0.6<C(b)=0.8\)\\
+        For, \(c\in X :\alpha=0.6= A(c)=0.6,\,\alpha=0.6< B(c)=0.8,\,C(c)=0.9\)\\
+        \(\therefore \) \(\mathcal{A }\) is an \(\alpha^*-\)compact space for \(a=0.6\).
+    \end{enumerate}
+\end{soln}
+\begin{defn}[\(Q-\)cover]
+    Let \(\ft\) be a \fts\s and \(A\in\fx\). Then a collection \(\mathcal{A }\subseteq \fx\) is called a \(Q-\)cover of \(A\) if for every \(x\in Supp(A )\), there exists \(U\in \mathcal{A }\) such that \(x_{A(x )}\propto U \).
+\end{defn}
+\begin{defn}[\(Q-\)compact]
+    A fuzzy set \(A \) is called \(Q-\)compact if every open \(Q-\)cover of \(A \) has a finite sub \(Q-\)cover. A \fts\s \(\ft\) is called \(Q-\)compact if \(\underbar{1}\) is \(Q-\)compact.
+\end{defn}
+\begin{ex}
+    Consider, \(X=\{a,b,c \}\), \(\delta=\{\underbar{0},\underbar{1}, U,V,W \}\) where 
+    \begin{align*}
+        U&:\,a\mapsto 0.3,\,\,b\mapsto 0.5,\,\,c\mapsto0.7;\\
+        V&:\,a\mapsto 0.4,\,\,b\mapsto 0.6,\,\,c\mapsto0.8;\\
+        W&:\,a\mapsto 0.6,\,\,b\mapsto 0.8,\,\,c\mapsto0.9;
+    \end{align*}
+    Consider \(\mathcal{A }=\{U,V \}\subseteq \delta\) and let, \(A:\,a\mapsto 0.1,\,\,b\mapsto 0.2,\,\,c\mapsto0.3\). Then, find the \(Q-\)cover of \(A \).
+\end{ex}
+\begin{soln}
+    Here, \(Supp(A)=\{a,b,c \}\)\\
+    For, \(x=a\), \(a_{A(a)}=a_{0.1}=0.1\)\\
+    For, \(x=b\), \(b_{A(b)}=b_{0.2}=0.2\)\\
+    For, \(x=c\), \(c_{A(c)}=c_{0.3}=0.3\)\\
+    For \(x=a \), we have \(U_a,:0.3+0.1<1 \), \(V_a=0.4+0.1<1\). Hence \(\mathcal{A }\) is not a \(Q-\)cover of \(A \).
+\end{soln}
+\# If \(A:\,a\mapsto 0.7,\,\,b\mapsto 0.6,\,\,c\mapsto0.5\).\\
+Then, For \(x=a\), \(a_{A(a)}=a_{0.7}=0.7\)\\
+For, \(x=b\), \(b_{A(b)}=b_{0.6}=0.6\)\\
+For, \(x=c\), \(c_{A(c)}=c_{0.5}=0.5\)\\
+For, \(x=a, 0.3+0.7\geq1\), \(0.4+0.7>1\)\\
+For, \(x=b, 0.5+0.6> 1\), \(0.6+0.6>1\)\\
+For, \(x=c, 0.7+0.5>1\), \(0.8+0.5>1\)\\
+Hence, for every \(x\in Supp(A )\), \(x_{A(x )}\propto U \).\\
+\(\therefore \) \(\mathcal{A }\) is a \(Q-\)cover of \(A \).
+\begin{defn}[\(\alpha-Q-\)cover]
+    Let \(\ft \) be a \fts\s and \(A\in \fx \). Then a collection \(\varphi\subseteq \fx\) is called an \(\alpha-Q-\)cover of \(A \), if for every \(x_a\subseteq A \), there exists \(U\in \varphi \) such that \(x_a\propto U \). It is denoted by \(\vee \varphi \hat{q }A(\alpha)\).
+\end{defn}
+\begin{defn}[\(\bar{\alpha}-Q-\)cover]
+    Let \(\ft \) be a \fts\s and \(A\in \fx \). Then a collection \(\varphi\subseteq \fx\) is called an \(\bar{\alpha}-Q-\)cover of \(A \), if there exists \(\gamma\in B^*(\alpha) \) such that \(\gamma\) is a \(\gamma-Q-\)cover of \(A \).
+\end{defn}
+\begin{itemize}
+    \item \(B(b)=\{a\in L:a\propto b \}\), where the binary relation \(\propto\) is defined as, for \(a,b \in L \), \(a\propto b \Leftrightarrow\) for every subset \(D\subseteq L \), \(b\leq Sup\, D\) implies the existence of \(d\in D \) with \(a\leq\)
+    \item \(B^*(b)=B(b)\cap M(L )\), where, \(M(L)=(0,1]\).
+\end{itemize}
+\begin{defn}
+    Let \(\ft\) be a \fts, \(A\in\fx \). \(A \) is called \(N-\)compact if for every \(\alpha\in(0,1]-M([0,1])\), every open \(\alpha-Q-\)cover of \(A \) has a finite subfamily which is an \(\bar{\alpha}-Q-\)cover of \(A \).\\
+    \(\ft \) is called \(N-\)compact, if \(\underbar{1}\) is compact.
+\end{defn}
+\begin{thm}
+    Let \(\ft\) be a \fts, \(A\in\fx\). Then \(A \) is \(N-\)compact iff the following conditionds hold:
+    \begin{enumerate}[label=(\alph*)]
+        \item For every \(\alpha\in(0,1]\), every open \(\alpha-Q-\)cover of \(A \) has a finite sub \(\alpha-Q-\)cover.
+        \item For every \(\alpha\in(0,1]\), every open \(\alpha-Q-\)cover of \(A \) which consists of just one subset is an \(\bar{\alpha}-Q-\)cover of \(A \).
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    \begin{enumerate}[label=(\alph*)]
+        \item Let, \(A \) be \(N-\)compact, \(\alpha\in (0,1]\) and \(\varphi\) is an open \(\alpha-Q-\)cover of \(A \). By the definition of \(N-\)compact, \(\varphi\) has a finite subfamily \(\psi \) such that, \(\psi \) is an \(\bar{\alpha}-Q-\)cover of \(A \). Hence, \(\vee \psi\hat{q } A(\alpha)\) i.e., \(\psi\) is an \(\alpha-Q-\)cover of \(A \).
+        \item Suppose, \(U\in \delta\) and \(\varphi=\{U \}\) is an open \(\alpha-Q-\)cover of \(A \). Then, by the \(N-\)compactness of \(A \), \(\varphi \) has a subfamily \(\psi\) such that \(\psi\) is an \(\bar{\alpha}-Q-\)cover of \(A \). But, clearly, \(\varphi=\psi\). Hence, \(\psi\) is an open \(\alpha-Q-\)cover of \(A \).
+    \end{enumerate}
+        
+        Conversely, suppose \((a )\) and \((b )\) holds.\\
+        Let \(\alpha\in (0,1]\) and \(\varphi\) is an open \(\alpha-Q-\)cover of \(A \).\\
+        By \((a )\), \(\varphi\) has a finite sub \(\alpha-Q-\)cover \(\psi\) of \(A \). Take \(U=\vee \psi\). Then \(\{U \}\) is an \(\alpha-Q-\)cover of \(A \).\\
+        By \((b )\), \(\{U \}\) is also an \(\bar{\alpha}-Q-\)cover of \(A \). By the definition of \(\bar{\alpha}-Q-\)cover, there exists \(\gamma\in B^*(\alpha)\) such that \(x_\gamma\) is a quasi-coincident with \(U \) for every \(x_\gamma\subseteq A \). Hence, \(\gamma+U(x)>1\) \(\Rightarrow \gamma>1-U(x )\)\\
+        i.e., \(\gamma\leq (U(x))'\,\,\Rightarrow\,\gamma\not\leq (U\psi(x))'=\wedge\set{(W(x))'|W\in \psi}\)\\
+        i.e., \(W\in Q_{\gamma}(x_\gamma)\). So, \(\psi\) is an \(\bar{\alpha}-Q-\)cover of \(A \). Hence, \(A \) is \(N-\)compact.
+\end{proof}
+\begin{thm}
+    Continuous image of an \(N-\)compact space is \(N-\)compact.
+\end{thm}
+\begin{proof}
+    Let \(\fxfy\) be a continuous fuzzy mapping and \(A \) be a \(N-\)compact fuzzy set in \(\fx\). For \(\alpha\in(0,1]\), let \(\mathcal{A }\) be an open \(\alpha-Q-\)cover of \(\fr(A)\). Then for every \(x_\alpha\leq A \), \(\fr(x_\alpha)=f(x)_\alpha\leq\fr(A)\), there exists \(U\in \mathcal{A }\) such that \(f(x)_\alpha\propto U  \,\,\Rightarrow f(x)_\alpha\not\propto U^c \,\,\Rightarrow \alpha\not\leq U^c(f(x))\,\,\Rightarrow\alpha\not\leq \fl(U^c)(x)=\fl(U)^c(x)\). That is \(x_a\propto \fl(U)\). Since, \(\fr \) is continuous, \(\fl(U)\in\delta\) and hence \(\fl(U)\in Q(x_\alpha)\). Thus, \(\fl(A )\) is an open \(\alpha-Q-\)cover of \(A \).
+
+    Since \(A \) is \(N-\)compact, \(\mathcal{A }\) has a finite subfamily \(\mathcal{A}_n=\{U_i:1\leq i\leq n\}\) such that \(\fl(\mathcal{A}_n )\) is an \(\bar{\alpha}-Q-\)cover of \(A\).\\
+
+
+    Now, we show that, \(\mathcal{A }_n\) is an \(\bar{\alpha}-Q-\)cover of \(\fr(A)\). Since, \(\fl(\mathcal{A})_n\) is an open \(\bar{\alpha}-Q-\)cover of \(A \), there exists \(\gamma\in \mathcal{B }(\alpha)\) such that \(\fl(\mathcal{A_n })\) is \(\gamma-Q-\)cover of \(A \). This implies, \(\gamma \sqsubseteq  a\) and hence \(\exists \lambda\in(0,1]\) such that \(\gamma\sqsubseteq \lambda\sqsubseteq\alpha\). So, \(\lambda\in\mathcal{B }(\alpha)\) and hence we have, \(\lambda\leq \fl(A)(y)=\vee\{A(x):x\in X, f(x)=y \}\). Now, \(\gamma\sqsubseteq \lambda\) implies, \(\gamma\not\leq(\fl(U_i))^c(x)=\fl(U_i^c)(x)=U_i^x(f(x))=U_i^c(y)\), for some \(1\leq i\leq n\) such that \(x_\gamma\propto \fl(U_i) \).\\
+    By \(\gamma\sqsubseteq \lambda\) and hence \(\gamma\leq \lambda\), we have \(\lambda\not\leq U_i^c(y )\). Thus \(y_\lambda\propto U_i \) for some \(1\leq i\leq n \). So, \(\mathcal{A }_n \) is an open \(\lambda-Q-\)cover of \(\fr(A )\)  and hence \(\mathcal{A }_n \)is an \(\bar{\alpha}-Q-\)cover of \(\fl(A )\).\\
+    Therefore, \(\fr(A )\) is an \(N-\)compact.
+\end{proof}
+\begin{defn}[Net in \(X \)]
+    Let \(X \) be a non-empty ordinary set and \(D \) be a directed set then every mapping \(S:D\to X \) is called a net in \(X \) and \(D \) is called the index set of \(S \).
+\end{defn}
+\begin{thm}
+    Let \(\ft\) be a \fts. Let \(A,B,C\in\fx \) such that \(A \) be a \(N-\)compact and \(B \) be closed. Then \(A\wedge B \) is \(N-\)compact.
+\end{thm}
+\begin{proof}
+    Let \(S \) be an \(\alpha-\)net in \(A\wedge B \). Then \(S \) is also an \(\alpha-\)net in \(A \). Since, \(A \) is \(N-\)compact, \(S \) has a cluster point \(x_\alpha\) in \(A \) such that \(ht(\alpha)=\alpha\). But, \(S \) is also a net in closed subset \(B \), we have \(x_\alpha\leq B \).\\
+    So, \(x_a\leq A\wedge B \), i.e., \(x_a \) is a cluster point of \(\delta\) in \(A\wedge B \) such that \(ht(\alpha)=\alpha\). Hence, \(A\wedge B \) is \(N-\)compact.
+\end{proof}
+\end{document}
