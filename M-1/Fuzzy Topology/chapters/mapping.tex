@@ -1,0 +1,34 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Fuzzy Mapping}
+\begin{defn}[Fuzzy Mapping]
+    Let \(X \) and \(Y \) be two non-empty set and let \(f:X\to Y \) be an ordinary mapping. A fuzzy mapping \(\fxfy \) is defined by \(\fr(A)(y)=\bigvee \{A(x)|x\in X, f(x)=y \} \forall y\in Y\), and a fuzzy reverse mapping \(\fyfx\) is defined by \(\fl(B)(x)=B(f(x))\,\forall x\in X\).
+\end{defn}
+\begin{defn}[Continuous Fuzzy Mapping]
+    Let \(\ft\) and \(\langle \mathcal{F}(Y),\mu\rangle\) be two \fts. A fuzzy mapping \(\fxfy\) is called continuous if for each \(v\in \mu\), \(\fr(v)\in \delta\).
+\end{defn}
+\begin{defn}[Open Fuzzy Mapping]
+    Let \(\ft\) and \(\langle \mathcal{F}(Y),\mu\rangle\) be two \fts. A fuzzy mapping \(\fr\) is called open if for each \(u\in \delta\), \(\fr(u)\in \mu\).
+\end{defn}
+\begin{defn}[Closed Fuzzy Mapping]
+    Let \(\ft\) and \(\langle \mathcal{F}(Y),\mu\rangle\) be two \fts. A fuzzy mapping \(\fr\) is called closed if for each closed set \(F\in \delta\), \(\fr(F)\) is closed in \(\mu\).
+\end{defn}
+\begin{thm}
+    Let \(\ft\) and \(\langle \mathcal{F}(Y),\mu\rangle\) be two \fts s and \(f:X\to Y \) be an ordinary mapping. Then for each \(a\in[0,1]\) and every \(A\in \fx \), \(\fr(aA)=a\fr(A )\).
+\end{thm}
+\begin{proof}
+    For all \(a\in[0,1]\), \(\forall A\in \fx \) and \(\forall y \in Y\) we have,
+    \begin{align*}
+        \fr(aA)(y)&=\vee\{(aA)(x)|x\in X,\,f(x)=y \}\\
+        &=\vee\{a\wedge (A)(x)|x\in X,\,f(x)=y \}\\
+        &=a\wedge\left( \vee\{(A)(x)|x\in X,\,f(x)=y \}\right)\\
+        &=a\wedge\fr(A)(y)\\
+        &=(a\fr(A))(y)
+    \end{align*}
+    Thus, \(\fr(aA )=a\fr(A)\).
+\end{proof}
+\end{document}

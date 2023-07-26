@@ -1,0 +1,64 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Fuzzy Topology}
+\begin{defn}[Fuzzy Topology]
+    Let \(X \) be a non-empty set. A collection \(\delta\) of fuzzy sets on \(X \) is called the fuzzy topology on \(X \) if it satisfies the following conditions:
+    \begin{enumerate}[label=(\roman*)]
+        \item \(\underbar{0}\), \(\underbar{1}\in\delta\). 
+        \item If \(A,B \in \delta\), then \(A\wedge B \in\delta\). 
+        \item If \(A_i \in \delta\), then \(\vee_{i\in I}A_i \in\delta\). 
+    \end{enumerate}
+    If \(\delta\) is a topology on \(X \) then, \(\ft\) is called a fuzzy topological space.
+\end{defn}
+\begin{ex}
+    Let \(X=\{a,b \}\) and \(A \) be a fuzzy set defined by \(A(a)=0.5\) and \(A(b )=0.4\). Then \(\delta=\{\underbar{0},\underbar{1},A \}\) be a fuzzy topology and \(\ft\) be a fuzzy topological space.
+\end{ex}
+\begin{ex}
+    Let \(A, B \) be a fuzzy sets of \(I=[0,1 ]\) defined as
+    \[
+        A(x)=\begin{cases}
+            \begin{aligned}
+                0; \qquad&\text{if } 0\leq x\leq\frac{1}{2}\\
+                2x-1; \qquad&\text{if }\frac{1}{2} \leq x\leq 1
+            \end{aligned}
+    \end{cases}
+    \qquad\text{and}\qquad
+    B(x)=\begin{cases}
+        \begin{aligned}
+            1; \qquad&\text{if } 0\leq x\leq \frac{1}{4}\\
+            -4x+2; \qquad&\text{if }\frac{1}{4}\leq x\leq\frac{1}{2}\\
+            0; \qquad&\text{if }\frac{1}{2}\leq x\leq 1
+        \end{aligned}
+    \end{cases}
+    \]
+    Then \(\delta=\{\underbar{0},\underbar{1},A,B,A\vee B \}\) is a fuzzy topology on \(I \).
+\end{ex}
+\begin{defn}[Open and CLosed Fuzzy Sets]
+    Let \(\ft\) be a \fts. Then, the member of \(\delta\) i.e., each \(A\in\delta\) is called the fuzzy open set. A fuzzy set \(B \) is called a fuzzy closed set if \(B^c \in\delta\).
+\end{defn}
+\begin{ex}
+    Let \(X=\{a,b \}\), \(B:X\to[0,1]\) such that \(B(a)=0.5\), \(B(b)=0.6\). Then, \(B^c(a)=0.5\), \(B^c(b)=0.4\), \(\delta=\{\underbar{0},\underbar{1},A\}\), \(A(a)=0.5\), \(A(b)=0.4\).\\
+    \(\therefore\,B \) is closed under \(\delta/\delta-\)closed. i.e., \(B^c \) is open.
+\end{ex}
+\emph{Difference between classical and fuzzy sets: } Classical set contains elements that satisfy precise properties of membership while fuzzy set contains elements that satisfy imprecise properties of membership.
+\begin{defn}[Interior and Closure of fuzzy sets]
+    Let \(\ft\) be a \fts and \(A \) be a non-empty subset of \(X \).
+
+    The interior of \(A \) is denoted by \(A^\circ\) and defined as the union of all open sets contained in \(A \). i.e., \(A^\circ=\cup \{G\in\delta|G\leq A \}\). (Largest open set contained in \(A \)).
+
+    The closure of \(A \) is denoted by \(\bar{A }\) and defined as the intersection of all closed sets containing \(A \). i.e., \(\bar{A }=\cap\{F|F^c\in\delta\text{ and }A\leq F \}\). (Smallest closed set containing \(A \)).
+\end{defn}
+\begin{ex}
+    Consider, \(X=\{a,b,c \}\) and 
+    \begin{align*}
+        A&:\,\,a\mapsto 0.2,\,\, b\mapsto 0.4,\,\, c\mapsto 0.8\\
+        B&:\,\,a\mapsto 0.4,\,\, b\mapsto 0.6,\,\, c\mapsto 0.8\\
+        C&:\,\,a\mapsto 0.6,\,\, b\mapsto 0.8,\,\, c\mapsto 1.0
+    \end{align*}
+    Then, \(\delta=\{\underbar{0},\underbar{1},A,B,C \}\) be a fuzzy topology on \(X \). Here \(U:X\to[0,1]\) and \(U:a\mapsto0.8\), \(b\mapsto0.7\), \(c\mapsto 0.8\). Find \(U^\circ\) and \(\bar{U}\).
+\end{ex}
+\end{document}

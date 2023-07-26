@@ -1,0 +1,118 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Applications of Sylow Theorems}
+\textbf{Some Examples on the Use of Sylows Theorems}\\
+% ^ple 12.7 No group G of order pq (where p and q are distinct primes) can be 't
+% i
+% Ex *
+% simple. \ ;
+% Solution. Suppose, without loss of generality, that p > q. I
+% The number of Sylow p-subgroups is of the form 1 + kp and divides q.
+% This is impossible unless k = 0:
+% Thus there is just one Sylow p-subgroup of G .
+% Consequently, it is normal in G and we are done
+\begin{ex}
+    A group of order 40 must contain a normal subgroup of order 5.
+\end{ex}
+\begin{soln}
+    Here \(|G| = 40 = 2^3\cdot5\).\\
+    \(s_5\) divides 8 and has the form \(1+5k\).
+    So, necessarily \(s_5 = 1\) .\\
+    Since there is only one subgroup of order 5, then this subgroup is normal in \(G\).
+\end{soln}
+\begin{ex}
+    Show that no group of order 30 is simple.
+\end{ex}
+\begin{soln}
+    To show: \(G\) has at least one non-trivial normal subgroup.\\
+Here \(|G| =30 = 2\cdot 3\cdot 5\).\\
+\(s_5\), the number of Sylow 5-subgroups, divides 6 and has the form \((1+ 5k)\).
+Should \(k = 0\). We are done (i .e., there exists unique subgroup of order 5 is then normal in \(G\)).\\
+Should \(k = 1 \), the total number of Sylow 5-subgroups is then 6. Such subgroups can have only the identity element \(e\) in common; so they would account for \(4 \times 6 =24 \) distinct elements of \(G\), not counting \(e \).\\
+In this situation, \(s_3\) (the number of Sylow 3-subgroups), being a divisor of 10 and of the form \(1 + 3m\), can only be \(= 1 \)(\(m=3\) is ruled out by counting elements of \(G \), since \(G\) would have then at least \(25 + 20 = 45\) elements). So, the Sylow 3-subgroup is a normal subgroup.\\
+So, it is proved that either \(G\) has a unique Sylow 5-subgroup or it has a unique Sylow 3-subgroup.\\
+In either case, we get a non-trivial normal subgroup of \(G \).
+\end{soln}
+\end{document}
+% Ex^nple 12.10 Show that no group of order 36 is simple.
+% U
+% Solution. Let|G \ = 36 = 22.32.
+% Let P be a Sylow 3-subgroup of G ; then [G : P ] = 4.
+% Consider the generalized Cayley representation G -> 54 afforded by P.
+% K = K e r^V is a non-trivial normal subgroup of G , because 36 does not divide 4! = 24.
+% So, G is not simple.
+% ^ample 12.11 Show that no group of order p2q2 is simple, where p > q are primes.
+% Solution. Let G be a group of order p2q 2, where p > q are primes.
+% sp, the number of Sylow p -subgroups of G , has the form 1
+% So, Sp = 1, q or q 2.
+% Here, s p = q is ruled out, because 1 4- k p > p > q for A' > 0.
+% So, s p = 1 or q2.
+% If Sp = 1, the unique Sylow p-subgroup is then a non-trivial normal subgroup of C .
+% So, suppose Sp = q 2. Also, we have sP = 14- k p. It gives,
+% 1 4- k p = q 2
+% => k p = q 2 — 1
+% => P I 92 -1 ' -- -
+% => p divides q — 1 or q 4- 1.
+% But p > q; so p cannot divide q — 1.
+% So, p divides q 4- 1.
+% Since p and q are primes and p > q, we have p > q H- 1.
+% So, p divides q + 1 implies p = q 4- 1.
+% Since q 4- 1, q are consecutive integers and p, q are primes, the only possibilities for p
+% and q are p = 3, q = 2.
+% i
+% . k p and divides q 2.
+% j »
+% f
+% %
+% \r
+% m m
+% f•:
+% 1 i
+% l
+% _
+% Then \G \ = 36.
+% We know that no group of order 36 is simple. This completes the proof.
+\begin{ex}
+No group of order 108 is simple.
+\end{ex}
+\begin{soln}
+Here \(|G| = 108 = 2^2\cdot 3^3\). \\
+Then \(s_3\), the number of Sylow 3-subgroups divides 4 and has the form \(1+ 3k \).
+\\Should \(k = 0\), we are done (the unique Sylow 3-subgroup of order 27 is normal in \(G\)).\\
+Should \(k = 1\), we have \(s_3 = 4\).\\
+Let \(H , K\) be two distinct Sylow 3-subgroups.\\
+Then \(|HK|=\frac{|H|\,|K|}{|H\cap K|}\) is \(\leq 108\).\\
+This implies, \(|H\cap K|\geq \frac{|H|\,|K|}{108}=\frac{27\cdot 27}{108}=\frac{27}{4}\). So, \(| H \cap K | \geq 7\).\\
+% Since |H n /C| divides \H \ = 2 7 (because H n K is a subgroup of tf), therefore n K \-
+% 9 (because H n K is a proper subgroup of H ).
+% Now we use the fact that "a subgroup of order p
+% necessarily normal (wherer > 1)".
+% Here, \ H n K \ = 3Z and | = |K|= 33.
+% So, (W n tf) < H and (// n <3 K .
+% Let N be the ncrmauzer of H f! K in G.
+% i1i1 li
+% ;•
+% 1 r-1 o f . a group of order pr is
+% 11 1
+% « i
+% /! 1 11
+% • i \
+% .iI Then observe that H c A', K c /V, and so H l< a N . i
+% 1!
+% I H U X I _ 27.27
+% I So,|/V| > = 9 = 81.
+% J!
+% Now,|A'| divides |G[ = 103 and is > 81.
+% So,|/V| = |G|.
+% Hence N = G [since N c G ] .
+% 1
+% 1IJ1I1
+% I
+% 4I Thus,(W n /f) o N = G 1
+% I
+% => ( W fl K ) < G.
+% Thus we gel z non f*1 via. normal subgroup of G and her.ce T is not simple

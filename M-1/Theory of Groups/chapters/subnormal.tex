@@ -1,0 +1,161 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Subnormal Series of Group}
+\begin{defn}
+    A subnormal (or, subinvariant) series of a group \(G\) is a finite sequence of subgroups
+    \begin{equation}
+        G = G_0 \vartriangleright  G_1 \vartriangleright  G_2 \vartriangleright  \dots \vartriangleright  G_r=\{e\} \label{eq:subnormal1}
+    \end{equation}
+    or,
+    \[
+        \{e\}=G_r\vartriangleleft G_{r-1} \vartriangleleft \dots \vartriangleleft G_1 \vartriangleleft G_0=G
+    \]
+    such that each \(G_i \) is a normal subgroup of \(G_{i-1}\), where \(i = 1, 2,\dots, r\).
+\end{defn}
+\begin{note}
+In the above series, \(r\) is called the length of the subnormal series; observe
+that the number of terms in the subnormal series is \((r + 1)\).
+\end{note}
+\begin{rem}
+In the definition of a subnormal series, it is not demanded that each \(G_i\) is
+a proper subgroup of \(G_{i-1}\).
+\end{rem}
+\begin{ex}
+\(S_4 \vartriangleright  V \vartriangleright  1\) is a subnormal series for the group \(S_4\)
+where
+\[ V = \{(1), (1 2)(3 4), (13)(2 4), (1 4)(2 3)\} \text{ and } 1 = \{(1)\}.\]
+\end{ex}
+\begin{ex}
+\(S_4 \vartriangleright  V \vartriangleright  C \vartriangleright  1\) is another subnormal series for the group \(S_4\), where 
+\[C = \{(1), (1 2 )(3 4)\}.\]
+\end{ex}
+\begin{defn}
+    A normal (or, invariant) series of a group \(G\) is a subnormal series such
+    that each of its terms is a normal subgroup of \(G\).
+\end{defn}
+\begin{ex}
+    The group \(S_3\) has the normal subgroup \(N = \{(1), (1 2 3), (1 3 2)\}\).\\
+    So, \(S3 \supseteq N \supseteq \{(1)\}\) is a normal series.
+\end{ex}
+\begin{ex}
+    The group \(S_4\) has the normal subgroup
+    \[V_4 = \{(1), (1 2) (3 4), (1 3) (2 4), (1 4)(2 3)\}.\]
+    So, \(S_4 \vartriangleright   V_4 \vartriangleright   \{(1)\}\) is a normal series.\\
+    Besides, we observe that \(W = \{(1), (1 2) (3 4)\}\) is a normal subgroup of \(V_4\) (because \(V_4\)
+    is abelian), but \(W\) is not a normal subgroup of \(S_4\).\\
+    So, \(S_4 \vartriangleright   V_4\vartriangleright  W \vartriangleright   \{(1)\}\) is a subnormal series, but not a normal series.
+\end{ex}
+\begin{note}
+Some authors use the term `normal series' for our `subnormal series'.
+\end{note}
+\begin{defn}
+    Given two subnormal series of \(G \), one is a refinement of the other if
+    each term of the latter one series occurs as a term of the former series.
+\end{defn}
+\begin{ex}
+The subnormal series \(S_4 \vartriangleright V \vartriangleright C \vartriangleright  1\)
+ is a refinement of the subnormal series \(S_4 \vartriangleright  V \vartriangleright  1\).
+\end{ex}
+\begin{defn}
+    The (normal) subgroups \(G_0\), \(G_1,\,G_2,\,\dots,G_r\) are called the terms of the series and the factor groups \(G_{i-1}/G_i (i=1,2,\dots,r )\) are called the factors of the series.
+    The series \eqref{eq:subnormal1} is called  a proper subnormal series if every \(G_i \) is a proper normal subgroup of \(G_{i-1}(i=1,2,\dots,r )\).
+\end{defn}
+\begin{defn}
+    The series
+    \[\{e\} =J_0\vartriangleleft J_1 \vartriangleleft J_2 \vartriangleleft \dots \vartriangleleft J_m=G\]
+    is said to be a proper refinement of the series
+    \[\{e\} =H_0\vartriangleleft H_1 \vartriangleleft H_2 \vartriangleleft \dots \vartriangleleft H_n=G\]
+    (of the same group \(G\)) if there is a \(j\in \{0,1,\dots, m\}\) such that \( H_i \neq J_j\) holds for \(i\in \{0,1,\dots, n\}\).
+\end{defn}
+\begin{defn}
+    Two subnormal series of a given group \(G\), say
+    \[G= G_0 \vartriangleright G_1\vartriangleright G_2\vartriangleright\dots \vartriangleright G_r = 1\]
+    and
+    \[G= H_0 \vartriangleright H_1\vartriangleright H_2\vartriangleright\dots \vartriangleright H_s = 1\]
+    are called isomorphic (or equivalent) if there is a one-one correspondence between the
+    set of non-trivial factor groups \(G_{i-1}/G_i \) and the set of non-trivial factor groups \(H_{j-i}/ H_j\)
+    such that the corresponding factor groups are isomorphic.
+\end{defn}
+\begin{ex}
+The following two subnormal series (of the cyclic group \(C_6\) of order 6)
+\[C_6 \vartriangleright C_3 \vartriangleright 1 \text{ and } C_6 \vartriangleright C2 \vartriangleright 1\]
+are isomorphic, for
+\[C_6/C_3 \cong C_2/1 \text{ and } C_3/1 \cong C_6/C_2.\]
+\end{ex}
+\begin{ex}
+Let \(G =\langle a \rangle\) be a cyclic group of order 24 so that \(o(a) = 24\).
+Consider the following two normal series
+\begin{equation}
+    G = \langle a \rangle \vartriangleright \langle a^2 \rangle \vartriangleright \langle a^6 \rangle \vartriangleright \langle a^{12} \rangle \vartriangleright \{e\} \label{eq:c24.1}
+\end{equation}
+and
+\begin{equation}
+    G = \langle a \rangle \vartriangleright \langle a^3 \rangle \vartriangleright \langle a^6 \rangle \vartriangleright \langle a^{12} \rangle \vartriangleright \{e\} \label{eq:c24.2}
+\end{equation}
+The factors of \eqref{eq:c24.1} are
+\[
+\langle a \rangle/\langle a^3 \rangle, \langle a^3 \rangle/\langle a^6 \rangle, \langle a^6 \rangle/\langle a^{12} \rangle \text{ and } \langle a^{12} \rangle/\{e\},
+\]
+which are of orders 2, 3, 2, 2 respectively. Since these are of prime orders, they are
+simple.
+Similarly, the factors of \eqref{eq:c24.2} are
+\[\langle a \rangle/\langle a3 \rangle, \langle a^3 \rangle/\langle a^6 \rangle, \langle a^6 \rangle/\langle a^{12} \rangle \text{ and } \langle a^{12} \rangle/\{e\},\]
+which are of orders 3, 2, 2, 2 respectively. These are again simple.
+So, \eqref{eq:c24.1} and \eqref{eq:c24.2} both are composition series of \(G\).
+We see that both of these series are of same length (viz. 4)\\
+Since two cyclic groups of same order are isomorphic, we then have
+\[\langle a \rangle/\langle a^2 \rangle\cong \langle a^3 \rangle/\langle a^6 \rangle, \langle a^2 \rangle/\langle a^6 \rangle \cong \langle a \rangle/\langle a^3 \rangle,\]
+\[\langle a^6 \rangle/\langle a^{12} \rangle \cong \langle a^6 \rangle/\langle a^{12} \rangle \text{ and } \langle a^{12} \rangle/\{e\} \cong \langle a^{12} \rangle/ \{e\}.\]
+Thus there is a one-one correspondence between the factors of \eqref{eq:c24.1} and those of \eqref{eq:c24.2}
+such that the corresponding factors are isomorphic.
+\end{ex}
+\begin{thm}[Schreier's Refinement Theorem]
+     Any two subnormal series of a given group possess isomorphic
+    refinements.
+\end{thm}
+\begin{proof}
+    Suppose \[G = G_0 t> G1 o G2 ... t> G
+    % f 7
+    % a1
+    % «
+    % i
+    % r-l > Gr = 1
+    % and H = tf 0 > > H 2 ... > W
+    % are two subnormal series of the group G.
+    % We construct a refinement of the first series by inserting between G
+    % * = 1* 2, 3 ... , r, the series
+    % ^£-1 ~ GiCGi-i n //0) C> G^G,
+    % Since each <3 // .
+    % 5-1 > Hs = 1
+    % i-i and G<, for each
+    % implies that each G £(Gj_ x n Hj) o Ct-(C,
+    % A similar refinement is carried out for the other series by inserting between and
+    % Hj , for each j = 1, 2, 3, , s, t h e s e r i e s
+    % G/ (G j_ 2 n H — G[.
+    % n Wy.1) and Gi <J (7
+    % 1-1 ••
+    % y-i £
+    % -1 £-!•
+    % il
+    % = Hy(G0 n t> Hj { G^ n Hj-i) » HJ { G2 n > ... O Hj { Gr n W/-0 = Hj.
+    % Now taking X = Gi, A — G£_t, Y = Hj, B = and putting these in the Zassenhaus
+    % Lemma, it follows that
+    % Hi
+    % J ~1
+    % Gifa-i n Hj-J / GtiGi- j. n ty) s n HJ .1 ) / Hj { Gi n '
+    % This shows that the corresponding factor groups are isomorphic.
+    % Hence the above two refinements are isomorphic.
+    % This completes the Droof.
+\end{proof}
+% * •
+% Definition 13.7 A subnormal series G = G0 t> G1 > G2 o > Gr = 1 is called proper if
+% every G* is a proper normal subgroup of Gj_ 2 (£ = 1, 2, 3, ... ,r).
+% Definition 13.8 A proper subnormal series of G which has no proper refinement is
+% called a composition series of G. The factor groups G^ i/ Gi are then called the
+% composition factors of G .
+% n
+\end{document}

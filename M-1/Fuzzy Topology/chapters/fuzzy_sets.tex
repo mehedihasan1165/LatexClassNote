@@ -97,9 +97,9 @@
     \end{enumerate}
     \underline{Solution:}
     \begin{enumerate}
-        \item Complement of 
+        \item Complement of \(A_1\),
         \[
-            A_1, A_1^c=\begin{cases}
+            A_1^c=\begin{cases}
                 \begin{aligned}
                     0; \qquad&\text{if }40\leq x<50\\
                     \frac{x-50}{10}; \qquad&\text{if }50\leq x<60\\
@@ -107,9 +107,9 @@
                 \end{aligned}
             \end{cases}
             \]
-        Complement of 
+        Complement of \(A_2\),
         \[
-            A_2, A_2^c=\begin{cases}
+            A_2^c=\begin{cases}
                 \begin{aligned}
                     1; \qquad&\text{if }40\leq x<50\\
                     \frac{60-x}{10}; \qquad&\text{if }50\leq x<60\\
@@ -142,4 +142,216 @@
             \]
 \end{enumerate}
 \end{ex}
+\begin{defn}[Level Set]
+    Let \(A :X\to [0,1]\) be a fuzzy set. The \(\alpha\) level set of \(A \) is denoted and defined by, \(A_\alpha\) or \(\alpha_A=\{x\in X|A(x)\geq \alpha\}\) where, \(0<\alpha\leq 1\).
+\end{defn}
+\begin{defn}[Core level of a fuzzy set]
+    When \(\alpha=1\), then \(A_1=\{x\in X|A(x)=1\}\) is called the core level of \(A \).
+\end{defn}
+\begin{defn}[Support of a fuzzy set]
+    Support of a fuzzy set \(A\) is denoted and defined by,\(S_A=\{x\in X|A(x)>0\}\).
+\end{defn}
+\begin{ex}
+    Given,
+    \[
+        A=\begin{cases}
+            \begin{aligned}
+                0; \qquad&\text{if } x\leq20 \text{ or, }x\geq 60\\
+                \frac{x-20}{15}; \qquad&\text{if }20< x<35\\
+                \frac{60-x}{15}; \qquad&\text{if }45< x<60\\
+                0; \qquad&\text{if }35\leq x\leq 45
+            \end{aligned}
+    \end{cases}
+    \qquad\text{and}\qquad
+    B=\begin{cases}
+        \begin{aligned}
+            0; \qquad&\text{if }x\leq45\\
+            \frac{x-45}{15}; \qquad&\text{if }45< x<60\\
+            1; \qquad&\text{if }x\geq 60
+        \end{aligned}
+    \end{cases}
+    \]
+    \begin{enumerate}
+        \item \begin{enumerate}
+            \item Core level of \(A \)?
+            \item Support of \(A \)?
+            \item Half level of \(A \)?
+            \item \(\frac{3}{4}\) level of \(A \)?
+        \end{enumerate}
+        \item \begin{enumerate}
+            \item Core level of \(B \)?
+            \item Support of \(B \)?
+            \item Half level of \(B \)?
+        \end{enumerate}
+    \end{enumerate}
+\end{ex}
+\begin{soln}
+    \begin{enumerate}
+        \item \begin{enumerate}
+            \item Core level of \(A \) is \(A_1=\{x\in X|35\leq x\leq45\}\).
+            \item Support level of \(A \) is \(S_A=\{x\in X|20<x<60\}\).
+            \item Half level of \(A \) is \(A_{\frac{1}{2}}=\{x\in X|27.5\leq x\leq52.5\}\).
+            \item \(\frac{3}{4}\) level of \(A \) is \(A_{\frac{3}{4}}=\{x\in X|31.25\leq x\leq48.75\}\).
+        \end{enumerate}
+        \item \begin{enumerate}
+            \item Core level of \(B \) is \(B_1=\{x\in X|x\geq 60\}\).
+            \item Support level of \(B \) is \(S_B=\{x\in X|x>45\}\).
+            \item Half level of \(B \) is \(B_{\frac{1}{2}}=\{x\in X|x\geq52.5\}\).
+        \end{enumerate}
+    \end{enumerate}
+\end{soln}
+\begin{ex}
+    \(A:X\to [0,1]\) defined by 
+    \[
+        A(x)=\begin{cases}
+            \begin{aligned}
+                1; \qquad&\text{if } x\leq20\\
+                \frac{35-x}{20}; \qquad&\text{if }20\leq x <35\\
+                0; \qquad&\text{if }x\geq35
+            \end{aligned}
+    \end{cases}
+    \]
+    Then find \(\frac{1}{2}\) level of \(A \).
+\end{ex}
+\begin{soln}
+    \[A_\frac{1}{2}=\{x\in X|x\leq 25\}\]
+\end{soln}
+\begin{prob}
+    Consider, the two fuzzy sets \(A,B:X=[0,100]\to[0,1]\) defined by
+    \[
+        A(x)=\begin{cases}
+            \begin{aligned}
+                0; \qquad&\text{if } 0\leq x< 40\\
+                \frac{x}{75}; \qquad&\text{if }40\leq x<75\\
+                1; \qquad&\text{if }75\leq x<100
+            \end{aligned}
+    \end{cases}
+    \qquad\text{and}\qquad
+    B(x)=\begin{cases}
+        \begin{aligned}
+            0; \qquad&\text{if }0\leq x< 40\\
+            \frac{x}{95}; \qquad&\text{if }40\leq x<95\\
+            1; \qquad&\text{if }95\leq x\leq 100
+        \end{aligned}
+    \end{cases}
+    \]
+    Then find \((A\wedge B)(x )\) and \((A\vee B )(x )\).
+\end{prob}
+\begin{soln}
+    \[
+        (A\wedge B)(x)=\begin{cases}
+            \begin{aligned}
+                0; \qquad&\text{if } 0\leq x< 40\\
+                \frac{x}{95}; \qquad&\text{if }40\leq x<95\\
+                1; \qquad&\text{if }95\leq x\leq 100
+            \end{aligned}
+    \end{cases}
+    \qquad\text{and}\qquad
+    (A\vee B)(x)=\begin{cases}
+        \begin{aligned}
+            0; \qquad&\text{if }0\leq x\leq 40\\
+            \frac{x}{75}; \qquad&\text{if }40\leq x<75\\
+            1; \qquad&\text{if }75\leq x\leq 100
+        \end{aligned}
+    \end{cases}
+    \]
+\end{soln}
+\# Suppose, \(X=\R \) and the fuzzy set of real numbers much greater than \(5\) in \(X \), that could be defined by,
+\[
+    A(x)=\begin{cases}
+        \begin{aligned}
+            0; \qquad&\text{if } x\leq 5\\
+            \frac{x-5}{50}; \qquad&\text{if }5< x\leq 55\\
+            1; \qquad&\text{if }x\geq 55
+        \end{aligned}
+\end{cases}
+\]
+\begin{ex}
+    Consider, the two fuzzy sets \(A \) and \(B \) of \(\fx \), where \(X=[0,100]\)
+    \[
+        A(x)=\begin{cases}
+            \begin{aligned}
+                1; \qquad&\text{if } 40\leq x\leq 50\\
+                1-\frac{x-50}{10}; \qquad&\text{if } 50\leq x\leq 60\\
+                0; \qquad&\text{if }60\leq x\leq100
+            \end{aligned}
+    \end{cases}
+    \qquad\text{and}\qquad
+    B(x)=\begin{cases}
+        \begin{aligned}
+            0; \qquad&\text{if }40\leq x\leq 50\\
+            \frac{x-50}{10} ; \qquad&\text{if }50 \leq x\leq 60\\
+            1-\frac{x-60}{10}; \qquad&\text{if }60\leq x\leq 70\\
+            0; \qquad&\text{if }70\leq x\leq 100
+        \end{aligned}
+    \end{cases}
+    \]
+    Draw \((A\vee B )(x),\,(A\wedge B)(x),\,A',\,B'\).
+\end{ex}
+\begin{soln}
+    Here,
+    \[
+            (A\vee B)(x)=\begin{cases}
+            \begin{aligned}
+                1; \qquad&\text{if } 40\leq x\leq 50\\
+                1-\frac{x-50}{10}; \qquad&\text{if } 50\leq x\leq 55\\
+                \frac{x-50}{10}; \qquad&\text{if } 55\leq x\leq 60\\
+                1-\frac{x-60}{10}; \qquad&\text{if } 60\leq x\leq 70\\
+                0; \qquad&\text{if } 70\leq x\leq 100
+            \end{aligned}
+    \end{cases}
+    \qquad\text{and}\qquad
+    (A\wedge B)(x)=\begin{cases}
+        \begin{aligned}
+            0; \qquad&\text{if } 40\leq x\leq 50\\
+            \frac{x-50}{10} ; \qquad&\text{if }50 \leq x\leq 55\\
+            1-\frac{x-50}{10} ; \qquad&\text{if }55 \leq x\leq 60\\
+            0; \qquad&\text{if }60\leq x\leq 100
+        \end{aligned}
+    \end{cases}
+    \]
+    \[
+            A^c(x)=\begin{cases}
+            \begin{aligned}
+                0; \qquad&\text{if } 40\leq x\leq 50\\
+                \frac{x-50}{10}; \qquad&\text{if } 50\leq x\leq 60\\
+                1; \qquad&\text{if }60\leq x\leq100
+            \end{aligned}
+    \end{cases}
+    \qquad\text{and}\qquad
+    B^c(x)=\begin{cases}
+        \begin{aligned}
+            1; \qquad&\text{if }40\leq x\leq 50\\
+            1-\frac{x-50}{10} ; \qquad&\text{if }50 \leq x\leq 60\\
+            \frac{x-60}{10}; \qquad&\text{if }60\leq x\leq 70\\
+            1; \qquad&\text{if }70\leq x\leq 100
+        \end{aligned}
+    \end{cases}
+    \]
+    \begin{figure}[H]
+        \centering
+        \import{../img/}{set_operation.tikz}
+    \end{figure}
+\end{soln}
+\begin{defn}[Fuzzy Relation]
+    Let \(X \) and \(Y \) be two non-empty classical(Fuzzy) sets. Then a fuzzy relation \(R \) on \(X\times Y \) is a mapping, \(R:X\times Y\to[0,1]\) where, the number \(R(x,y)\in[0,1]\) is called the degree of relationship between \(x \) and \(y \).
+\end{defn}
+\begin{ex}
+    Let \(X=\{a,b,c \},\, Y=\{c,d \}\). Then \(X\times Y=\{(a,c),(a,d),(b,c),(b,d),(c,c),(c,d )\}\) where \(R(a,c)=R(a,d)=0\), \(R(b,c)=R(b,d)=R(c,c)=1\) and \(R(c,d)=0.8\). For the fuzzy relation:
+    \begin{enumerate}
+        \item Core of \(R \)?
+        \item Support of \(R \)?
+        \item 0.7 of \(R \)?
+    \end{enumerate}
+\end{ex}
+\begin{soln}
+    \begin{enumerate}
+        \item Core of \(R=\{(b,c),(b,d),(c,c )\}\) Since, \(R(x,y)=1\) for \(x\in X \) and \(y\in Y \).
+        \item Support of \(R=\{(b,c),(b,d),(c,c ),(c,d)\}\) Since, \(R(x,y)>0\) for \(x\in X \) and \(y\in Y \).
+        \item 0.7 of \(R=\{(b,c),(b,d),(c,c ),(c,d)\}\) Since, \(R(x,y)>0.7\) for \(x\in X \) and \(y\in Y \).
+    \end{enumerate}
+\end{soln}
+\begin{defn}[Max-min and Min-max Composition]
+    Let \(R \) be a fuzzy relation on \(X\times Y \) i.e., \(R\in\mathcal{F }(X\times Y )\) and \(S \) be a fuzzy relation on \(Y\times Z \) i.e., \(S\in \mathcal{F }(Y\times Z )\). Then \(R\circ S \in \mathcal{F }(X\times Z)\) defined by \((R\circ S)(x,z)=\bigvee_{y\in Y }R(x,y)\wedge S(y,z )\) is called the Max-Min composition of \(R \) and \(S \) on \(X\times Z \). And \((R\circ S)(x,z)=\bigwedge_{y\in Y }R(x,y)\vee S(y,z )\) is called the Min-Max composition of \(R \) and \(S \) on \(X\times Z \)
+\end{defn}
 \end{document}

@@ -44,8 +44,8 @@
 \begin{equation}
     \begin{rcases}
         \displaystyle\rho\ddt{u}=\rho F_x+\pardx{\sigma_{xx}}+\pardy{\sigma_{yx}}+\pardz{\sigma_{zx}}\\
-        \displaystyle\rho\ddt{u}=\rho F_y+\pardx{\sigma_{xy}}+\pardy{\sigma_{yy}}+\pardz{\sigma_{zy}}\\
-        \displaystyle\rho\ddt{u}=\rho F_z+\pardx{\sigma_{xz}}+\pardy{\sigma_{yz}}+\pardz{\sigma_{zz}}\quad
+        \displaystyle\rho\ddt{v}=\rho F_y+\pardx{\sigma_{xy}}+\pardy{\sigma_{yy}}+\pardz{\sigma_{zy}}\\
+        \displaystyle\rho\ddt{w}=\rho F_z+\pardx{\sigma_{xz}}+\pardy{\sigma_{yz}}+\pardz{\sigma_{zz}}\quad
     \end{rcases}\label{eq:navier1}
 \end{equation}
 where, \(\ddt{}=\frac{\partial}{\partial\,t}+u\pardx{}+v\pardy{}+w\pardz{}\) is the total derivative with respect to the fluid particle following the motion.\\
@@ -77,7 +77,7 @@ Now equation \eqref{eq:navier2} can be written,
 \begin{align*}
     \rho\ddt{u}&=\rho F_x-\pardx{P}+2\mu\parxn{u}{2}-\frac{2\mu}{3}\pardx{}(\vec{\nabla}\cdot \vec{q})+\mu\pardy{}\left( \pardy{u}+\pardx{v} \right)+\mu\pardz{}\left( \pardz{u}+\pardx{w}  \right)\\
     &=\rho F_x-\pardx{P}+\mu\left(\parxn{u}{2}+\paryn{u}{2}+\parzn{u}{2}\right) +\mu\pardx{}\left( \pardx{u}+\pardy{v}+\pardz{w} \right)-\frac{2\mu}{3}\pardx{}(\vec{\nabla}\cdot \vec{q})\\
-    &=\rho F_x-\pardx{P}+\mu\left(\parxn{u}{2}+\paryn{u}{2}+\parzn{u}{2}\right) +\mu\pardx{}\left( \pardx{u}+\pardy{v}+\pardz{w} \right)-\frac{2\mu}{3}\pardx{}(\vec{\nabla}\cdot \vec{q})\\
+    &=\rho F_x-\pardx{P}+\mu\left(\parxn{u}{2}+\paryn{u}{2}+\parzn{u}{2}\right) +\mu\pardx{}\left( \vec{\nabla}\cdot \vec{q}\right)-\frac{2\mu}{3}\pardx{}(\vec{\nabla}\cdot \vec{q})\\
     &=\rho F_x-\pardx{P}
     +\mu\frac{1}{3}\pardx{}(\vec{\nabla}\cdot \vec{q})+
     \mu\left(\parxn{u}{2}+\paryn{u}{2}+\parzn{u}{2}\right)
@@ -267,5 +267,154 @@ Which is the Navier-Stokes equation in Lamb's form.
         \Rightarrow\;\;&\frac{\partial \vec{u}}{\partial t}+(\vec{u}\cdot \vec{\nabla})\cdot\vec{u}=\vec{F}-\frac{1}{\rho}\vec{\nabla}P+\nu\nabla^2 \vec{u}\\
         &\qquad\vec{\nabla}\cdot\vec{u}=0
     \end{align*}
-\end{soln}  
+\end{soln}
+\begin{prob}
+    What is boundary layer and also define boundary layer thickness, displacement thickness, momentum thickness and energy thickness.
+\end{prob}
+\begin{soln}
+    \underline{Boundary Layer:} The transition from zero velocity at the boundary to the full magnitude at far away from the boundary takes place in a very thin layer is called boundary layer.\\
+
+    \underline{The boundary layer thickness:} \((\delta)\)\\
+    The boundary layer thickness is that distance from the wall, where the velocity differs by one percent from the external velocity. This is denoted by \(\delta\), from Blasius profile we obtain,
+    \[\eta=y\sqrt{\frac{U_\infty}{\nu_x}} \approx 5.0\]
+    Hence the boundary layer thickness on a flat plate becomes,
+    \[\delta=\eta\sqrt{\frac{\nu_x }{U_\infty}}=5.0\sqrt{\frac{\nu_x }{U_\infty}}\]
+
+    \underline{The displacement thickness \((\delta_1)\):}\\
+    The displacement thickness \(\delta_1\) is that distance by which the potential field of flow is displaced outwards as a consequence of the decrease in velocity in the boundary layer.\\
+    The decrease in volume flow due to the influence of friction is
+    \[\int_0^\infty (U_\infty-u )\D y\]
+    Thus we get, 
+    \begin{align*}
+        & U_\infty \delta_1=\int_0^\infty (U_\infty-u )\D y\\
+        \Rightarrow\,& \delta_1=\int_0^\infty 1-\frac{u}{U_\infty } \D y
+    \end{align*}
+
+    \underline{The momentum thickness \((\delta_2)\) :}\\
+    The loss of momentum in the boundary layer as compared with potential flow is given by
+    \[\rho\int_{0}^{\infty}u(U_\infty-u )\D y\]
+    So that a new thickness can be defined by,
+    \begin{align*}
+        &\rho U_\infty^2 \delta_2 =\rho\int_{0}^{\infty}u(U_\infty-u )\D y\\
+        \Rightarrow\,&\delta_2 =\int_{0}^{\infty}\frac{u}{U_\infty}(1-\frac{u}{U_\infty})\D y
+    \end{align*}
+    Where \(\delta_2\) denotes the momentum thickness. The numerical evaluation for the plate at zero incidence gives,
+    \[\delta_2=0.664\sqrt{\frac{\nu_x }{U_\infty}}\]
+    
+    \underline{The energy thickness \((\delta_3)\) :}\\
+    The energy thickness \(\delta_3\) is defined as
+    \begin{align*}
+        &U_\infty^3 \delta_3 =\int_{0}^{\infty}u(U_\infty^2-u^2 )\D y\\
+        \Rightarrow\,&\delta_3 =\int_{0}^{\infty}\frac{u}{U_\infty}(1-\frac{u^2}{U_\infty^2})\D y
+    \end{align*}
+    Here, \(\begin{aligned}[t]
+        \delta&=\text{ boundary layer thickness}\\
+        \delta_1&=\text{ displacement layer thickness}=\frac{1}{2}\delta\\
+        \delta_2&=\text{ momentum layer thickness}=\frac{1}{6}\delta\\
+        \delta_3&=\text{ energy layer thickness}=\frac{1}{4}\delta
+    \end{aligned}\)
+\end{soln}
+\begin{prob}
+    Derivation of Boundary Layer equation for two-dimensional flow along a flat place.\\
+    Or, Deduce the Prandtl's boundary layer momentum equations for the steady two-dimensional flow stating all the assumption clearly.
+\end{prob}
+\begin{soln}
+    In two-dimensional flow, let us consider a plate coinciding with \(x-\)direction, \(y-\)axis being perpendicular to it.
+
+    For two-dimensional unsteady incompressible viscous flow, the Navier-Stokes equations are (without body force):
+    \begin{align}
+        \frac{\partial u}{\partial t }+u\frac{\partial u}{\partial x }+v\frac{\partial u}{\partial y }&=-\frac{1}{\rho}\frac{\partial P}{\partial x }+\nu \nabla^2 u \label{eq:prand1}\\
+        \frac{\partial v}{\partial t }+u\frac{\partial v}{\partial x }+v\frac{\partial v}{\partial y }&=-\frac{1}{\rho}\frac{\partial P}{\partial y }+\nu \nabla^2 v \label{eq:prand2}\\
+        \intertext{and the equation of continuity,}
+        \frac{\partial u}{\partial x }+\frac{\partial v}{\partial y }&=0 \label{eq:prand3}
+    \end{align}
+    Now for non dimensionalize the above equations, let \(V \) be the characteristic velocity and \(L \) be the characteristic length of the body. The pressure is made dimensionless with \(\rho V^2\) and \(\frac{L }{V }\) refers characteristic time.
+    
+    Reynolds number \(R=\frac{\rho V L }{\mu}=\frac{VL }{\nu}\), which is assumed very large.
+    
+    Let the dimensionless quantities by,
+    \[
+        x'=\frac{x }{L },\,\,y'=\frac{y }{L },\,\, t'=\frac{t V }{L },\,\, p'=\frac{P }{\rho V^2},\,\, u'=\frac{u }{V },\,\,v'=\frac{v }{V }
+    \]
+    The equation \eqref{eq:prand1} becomes
+    \begin{align*}
+        & \frac{\partial (Vu')}{\partial \left( \frac{L t' }{V } \right)}+Vu'\frac{\partial \left( Vu' \right)}{\partial (Lx') }+Vv'\frac{\partial (Vu')}{\partial (Ly') }=-\frac{1}{\rho}\frac{\partial (\rho V^2 P')}{\partial (Lx') }+\nu\left[ \frac{\partial^2 (Vu')}{\partial \left( L x'\right)^2}+\frac{\partial^2 (Vu')}{\partial \left( L y'\right)^2}\right]\\
+        \Rightarrow\;\;& \frac{V^2 }{L}\frac{\partial u'}{\partial  t'}+\frac{V^2 }{L}u'\frac{\partial u'}{\partial x' }+\frac{V^2 }{L}v'\frac{\partial u'}{\partial y' }=-\frac{V^2 }{L} \frac{\partial  P'}{\partial x' }+\nu\frac{V}{L^2}\left[ \frac{\partial^2 u'}{\partial  x'^2}+\frac{\partial^2 u'}{\partial y'^2}\right]\\
+        \Rightarrow\;\;& \frac{\partial u'}{\partial  t'}+u'\frac{\partial u'}{\partial x' }+v'\frac{\partial u'}{\partial y' }=-\frac{\partial  P'}{\partial x' }+\frac{\nu}{L V }\left[ \frac{\partial^2 u'}{\partial  x'^2}+\frac{\partial^2 u'}{\partial y'^2}\right]
+    \end{align*}
+    Dropping the suffixes, we get
+    \begin{equation}
+        \frac{\partial u}{\partial  t}+u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}=-\frac{\partial  P}{\partial x}+\frac{1}{R}\left( \frac{\partial^2 u}{\partial  x^2}+\frac{\partial^2 u}{\partial y^2}\right) 
+        \label{eq:prand4}
+    \end{equation}
+    Similarly from equation \eqref{eq:prand2}, we get
+    \begin{equation}
+        \frac{\partial v}{\partial  t}+u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}=-\frac{\partial  P}{\partial y}+\frac{1}{R}\left( \frac{\partial^2 v}{\partial  x^2}+\frac{\partial^2 v}{\partial y^2}\right) 
+        \label{eq:prand5}
+    \end{equation}
+    and the equation of continuity is
+    \begin{equation}
+        \frac{\partial u}{\partial x }+\frac{\partial v}{\partial y }=0 \label{eq:prand6}
+    \end{equation} 
+    Let us consider the non dimensional boundary layer thickness is \(\delta\),\\
+    where \(\displaystyle \delta=\frac{\text{Original boundary layer thickness }}{L }<<<1\)\\
+    Let us assume that,
+    \[\begin{aligned}[t]
+        u&\sim 1\\
+        v&\sim \delta
+    \end{aligned}\,\,\begin{aligned}[t]
+        x&\sim 1\\
+        y&\sim \delta
+    \end{aligned}\,\, p\sim 1,\,\, t\sim1\]
+    \[\pardx{u}\sim1,\,\,\pardy{v}\sim 1,\,\,\frac{\partial u }{\partial t}\sim 1,\,\,\pardy{u}\sim\frac{1}{\delta},\,\,\pardx{v}\sim \delta,\,\,\frac{\partial v }{\partial t}\sim \delta\]
+    \[\frac{\partial^2 u }{\partial x^2}\sim1,\,\,\frac{\partial^2 u }{\partial y^2}\sim \frac{1 }{\delta^2 },\,\,\frac{\partial^2 v }{\partial x^2}\sim \delta ,\,\,\frac{\partial^2 v }{\partial y^2}\sim\frac{1}{\delta}\]
+
+    If these are introduced in equations \eqref{eq:prand4} and \eqref{eq:prand5}, it follows from equation \eqref{eq:prand3} that the viscous forces in boundary layer can become of the same order of magnitude as the inertia forces only if the Reynolds number is of the order \(\frac{1}{\delta^2}\) i.e., \(\frac{1}{R }\sim \delta^2\).\\
+    The Prandtl's equation for unsteady flow is:\\
+    Direction \(x \):
+    % \begin{align*}
+    %     \underset{\lower.8cm\hbox{1}}{\frac{\partial u}{\partial t }}+\underset{\lower.8cm\hbox{1}}{u}\,\underset{\lower.8cm\hbox{1}}{\frac{\partial u}{\partial x }}+\underset{\lower.8cm\hbox{\(\delta\)}}{v}\,\underset{\lower.8cm\hbox{\(\frac{1}{\delta}\)}}{\frac{\partial u}{\partial y }}&=-\frac{\partial P}{\partial x }+
+    %     \underset{\lower.8cm\hbox{\(\delta^2\)}}{\frac{1}{R}}\left( \frac{\partial^2 u }{\partial x^2}+\frac{\partial^2 u }{\partial y^2}\right) \\
+    %     \intertext{Direction \(y\):}
+    %     \frac{\partial v}{\partial t }+u\frac{\partial v}{\partial x }+v\frac{\partial v}{\partial y }&=-\frac{\partial P}{\partial y }+
+    %     \frac{1}{R}\left( \frac{\partial^2 u }{\partial x^2}+\frac{\partial^2 u }{\partial y^2}\right) \\
+    %     \intertext{and the equation of continuity,}
+    %     \frac{\partial u}{\partial x }+\frac{\partial v}{\partial y }&=0
+    % \end{align*}
+    \begin{align*}
+        \frac{\partial u}{\partial t}+u\,\frac{\partial u}{\partial x }+v\,\frac{\partial u}{\partial y }&=-\frac{\partial P}{\partial x }+\frac{1}{R}\left( \frac{\partial^2 u }{\partial x^2}+\frac{\partial^2 u }{\partial y^2}\right) \\
+        1\phantom{++}1\,\,\,\,1\phantom{++}\delta\,\,\,\,\frac{1}{\delta}&\phantom{=-\frac{\partial P}{\partial x }+\,\,\,}\delta^2\,\,\left( 1\phantom{+++}\frac{1}{\delta^2}\right) \\
+        \intertext{Direction \(y\):}
+        \frac{\partial v}{\partial t }+u\frac{\partial v}{\partial x }+v\frac{\partial v}{\partial y }&=-\frac{\partial P}{\partial y }+
+        \frac{1}{R}\left( \frac{\partial^2 u }{\partial x^2}+\frac{\partial^2 u }{\partial y^2}\right) \\
+        \delta\phantom{++}1\,\,\,\,\delta\phantom{++}\delta\,\,\,\,1&\phantom{=-\frac{\partial P}{\partial x }+\,\,\,}\delta^2\,\,\left( \delta\phantom{+++}\frac{1}{\delta}\right) \\
+        \intertext{and the equation of continuity,}
+        \frac{\partial u}{\partial x }+\frac{\partial v}{\partial y }&=0\\
+        1\quad\quad 1\,&
+    \end{align*}
+    The boundary conditions are:\\
+    \begin{align*}
+        u&=v=0 &\text{ for }y&=0&\\
+        u&=U(x,t) &\text{ for }y&=\infty&
+    \end{align*}
+    Now in the case of steady flow, pressure depends only upon \(x \). Hence \(\frac{\partial P }{\partial y }=0\). Again since the boundary layer thickness is very small, the transverse velocity component \(v \) is very small at the edge of the boundary layer. Simplified Navier-Stokes equation is known as Prandtl's boundary layer equation transform to the dimensionless form.\\
+    Again we have,
+    \begin{align*}
+        {\frac{\partial u}{\partial t }}+{u}\,{\frac{\partial u}{\partial x }}+{v}\,\frac{\partial u}{\partial y }&=-\frac{1}{\rho}\frac{\partial P}{\partial x }+
+        \nu  \frac{\partial^2 u }{\partial y^2}\quad[\text{ neglecting }\frac{\partial^2 u }{\partial x^2}]\\
+        \frac{\partial u}{\partial x }+\frac{\partial v}{\partial y }&=0
+    \end{align*}
+    which is called the boundary layer equation in plane flow.\\
+    In the case of steady flow, the boundary layer equations are:
+    \begin{align*}
+        {u}\,{\frac{\partial u}{\partial x }}+{v}\,\frac{\partial u}{\partial y }&=-\frac{1}{\rho}\frac{\partial P}{\partial x }+
+        \nu  \frac{\partial^2 u }{\partial y^2}\\
+        \frac{\partial u}{\partial x }+\frac{\partial v}{\partial y }&=0
+    \end{align*}
+    with the boundary conditions
+    \begin{align*}
+        u&=v=0 &\text{ for }y&=0&\\
+        u&=U(x) &\text{ for }y&=\infty&
+    \end{align*}
+\end{soln}
 \end{document}
