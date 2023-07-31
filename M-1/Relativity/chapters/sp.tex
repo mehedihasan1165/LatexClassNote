@@ -1,0 +1,147 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\begin{prob}
+    Define: event, inertial and non-inertial frames of reference, proper time.
+\end{prob}
+\begin{soln}
+    \underline{Event:} Which happens independently of any reference frame and is described by four (space-time) measurements \((x,y,z,t )\).\\
+\underline{Frame of Reference:} A system which is used to describe any event.\\
+\underline{Inertial Frame:} In which law of inertia - Newton's first law holds.\\
+\underline{Newton's first law:} A free particle is either at rest or moves along a straight line with constant velocity. Every unaccelerated frame is an inertial frame.\\
+\underline{Inertial observer:} Observer attached to inertial frame.
+\end{soln}
+\begin{prob}
+    Write the Galilean transformation equations and show that Newton's laws are invariant under Galilean transformations. Find the velocity and acceleration transformations under these transformations.
+\end{prob}
+\begin{soln}
+    \underline{\textbf{Galilean Transformations}}\\
+Consider two frames of reference \(S \) and \(S' \), where the frame \(S \) is at rest/fixed and \(S'\) moves at a constant velocity \(v \) with respect to \(S \) (along \(x-x' \) axis).
+
+The origins of the two frames of reference are so chosen that they coincide at \(t=t'=0\). For convenience, we choose the three sets of axes to be parallel and allow their relative motion to be along the common \(x,x'\) axis.
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{galilean.tikz}
+\end{figure}
+\(\begin{aligned}
+    S,S'&\to \text{ two inertial frames }\\
+    S&\to \text{ fixed }\\
+    S'&\to \text{ moves at constant velocity with respect to \(S \) along \(x-x' \) axis }\\
+    S,S'& \text{ coincide at \(t=0\), \(t'=0\) }
+\end{aligned}\)
+
+
+Let an event occur at \(P \). An observer attached to \(S \) specifies the location and time of occurrence of this event as \((x,y,z,t )\). Another observer attached to \(S'\) specifies the same event as \((x',y',z',t' )\).\\
+According to the classical physics, the length intervals and time intervals are absolute. This gives,
+\begin{equation}
+    \begin{rcases}
+        x'=x-vt\qquad\\
+        y'=y\\
+        z'=z\\
+        t'=t\\
+    \end{rcases}\label{eq:gal1}
+\end{equation}
+This is known as Galilean coordinate transformations.
+\begin{note} 
+    We can regard \(S \) to moving velocity \(-v \) with respect to \(S' \) as we can regard \(S' \) to move with velocity \(v \) with respect to \(S\).\\
+    length \(\to \) meter sticks\\
+    clock \(\to \) synchronized.
+\end{note}
+
+
+\underline{\textbf{Newton's Laws are covariant under Galilean Transformation}}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{newton.tikz}
+\end{figure}
+Consider two events at points \(P \) and \(Q \). In \(S'-\) frame, time interval between occurrence of \(P \) and \(Q \) is 
+\[t_P'-t_Q'\]
+In \(S-\)frame, time interval is
+\[t_P-t_Q\]
+But \(t'=t\)
+\[\therefore \,t_P-t_Q=t_P-t_Q\]
+i.e., time interval is same for both inertial frames.
+
+Consider now a rod \(AB \) at rest in \(S-\) frame.\hspace{3cm}\begin{tikzpicture}
+    \draw[thick,*-*] (0,0)node[left]{\(A\)}--(2,0)node[right]{\(B\)};
+\end{tikzpicture}\\
+In \(S-\)frame, end points measurements are \(x_A \) and \(x_B \).\\
+In \(S'-\)frame, they are \(x_A' \) and \(x_B' \).\\
+Transformation law implies that
+\begin{align*}
+    x_B'&=x_B-vt_B
+    x_A'&=x_A-vt_A
+\end{align*}
+Length of the rod,
+\[x_B'-x_A'=x_B-x_A-v(t_B-t_A )\]
+But \(t_B \) and \(t_A \) are simultaneous. i.e., \(t_B=t_A \),
+\[\therefore\,\,x_B'-x_A'=x_B-x_A\]
+i.e., space interval between two points, say \(A \) and \(B \), measured at a given instant, is the same for each observer. Classical mechanics assumes that mass of a body is constant, independent of its motion with respect to an observer.
+
+Thus classical mechanics and Galilean transformations imply that length, mass and time - the three basic quantities in mechanics are all independent of the relative motion of the observer.\\
+
+
+\underline{\textbf{Velocity Transformation}}\\
+We have 
+\[x'=x-vt \]
+\[\therefore \,\ddt{x'}=\ddt{x}-v\qquad \text{ by differentiating with respect to  } t\]
+Since \(t'=t \), \(\ddt{}=\frac{\D }{\D t'}\), \hspace{2cm} according to Galilean transformation
+\[\therefore\, \frac{\D x'}{\D t' }=\ddt{x'}=\ddt{x}-v\qquad \text{ [For uniform velocity, \(v\to\) constant, \(\displaystyle\ddt{v}=0\)]}\]
+Similarly,
+\begin{align*}
+    \frac{\D y'}{\D t'}&=\ddt{y   }\\
+    \intertext{and}
+    \frac{\D z'}{\D t'}&=\ddt{z   }
+\end{align*}
+Hence,\footnote{Now,
+\begin{align*}
+    \frac{\D x'}{\D t'}&=u_x',\quad \text{ is the \(x-\)component of the velocity measured in \(S'\)}\\
+    \ddt{x}&=u_x,\quad \text{ is the \(x-\)component of the velocity measured in \(S\) and so on.}
+\end{align*}}
+\begin{align*}
+    u_x'&=u_x-v\\
+    u_y'&=u_y\\
+    u_z'&=u_z
+\end{align*}
+These are the transformation of the velocity component which is the simple classical velocity addition.
+
+
+In more general, \(\underbar{u}'=\underbar{u}-\underbar{v}\), \(\underbar{v}\to \) relative velocity of the frames.\\
+
+
+\underline{\textbf{Acceleration Transformation}}\\
+We know that from velocity transformation \(u_x'=u_x-v \). Now differentiating both sides with respect to \(t \), we get
+\begin{align*}
+    \frac{\D u_x'}{\D t'}&=\frac{\D }{\D t'}\left( u_x-v \right)\\
+    \Rightarrow\,\ddt{u_x'}&=\ddt{u_x},\quad v\to\text{ constant velocity, and }t'=t\,\,\therefore \frac{\D }{\D t'}=\ddt{}
+\end{align*}
+Similarly,
+\begin{align*}
+    \frac{\D u_y'}{\D t'}&=\frac{\D u_y}{\D t'}\\
+    \intertext{and}
+    \frac{\D u_z'}{\D t'}&=\frac{\D u_z}{\D t'}
+\end{align*}
+i.e.,
+\begin{align*}
+    a_x'&=a_x\\
+    a_y'&=a_y\\
+    a_z'&=a_z
+\end{align*}
+Hence, \(\underbar{a}'=\underbar{a}\) under Galilean transformations.\footnote{Which shows that the acceleration of particle is the same in all reference frames which move relative to one another with constant velocity. That means acceleration is invariant.}
+\end{soln}
+\begin{prob}
+    State the postulates of special theory of relativity. Derive the Lorentz transformation. Deduce the Galilean transformation from Lorentz transformation.
+\end{prob}
+\begin{soln}
+\underline{\textbf{The postulates of Special Relativity Theory}}\\
+In 1905, Albert Einstein (1879-1955) provided a solution to the dilemma facing physics. He gave two postulates are as follows:
+\begin{enumerate}
+    \item The laws of physics are the same in all inertial systems. No preferred inertial system exists. (the principle of Relativity)
+    \item The speed of light in free space has the same value \(c \) in all inertial systems. (The principle of the constancy of the speed of light).
+\end{enumerate}
+The special relativity is based on these two principles.
+\end{soln}
+\end{document}

@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+    \draw[-latex,thick] (0,0)node[below right]{$O$} -- (3.2,0)node[below]{$x$};
+    \draw[-latex,thick] (3.2,0) -- (4.6,0)node[below]{$x'$};
+    \draw[-latex,thick] (0,0) -- (0,4)node[left]{$z$};
+    \draw[-latex,thick] (2,0)node[below right]{$O'$} -- (2,4)node[right]{$z$};
+    \draw[-latex,thick] (2,0) -- (1,-1.2)node[below]{$y'$};
+    \draw[-latex,thick] (0,0) -- (-1.2,-1.2) node[below]{$y$};
+
+    \draw[->,thick] (2,2.6)--(3,2.6)node [right] {$v$};
+\end{tikzpicture}

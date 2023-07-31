@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+    \draw[-latex,thick] (0,0)node[below right]{$O$} -- (6,0)node[below]{$x$};
+    \draw[-latex,thick] (6,0) -- (8,0)node[below]{$x'$};
+    \draw[-latex,thick] (0,0) -- (0,5)node[left]{$z$};
+    \draw[-latex,thick] (3,0)node[below right]{$O'$} -- (3,5)node[right]{$z$};
+    \draw[-latex,thick] (3,0) -- (1,-2)node[below]{$y'$};
+    \draw[-latex,thick] (0,0) -- (-2,-2) node[below]{$y$};
+    
+    \draw[thick] (0,3) --(5,3)node [right]{$(x',\,y',\,z',\,t')$}--(4,2)node [right]{$\,P(x,\,y,\,z,\,t)$}--(-1,2)--(0,3);
+    \draw[thick] (0,0) --(5,0)--(4,-1)--(-1,-1)--(0,0);
+    \draw[thick] (-1,2) -- (-1,-1);
+    \draw[thick] (4,2) -- (4,-1);
+    \draw[thick] (5,3) -- (5,0);
+    \draw[thick,dashed] (3,3) -- (2,2);
+    \draw[thick,dashed] (2,2) -- (2,-1);
+    \node at (-0.5,4) {$S$};
+    \node at (2.5,4) {$S'$};
+    \draw[->,thick] (3,3.5)--(4,3.5)node [right] {$v$};
+    \node at (0.4,-1.2) {$vt$};
+    \node at (2.8,-1.2) {$x'$};
+    \draw[latex-latex](-1,-1)--(2,-1);
+    \draw[latex-latex](2,-1)--(4,-1);
+    \end{tikzpicture}

@@ -4,5 +4,192 @@
 \graphicspath{ {../img/} }
 \backgroundsetup{contents={}}
 \begin{document}
-\chapter{General Relativity}
+\chapter{Special Relativity}
+\section{Introduction}
+In macroscopic world, \(u<<c \), where \(u= \) speed of moving objects or mechanical waves with respect to any observer, \(c= \) speed of light \((3.00\times10^{10} m/sec)\).\\
+For example, \(u\to \) speed of an artificial satellite circling the earth, then \(\frac{u }{c }=.00027<<1\); or \(u\to \) speed of sound waves, then \(\frac{u }{c }=.0000010<<1 \).\\
+In this macroscopic environment, Newton developed his system of mechanics.\\
+In the microscopic world, it is possible to find particles whose speeds are quite close to that of light.
+\begin{ex}
+    For an electron accelerated through a 10 million volt potential difference, the speed \(u \) is equals to \(0.9988c \) that is,
+    \[\frac{u }{c }=0.9988\approx 1 \]
+    Energy of this electron is
+    \[E=10MeV\]
+    According to Newton mechanics, 
+    \[E=\frac{1}{2}mu^2 \]
+    If \(u \) is replaced by \(2u \) then,
+    \[\frac{1}{2}m(2u)^2=4\cdot\frac{1}{2}mu^2=4E\]
+    Let us now increase the energy of 10 MeV electron to \(4\times 10 MeV=40 MeV \). Then the speed of the electron will be double to
+    \begin{align*}
+        2u&=2\times 0.9988 c\\
+        &=1.9976 c
+    \end{align*}
+    as we might expect from the Newtonian mechanics, but remains below \(c \); it increases only from \(0.9988 c \) to \(0.9999 c \).\\
+    Hence, Newtonian mechanics work at low speeds, it fails badly as \(\frac{u}{c }\to 1\).
+\end{ex}
+In 1905 Albert Einstein published his special theory of relativity. In his theory, he extended and generalized Newtonian mechanics as well. He correctly predicted the results of mechanical experiments over the complete range of speed from \(\frac{u }{c }=0 \)  to \(\frac{u }{c }\to 1\).
+\subsection{Some Basic Concepts }
+\underline{Frame of Reference:} A system which is used to describe any event.\\
+\underline{Event:} Which happens independently of any reference frame and is described by four (space-time) measurements \((x,y,z,t )\).\\
+\underline{Inertial Frame:} In which law of inertia - Newton's first law holds.\\
+\underline{Newton's first law:} A free particle is either at rest or moves along a straight line with constant velocity. Every unaccelerated frame is an inertial frame.\\
+\underline{Inertial observer:} Observer attached to inertial frame.
+\section{Galilean Transformations}
+Consider two frames of reference \(S \) and \(S' \), where the frame \(S \) is at rest/fixed and \(S'\) moves at a constant velocity \(v \) with respect to \(S \) (along \(x-x' \) axis).
+
+The origins of the two frames of reference are so chosen that they coincide at \(t=t'=0\). For convenience, we choose the three sets of axes to be parallel and allow their relative motion to be along the common \(x,x'\) axis.
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{galilean.tikz}
+\end{figure}
+\(\begin{aligned}
+    S,S'&\to \text{ two inertial frames }\\
+    S&\to \text{ fixed }\\
+    S'&\to \text{ moves at constant velocity with respect to \(S \) along \(x-x' \) axis }\\
+    S,S'& \text{ coincide at \(t=0\), \(t'=0\) }
+\end{aligned}\)
+
+
+Let an event occur at \(P \). An observer attached to \(S \) specifies the location and time of occurrence of this event as \((x,y,z,t )\). Another observer attached to \(S'\) specifies the same event as \((x',y',z',t' )\).\\
+According to the classical physics, the length intervals and time intervals are absolute. This gives,
+\begin{equation}
+    \begin{rcases}
+        x'=x-vt\qquad\\
+        y'=y\\
+        z'=z\\
+        t'=t\\
+    \end{rcases}\label{eq:gal1}
+\end{equation}
+This is known as Galilean coordinate transformations.
+\begin{note} 
+    We can regard \(S \) to moving velocity \(-v \) with respect to \(S' \) as we can regard \(S' \) to move with velocity \(v \) with respect to \(S\).\\
+    length \(\to \) meter sticks\\
+    clock \(\to \) synchronized.
+\end{note}
+\subsection{Newton's Laws are covariant under Galilean Transformation}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{newton.tikz}
+\end{figure}
+Consider two events at points \(P \) and \(Q \). In \(S'-\) frame, time interval between occurrence of \(P \) and \(Q \) is 
+\[t_P'-t_Q'\]
+In \(S-\)frame, time interval is
+\[t_P-t_Q\]
+But \(t'=t\)
+\[\therefore \,t_P-t_Q=t_P-t_Q\]
+i.e., time interval is same for both inertial frames.
+
+Consider now a rod \(AB \) at rest in \(S-\) frame.\hspace{3cm}\begin{tikzpicture}
+    \draw[thick,*-*] (0,0)node[left]{\(A\)}--(2,0)node[right]{\(B\)};
+\end{tikzpicture}\\
+In \(S-\)frame, end points measurements are \(x_A \) and \(x_B \).\\
+In \(S'-\)frame, they are \(x_A' \) and \(x_B' \).\\
+Transformation law implies that
+\begin{align*}
+    x_B'&=x_B-vt_B
+    x_A'&=x_A-vt_A
+\end{align*}
+LEngth of the rod,
+\[x_B'-x_A'=x_B-x_A-v(t_B-t_A )\]
+But \(t_B \) and \(t_A \) are simultaneous. i.e., \(t_B=t_A \),
+\[\therefore\,\,x_B'-X_A'=x_B-x_A\]
+i.e., space interval between two points, say \(A \) and \(B \), measured at a given instant, is the same for each observer. Classical mechanics assumes that mass of a body is constant, independent of its motion with respect to an observer.
+
+Thus classical mechanics and Galilean transformations imply that length, mass and time - the three basic quantities in mechanics are all independent of the relative motion of the observer.
+\subsection{Velocity Transformation}
+We have 
+\[x'=x-vt \]
+\[\therefore \,\ddt{x'}=\ddt{x}-v\qquad \text{ by differentiating with respect to  } t\]
+Since \(t'=t \), \(\ddt{}=\frac{\D }{\D t'}\), \hspace{2cm} according to Galilean transformation
+\[\therefore\, \frac{\D x'}{\D t' }=\ddt{x'}=\ddt{x}-v\qquad \text{ [For uniform velocity, \(v\to\) constant, \(\displaystyle\ddt{v}=0\)]}\]
+Similarly,
+\begin{align*}
+    \frac{\D y'}{\D t'}&=\ddt{y   }\\
+    \intertext{and}
+    \frac{\D z'}{\D t'}&=\ddt{z   }
+\end{align*}
+Hence,\footnote{Now,
+\begin{align*}
+    \frac{\D x'}{\D t'}&=u_x',\quad \text{ is the \(x-\)component of the velocity measured in \(S'\)}\\
+    \ddt{x}&=u_x,\quad \text{ is the \(x-\)component of the velocity measured in \(S\) and so on.}
+\end{align*}}
+\begin{align*}
+    u_x'&=u_x-v\\
+    u_y'&=u_y\\
+    u_z'&=u_z
+\end{align*}
+These are the transformation of the velocity component which is the simple classical velocity addition.
+
+
+In more general, \(\underbar{u }'=\underbar{u }-\underbar{v}\), \(\underbar{v}\to \) relative velocity of the frames.
+\subsection{Acceleration Transformation}
+We know that from velocity transformation \(u_x'=u_x-v \). Now differentiating bothsides with respect to \(t \), we get
+\begin{align*}
+    \frac{\D u_x'}{\D t'}&=\frac{\D }{\D t'}\left( u_x-v \right)\\
+    \Rightarrow\,\ddt{u_x'}&=\ddt{u_x},\quad v\to\text{ constant velocity, and }t'=t\,\,\therefore \frac{\D }{\D t'}=\ddt{}
+\end{align*}
+Similarly,
+\begin{align*}
+    \frac{\D u_y'}{\D t'}&=\frac{\D u_y}{\D t'}\\
+    \intertext{and}
+    \frac{\D u_z'}{\D t'}&=\frac{\D u_z}{\D t'}
+\end{align*}
+i.e.,
+\begin{align*}
+    a_x'&=a_x\\
+    a_y'&=a_y\\
+    a_z'&=a_z
+\end{align*}
+Hence, \(\underbar{a}'=\underbar{a }\) under Galilean transformations.\footnote{Which shows that the acceleration of particle is the same in all reference frames which move relative to one another with constant velocity. That means acceleration is invariant.}
+
+In classical physics, the mass is also unaffected by the motion of reference frame.\\
+Hence \(m\underline{a }\) will be the same for all inertial observers.\\
+According to Newton's law of motion the force of a particle is given by \\
+in \(S- \)frame, force \(\underbar{F }=m\underbar{a}\)\\
+and in \(S;- \)frame, force \(\underbar{F }'=m\underbar{a}'\)
+But \(\underbar{a }=\underbar{a }'\), \(\therefore\,\underbar{F }=\underbar{F }'\), i.e., force is the same for all inertial frames.\\
+Hence, Newton's laws of motion are exactly the same in all inertial frames.
+
+
+In mechanics, the conservation principles - such as those for energy, linear momentum and angular momentum - are all consequences of Newton's laws. Hence, the laws of mechanics are the same in all inertial frames.
+\begin{itemize}
+    \item Mechanical experiments carried out in one inertial frame can not tell the observer what motion of that frame is with respect to any other inertial frame.
+    \item By comparing measurements in two inertial frames, we can tell the relative velocity between them.
+    \item There is no way at all of determining the absolute velocity of an inertial reference frame from mechanical experiments.
+\end{itemize}
+\subsection{No universal reference frame exists at absolute rest }
+No inertial frame is preferred over any other, because the laws of mechanics are the same in all. Hence, there is no physically definable absolute rest frame. We say that all inertial frames are equivalent as far as mechanics is concerned.
+
+The person riding the train cannot tell absolutely whether he alone is moving, or the earth alone is moving past him, or if some combination of motions is involved. Indeed, would one say that one on earth is at rest, that one is moving 30 km/sec (the speed of earth in its orbit about the sun) or that one's speed is much greater still (for instance the sun's speed in its orbit about the galactic center)? Actually, no mechanical experiment can be performed which will detect an absolute velocity through empty space.
+
+We can only speak of the relative velocity of one frame with respect to another, and not of an absolute velocity of a frame. This is sometimes called Newtonian relativity.
+\section{Electromagnetism and Newton Relativity}
+The laws of physics include the
+\begin{enumerate}[label=(\roman*)]
+    \item laws of mechanics,
+    \item laws of electromagnetism.
+\end{enumerate}
+The laws of mechanics are invariant under Galilean transformation. We inquire now whether the laws of electromagnetism are invariant under Galilean transformation.
+
+Consider a pulse of light (i.e., an electromagnetic pulse) traveling to the right with respect to the medium through which it is propagated at a speed \(c \). The ``medium'' of light propagation was given the name ``ether'',
+
+Historically when the mechanical view if physics dominated physicists thinking (late 10th century and early 20th century) it was not really accepted that an electromagnetic disturbance could be propagated in empty space.
+
+Let \(S \) denote the ether frame and regard it as an inertial one, for simplicity.\\
+In \(S-\)frame an observer measures the speed of light to be exactly \(c=\frac{1}{\sqrt{\epsilon_0\mu_0}}=2.997925\times10^{8}m/sec\). \(S'-\)frame is moving at a constant speed \(v \) with respect to \(S-\)frame.\\
+In \(S'-\)frame an observer would measure the speed of light pulse as 
+\[c+v\quad \text{ or }\quad c-v\]
+according to the direction of relative motion by the Galilean velocity transformation.
+
+Hence, the speed of light is not invariant under a Galilean transformation.\\
+
+.... is the velocity of propagation of light in vacuum. Hence, Maxwell's equations are not invariant under the Galilean transformations.\\
+
+In the Galilean transformations really do apply to optical or electromagnetic phenomena, then there is one inertial system and only one, in which the measured speed of light is exactly \(c \); that is, there is a unique inertial system in which the so-called ether is of rest. We would then have an absolute (or rest) frame and get a way of determining the relative velocity of some other frame with respect to the absolute frame by optical experiments performed in that frame. This contradicts with the Newtonian relativity which states that there is no physically definable absolute last frame.\\
+
+\underline{Findings:}
+\begin{enumerate}
+    \item Laws of mechanics are invariant under Galilean transformations.
+    \item Laws of electrodynamics are not invariant under Galilean transformations.
+\end{enumerate}
 \end{document}

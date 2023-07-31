@@ -1,0 +1,117 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\section{Lorentz Transformation}
+\begin{figure}[H]
+    \centering
+    \import{../tikz/}{lorentz.tikz}
+\end{figure}
+we observe an event in one inertial frame \(S \). The location and time of the event are described by the coordinates \((x,\,y,\,z,\,t )\).
+
+In a second inertial frame \(S'\), the same event is recorded as the time-space coordinates \((x',\,y',\,z',\,t' )\).
+
+Let 
+\begin{align*}
+    x'&=x'(x,\,y,\,z,\,t)\\
+    y'&=y'(x,\,y,\,z,\,t)\\
+    z'&=z'(x,\,y,\,z,\,t)\\
+    t'&=t'(x,\,y,\,z,\,t)
+\end{align*}
+We use the assumptions:
+\begin{enumerate}[label=(\roman*)]
+    \item Space is isotropic, i.e., all spatial direction are equivalent.
+    \item Space and time are homogenous, i.e., all points in space and time are equivalent.
+    \item \(S \) and \(S' \) coincide at \(t=0\), \(t'=0\).
+\end{enumerate}
+Let \(S'-\)frame moves with relative velocity \(v \) along the common \(x-x'\) axis.\\
+The homogeneity of space and time implies that the transformation equations must be linear:
+\begin{align*}
+    x'&=a_{11 } x+a_{12 }y+a_{13 }z+a_{14 }t\\
+    y'&=a_{21 } x+a_{22 }y+a_{23 }z+a_{24 }t\\
+    z '&=a_{31 } x+a_{32 }y+a_{33 }z+a_{34 }t\\
+    t '&=a_{41 } x+a_{42 }y+a_{43 }z+a_{44 }t
+\end{align*}
+where the subscripted coefficients are constant.
+\begin{note}
+    If \(x'=a_{11}x^2\), then \(x_2'-x_1'=a_{11}(x_2^2-x_1^2 )\);\\
+    For a rod of unit length in \(S \) with end points at
+    \begin{enumerate}[label=(\roman*)]
+        \item \(x_1=1\) and \(x_2=2\), we get \(x_2'-x_1'=3a_{11}\);
+        \item \(x_1=4\) and \(x_2=5\), we get \(x_2'-x_1'=9a_{11}\);
+    \end{enumerate}
+    i.e., the measured length of the rod depends on there it is in space. Similar is the situation for \(t \).
+\end{note}
+
+
+
+If \(v=0\), then \(a_{11}=a_{22}=a_{33}=a_{44}=1\), all other coefficients being zero. The \(x-\) axis coincides continuously with \(x'-\)axis. This gives \(y'=0\), \(z'=0\) for \(y=0\), \(z=0\). Then we have,
+\begin{align*}
+    y'&=a_{22 }y+a_{23 }z\\
+    z '&=a_{32 }y+a_{33 }z\\
+    \text{i.e., }\, a_{21}&=a_{24}=a_{31}=a_{34}=0
+\end{align*}
+Again, the plane \(z=0\) should transform to \(z'=0\) and the plane \(y=0\) to \(y'=0\). Hence,
+\begin{align*}
+    y'&=a_{22 }y\\
+    z '&=a_{33 }z\\
+    \text{i.e., }\, a_{23}&=0=a_{32}
+\end{align*}
+Consider a rod at rest of unit length lying along the \(y-\)axis in \(S \). According to the \(S'\) observer, the rod's length will be\footnote{\(y'=a_{22}y \), \(y_2'-y_1'=a_{22}(y_2-y_1)\), \(y'=a_{22} \times 1\)}
+\[y'=a_{22}\times 1=a_{22}\]
+Consider the same rod at rest along the \(y'\) axis in S'. To the S observer, the rod's length will be\footnote{\(y_2'-y_1'=a_{22}(y_2-y_1)=a_{22} y\), \(y=\frac{1}{a_{22}}\)}
+\[y=\frac{1}{a_{22}}y'=\frac{1}{a_{22}}\times 1=\frac{1}{a_{22}}\]
+The first postulate of special relativity implies that these measurements are identical. Therefore,
+\[\frac{1}{a_{22}}=a_{22}\qquad \Rightarrow\,\,a_{22}=1\]
+With the similar argument, \(a_{33}=1\).\\
+Thus,
+\begin{align*}
+    y'&=y\\
+    z'&=z
+\end{align*}
+Other two transformation equations are
+\begin{align*}
+    x'&=a_{11 } x+a_{12 }y+a_{13 }z+a_{14 }t\\
+    t '&=a_{41 } x+a_{42 }y+a_{43 }z+a_{44 }t
+\end{align*}
+
+Since space is isotropic, we get that \(t'\) does not depend on \(y \) and \(z\).\footnote{\begin{note}
+    Otherwise, if we place clocks at \(+y \), \(-y \), then \(t'=a_{41 }x+a_{42 }y +a_{43  }z+a_{44}t \neq a_{11 }x-a_{12 }y +a_{13  }z+a_{14}t \)\\
+    Similar is the case at \(+z \), \(-z \). That is, clocks placed symmetrically in the \(y-z\) plane about the \(x-\)axis would appear to disagree as observed from \(S' \), which contradicts the isotropy of space.
+\end{note}}\\
+Hence, \(a_{42}=0=a_{43}\).\\
+Also, a point with \(x'=0\) appears to move in the positive \(x-\)axis with speed \(v \). \\
+So, \(x'=0\) corresponds to \(x=vt \), and we expect
+\begin{align*}
+    x'&=a_{11}(x-vt)\\
+    &=a_{11}x-a_{11}vt\\
+    &=a_{11}x+a_{14}t\\
+    \text{i.e., }\quad a_{14}&=-v a_{11}
+\end{align*}
+Therefore, the transformation equations reduce to 
+\begin{equation}
+    \begin{rcases}
+        x'=a_{11 }(x-vt)\qquad\\
+        y'=y\\
+        z'=z\\
+        t'=a_{41}x+a_{44}t\qquad
+    \end{rcases}
+    \label{eq:lor1}
+\end{equation}
+We now recall the second postulate of special relativity i.e., the speed of light in free space has the same value \(c \) in all inertial frames.
+
+Consider a spherical electromagnetic wave leaving the origin at \(t=0\). The wave propagation is described by
+\begin{align}
+    x^2+y^2+z^2&=c^2t^2\quad\text{for }S \label{eq:lor2}\\
+    x'^2+y'^2+z'^2&=c^2t'^2\quad\text{for }S' \label{eq:lor3}
+\end{align}
+Substituting \eqref{eq:lor1} into \eqref{eq:lor3}, we get
+\begin{align*}
+    & a_{11}^2(x-vt)^2+y^2+z^2=c^2\left( a_{41}x+a_{44}t \right)^2\\
+    \Rightarrow\;& \left(a_{11}^2-c^2a_{41}^2\right)x^2+y^2+z^2-(2 a_{11}^2 v+2c^2a_{41}a_{44})xt=(c^2a_{44}^2-a_{11}^2v^2)t^2
+\end{align*}
+This must be the same as \eqref{eq:lor2}
+
+\end{document}
