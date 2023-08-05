@@ -114,4 +114,140 @@ Substituting \eqref{eq:lor1} into \eqref{eq:lor3}, we get
 \end{align*}
 This must be the same as \eqref{eq:lor2}
 
+\section{Lorentz Transformation}
+Consider, two frames of reference \(S \) and \(S'\), \(S'\) is moving with uniform velocity \(v \) along the \(x'-\)axis relative to \(S\). Let the observers at the origin \(O \) and \(O'\) be observing the same event at any point \(P \) whose coordinates are \((x,y,z,t )\) and \((x',y',z',t')\) in \(S \) and \(S' \) respectively.
+
+Let us consider that the \(x-\)axis of two systems coincides permanently. The event \(P \) is a light signal and is produced when both \(t \) and \(t'\) are zero.
+
+Let us assume that at time \(t=0\), a spherical wave of light signal leaves \(O \) which coincides with \(O'\) at the moment. Since the velocity of light in both systems is the same and so the speed of propagation is the same in all directions and equal to \(c \) in terms of either set of coordinates. Its progress is therefore described by either of the two equations,
+\begin{equation}
+    x^2+y^2+z^2=c^2t^2\qquad\Rightarrow\,x^2+y^2+z^2-c^2t^2=0\label{eq:lorentz1} 
+\end{equation}
+and
+\begin{equation}
+    x'^2+y'^2+z'^2=c^2t'^2\qquad\Rightarrow\,x'^2+y'^2+z'^2-c^2t'^2=0\label{eq:lorentz2} 
+\end{equation}
+As velocity of \(S' \) is only along \(x-\)axis. Thus, from symmetry,
+\begin{equation}
+    y=y'\qquad \text{and}\qquad z=z' \label{eq:lorentz3}
+\end{equation}
+Then from equations \eqref{eq:lorentz1} and \eqref{eq:lorentz2},
+\begin{equation}
+    x^2-c^2t^2=\lambda(x'^2-c^2t'^2)\label{eq:lorentz4}
+\end{equation}
+where \(\lambda\) is any undetermined constant.
+
+Now, for the transformation equation relating to \(x \) and \(x'\). Let us put,
+\begin{equation}
+    x'=\gamma(x-vt)\label{eq:lorentz5}
+\end{equation}
+\(\gamma\) being independent of \(x \) and \(t\).\\
+The reasons for trying the above relation are
+\begin{enumerate}[label=(\roman*)]
+    \item The transformation must reduce to Galilean transformation for low speed. i.e., for speed \(\frac{v }{c }\to 0\).
+    \item The transformation must be linear and simple.
+\end{enumerate}
+Since the motion is relative, we may assume that, \(S \) is moving relative to \(S' \) with velocity \((-v )\) along the direction of \(x-\)axis. Therefore,
+\begin{equation}
+    x=\gamma(x'+vt')\label{eq:lorentz6}
+\end{equation}
+Now, putting the value of \(x' \) from \eqref{eq:lorentz5} in \eqref{eq:lorentz6}, we get,
+\begin{align}
+    &x=\gamma\left[ \gamma(x-vt)+vt' \right]\notag\\
+    \Rightarrow\;&\gamma vt'=x-\gamma^2x+\gamma^2 vt\notag\\
+    \Rightarrow\;&t'=\gamma\left[t-\frac{x }{v }\left( 1-\frac{1}{\gamma^2} \right)\right]\label{eq:lorentz7}
+\end{align}
+Now, substituting the value of \(x' \) from \eqref{eq:lorentz5} and \(t'\) from \eqref{eq:lorentz7} in \eqref{eq:lorentz4}, we get,
+\begin{align}
+    &x^2-c^2t^2=\lambda\left[ \gamma^2(x-vt)^2-c^2\gamma^2\left\{ t-\frac{x }{v }\left( 1-\frac{1}{\gamma^2} \right) \right\}^2\right]\notag\\
+    \Rightarrow\;&x^2-c^2t^2-\lambda\gamma^2\left(x^2-2vxt+v^2t^2 \right)+\lambda c^2\gamma^2\left\{ t^2-2\frac{x }{v }\left( 1-\frac{1}{\gamma^2} \right)t+\frac{x^2 }{v^2}\left( 1-\frac{1}{\gamma^2} \right)^2 \right\}=0\label{eq:lorentz8}
+\end{align}
+Since, this equation is identity, the coefficients of various powers of \(x \) and \(t \) must vanish separately.\\
+Equating coefficients of \(xt \) to zero, we have,
+\begin{align}
+    &2\lambda \gamma^2v-\frac{2\lambda c^2\gamma^2}{v}\left( 1-\frac{1}{\gamma^2} \right)=0\notag\\
+    \Rightarrow\;&2\gamma^4 v^2-2c^2\gamma^4+2c^2\gamma^2=0\notag\\
+    \Rightarrow\;&\gamma^2 (v^2-c^2)+c^2=0\label{eq:lorentz9}
+\end{align}
+Equating coefficients of \(t^2\) to zero, we have,
+\begin{align}
+    &-c^2-\lambda\gamma^2v^2+\lambda c^2\gamma^2=0\notag\\
+    \Rightarrow\;&\lambda(v^2-c^2)\gamma^2+c^2=0\label{eq:lorentz10}
+\end{align}
+From equation \eqref{eq:lorentz9} and \eqref{eq:lorentz10}, we have \(\lambda=1\).\\
+Equation \eqref{eq:lorentz9} gives,
+\begin{equation}
+    \gamma=\frac{1}{\sqrt{1-\frac{v^2}{c^2}}}\label{eq:lorentz11}
+\end{equation}
+From \eqref{eq:lorentz7} we have,
+\begin{align}
+    t'&=\gamma\left[ t-\frac{x }{v }\left( 1-\frac{1 }{\gamma^2} \right) \right]\notag\\
+    t'&=\gamma\left[ t-\frac{x }{v }\left( 1-\frac{c^2-v^2}{c^2} \right) \right]\notag\\
+    t'&=\gamma\left[ t-\frac{xv^2 }{c^2v }\right]\notag\\
+    \therefore\,t'&=\gamma\left( t-\frac{vx }{c^2 }\right)\label{eq:lorentz12}
+\end{align}
+Thus, using the values of \(\gamma\) from \eqref{eq:lorentz11} we get, from \eqref{eq:lorentz3}, \eqref{eq:lorentz5}, \eqref{eq:lorentz12}
+\begin{align*}
+    x'&=\frac{x-vt }{\sqrt{1-\frac{v^2}{c^2}}}\\
+    y'&=y\\
+    z'&=z\\
+    t'&=\frac{t-\frac{vx}{c^2} }{\sqrt{1-\frac{v^2}{c^2}}}
+\end{align*}
+These are called Lorentz transformation equations.
+\section{Mass Transformation Relation}
+Let \(S,S'\) be two frames of reference, where \(S' \) moves with velocity \(v \) along \(x-\)axis with respect to \(S \) frame.\\
+In \(S-\)frame, an object of mass \(m_1\) is moving with velocity \(u\) along \(x-\)axis.\\
+In \(S'-\)frame, the mass and velocity is \(m_1'\) and \(u_1'\) respectively, then
+\begin{align*}
+    & u_1=\frac{u_1'+v}{1+\frac{v }{c^2 }u_1'}\\
+    \Rightarrow\;& u_1\left({1+\frac{v }{c^2 }u_1'}\right)={u_1'+v}\\
+    \Rightarrow\;& u_1'\left({1-\frac{v }{c^2 }u_1}\right)={u_1-v}\\
+    \therefore\;& u_1'=\frac{u_1-v}{1-\frac{v }{c^2 }u_1}
+\end{align*}
+Now,
+\begin{align*}
+    &1-\frac{{u_1'}^2}{c^2}=1-\frac{(u_1-v)^2}{c^2\left(1-\frac{v }{c^2 }u_1\right)^2}\\
+    \Rightarrow\;&1-\frac{{u_1'}^2}{c^2}=\frac{c^2\left(1-\frac{v }{c^2 }u_1\right)^2- (u_1-v)^2}{c^2\left(1-\frac{v }{c^2 }u_1\right)^2}\\
+    \Rightarrow\;&c^2\left(1-\frac{{u_1'}^2}{c^2}\right)\left(1-\frac{v }{c^2}\right)^2=c^2\left(1+\frac{v^2 }{c^4}{u_1}^2-2\frac{v }{c^2}u_1\right)-(u_1^2+v^2-2u_1v)\\
+    \Rightarrow\;&c^2\left(1-\frac{{u_1'}^2}{c^2}\right)\left(1-\frac{v }{c^2}\right)^2=c^2\left(1-\frac{u_1^2+v^2 }{c^2}+\frac{u_1^2 v^2 }{c^4}\right)\\
+    \therefore\;&\left(1-\frac{{u_1'}^2}{c^2}\right)\left(1-\frac{v }{c^2}\right)^2=\left(1-\frac{u_1^2+v^2 }{c^2}+\frac{u_1^2 v^2 }{c^4}\right)
+\end{align*}
+Again,
+\begin{align*}
+    \gamma_1'u_1'&=\frac{u_1-v}{\sqrt{1-\frac{{u_1'}^2}{c^2}}\left(1-\frac{v }{c^2}u_1\right)}\\
+    &=\frac{u_1-v}{\sqrt{1-\frac{u_1^2+v^2 }{c^2}+\frac{u_1^2 v^2 }{c^4}}}\\
+    &=\frac{u_1-v}{\sqrt{\left(1-\frac{v^2 }{c^2}\right)\,\left(1-\frac{u_1^2}{c^2}\right)}}\\
+    &=\gamma\cdot\gamma_1(u_1-v)
+\end{align*}
+\begin{equation}
+    \therefore\;\frac{\gamma_1'u_1'}{\gamma_1}=\gamma(u_1-v ) \label{eq:mass1}
+\end{equation}
+where
+\begin{align*}
+    \gamma&=\frac{1}{1-\frac{v^2}{c^2}}\\
+    \gamma_1&=\frac{1}{1-\frac{u_1^2}{c^2}}\\
+    \gamma_1'&=\frac{1}{1-\frac{{u_1'}^2}{c^2}}
+\end{align*}
+Consider a particle is moving along the \(x -\)axis with constant velocity in the \(S-\)frame such that their mass and momentum remain unchanged.
+\[\therefore\,\sum m_1=\text{constant }\quad\text{ and }\quad \sum m_1u_1=\text{ constant}\]
+Since, the values of \(\gamma\) and \(u \) is same for all objects, so we get,
+\begin{align*}
+    &\sum m_1\gamma\,v=\text{ constant},\quad\text{ and }\quad \sum m_1u_1\gamma=\text{ constant}\\
+    \Rightarrow\;&\sum m_1\gamma(u_1-v)=\text{constant }\quad\text{ [subtracting] }\\
+    \Rightarrow\;&\sum \left(m_1\frac{\gamma_1'u_1'}{\gamma_1}\right)=\text{constant }\quad\text{ [from \eqref{eq:mass1}] }\\
+\end{align*}
+Applying the law of conservation of momentum in \(S'\) frame to get,
+\begin{equation}
+    \sum m_1'u_1'=\text{constant    }\label{eq:mass2}
+\end{equation}
+Comparing \eqref{eq:mass1} and \eqref{eq:mass2},
+\begin{align*}
+    & \frac{m_1\gamma_1'}{\gamma_1}=m_1'\\
+    \Rightarrow\;& \frac{m_1}{\gamma_1}=\frac{m_1'}{\gamma_1'}=m_0\text{ (say)}
+\end{align*}
+\[\therefore\; m_1=\frac{m_0}{\sqrt{1-\frac{u_1^2}{c^2}}},\quad m_1'=\frac{m_0}{\sqrt{1-\frac{{u_1'}^2}{c^2}}}\]
+This proves that if an object of mass \(m \) is moving in a frame of reference with velocity \(u \),
+\[m=\frac{m_0}{\sqrt{q-\frac{u^2}{c^2}}}\]
+If \(u=c \), the rest mass of a particle is, \(m_0=0 \).\\
+If \(u=0\), \(m=m_0\); where \(m_0\) is the mass of the object at rest.
 \end{document}

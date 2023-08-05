@@ -53,7 +53,7 @@
             \begin{equation}
                 R_{\mn\sigma}^\lambda=0\label{eq:p1b.1}
             \end{equation}
-            Let, \(A_{(\alpha)}^\mu\) be four uniform vector fields given by \(\alpha=1,2,3,4,\dots\) (here, \(\alpha\) is not a tensor suffix). Then equation \eqref{eq:p1b.1} becomes
+            Let, \(A_{(\alpha)}^\mu\) be four uniform vector fields given by \(\alpha=1,2,3,4\) (here, \(\alpha\) is not a tensor suffix). Then equation \eqref{eq:p1b.1} becomes
             \begin{align}
                 & \left( A_{(\alpha)}^\mu \right)_{,\sigma}=\fp{A_{(\alpha)}^\mu}{x^\sigma}+\Gamma_{\lambda\sigma}^\mu  A_{(\alpha)}^\lambda=0\notag\\
                 \Rightarrow\;& \fp{A_{(\alpha)}^\mu}{x^\sigma}=-\Gamma_{\lambda\sigma}^\mu  A_{(\alpha)}^\lambda\label{eq:1b1.2}
@@ -71,7 +71,7 @@
             \end{align*}
             i.e.,\footnote{Comparing this with \(\D s^2\) invariant}
             \begin{equation}
-                \overline{g}_{\alpha\beta}=g_{\mn} A_{(\alpha)}^\mu A_{(\beta)}^\mu\label{eq:1b.3}
+                \overline{g}_{\alpha\beta}=g_{\mn} A_{(\alpha)}^\mu A_{(\beta)}^\nu\label{eq:1b.3}
             \end{equation}
             Differentiating the above equation with respect to \(x^\sigma\), we get,
             \begin{align*}
@@ -167,7 +167,7 @@
             State and comment on the basic hypothesis and postulates of the general theory of relativity and discuss how the principle of equivalence and covariance follow from the guiding principle in the development if general relativity.
         \end{prob}
         \begin{soln}
-            The special theory of relativity has its origin in the development of electromagnetic while general relativity is the relativistic theory of gravitation. The special theory of relativity only accounts for inertial form of reference in the free space where gravitational effects can be neglected.\\
+            The special theory of relativity has its origin in the development of electromagnetic while general relativity is the relativistic theory of gravitation. The special theory of relativity only accounts for inertial frame of reference in the free space where gravitational effects can be neglected.\\
             In these systems, the law of inertial holds good and the physical laws retain the same form.\\
             The special theory of relativity deals with the problems of uniform rectilinear motion. We wish to extend the principle of relativity in such a way that it may hold for non-inertial systems and consequently the theory may explain the non-inertial phenomenon like the phenomenon of gravitation. The extended theory is known as the general theory of relativity.\\
             The theory of gravitation also deals with non-inertial systems unlike special theory which deals only inertial systems; for this reason, the theory of gravitation is called ``General theory of relativity''.\\
@@ -220,17 +220,17 @@
                 \Rightarrow\;& -\Gamma_{00}^\alpha=\frac{\D}{\D s}\left(\frac{\D x^\alpha}{\D s}\right)\\
                 \Rightarrow\;& -\Gamma_{00}^\alpha=\frac{\D}{c\D t}\left(\frac{\D x^\alpha}{c \D t}\right)\\
                 \Rightarrow\;& -\Gamma_{00}^\alpha=\frac{1}{c^2}\,\frac{\D^2 x^\alpha}{\D t^2}\,\,[\text{by \eqref{eq:p4b.4}}]\\
-                \Rightarrow\;&\frac{\D^2 x^\alpha}{\D s^2}= -c^2\Gamma_{00}^\alpha
+                \Rightarrow\;&\frac{\D^2 x^\alpha}{\D t^2}= -c^2\Gamma_{00}^\alpha
             \end{align*}
             It is easy to show that \(\Gamma_{00}^0=0\)\\
             Hence,
             \begin{equation}
-                \frac{\D^2 x^\alpha}{\D s^2}= -c^2\Gamma_{00}^\alpha,\,(\alpha=1,2,3)
+                \frac{\D^2 x^\alpha}{\D t^2}= -c^2\Gamma_{00}^\alpha,\,(\alpha=1,2,3)
                 \label{eq:p4b.5}
             \end{equation}
             Now,
             \begin{align*}
-                \Gamma_{00}^0&=g^{\alpha\beta}\Gamma_{00,\beta}^0\\
+                \Gamma_{00}^\alpha&=g^{\alpha\beta}\Gamma_{00,\beta}^0\\
                 &=g^{\alpha\alpha}\Gamma_{00,\alpha}^0\\
                 &=g^{\alpha\alpha}\frac{1}{2}\left( 2\frac{\partial g_{0\alpha}}{\partial x^\alpha}-\frac{\partial g_{00}}{\partial x^\alpha} \right)\\
                 &=g^{\alpha\alpha}\frac{1}{2}\left( -\frac{\partial g_{00}}{\partial x^\alpha}\right)\;\;\text{[using \eqref{eq:p4b.3}]}\\
@@ -307,12 +307,12 @@
             Since, derivatives of fundamental tensors are zero, we may write the equation \eqref{eq:einTen4} as,
             \begin{align*}
                 &g^{\mu \rho} R_{\mn,\rho} - g^{\mu \rho}R_{\mu \rho ,\nu}+g^{\mu \rho}R_{\mu \rho \nu,\lambda}^\lambda=0\\
-                \Rightarrow\;&\left(g^{\mu \rho} R_{\mn}\right)_{,\rho} - \left(g^{\mu \rho}R_{\mu \rho}\right)_{ ,\nu}+\left(g^{\mu \rho}R_{\mu \rho \nu}\right)_{ ,\lambda}^\lambda=0\\
+                \Rightarrow\;&\left(g^{\mu \rho} R_{\mn}\right)_{,\rho} - \left(g^{\mu \rho}R_{\mu \rho}\right)_{ ,\nu}+\left(g^{\mu \rho}R_{\mu \rho \nu}^\lambda\right)_{ ,\lambda}=0\\
                 \Rightarrow\;&R_{\nu,\rho}^{\rho} - R_{ ,\nu}+R_{\nu,\lambda}^\lambda=0
             \end{align*}
             changing the dummy indices \(\rho\) and \(\lambda\) to \(\mu\), we get,
             \begin{align}
-                &R_{\nu,\rho}^{\mu} - R_{ ,\nu}+R_{\nu,\mu}^\mu=0\notag\\
+                &R_{\nu,\mu}^{\mu} - R_{ ,\nu}+R_{\nu,\mu}^\mu=0\notag\\
                 \Rightarrow\;&2R_{\nu,\mu}^{\mu} - R_{ ,\nu}=0\label{eq:einTen5}
             \end{align}
             But,
@@ -321,7 +321,7 @@
                 \]
                 So \eqref{eq:einTen5} becomes,
                 \begin{align*}
-                    &2R_{\nu,\rho}^{\mu} - \left( g^\mu_\nu\,R \right)_{,\mu}=0\\
+                    &2R_{\nu,\mu}^{\mu} - \left( g^\mu_\nu\,R \right)_{,\mu}=0\\
                     \Rightarrow\;&\left(R_{\nu}^{\mu} - \frac{1}{2} g^\mu_\nu\,R \right)_{,\mu}=0\\
                     \Rightarrow\;&G_{\nu,\mu}^\mu=0
             \end{align*}
@@ -374,7 +374,7 @@
             \Gamma_{44}^1=\frac{\nu '}{2}e^{\nu-\lambda},\;\;
             \Gamma_{12}^2=\frac{1}{r},\;\;
             \Gamma_{23}^3=\cot\,\theta,\;\;
-            \Gamma_{13}^3=\frac{1}{r},\;\;
+            \Gamma_{13}^3=\frac{1}{r},\]\[
             \Gamma_{33}^1=-r \sin^2\,\theta\,e^{-\lambda},\;\;
             \Gamma_{44}^4=\frac{\nu'}{2},\;\;
             \Gamma_{33}^2=-\sin\,\theta\,\cos\,\theta
