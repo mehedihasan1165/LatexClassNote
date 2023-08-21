@@ -26,7 +26,7 @@
     \[
         \vec{P}=\pardx{\vec{P}_x}+\pardy{\vec{P}_y}+\pardz{\vec{P}_z}
     \]
-    Now, the quantites \(\vec{P}_x\), \(\vec{P}_y\), \(\vec{P}_z\) are vectors which can be resolved as,
+    Now, the quantities \(\vec{P}_x\), \(\vec{P}_y\), \(\vec{P}_z\) are vectors which can be resolved as,
     \begin{align*}
         \vec{P}_x&=\sigma_{xx}\,\vec{i}+\sigma_{xy}\,\vec{j}+\sigma_{xz}\,\vec{k}\\
         \vec{P}_y&=\sigma_{yx}\,\vec{i}+\sigma_{yy}\,\vec{j}+\sigma_{yz}\,\vec{k}\\
@@ -220,15 +220,18 @@ Which is the Navier-Stokes equation in Lamb's form.
     \end{equation}
     It can be shown that the rate of change of this quantity 
     \[\int \rho \frac{D}{D t}\vec{u}(t,\vec{x})\D v=\int \rho \D v \{\frac{\partial u}{\partial t}+(\vec{u}\cdot \vec{\nabla})\}\]
-    where \(\vec{u}\cdot\vec{\nabla}=(u_1\frac{\partial}{\partial x_1}+u_2\frac{\partial}{\partial x_2}+u_3\frac{\partial}{\partial x_3})\). Which is simply the sum of the products of mass and acceleration for all the elements of the material volume \(V\), can be rewritten as,
-    \[\int_V \rho \D v\cdot\frac{D u_i}{D t}=\frac{\partial u_i}{\partial t}+(\vec{u}\cdot\vec{\nabla})u_i\]
+    where \(\vec{u}\cdot\vec{\nabla}=(u_1\frac{\partial}{\partial x_1}+u_2\frac{\partial}{\partial x_2}+u_3\frac{\partial}{\partial x_3})\).\\
+    Which is simply the sum of the products of mass and acceleration for all the elements of the material volume \(V\), can be rewritten as,
+    \[\int_V \rho \D v\cdot\frac{D u_i}{D t}\qquad \text{since}\quad\frac{D u_i}{D t}=\frac{\partial u_i}{\partial t}+(\vec{u}\cdot\vec{\nabla})u_i\]
     A portion of fluid is acted on, in general by both volume and surface forces.
 
     We denote the vector resultant of the volume forces per unit mass of fluid, by \(\vec{F}\), so that the total volume force on the selected portion of fluid is
     \[\int F_i \rho \D v\]
     The \(i-\)th component of the surface on contact force exerted across a surface element of area \(\D s\) and normal \(\vec{n} \) may be represented as \(\sigma_{ij}n_j\,\D s\), where \(\sigma_{ij}\) is the stress tensor and the total surface force exerted on the selected portion of fluid by
+    \[\int \sigma_{ij}n_j\,\D s=\int \frac{\partial \sigma_{ij}}{\partial x_j}\D v\]
+    Thus the momentum balance for the selected portion of fluid is expressed by
     \begin{align}
-        & \int \sigma_{ij}n_j\,\D s=\int \frac{\partial \sigma_{ij}}{\partial x_j}\D v\notag\\
+        & \int \frac{D \,u_i }{D\,t}\rho\,\D v=\int F_i \rho \D v+\int \frac{\partial \sigma_{ij}}{\partial x_j}\D v\notag\\
         & (\text{Total force = Body force + surface force})\notag\\
        \Rightarrow\; & \rho \frac{D u_i}{D t}=\rho F_i+\frac{\partial \sigma_{ij}}{\partial x_j}\label{eq:navTensor12}
     \end{align}
@@ -236,9 +239,9 @@ Which is the Navier-Stokes equation in Lamb's form.
     \[\sij =-P\dij+2\mu (e_{ij}-\frac{1}{3}\Delta \dij)\]
     substituting this into \eqref{eq:navTensor12}, the equation of motion we get,
     \[\rho \frac{D u_i}{D t}=\rho F_i-\frac{\partial P}{\partial x_i}+\frac{\partial}{\partial x_j}{2\mu(e_{ij}-\frac{1}{3}\Delta \delta_{ij})}\]
-    \[e_{ij}=\frac{1}{2}\left( \frac{\partial u_i}{\partial x_j}+\frac{\partial u_j}{\partial x_i} \right)\quad \text{and  } \quad \Delta =e_{ij}\]
+    \[e_{ij}=\frac{1}{2}\left( \frac{\partial u_i}{\partial x_j}+\frac{\partial u_j}{\partial x_i} \right)\quad \text{and  } \quad \Delta =e_{ii}\]
     \begin{align*}
-        \therefore\,\frac{\partial \left( e_{ij}-\frac{1}{3}\Delta \dij \right)}{\partial x_j}&=\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j\,\partial x_j}+\frac{\partial^2 u_j}{\partial x_j\,\partial x_i} \right)-\left( \frac{1}{3}\cdot\frac{\partial \nabla}{\partial x_j}\dij \right)\\
+        \therefore\,\frac{\partial \left( e_{ij}-\frac{1}{3}\Delta \dij \right)}{\partial x_j}&=\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j\,\partial x_j}+\frac{\partial^2 u_j}{\partial x_j\,\partial x_i} \right)-\left( \frac{1}{3}\cdot\frac{\partial \Delta}{\partial x_j}\dij \right)\\
         &=\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j\,\partial x_j}+\frac{\partial^2 u_j}{\partial x_j\,\partial x_i} \right)-\left( \frac{1}{3}\cdot\frac{\partial }{\partial x_j}\left( \frac{\partial u_j}{\partial x_j} \right)\dij \right)\\
         &=\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j\,\partial x_j} \right)+\frac{1}{2}\frac{\partial^2 u_j}{\partial x_j\,\partial x_i}-\frac{1}{3}\frac{\partial^2 u_i}{\partial x_j\,\partial x_i}\\
         &=\frac{1}{2}\left( \frac{\partial^2 u_i}{\partial x_j\,\partial x_j} \right)+\frac{1}{6}\frac{\partial}{\partial x_j}(\frac{\partial u_i}{\partial x_i})\\
@@ -416,5 +419,57 @@ Which is the Navier-Stokes equation in Lamb's form.
         u&=v=0 &\text{ for }y&=0&\\
         u&=U(x) &\text{ for }y&=\infty&
     \end{align*}
+\end{soln}
+\begin{prob}
+    Steady laminar flow between two parallel plates. Plane Couette flow.
+\end{prob}
+\begin{soln}
+    Consider the steady laminar flow of viscous incompressible fluid between two infinite parallel plates separated by a distance \(h \). Let \(x \) be the direction of flow, \(y \) the direction perpendicular to the flow, and the width of the plates parallel to the \(z-\)direction. Here the word `infinite' implies that the width of the plates is large compared with \(h \) and hence the flow may be treated as two-dimensional (i.e., \(\partial/\partial z=0\)). Let the plates be long enough in the \(x-\) direction for the flow to be parallel. Here we take the velocity components \(v \) and \(w \) to be zero everywhere. Moreover the flow being steady, the flow variables are independent of time \(\partial/\partial t=0\). Furthermore, the equation of continuity [namely, \((\partial u/\partial x+\partial v/\partial y+\partial w/\partial z=0)\)] reduced to \(\partial u/\partial x=0\) so that \(u=u(y )\). Thus for the present problem we have,
+    \begin{equation}
+        u=u(y),\quad v=0,\quad, w=0,\quad \frac{\partial }{\partial z}=0,\quad \frac{\partial }{\partial t}=0 \label{eq:couette1}
+    \end{equation}
+    For the present two-dimensional flow in absence of body forces, the Navier-Stokes equations for \(x\) and \(y\)-directions are :
+    \begin{align}
+        0&=-\frac{\partial p }{\partial x }+\mu\frac{\D^2 u }{\D y^2}\label{eq:couette2}\\
+        0&=-\frac{\partial p }{\partial y}\label{eq:couette3}
+    \end{align}
+Equation \eqref{eq:couette3} show that the pressure does not depend on \(y \). Hence \(p\) is function of \(x\) alone and so \eqref{eq:couette2} reduces to
+\begin{equation}
+    \frac{\D^2 u }{\D y^2}=\frac{1}{\mu}\,\frac{\D p }{\dx}\label{eq:couette4}
+\end{equation}
+Differentiating both sides of \eqref{eq:couette4} with respect to `\(x \)',
+\begin{align*}
+    &0=\frac{1}{\mu}\,\frac{\D^2 p }{\dx^2}\\
+    \Rightarrow\,&\frac{\D}{\dx}\left(\frac{\D p }{\dx}\right)=0
+\end{align*}
+so that
+\[\frac{\D p}{\dx} = \text{const.} = P \text{(say)}.\]
+Then, \eqref{eq:couette4} reduces to
+\begin{align}
+    &\frac{\D^2 u }{\dy^2}=\frac{P }{\mu}\notag\\
+    \intertext{Integrating}
+    &\frac{\D u }{\dy}=\frac{P y}{\mu}+A\notag\\
+    \intertext{Integrating}
+    &u=Ay+B+\frac{P y^2}{2\mu}\label{eq:couette5}
+\end{align}
+where \(A\) and \(B\) are arbitrary constants to be determined by the boundary conditions of the problem under consideration.
+
+
+For the plane Couette flow, \(P = 0\). Again, the plate \(y = 0\) is kept at rest and the plate \(y = h\) is allowed to move with velocity \(U\). Then the no slip condition gives rise to the boundary conditions.
+\begin{equation}
+    u=0\quad\text{at} y=0;\qquad \text{and}\qquad u=U\quad\text{at}y=h\label{eq:couette6}
+\end{equation}
+Using \eqref{eq:couette6}, \eqref{eq:couette5} yields
+\[O=B\qquad\text{and}\qquad U=Ah+B\]
+so that,
+\begin{equation}
+    B=0\qquad\text{and}\qquad A=\frac{U }{h}\label{eq:couette7}
+\end{equation}
+Using \eqref{eq:couette7} in \eqref{eq:couette5}, we obtain
+\[u = \frac{Uy}{h}\]
+The velocity distribution is linear as shown in the adjoining figure. Now the skin friction (or drag per unit area, i.e., the shearing stress at the plates) is given by
+\[
+    \sigma_{yx } =\mu\frac{\D u }{\dy}=\mu \frac{U }{h}
+\]
 \end{soln}
 \end{document}

@@ -37,20 +37,20 @@
     \]
     Then \(\delta=\{\underbar{0},\underbar{1},A,B,A\vee B \}\) is a fuzzy topology on \(I \).
 \end{ex}
-\begin{defn}[Open and CLosed Fuzzy Sets]
+\begin{defn}[Open and Closed Fuzzy Sets]
     Let \(\ft\) be a \fts. Then, the member of \(\delta\) i.e., each \(A\in\delta\) is called the fuzzy open set. A fuzzy set \(B \) is called a fuzzy closed set if \(B^c \in\delta\).
 \end{defn}
 \begin{ex}
     Let \(X=\{a,b \}\), \(B:X\to[0,1]\) such that \(B(a)=0.5\), \(B(b)=0.6\). Then, \(B^c(a)=0.5\), \(B^c(b)=0.4\), \(\delta=\{\underbar{0},\underbar{1},A\}\), \(A(a)=0.5\), \(A(b)=0.4\).\\
     \(\therefore\,B \) is closed under \(\delta/\delta-\)closed. i.e., \(B^c \) is open.
 \end{ex}
-\emph{Difference between classical and fuzzy sets: } Classical set contains elements that satisfy precise properties of membership while fuzzy set contains elements that satisfy imprecise properties of membership.
+\underline{\emph{Difference between classical and fuzzy sets:}} Classical set contains elements that satisfy precise properties of membership while fuzzy set contains elements that satisfy imprecise properties of membership.
 \begin{defn}[Interior and Closure of fuzzy sets]
-    Let \(\ft\) be a \fts and \(A \) be a non-empty subset of \(X \).
+    Let \(\ft\) be a \fts\s and \(A \) be a non-empty subset of \(X \).
 
-    The interior of \(A \) is denoted by \(A^\circ\) and defined as the union of all open sets contained in \(A \). i.e., \(A^\circ=\cup \{G\in\delta|G\leq A \}\). (Largest open set contained in \(A \)).
+    The interior of \(A \) is denoted by \(A^\circ\) and defined as the union of all open sets contained in \(A \). i.e., \(A^\circ=\cup \{G\in\delta\mid G\leq A \}\). (Largest open set contained in \(A \)).
 
-    The closure of \(A \) is denoted by \(\bar{A }\) and defined as the intersection of all closed sets containing \(A \). i.e., \(\bar{A }=\cap\{F|F^c\in\delta\text{ and }A\leq F \}\). (Smallest closed set containing \(A \)).
+    The closure of \(A \) is denoted by \(\bar{A }\) and defined as the intersection of all closed sets containing \(A \). i.e., \(\bar{A }=\cap\{F\mid F^c\in\delta\text{ and }A\leq F \}\). (Smallest closed set containing \(A \)).
 \end{defn}
 \begin{ex}
     Consider, \(X=\{a,b,c \}\) and 
@@ -61,4 +61,279 @@
     \end{align*}
     Then, \(\delta=\{\underbar{0},\underbar{1},A,B,C \}\) be a fuzzy topology on \(X \). Here \(U:X\to[0,1]\) and \(U:a\mapsto0.8\), \(b\mapsto0.7\), \(c\mapsto 0.8\). Find \(U^\circ\) and \(\bar{U}\).
 \end{ex}
+\begin{soln}
+    \begin{enumerate}
+        \item We know that, \(U^\circ=\cup\{G\in\delta:g\leq U\}=\cup\{\underbar{0},A,B \}=B \). Since, \(\underbar{0}\leq A\leq B \).
+        \item At first, \(\begin{aligned}[t]
+            A^c&: a\mapsto0.8,\,b\mapsto0.6,\,c\mapsto0.2\\
+            B^c&: a\mapsto0.6,\,b\mapsto0.4,\,c\mapsto0.2\\
+            C^c&: a\mapsto0.4,\,b\mapsto0.2,\,c\mapsto0.0\\
+            \underbar{0}^c&= \underbar{1}\,\,\,\text{ and } \,\,\,\underbar{1}^c= \underbar{0}
+        \end{aligned}\)\\
+        We know that \(\bar{U}=\cap\{F\mid F^c\in\delta\text{ and }U\leq F\}=\underbar{1}\).
+    \end{enumerate}
+\end{soln}
+\begin{thm}
+    Let \(\ft \) be a \fts. Then, the following conditions hold:
+    \begin{enumerate}[label=(\roman*)]
+        \item \(\underbar{0}^\circ=\underbar{0}\) and \(\underbar{1}^\circ=\underbar{1}\)
+        \item \(\forall A\in\fx \), \(A^\circ\leq A \)
+        \item \(\forall A\in\fx \), \(A^{\circ\circ}= A^\circ \)
+        \item for \(A,B\in\fx \) with \(A\leq B \) implies \(A^\circ\leq B^\circ\)
+        \item for \(A,B\in\fx \), \((A\wedge B)^\circ=A^\circ\wedge B^\circ\)
+    \end{enumerate}
+\end{thm}
+\begin{proof}\hfill
+    \begin{enumerate}[label=(\roman*)]
+        \item By definition, \(\underbar{0}^\circ=\cup\{G\in\delta \mid G\leq \underbar{0}\}=\underbar{0}   \) and \(\underbar{1}^\circ=\cup\{G\in\delta \mid G\leq \underbar{1}\}=\underbar{1}\)
+        \item By definition, \(A^\circ=\cup\{G\in\delta \mid G\leq A\}\). Since, the arbitrary union of open sets is open, \(A^\circ\) is the open set of \(\fx\) and also, \(A^\circ\) is the largest open set contained in \(A \). \(\therefore\,A^\circ\leq A \).
+        \item From (ii), \(A^\circ\leq A\;\Rightarrow A^{\circ\circ}\leq A^\circ\). But \(A^\circ\) is the largest open set contained in \(A \). So, \(A^\circ\leq A^{\circ\circ}\). Hence, \(A^{\circ\circ}=A^\circ\).
+        \item Let \(A, B\in \fx \) such that \(A\leq B \). Now, since \(A^{\circ}\leq A\), hence \(A^\circ\leq B\). But \(B^\circ\) is the set of all open sets contained in \(B \). So, \(B^\circ\leq B \). Therefore, \(A^\circ\leq B^\circ\).
+        \item Let \(A,B\in\fx \). Then, 
+        \begin{align}
+            &A^\circ\leq A,\;B^\circ\leq B\notag\\
+            \Rightarrow\;&A^\circ\wedge B^\circ\leq\; A\wedge B\notag\\
+            \Rightarrow\;&(A^\circ\wedge B^\circ)^\circ\leq\; (A\wedge B)^\circ\label{eq:fztp1}
+        \end{align}
+        Here, \(A^\circ\) is the largest open set contained in \(A \) and \(B^\circ\) is the largest open set contained in \(B \). Hence, \(A^\circ \wedge B^\circ\) is also an open set of \(X \). So, \((A^\circ\wedge B^\circ)^\circ\leq\; (A\wedge B)^\circ\).\\
+        From \eqref{eq:fztp1},
+        \begin{equation}
+            A^\circ\wedge B^\circ \leq\; (A\wedge B)^\circ \label{eq:fztp2}
+        \end{equation}
+        Again, Since,
+        \begin{align}
+            &A\wedge B \leq A, \;B\notag\\
+            \Rightarrow\;&(A\wedge B)^\circ \leq A^\circ, \;B^\circ\notag\\
+            \Rightarrow\;&(A\wedge B)^\circ \leq A^\circ\wedge B^\circ\label{eq:fztp3}
+        \end{align}
+        From, \eqref{eq:fztp2} and \eqref{eq:fztp3}, \(A^\circ\wedge B^\circ=(A\wedge B)^\circ\).
+    \end{enumerate}
+\end{proof}
+\begin{note}
+    If  \(A \) be a fuzzy open set of the topological space \(\xt\), then \(A^\circ=A \), \(\bar{A }=A \) iff \(A \) is closed.
+\end{note}
+\begin{defn}[Fuzzy Point]
+    A fuzzy set \(x_a \) on \(X \) is called a fuzzy point on \(X  \) if \(\forall y\in X \),
+    \[x_a(y)=\begin{cases}
+        a;\quad\text{if } x=y\\
+        0;\quad\text{if } x\neq y
+    \end{cases};\qquad \text{where, } 0<a\leq 1
+    \]
+    The set of all fuzzy points on \(X \) is denoted by \(P(X)\). The fuzzy points \(x_{1-a }\) is called the dual point of the fuzzy points \(x_a\).
+\end{defn}
+\begin{ex}
+    \(X=[0,1]\), where \(X=\{x,y,z \}\). We need to find \(x_a(y )\) where \(y\in X \).\\
+    \[
+        x_a:\begin{aligned}[t]
+        x&\to a\\
+        y&\to 0\\
+        z&\to 0
+    \end{aligned}\qquad
+        y_a:\begin{aligned}[t]
+        x&\to 0\\
+        y&\to a\\
+        z&\to 0
+    \end{aligned}\qquad
+        z_a:\begin{aligned}[t]
+        x&\to 0\\
+        y&\to 0\\
+        z&\to a
+    \end{aligned}\qquad
+        \text{dual of }x_a,\;x_{1-a}:\begin{aligned}[t]
+        x&\to (1-a)\\
+        y&\to 0\\
+        z&\to 0
+    \end{aligned}
+    \]
+\end{ex}
+\begin{defn}[Neighborhood of a fuzzy point]
+    Let \(\xt\) be a \fts \s and \(x_a\in P(X )\). Then \(U\in\delta\) is called a fuzzy neighborhood of \(x_a \) if \(x_a \in U \).\\
+    The set of all fuzzy neighborhood of \(x_a \) is denoted by \(\mathcal{N }_\delta (x_a)\).
+\end{defn}
+\begin{ex}
+    \(X=\{a,b,c \}\), \(\delta=\{\underbar{0},\underbar{1}, A, B \}\), \(A:
+    \begin{aligned}[t]
+        a&\to 0.0\\
+        b&\to 0.2\\
+        c&\to 0.7
+    \end{aligned}\), \(B:
+    \begin{aligned}[t]
+        a&\to 0.2\\
+        b&\to 0.4\\
+        c&\to 0.8
+    \end{aligned}\). Find the neighborhood of \(a_{0.4}\), \(b_{0.7}\), \(c_{0.8}\).
+\end{ex}
+\begin{soln}\hfill
+    \begin{enumerate}
+        \item \(a_{0.4}:
+        \begin{aligned}[t]
+            a&\to 0.4\\
+            b&\to 0.0\\
+            c&\to 0.0
+        \end{aligned}\); Fuzzy neighborhood of \(a_{0.4}:\{\underbar{1}\}\).
+        \item \(b_{0.7}:
+        \begin{aligned}[t]
+            a&\to 0.0\\
+            b&\to 0.7\\
+            c&\to 0.0
+        \end{aligned}\); Fuzzy neighborhood of \(b_{0.7}:\{\underbar{1}\}\).
+        \item \(c_{0.8}:
+        \begin{aligned}[t]
+            a&\to 0.0\\
+            b&\to 0.0\\
+            c&\to 0.8
+        \end{aligned}\); Fuzzy neighborhood of \(c_{0.8}:\{B,\underbar{1}\}\).
+    \end{enumerate}
+\end{soln}
+\begin{thm}
+    Let \(\xt\) be a \fts\s and \(A\subseteq X \). Then a fuzzy point \(x_a\in A^\circ\;\Leftrightarrow\;x_a\) has a neighborhood \(U \) such that \(U\subseteq A\).
+\end{thm}
+\begin{proof}
+    Suppose, \(x_a\in A^\circ\). By the definition of \(A^\circ\), \(A^\circ=\cup\{G\in\delta\mid G\subseteq A \}\). \(\therefore\;x_a\in \cup\{G\in\delta\mid G\subseteq A \}\). Thus we have \(x_a\in U \) for some \(U\in\delta\ni U\subseteq A\). \(\therefore \) There exists a neighborhood \(U \) of \(x_a \) such that \(U\subseteq A\).\\
+
+
+    Conversely, suppose, \(U \) be a neighborhood of a fuzzy point \(x_a \ni U\subseteq A \). This implies, \(x_a\in U\subseteq A \). Now, since \(A^\circ\) is the largest open set contained in \(A \), we have \(U\subseteq A^\circ\). Thus, \(x_a\in A^\circ\).
+\end{proof}
+\begin{defn}[Quasi-Coincident of a fuzzy point]
+    Let \(\xt\) be a \fts. A fuzzy point \(x_a \) is called quasi-coincident of a fuzzy set \(A \) denoted by \(x_a \propto A \) iff \(x_a\not\leq A^c\) i.e., \(a>A^c(x)\;\Rightarrow\;a+A(x)>1\),
+\end{defn}
+\begin{defn}[Quasi-Coincident of a fuzzy set]
+    A fuzzy set \(A  \)  is said to be quasi-coincident with a fuzzy set \(B \) iff there exists an \(x\in X \) such that \(A(x)>B^c(x)\) i.e., \(A(x)+B(x)>1\) for some \(x\in X \).
+\end{defn}
+\begin{defn}[Quasi-neighborhood]
+    An open set \(U\in\delta\) is called a quasi-neighborhood of a fuzzy point \(x_a \) if \(x_a \) is a quasi-coincident of \(U \). The set of all quasi-coincident of \(x_a\) is denoted by \(\mathcal{Q }_\delta (x_a)\).
+\end{defn}
+\begin{ex}
+    Consider, \(X=\{a,b,c \}\), \(\delta=\{\underbar{0},\underbar{1},A,B \}\),
+    \begin{align*}
+        A&:\;a\mapsto 0.0,\;b\mapsto0.2,\;c\mapsto0.7\\
+        B&:\;a\mapsto 0.6,\;b\mapsto0.4,\;c\mapsto0.8\\
+        \text{Given, }P&:\;a\mapsto 0.0,\;b\mapsto0.4,\;c\mapsto0.9\\
+    \end{align*}
+    Find the quasi-neighborhood of \(x_a \) at \(a=0.4\).
+\end{ex}
+\begin{soln}
+    Here, \(B^c:\;a\mapsto 0.4,\;b\mapsto0.6,\;c\mapsto0.2\). Since, \(a=0.4\geq B^c(a)=0.4\) so, \(x_{0.4}\) is a quasi-coincident of \(B \) and \(\mathcal{Q}_\delta(x_a)=\{\underbar{1},B\}\).
+\end{soln}
+\newpage
+\begin{thm}
+    A quasi-neighborhood of \(x_a \) is exactly a neighborhood of \(x_{1-a } \).
+\end{thm}
+\begin{proof}
+    Let \(\xt \) be a \fts\s and \(U\in\delta\) be a quasi-neighborhood of \(x_a \). By the definition of quasi-neighborhood of \(x_a \),
+    \begin{align*}
+        & a>U^c(x),\;\text{ for some } x\in X,\\
+        \Leftrightarrow\;& a>1-U(x),\;\text{ for some } x\in X,\\
+        \Leftrightarrow\;& a+U(x)>1,\;\text{ for some } x\in X,\\
+        \Leftrightarrow\;& 1-a< U(x),\;\text{ for some } x\in X,\\
+        \Leftrightarrow\;& x_{1-a}\in U,\\
+        \Leftrightarrow\;& U\text{ is a neighborhood of } x_{1-a}
+    \end{align*}
+\end{proof}
+\begin{prop}
+    Let, \(\xt\) be a \fts \s and \(A,B\subseteq X \). Then \(A\leq B \) iff \(A \) and \(B^c \) are not quasi-coincident.
+\end{prop}
+\begin{proof}
+    Suppose, \(A\leq B \), then, \(A(x)\leq B(x )\), for all \(x\in X \).
+    Now, \(A(x)+B^c(x)=A(x)+1-B(x)\leq 1 \), for all \(x\in X \) [Since, \(A(x)\leq B(x)\)]\\
+    Hence, \(A \) and \(B^c \) are not quasi-coincident.
+
+    Conversely, suppose \(A(x )\) and \(B^c(x )\) are not quasi-coincident. Then,
+    \begin{align*}
+        &A(x)+B^c(x)\leq 1\\
+        \Rightarrow\;&A(x)+1-B(x)\leq 1\\
+        \Rightarrow\;&A(x)-B(x)\leq 0\\
+        \Rightarrow\;&A(x)\leq B(x)
+    \end{align*}
+\end{proof}
+\begin{thm}
+    Let \(\xt \) be a \fts\s and \(A\in \mathcal{F}(X)\). Then, the following conditions hold:
+    \begin{enumerate}
+        \item \(x_a\in A^\circ\) iff \(x_{1-a }\not\in \bar{A^c}\).
+        \item \(x_a\in \bar{A }\) iff each neighborhood of its dual point \(x_{1-a } \) is quasi-coincident with \(A\).
+    \end{enumerate}
+\end{thm}
+\begin{proof}\hfill
+    \begin{enumerate}
+        \item Let \(x_a\in A^\circ\). Then by definition of \(A^\circ\), there exists \(B\in \delta\) such that \(x_a\in B \subseteq A \) i.e., \(B \) is a neighborhood of \(x_a \) and hence \(B \) is a quasi-neighborhood of \(x_{1-a }\). Hence \(x_{1-a }\not\leq B^c\) i.e., \(x_{1-a}\not\in B^c\). Since, \(B\subseteq A \) and \(\bar{A }\) is the smallest closed set containing \(A \), we have, \(B\subseteq A\subseteq \bar{A }\) implies \(\bar{A^c} \subseteq B^c\). Hence we can show that \(x_{1-a}\not\in \bar{A^c}\).\\
+        
+        Conversely, suppose \(x_{1-a}\not\in \bar{A^c} \). Then there is a neighborhood \(B \) of \(x_a \) which is not quasi-coincident with \(A^c \). Thus, 
+        \begin{align*}
+            & B(x)+A^c(x) \leq 1\;\;\;\forall x\in X\\
+            \Rightarrow\;& B(x)\leq A(x) \;\;\;\forall x\in X
+        \end{align*}
+        \(\therefore\;B^c\subseteq A \) and so \(x_a \in B \subseteq A \) i.e., \(x_a\in A^\circ\).
+        \item Let \(N \) be the neighborhood of \(x_{1-a } \). Now, \(N \) is a quasi-coincident with \(A \) implies
+        \begin{align*}
+            &N(x)+A(x)>1,\;\;\forall x\in X\\
+            \Rightarrow\;&N\text{ and }A \text{ intersect at }x\\
+            \Rightarrow\;&x_a\in \bar{A }
+        \end{align*}
+        Conversely, suppose \(x_a\in \bar{A}\). Then, \(N \) and \(A \) intersect at \(x \). This implies,
+        \begin{align*}
+            &N(x)+A(x)>1,\;\;\forall x\in X\\
+            \Rightarrow\;&N\text{ is a quasi-coincident with }A \text{ at }x\\
+            \Rightarrow\;&\text{each neighborhood \(N \) of \(x_{1-a }\) is quasi-coincident with } A
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+\begin{defn}[Subspace]
+    Let \(\xt\) be a \fts \s and let \(Y \) be a nonempty set (\(Y\neq \varnothing\)) such that \(Y\subseteq X\). Define \(\delta_{\upharpoonright_Y }=\{U_{\upharpoonright_Y}\mid U\in\delta\} \) [where, \(U_{\upharpoonright_Y}=U\cap Y=U \) restricted in \(Y\)]. Then \(\delta_{\upharpoonright_Y }\) is a fuzzy topology on \(Y \). The \fts\s\(\langle Y,\delta_{\upharpoonright_Y }\rangle\) is called a subspace of \(\xt\).
+\end{defn}
+\begin{ex}
+    Let, \(X=\{a,b,c \}\) and \(Y=\{b,c \}\). Let \(\delta=\{\underbar{0},\underbar{1},A,B\}\) where
+    \begin{align*}
+        A&:\;a\mapsto0.2,\;b\mapsto0.4,\;c\mapsto1.0\\
+        B&:\;a\mapsto0.1,\;b\mapsto0.4,\;c\mapsto 0.8
+    \end{align*}
+    Then \(\delta_{\upharpoonright_Y }=\{\underbar{0}_{\upharpoonright_Y },\underbar{1}_{\upharpoonright_Y },A_{\upharpoonright_Y },B_{\upharpoonright_Y }\}\) where,
+    \begin{align*}
+        A_{\upharpoonright_Y }&:\;b\mapsto0.4,\;c\mapsto1.0\\
+        B_{\upharpoonright_Y }&:\;b\mapsto0.4,\;c\mapsto 0.8
+    \end{align*}
+    is a fuzzy topology on \(Y \) and hence \(\langle Y,\delta_{\upharpoonright_Y }\rangle\) is a fuzzy subspace of \(\xt\).
+\end{ex}
+\begin{ex}
+    Let \(X=\{1,2,3,4\}\) and \(Y=\{1,3,4\}\). Find a non-trivial fuzzy topology on \(X \) and hence, find a fuzzy subspace of \(\xt\).
+\end{ex}
+\begin{soln}
+    Let \(\delta=\{\underbar{0},\underbar{1},A,B\}\) be a fuzzy topology on \(X \) where,
+    \begin{align*}
+        A&:\;1\mapsto0.3,\;2\mapsto 0.1,\;3\mapsto0.6,\;4\mapsto 0.2\\
+        B&:\;1\mapsto0.7,\;2\mapsto 0.4,\;3\mapsto0.1,\;4\mapsto 0.2
+    \end{align*}
+    Then \(\delta_{\upharpoonright_Y }=\{\underbar{0}_{\upharpoonright_Y },\underbar{1}_{\upharpoonright_Y },A_{\upharpoonright_Y },B_{\upharpoonright_Y }\}\) where,
+    \begin{align*}
+        A_{\upharpoonright_Y }&:\;1\mapsto0.3,\; 3\mapsto0.6,\;4\mapsto 0.2\\
+        B_{\upharpoonright_Y }&:\;1\mapsto0.7,\;3\mapsto0.1,\;4\mapsto 0.2
+    \end{align*}
+    is a fuzzy topology on \(Y \) and hence \(\langle Y,\delta_{\upharpoonright_Y }\rangle\) is a fuzzy subspace of \(\xt\).
+\end{soln}
+\begin{rem}
+    Let \(\langle X,\tau\rangle\) be a \fts. The two fuzzy sets \(A \) and \(B \) in \(X \) are said to be intersecting \(\Leftrightarrow\) there exists a point \(x\in X \) such that \((A\wedge B)(x)\neq 0\).\\
+    For such a case, we say that, \(A \) and \(B \) intersect at \(x \).
+
+    Again, if \(A \) and \(B \) are quasi-coincident at \(x \), then, \(A(x)+B(x)>1\) i.e., both \(A(x )\) and \(B(x )\) are not zero and here \(A \) and \(B \) intersect at \(x \).
+    
+
+    \begin{itemize}
+        \item \(x_a\to\) quasi-coincident of \(A \) if \(a>A^c(y )\) for some \(y\in X \).
+        \item \(U\in\delta\to  \) quasi-neighborhood if \(x_a \) is a quasi-coincident of \(U \).
+    \end{itemize}
+\end{rem}
+\begin{defn}[Adherent point]
+    A fuzzy point \(x_a \) is called an adherent point of a fuzzy set \(A \) iff every quasi-neighborhood of \(x_a \) is a quasi-coincident with \(A \).
+\end{defn}
+\begin{prob}
+    Give an example of an adherent point.
+\end{prob}
+\begin{defn}[Accumulation Point]
+    A fuzzy point \(x_a \) is called an accumulation point of a fuzzy set \(A \) iff \(x_a \) is an adherent point of \(A \) and every quasi-neighborhood of \(x_a \) and \(A \) are quasi-coincident at some point different from \(\sup\,x_a \), whenever, \(x_a\in A \).
+\end{defn}
+\begin{defn}[Base]
+    Let \(\ft\) be a \fts. Then \(\mathcal{B }\) is a base for \(\delta\) iff every open set \(G\in\delta\) is the union of members of \(\mathcal{B }\) i.e., \(G=\cup B_i \), \(\forall\,B_i\in\mathcal{B }\).
+\end{defn}
+\begin{defn}[Subbase]
+    Let \(\ft \) be a \fts. Then \(\mathcal{S}\in X \) is called a subbase iff finite intersection of member of \(\mathcal{S }\) form a base for  \(\delta\).
+\end{defn}
 \end{document}

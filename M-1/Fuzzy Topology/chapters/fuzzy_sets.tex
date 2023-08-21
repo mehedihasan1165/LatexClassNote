@@ -30,7 +30,7 @@
     Two fuzzy sets \(A\) and \(B\) of \(X\) is said to be equal iff \(A\leq B\) and \(B\leq A\).
 \end{defn}
 \begin{ex}[Empty and Total fuzzy set]
-    Suppose, \(A:X\to[0,1]\) where \(X=[20,80]\). Then,
+    Suppose, \(A:X\to[0,1]\) where \(X=[20,90]\). Then,
     \[
         \underbar{0}(x)=\begin{cases}
         0\quad \text{if } 15<x<90\\
@@ -99,7 +99,7 @@
     \begin{enumerate}
         \item Complement of \(A_1\),
         \[
-            A_1^c=\begin{cases}
+            {A_1}^c=\begin{cases}
                 \begin{aligned}
                     0; \qquad&\text{if }40\leq x<50\\
                     \frac{x-50}{10}; \qquad&\text{if }50\leq x<60\\
@@ -109,7 +109,7 @@
             \]
         Complement of \(A_2\),
         \[
-            A_2^c=\begin{cases}
+            {A_2}^c=\begin{cases}
                 \begin{aligned}
                     1; \qquad&\text{if }40\leq x<50\\
                     \frac{60-x}{10}; \qquad&\text{if }50\leq x<60\\
@@ -145,6 +145,10 @@
 \begin{defn}[Level Set]
     Let \(A :X\to [0,1]\) be a fuzzy set. The \(\alpha\) level set of \(A \) is denoted and defined by, \(A_\alpha\) or \(\alpha_A=\{x\in X|A(x)\geq \alpha\}\) where, \(0<\alpha\leq 1\).
 \end{defn}
+\begin{rem}
+    \(A_\alpha\) is a classical set not a fuzzy set.
+\end{rem}
+\newpage
 \begin{defn}[Core level of a fuzzy set]
     When \(\alpha=1\), then \(A_1=\{x\in X|A(x)=1\}\) is called the core level of \(A \).
 \end{defn}
@@ -159,7 +163,7 @@
                 0; \qquad&\text{if } x\leq20 \text{ or, }x\geq 60\\
                 \frac{x-20}{15}; \qquad&\text{if }20< x<35\\
                 \frac{60-x}{15}; \qquad&\text{if }45< x<60\\
-                0; \qquad&\text{if }35\leq x\leq 45
+                1; \qquad&\text{if }35\leq x\leq 45
             \end{aligned}
     \end{cases}
     \qquad\text{and}\qquad
@@ -333,9 +337,11 @@
         \import{../img/}{set_operation.tikz}
     \end{figure}
 \end{soln}
+\section{Fuzzy Relation}
 \begin{defn}[Fuzzy Relation]
     Let \(X \) and \(Y \) be two non-empty classical(Fuzzy) sets. Then a fuzzy relation \(R \) on \(X\times Y \) is a mapping, \(R:X\times Y\to[0,1]\) where, the number \(R(x,y)\in[0,1]\) is called the degree of relationship between \(x \) and \(y \).
 \end{defn}
+\newpage
 \begin{ex}
     Let \(X=\{a,b,c \},\, Y=\{c,d \}\). Then \(X\times Y=\{(a,c),(a,d),(b,c),(b,d),(c,c),(c,d )\}\) where \(R(a,c)=R(a,d)=0\), \(R(b,c)=R(b,d)=R(c,c)=1\) and \(R(c,d)=0.8\). For the fuzzy relation:
     \begin{enumerate}
@@ -344,14 +350,117 @@
         \item 0.7 of \(R \)?
     \end{enumerate}
 \end{ex}
-\begin{soln}
+\begin{soln}\hfil
     \begin{enumerate}
         \item Core of \(R=\{(b,c),(b,d),(c,c )\}\) Since, \(R(x,y)=1\) for \(x\in X \) and \(y\in Y \).
         \item Support of \(R=\{(b,c),(b,d),(c,c ),(c,d)\}\) Since, \(R(x,y)>0\) for \(x\in X \) and \(y\in Y \).
         \item 0.7 of \(R=\{(b,c),(b,d),(c,c ),(c,d)\}\) Since, \(R(x,y)>0.7\) for \(x\in X \) and \(y\in Y \).
     \end{enumerate}
 \end{soln}
+\begin{defn}[Domain]
+    If  \(R(x,y)\) is a fuzzy relation, its domain is the fuzzy set \(dom \;R(x,y)\) whose membership function is
+    \[\chi_{dom}R(x)=\max \chi_R (x,y)\forall x\in X\]
+\end{defn}
+\begin{defn}[Range]
+    If  \(R(x,y)\) is a fuzzy relation, its range is the fuzzy set \(ran \;R(x,y)\) whose membership function is
+    \[\chi_{ran}R(y)=\max \chi_R (x,y)\forall y\in y\]
+\end{defn}
+\begin{ex}
+    Consider \(X=\{x_1,x_2,x_3,x_4\}\) and \[R(x,x)=\begin{pmatrix}
+        0.2 & 0.0 & 0.5 & 0.0 \\
+        0.0 & 0.3 & 0.7 & 0.8 \\
+        0.1 & 0.0 & 0.4 & 0.0 \\
+        0.0 & 0.6 & 0.0 & 0.1 
+    \end{pmatrix}\] Then the domain is \(dom \;R=\{0.5,0.8,0.4,0.6\}\) and the range is \(ran\;R=\{0.2,0.6,0.7,0.8\}\).
+\end{ex}
 \begin{defn}[Max-min and Min-max Composition]
-    Let \(R \) be a fuzzy relation on \(X\times Y \) i.e., \(R\in\mathcal{F }(X\times Y )\) and \(S \) be a fuzzy relation on \(Y\times Z \) i.e., \(S\in \mathcal{F }(Y\times Z )\). Then \(R\circ S \in \mathcal{F }(X\times Z)\) defined by \((R\circ S)(x,z)=\bigvee_{y\in Y }R(x,y)\wedge S(y,z )\) is called the Max-Min composition of \(R \) and \(S \) on \(X\times Z \). And \((R\circ S)(x,z)=\bigwedge_{y\in Y }R(x,y)\vee S(y,z )\) is called the Min-Max composition of \(R \) and \(S \) on \(X\times Z \)
+    Let \(R \) be a fuzzy relation on \(X\times Y \) i.e., \(R\in\mathcal{F }(X\times Y )\) and \(S \) be a fuzzy relation on \(Y\times Z \) i.e., \(S\in \mathcal{F }(Y\times Z )\). Then \(R\circ S \in \mathcal{F }(X\times Z)\) defined by
+    \[(R\circ S)(x,z)=\bigvee_{y\in Y }R(x,y)\wedge S(y,z )\]
+    is called the Max-Min composition of \(R \) and \(S \) on \(X\times Z \). And \[(R\circ S)(x,z)=\bigwedge_{y\in Y }R(x,y)\vee S(y,z )\] is called the Min-Max composition of \(R \) and \(S \) on \(X\times Z \)
+\end{defn}
+\begin{prob}
+    Consider, \(X=\{a,b \}\), \(Y=\{c,d,e \} \) and \(Z=\{u,v \}\) where,
+    \[R(x,y)=\begin{pmatrix}
+        0.3 & 0.7 & 0.2\\[.2em]
+        1.0 & 0.0 & 0.9
+    \end{pmatrix}\qquad \text{and}\qquad S(y,z)=\begin{pmatrix}
+        0.8 & 0.3 \\[.2em]
+        0.1 & 0.0 \\[.2em]
+        0.5 & 0.6 
+    \end{pmatrix}\]
+    then find the max-min and min-max composition of \(R \) and \(S \).
+\end{prob}
+\begin{soln}
+    Max-min composition of \(R \) and \(S \)
+    \[(R\circ S)(x,z)=\bigvee_{y\in Y}R(x,y)\wedge S(y,z)=\begin{pmatrix}
+        0.3&0.3\\[.25em]
+        0.8&0.6
+    \end{pmatrix}\]
+    Min-max composition of \(R \) and \(S \)
+    \[(R\circ S)(x,z)=\bigwedge_{y\in Y}R(x,y)\vee S(y,z)=\begin{pmatrix}
+        0.5 & 0.3\\[.25em]
+        0.1 & 0.0
+    \end{pmatrix}\]
+\end{soln}
+\begin{defn}[Reflexive]
+    Let \(R \)  be a fuzzy relation in \(X\times X \). \(R \) is called reflexive if 
+    \[\chi_R (x,x)=1\quad \forall x\in X\]
+\end{defn}
+\begin{defn}[Symmetic]
+    Let \(R \)  be a fuzzy relation in \(X\times X \). \(R \) is called symmetric if 
+    \[R (x,y)=R(y,x)\quad \forall x,y \in X\]
+\end{defn}
+\begin{ex}
+    The following relation is a symmetric relation:
+    \[R(x,y)=\begin{pmatrix}
+        0.0 & 0.1 & 0.0 & 0.1 \\
+        0.1 & 1.0 & 0.2 & 0.2 \\
+        0.0 & 0.2 & 0.8 & 0.8 \\
+        0.1 & 0.3 & 0.8 & 1.0
+    \end{pmatrix}\]
+\end{ex}
+\begin{defn}[Antisymmetic]
+    Let \(R \)  be a fuzzy relation in \(X\times X \). \(R \) is called antisymmetric if for 
+    \[x\neq y \quad\left.\begin{aligned}
+        \text{either }& \chi_R(x,y)\neq \chi_R(y,x)\\
+        \text{or }& \chi_R(x,y)= \chi_R(y,x)=0
+    \end{aligned}\;\;\right\}\quad \forall x,y,\in X \]
+\end{defn}
+\begin{ex}
+    The following relation is an antisymmetric relation:
+    \[R(x,y)=\begin{pmatrix}
+        0.4 & 0.0 & 0.1 & 0.8 \\
+        0.8 & 1.0 & 0.0 & 0.0 \\
+        0.0 & 0.6 & 0.7 & 0.0 \\
+        0.0 & 0.2 & 0.0 & 0.0
+    \end{pmatrix}\]
+\end{ex}
+\begin{defn}
+    A fuzzy relation \(R \) is called (max-min) transitive if 
+    \[R\circ R\subseteq R\]
+\end{defn}
+\begin{ex}
+    The fuzzy relation \[R=\begin{pmatrix}
+        0.4 & 0.2 \\
+        0.7 & 0.3
+    \end{pmatrix}\] is a transitive relation.\\
+    Here using a max-min composition,
+    \[
+        R\circ R=\begin{pmatrix}
+            0.4 & 0.2 \\
+            0.7 & 0.3
+        \end{pmatrix}\;\circ\;\begin{pmatrix}
+            0.4 & 0.2 \\
+            0.7 & 0.3
+        \end{pmatrix}=\begin{pmatrix}
+            0.4 & 0.2 \\
+            0.4 & 0.3
+        \end{pmatrix}
+    \]
+    \(\therefore 7;R\circ R\subseteq\;R \). Hence, \(R \) is a transitive relation.
+\end{ex}
+\begin{defn}
+    The max-min composition is called associative if 
+    \[R_1\circ (R_2\circ R_3)=(R_1\circ R_2)\circ R_3\]
 \end{defn}
 \end{document}
