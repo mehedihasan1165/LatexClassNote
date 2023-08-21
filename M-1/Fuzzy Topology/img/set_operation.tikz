@@ -30,9 +30,9 @@
         \addplot[black, dashed, very thick, domain=6:7, smooth, samples=200,forget plot] {(x-6)/(1)};
         \addplot[black, dashed, very thick, domain=7:10,forget plot] {1};
         
-        \addlegendentry{$(A\vee B)(x)$} 
+        \addlegendentry{$(A\wedge B)(x)$} 
         \addlegendentry{$(A\vee B)(x)$}
-        \addlegendentry{$(A\vee B)(x)$} 
-        \addlegendentry{$(A\vee B)(x)$}
+        \addlegendentry{$ A^c (x)$} 
+        \addlegendentry{$B^c (x)$}
 \end{axis}
 \end{tikzpicture}

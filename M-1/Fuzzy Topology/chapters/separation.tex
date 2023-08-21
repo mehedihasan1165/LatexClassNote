@@ -67,9 +67,7 @@
 \begin{defn}[Purely \(T_2-\)space]
     \(\ft\) is called purely \(T_2-\)space if for every two zero-meet fuzzy points \(x_a\) and \(y_b\), \(\exists U\in Q_\delta(x_a)\) and \(V\in Q_\delta(y_b)\) such that \(U\wedge V=\underbar{0}\).
 \end{defn}
-\begin{defn}
-    A \fts \s \(\xt \) is said to be fuzzy regular iff for each \(x\in X \) and each closed  fuzzy set \(U \) with \(U(x)=0\) there exists \(V,W\in\delta\) such that \(V(x)=1\) and \(V\subseteq 1-W \).
-\end{defn}
+
 \begin{thm}
     For a \fts \(\ft\) the following statements are equivalent
     \begin{enumerate}
@@ -80,16 +78,89 @@
 \begin{proof}
     \((1)\Rightarrow(2)\), Suppose \(\xt \) is a fuzzy \(T_0-\)space. Thus, we have \(\overline{x_1(y )}\cap \overline{y_1(x )}<1\).
 \end{proof}
-\begin{thm}
+\begin{thm}[X]
     A \fts\s \(\ft\) is called a fuzzy \(T_0\) space iff
     \begin{enumerate}[label=(\roman*)]
         \item \(\forall\,x,y\in X \), \(\exists U\in \delta\) such that \(U(x)=1\), \(U(y)=0\) or \(U(y )=1\), \(U(x)=0\).
-        \item \(\forall x,y \in X \), \(x\neq y \), \(\overline{x_1(y)}\cap \overline{y_1(x)}<1\)
+        \item For all \(\forall x,y \in X \), \(x\neq y \), \(\overline{x_1(y)}\cap \overline{y_1(x)}<1\)
         \item \(\forall x,y \in X \), \(x\neq y \), such that \(U(x)<U(y)\) or \(U(y)<U(x)\)
     \end{enumerate}
 \end{thm}
+\begin{thm}
+    For a \fts\s \(\xt\) the following statements are equivalent
+    \begin{enumerate}[label=(\roman*)]
+        % \item \(\ft\) is a fuzzy \(T_0\) space.
+        \item For all \( x,\;y \in X \), \(x\neq y \), \(\bar{x}_1(y)\cap \bar{y}_1(x)<1\),
+        \item For all \(x,\;y \in X \), \(x\neq y \), \(\exists U\in \delta\) such that \(U(x)>0\), \(U(y)=0\) or \(U(y)>0\), \(U(x)=0\).
+    \end{enumerate}
+\end{thm}
 \begin{proof}
-    (ii) \(\to \) (i)\\
-    Suppose \(\ft \) be a fuzzy \(T_0\) space. THus we have, \(\overline{x_1(y)}\cap \overline{y_1(x)}<1\). This implies that either 
+    (i) \(\Rightarrow\) (ii)\\
+    Suppose \(\xt \) be a fuzzy \(T_0\) space. Thus, we have, \(\bar{x}_1(y)\cap \bar{y}_1(x)<1\). This implies that either \(\bar{x}_1(y)<1\) or \( \bar{y}_1(x)<1\). Consider \(\bar{x}_1(y)<1\). Hence, \(1-\bar{x}_1(y)>0\) and \(1-\bar{x}_1(x)=0\).\\ Let, \(1-\bar{x}_1=U\), then \(U\in\delta\) and \(U(x)=0\), \(U(y)>0\).\\ Similarly, from \( \bar{y}_1(x)<1\) we can show that there exists \(V\in \delta\) such that \(V(y)=0\), \(V(x)>0\).\\
+
+
+    (ii) \(\Rightarrow\) (i)\\
+    From (ii), we have for any two points \(x,y\in X \) with \(x\neq y \) \(\exists U\in\delta\) such that \(U(x)>0\), \(U(y)=0\) or \(U(y)>0\), \(U(x)=0\).\\
+    Then \begin{align*}
+        &1-U(x)<1\qquad \text{and}\qquad 1-U(y)=1\\
+        \text{or, }\;&1-U(x)=1\qquad \text{and}\qquad 1-U(y)<1
+    \end{align*}
+    Since the complement of \(U \) is closed, we see that \(\bar{x}_1(y)<1\) or \(\bar{y}_1(x)<1\). This implies \(\bar{x}_1(y)\cap \bar{y}_1(x)<1\).
+\end{proof}
+\begin{thm}
+    For any \fts\s \(\xt\) the following are equivalent:
+    \begin{enumerate}[label=(\roman*)]
+        \item For all \(x,\;y\in X \), \(x\neq y \), \(\exists U,V\in\delta\) such that \(U(x)=1=V(y )\) and \(U\subset V^c\)
+        \item If \(x\in X \), then for each \(y\in X \), \(y\neq x \), \(\exists U\in\delta\) such that \(U(x)=1\) and \(\bar{U}(y)=0\)
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    Let \(\xt\) be a \fts. Let \(x,y\in X\) with \(x\neq y \). Then by (i) there exist \(U,V\in\delta\) such that 
+    \begin{align*}
+        &U(x)=1=V(y )\qquad \text{and}\qquad U\subset V^c=1-V\\
+        \Rightarrow\;& \bar{U} \subset \overline{1-V}\subset 1-V\\
+        \intertext{So,}
+        & \bar{U}(y) \subset (1-V)(y)=1-V(y)=0\quad\text{i.e., }\bar{U}(y)=0
+    \end{align*}
+    (ii) \(\Rightarrow\) (i)\\
+    Let \(\xt\) be a \fts. Let \(x,y\in X \) with \(x\neq y \). By (ii) there exist \(U\in\delta\) with \(U(x)=1\) and \(\bar{U}(y)=0\) or, there exist \(V\in\delta\) with \(V(y)=1\) and \(\bar{V}(x)=0\).\\
+    Let \(V=1-\bar{U}\). Then,
+    \begin{align*}
+        V(y)&=(1-\bar{U})(y)\\
+        &=1-\bar{U}(y)\\
+        &=1-0\\
+        &=1
+    \end{align*}
+    Again, \(U\subset \bar{U}=1-V=V^c\). Hence \(U\subset V^c\), \(U(x)=V(y)=1\) and it is also clear that \(U,\;V\in\delta\).
+\end{proof}
+\begin{defn}[Regular Space]
+    A \fts \s \(\xt \) is said to be fuzzy regular iff for each \(x\in X \) and each closed  fuzzy set \(U \) with \(U(x)=0\) there exists \(V,W\in\delta\) such that \(V(x)=1\), \(U\subset W \) and \(V\subseteq 1-W \).
+\end{defn}
+\begin{thm}
+    Let \(\xt\) be a \fts. Then the following are equivalent:
+    \begin{enumerate}[label=(\roman*)]
+        \item \(\xt\) is a fuzzy regular space.
+        \item For each \(x\in X \), \(U\in\delta\) with \(U(x)=1\), \(\exists V\in\delta\) with \(V(x)=1\) and \(V\subset \bar{V}\subset U\).
+        \item For each \(x\in X \), \(U\in\delta^c \) with \(U(x)=0\), \(\exists V\in\delta\) with \(V(x)=1\) such that \(U\subseteq 1-\bar{V}\) or \(\bar{V}\subseteq 1-U\).
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    (i) \(\Rightarrow\) (ii)\\
+    Let \(\xt\) be a \fts. Let \(x\in X \) and \(U\in\delta\) with \(U(x)=1\). Then \(1-U\in\delta^c \). This implies
+    \[(1-U)(x)=1-U(x)=1-1=0\quad\text{i.e., } U^c(x)=0\]
+    Then be definition of fuzzy regular space, there exists \(V,W\in\delta\) such that \(1-U\subset W \) and \(V\subseteq 1-W \). Now,
+    \begin{align*}
+        &V\subseteq 1-W\\
+        \Rightarrow\;&\bar{V}\subseteq \overline{1-W}\\
+        \Rightarrow\;&\bar{V}\subseteq {1-W}\\
+        \Rightarrow\;&\bar{V}\subset U
+    \end{align*}
+    Hence, \(V\subset \bar{V}\subset U \).\\
+
+    (ii) \(\Rightarrow\) (iii)\\
+    Let \(x\in X \) and \(U\in\delta^c \) with \(U(x)=0\). Now \(1-U\in\delta\) and \((1-U)(X)=1-U(x)=1\). Hence, from (ii) there exists \(V\in\delta\) with \(V(x)=1\) such that \(V\subset \bar{V}\subset 1-U \) or \(U\subset 1-\bar{V}\).\\
+
+    Lastly, (iii) \(\Rightarrow\) (i)\\
+    Let \(x\in X \) and \(U\in\delta^c\) with \(U(x)=0\). From (iii), there exists \(V\in\delta\) with \(V(x)=1\) and \(\bar{V}\subset 1-U \). This implies \(U\subset 1-\bar{V}\). Consider \(1-\bar{V}=W\). Therefore, \(W\in\delta\) and also \(V\subset \bar{V}=1-W\). Hence, \(U\subset W \) and \(V\subseteq 1-W \). Therefore, by the definition of regular space \(\xt\) is a regular space.
 \end{proof}
 \end{document}
