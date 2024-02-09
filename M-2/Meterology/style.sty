@@ -1,0 +1,109 @@
+\ProvidesPackage{style}
+\RequirePackage[table]{xcolor}
+\RequirePackage{diagbox}
+\RequirePackage{systeme}
+\RequirePackage{cancel}
+\RequirePackage{amsmath,amsthm,amssymb}
+\RequirePackage{mathtools}
+\RequirePackage[nocomma]{optidef}
+\RequirePackage{graphicx,float}
+\RequirePackage{enumitem}
+\RequirePackage[c4paper,margin=1.5cm]{geometry}
+\RequirePackage{hyperref}
+\RequirePackage{booktabs,multirow}
+\RequirePackage{lmodern}
+\RequirePackage[english]{babel}
+\RequirePackage{background}
+\RequirePackage[object=vectorian]{pgfornament} 
+\RequirePackage{calligra}
+\RequirePackage{mathrsfs}
+\RequirePackage{array}
+\RequirePackage{import}
+\RequirePackage{tikz,pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usetikzlibrary{shapes,arrows}
+\usepackage{multirow}
+% needed for BB
+\usetikzlibrary{calc,hobby,angles,matrix}
+\usetikzlibrary{decorations.markings}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\sysdelim..
+
+\newcolumntype{L}{>{$}l<{$}} 
+\newcolumntype{C}{>{$\displaystyle }c<{$}}
+
+
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+\newcommand\numberthis{\stepcounter{equation}\tag{\theequation}}
+
+\theoremstyle{remark}
+\newtheorem* {rem}{Remark}
+\newtheorem* {lem}{Lemma}
+\newtheorem* {note}{Note}
+\graphicspath{ {./img/} }
+% \everymath{\displaystyle}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{prob}{Problem}[chapter]
+\newtheorem{defn}{Definition}
+\newtheorem*{ex}{Example}
+\newtheorem*{soln}{Solution}
+
+% add shorthand here
+\newcommand{\s}{\space}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\ddx}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,x}}
+\newcommand{\ddy}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,y}}
+\newcommand{\ddz}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,z}}
+\newcommand{\ddt}[1]{\,\frac{\mathrm{d}\,#1}{\mathrm{d}\,t}}
+\newcommand{\ddtn}[2]{\,\frac{\mathrm{d}^{#2}\,#1}{\mathrm{d}\,t^{#2}}}
+\newcommand{\pardx}[1]{\,\frac{\partial\, #1}{\partial\, x}}
+\newcommand{\pardy}[1]{\,\frac{\partial\, #1}{\partial\, y}}
+\newcommand{\pardz}[1]{\,\frac{\partial\, #1}{\partial\, z}}
+\newcommand{\parx}{\,\partial\, x}
+\newcommand{\pary}{\,\partial\, y}
+\newcommand{\parz}{\,\partial\, z}
+\newcommand{\Dx}{\,\mathrm{d}\, x}
+\newcommand{\Dy}{\,\mathrm{d}\, y}
+\newcommand{\Dz}{\,\mathrm{d}\, z}
+\newcommand{\D}{\,\mathrm{d}\,}
+\newcommand{\dx}{\,\partial\, x}
+\newcommand{\dy}{\,\partial\, y}
+\newcommand{\dz}{\,\partial\, z}
+\newcommand{\ddp}{\,\partial\, p}
+\newcommand{\dt}{\,\partial\, t}
+\newcommand{\dT}{\,\partial\, T}
+% \newcommand{\d}{\,\partial\,}
+\newcommand{\ddxn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\, x^{#2}}}
+\newcommand{\ddyn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\,y^{#2}}}
+\newcommand{\ddzn}[2]{\,\frac{\mathrm{d}^{#2}\, #1}{\mathrm{d}\,z^{#2}}}
+\newcommand{\parxn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\, x^{#2}}}
+\newcommand{\paryn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\,y^{#2}}}
+\newcommand{\parzn}[2]{\,\frac{\partial^{#2}\, #1}{\partial\,z^{#2}}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+\newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}

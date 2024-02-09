@@ -1,0 +1,20 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Finite Element Solution of Two-dimensional BVPs}
+\section{The Galerkin formulation in 2D (Matrix formulation)}
+Here we shall formulate the matrix for Laplace and Poisson equation because almost all types of 2D problems arise in physical problems are Laplace or Poisson equation.
+
+In 2D, domain is a region (area) closed by a curve. Suppose \((x,y) \in R \) [Domain] with condition, essential at \(C\), then \(u(c)=u(x,y)\) (\(x,y\) lies on \(C\)). Suppressible at \(C^*\), then \(\frac{\partial u }{\partial n }=K^*\) (\(K^*\) depends on the point of \(C^*\)) and whole domain boundary \(B(C+C^*)\).
+
+\subsection{Green's theorem in the plane}
+This theorem states that, if \(A \) is a region in the \(xy \)-plane bounded by a closed curve \(\Gamma\) and if \(F(x,y )\) and \(G(x,y )\) are suitably ``smooth functions'' then,
+\[\iint\limits_A \left\{ \frac{\partial G }{\partial x}-\frac{\partial F }{\partial y} \right\}\dx\dy=\oint\limits_\Gamma \left( F\dx+G\dy  \right)\]
+\begin{prob}
+    Solve the two-dimensional BVP:
+    where, \(u \) denotes the temperature at any point of the plate. Hence, determine an approx. using the trial function, \(\bar{u}(x,y)=x(y^2-4)(a_1+a_2x)\)
+\end{prob}
+\end{document}

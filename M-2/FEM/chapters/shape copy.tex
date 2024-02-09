@@ -1,0 +1,118 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\begin{prob}
+    Evaluate \[\iint_{ST} \xi^m \eta^n \Dxi\Dn; \] where \(m,n\geq 0\) and ST= standrad triangle.
+\end{prob}
+\begin{soln}
+    From the figure we see that,
+    \begin{center}
+        
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da23389279258059725] 
+\draw    (238.5,150) -- (369.7,150) ;
+\draw [shift={(371.7,150)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da000006196628629329126] 
+\draw    (308.5,230) -- (168.5,230) ;
+%Straight Lines [id:da6845351224155081] 
+\draw    (168.5,70) -- (168.5,230) ;
+%Straight Lines [id:da6095959150059028] 
+\draw    (168.5,70) -- (308.5,230) ;
+%Straight Lines [id:da9596069340329082] 
+\draw    (238.5,150) -- (238.5,49.35) ;
+\draw [shift={(238.5,47.35)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Shape: Circle [id:dp5192564203280399] 
+\draw   (158.58,247) .. controls (158.58,240.73) and (163.66,235.65) .. (169.92,235.65) .. controls (176.19,235.65) and (181.27,240.73) .. (181.27,247) .. controls (181.27,253.27) and (176.19,258.35) .. (169.92,258.35) .. controls (163.66,258.35) and (158.58,253.27) .. (158.58,247) -- cycle ;
+
+%Shape: Circle [id:dp33976079690798] 
+\draw   (299.08,247.5) .. controls (299.08,241.23) and (304.16,236.15) .. (310.42,236.15) .. controls (316.69,236.15) and (321.77,241.23) .. (321.77,247.5) .. controls (321.77,253.77) and (316.69,258.85) .. (310.42,258.85) .. controls (304.16,258.85) and (299.08,253.77) .. (299.08,247.5) -- cycle ;
+
+%Shape: Circle [id:dp4166508951408724] 
+\draw   (139.58,71.5) .. controls (139.58,65.23) and (144.66,60.15) .. (150.92,60.15) .. controls (157.19,60.15) and (162.27,65.23) .. (162.27,71.5) .. controls (162.27,77.77) and (157.19,82.85) .. (150.92,82.85) .. controls (144.66,82.85) and (139.58,77.77) .. (139.58,71.5) -- cycle ;
+
+
+% Text Node
+\draw (164,238.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {1};
+% Text Node
+\draw (304.5,239) node [anchor=north west][inner sep=0.75pt]   [align=left] {2};
+% Text Node
+\draw (145,63) node [anchor=north west][inner sep=0.75pt]   [align=left] {3};
+% Text Node
+\draw (111,220) node [anchor=north west][inner sep=0.75pt]   [align=left] {(-1,-1)};
+% Text Node
+\draw (318.5,216.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {(1,-1)};
+% Text Node
+\draw (120,93.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {(-1, 1)};
+% Text Node
+\draw (376,140) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \xi $};
+% Text Node
+\draw (234,25.5) node [anchor=north west][inner sep=0.75pt]   [align=left] {$\displaystyle \eta $};
+\end{tikzpicture}
+
+    \end{center}
+straight line passing through \circled{1}, \circled{2} is \(\eta=-1\),\\
+straight line passing through \circled{1}, \circled{3} is \(\xi=-1\),\\
+straight line passing through \circled{2}, \circled{3} is \(\xi+\eta=0\).\\
+So the region of the triangle is covered by \(\eta =-1\) to \(\eta=-\xi \) and \(\xi=-1\) to \(\xi=1\).
+By using this the integral becomes,
+\begin{align*}
+    &\iint_{ST} \xi^m \eta^n \Dxi\Dn \\[1em]
+    =&\int_{\xi=-1}^1 \int_{\eta=-1}^{\eta=-\xi} \xi^m \eta^n \Dn\Dxi \\[1em]
+    =&\int_{-1}^1 \xi^m \left[ \frac{\eta^{n+1}}{{n+1}} \right]_{-1}^{-\xi} \Dxi \\[1em]
+    =&\int_{-1}^1 \xi^m \left[ \frac{(-\xi)^{n+1}}{{n+1}}-\frac{(-1)^{n+1}}{{n+1}} \right] \Dxi \\[1em]
+    =&\int_{-1}^1 \frac{(-1)^{n+1}}{n+1}\left[ \xi^{m+n+1} - \xi^{m}\right] \Dxi \\[1em]
+    =&\frac{(-1)^{n+1}}{n+1}\left[ \frac{\xi^{m+n+2}}{m+n+2} - \frac{\xi^{m+1}}{m+1}\right]_{-1}^{1} \\[1em]
+    =&\frac{(-1)^{n+1}}{n+1}\left[ \frac{1^{m+n+2}}{m+n+2} - \frac{1^{m+1}}{m+1}-\frac{(-1)^{m+n+2}}{m+n+2} + \frac{(-1)^{m+1}}{m+1}\right] \\[1em]
+    =&\frac{(-1)^{n+1}}{n+1}\left[ \frac{1}{m+n+2} - \frac{1}{m+1}-\frac{(-1)^{m+n}(-1)^{2}}{m+n+2} + \frac{(-1)^{m+1}}{m+1}\right] \\[1em]
+    =&\frac{(-1)^{n+1}}{n+1}\left[ \frac{1}{m+n+2}-\frac{(-1)^{m+n}}{m+n+2} + \frac{(-1)^{m+1}}{m+1} - \frac{1}{m+1}\right] \\[1em]
+    =&\frac{(-1)^{n+1}}{n+1}\left[ \frac{1-(-1)^{m+n}}{m+n+2} + \frac{(-1)^{m+1}-1}{m+1}\right]
+\end{align*}
+\begin{equation}
+    \therefore\;\;\iint_{ST} \xi^m \eta^n \Dxi\Dn=\frac{(-1)^{n+1}}{n+1}\left[ \frac{1-(-1)^{m+n}}{m+n+2} + \frac{(-1)^{m+1}-1}{m+1}\right] \label{eq:xieta1}
+\end{equation}
+\newpage
+Here, four cases arise for the values of \(m,n \geq 0\). They are,
+\begin{enumerate}[label=(\roman*)]
+    \item \(m=0\) or even, \(n=0\) or even,
+    \item \(m=0\) or even, \(n=\)odd,
+    \item \(m=\)odd, \(n=0\) or even,
+    \item \(m=\)odd, \(n=\)odd.
+\end{enumerate}
+\emph{Case 1: } (\(m=0\) or even, \(n=0\) or even)\\
+\((m+n=\text{ even }, m+1=\text{ odd }, n+1=\text{ odd }.)\)\\
+So from equation \eqref{eq:xieta1},
+\[
+    \iint_{ST} \xi^m \eta^n \Dxi\Dn=
+    \frac{-1}{n+1}\left[ 0+ \frac{-2}{m+1}\right]=\frac{-2}{(m+1)(n+1)}
+\]
+\emph{Case 2: } (\(m=0\) or even, \(n=\) odd)\\
+\((m+n=\text{ odd }, m+1=\text{ odd }, n+1=\text{ even }.)\)\\
+So from equation \eqref{eq:xieta1},
+\[
+    \iint_{ST} \xi^m \eta^n \Dxi\Dn=
+    \frac{1}{n+1}\left[ \frac{2}{m+n+2}+ \frac{-2}{m+1}\right]
+\]
+\emph{Case 3: } (\(m=\) odd, \(n=0\) or even)\\
+\((m+n=\text{ odd }, m+1=\text{ even }, n+1=\text{ odd }.)\)\\
+So from equation \eqref{eq:xieta1},
+\[
+    \iint_{ST} \xi^m \eta^n \Dxi\Dn=
+    \frac{-1}{n+1}\left[ \frac{2}{m+n+2}+ 0\right]=\frac{-2}{(n+1)(m+n+1)}
+\]
+\emph{Case 4: } (\(m=\) odd, \(n=\) odd)\\
+\((m+n=\text{ even }, m+1=\text{ even }, n+1=\text{ even }.)\)\\
+So from equation \eqref{eq:xieta1},
+\[
+    \iint_{ST} \xi^m \eta^n \Dxi\Dn=0
+\]
+\end{soln}
+\end{document}

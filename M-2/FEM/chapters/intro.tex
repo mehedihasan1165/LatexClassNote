@@ -1,0 +1,28 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{History of Finite Element Method}
+\chapter{Approximation Solutions}
+We will discuss the following methods,
+\begin{enumerate}[label=(\roman*)]
+    \item Galerkin Method
+    \item Least Square Method
+    \item Collocation Method
+    \item ----
+    \item Petrov-Galerkin Method
+\end{enumerate}
+The main idea behind all these methods are to minimize the error using different weight function.
+\section{Galerkin Method}
+\subsection{Method}
+In this method 
+\begin{enumerate}[label=Step (\roman*):]
+    \item Assume a solution \(\bar{u}(x)\) as a polynomial such that the degree of polynomial is greater than the order of differential equation by at least one.
+    \item Satisfy the boundary conditions to get values of two unknown coefficients.
+    \item Differentiate the assumed solution \(\bar{u}(x)\) to satisfy the differential equation.
+    \item Take error/residual as \(\varepsilon(x)\)
+    \item Take weight function as  
+\end{enumerate}
+\end{document}

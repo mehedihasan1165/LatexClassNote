@@ -3,12 +3,21 @@
 % \renewcommand{\chaptername}{Sheet}
 \usepackage{style}
 \usepackage{subfiles}
+\usepackage{darkmode}
+\enabledarkmode
 \usetikzlibrary{matrix,positioning,decorations.pathreplacing}
 % \usepackage[table]{xcolor}
-\newcommand{\bfem}[1]{\textbf{\emph{#1}}}
-\newcommand{\newtitle}{Mathematical Modeling in Biology}
-\newcommand{\course}{MAT431}
-\newcommand{\prof}{Asst. Prof. S. M. Saydur Rahman}
+\newcommand{\newtitle}{Finite Element Method}
+\newcommand{\course}{MAT514}
+\newcommand{\prof}{Prof. Dr Shamsun Naher Begum}
+\newcommand{\fts}{fuzzy topological space}
+\newcommand{\fx}{\mathcal{F}(X)}
+\newcommand{\ft}{\langle \mathcal{F}(X), \delta \rangle}
+\newcommand{\xt}{\langle X, \delta \rangle}
+\newcommand{\fr}{f^{\rightarrow}}
+\newcommand{\fl}{f^{\leftarrow}}
+\newcommand{\fxfy}{\fr:\ft\to\langle \mathcal{F}(Y),\mu\rangle}
+\newcommand{\fyfx}{\fl:\langle \mathcal{F}(Y),\mu\rangle \to \ft}
 
 \begin{document}
 \pagenumbering{roman}
@@ -91,22 +100,8 @@ This is a compilation of lecture notes with some books and my own thoughts. If t
 % \part{Insert Part Name here}
 % chapter begins here
 
-\subfile{./chapters/syl.tex}
+% \subfile{./chapters/syl.tex}
 \part{Sheet}
-\subfile{./chapters/graphical.tex}
-\subfile{./chapters/nonlinear.tex}
-\subfile{./chapters/pr.tex}
-\chapter{Population Models}
-\subfile{./chapters/sh1.tex}
-\subfile{./chapters/maltModel.tex}
-\subfile{./chapters/lia.tex}
-\subfile{./chapters/lotka.tex}
-\subfile{./chapters/sh2.tex}
-\subfile{./chapters/sh3.tex}
-\subfile{./chapters/someDefn.tex}
-% \part{Class Note}
-% \subfile{./chapters/ch-1.tex}
-% \subfile{./chapters/sim.tex}
-% \subfile{./chapters/note-NLP.tex}
-% \subfile{./chapters/assignment.tex}
+\subfile{./chapters/intro.tex}
+
 \end{document}

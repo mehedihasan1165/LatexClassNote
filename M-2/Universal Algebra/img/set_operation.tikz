@@ -1,0 +1,38 @@
+\begin{tikzpicture} 
+    \begin{axis}[
+        axis lines=middle,
+        xmin=4, xmax=11,
+        ymin=0, ymax=1.5,
+        %ticks=none,
+        xtick={4.1,5,6,7,8,9,10},
+        xticklabels={40, 50, 60,70,80,90,100},
+        ytick={0,0.5,1},legend pos=outer north east,
+        legend cell align=left,
+        ]
+        \addplot[cyan, very thick, domain=4:5] {0};
+        \addplot[cyan, very thick, domain=5:5.5,smooth,samples=200,forget plot] {	(x-5)/(1)};
+        \addplot[cyan,very thick,domain=5.5:6,smooth,samples=200,forget plot] {1-	(x-5)/(1)};
+        \addplot[cyan,very thick,domain=6:10,forget plot] {0};
+        
+        \addplot[green, very thick, domain=4:5] {1};
+        \addplot[green, very thick, domain=5:5.5, smooth, samples=200,forget plot] {1-(x-5)/(1)};
+        \addplot[green, very thick, domain=5.5:6, smooth, samples=200,forget plot] {(x-5)/(1)};
+        \addplot[green, very thick, domain=6:7, smooth, samples=200,forget plot] {1-(x-6)/(1)};
+        \addplot[green, very thick, domain=7:10,forget plot] {0};
+        
+        
+        \addplot[red, dashed, very thick, domain=4:5] {0};
+        \addplot[red, dashed, very thick, domain=5:6, smooth, samples=200,forget plot] {	(x-5)/(1)};
+        \addplot[red, dashed, very thick, domain=6:10,forget plot] {1};
+        
+        \addplot[black, dashed, very thick, domain=4:5] {1};
+        \addplot[black, dashed, very thick, domain=5:6, smooth, samples=200,forget plot] {1-(x-5)/(1)};
+        \addplot[black, dashed, very thick, domain=6:7, smooth, samples=200,forget plot] {(x-6)/(1)};
+        \addplot[black, dashed, very thick, domain=7:10,forget plot] {1};
+        
+        \addlegendentry{$(A\wedge B)(x)$} 
+        \addlegendentry{$(A\vee B)(x)$}
+        \addlegendentry{$ A^c (x)$} 
+        \addlegendentry{$B^c (x)$}
+\end{axis}
+\end{tikzpicture}

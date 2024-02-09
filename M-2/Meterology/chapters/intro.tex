@@ -1,0 +1,41 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Introduction}
+\section{The Atmospheric Continuum}
+Dynamic meteorology is the study of those motions of the atmosphere that are associated with weather and climate.
+\section{Fundamental Forces}
+Body force act on the center of mass of a fluid parcel; they have magnitude proportional to the mass of the parcel. Gravity is an example of a body force.
+
+Surface forces act across the boundary surface separating a fluid parcel from its surroundings; their magnitudes are independent of the mass of the parcel. The pressure force is an example.
+
+
+Forces:
+\begin{enumerate}
+    \item Fundamental Forces
+    \begin{enumerate}
+        \item Pressure Gradient Force
+        \item Friction Force
+        \item Gravitational Force
+    \end{enumerate}
+    \item Apparent/Pseudo force 
+    \begin{enumerate}
+        \item Centrifugal Force
+        \item Coriolis Force
+    \end{enumerate}
+\end{enumerate}
+\section{Pressure Gradient Force}
+Consider, an infinitesimal volume element of air, \(\delta V=\delta x\cdot\delta y\cdot\delta z\), centered at the point \((x_0,y_0,z_0)\). Due to random molecular motions, momentum is continually imparted to the walls of the volume element by the surrounding air. This momentum transfer per unit time per unit area is just the pressure exerted on the walls of the volume element by the surrounding air.
+
+If the pressure at the center of the volume element is designated by \(p_0\), then the pressure on the wall \(A \) is,
+\[p_0+\frac{\delta x}{2}\cdot\frac{\ddp }{\dx}+\text{ higher order terms.}\qquad[\text{By Taylor series expansion}]\]
+Neglecting the higher order terms in this expansion, the pressure force acting on the volume element at wall \(A \) is,
+\[F_{Ax}=-\left( p_0+\frac{\delta x}{2}\cdot\frac{\ddp }{\dx} \right)\delta y\cdot\delta z\]
+where, \(\delta y\cdot\delta z\) is the area of wall \(A\).\\
+Similarly,
+\[F_{Bx}=+\left( p_0-\frac{\delta x}{2}\cdot\frac{\ddp }{\dx} \right)\delta y\cdot\delta z\]
+
+\end{document}

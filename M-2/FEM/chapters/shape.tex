@@ -1,0 +1,38 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Shape Functions}
+
+Shape Function:
+The basic idea of the FEM is a piecewise approximation, that is, the solution of a complicated problem is obtained by dividing the region of interest into small regions (finite element) and approximating the solution over each such region by a simple function. Thus a necessary and important step is to choosing a simple function for the solution in each element. The functions used to represent the behavior of the solution within an element are called interpolating functions or approximating functions, those are known as shape function for each element.
+The general nth order 1D shape function \(N_i(\xi )\) at node \(i\) for \(i = 1,2,3, \dots, (n + 1)\) is defined by
+\[
+N_i(\xi ) =	\frac{(\xi  - \xi_1)(\xi  - \xi_2) \dots (\xi  - \xi_{i-1})(\xi  - \xi_{i+1}) \dots (\xi  - \xi_n)}{(\xi_i - \xi_1)(\xi_i - \xi_2) \dots (\xi_i - \xi_{i-1})(\xi_i - \xi_{i+1}) \dots (\xi_i - \xi_n)}
+\]
+With the property,
+\[
+    N_i(\xi_j  ) = \begin{cases}
+        1;&  \text{if }	i = j\\
+        0;&  \text{if }	i \neq j
+    \end{cases}  
+\]
+Global Space and Local Space:
+\begin{enumerate}
+    \item If the domain in global space is \([a, b]\) which is arbitrary then the domain in local space will be fixed and it will be \([-1, 1]\).
+    \item Each shape function has unit value at one node and zero at the other nodes.
+    \item Each shape function will be the polynomial of same degree as the original trial solution.
+\end{enumerate}
+Properties of shape function:
+\begin{enumerate}
+    \item \(N_i(\xi_j  ) = \begin{cases}
+        1;&  \text{if }	i = j\\
+        0;&  \text{if }	i \neq j
+    \end{cases}\)
+    \item \(\sum  N_i(\xi) = 1\)
+    \item \(\sum  \ddxi{N_i} = 0\)
+\end{enumerate}
+Derivation of Shape function:
+\end{document}

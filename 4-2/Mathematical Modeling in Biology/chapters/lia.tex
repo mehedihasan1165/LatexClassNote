@@ -13,4 +13,207 @@
         \item The function \(E\) is called negative semi-defined in \(D\) if \(E(0,0)=0\) and \(E(x,y)\leq 0\) for all other points in \((x,y)\) in \(D\).
     \end{enumerate}
 \end{defn}
+\section{Liapunov Function}
+Consider the non-linear autonomous system,
+\begin{equation}
+    \begin{rcases}
+        \ddt{x}=P(x,y)\quad\\
+        \ddt{y}=Q(x,y)
+    \end{rcases}
+    \label{eq:lia1}
+\end{equation}
+has isolated critical point at \((0,0)\) and \(P\) and \(Q\) have continuous first partial derivatives for all \((x,y)\). If there exists a differentiable function \(E(x,y)\) such that,
+\begin{enumerate}[label=(\roman*)]
+    \item \(E(x,y)\) is positive defined and
+    \item \(\dot{E}(x,y)\) is negative semi defined.
+\end{enumerate}
+Then \(E(x,y)\) is called Liapunov function for the system \eqref{eq:lia1} in \(D\).
+\section{Three theorem on Liapunov}
+\begin{thm}
+    Consider the system,
+    \begin{align*}
+        \ddt{x}&=P(x,y)\\
+        \ddt{y}&=Q(x,y)
+    \end{align*}
+    if
+    \begin{enumerate}[label=(\roman*)]
+        \item \((0,0)\) is an isolated critical point
+        \item \(E(x,y)\) is a Liapunov function
+    \end{enumerate}
+    Then \((0,0)\) is called stable critical point.
+\end{thm}
+\begin{thm}
+    Consider the system,
+    \begin{align*}
+        \ddt{x}&=P(x,y)\\
+        \ddt{y}&=Q(x,y)
+    \end{align*}
+    if
+    \begin{enumerate}[label=(\roman*)]
+        \item \((0,0)\) is an isolated critical point
+        \item \(E(x,y)\) is a Liapunov function
+        \item \(\dot{E}(x,y)\) is a negative defined
+    \end{enumerate}
+    Then \((0,0)\) is asymptotically stable.
+\end{thm}
+\begin{thm}
+    Consider the system,
+    \begin{align*}
+        \ddt{x}&=P(x,y)\\
+        \ddt{y}&=Q(x,y)
+    \end{align*}
+    if there exists a function \(E(x,y)\) such that
+    \begin{align*}
+        &E(0,0)=0\\
+        &E(x,y)>0\quad \text{ for } x\neq 0,\,\,y\neq0
+    \end{align*}
+    Then \((0,0)\) is unstable.
+\end{thm}
+\begin{prob}
+    For what value of \(A\), \(V(x,y)=x^2+y^2\) is a Liapunov function for the system.
+    \begin{align*}
+        \ddt{x}&=Ax+xy^2\\
+        \ddt{y}&=Ay-yx^2
+    \end{align*}
+    and discuss the stability of the critical point \((0,0)\).
+\end{prob}
+\begin{soln}
+    We have,
+    \begin{align*}
+        \ddt{x}&=Ax+xy^2\\
+        \ddt{y}&=Ay-yx^2
+    \end{align*}
+    Again, we have,
+    \begin{align*}
+        V(x,y)&=x^2+y^2\\
+        \dot{V}(x,y)&=2x\dot{x}+2y\dot{y}\\
+        &=2x(Ax+xy^2)+2y(Ay-yx^2)\\
+        &=2Ax^2-2x^2y^2+2Ay^2-2x^2y\\
+        &=2A(x^2+y^2)-4x^2y^2
+    \end{align*}
+    If \(V(x,y)\) is a Liapunov function then,
+    \begin{align*}
+        &\dot{V}(x,y)\leq 0\\
+        \Rightarrow\;\;&2A(x^2+y^2)-4x^2y^2\leq 0\\
+        \Rightarrow\;\;&A\leq \frac{4x^2y^2}{2(x^2+y^2)}
+    \end{align*}
+    Now, we observe that
+    \begin{enumerate}[label=(\roman*)]
+        \item \(V\) is a differentiable function of \(x\) and \(y\)
+        \item \(V\) is positive defined
+        \item \(\dot{V}(x,y)\leq 0\) if \(A\leq \frac{4x^2y^2}{2(x^2+y^2)}\)
+    \end{enumerate}
+    The critical point \((0,0)\) is stable for the given system for \(A\leq \frac{4x^2y^2}{2(x^2+y^2)}\).
+\end{soln}
+\begin{prob}
+    For the autonomous system 
+    \begin{align*}
+        \ddt{x}&=-x-y-x^3\\
+        \ddt{y}&=x-y-y^3
+    \end{align*}
+    Construct a Liapunov function of the form \(Ax^2+By^2\) where \(A\) and \(B\) are the constant and use the function to determine the stability of the trivial solution of the system.
+\end{prob}
+\begin{soln}
+    The given autonomous system,
+    \begin{align*}
+        \ddt{x}&=-x-y-x^3\\
+        \ddt{y}&=x-y-y^3
+    \end{align*}
+    Let us consider a Liapunov function is,
+    \[E(x,y)=Ax^2+By^2\]
+    which is differentiable function of \(x\) and \(y\).\\
+    Now,
+    \begin{align*}
+        \dot{E}(x,y)&=2Ax\dot{x}+2By\dot{y}\\
+        &=2Ax(-x-y-x^3)+2By(x-y-y^3)\\
+        &=-2Ax^2-2Axy-2Ax^4+2Bxy-2By^2-2By^4\\
+        &=2(Bxy-Axy)-2\left\{ A(x^2+x^4)+B(y^2+y^4) \right\}
+    \end{align*}
+    For Liapunov function
+    \begin{align*}
+        & \dot{E}(x,y)\leq 0\\
+        \Rightarrow\;\; & 2(Bxy-Axy)= 0\\
+        \Rightarrow\;\; & Bxy=Axy\\
+        \Rightarrow\;\; & \frac{A}{B}=\frac{1}{1}\\
+        \therefore\;\; & A=1\\
+        \therefore\;\; & B=1
+    \end{align*}
+    Hence, \(E(x,y)=x^2+y^2\)\\
+    The function \(E\) is defined by \(E(x,y)=x^2+y^2\) is positive defined in every domain \(D\) containing \((0,0)\).\\
+    Clearly, \(E(0,0)=0\)\\
+    Also, \(\dot{E}(x,y)<0\) for all \((x,y)\)\\
+    Hence, \((0,0)\) is asymptotically stable point.
+\end{soln}
+\begin{prob}
+    For the system 
+    \begin{align*}
+        \ddt{x}&=-x+2x^2+y^2\\
+        \ddt{y}&=-y+xy
+    \end{align*}
+    Construct a Liapunov function of the form \(Ax^2+By^2\) where \(A\) and \(B\) are the constant and use the function to determine whether the critical point \((0,0)\) of the system is asymptotically stable or at least stable.
+\end{prob}
+\begin{soln}
+    The given system is,
+    \begin{align*}
+        \ddt{x}&=-x+2x^2+y^2\\
+        \ddt{y}&=-y+xy
+    \end{align*}
+Let us consider the Liapunov function,
+\[E(x,y)=Ax^2+By^2\]
+Now,
+\begin{align*}
+    \dot{E}(x,y)&=2Ax\dot{x}+2By\dot{y}\\
+    &=2Ax(-x+2x^2+y^2)+2By(-y+xy)\\
+    &=-2Ax^2+4Ax^3+2Axy^2-2By^2+2Bxy^2\\
+    &=x^2(-2A+4Ax)+y^2(2Ax-2B+2Bx)
+\end{align*}
+For Liapunov function,
+\begin{align}
+    &\dot{E}(x,y)\leq0\notag\\
+    \Rightarrow\;\;&-2A+4Ax=0\label{eq:liap1}\\
+    \intertext{and}
+    \Rightarrow\;\;&2Ax-2B+2Bx=0\label{eq:liap2}
+\end{align}
+From \eqref{eq:liap1} we get,
+\begin{align*}
+    &-2A=-4Ax\\
+    \Rightarrow\;\;&1=2x\\
+    \Rightarrow\;\;&x=\frac{1}{2}
+\end{align*}
+From \eqref{eq:liap2} we get,
+\begin{align*}
+    &2A\frac{1}{2}-2B+2B\frac{1}{2}=0\\
+    \Rightarrow\;\;&A-2B+B=0\\
+    \Rightarrow\;\;&A-B=0\\
+    \Rightarrow\;\;&\frac{A}{B}=\frac{1}{1}
+\end{align*}
+Now, 
+\begin{align*}
+    \dot{E}(x,y)&=2x\dot{x}+2y\dot{y}\\
+    &=2x(-x+2x^2+y^2)+2y(-y+xy)\\
+    &=-2x^2+4x^3+2xy^2-2y^2-2y^2+2xy^2\\
+    &=-2(x^2+y^2)+4x^3+4xy^2\\
+    &=-2(x^2+y^2)+4x(x^2+y^2)
+\end{align*}
+Here, \(E(0,0)=0\) and \(\dot{E}(x,y)<0\)\\
+Hence, \((0,0)\) is an asymptotically stable point.
+\end{soln}
+\begin{prob}
+    Find the Liapunov function of the dynamical system
+    \begin{align*}
+        \ddt{x}&=-y-\frac{x}{2}-\frac{x^3}{4}\\
+        \ddt{y}&=x-\frac{y}{2}-\frac{y^3}{4}
+    \end{align*}
+    and examine the stability of \((0,0)\).
+\end{prob}
+\begin{soln}
+    The given system is,
+    \begin{equation}
+        \begin{rcases}
+            \ddt{x}=-y-\frac{x}{2}-\frac{x^3}{4}\quad\\
+        \ddt{y}=x-\frac{y}{2}-\frac{y^3}{4}
+        \end{rcases}
+        \label{eq:liapro1}
+    \end{equation}
+\end{soln}
 \end{document}

@@ -1,0 +1,830 @@
+\documentclass[../main-sheet.tex]{subfiles}
+\usepackage{../style}
+\graphicspath{ {../img/} }
+\backgroundsetup{contents={}}
+\begin{document}
+\chapter{Lotka-Volterra Prey-Predator, Competition, Symbiosis Model}
+\begin{prob}
+    Define prey, predator and competition for two species interaction model.
+\end{prob}
+\begin{soln}
+    The dynamics of two species population can be described by
+    \begin{align*}
+        {N_1}^{'}&=N_1(t)f_1(t,N_1(t),N_2(t),\lambda)\\
+        {N_2}^{'}&=N_2(t)f_2(t,N_1(t),N_2(t),\lambda)
+    \end{align*}
+
+
+    \emph{Prey:} A prey is an organism that is or may be seized by a predator to be eaten.\\
+
+    \emph{Predator:} A predator is an organism that depends on predation for its food.\\
+
+    \emph{Competition:} If the growth rate of each population is decreased then it is called competition.
+
+    In this case, two species compete with each other for the same resource such a way that each tries to inhibit the growth of the other. The conditions for the two species competition are \(\frac{\partial f_1}{\partial N_2}<0\) and \(\frac{\partial f_2}{\partial N_1}<0\).
+\end{soln}
+\begin{prob}
+    State and explain the two-dimensional Lotka-Volterra predator-prey model. Make a stability analysis of the model. Find an exact solution of the system and illustrate the population dynamics in a phase-space.
+\end{prob}
+\begin{soln}
+    \underline{Statement}: The system governed by two non-linear ODE as below.
+    \begin{equation}
+        \begin{rcases}
+            \displaystyle\ddt{x}=x(\alpha-\beta y)\quad\\
+            \displaystyle\ddt{y}=y(-\gamma+\delta x)
+        \end{rcases}
+        \label{eq:lotkathm1}
+    \end{equation}
+    where \(\alpha,\,\beta\,\gamma,\,\delta\) are positive constants is called 2-D Lotka-Volterra predator-prey model. Here \(x(t)\) and \(y(t)\) represents the prey and predator population respectively.\\
+
+    \underline{Explanation}: Growth rate of any species is proportional to the number of that species present at that time. In the absence of predator, they prey population increases exponentially and in the presence of the predator, the growth rate of prey population will slow down. In the absence of prey, the predator population decreases exponentially and in the presence of the prey the predator population increases gradually.\\
+
+    \underline{Stability analysis}: The equilibrium points of \eqref{eq:lotkathm1} are given by the following curves.
+    \begin{align*}
+        &x(\alpha-\beta y)=0\\
+        &y(-\gamma+\delta x)=0\\
+        \Rightarrow\;\;&x=0,\quad y=\frac{\alpha}{\beta}\\
+        &y=0,\quad x=\frac{\gamma}{\delta}
+    \end{align*}
+    The critical points are \((0,0)\), \((\frac{\gamma}{\delta},\frac{\alpha}{\beta})\). But \((0,0)\) is not acceptable because both species are absent at \((0,0)\).\\
+    We now investigate the critical point \((\frac{\gamma}{\delta},\frac{\alpha}{\beta})\). For \((\frac{\gamma}{\delta},\frac{\alpha}{\beta})\) we make substitution.
+
+    \(\xi =x-\frac{\gamma}{\delta}\), \(\eta=y-\frac{\alpha}{\beta}\) which transform the critical point \(x=\frac{\gamma}{\delta}\), \(y=\frac{\alpha}{\beta}\) to \(\xi=0\), \(\eta=0\) in the \(\xi\eta-\)plane.\\
+    Form \eqref{eq:lotkathm1},
+    \begin{align*}
+        \ddt{\xi}&=\left( \xi+\frac{\gamma}{\delta} \right)\left\{ \alpha-\beta\left( \eta+\frac{\alpha}{\beta} \right) \right\}\\
+        &=\left( \xi+\frac{\gamma}{\delta} \right)\left( \alpha-\beta\eta-\alpha \right)\\
+        &=-\xi\eta\beta-\frac{\gamma\beta}{\delta}\eta\beta\\
+        &=-\beta\frac{\gamma}{\delta}\eta-\xi\eta\beta\\
+        \intertext{and}
+        \ddt{\eta}&=\left( \eta+\frac{\alpha}{\beta} \right)\left\{ -\gamma+\delta\left( \xi+\frac{\gamma}{\delta} \right) \right\}\\
+        &=\left( \eta+\frac{\alpha}{\beta} \right)\left( -\gamma+\delta\xi+\gamma \right)\\
+        &=\xi\eta\delta+\frac{\alpha\delta}{\beta}\xi
+    \end{align*}
+    The corresponding linearized system is,
+    \begin{equation}
+        \begin{rcases}
+            \displaystyle\ddt{\xi}=-\frac{\beta\gamma}{\delta}\eta\quad\\
+            \displaystyle\ddt{y}=\frac{\alpha\delta}{\beta}\xi
+        \end{rcases}
+        \label{eq:lotkathm2}
+    \end{equation}
+    The characteristic equation of \eqref{eq:lotkathm2} is,
+    \begin{equation}
+        \lambda^2-(a+d)\lambda+ad-bc=0\label{eq:lotkathm3}
+    \end{equation}
+    where \(a=0\), \(b=-\frac{\beta\gamma}{\delta}\), \(c=\frac{\alpha\delta}{\beta}\), \(d=0\).\\
+    Now \eqref{eq:lotkathm3} becomes
+    \begin{align*}
+        &\lambda^2+\alpha\lambda=0\\
+        \Rightarrow\;\;&\lambda=\pm i\sqrt{\alpha\gamma}
+    \end{align*}
+    Since the roots are purely imaginary, so we say that the equilibrium point \(\left( \frac{\gamma}{\delta},\frac{\alpha}{\beta} \right)\) is a stable center.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw[thick] (-7,-3)--(-0.5,-3);
+            \draw[thick] (-6.5,-3.5)--(-6.5,2);
+            \draw [decoration = {markings,mark=at position 0.9 with {\arrow{latex}}},shift=({-3,0}),postaction={decorate},thick] (0,0) circle (1.15);
+            \draw [decoration = {markings,mark=at position 0.9 with {\arrow{latex}}},shift=({-3,0}),postaction={decorate},thick] (0,0) circle (1.5);
+            \draw [decoration = {markings,mark=at position 0.9 with {\arrow{latex}}},shift=({-3,0}),postaction={decorate},thick] (0,0) circle (.75);
+            \node at (-3,-.2) {\(\left( \frac{\gamma}{\delta},\frac{\alpha}{\beta} \right)\)};
+            \end{tikzpicture}
+    \end{figure}
+    \underline{Exact Solution}: From \eqref{eq:lotkathm1} we get,
+    \[\ddx{y}=\frac{y-(\gamma+\delta x)}{x(\alpha-\beta y)}\]
+    Separating the variable,
+    \begin{align}
+        &\frac{\alpha-\beta y}{y}\D y=\frac{-\gamma+\delta x}{x}\D x\notag\\
+        \Rightarrow\;\;&\left[\frac{\alpha}{y}-\beta \right]\D y=\left[\frac{-\gamma}{x}+\delta\right]\D x\notag\\
+        \intertext{Integrating,}
+        \Rightarrow\;\;&\alpha \log y-\beta y=-\gamma \log x+\delta x+\log K\qquad K=\text{constant}\notag\\
+        \Rightarrow\;\;&\log y^\alpha-\log e^{\beta y}=\log \frac{1}{x^{\gamma }}+\log e^{\delta x}+\log K\notag\\
+        \Rightarrow\;\;&\log \frac{y^\alpha}{e^{\beta y}}=\log \frac{e^{\delta x}}{x^{\gamma }}K\notag\\
+        \Rightarrow\;\;&K\frac{e^{\delta x}}{x^{\gamma }}=\frac{y^\alpha}{e^{\beta y}}\notag\\
+        \Rightarrow\;\;&K=\frac{y^\alpha}{e^{\beta y}}\cdot \frac{x^{\gamma }}{e^{\delta x}}\label{eq:lotkathm4}
+    \end{align}
+    Using initial population, \(x=x_0\), \(y=y_0\) in \eqref{eq:lotkathm4} we get,
+    \[
+        K=\frac{y_0^\alpha}{e^{\beta y_0}}\cdot \frac{x_0^{\gamma }}{e^{\delta x_0}}
+    \]
+    putting it into \eqref{eq:lotkathm4}
+    \begin{align*}
+        &\frac{y^\alpha}{e^{\beta y}}\cdot \frac{x^{\gamma }}{e^{\delta x}}=\frac{y_0^\alpha}{e^{\beta y_0}}\cdot \frac{x_0^{\gamma }}{e^{\delta x_0}}\\
+        \Rightarrow\;\;& f(x)g(y)=K
+    \end{align*}
+    where,
+    \begin{equation}
+        \begin{rcases}
+            \displaystyle f(x)=x^\gamma-e^{-\delta x}\quad\\
+            \displaystyle g(x)=y^\alpha-e^{-\beta y}
+        \end{rcases}
+        \label{eq:lotkathm5}
+    \end{equation}
+    \[K=f(x_0)g(y_0)=\frac{y_0^\alpha}{e^{\beta y_0}}\cdot \frac{x_0^{\gamma }}{e^{\delta x_0}}\]
+    Now when \(x=0\) then \(f(0)=0\)\\
+     when \(x=\infty\) then \(f(\infty)=0\)\\
+     Now,
+     \begin{align*}
+        \frac{\partial f}{\partial x}&=f'(x)=x^\gamma e^{-\delta x}(-\delta)+e^{-\delta x}\gamma x^{\gamma-1}\\
+        &=-\delta x^\gamma e^{-\delta x}+e^{-\delta x}\gamma x^{\gamma-1}\\
+        &=e^{-\delta x}x^{\gamma-1} \left[\gamma-\delta x\right]
+     \end{align*}
+     For critical point,
+     \begin{align*}
+        &f'(x)=0\\
+        \Rightarrow\;\; &e^{-\delta x}x^{\gamma-1} \left[\gamma-\delta x\right]=0\\
+        \Rightarrow\;\; &x=\frac{\gamma}{\delta}\qquad\text{ where }e^{-\delta x}x^{\gamma-1}\neq 0
+     \end{align*}
+     \begin{align*}
+        \frac{\partial^2 f}{\partial x^2}&=f''(x)=e^{-\delta x}x^{\gamma -1}(-\delta)+(\gamma-\delta x)\left\{ e^{-\delta x}(\gamma-1)x^{\gamma-2}+x^{\gamma-1}e^{-\delta x}(-\delta) \right\}\\
+        &=-\delta e^{-\delta x}x^{\gamma-1}+\gamma e^{-\delta x} (\gamma-1)x^{\gamma-2}-\gamma\delta x^{\gamma-1}e^{-\delta x}-\delta x e^{-\delta x} (\gamma-1) x^{\gamma-2}+\delta^2 x^{\gamma-2}e^{-\delta x}\\
+        \intertext{when \(x=\frac{\gamma}{\delta}\) then,}
+        f''\left(  \frac{\gamma}{\delta}\right)&=-\delta e^{-\gamma}\left(  \frac{\gamma}{\delta}\right)^{\gamma-1}+\gamma e^{-\gamma} (\gamma-1)\left(  \frac{\gamma}{\delta}\right)^{\gamma-2}-\gamma\delta \left(  \frac{\gamma}{\delta}\right)^{\gamma-1}e^{-\gamma}-\gamma e^{-\gamma} (\gamma-1)\left(  \frac{\gamma}{\delta}\right)^{\gamma-2}\\
+        &=-\text{ve}\qquad \text{for }\alpha,\,\beta,\,\gamma,\,\delta>0
+     \end{align*}
+     \(f(x)\) is maximum at \(x=\frac{\gamma}{\delta}\).\\
+     Thus \(f(x)\) looks like below.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[axis lines=left,anchor=origin,xmax=4,xmin=0,ymax=.4,ymin=0,ticks=none]
+            \addplot[black,smooth,domain=0:4,samples=100,-latex] (x,{e^(-1.5*x)*x^(1.5)});
+        \end{axis}
+        \node at (-.2,-.2) {$O$};
+        \node at (-0.4,5.6) {$f$};
+        \node at (6.8,-0.3) {$x$};
+        \node at (6.8,0.8) {$x=\infty$};
+        \node at (2,-0.3) {$\gamma/\delta$};
+        \draw (1.7,0) -- (1.7,3.15);
+    \end{tikzpicture}
+\end{figure}
+     Similarly \(g(y)\) looks the same.\\
+
+     \underline{Illustration}: We now try to sketch the trajectory of \eqref{eq:lotkathm4} in the population space.\\
+     To sketch the trajectory of \eqref{eq:lotkathm4} assume that we are given the point \((x_0,y_0)\) as the initial population. This fixes the value of \(K\). For any value of \(y\) there will be one value of \(g(y)\). Since \(f(x)g(y)=K\). This determines the value of \(f(x)\). It is clear from the figure that for any value of \(f(x)\) there are either two values of \(x\) or else none. Same argument holds for \(y\) also. This implies that the trajectory in the \(xy-\)space is a closed loop. Hence, the paths of \eqref{eq:lotkathm4} will look as follows:
+     \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \draw (0,0)--(4,0)node [below] {$x$};
+            \draw (0,0)--(0,4) node [left] {$y$};
+            \draw[yscale=3,xscale=1.5,xshift=1cm, yshift=.75cm] plot file{fx69pr281.dat} -- cycle;
+            \node at (2.4,1.6) {$(\gamma/\delta,\alpha/\beta)$};
+            \node at (-.2,-.2) {$O$};
+         \end{tikzpicture}
+     \end{figure}
+\end{soln}
+\begin{prob}
+    Use principle matrix method to solve the following predator-prey model.
+    \begin{align*}
+        x'&=x+y\\
+        y'&=-x+y
+    \end{align*}
+    where \(x(0)=y(0)=1000\). When the species \(y\) will be eliminated?
+\end{prob}
+\begin{soln}
+    We have,
+    \begin{equation}
+        \begin{rcases}
+            x'=x+y\quad\\
+            y'=-x+y
+        \end{rcases}
+        \label{eq:prey1.1}
+    \end{equation}
+    The system \eqref{eq:prey1.1} can be written as,
+    \[X'(t)=AX(t)\]
+    where,
+    \[A=\begin{bmatrix}
+        1&1\\
+        -1&1
+    \end{bmatrix},\quad X=\begin{pmatrix}
+        x\\
+        y
+    \end{pmatrix}\]
+    The characteristic equation of \(A \) is,
+    \begin{align*}
+        &\abs{A-\lambda I}=0\\
+        \Rightarrow\;\;&\begin{vmatrix}
+            1-\lambda & 1\\
+            -1 & 1-\lambda
+        \end{vmatrix}=0\\
+        \Rightarrow\;\;&\lambda^2-2\lambda+2=0\\
+        \Rightarrow\;\;&\lambda=1\pm i
+    \end{align*}
+    \emph{Case i}: When \(\lambda=1+i\) then the corresponding eigenvector, \(\displaystyle X=\begin{pmatrix}
+        x_1\\
+        x_2
+    \end{pmatrix}\) such that
+    \begin{align*}
+        &\abs{A-\lambda I}X=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            -i&1\\
+            -1&-i
+        \end{pmatrix}\;\;\begin{pmatrix}
+            x_1\\
+            x_2
+        \end{pmatrix}=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            -i&1\\
+            0&0
+        \end{pmatrix}\;\;\begin{pmatrix}
+            x_1\\
+            x_2
+        \end{pmatrix}=0\qquad R_2'=R_2(-i)+R_1\\
+        \Rightarrow\;\;&-ix_1+x_2=0
+    \end{align*}
+    Let us choose arbitrary non-trivial solution \(x_1=1\), \(x_2=i\).\\
+    Hence the eigen vector corresponding to \(\lambda=1+i\) is \(\displaystyle \bar{V}_1=\begin{pmatrix}
+        1\\
+        i
+    \end{pmatrix}\)\\
+
+    \emph{Case ii}: When \(\lambda=1-i\) then the corresponding eigenvector, \(\displaystyle Y=\begin{pmatrix}
+        y_1\\
+        y_2
+    \end{pmatrix}\) such that
+    \begin{align*}
+        &\abs{A-\lambda I}Y=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            i&1\\
+            -1&i
+        \end{pmatrix}\;\;\begin{pmatrix}
+            y_1\\
+            y_2
+        \end{pmatrix}=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            i&1\\
+            0&0
+        \end{pmatrix}\;\;\begin{pmatrix}
+            y_1\\
+            y_2
+        \end{pmatrix}=0\qquad R_2'=R_2(i)+R_1\\
+        \Rightarrow\;\;&iy_1+y_2=0
+    \end{align*}
+    Let us choose arbitrary non-trivial solution \(y_1=1\), \(y_2=-i\).\\
+    Hence the eigen vector corresponding to \(\lambda=1-i\) is \(\displaystyle \bar{V}_2=\begin{pmatrix}
+        1\\
+        -i
+    \end{pmatrix}\)\\
+    \begin{align*}
+        \therefore\;\;& c=\begin{pmatrix}
+            1 & 1\\
+            i & -i
+        \end{pmatrix}\\
+        \therefore\;\;& c^{-1}=-\frac{1}{2i}\begin{pmatrix}
+            -i & -1\\
+            -i & 1
+        \end{pmatrix}=\frac{1}{2}\begin{pmatrix}
+            1 & -i\\
+            1 & i
+        \end{pmatrix}
+    \end{align*}
+    \begin{align*}
+        D&=c^{-1}Ac\\
+        &=\frac{1}{2}\begin{pmatrix}
+            1 & -i\\
+            1 & i
+        \end{pmatrix}\;\begin{pmatrix}
+            1 & 1\\
+            -1 & 1
+        \end{pmatrix}\;\begin{pmatrix}
+            1 & 1\\
+            i & -i
+        \end{pmatrix}\\
+        &=\frac{1}{2}\begin{pmatrix}
+            1 & -i\\
+            1 & i
+        \end{pmatrix}\;\begin{pmatrix}
+            1+i & 1-i\\
+            -1+i & -1-i
+        \end{pmatrix}\\
+        &=\frac{1}{2}\begin{pmatrix}
+            2+2i & 0\\
+            0 & 2-2i
+        \end{pmatrix}\\
+        &=\begin{pmatrix}
+            1+i & 0\\
+            0 & 1-i
+        \end{pmatrix}
+    \end{align*}
+    \[\therefore\; e^{Dt}=\begin{pmatrix}
+        e^{1+i}t & 0\\
+        0 & e^{1-i}t
+    \end{pmatrix}\]
+    Now,
+    \begin{align*}
+        e^{At}&=ce^{Dt}c^{-1}\\
+        &=\frac{1}{2}\begin{pmatrix}
+            1 & 1\\
+            i & -i
+        \end{pmatrix}\;\begin{pmatrix}
+            e^{(1+i)t} & 0\\
+            0 & e^{(1-i)t}
+        \end{pmatrix}\;\begin{pmatrix}
+            1 & -i\\
+            1 & i
+        \end{pmatrix}\\
+        &=\frac{1}{2}\begin{pmatrix}
+            1 & 1\\
+            i & -i
+        \end{pmatrix}\;\begin{pmatrix}
+            e^{(1+i)t} & -ie^{(1+i)t}\\
+            e^{(1-i)t} & ie^{(1-i)t}
+        \end{pmatrix}\\
+        &=\frac{1}{2}\begin{pmatrix}
+            e^{(1+i)t}+e^{(1-i)t} & -ie^{(1+i)t}+ie^{(1-i)t}\\
+            ie^{(1+i)t}-ie^{(1-i)t} & e^{(1+i)t}+e^{(1-i)t}
+        \end{pmatrix}\\
+        &=\frac{1}{2}e^t\begin{pmatrix}
+            \cos t+i\sin t+\cos t-i\sin t & -i\cos t+\sin t+i\cos t+\sin t\\
+            i\cos t-\sin t-i\cos t-\sin t & \cos t+i\sin t+\cos t-i\sin t
+        \end{pmatrix}\\
+        &=\frac{1}{2}e^t\begin{pmatrix}
+            2\cos t & 2\sin t\\
+            -2\sin t & 2\cos t
+        \end{pmatrix}=e^t\begin{pmatrix}
+            \cos t & \sin t\\
+            -\sin t & \cos t
+        \end{pmatrix}\\
+    \end{align*}
+    Now,
+    \begin{align*}
+        &X(t)=e^{At}c\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            x(t)\\
+            y(t)
+        \end{pmatrix}=e^t\begin{pmatrix}
+            \cos t & \sin t\\
+            -\sin t & \cos t
+        \end{pmatrix}\;\begin{pmatrix}
+            c_1\\
+            c_2
+        \end{pmatrix}\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            x(t)\\
+            y(t)
+        \end{pmatrix}=e^t\begin{pmatrix}
+            c_1\cos t +c_2\sin t\\
+            -c_1\sin t +c_2\cos t
+        \end{pmatrix}
+    \end{align*}
+    \begin{equation}
+        \begin{rcases}
+            \therefore\;\;x(t)=e^t\left( c_1\cos t +c_2\sin t \right)\qquad \\
+            \therefore\;\;y(t)=e^t\left( -c_1\sin t +c_2\cos t \right)
+        \end{rcases}
+        \label{eq:prey1.2}
+    \end{equation}
+    Which is the general solution.\\
+    Applying initial condition \(x(0)=1000\), \(y(0)=1000\) in \eqref{eq:prey1.2},
+    \begin{align*}
+        &1000=1\cdot (c_1\cos 0+0)\qquad\Rightarrow\;\;c_1=1000\\
+        \intertext{and}
+        &1000=1\cdot (0c_2\cos 0)\qquad\Rightarrow\;\;c_2=1000
+    \end{align*}
+    So \eqref{eq:prey1.2} becomes
+    \begin{equation}
+        \begin{rcases}
+            \therefore\;\;x(t)=1000e^t\left(\cos t +\sin t \right)\qquad \\
+            \therefore\;\;y(t)=1000e^t\left( -\sin t +\cos t \right)
+        \end{rcases}
+        \label{eq:prey1.3}
+    \end{equation}
+    Now from \eqref{eq:prey1.3}, for eliminating \(y\),
+    \begin{align*}
+        &1000e^t(\cos t-\sin t)=0\\
+        \Rightarrow\;\;&\cos t=\sin t\qquad e^t\neq 0\\
+        \Rightarrow\;\;&\tan t=1=\tan \pi/4\\
+        \Rightarrow\;\;&t=\pi/4=\frac{11}{4} \text{ years}
+    \end{align*}
+\end{soln}
+\begin{prob}[Compitition Model]
+    Identify the population model and solve
+    \begin{align*}
+        \ddt{x}&=3x-y\\
+        \ddt{y}&=-2x+2y
+    \end{align*}
+    where the time \(t\) is measured in year with initial population \(x(0)=90\), \(y(0)=150\) and also find
+    \begin{enumerate}[label=(\roman*)]
+        \item when will the species \(y\) be eliminated?
+        \item what will be the population after six months?
+    \end{enumerate}
+\end{prob}
+\begin{soln}
+    We have,
+    \begin{equation}
+        \begin{rcases}
+            \ddt{x}=3x-y\qquad\\
+        \ddt{y}=-2x+2y
+        \end{rcases}
+        \label{eq:com1.1}
+    \end{equation}
+    In the absence of \(y\), \(x\) increase and in the presence of \(y\), \(x\) decreases. This is true for 1st equation of the system \eqref{eq:com1.1}.
+
+    Again, in the absence of \(x\), \(y\) increases and in the presence of \(x\), \(y\) decreases. This is valid for 2nd equation of the system \eqref{eq:com1.1}.
+
+    Hence the system \eqref{eq:com1.1} is a competition model.\\
+    The system \eqref{eq:com1.1} can be written as,
+    \[X'(t)=AX(t)\]
+    where,
+    \[A=\begin{pmatrix}
+        3&-1\\
+        -2&2
+    \end{pmatrix},\quad X=\begin{pmatrix}
+        x\\
+        y
+    \end{pmatrix}\]
+    The characteristic equation of \(A \) is,
+    \begin{align*}
+        &\abs{A-\lambda I}=0\\
+        \Rightarrow\;\;&\begin{vmatrix}
+            3-\lambda & -1\\
+            -2 & 2-\lambda
+        \end{vmatrix}=0\\
+        \Rightarrow\;\;&\lambda^2-5\lambda+4=0\\
+        \Rightarrow\;\;&\lambda=1,\,\;4
+    \end{align*}
+    \emph{Case i}: When \(\lambda=1\) then the corresponding eigenvector, \(\displaystyle X=\begin{pmatrix}
+        x_1\\
+        x_2
+    \end{pmatrix}\) such that
+    \begin{align*}
+        &[A-\lambda I]X=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            2&-1\\
+            -2&1
+        \end{pmatrix}\;\;\begin{pmatrix}
+            x_1\\
+            x_2
+        \end{pmatrix}=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            2&-1\\
+            0&0
+        \end{pmatrix}\;\;\begin{pmatrix}
+            x_1\\
+            x_2
+        \end{pmatrix}=0\qquad R_2'=R_2+R_1\\
+        \Rightarrow\;\;&2x_1-x_2=0
+    \end{align*}
+    Let us choose arbitrary non-trivial solution \(x_1=1\), \(x_2=2\).\\
+    Hence the eigen vector corresponding to \(\lambda=1\) is \(\displaystyle \bar{V}_1=\begin{pmatrix}
+        1\\
+        2
+    \end{pmatrix}\)\\
+
+    \emph{Case ii}: When \(\lambda=4\) then the corresponding eigenvector, \(\displaystyle Y=\begin{pmatrix}
+        y_1\\
+        y_2
+    \end{pmatrix}\) such that
+    \begin{align*}
+        &[A-\lambda I]Y=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            -1&-1\\
+            -2&-2
+        \end{pmatrix}\;\;\begin{pmatrix}
+            y_1\\
+            y_2
+        \end{pmatrix}=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            -1&-1\\
+            0&0
+        \end{pmatrix}\;\;\begin{pmatrix}
+            y_1\\
+            y_2
+        \end{pmatrix}=0\qquad R_2'=-\frac{1}{2}R_2+R_1\\
+        \Rightarrow\;\;&-y_1-y_2=0\\
+        \Rightarrow\;\;&+y_1+y_2=0
+    \end{align*}
+    Let us choose arbitrary non-trivial solution \(y_1=1\), \(y_2=-1\).\\
+    Hence the eigenvector corresponding to \(\lambda=4\) is \(\displaystyle \bar{V}_2=\begin{pmatrix}
+        1\\
+        -1
+    \end{pmatrix}\)\\
+    \begin{align*}
+        \therefore\;\;& c=\begin{pmatrix}
+            1 & 1\\
+            2 & -1
+        \end{pmatrix}\\
+        \therefore\;\;& c^{-1}=-\frac{1}{3}\begin{pmatrix}
+            -1 & -1\\
+            -2 & 1
+        \end{pmatrix}=\frac{1}{3}\begin{pmatrix}
+            1 & 1\\
+            2 & -1
+        \end{pmatrix}
+    \end{align*}
+    \begin{align*}
+        D&=c^{-1}Ac\\
+        &=\frac{1}{3}\begin{pmatrix}
+            1 & 1\\
+            2 & -1
+        \end{pmatrix}\;\begin{pmatrix}
+            3 & -1\\
+            -2 & 2
+        \end{pmatrix}\;\begin{pmatrix}
+            1 & 1\\
+            2 & -1
+        \end{pmatrix}\\
+        &=\frac{1}{3}\begin{pmatrix}
+            1 & 1\\
+            2 & -1
+        \end{pmatrix}\;\begin{pmatrix}
+            1 & 4\\
+            2 & -4
+        \end{pmatrix}\\
+        &=\frac{1}{3}\begin{pmatrix}
+            3 & 0\\
+            0 & 12
+        \end{pmatrix}\\
+        &=\begin{pmatrix}
+            1 & 0\\
+            0 & 4
+        \end{pmatrix}
+    \end{align*}
+    \[\therefore\; e^{Dt}=\begin{pmatrix}
+        e^t & 0\\
+        0 & e^{4t}
+    \end{pmatrix}\]
+    Now,
+    \begin{align*}
+        e^{At}&=ce^{Dt}c^{-1}\\
+        &=\frac{1}{3}\begin{pmatrix}
+            1 & 1\\
+            2 & -1
+        \end{pmatrix}\;\begin{pmatrix}
+            e^{t} & 0\\
+            0 & e^{4t}
+        \end{pmatrix}\;\begin{pmatrix}
+            1 & 1\\
+            2 & -1
+        \end{pmatrix}\\
+        &=\frac{1}{3}\begin{pmatrix}
+            1 & 1\\
+            2 & -1
+        \end{pmatrix}\;\begin{pmatrix}
+            e^{t} & e^{t}\\
+            2e^{4t} & -e^{4t}
+        \end{pmatrix}\\
+        &=\frac{1}{3}\begin{pmatrix}
+            e^{t}+2e^{4t} & e^{t}-e^{4t}\\
+            2e^{t}-2e^{4t} & 2e^{t}+e^{4t}
+        \end{pmatrix}
+    \end{align*}
+    Now,
+    \begin{align*}
+        &X(t)=e^{At}c\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            x(t)\\
+            y(t)
+        \end{pmatrix}=\frac{1}{3}\begin{pmatrix}
+            e^{t}+2e^{4t} & e^{t}-e^{4t}\\
+            2e^{t}-2e^{4t} & 2e^{t}+e^{4t}
+        \end{pmatrix}\;\begin{pmatrix}
+            c_1\\
+            c_2
+        \end{pmatrix}
+    \end{align*}
+    \begin{equation}
+        \begin{rcases}
+            \therefore\;\;x(t)=\frac{1}{3}\left( c_1(e^t+2e^{4t})+c_2(e^t-e^{4t}) \right)\qquad \\
+            \therefore\;\;y(t)=\frac{1}{3}\left( c_1(2e^t-2e^{4t})+c_2(2e^t+e^{4t})\right)
+        \end{rcases}
+        \label{eq:com1.2}
+    \end{equation}
+    Which is the general solution.\\
+    Applying initial condition \(x(0)=90\), \(y(0)=150\) in \eqref{eq:com1.2},
+    \begin{align*}
+        &90=\frac{1}{3}\times 3c_1\qquad\Rightarrow\;\;c_1=90\\
+        \intertext{and}
+        &150=\frac{1}{3}\times3c_2\qquad\Rightarrow\;\;c_2=150
+    \end{align*}
+    So \eqref{eq:prey1.2} becomes
+    \begin{align*}
+        x(t)&=\frac{1}{3}\left\{ 90(e^t+2e^{4t})+150(e^t-e^{4t}) \right\}\\
+        y(t)&=\frac{1}{3}\left\{ 90(2e^t-2e^{4t})+150(2e^t+4e^{4t}) \right\}
+    \end{align*}
+    \begin{equation}
+        \begin{rcases}
+            \therefore\;\;x(t)=80e^t+10e^{4t}\qquad \\
+            \therefore\;\;y(t)=160e^t-10e^{4t}
+        \end{rcases}
+        \label{eq:com1.3}
+    \end{equation}
+    which is the population at any time.
+    \begin{enumerate}[label=(\roman*)]
+        \item For eliminating \(y\), putting \(y=0\) in 2nd equation of the system \eqref{eq:com1.3},
+        \begin{align*}
+            &0=160e^t-10e^{4t}\\
+            \Rightarrow\;\;&e^{3t}=16\\
+            \Rightarrow\;\;&t=.92\text{ years }\quad \text{ i.e., 11 months}
+        \end{align*}
+        \item When \(t=\frac{1}{2} \) years (six month) then from \eqref{eq:com1.3}
+        \begin{align*}
+            x(t)&=80e^{\frac{1}{2}}+10e^{2}=206 \\
+            y(t)&=160e^{\frac{1}{2}}-10e^{2}=190
+        \end{align*}
+    \end{enumerate}
+\end{soln}
+\begin{prob}[Symbiotic Model]
+    Identify the population model and solve
+    \begin{align*}
+        \ddt{x}&=-2x+4y\\
+        \ddt{y}&=x-2y
+    \end{align*}
+    where the time \(t\) is measured in year with initial population \(x(0)=100\), \(y(0)=300\).
+\end{prob}
+\begin{soln}
+    We have,
+    \begin{equation}
+        \begin{rcases}
+            \ddt{x}=-2x+4y\qquad\\
+        \ddt{y}=x-2y
+        \end{rcases}
+        \label{eq:sym1.1}
+    \end{equation}
+    In the absence of \(y\), \(x\) decreases and in the presence of \(y\), \(x\) increases. This is true for 1st equation of the system \eqref{eq:sym1.1}.
+
+    Again, in the absence of \(x\), \(y\) decreases and in the presence of \(x\), \(y\) increases. This is valid for 2nd equation of the system \eqref{eq:sym1.1}.
+
+    Hence, the system \eqref{eq:com1.1} described symbiotic model.\\
+    The system \eqref{eq:com1.1} can be written as,
+    \[X'(t)=AX(t)\]
+    where,
+    \[A=\begin{pmatrix}
+        -2&4\\
+        1&-2
+    \end{pmatrix},\quad X=\begin{pmatrix}
+        x\\
+        y
+    \end{pmatrix}\]
+    The characteristic equation of \(A \) is,
+    \begin{align*}
+        &\abs{A-\lambda I}=0\\
+        \Rightarrow\;\;&\begin{vmatrix}
+            -2-\lambda & 4\\
+            1 & -2-\lambda
+        \end{vmatrix}=0\\
+        \Rightarrow\;\;&\lambda^2+4\lambda=0\\
+        \Rightarrow\;\;&\lambda=0,\,\;-4
+    \end{align*}
+    \emph{Case i}: When \(\lambda=0\) then the corresponding eigenvector, \(\displaystyle X=\begin{pmatrix}
+        x_1\\
+        x_2
+    \end{pmatrix}\) such that
+    \begin{align*}
+        &[A-\lambda I]X=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            -2&4\\
+            1&-2
+        \end{pmatrix}\;\;\begin{pmatrix}
+            x_1\\
+            x_2
+        \end{pmatrix}=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            -2&4\\
+            0&0
+        \end{pmatrix}\;\;\begin{pmatrix}
+            x_1\\
+            x_2
+        \end{pmatrix}=0\qquad R_2'=R_2+2R_1\\
+        \Rightarrow\;\;&-x_1+2x_2=0
+    \end{align*}
+    Let us choose arbitrary non-trivial solution \(x_1=2\), \(x_2=1\).\\
+    Hence, the eigenvector corresponding to \(\lambda=0\) is \(\displaystyle \bar{V}_1=\begin{pmatrix}
+        2\\
+        1
+    \end{pmatrix}\)\\
+
+    \emph{Case ii}: When \(\lambda=-4\) then the corresponding eigenvector, \(\displaystyle Y=\begin{pmatrix}
+        y_1\\
+        y_2
+    \end{pmatrix}\) such that
+    \begin{align*}
+        &[A-\lambda I]Y=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            2&4\\
+            1&2
+        \end{pmatrix}\;\;\begin{pmatrix}
+            y_1\\
+            y_2
+        \end{pmatrix}=0\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            1&2\\
+            0&0
+        \end{pmatrix}\;\;\begin{pmatrix}
+            y_1\\
+            y_2
+        \end{pmatrix}=0\qquad R_2'=R_2-\frac{1}{2}R_1\\
+        \Rightarrow\;\;&y_1+2y_2=0\\
+    \end{align*}
+    Let us choose arbitrary non-trivial solution \(y_1=2\), \(y_2=-1\).\\
+    Hence, the eigenvector corresponding to \(\lambda=-4\) is \(\displaystyle \bar{V}_2=\begin{pmatrix}
+        2\\
+        -1
+    \end{pmatrix}\)\\
+    \begin{align*}
+        \therefore\;\;& c=\begin{pmatrix}
+            2 & 2\\
+            1 & -1
+        \end{pmatrix}\\
+        \therefore\;\;& c^{-1}=-\frac{1}{4}\begin{pmatrix}
+            -1 & -2\\
+            -1 & 2
+        \end{pmatrix}=\frac{1}{4}\begin{pmatrix}
+            1 & 2\\
+            1 & -2
+        \end{pmatrix}
+    \end{align*}
+    \begin{align*}
+        D&=c^{-1}Ac\\
+        &=\frac{1}{4}\begin{pmatrix}
+            1 & 2\\
+            1 & -2
+        \end{pmatrix}\;\begin{pmatrix}
+            -2 & 4\\
+            1 & -2
+        \end{pmatrix}\;\begin{pmatrix}
+            2 & 2\\
+            1 & -1
+        \end{pmatrix}\\
+        &=\frac{1}{4}\begin{pmatrix}
+            1 & 2\\
+            1 & -2
+        \end{pmatrix}\;\begin{pmatrix}
+            0 & -8\\
+            0 & 4
+        \end{pmatrix}\\
+        &=\frac{1}{4}\begin{pmatrix}
+            0 & 0\\
+            0 & -16
+        \end{pmatrix}\\
+        &=\begin{pmatrix}
+            0 & 0\\
+            0 & -4
+        \end{pmatrix}
+    \end{align*}
+    \[\therefore\; e^{Dt}=\begin{pmatrix}
+        e^{0t} & 0\\
+        0 & e^{-4t}
+    \end{pmatrix}\]
+    Now,
+    \begin{align*}
+        e^{At}&=ce^{Dt}c^{-1}\\
+        &=\frac{1}{4}\begin{pmatrix}
+            2 & 2\\
+            1 & -1
+        \end{pmatrix}\;\begin{pmatrix}
+            1 & 0\\
+            0 & e^{-4t}
+        \end{pmatrix}\;\begin{pmatrix}
+            1 & 2\\
+            1 & -2
+        \end{pmatrix}\\
+        &=\frac{1}{4}\begin{pmatrix}
+            2 & 2\\
+            1 & -1
+        \end{pmatrix}\;\begin{pmatrix}
+            1 & 2\\
+            e^{-4t} & -2e^{-4t}
+        \end{pmatrix}\\
+        &=\frac{1}{4}\begin{pmatrix}
+            2+2e^{-4t} & 4-4e^{-4t}\\
+            1-2e^{-4t} & 2+2e^{-4t}
+        \end{pmatrix}
+    \end{align*}
+    Now,
+    \begin{align*}
+        &X(t)=e^{At}c\\
+        \Rightarrow\;\;&\begin{pmatrix}
+            x(t)\\
+            y(t)
+        \end{pmatrix}=\frac{1}{4}\begin{pmatrix}
+            2+2e^{-4t} & 4-4e^{-4t}\\
+            1-2e^{-4t} & 2+2e^{-4t}
+        \end{pmatrix}\;\begin{pmatrix}
+            c_1\\
+            c_2
+        \end{pmatrix}
+    \end{align*}
+    \begin{equation}
+        \begin{rcases}
+            \therefore\;\;x(t)=\frac{1}{4}\left( c_1(2+2e^{-4t})+c_2(4-4e^{-4t}) \right)\qquad \\
+            \therefore\;\;y(t)=\frac{1}{4}\left( c_1(1-e^{-4t})+c_2(2+2e^{-4t})\right)
+        \end{rcases}
+        \label{eq:sym1.2}
+    \end{equation}
+    Which is the general solution.\\
+    Applying initial condition \(x(0)=100\), \(y(0)=300\) in \eqref{eq:sym1.2},
+    \[c_1=100,\qquad c_2=300\]
+    So \eqref{eq:sym1.2} becomes
+    \begin{align*}
+        x(t)&=\frac{1}{4}\left\{ 100(2+2e^{-4t})+300(4-4e^{-4t}) \right\}\\
+        y(t)&=\frac{1}{3}\left\{ 100(1-e^{-4t})+300(2+2e^{-4t}) \right\}
+    \end{align*}
+        \begin{align*}
+            \therefore\;\;&x(t)=350-250e^{-4t}\qquad \\
+            \therefore\;\;&y(t)=175+125e^{-4t}
+        \end{align*}
+    which is the population at any time.
+\end{soln}
+\end{document}

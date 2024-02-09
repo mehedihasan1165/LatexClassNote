@@ -101,6 +101,221 @@ The removal class consists of those individuals who had the disease are dead or 
     \emph{Example:} Several types of this model are \(SIR\) model, \(SIRS\), \(SEIR\) etc.
 \end{soln}
 \begin{prob}
+    Discuss the \(SI\) model with limiting behavior.
+\end{prob}
+\begin{soln}
+    Without removals, we have\
+    \begin{equation}
+        S(t)+I(t)=N(t)=\text{ Constant }
+        \label{eq:psi1}
+    \end{equation}
+    where, \(\begin{aligned}[t]
+        S(t)&=\text{ The number of susceptible}\\
+        I(t)&=\text{ The number of infective person in the population}\\
+        N(t)&=\text{ The total population size}
+    \end{aligned}\)\\
+    Let \(n\) be the initial number of susceptible in the population in which one infected person has been introduced, so that,
+    \begin{equation}
+        \begin{rcases}
+            S(t)+I(t)=n+1\\    
+            S(0)=S_0=n\\    
+            I(0)=I_0=1    
+        \end{rcases}
+        \label{eq:psi2}
+    \end{equation}
+    Due to infection, the number of susceptibles decreases and the number of infected persons increases.\\
+    The epidemic model is,
+    \begin{align}
+        \ddt{S}&=-\beta SI\label{eq:psi3}\\
+        \ddt{I}&=\beta SI\label{eq:psi4}
+    \end{align}
+    From \eqref{eq:psi4},
+    \begin{align}
+        & \ddt{S}=-\beta SI=-\beta S(n+1-S) \quad\text{ by \eqref{eq:psi2}}\notag\\
+        \Rightarrow\;\;& \frac{-1 \D S}{S(n+1-S)}=\beta \D t\notag\\
+        \Rightarrow\;\;& -\frac{1 }{n+1}\left( \frac{1}{S}+\frac{1}{n+1-S} \right)=\beta \D t\notag\\
+        \Rightarrow\;\;& -\int \frac{1 }{S}\D S-\int \frac{1}{n+1-S} \D S=\int(n+1)\beta \D t\notag\\
+        \Rightarrow\;\;& -\ln{S}+\ln({n+1-S})=(n+1)\beta t+\ln c\quad\text{ where \(c\) is a constant}\label{eq:psi5}
+    \end{align}
+    By using the initial conditions \eqref{eq:psi2}, we have
+    \begin{align}
+        & -\ln{S_0}+\ln({n+1-S_0})=(n+1)\beta\cdot0+\ln c\notag\\
+        \Rightarrow\;\;& -\ln n+\ln({n+1-n})=\ln c\notag\\
+        \Rightarrow\;\;& -\ln n=\ln c\notag\\
+        \intertext{Putting the value of \(ln c\) in \eqref{eq:psi5} we get,}
+        \Rightarrow\;\;& -\ln{S}+\ln({n+1-S})=(n+1)\beta t-\ln n\notag\\
+        \Rightarrow\;\;& \ln\frac{n(n+1-S)}{S}=(n+1)\beta t\notag\\
+        \Rightarrow\;\;& \frac{n(n+1-S)}{S}=e^{(n+1)\beta t}\notag\\
+        \Rightarrow\;\;& {n(n+1)-nS}=Se^{(n+1)\beta t}\notag\\
+        \Rightarrow\;\;& {n(n+1)}=nS+Se^{(n+1)\beta t}\notag\\
+        \Rightarrow\;\;& S=S(t)=\frac{n(n+1)}{n+e^{(n+1)\beta t}}\label{eq:psi6}
+    \end{align}
+    From \eqref{eq:psi4}, we have
+    \begin{align}
+        &\ddt{I}=\beta SI=\beta I(n+1-I)\quad \text{ [by \eqref{eq:psi2}]}\notag\\
+        \Rightarrow\;\;&\frac{\D I}{I(n+1-I)}=\beta \D t\notag\\
+        \Rightarrow\;\;&\int\frac{1}{n+1}\left( \frac{1}{I}+\frac{1}{n+1-I} \right)\D I=\int \beta \D t\notag\\
+        \Rightarrow\;\;&\int\left( \frac{1}{I}+\frac{1}{n+1-I} \right)\D I=\int(n+1) \beta \D t\notag\\
+        \Rightarrow\;\;&\ln {I}-\ln ({n+1-I}) =(n+1) \beta t+\ln A\label{eq:psi7}\quad\text{ where \(\ln A\) is a constant}
+    \end{align}
+    Initially, \(t=0\), \(I_0=1\), so we get,
+    \begin{align*}
+        &\ln {I_0}-\ln ({n+1-I_0}) =(n+1) \beta \cdot 0+\ln A\\
+        \Rightarrow\;\;&\ln 1-\ln ({n+1-1}) =0+\ln A\\
+        \Rightarrow\;\;&-\ln n =\ln A\\
+        \Rightarrow\;\;&\ln A =-\ln n
+    \end{align*}
+    Putting this value in \eqref{eq:psi7}, we get.
+    \begin{align}
+        &\ln {I}-\ln ({n+1-I}) =(n+1) \beta t-\ln n\notag\\
+        \Rightarrow\;\;&\ln \frac{nI}{n+1-I}=(n+1) \beta t\notag\\
+        \Rightarrow\;\;&\frac{nI}{n+1-I}=e^{(n+1) \beta t}\notag\\
+        \Rightarrow\;\;&{nI}=(n+1)e^{(n+1) \beta t}-Ie^{(n+1) \beta t}\notag\\
+        \Rightarrow\;\;&\left[ n+e^{(n+1) \beta t} \right]I=(n+1)e^{(n+1) \beta t}\notag\\
+        \Rightarrow\;\;&I=\frac{(n+1)e^{(n+1) \beta t}}{n+e^{(n+1) \beta t} }\label{eq:psi8}
+    \end{align}
+    From \eqref{eq:psi6} and \eqref{eq:psi8}, we have,
+    \[
+        \lim_{t\to \infty}S(t)=\frac{n(n+1)}{n+e^\infty}=\frac{n(n+1)}{\infty}=0
+    \]
+    and
+    \begin{align*}
+        \lim_{t\to \infty}I(t)&=\lim_{t\to \infty}\frac{(n+1)e^{(n+1) \beta t}}{n+e^{(n+1) \beta t} }\\
+        &=\lim_{t\to \infty}\frac{(n+1)}{ne^{-(n+1) \beta t} +1}\\
+        &=\frac{(n+1)}{ne^{-\infty} +1}\\
+        &=n+1
+    \end{align*}
+    Thus, ultimately all persons will be infected.
+\end{soln}
+\begin{prob}
+    Consider the epidemic model
+    \begin{align*}
+        S'&=-\alpha SI\\
+        I'&=\alpha SI-\gamma I\\
+        R'&=\gamma I
+    \end{align*}
+    Interpret the state variables \(S(t)\), \(I(t)\), \(R(t)\) and the model parameters.\\
+    Find the co-ordinate on which the infection (disease) will ultimately die out.
+\end{prob}
+\begin{soln}
+    Let,
+    \begin{align*}
+        S(t)&=\text{ The number of susceptibles who can catch the disease.}\\
+        I(t)&=\text{ The number of infected persons in the population.}\\
+        R(t)&=\text{ The number of those removed from the population by recovery, death or by any other means.}\\
+        N(t)&=\text{ The total number of population size.}
+    \end{align*}
+    The progress of individuals is schematically represented by \(S\to I\to R\). Such models are often called \(SIR\) models.\\
+    Here we assume that
+    \begin{enumerate}[label=(\roman*)]
+        \item The gain in the infective class is at a rate proportional to the number of infectives and susceptibles, that is \(\alpha SI\), where \(\alpha>0\) is a constant parameter.
+        \item The rate of removed of infectives to the removal class is proportional to the number of infectives, that is \(\gamma I\) where \(\gamma >0\) is a constant.
+        \item The incuration period is short enough to be negligible.
+    \end{enumerate}
+    The model based on the above assumption is,
+    \begin{align}
+        \ddt{S}&=-\alpha SI\label{eq:psir1}\\
+        \ddt{I}&=\alpha SI-\gamma I\label{eq:psir2}\\
+        \ddt{R}&=\gamma I\label{eq:psir3}
+    \end{align}
+    where, \(\alpha>0\) is the infection rate and \(\gamma>0\) is the removal rate of infectives.\\
+    The above model has initial conditions
+    \begin{equation}
+        S(0)=S_0>0,\qquad I(0)=I_0>0,\qquad R(0)=0\label{eq:psir4}
+    \end{equation}
+    From \eqref{eq:psir2}, we write,
+    \[
+        \left[ \ddt{I} \right]_{t=0}=I_0 (\alpha S_0-\gamma)\;\;\begin{cases}
+            >0& \text{ if } S_0>\frac{\gamma}{\alpha}\\
+            <0& \text{ if } S_0<\frac{\gamma}{\alpha}
+        \end{cases}
+    \]
+    where \(\frac{\gamma}{\alpha}\) is relative removal rate.\\
+    Since from \eqref{eq:psir1} we have, \(\ddt{S}\leq 0,\quad S\leq S_0\).\\
+    If \(S_0<\frac{\gamma}{\alpha}\), then
+    \begin{equation}
+        \ddt{I}=I(\alpha S-\gamma)\leq 0 \label{eq:psir5}
+    \end{equation}
+    for all \(t>0\) in which case \(I_0>I\to 0\) as \(t\to \infty\) and so the infection dies out that is no epidemic can occur.
+
+    On the other hand, if \(S_0>\frac{\gamma}{\alpha}\) then \(I(t)\) initially increases and we have an epidemic. The term epidemic means that, \(I(t)>I_0\) for some \(t>0\).\\
+    Again from \eqref{eq:psir1} and \eqref{eq:psir2}, we have
+    \begin{align}
+        &\frac{\D I}{\D S}=\frac{\alpha SI-\gamma I}{-\alpha SI}=-1+\frac{\gamma}{\alpha S}\notag\\
+        \Rightarrow\;\;&\int \D I=-\int \D S+ \rho\int\frac{1}{S}\D S,\quad\text{where }\rho=\frac{\gamma}{\alpha}\notag\\
+        \Rightarrow\;\;&\int \D I=-\int \D S+ \rho\int\frac{1}{S}\D S,\quad\text{where }\rho=\frac{\gamma}{\alpha}\notag\\
+        \Rightarrow\;\;&I=-S+ \rho\ln{S}+\text{ constant }\notag\\
+        \Rightarrow\;\;&I+S- \rho\ln{S}=\text{ constant }=I_0+S_0- \rho\ln{S_0}\label{eq:psir6}
+    \end{align}
+    Here \(R(0)=0\), so \(0\leq S+I< N\)\\
+    From \eqref{eq:psir5}, \(I\) will be maximized if 
+    \begin{align*}
+        &\ddt{I}=0\\
+        \Rightarrow\;\;&I(\alpha S-\gamma)=0\\
+        \Rightarrow\;\;&S=\frac{\gamma}{\alpha}=\rho \qquad \text{since, }I\neq0
+    \end{align*}
+    Putting, \(S=\rho\) in \eqref{eq:psir6} we get,
+    \begin{align}
+        &I_{\max} +\rho-\rho \ln \rho=I_0+S_0-\rho \ln S_0\notag\\
+        \Rightarrow\;\; &I_{\max} =\rho \ln \rho-\rho+I_0+S_0-\rho \ln S_0\notag\\
+        \Rightarrow\;\; &I_{\max} =(I_0-S_0)-\rho +\rho \ln \left( \frac{\rho}{S_0} \right)\label{eq:psir7}\\
+        \Rightarrow\;\; &I_{\max} =N-\rho +\rho \ln \left( \frac{\rho}{S_0} \right),\qquad N=I_0+S_0\notag
+    \end{align}
+    If \(I_0>0\), and \(S_0>\rho\), then the phase trajectory start with \(S>\rho\), also in this case \(I\) increases from \(I_0\) and hence an epidemic ensure.
+
+    If \(S_0<\rho\) then \(I\) decreases from \(I_0\) and as such no epidemic occurs.
+\end{soln}
+\begin{prob}
+    Describe the \(SIR\) model for an epidemic. Discuss the asymptotic behavior of \(S(t)\), \(I(t)\), \(R(t)\).\\
+    or,\\
+    Describe the deterministic epidemic model with removal. Find the condition on which the infection die out or spread throughout the population.\\
+    or,\\
+    Discuss the Kermack-Mckendric epidemic model. Analyze the asymptotic behavior of the solution of the model.
+\end{prob}
+\begin{soln}
+    The \(SIR\) model is given by,
+    \begin{align}
+        \ddt{S}&=S'=-\alpha SI\label{eq:psir2.1}\\
+        \ddt{I}&=I'=\alpha SI-\gamma I\label{eq:psir2.2}\\
+        \ddt{R}&=R'=\gamma I\label{eq:psir2.3}
+    \end{align}
+    Here,
+    \begin{align*}
+        S(t)&=\text{ The number of susceptibles who can catch the disease.}\\
+        I(t)&=\text{ The number of infected persons in the population.}\\
+        R(t)&=\text{ The number of those removed from the population by recovery, death or by any other means.}\\
+        \alpha&=\text{ The infection rate which is positive.}\\
+        \gamma&=\text{ The removal rate of infective which is positive.}\\
+        \rho=\frac{\gamma}{\alpha}&=\text{ It is a pure number which is the ratio of removal rate of infectives with infection rate.}
+    \end{align*}
+    The above model has initial conditions
+    \begin{equation}
+        S(0)=S_0>0,\qquad I(0)=I_0>0,\qquad R(0)=0\label{eq:psir2.4}
+    \end{equation}
+    From \eqref{eq:psir2}, we write,
+    \[
+        \left[ \ddt{I} \right]_{t=0}=I_0 (\alpha S_0-\gamma)\;\;\begin{cases}
+            >0& \text{ if } S_0>\rho=\frac{\gamma}{\alpha}\\
+            <0& \text{ if } S_0<\rho=\frac{\gamma}{\alpha}
+        \end{cases}
+    \]
+    Since from \eqref{eq:psir2.1} we have
+    \[
+        \ddt{s}\leq 0,\quad S\leq S_0
+    \]
+    If \(S_0<\frac{\gamma}{\alpha}\), then \(\ddt{I}=I(\alpha S-\gamma)\leq 0 \)
+    for all \(t>0\) in which case \(I_0>I(t)\to 0\) as \(t\to \infty\). So the infection (disease) ultimately die out.
+
+    From \eqref{eq:psir2.1}, \(S(t)\) is monotonic decreasing function of \(t\). So that \(S(t)\leq S_0\).
+
+    This shows that \(S(t)\) is bounded below \((S(t)\leq 0)\), we find that \(\lim_{t\to \infty}S(t)=S(\infty)\) exist.
+
+    From \eqref{eq:psir2.3}, we have \(R(t)\) is a monotonic increasing function of \(t\) and is bounded above \(R(t)\leq N\), we see that \(\lim_{t\to \infty}R(t)=R(\infty)\) exist.
+
+    Again, since \(S(t)+I(t)+R(t)=N\) for all \(t\).\\
+    We find that \(\lim_{t\to \infty}I(t)=I(\infty)\) also exist.
+\end{soln}
+\begin{prob}
     Describe \(SIS\) model.
 \end{prob}
 \begin{soln}
@@ -195,154 +410,4 @@ The removal class consists of those individuals who had the disease are dead or 
             \end{tikzpicture}
     \end{center}
 \end{soln}
-\begin{prob}
-    If the population of a country double in 50 years, in how many years will it triple under the assumption of the Malthusian model? What will be the population in the year 2000?
-\end{prob}
-\begin{soln}
-    We have from Malthusian model,
-    \begin{equation}
-        N=N_0e^{K(t-t_0)}\label{eq:probdef2.1}
-    \end{equation}
-    Suppose at \(t-t_0=50\) years, the population will be double in size. i.e., \(N=2N_0\).\\
-    From \eqref{eq:probdef2.1} 
-    \begin{align*}
-        &2N_0=N_0 e^{K\times 50}\\
-        \Rightarrow\;\;& e^{50K}=2\\
-        \Rightarrow\;\;& {50K}=\ln 2\\
-        \Rightarrow\;\;& k=\frac{1}{50}\ln 2\\
-        \therefore\;\;& k=0.01386
-    \end{align*}
-    For population to be tripled \(N=3N_0\), \(t-t_0=?\)\\
-    From \eqref{eq:probdef2.1} 
-    \begin{align*}
-        &3N_0=N_0 e^{K(t-t_0)}\\
-        \Rightarrow\;\;&3= e^{0.01386(t-t_0)}\\
-        \Rightarrow\;\;& (t-t_0)=\frac{\ln 3}{0.01386}=79.26\text{ years}
-    \end{align*}
-    After 79.26 years, the population will be triple.
-\end{soln}
-\begin{prob}
-    Use the logistic model with an assumed carrying capacity of \(100\times 10^9\) an observed population of \(5\times 10^9\) in 1986 and an observed rate of growth of \(2\%\) per year when population size is \(5 \times 10^9\) predict the population of the earth in the year 2008.
-\end{prob}
-\begin{soln}
-    We have, from logistic model,
-    \begin{equation}
-        N(t)=\frac{K N_0}{N_0+(K-N_0)e^{-rt}}\label{eq:probdef3.1}
-    \end{equation}
-    Where, \(\begin{aligned}[t]
-        k&=100\times 10^9\\
-        r&=2\% = 0.02\\
-        t&=2008-1968=22\\
-        N_0&=5\times 10^9
-    \end{aligned}\)\\
-
-    Then from \eqref{eq:probdef3.1},
-    \begin{align*}
-        N(t)&=\frac{100\times 10^9\times 5\times10^9}{5\times 10^9+(100\times 10^9-5\times 10^9\times e^{-0.02\times 22})}\\
-        &=\frac{500\times 10^{18}}{5\times 10^9+95\times 10^9\times e^{-0.44}}\\
-        &=\frac{500\times 10^{18}}{10^9(5+95\times 0.6440)}\\
-        &=7.55\times 10^9
-    \end{align*}
-\end{soln}
-\begin{prob}
-    The Pacific halibut fishery is modeled by the logistic equation with carrying capacity \(80.5\times 10^6\) measured in kilograms and intrinsic growth rate \(0.71\) per year. If the initial biomass is one fourth the carrying capacity find the biomass one year later and the time required for the biomass to grow to half the carrying capacity.
-\end{prob}
-\begin{soln}
-    The logistic model is
-    \begin{equation}
-        x'=rx\left(1-\frac{x}{K}\right)\label{eq:probdef4.1}
-    \end{equation}
-    Given, \(\begin{aligned}[t]
-        \text{Carrying capacity, } K&=80.5\times 10^6 \text{ kg}\\
-        \text{Intrinsic growth rate, } r&=0.71\\
-        \text{The initial biomass, } x_0&=\frac{1}{4}K\\
-        &=\frac{1}{4}\times 80.5\times 10^6 \text{ kg}\\
-        &=20.125\times 10^6 \text{ kg}\\
-        \text{time, } x_0&=1\text{ years}\\
-        \text{The biomass one year later, } x(1)&=?
-    \end{aligned}\)\\
-
-
-    We know, the solution of logistic model is,
-    \[
-        x(t)=\frac{K x_0}{x_0+(K-x_0)e^{-rt}}
-        \]
-        \begin{align*}
-            \therefore \;x(t)&=\frac{80.5\times 10^6 \times 20.125\times 10^6}{20.125\times 10^6+(80.5\times 10^6-20.125\times 10^6)e^{-.71\times 1}}\\
-            &=\frac{1620.0625\times 10^6}{20.125+(60.375)\times 0.492}\\
-            &=\frac{1620.063}{49.808}\times 10^6\\
-            &=32.526\times 10^6\text{ kilograms}
-        \end{align*}
-    Now let, after time \(t\), the biomass be \(x(t)\).
-    \[
-        \therefore\;x(t)=\frac{1}{2}K=\frac{1}{2}\times 10^6=40.25\times10^6\text{ kg}
-    \]
-    Then by solution of logistic model,
-    \begin{align*}
-        &x(t)=\frac{K x_0}{x_0+(K-x_0)e^{-rt}}\\
-        \Rightarrow\;\;&x(t)=\frac{K x_0e^{rt}}{x_0e^{rt}+K-x_0}\\
-        \Rightarrow\;\;&x\left( {x_0e^{rt}+K-x_0} \right)={K x_0e^{rt}}\\
-        \Rightarrow\;\;&xx_0e^{rt}+xK-xx_0-{K x_0e^{rt}}=0\\
-        \Rightarrow\;\;&e^{rt}\left(xx_0-{K x_0}\right)=x(x_0-K)\\
-        \Rightarrow\;\;&e^{rt}=\frac{x(x_0-K)}{xx_0-{K x_0}}\\
-        \Rightarrow\;\;&e^{rt}=\frac{x(x_0-K)}{x_0(x-K)}\\
-        \Rightarrow\;\;&e^{rt}=\frac{40.25\times10^6(20.125\times10^6-80.5\times10^6)}{20.125\times10^6(40.25\times10^6-80.5\times10^6)}\\
-        \Rightarrow\;\;&e^{rt}=\frac{40.25\times (-60.375)}{20.125\times (-40.25)}\\
-        \Rightarrow\;\;&e^{rt}=3\\
-        \Rightarrow\;\;&{rt}=\ln 3\\
-        \Rightarrow\;\;&{t}=\frac{\ln 3}{r}\\
-        \Rightarrow\;\;&{t}=\frac{\ln 3}{0.71}\\
-        \therefore\;\;&{t}=1.547 \text{ years}
-    \end{align*}
-\end{soln}
-\begin{prob}
-    Define prey, predator and competition for two species interaction model.
-\end{prob}
-\begin{soln}
-    The dynamics of two species population can be described by
-    \begin{align*}
-        {N_1}^{'}&=N_1(t)f_1(t,N_1(t),N_2(t),\lambda)\\
-        {N_2}^{'}&=N_2(t)f_2(t,N_1(t),N_2(t),\lambda)
-    \end{align*}
-
-
-    \emph{Prey:} A prey is an organism that is or may be seized by a predator to be eaten.\\
-
-    \emph{Predator:} A predator is an organism that depends on predation for its food.\\
-
-    \emph{Competition:} If the growth rate of each population is decreased then it is called competition.
-
-    In this case, two species compete with each other for the same resource such a way that each tries to inhibit the growth of the other. The conditions for the two species competition are \(\frac{\partial f_1}{\partial N_2}<0\) and \(\frac{\partial f_2}{\partial N_1}<0\).
-\end{soln}
-\begin{prob}
-    Assume that \(P(t)\) size of a population obeying an exponential growth law. \(P_1\), \(P_2\) be the values of \(P(t)\) at distinct times \(t_1\) and \(t_2\) \((t_1<t_2)\) respectively. Prove that the growth rate,
-    \[r=\frac{1}{t_2-t_1}\ln\frac{P_2}{P_1}
-    \]
-    Determine how long it takes the population to double its size under the model.
-\end{prob}
-\begin{proof}
-    We know that,
-    \[P(t)=P_0e^{r(t-t_0)}\]
-    Then, 
-    \[
-        P_1=P_0e^{r(t_1-t_0)}, \;\;P(t_1)=P_1
-    \]
-    \[
-        P_2=P_0e^{r(t_2-t_0)}, \;\;P(t_2)=P_2
-    \]
-    \begin{align*}
-        \therefore\;\;&\frac{P_2}{P_1}=\frac{P_0e^{r(t_2-t_0)}}{P_0e^{r(t_1-t_0)}}\\
-        \Rightarrow\;\;&\frac{P_2}{P_1}=e^{r(t_2-t_1)}\\
-        \Rightarrow\;\;&r(t_2-t_1)=\ln\frac{P_2}{P_1}\\
-        \Rightarrow\;\;&r=\frac{1}{t_2-t_1}\ln\frac{P_2}{P_1}
-    \end{align*}
-    Let, at time \(t=T\), the population will be double in size i.e., \(P=2P_0\)
-    \begin{align*}
-        \therefore\;\;&P=P_0e^{r(t-t_0)}\\
-        \Rightarrow\;\;&2P_0=P_0e^{r(T-t_0)}\\
-        \Rightarrow\;\;&2=e^{r(T-t_0)}\\
-        \Rightarrow\;\;&{r(T-t_0)}=\ln 2\\
-        \Rightarrow\;\;&T=t_0+\frac{\ln 2}{r}
-    \end{align*}
-\end{proof}
 \end{document}
